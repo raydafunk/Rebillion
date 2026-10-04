@@ -1,0 +1,47 @@
+{
+  "_note": "Owner: art-direction-agent. PLACEHOLDER paths; keep keys stable, swap files for final art. Resolution 1280x720. Paths relative to project root.",
+  "version": 1,
+  "ui": {
+    "ui.bar.health.frame": "assets/ui/bar-frame-health.svg",
+    "ui.bar.health.fill": "assets/ui/bar-fill-health.svg",
+    "ui.bar.timer.frame": "assets/ui/bar-frame-timer.svg",
+    "ui.button.default": "assets/ui/button-default.svg",
+    "ui.button.hover": "assets/ui/button-hover.svg",
+    "ui.button.pressed": "assets/ui/button-pressed.svg",
+    "ui.button.disabled": "assets/ui/button-disabled.svg",
+    "ui.panel": "assets/ui/panel.svg",
+    "ui.icon.heart": "assets/ui/icon-heart.svg",
+    "ui.icon.clock": "assets/ui/icon-clock.svg"
+  },
+  "sprites": {
+    "zed": "assets/sprites/zed-placeholder.svg",
+    "rust.grunt": "assets/sprites/rust-grunt-placeholder.svg"
+  },
+  "animations": {
+    "zed": [
+      "zed.idle",
+      "zed.walk",
+      "zed.jump",
+      "zed.light",
+      "zed.heavy",
+      "zed.hit",
+      "zed.ko"
+    ],
+    "rust.grunt": [
+      "rust.grunt.idle",
+      "rust.grunt.walk",
+      "rust.grunt.telegraph",
+      "rust.grunt.attack",
+      "rust.grunt.hit",
+      "rust.grunt.ko"
+    ]
+  },
+  "backgrounds": {
+    "bg.arena.01": "assets/backgrounds/arena-01-placeholder.svg"
+  },
+  "fx": {
+    "fx.spark": "assets/fx/spark-placeholder.svg",
+    "fx.telegraph": "assets/fx/telegraph-icon-placeholder.svg"
+  },
+  "hitFeedbackSpec": "design/art/hit-feedback-spec.md"
+}
