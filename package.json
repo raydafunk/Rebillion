@@ -1,0 +1,8 @@
+{
+  "name": "the-rebellion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test src/combat/combat.test.mjs src/state/state.test.mjs src/player/test/player.test.mjs src/enemies/RustGrunt.test.js src/waves/WaveSpawner.test.mjs src/arena/arena.sim.test.mjs"
+  }
+}
