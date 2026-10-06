@@ -1,3 +1,4 @@
+
 The Rebellion Fists of the Fallen City
 
 The Agents 
@@ -11,7 +12,8 @@ The Agents
  the Menu ui agen that deals with the ui of the menu and the backgrounds, ux-flow-designer looks at the ux of the game  then art direction agent looks assets and design of the whole game.
  then i created Gdd Review read-only to review the changes i will probably make in my gdd 
 
-
+   Dependencies and run order
+ <img width="8192" height="1417" alt="Br Agent Flow-2026-10-05-193155" src="https://github.com/user-attachments/assets/65c6416a-0567-4282-945f-03569c8c3aa4" />
 
 
 
