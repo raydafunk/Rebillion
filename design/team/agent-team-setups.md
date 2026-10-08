@@ -110,7 +110,7 @@ Run after Setup A, since `ui` needs real events to subscribe to. The Critic need
 ## Setup C: GDD Review and Playtest (research only, lowest risk)
 
 Docs recommend starting teams with read-only work. Uses built-in types, nothing to build.
-
+xx
 ```text
 Create an agent team of three read-only reviewers for The Rebellion GDD (The Rebellion.docx)
 and the current build:
