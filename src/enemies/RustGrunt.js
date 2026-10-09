@@ -126,6 +126,11 @@ export class RustGrunt {
     const d = this.data;
     const dx = t.x - this.x, dy = t.y - this.y;
     const dist = Math.hypot(dx, dy) || 0.0001;
+    if (dist <= d.attackRange && Math.abs(dy) > (d.laneTolerance ?? Infinity)) {
+      this.circling = false;
+      this._move(0, Math.sign(dy), d.moveSpeed, dt); // in range but off-lane: line up first so the swing can connect
+      return;
+    }
     if (dist <= d.attackRange) {
       if (this.slots.tryAcquire(this.id)) {
         this.circling = false;

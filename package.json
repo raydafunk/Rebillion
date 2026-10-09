@@ -3,6 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test src/combat/combat.test.mjs src/state/state.test.mjs src/player/test/player.test.mjs src/enemies/RustGrunt.test.js src/waves/WaveSpawner.test.mjs src/arena/arena.sim.test.mjs"
+    "test": "node --test src/combat/combat.test.mjs src/state/state.test.mjs src/player/test/player.test.mjs src/enemies/RustGrunt.test.js src/waves/WaveSpawner.test.mjs src/arena/arena.sim.test.mjs",
+    "content:ingest": "node pipeline/ingest.mjs",
+    "content:search": "node pipeline/search.mjs",
+    "content:brief": "node pipeline/brief.mjs",
+    "content:validate": "node pipeline/validate.mjs",
+    "content": "node pipeline/run.mjs",
+    "content:generate": "node pipeline/run.mjs --generate"
   }
 }

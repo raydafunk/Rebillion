@@ -22,6 +22,7 @@ export const GRUNT = {
   maxHp: 30,
   moveSpeed: 90,
   circleSpeed: 55,
+  laneTolerance: 22,    // max vertical (depth) offset at which an attack may start; otherwise close the gap in y first
   attackRange: 70,      // distance to target at which an attack may start
   circleRadius: 180,    // hold at this distance when no attacker slot is free
   spawnIdleMs: 400,     // idle after spawn before chasing

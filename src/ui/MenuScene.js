@@ -279,16 +279,7 @@ export default class MenuScene extends Phaser.Scene {
     this.cameras.main.fadeOut(300, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
       this.tweens.killAll();
-      this.children.removeAll(true);
-      this.cameras.main.setBackgroundColor(COLORS.darkBrown);
-      this.cameras.main.fadeIn(150, 0, 0, 0);
-      this.add.text(W / 2, H / 2, 'Level starts here', {
-        fontFamily: FONTS.button, fontSize: '72px', color: CSS.cream, stroke: CSS.darkBrown, strokeThickness: 8,
-      }).setOrigin(0.5);
-      this.add.text(W / 2, H / 2 + 70, 'Placeholder: no gameplay scene yet. Press Esc to return to the menu.', {
-        fontFamily: FONTS.body, fontSize: '24px', color: CSS.cream,
-      }).setOrigin(0.5);
-      this.input.keyboard.once('keydown-ESC', () => this.scene.restart());
+      this.scene.start('ArenaScene');
     });
   }
 }

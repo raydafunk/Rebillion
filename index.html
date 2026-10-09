@@ -17,6 +17,9 @@
   <div id="game"></div>
   <script type="module">
     import MenuScene from './src/ui/MenuScene.js';
+    import ArenaScene from './src/scenes/ArenaScene.js';
+    import HudScene from './src/scenes/HudScene.js';
+    import ResultScene from './src/scenes/ResultScene.js';
     import { waitForFonts } from './src/config/assetKeys.js';
     // Wait for web fonts (2.5s cap) so the first canvas frame is not in a fallback font.
     await waitForFonts();
@@ -28,7 +31,8 @@
       backgroundColor: '#2E1F16',
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
       input: { gamepad: true },
-      scene: [MenuScene],
+      physics: { default: 'arcade', arcade: { debug: false } },
+      scene: [MenuScene, ArenaScene, HudScene, ResultScene],
     });
     game.events.on('start-game', () => console.log('start-game event received'));
     window.__game = game;

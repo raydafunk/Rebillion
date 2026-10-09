@@ -1,0 +1,343 @@
+{
+  "builtAt": "2026-10-09T09:03:59.126Z",
+  "lore": [
+    {
+      "id": "zed",
+      "status": "canon",
+      "kind": "character",
+      "name": "Zed",
+      "summary": "A kid from Brick-Red Alley who learned to fight the way he learned to dance, and is taking the Fallen City back one district at a time.",
+      "body": "Zed grew up believing strength is about protecting the people who give your life meaning. He fights through rhythm, instinct and community, not training-ground discipline. He is expressive, stubborn and fiercely loyal, and he cracks jokes mid-fight.\n\nHe wears the city's colours, mustard yellow, brick red and forest green, as a reminder of what he is fighting for. Every wave he clears brings him closer to the community that raised him, and to finding out what happened to his father.",
+      "tags": [
+        "zed",
+        "hero",
+        "player"
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#8",
+        "the-rebellion#9",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zeds-mother",
+      "status": "canon",
+      "kind": "character",
+      "name": "Zed's Mother",
+      "summary": "She ran a tiny food stall by the community garden, serving hot stew to anyone who needed a meal.",
+      "body": "Her stall was a gathering point for the block: nobody who was hungry went without a bowl. The Rust seized the stall for \"security violations\".\n\nThe GDD gives her no name and does not say where she is now.",
+      "tags": [
+        "family",
+        "food-stall"
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "zeds-father",
+      "status": "canon",
+      "kind": "character",
+      "name": "Zed's Father",
+      "summary": "A muralist who painted the faces of local heroes across the district walls; he disappeared after confronting the Rust at a mural teardown.",
+      "body": "He painted cooks, musicians, activists and teachers, everyday people who kept the Fallen City standing. When the Rust came to tear down his murals, he stood up to them, and he has not been seen since.\n\nWhat happened to him is the question that pulls Zed forward. The GDD leaves it open.",
+      "tags": [
+        "family",
+        "muralist",
+        "open-question"
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#8",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "fallen-city",
+      "status": "canon",
+      "kind": "location",
+      "name": "The Fallen City",
+      "summary": "A lived-in, culturally rich city of corner shops, murals, music and community, overtaken by a corrupt private security force.",
+      "body": "Before the Rust, the city was loud, hopeful and full of people who looked out for each other: corner shops, open windows with music drifting out, basketball courts, food stalls and community gardens. Its colours are mustard yellow, brick red, forest green and warm browns.\n\nIt is made of districts, and Zed means to take it back one district at a time.",
+      "tags": [
+        "city",
+        "setting"
+      ],
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "brick-red-alley",
+      "status": "canon",
+      "kind": "location",
+      "name": "Brick-Red Alley",
+      "summary": "The alley where the neighbourhood kids learned to fight, dance and argue like family.",
+      "body": "Zed's home block is known for its mustard-yellow storefronts, forest-green basketball courts and this brick-red alley. It was not perfect, but it was alive.\n\nThe Rust now patrol the alleys where kids used to play.",
+      "tags": [
+        "zed",
+        "home",
+        "alley"
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "food-stall",
+      "status": "canon",
+      "kind": "location",
+      "name": "The Food Stall",
+      "summary": "Zed's mother's tiny stall near the community garden, serving hot bowls of stew to anyone who needed one.",
+      "body": "A small, warm centre of the block. Seized by the Rust for \"security violations\", it stands for the food stalls Zed fights to bring back.",
+      "tags": [
+        "food-stall",
+        "family",
+        "community"
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#8",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "community-garden",
+      "status": "canon",
+      "kind": "location",
+      "name": "The Community Garden",
+      "summary": "A shared garden beside the food stall, fenced off when the Rust took over.",
+      "body": "The garden belonged to everyone on the block. The Rust fenced it off, and reopening it is part of giving the neighbourhood its heartbeat back.",
+      "tags": [
+        "garden",
+        "community"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "basketball-courts",
+      "status": "canon",
+      "kind": "location",
+      "name": "The Basketball Courts",
+      "summary": "Forest-green courts where the block played, shut down by the Rust.",
+      "body": "Part of Zed's block and of the city's everyday life. Zed fights so kids can play on them again.",
+      "tags": [
+        "courts",
+        "community"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#8",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "local-heroes-murals",
+      "status": "canon",
+      "kind": "object",
+      "name": "The Local Heroes Murals",
+      "summary": "Murals across the district walls celebrating everyday heroes: cooks, musicians, activists and teachers.",
+      "body": "Painted largely by Zed's father, the murals told the city's stories. The Rust tore them down, his included, and put surveillance towers and propaganda screens in their place.\n\nZed fights so murals can rise again, celebrating real heroes.",
+      "tags": [
+        "murals",
+        "heroes",
+        "art"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#8",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "surveillance-towers",
+      "status": "canon",
+      "kind": "object",
+      "name": "Surveillance Towers and Propaganda Screens",
+      "summary": "What the Rust put up where the murals used to be.",
+      "body": "Cold, boxy and official, they are the opposite of a painted wall. They show the Rust watching the neighbourhood instead of belonging to it.",
+      "tags": [
+        "rust",
+        "surveillance"
+      ],
+      "sources": [
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "the-neighbourhood",
+      "status": "canon",
+      "kind": "faction",
+      "name": "The Neighbourhood",
+      "summary": "Zed's side: ordinary people who look out for each other, warm, casual and expressive.",
+      "body": "Cooks, musicians, teachers, kids and neighbours in casual fits and expressive colours. They answer the Rust with paint, music and plain stubbornness.",
+      "tags": [
+        "community",
+        "zed"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "the-rust",
+      "status": "canon",
+      "kind": "faction",
+      "name": "The Rust",
+      "summary": "A corrupt private security force that swept through the districts and overtook the Fallen City.",
+      "body": "The Rust did not arrive like soldiers; they arrived like thieves. They shut the courts, fenced the gardens, patrolled the alleys and tore down the murals. They are uniformed, symmetrical, visored and cold, and their ordinary members are the Rust grunts Zed knocks back in each arena.\n\nThey are people in a force, not a place or a stain, and the neighbourhood always has an answer for them.",
+      "tags": [
+        "rust",
+        "antagonist"
+      ],
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "rust-takeover",
+      "status": "canon",
+      "kind": "event",
+      "name": "The Takeover",
+      "summary": "The day everything changed: the Rust swept through the districts and the city's heartbeat went quiet.",
+      "body": "Courts were shut, gardens fenced, murals torn down and stalls seized. Zed's father disappeared confronting the Rust at a mural teardown, and friends vanished.\n\nZed did not have a choice. He had to fight.",
+      "tags": [
+        "rust",
+        "backstory"
+      ],
+      "sources": [
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "rust-notice-114",
+      "status": "proposed",
+      "gddGap": "The menu design doc shows a poster 'Rust Notice 114 / CURFEW' but the main GDD never says the Rust issue curfews or numbered notices (canon open question 1). Kept as flavour pending owner approval.",
+      "kind": "object",
+      "name": "Rust Notice 114",
+      "summary": "A cold, official curfew notice the Rust post on walls, always crossed out by the neighbourhood.",
+      "body": "Brick red and bossy, it is the Rust's way of speaking to the block. Somebody always gets to it first with a hand-inked cross-out.",
+      "tags": [
+        "rust",
+        "poster",
+        "curfew"
+      ],
+      "sources": [
+        "rebellion-menu-desgin#2",
+        "menu-copy#3",
+        "canon#13"
+      ]
+    },
+    {
+      "id": "local-heroes-benefit",
+      "status": "proposed",
+      "gddGap": "The menu poster 'Local Heroes Benefit: Keep the Lights On' implies community fundraising events, which the GDD does not describe.",
+      "kind": "event",
+      "name": "Local Heroes Benefit",
+      "summary": "A neighbourhood benefit night, Keep the Lights On, that keeps the community together under the Rust.",
+      "body": "Posters for it turn up on the walls the Rust have not yet cleaned. It is proof the block is still looking out for each other.",
+      "tags": [
+        "community",
+        "poster"
+      ],
+      "sources": [
+        "rebellion-menu-desgin#2",
+        "menu-copy#3",
+        "menu-concept#4"
+      ]
+    },
+    {
+      "id": "mustard-row",
+      "status": "proposed",
+      "gddGap": "The GDD says 'urban districts' but names none. Built from the mustard-yellow storefronts and corner shops of the Theme.",
+      "kind": "district",
+      "name": "Mustard Row",
+      "summary": "The shopfront street of mustard-yellow corner shops, where the first arena could sit.",
+      "body": "Awnings, hand-lettered signs and shutters the Rust have chained down. Reopening a shop here is the first small win.",
+      "tags": [
+        "district",
+        "corner-shops",
+        "mustard"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7"
+      ]
+    },
+    {
+      "id": "greenline-courts",
+      "status": "proposed",
+      "gddGap": "No districts are named in the GDD. Built from the forest-green basketball courts of Zed's block.",
+      "kind": "district",
+      "name": "Greenline Courts",
+      "summary": "The forest-green court district, shut down and waiting for kids to come back.",
+      "body": "Chain-link, faded lines and a hoop with no net. When the Rust are pushed back, the first sound should be a bouncing ball.",
+      "tags": [
+        "district",
+        "courts",
+        "forest-green"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "stewpot-gardens",
+      "status": "proposed",
+      "gddGap": "No districts are named in the GDD. Built from the food stalls and community gardens of the Theme and Zed's mother's stall.",
+      "kind": "district",
+      "name": "Stewpot Gardens",
+      "summary": "Food stalls and fenced-off community gardens, the warmest corner of the city.",
+      "body": "Stall awnings, planters behind Rust fencing and the memory of stew. Reclaiming it means the smell of dinner is back.",
+      "tags": [
+        "district",
+        "food-stall",
+        "garden"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "songwindow-heights",
+      "status": "proposed",
+      "gddGap": "No districts are named in the GDD. Built from the open windows with music and the murals celebrating local heroes.",
+      "kind": "district",
+      "name": "Songwindow Heights",
+      "summary": "Tall apartment blocks where music used to drift from open windows, now watched by Rust towers.",
+      "body": "Mural walls rise between the buildings, mostly painted over. It is the district where the music comes back.",
+      "tags": [
+        "district",
+        "music",
+        "murals"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#8"
+      ]
+    }
+  ],
+  "enemies": [],
+  "levels": [],
+  "dialogue": []
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "zed", "status": "canon", "kind": "character", "name": "Zed",
+    "summary": "A kid from Brick-Red Alley who learned to fight the way he learned to dance, and is taking the Fallen City back one district at a time.",
+    "body": "Zed grew up believing strength is about protecting the people who give your life meaning. He fights through rhythm, instinct and community, not training-ground discipline. He is expressive, stubborn and fiercely loyal, and he cracks jokes mid-fight.\n\nHe wears the city's colours, mustard yellow, brick red and forest green, as a reminder of what he is fighting for. Every wave he clears brings him closer to the community that raised him, and to finding out what happened to his father.",
+    "tags": ["zed", "hero", "player"],
+    "sources": ["the-rebellion#7", "the-rebellion#8", "the-rebellion#9", "the-rebellion#10"]
+  },
+  {
+    "id": "zeds-mother", "status": "canon", "kind": "character", "name": "Zed's Mother",
+    "summary": "She ran a tiny food stall by the community garden, serving hot stew to anyone who needed a meal.",
+    "body": "Her stall was a gathering point for the block: nobody who was hungry went without a bowl. The Rust seized the stall for \"security violations\".\n\nThe GDD gives her no name and does not say where she is now.",
+    "tags": ["family", "food-stall"],
+    "sources": ["the-rebellion#7", "the-rebellion#8"]
+  },
+  {
+    "id": "zeds-father", "status": "canon", "kind": "character", "name": "Zed's Father",
+    "summary": "A muralist who painted the faces of local heroes across the district walls; he disappeared after confronting the Rust at a mural teardown.",
+    "body": "He painted cooks, musicians, activists and teachers, everyday people who kept the Fallen City standing. When the Rust came to tear down his murals, he stood up to them, and he has not been seen since.\n\nWhat happened to him is the question that pulls Zed forward. The GDD leaves it open.",
+    "tags": ["family", "muralist", "open-question"],
+    "sources": ["the-rebellion#7", "the-rebellion#8", "the-rebellion#9"]
+  }
+]
