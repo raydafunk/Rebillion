@@ -13,15 +13,9 @@ description: Orchestrator for The Rebellion's content pipeline. Reads every doc 
 2.
  the content-director-agent read the and menu ui agent
 made the opitions menu 
-<img width="400" height="383" alt="image" src="https://github.com/user-attachments/assets/2bde6eed-6979-4483-be17-6977e7f83f3f" />
+    <img width="400" height="383" alt="image" src="https://github.com/user-attachments/assets/2bde6eed-6979-4483-be17-6977e7f83f3f" />
+ made the options based on the game documents 
 
-Implemented
-Move: A/D and arrow keys.
-Jump: W, Space or Up, with coyote time and input buffering.
-Light attack: J or Z, with a 3-hit chain.
-Heavy attack: K or X, cancelable from light 1 and light 2.
-Parry: the first 8 frames of a fresh block. The docx gives it no key of its own.
-Menu and pause controls: navigation, confirm, mouse, gamepad, Esc/Backspace to close the Controls panel, and restart/main-menu with a confirm step.
 RAG Implementation 
 
 told me bout  what is 
