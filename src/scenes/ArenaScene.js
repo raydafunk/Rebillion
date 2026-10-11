@@ -71,7 +71,11 @@ export default class ArenaScene extends Phaser.Scene {
     this.scene.get('HudScene').events.once('create', () => { this.arena.start(); this.state.start(); });
 
     this.keys = this.input.keyboard.addKeys({ esc: 'ESC', p: 'P' });
-    this.events.once('shutdown', () => this._teardown());
+    // Pause spec: auto-pause on tab blur, gamepad Start opens pause.
+    this._onBlur = () => { if (!this.ended && this.scene.isActive()) this._pause(); };
+    this.game.events.on('blur', this._onBlur);
+    this.padStartPrev = false;
+    this.events.once('shutdown', () => { this.game.events.off('blur', this._onBlur); this._teardown(); });
   }
 
   _freshStats() { return { defeated: 0, wavesCleared: 0 }; }
@@ -93,6 +97,10 @@ export default class ArenaScene extends Phaser.Scene {
     if (Phaser.Input.Keyboard.JustDown(this.keys.esc) || Phaser.Input.Keyboard.JustDown(this.keys.p)) {
       if (!this.ended) return this._pause();
     }
+    const pad = this.input.gamepad && this.input.gamepad.total ? this.input.gamepad.getPad(0) : null;
+    const start = !!(pad && pad.buttons[9] && pad.buttons[9].pressed);
+    if (start && !this.padStartPrev && !this.ended) { this.padStartPrev = true; return this._pause(); }
+    this.padStartPrev = start;
     this.simNow += dt;
     this.zed.update(this.simNow, dt);
     const c = this.arena.bounds.clamp({ x: this.zed.x, y: GROUND_Y });

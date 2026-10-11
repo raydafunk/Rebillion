@@ -1,0 +1,22 @@
+[
+  {
+    "id": "open-windows-music",
+    "status": "canon",
+    "kind": "object",
+    "name": "Open Windows with Music",
+    "summary": "Music drifting out of open windows is the sound of the neighbourhood, and one of the things Zed fights to bring back.",
+    "body": "The Theme lists open windows with music alongside corner shops and murals as the heart of a lived-in city. Zed names it in his mission: he fights so music can drift from open windows again.",
+    "tags": ["music", "neighbourhood", "zed"],
+    "sources": ["the-rebellion#6", "the-rebellion#9"]
+  },
+  {
+    "id": "street-tournaments",
+    "status": "canon",
+    "kind": "event",
+    "name": "Street Tournaments and Late-Night Sparring",
+    "summary": "Where Zed learned to juggle, dodge and parry: street tournaments and sparring behind the corner shops.",
+    "body": "Zed learned to fight the way he learned to dance, through rhythm, instinct and community. The tournaments and late-night sparring behind the corner shops taught him combos and defence long before the Rust arrived.",
+    "tags": ["zed", "combat", "community"],
+    "sources": ["the-rebellion#8", "the-rebellion#9", "canon#10"]
+  }
+]

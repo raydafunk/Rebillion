@@ -32,7 +32,16 @@ function runAgent(type, prompt) {
   if (dry) { console.log(`  [dry-run] claude -p --agent ${agent} (stdin: ${prompt.length} chars)`); return Promise.resolve(0); }
   return new Promise((resolve) => {
     // Prompt goes over stdin so quoting never matters on Windows.
-    const p = spawn('claude', ['-p', '--agent', agent, '--permission-mode', 'acceptEdits'], { cwd: ROOT, shell: true, stdio: ['pipe', 'pipe', 'inherit'] });
+    // Inline the agent definition (frontmatter stripped) so this works even when the CLI has not registered the agent.
+    const def = fs.readFileSync(path.join(ROOT, '.claude', 'agents', `${agent}.md`), 'utf8').replace(/^---[\s\S]*?---\s*/, '');
+    prompt = `You are acting as this agent. Follow its definition exactly:
+
+${def}
+
+---
+TASK:
+${prompt}`;
+    const p = spawn('claude', ['-p', '--permission-mode', 'acceptEdits'], { cwd: ROOT, shell: true, stdio: ['pipe', 'pipe', 'inherit'] });
     let out = '';
     p.stdout.on('data', (d) => { out += d; });
     p.on('error', (e) => { console.error(`  ${agent}: cannot start claude CLI (${e.message})`); resolve(1); });

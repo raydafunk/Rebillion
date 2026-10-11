@@ -1,6 +1,128 @@
 {
-  "builtAt": "2026-10-09T09:03:59.126Z",
+  "builtAt": "2026-10-11T13:22:19.536Z",
   "lore": [
+    {
+      "id": "open-windows-music",
+      "status": "canon",
+      "kind": "object",
+      "name": "Open Windows with Music",
+      "summary": "Music drifting out of open windows is the sound of the neighbourhood, and one of the things Zed fights to bring back.",
+      "body": "The Theme lists open windows with music alongside corner shops and murals as the heart of a lived-in city. Zed names it in his mission: he fights so music can drift from open windows again.",
+      "tags": [
+        "music",
+        "neighbourhood",
+        "zed"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "street-tournaments",
+      "status": "canon",
+      "kind": "event",
+      "name": "Street Tournaments and Late-Night Sparring",
+      "summary": "Where Zed learned to juggle, dodge and parry: street tournaments and sparring behind the corner shops.",
+      "body": "Zed learned to fight the way he learned to dance, through rhythm, instinct and community. The tournaments and late-night sparring behind the corner shops taught him combos and defence long before the Rust arrived.",
+      "tags": [
+        "zed",
+        "combat",
+        "community"
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "the-rebellion#9",
+        "canon#10"
+      ]
+    },
+    {
+      "id": "corner-shops",
+      "status": "canon",
+      "kind": "location",
+      "name": "The Corner Shops",
+      "summary": "Mustard-yellow storefronts on every corner, and the backdrop for Zed's late-night sparring.",
+      "body": "Corner shops are the first thing the Theme names when it describes the neighbourhood. Zed's block was known for its mustard-yellow storefronts, and the space behind them is where he sparred late at night.",
+      "tags": [
+        "neighbourhood",
+        "shops",
+        "mustard"
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "zeds-mission",
+      "status": "canon",
+      "kind": "event",
+      "name": "Taking the City Back",
+      "summary": "Zed's goal: take the Fallen City back one district at a time and find out what happened to his father.",
+      "body": "Every wave Zed clears and every arena he survives brings him closer to the answer about his father and to restoring the community that raised him. He fights so kids can play on the courts, music can drift from open windows, and murals can rise again, celebrating real heroes.",
+      "tags": [
+        "zed",
+        "mission",
+        "hope"
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#1"
+      ]
+    },
+    {
+      "id": "zeds-colours",
+      "status": "canon",
+      "kind": "object",
+      "name": "Zed's City Colours",
+      "summary": "Zed wears mustard yellow, brick red and forest green as a reminder of what he is fighting for.",
+      "body": "The neighbourhood palette is mustard yellow, brick red, forest green and warm browns. Zed carries the first three in his outfit, casual and expressive, so the city goes into every fight with him.",
+      "tags": [
+        "zed",
+        "palette",
+        "outfit"
+      ],
+      "sources": [
+        "the-rebellion#10",
+        "the-rebellion#6"
+      ]
+    },
+    {
+      "id": "neighbours-and-friends",
+      "status": "canon",
+      "kind": "event",
+      "name": "The Quiet After the Takeover",
+      "summary": "After the Rust arrived, friends vanished, neighbours were hurt and the city's heartbeat went quiet.",
+      "body": "The GDD says friends vanished and neighbours were beaten, and the stall was seized for security violations. It stops there: it names no one and gives no further detail. This is why Zed had no choice but to fight.",
+      "tags": [
+        "rust",
+        "community",
+        "takeover"
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#9"
+      ]
+    },
+    {
+      "id": "rust-grunt",
+      "status": "proposed",
+      "gddGap": "The GDD says only 'Rust Enemies'. 'Rust grunt' is the working Tier 0 enemy name from the asset manifest and canon open question 6; the owner has not confirmed it as the player-facing term.",
+      "kind": "character",
+      "name": "Rust Grunt",
+      "summary": "The rank-and-file member of the Rust: uniformed, visored and boxy, and the one enemy type in Tier 0.",
+      "body": "A Rust grunt is a person in a uniform, not a monster. Cold hues, steel and a cyan visor set them apart from the warm neighbourhood. They arrive in waves, and Zed knocks them down and pushes them back.",
+      "tags": [
+        "rust",
+        "enemy",
+        "tier0"
+      ],
+      "sources": [
+        "the-rebellion#2",
+        "canon#8"
+      ]
+    },
     {
       "id": "zed",
       "status": "canon",
@@ -337,7 +459,1242 @@
       ]
     }
   ],
-  "enemies": [],
-  "levels": [],
-  "dialogue": []
+  "enemies": [
+    {
+      "id": "rust-grunt",
+      "status": "canon",
+      "sources": [
+        "the-rebellion#5",
+        "the-rebellion#1",
+        "asset-manifest#7",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Grunt",
+      "role": "grunt",
+      "tier": 0,
+      "description": "The one enemy type the GDD asks for first: a Rust security officer in a slate uniform with a steel helmet and a cyan visor. Symmetrical, boxy and cold, a sharp contrast to Zed's warm, rounded look.",
+      "behaviour": "Idles briefly after spawn, then chases Zed. Closes the lane gap first, and starts a strike once in range. At most two grunts may attack at once (attacker cap); the rest circle at a distance in neutral colours until a slot frees up.",
+      "telegraph": "450 ms wind-up: three-frame anticipation pose with the arm pulled back, the red telegraph icon pops above the head, the body tints red and the outline thickens. Then a quick 250 ms strike and a 700 ms recovery where it is open to a counter.",
+      "weakness": "Low health and a slow recovery. Dodge or block the telegraphed strike, then punish during recovery with a light combo.",
+      "spriteKey": "rust.grunt",
+      "stats": {
+        "maxHp": 30,
+        "moveSpeed": 90,
+        "attackRange": 70,
+        "telegraphMs": 450,
+        "attackMs": 250,
+        "recoverMs": 700,
+        "damage": 8,
+        "knockback": 220,
+        "hitstun": 250
+      }
+    },
+    {
+      "id": "rust-enforcer",
+      "status": "proposed",
+      "gddGap": "GDD says one enemy type first and promises dynamic enemy behaviours later; difficulty comes from how waves arrive. A heavier bruiser gives waves a slow, high-threat piece to mix with grunts.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "hit-feedback-spec#4",
+        "systems-designer#2"
+      ],
+      "name": "Rust Enforcer",
+      "role": "bruiser",
+      "tier": 1,
+      "description": "A broader Rust officer in a squared-off slate vest with steel shoulder plates and a wide cyan visor. Same uniform language as the grunt, just bigger and blockier.",
+      "behaviour": "Walks slowly and straight at Zed, ignores circling and takes an attacker slot whenever one is free. Throws one heavy overhand swing, then plants its feet during a long recovery.",
+      "telegraph": "600 ms wind-up with both fists raised overhead. Telegraph icon scaled up 1.4 times and a red ground danger ellipse at 30 percent alpha, per the heavy-enemy cue in the hit feedback spec.",
+      "weakness": "Rewards dodging and defence: sidestep the swing, then land a combo in the long recovery window. Blocking works but the knockback is large.",
+      "spriteKey": "rust.enforcer",
+      "stats": {
+        "maxHp": 70,
+        "moveSpeed": 65,
+        "attackRange": 80,
+        "telegraphMs": 600,
+        "attackMs": 300,
+        "recoverMs": 900,
+        "damage": 14,
+        "knockback": 320,
+        "hitstun": 300
+      }
+    },
+    {
+      "id": "rust-baton-scout",
+      "status": "proposed",
+      "gddGap": "GDD lists dynamic enemy behaviours and defensive tools (block, dodge, parry) but gives no enemy roster. A fast, light attacker with a clear tell is a natural parry trainer.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "hit-feedback-spec#4",
+        "player-psychologist#4"
+      ],
+      "name": "Rust Baton Scout",
+      "role": "grunt",
+      "tier": 1,
+      "description": "A lean Rust officer in a slate uniform with a gunmetal baton and a narrow cyan visor. Straight lines, symmetrical stance, lighter than the grunt.",
+      "behaviour": "Faster than the grunt and darts in for a quick poke, then backs off to the circle radius instead of standing around. Counts against the attacker cap like any other attacker.",
+      "telegraph": "320 ms wind-up: the baton is drawn back to the shoulder with a visible lean, red telegraph icon above the head. Short enough to feel quick, long enough to react to.",
+      "weakness": "Fragile. A well-timed parry or a single combo opener ends the exchange; mashing without reading the tell gets punished by its speed.",
+      "spriteKey": "rust.baton-scout",
+      "stats": {
+        "maxHp": 22,
+        "moveSpeed": 130,
+        "attackRange": 85,
+        "telegraphMs": 320,
+        "attackMs": 180,
+        "recoverMs": 500,
+        "damage": 6,
+        "knockback": 160,
+        "hitstun": 200
+      }
+    },
+    {
+      "id": "rust-dart-marksman",
+      "status": "proposed",
+      "gddGap": "GDD asks for dynamic enemy behaviours and a player toolkit of block, dodge and parry. A ranged role forces the player to close distance and use lane movement, which melee-only enemies do not.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#5",
+        "hit-feedback-spec#4",
+        "feasibility-lead#2"
+      ],
+      "name": "Rust Dart Marksman",
+      "role": "ranged",
+      "tier": 2,
+      "description": "A Rust officer in a slate uniform with a boxy gunmetal stun-dart launcher on one arm and a visor with a cyan aim line. Non-lethal gear: the dart only stuns and pushes back.",
+      "behaviour": "Keeps to the far side of the arena and holds its distance, side-stepping away if Zed gets close. Fires one slow dart along its lane when it has an attacker slot, then reloads.",
+      "telegraph": "700 ms wind-up: raises the launcher, a cyan aim line draws along the floor toward Zed and the red telegraph icon pops above the head. The dart travels slowly enough to sidestep.",
+      "weakness": "Step out of the lane to dodge, then rush it. Weak up close with low health and a long reload, so it rewards movement and juggle routes that carry Zed across the arena.",
+      "spriteKey": "rust.dart-marksman",
+      "stats": {
+        "maxHp": 26,
+        "moveSpeed": 75,
+        "attackRange": 320,
+        "telegraphMs": 700,
+        "attackMs": 220,
+        "recoverMs": 1400,
+        "damage": 7,
+        "knockback": 180,
+        "hitstun": 220
+      }
+    },
+    {
+      "id": "rust-shield-sergeant",
+      "status": "proposed",
+      "gddGap": "GDD names block, dodge and parry as defence tools but never says which enemies reward them. A shielded elite makes the player use combos and juggles rather than button-mashing.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "hit-feedback-spec#4",
+        "adversarial-qa#10"
+      ],
+      "name": "Rust Shield Sergeant",
+      "role": "elite",
+      "tier": 3,
+      "description": "A Rust sergeant with a tall rectangular riot shield, steel helmet and a wide cyan visor. Symmetrical, squared-off and cold, with a gunmetal shield edge.",
+      "behaviour": "Advances slowly behind the shield and blocks light hits from the front. Shield bash when the player is close, then drops the shield during recovery. Calls for an attacker slot before bashing so it never stacks with a full cap.",
+      "telegraph": "650 ms wind-up: shield pulled back and braced, red telegraph icon scaled up and a ground danger zone in front of it. Light attacks from the front bounce off the shield, which is also readable.",
+      "weakness": "Heavy attacks break its guard and combos from behind or after a dodged bash land clean. Parry the bash to open the shield for a juggle.",
+      "spriteKey": "rust.shield-sergeant",
+      "stats": {
+        "maxHp": 110,
+        "moveSpeed": 60,
+        "attackRange": 75,
+        "telegraphMs": 650,
+        "attackMs": 300,
+        "recoverMs": 1000,
+        "damage": 12,
+        "knockback": 380,
+        "hitstun": 350
+      }
+    },
+    {
+      "id": "rust-signal-warden",
+      "status": "proposed",
+      "gddGap": "GDD promises dynamic enemy behaviours and says difficulty comes from how waves arrive, but names no support role. A Rust officer who buffs nearby grunts gives wave composition a priority target and rewards lane movement and juggle routes that reach the back line.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "the-rebellion#8",
+        "hit-feedback-spec#4",
+        "player-psychologist#4"
+      ],
+      "name": "Rust Signal Warden",
+      "role": "support",
+      "tier": 2,
+      "description": "A Rust officer in a slate uniform with a boxy gunmetal radio pack and a short antenna, a steel helmet and a visor with a cyan indicator bar. Symmetrical and cold, with a squared-off stance that stays at the back of the group.",
+      "behaviour": "Hangs back at the circle radius behind the grunts and never takes a melee attacker slot. Every few seconds it raises the radio to call a Rust order that speeds up grunts near it for a short time. If Zed closes in it side-steps away and only swats with a short baton jab when cornered.",
+      "telegraph": "600 ms wind-up for the radio call: arm raised with the radio, red telegraph icon above the head, and a cyan pulse ring on the floor around the grunts it will boost. The rare baton jab uses a 450 ms wind-up with the standard cues.",
+      "weakness": "Fragile and always at the back. Rushing through the lane or using a juggle route to reach it cancels the call and removes the speed boost. Rewards crowd control and movement over standing still.",
+      "spriteKey": "rust.signal-warden",
+      "stats": {
+        "maxHp": 35,
+        "moveSpeed": 80,
+        "attackRange": 60,
+        "telegraphMs": 450,
+        "attackMs": 220,
+        "recoverMs": 800,
+        "damage": 5,
+        "knockback": 150,
+        "hitstun": 200
+      }
+    }
+  ],
+  "levels": [
+    {
+      "id": "level-01-brick-red-alley",
+      "status": "proposed",
+      "gddGap": "The GDD says 'urban districts' and 'Defeat Wave / Clear Arena ... in time' but sets no level count, order, wave counts or time limit. Wave numbers and the 120 s limit copy the Tier 0 placeholders in src/waves/waveData.js and src/state/config.js, so they are engine-matched but not GDD-confirmed.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2",
+        "the-rebellion#7",
+        "the-rebellion#3"
+      ],
+      "name": "Brick-Red Alley",
+      "order": 1,
+      "district": "brick-red-alley",
+      "theme": "Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music.",
+      "palette": [
+        "#A8402E",
+        "#E3A92B",
+        "#6B4423",
+        "#2F6B3F"
+      ],
+      "timeLimitSec": 120,
+      "intro": "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.",
+      "outro": "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.",
+      "waves": [
+        {
+          "enemy": "grunt",
+          "count": 3,
+          "maxAlive": 3,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 800
+        },
+        {
+          "enemy": "grunt",
+          "count": 4,
+          "maxAlive": 3,
+          "spawnIntervalMs": 800,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "grunt",
+          "count": 5,
+          "maxAlive": 4,
+          "spawnIntervalMs": 700,
+          "startDelayMs": 1500
+        }
+      ]
+    },
+    {
+      "id": "level-02-mustard-row",
+      "status": "proposed",
+      "gddGap": "No level structure in the GDD. Introduces the Rust Baton Scout (proposed enemy) as the first new threat; wave sizes and 135 s limit are assumed.",
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#3",
+        "systems-designer#8"
+      ],
+      "name": "Mustard Row",
+      "order": 2,
+      "district": "mustard-row",
+      "theme": "Mustard-yellow corner shops with hand-lettered signs and shutters the Rust have chained down.",
+      "palette": [
+        "#E3A92B",
+        "#F2C04D",
+        "#A8402E",
+        "#6B4423"
+      ],
+      "timeLimitSec": 135,
+      "intro": "Shutters chained, signs faded. Zed's neighbours are watching from behind the glass. Clear the row and open a shop.",
+      "outro": "Chains drop, shutters roll up, and the first hand-lettered sign goes back in the window. Mustard Row is open for business.",
+      "waves": [
+        {
+          "enemy": "grunt",
+          "count": 4,
+          "maxAlive": 3,
+          "spawnIntervalMs": 850,
+          "startDelayMs": 800
+        },
+        {
+          "enemy": "rust-baton-scout",
+          "count": 4,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1100,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "grunt",
+          "count": 5,
+          "maxAlive": 4,
+          "spawnIntervalMs": 700,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-baton-scout",
+          "count": 5,
+          "maxAlive": 3,
+          "spawnIntervalMs": 800,
+          "startDelayMs": 1500
+        }
+      ]
+    },
+    {
+      "id": "level-03-greenline-courts",
+      "status": "proposed",
+      "gddGap": "No level structure in the GDD. Introduces the Rust Enforcer (proposed bruiser) after the scout; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.",
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#9",
+        "the-rebellion#3",
+        "systems-designer#8"
+      ],
+      "name": "Greenline Courts",
+      "order": 3,
+      "district": "greenline-courts",
+      "theme": "Forest-green basketball courts: chain-link, faded lines, a hoop with no net.",
+      "palette": [
+        "#2F6B3F",
+        "#E3A92B",
+        "#6B4423",
+        "#A8402E",
+        "#F4E6C8"
+      ],
+      "timeLimitSec": 150,
+      "intro": "Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.",
+      "outro": "Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.",
+      "waves": [
+        {
+          "enemy": "grunt",
+          "count": 5,
+          "maxAlive": 4,
+          "spawnIntervalMs": 750,
+          "startDelayMs": 800
+        },
+        {
+          "enemy": "rust-enforcer",
+          "count": 5,
+          "maxAlive": 1,
+          "spawnIntervalMs": 1500,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-baton-scout",
+          "count": 5,
+          "maxAlive": 3,
+          "spawnIntervalMs": 700,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-enforcer",
+          "count": 5,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1300,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "grunt",
+          "count": 6,
+          "maxAlive": 5,
+          "spawnIntervalMs": 500,
+          "startDelayMs": 1200
+        }
+      ]
+    },
+    {
+      "id": "level-04-stewpot-gardens",
+      "status": "proposed",
+      "gddGap": "No level structure in the GDD. Introduces the Rust Dart Marksman (proposed ranged enemy) and pairs it with melee waves so the player must use lane movement. Also introduces the proposed Rust Signal Warden (support, buffs grunts); engine waves hold one enemy type each, so a Warden wave stands alone until mixed waves exist (further gap). 180 s limit assumed.",
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#7",
+        "the-rebellion#9",
+        "the-rebellion#3"
+      ],
+      "name": "Stewpot Gardens",
+      "order": 4,
+      "district": "stewpot-gardens",
+      "theme": "Food stalls with striped awnings and community garden planters behind Rust fencing.",
+      "palette": [
+        "#2F6B3F",
+        "#E3A92B",
+        "#A8402E",
+        "#6B4423",
+        "#F2D9A0"
+      ],
+      "timeLimitSec": 180,
+      "intro": "Zed's mother's stall stood just past the fence. Keep moving, sidestep those darts, and bring dinner back.",
+      "outro": "The fence comes down, the planters get watered, and a pot of stew goes on. Everyone gets a bowl.",
+      "waves": [
+        {
+          "enemy": "grunt",
+          "count": 5,
+          "maxAlive": 4,
+          "spawnIntervalMs": 700,
+          "startDelayMs": 800
+        },
+        {
+          "enemy": "rust-signal-warden",
+          "count": 5,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1500,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-dart-marksman",
+          "count": 5,
+          "maxAlive": 1,
+          "spawnIntervalMs": 1600,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-baton-scout",
+          "count": 5,
+          "maxAlive": 3,
+          "spawnIntervalMs": 650,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-dart-marksman",
+          "count": 5,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1200,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-enforcer",
+          "count": 5,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1000,
+          "startDelayMs": 1500
+        }
+      ]
+    },
+    {
+      "id": "level-05-songwindow-heights",
+      "status": "proposed",
+      "gddGap": "No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Shield Sergeant (proposed elite); the finale mixes every enemy type including the proposed Rust Signal Warden; 210 s limit assumed. Five levels is an assumption.",
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#9",
+        "the-rebellion#3",
+        "narrative-critic#1"
+      ],
+      "name": "Songwindow Heights",
+      "order": 5,
+      "district": "songwindow-heights",
+      "theme": "Tall apartment blocks, painted-over mural walls and open windows waiting for music.",
+      "palette": [
+        "#A8402E",
+        "#E3A92B",
+        "#2F6B3F",
+        "#6B4423",
+        "#F4E6C8"
+      ],
+      "timeLimitSec": 210,
+      "intro": "Every window is shut and every mural is painted over. Zed climbs the Heights so the music can drift out again.",
+      "outro": "A window opens, then another. Music pours down the block and the murals start to rise. The city sings.",
+      "waves": [
+        {
+          "enemy": "grunt",
+          "count": 6,
+          "maxAlive": 5,
+          "spawnIntervalMs": 600,
+          "startDelayMs": 800
+        },
+        {
+          "enemy": "rust-shield-sergeant",
+          "count": 6,
+          "maxAlive": 1,
+          "spawnIntervalMs": 1800,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-baton-scout",
+          "count": 6,
+          "maxAlive": 4,
+          "spawnIntervalMs": 600,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-dart-marksman",
+          "count": 6,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1000,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-signal-warden",
+          "count": 6,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1200,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-enforcer",
+          "count": 6,
+          "maxAlive": 3,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-shield-sergeant",
+          "count": 6,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1400,
+          "startDelayMs": 1800
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "zed-fight-start-brick-red-alley",
+      "status": "proposed",
+      "gddGap": "Level-specific barks are not in the GDD; built on Brick-Red Alley, where Zed's kids learned to fight, dance and argue like family.",
+      "speaker": "zed",
+      "trigger": "fight_start",
+      "level": "level-01-brick-red-alley",
+      "lines": [
+        "Home alley. I know every step.",
+        "Kids learned to dance here first.",
+        "Brick-red alley, round one.",
+        "Mind the steps. I won't.",
+        "Argue like family, fight like it too."
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-fight-start-mustard-row",
+      "status": "proposed",
+      "gddGap": "Mustard Row is a proposed district; lines lean on the GDD's mustard-yellow storefronts and corner shops.",
+      "speaker": "zed",
+      "trigger": "fight_start",
+      "level": "level-02-mustard-row",
+      "lines": [
+        "Mustard Row. Open the shutters.",
+        "Corner shops are the heart of this.",
+        "Late-night sparring started right here.",
+        "Somebody save me a seat inside.",
+        "Shopfronts up. Rust out."
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#6",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "zed-fight-start-greenline-courts",
+      "status": "proposed",
+      "gddGap": "Greenline Courts is a proposed district; lines follow the GDD's forest-green basketball courts and Zed's wish for kids to play again.",
+      "speaker": "zed",
+      "trigger": "fight_start",
+      "level": "level-03-greenline-courts",
+      "lines": [
+        "Courts are shut. Not for long.",
+        "Kids belong on this court.",
+        "Hoops first, then we talk.",
+        "Greenline. My kind of arena.",
+        "Give the ball back to the block."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "zed-fight-start-stewpot-gardens",
+      "status": "proposed",
+      "gddGap": "Stewpot Gardens is a proposed district; lines draw on the community garden and the stew from his mother's food stall (her fate is not stated).",
+      "speaker": "zed",
+      "trigger": "fight_start",
+      "level": "level-04-stewpot-gardens",
+      "lines": [
+        "Used to smell like stew round here.",
+        "Fences down. Let the garden breathe.",
+        "Garden crew, I'm coming through.",
+        "Somebody's still got a spoon, right?",
+        "Plant something after this."
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "zed-fight-start-songwindow-heights",
+      "status": "proposed",
+      "gddGap": "Songwindow Heights is a proposed district; lines use the GDD's open windows with music drifting out and the surveillance towers.",
+      "speaker": "zed",
+      "trigger": "fight_start",
+      "level": "level-05-songwindow-heights",
+      "lines": [
+        "Open the windows. Turn it up.",
+        "Screens off. Music on.",
+        "Last climb. Let's make some noise.",
+        "Every window, a song. Let's go.",
+        "Lights on, towers down."
+      ],
+      "sources": [
+        "the-rebellion#6",
+        "the-rebellion#8",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "zed-level-won-brick-red-alley",
+      "status": "proposed",
+      "gddGap": "Per-level win lines are not in the GDD; extends Zed's 'one district at a time' mission. Father is hinted at only as longing, no answer given.",
+      "speaker": "zed",
+      "trigger": "level_won",
+      "level": "level-01-brick-red-alley",
+      "lines": [
+        "Alley's ours. One down.",
+        "Dad's colours would look good here.",
+        "Home steps again. Keep moving.",
+        "Hear the kids? Almost like before.",
+        "First district. Plenty more."
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#7"
+      ]
+    },
+    {
+      "id": "zed-level-won-greenline-courts",
+      "status": "proposed",
+      "gddGap": "Per-level win lines are not in the GDD; built on Zed fighting so kids can play on the courts again.",
+      "speaker": "zed",
+      "trigger": "level_won",
+      "level": "level-03-greenline-courts",
+      "lines": [
+        "Courts are open. Play ball.",
+        "Hear that bounce? Perfect.",
+        "Kids can play here again.",
+        "Greenline is back on the map.",
+        "Who wants next game?"
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#6"
+      ]
+    },
+    {
+      "id": "zed-level-won-songwindow-heights",
+      "status": "proposed",
+      "gddGap": "Final-level win lines are not in the GDD; kept hopeful and open-ended, since the GDD does not say what Zed finds about his father.",
+      "speaker": "zed",
+      "trigger": "level_won",
+      "level": "level-05-songwindow-heights",
+      "lines": [
+        "Windows open. Music's back.",
+        "The whole city sounds different.",
+        "We did this together.",
+        "Murals next. Somebody grab a brush.",
+        "Still looking. Never stopping."
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-pause",
+      "status": "proposed",
+      "gddGap": "No pause copy in the GDD; short, warm lines for the pause overlay in the neighbourhood voice.",
+      "speaker": "zed",
+      "trigger": "pause",
+      "lines": [
+        "Breather. Back in a second.",
+        "Hold that thought.",
+        "Catching my breath.",
+        "Quick water break.",
+        "Pausing. Do not touch my snacks."
+      ],
+      "sources": [
+        "the-rebellion#10",
+        "canon#6"
+      ]
+    },
+    {
+      "id": "zed-grab-pickup",
+      "status": "proposed",
+      "gddGap": "GDD names pick-up objects in combat but no bark; lines are cheeky improvisation matching his jokes mid-fight.",
+      "speaker": "zed",
+      "trigger": "heavy_hit",
+      "level": "level-02-mustard-row",
+      "lines": [
+        "Borrowed from the corner shop!",
+        "Thanks for the loan!",
+        "Handy. Very handy.",
+        "That's what shelves are for!",
+        "Delivery!"
+      ],
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-wave-clear-stewpot-gardens",
+      "status": "proposed",
+      "gddGap": "Level-specific wave-clear barks are not in the GDD; use the community garden and food stall details.",
+      "speaker": "zed",
+      "trigger": "wave_clear",
+      "level": "level-04-stewpot-gardens",
+      "lines": [
+        "Gate's open. Come on in.",
+        "Soil's still good here.",
+        "A bowl of stew would help right now.",
+        "Garden gets a little greener.",
+        "Next row, same plan."
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "zed-low-hp-songwindow-heights",
+      "status": "proposed",
+      "gddGap": "Level-specific barks are not in the GDD; hold to 'stubborn' and 'refuses to back down', with hope for music from the windows.",
+      "speaker": "zed",
+      "trigger": "low_hp",
+      "level": "level-05-songwindow-heights",
+      "lines": [
+        "Somebody hum something. Please.",
+        "Up. Window music. Up.",
+        "Almost there. Don't stop now.",
+        "I've got one more verse in me.",
+        "Not finishing on a low note."
+      ],
+      "sources": [
+        "the-rebellion#10",
+        "the-rebellion#6"
+      ]
+    },
+    {
+      "id": "rust-taunt-baton-scout",
+      "status": "proposed",
+      "gddGap": "GDD has no enemy speech; Baton Scout is a proposed enemy. Cold, official patrol-style lines.",
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Halt for inspection.",
+        "Papers. Now.",
+        "Patrol is in progress.",
+        "Clear the lane, citizen.",
+        "Scout reporting a violation."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#6"
+      ]
+    },
+    {
+      "id": "rust-taunt-enforcer",
+      "status": "proposed",
+      "gddGap": "GDD has no enemy speech; Enforcer is a proposed bruiser. Blunt bureaucratic lines, no threats of death or gore.",
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Resistance is a violation.",
+        "You will be escorted out.",
+        "Stand down. Final notice.",
+        "This block is closed.",
+        "Order will be restored."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#6"
+      ]
+    },
+    {
+      "id": "rust-taunt-dart-marksman",
+      "status": "proposed",
+      "gddGap": "GDD has no enemy speech; Dart Marksman is a proposed ranged enemy. Lines stay clinical and official, never lethal.",
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Target acquired. Hold still.",
+        "Range confirmed.",
+        "Compliance will be enforced.",
+        "Stay where you are.",
+        "Aim line is live."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#6"
+      ]
+    },
+    {
+      "id": "rust-taunt-shield-sergeant",
+      "status": "proposed",
+      "gddGap": "GDD has no enemy speech; Shield Sergeant is a proposed elite. Stiff, rule-quoting lines.",
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Form up. Hold the line.",
+        "Regulation applies to you too.",
+        "Your appeal is denied.",
+        "Rust holds this street.",
+        "Step back from the barrier."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#6"
+      ]
+    },
+    {
+      "id": "rust-taunt-signal-warden",
+      "status": "proposed",
+      "gddGap": "GDD has no enemy speech; Signal Warden is a proposed support enemy that calls in others via radio and screens.",
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Control, we have a violation.",
+        "Requesting more officers.",
+        "All units, converge.",
+        "Signal sent. Do not move.",
+        "Broadcast: stay indoors."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#6"
+      ]
+    },
+    {
+      "id": "rust-notice-screens",
+      "status": "proposed",
+      "gddGap": "GDD says surveillance towers and propaganda screens replaced the murals; their specific slogans are invented flavour.",
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "A SAFER CITY IS A QUIET CITY.",
+        "REPORT UNAUTHORISED ART.",
+        "YOUR BLOCK IS BEING WATCHED.",
+        "SECURITY VIOLATIONS WILL BE FINED.",
+        "THANK YOU FOR YOUR COMPLIANCE."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#9"
+      ]
+    },
+    {
+      "id": "neighbour-cheer-level-won",
+      "status": "proposed",
+      "gddGap": "GDD has no neighbour lines; extends 'people who looked out for each other' with level-clear celebration.",
+      "speaker": "neighbour",
+      "trigger": "level_won",
+      "lines": [
+        "You did it, Zed!",
+        "Windows open, everybody!",
+        "Come by for hot plates!",
+        "Our block again. Thank you.",
+        "Somebody put a song on!",
+        "We never stopped believing."
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "neighbour-low-hp",
+      "status": "proposed",
+      "gddGap": "GDD has no neighbour lines; shows the community encouraging Zed when he is hurt.",
+      "speaker": "neighbour",
+      "trigger": "low_hp",
+      "lines": [
+        "Hang in there, Zed!",
+        "Get up, we've got you!",
+        "Stubborn kid. Go on!",
+        "We're right behind you!",
+        "You've got the whole block!"
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "neighbour-retry",
+      "status": "proposed",
+      "gddGap": "GDD has no neighbour lines; encouraging retry copy from the community, in line with canon lose-screen tone.",
+      "speaker": "neighbour",
+      "trigger": "retry",
+      "lines": [
+        "Go again, Zed. We believe in you.",
+        "Shake it off. One more try.",
+        "Dust off. The block's waiting.",
+        "Almost had it. Again!",
+        "Take a breath, then go."
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "canon#6",
+        "lose#2"
+      ]
+    },
+    {
+      "id": "poster-community-defaced",
+      "status": "proposed",
+      "gddGap": "Menu concept shows the community defacing the Rust notice; these hand-inked responses extend that idea.",
+      "speaker": "poster",
+      "trigger": "poster",
+      "lines": [
+        "CURFEW (crossed out in marker)",
+        "Lights stay on.",
+        "Nobody asked you, Rust.",
+        "Music at nine instead.",
+        "We live here."
+      ],
+      "sources": [
+        "rebellion-menu-desgin#3",
+        "menu-concept#4",
+        "menu-copy#3"
+      ]
+    },
+    {
+      "id": "poster-small-print-extra",
+      "status": "proposed",
+      "gddGap": "Extra small print in the same style as menu-copy.md's proposed set: no named characters or places, community flavour only.",
+      "speaker": "poster",
+      "trigger": "menu",
+      "lines": [
+        "Mural wall needs paint. Bring a brush.",
+        "Kids' dance class. Alley steps, 5pm.",
+        "Bring a chair. Stories on the stoop.",
+        "Lost: one basketball. Found: a lot of friends.",
+        "Open windows, open doors."
+      ],
+      "sources": [
+        "menu-copy#3",
+        "the-rebellion#6",
+        "the-rebellion#7"
+      ]
+    },
+    {
+      "id": "narrator-level-intro",
+      "status": "proposed",
+      "gddGap": "GDD mentions no narration or dialogue delivery (narrative-critic flags this); short intro captions are a proposed delivery mechanism.",
+      "speaker": "narrator",
+      "trigger": "fight_start",
+      "lines": [
+        "One district at a time.",
+        "The Fallen City is still listening.",
+        "Music in the windows, hope in the street.",
+        "The block remembers who it belongs to.",
+        "Zed steps out, and the neighbourhood holds its breath."
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#6",
+        "narrative-critic#4"
+      ]
+    },
+    {
+      "id": "rust-notice",
+      "status": "proposed",
+      "gddGap": "GDD mentions 'security violations' and the Rust surveilling districts; numbered curfew notices are only implied by the menu poster (canon open question 1).",
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "NOTICE: Gatherings after curfew are a security violation.",
+        "NOTICE: Unauthorised murals will be removed.",
+        "By order of the Rust. Lights out at nine.",
+        "NOTICE: This area is under Rust supervision.",
+        "NOTICE: Stalls without a permit will be seized."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "menu-concept#4",
+        "menu-copy#3"
+      ]
+    },
+    {
+      "id": "rust-taunt",
+      "status": "proposed",
+      "gddGap": "GDD gives no enemy speech; these are cold, official lines extending the Rust as a bureaucratic security force.",
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Move along, citizen.",
+        "You are in violation.",
+        "This is your final warning.",
+        "Disperse. Immediately.",
+        "Your block is under review.",
+        "Compliance is mandatory."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "canon#6"
+      ]
+    },
+    {
+      "id": "neighbour-cheer",
+      "status": "proposed",
+      "gddGap": "GDD says people on the block look out for each other but gives no neighbour lines.",
+      "speaker": "neighbour",
+      "trigger": "wave_clear",
+      "lines": [
+        "Go on, Zed. We're watching!",
+        "Hot plates by the steps after this!",
+        "That's our block!",
+        "Keep the lights on!",
+        "We heard that from the garden!"
+      ],
+      "sources": [
+        "the-rebellion#7",
+        "the-rebellion#8"
+      ]
+    },
+    {
+      "id": "poster-benefit-title",
+      "status": "canon",
+      "speaker": "poster",
+      "trigger": "poster",
+      "lines": [
+        "LOCAL HEROES BENEFIT",
+        "Keep the Lights On",
+        "Local Heroes Benefit: Keep the Lights On"
+      ],
+      "sources": [
+        "rebellion-menu-desgin#2",
+        "menu-copy#3"
+      ]
+    },
+    {
+      "id": "poster-rust-notice-114",
+      "status": "proposed",
+      "gddGap": "Rust Notice 114 with CURFEW struck through appears only in the menu concept, not the primary GDD (canon open question 1).",
+      "speaker": "poster",
+      "trigger": "poster",
+      "lines": [
+        "RUST NOTICE 114",
+        "CURFEW",
+        "By order of the Rust. Lights out at nine.",
+        "NOTICE 114: Curfew in effect."
+      ],
+      "sources": [
+        "menu-concept#4",
+        "menu-copy#3"
+      ]
+    },
+    {
+      "id": "poster-small-print",
+      "status": "proposed",
+      "gddGap": "Small print is marked proposed in menu-copy.md; community flavour from the lived-in neighbourhood theme.",
+      "speaker": "poster",
+      "trigger": "menu",
+      "lines": [
+        "Corner shop open late. Come by.",
+        "Music at the court Saturday. Bring a friend.",
+        "Garden crew needs hands. Bring gloves.",
+        "Hot plates by the steps. Pay what you can."
+      ],
+      "sources": [
+        "menu-copy#3",
+        "the-rebellion#6"
+      ]
+    },
+    {
+      "id": "zed-fight-start",
+      "status": "proposed",
+      "gddGap": "GDD gives Zed's tone (expressive, stubborn, jokes mid-fight) but no scripted barks; these lines extend that voice.",
+      "speaker": "zed",
+      "trigger": "fight_start",
+      "lines": [
+        "Alright, who's first?",
+        "Not on my block.",
+        "Come on, I've got all day.",
+        "This street is ours. Let's go.",
+        "Warming up. Don't mind me.",
+        "Somebody turn the music up."
+      ],
+      "sources": [
+        "the-rebellion#10",
+        "the-rebellion#9"
+      ]
+    },
+    {
+      "id": "zed-combo",
+      "status": "proposed",
+      "gddGap": "No combo barks in the GDD; written from his rhythm-and-dance fighting style and joking nature.",
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Keep the beat!",
+        "One, two, three, and again!",
+        "Straight off the alley steps!",
+        "Dance with it!",
+        "Told you I was quick.",
+        "Late-night sparring pays off."
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "the-rebellion#9",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-heavy-hit",
+      "status": "proposed",
+      "gddGap": "No heavy-hit barks in the GDD; extends the scrappy-but-sharp brawler tone.",
+      "speaker": "zed",
+      "trigger": "heavy_hit",
+      "lines": [
+        "That one had stew in it!",
+        "Sit down a minute!",
+        "Brick-red special!",
+        "Feel that? That's the block.",
+        "Knock knock!"
+      ],
+      "sources": [
+        "the-rebellion#8",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-low-hp",
+      "status": "proposed",
+      "gddGap": "No low-health barks in the GDD; built from 'stubborn' and 'refuses to back down'.",
+      "speaker": "zed",
+      "trigger": "low_hp",
+      "lines": [
+        "Still on my feet.",
+        "I'm not done yet.",
+        "Ow. Rude. Keep going.",
+        "Not backing down.",
+        "Breathe. Get up. Go.",
+        "Stubborn, remember?"
+      ],
+      "sources": [
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-block",
+      "status": "proposed",
+      "gddGap": "No block barks in the GDD; extends the defensive-tools pillar with a cheeky tone.",
+      "speaker": "zed",
+      "trigger": "block",
+      "lines": [
+        "Nice try.",
+        "Not today.",
+        "Learned that one behind the corner shop.",
+        "Too slow!",
+        "Come again?"
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-wave-clear",
+      "status": "proposed",
+      "gddGap": "No wave-clear barks in the GDD; draws on what Zed fights for (courts, music, murals).",
+      "speaker": "zed",
+      "trigger": "wave_clear",
+      "lines": [
+        "One block at a time.",
+        "Keep the music playing.",
+        "That one's for the garden.",
+        "Next. We're getting somewhere.",
+        "The courts are getting closer.",
+        "Who's next?"
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#10"
+      ]
+    },
+    {
+      "id": "zed-level-won",
+      "status": "proposed",
+      "gddGap": "No victory lines in the GDD; written from Zed's mission of taking the Fallen City back one district at a time.",
+      "speaker": "zed",
+      "trigger": "level_won",
+      "lines": [
+        "The block is ours again.",
+        "One district down. Keep going.",
+        "Hear that? Music in the windows.",
+        "Nice work, Zed.",
+        "Kids can play here again.",
+        "Somebody grab a paintbrush."
+      ],
+      "sources": [
+        "the-rebellion#9",
+        "the-rebellion#2"
+      ]
+    },
+    {
+      "id": "zed-lose-ko",
+      "status": "proposed",
+      "gddGap": "GDD lose condition is 'knocked out by health bar'; no lines exist. Copy encourages a retry per tone rules.",
+      "speaker": "zed",
+      "trigger": "lose_ko",
+      "lines": [
+        "Knocked down. Not out. Go again.",
+        "That one got me. Shake it off.",
+        "Back up. One more round.",
+        "Dust off and try again.",
+        "Stubborn, remember? Again."
+      ],
+      "sources": [
+        "the-rebellion#2",
+        "the-rebellion#10",
+        "lose#2"
+      ]
+    },
+    {
+      "id": "zed-lose-timeout",
+      "status": "proposed",
+      "gddGap": "GDD lose condition includes time running out; no lines exist. Wording follows canon.md's encouraging lose-copy example.",
+      "speaker": "zed",
+      "trigger": "lose_timeout",
+      "lines": [
+        "Time ran out. Shake it off and go again.",
+        "Clock beat us. Not next time.",
+        "Lost the beat this round. We'll find it.",
+        "Out of time. Not out of heart.",
+        "Run it back. We've got this."
+      ],
+      "sources": [
+        "the-rebellion#2",
+        "canon#6",
+        "lose#2"
+      ]
+    },
+    {
+      "id": "zed-retry",
+      "status": "proposed",
+      "gddGap": "GDD lists retry as a game-state rule but has no copy; lines extend Zed's refusal to back down.",
+      "speaker": "zed",
+      "trigger": "retry",
+      "lines": [
+        "Round two.",
+        "Again. I know the steps now.",
+        "Let's try that again.",
+        "Same street. Better plan.",
+        "Ready when you are."
+      ],
+      "sources": [
+        "the-rebellion#2",
+        "the-rebellion#10",
+        "lose#2"
+      ]
+    }
+  ]
 }
