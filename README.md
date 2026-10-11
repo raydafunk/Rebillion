@@ -3,8 +3,12 @@
 content-director-agent
 description: Orchestrator for The Rebellion's content pipeline. Reads every doc in the project (GDD docx, PDFs, design specs), builds the retrieval corpus and per-type briefs, runs the writer agents (lore, enemies, levels, dialogue) in dependency order, gates on the validator, runs the critic, and reports what needs owner approval. Use when asked to generate or refresh game content from the GDD.
 
-1. Add menu
-   after content-director-agent it
+1. Add main for the menu
+   after content-director-agent read the pipeline 
+   
+   <img width="940" height="607" alt="image" src="https://github.com/user-attachments/assets/5c155b38-60bf-435f-a943-cb8a2bd32314" />
+
+   it generated the menu based on my game document and this was the outcome  
 
 Implemented
 Move: A/D and arrow keys.
