@@ -10,6 +10,11 @@ description: Orchestrator for The Rebellion's content pipeline. Reads every doc 
 
    it generated the menu based on my game document and this was the outcome  
 
+2.
+ the content-director-agent read the and menu ui agent
+made the opitions menu 
+<img width="400" height="383" alt="image" src="https://github.com/user-attachments/assets/2bde6eed-6979-4483-be17-6977e7f83f3f" />
+
 Implemented
 Move: A/D and arrow keys.
 Jump: W, Space or Up, with coyote time and input buffering.
