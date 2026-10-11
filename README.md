@@ -15,6 +15,9 @@ description: Orchestrator for The Rebellion's content pipeline. Reads every doc 
 made the opitions menu
 <img width="400" height="383" alt="image" src="https://github.com/user-attachments/assets/2bde6eed-6979-4483-be17-6977e7f83f3f" />
 
+3.
+ Content-director0agent  read the game menu document and added the update the controls on the controls panel that will move the player  
+<img width="560" height="537" alt="image" src="https://github.com/user-attachments/assets/86fc0bb6-234b-48b6-8828-70bcf80fdaaa" />
 
 RAG Implementation 
 
