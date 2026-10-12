@@ -19,13 +19,11 @@ made the opitions menu
  Content-director0agent  read the game menu document and added the update the controls on the controls panel that will move the player  
 <img width="560" height="537" alt="image" src="https://github.com/user-attachments/assets/86fc0bb6-234b-48b6-8828-70bcf80fdaaa" />
 
-RAG Implementation 
-
 told me bout  what is 
-the conflict 
-
+the conflict Agent found these conflicts in the game design document 
 The docx binds Dodge to L/C and Block to I/V. The code binds Block to L/C and Dodge to ShiftLeft/V. I is unbound, and V does the opposite of what the docx says.
-The fix is in the KEY_MAP in input.js and the WATCHED list in Zed.js.
+The fix is in the KEY_MAP in input.js and the WATCHED list in Zed.js. i reviewed before the build and then had the pipeline regenerated the screen. 
+
 
 
 
