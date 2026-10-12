@@ -60,3 +60,36 @@ Checked: `design/art/style-guide.md`, `design/art/asset-manifest.md`, `design/ar
 - Item 7 (`design/ux/win.md:17` "Rust has been driven out of the arena") is still unfixed per Pass 1 and is in scope for ux owner; not re-checked for edits this pass.
 - Style-guide section order is 1-7, 9, 8 (menu section 9 sits before open questions 8); suggest renumbering, structure change left to art owner.
 - Phaser `pixelArt: true` would affect all textures (smooths vector SVG-to-PNG art off); recommend per-texture `setFilter(NEAREST)` for Zed only. Message to engine owner, not applied (src/ out of scope).
+
+## Pass 3: Options menu copy (`content/dialogue/options-menu.json`)
+
+Checked: all 30 Options items against `design/lore/canon.md`, the GDD menu design table and the UX specs. No lore breaks. Two tone-drift edits applied by the critic during the content pass (logged here after the fact).
+
+### Changes applied
+
+| # | File | Item | Issue | Fix | Rule | Owner |
+|---|---|---|---|---|---|---|
+| 15 | `content/dialogue/options-menu.json` | `options-music-volume`, line 2 | Tone drift from the community voice (final wording: "Music drifting out of the open windows.") | Reworded to the open-windows image | Tone | content |
+| 16 | `content/dialogue/options-menu.json` | `options-apply`, line 3 | Tone drift (final wording is plain and never scolding) | Reworded to plain, friendly copy | Tone | content |
+
+### Proposed, not applied (owner decision)
+- "The wall" and "the block" are not GDD terms; confirm they are acceptable menu vocabulary.
+- 28 of 30 items are proposed placeholders (only music and SFX volume are canon).
+- Default key table (GDD) conflicts with `flow.md` / `main-menu.md` ("bindings undefined"); pause default P collides with Pick up default P.
+
+## Pass 4: Options controls copy (`content/dialogue/options-controls.json`)
+
+Checked: all 10 items against `design/lore/canon.md` and `content/dialogue/options-menu.json`. No Rush/Rust issues (Rust not mentioned), no military phrasing, no scolding, no gore. Conflict and reserved-key messages are plain and neutral. One tone-drift edit applied (wording only; ids, defaults and key values untouched).
+
+### Changes applied
+
+| # | File | Item | Before | After | Rule | Owner |
+|---|---|---|---|---|---|---|
+| 17 | `content/dialogue/options-controls.json` | `options-bind-jump`, line 3 | "Not rebindable yet." | "Fixed for now." | Tone: generic game-speak; matches "fixed for now" already used in `options-not-rebindable` line 1 and the PAD item | content |
+| 18 | `content/dialogue/options-controls.json` | `options-bind-crouch`, line 3 | "Not rebindable yet." | "Fixed for now." | Same | content |
+| 19 | `content/dialogue/options-controls.json` | `options-not-rebindable`, line 2 | "Those three come as a set. Not rebindable yet." | "Those three come as a set. Fixed for now." | Same | content |
+
+### Proposed, not applied (owner decision)
+- Consistency conflict: `options-menu.json` `options-bind-move` has `control: rebind` with hint "Press Enter, then the key you want.", but `options-controls.json` (`options-not-rebindable`, `options-bind-jump/crouch` notes) treats Move as read-only. Content owner must pick one; if read-only, Move line 3 should become "Fixed for now."
+- Terms "pad", "the wall", "the block" are not GDD terms; confirm as menu vocabulary.
+- `options-pickup-pause-collision` is copy for an unresolved default clash (P); drop when resolved.

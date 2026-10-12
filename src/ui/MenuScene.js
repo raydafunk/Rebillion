@@ -2,6 +2,8 @@
 // Copy: design/lore/menu-copy.md. Assets/keys: src/config/assetKeys.js (MENU_*).
 // Flat shapes only. Every asset has a drawn fallback if its file fails to load.
 import { COLORS, CSS, FONTS, MENU_ASSETS, MENU_COLORS as C, MENU_CSS as CC, MENU_FONTS as MF } from '../config/assetKeys.js';
+import OptionsPanel from './OptionsPanel.js';
+import { NOTICE_MS, loadSettings } from './optionsData.js';
 
 const W = 1280, H = 720;
 const STRIP_W = 360, STRIP_H = 64, STRIP_CX = 396, SEL_DX = 10, TWEEN_MS = 100;
@@ -17,9 +19,11 @@ const ITEMS = [
   { id: 'quit', label: 'QUIT', y: 516, tilt: 2, art: 'menu.strip.b', idle: C.brown, sel: 0x95683f, text: CC.cream },
 ];
 
+// Key table from GameDesignDocument/Rebellion menu desgin.docx ("Controls Menu elements"): [action, primary, alternate].
 const BINDINGS = [
-  ['Move', 'TBD'], ['Light attack', 'TBD'], ['Heavy attack', 'TBD'], ['Block', 'TBD'],
-  ['Dodge', 'TBD'], ['Parry / pick-up', 'TBD'], ['Pause', 'TBD'],
+  ['Move', 'A / D', 'Left / Right'], ['Jump', 'W / Space', 'Up'], ['Crouch', 'S', 'Down'],
+  ['Light attack', 'J', 'Z'], ['Heavy attack', 'K', 'X'], ['Dodge', 'L', 'C'],
+  ['Pick up', 'P', 'N'], ['Parry', 'T', 'M'], ['Block', 'I', 'V'],
 ];
 
 export default class MenuScene extends Phaser.Scene {
@@ -37,6 +41,7 @@ export default class MenuScene extends Phaser.Scene {
     this.focus = 0;
     this.padCool = 0;
     this.padPrev = { a: false, b: false };
+    this.padDirX = 0;
     this.cameras.main.fadeIn(300, 0, 0, 0);
 
     this.buildBackground();
@@ -46,6 +51,7 @@ export default class MenuScene extends Phaser.Scene {
     this.applyFocus(true);
     this.buildFooter();
     this.buildPanel();
+    this.buildOptions();
     this.bindInput();
   }
 
@@ -183,9 +189,9 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   // ---------- toast ----------
-  showToast(msg) {
+  showToast(msg, x = STRIP_CX, y = 596, ms) {
     this.hideToast();
-    const c = this.add.container(STRIP_CX, 596).setDepth(8);
+    const c = this.add.container(x, y).setDepth(14);
     const bg = this.has('menu.strip.a')
       ? this.add.image(0, 0, 'menu.strip.a').setDisplaySize(480, 56).setTint(C.nearBlack)
       : this.add.rectangle(0, 0, 480, 56, C.nearBlack);
@@ -193,8 +199,10 @@ export default class MenuScene extends Phaser.Scene {
     while (t.width > 440 && parseInt(t.style.fontSize, 10) > 14) t.setFontSize(parseInt(t.style.fontSize, 10) - 1);
     c.add([bg, t]);
     this.toast = c;
-    this.toastTimer = this.time.delayedCall(TOAST_MS, () => this.hideToast());
+    this.toastTimer = this.time.delayedCall(ms ?? this.noticeMs(), () => this.hideToast());
   }
+
+  noticeMs() { return NOTICE_MS[this.settings.noticeDisplay] ?? TOAST_MS; }
 
   hideToast() {
     if (this.toastTimer) { this.toastTimer.remove(false); this.toastTimer = null; }
@@ -212,12 +220,17 @@ export default class MenuScene extends Phaser.Scene {
     const blocker = this.add.zone(640, 360, 720, 420).setInteractive(); // clicks inside the panel do not close it
     p.add([dim, bg, blocker]);
     p.add(this.add.text(640, 190, 'CONTROLS', { fontFamily: MF.display, fontSize: '40px', color: CC.nearBlack }).setOrigin(0.5, 0));
-    BINDINGS.forEach(([act, key], i) => {
-      const y = 252 + i * 34;
-      p.add(this.add.text(300, y, act, { fontFamily: MF.mono, fontStyle: '700', fontSize: '24px', color: CC.nearBlack }));
-      p.add(this.add.text(700, y, key, { fontFamily: MF.mono, fontSize: '24px', color: CC.brick }));
+    const head = { fontFamily: MF.mono, fontSize: '18px', color: CC.brown };
+    p.add(this.add.text(300, 244, 'ACTION', head));
+    p.add(this.add.text(540, 244, 'PRIMARY', head));
+    p.add(this.add.text(720, 244, 'ALTERNATE', head));
+    BINDINGS.forEach(([act, key, alt], i) => {
+      const y = 272 + i * 28;
+      p.add(this.add.text(300, y, act, { fontFamily: MF.mono, fontStyle: '700', fontSize: '22px', color: CC.nearBlack }));
+      p.add(this.add.text(540, y, key, { fontFamily: MF.mono, fontSize: '22px', color: CC.brick }));
+      p.add(this.add.text(720, y, alt, { fontFamily: MF.mono, fontSize: '22px', color: CC.brick }));
     });
-    p.add(this.add.text(960, 520, 'Esc / B close', { fontFamily: MF.mono, fontSize: '20px', color: CC.brown }).setOrigin(1, 1));
+    p.add(this.add.text(960, 244, 'Esc: close', head).setOrigin(1, 0));
   }
 
   openPanel() {
@@ -232,19 +245,45 @@ export default class MenuScene extends Phaser.Scene {
     this.tweens.add({ targets: this.panel, alpha: 0, duration: 100, onComplete: () => this.panel.setVisible(false) });
   }
 
+  // ---------- options ----------
+  buildOptions() {
+    let storage = null;
+    try { storage = window.localStorage; } catch (e) { /* blocked */ }
+    const mq = (q) => { try { return window.matchMedia(q).matches; } catch (e) { return false; } };
+    const env = { reducedMotion: mq('(prefers-reduced-motion: reduce)'), highContrast: mq('(prefers-contrast: more)') };
+    this.settings = loadSettings(storage, env);
+    this.registry.set('options', this.settings); // other scenes may read; nothing consumes it yet
+    this.options = new OptionsPanel({
+      scene: this, applied: this.settings, env, storage,
+      toast: (m) => this.showToast(m, 640, 686),
+      onApplied: (v) => {
+        this.settings = v; this.registry.set('options', v);
+        try { if (this.scale.isFullscreen !== v.fullscreen) (v.fullscreen ? this.scale.startFullscreen() : this.scale.stopFullscreen()); } catch (e) { /* needs user gesture */ }
+      },
+      onClose: () => { this.hideToast(); },
+    });
+  }
+
   // ---------- input ----------
-  blocked() { return this.started || this.panelOpen; }
+  blocked() { return this.started || this.panelOpen || this.options.isOpen; }
 
   bindInput() {
     const kb = this.input.keyboard;
     // Fire on press only; held-key repeats ignored (flow.md).
-    const on = (keys, fn) => keys.forEach((k) => kb.on('keydown-' + k, (e) => { if (!e.repeat) fn(); }));
-    on(['UP', 'W'], () => this.move(-1));
-    on(['DOWN', 'S'], () => this.move(1));
+    // While Options is rebinding a key, it swallows the press first (eatKey) so the menu handlers below do not also fire.
+    const on = (keys, fn) => keys.forEach((k) => kb.on('keydown-' + k, (e) => { if (e.repeat || this.options.eatKey(e)) return; fn(); }));
+    on(['UP', 'W'], () => this.dir('up', -1));
+    on(['DOWN', 'S'], () => this.dir('down', 1));
+    on(['LEFT', 'A'], () => this.options.act('left'));
+    on(['RIGHT', 'D'], () => this.options.act('right'));
     on(['ENTER', 'SPACE'], () => this.confirm());
-    on(['ESC', 'BACKSPACE'], () => this.closePanel());
+    on(['ESC', 'BACKSPACE'], () => this.back());
     this.events.once('shutdown', () => kb.removeAllListeners());
   }
+
+  dir(name, d) { if (this.options.isOpen) this.options.act(name); else this.move(d); }
+
+  back() { if (this.options.isOpen) this.options.act('back'); else this.closePanel(); }
 
   update(time) {
     // Minimal gamepad: d-pad / stick up-down, A confirm, B back.
@@ -253,21 +292,25 @@ export default class MenuScene extends Phaser.Scene {
     const a = pad.buttons[0] && pad.buttons[0].pressed;
     const b = pad.buttons[1] && pad.buttons[1].pressed;
     if (a && !this.padPrev.a) this.confirm();
-    if (b && !this.padPrev.b) this.closePanel();
+    if (b && !this.padPrev.b) this.back();
     this.padPrev = { a, b };
+    const dx = (pad.left || pad.axes[0]?.getValue() < -0.5) ? -1 : (pad.right || pad.axes[0]?.getValue() > 0.5) ? 1 : 0;
+    if (dx && !this.padDirX) this.options.act(dx < 0 ? 'left' : 'right');
+    this.padDirX = dx;
     const dir = (pad.up || pad.axes[1]?.getValue() < -0.5) ? -1 : (pad.down || pad.axes[1]?.getValue() > 0.5) ? 1 : 0;
     if (!dir) { this.padCool = 0; return; }
-    if (time >= this.padCool) { this.move(dir); this.padCool = time + (this.padCool === 0 ? 250 : 100); }
+    if (time >= this.padCool) { this.dir(dir < 0 ? 'up' : 'down', dir); this.padCool = time + (this.padCool === 0 ? 250 : 100); }
   }
 
   confirm() {
     if (this.started) return;
+    if (this.options.isOpen) return this.options.act('confirm');
     if (this.panelOpen) { this.closePanel(); return; } // Confirm also closes the panel
     this.hideToast();
     switch (ITEMS[this.focus].id) {
       case 'fight': return this.startGame();
       case 'controls': return this.openPanel();
-      case 'options': return this.showToast('Options: not in Tier 0');
+      case 'options': return this.options.open();
       case 'quit': return this.showToast("Can't quit a browser game. Close the tab.");
     }
   }

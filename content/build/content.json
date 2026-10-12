@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-11T13:22:19.536Z",
+  "builtAt": "2026-10-11T19:13:32.657Z",
   "lore": [
     {
       "id": "open-windows-music",
@@ -1402,6 +1402,499 @@
         "the-rebellion#6",
         "narrative-critic#4"
       ]
+    },
+    {
+      "id": "options-screen-title",
+      "status": "proposed",
+      "gddGap": "GDD names the OPTIONS strip but defines no Options screen; title wording and sub-line are new. OPTIONS itself is canon (menu-copy).",
+      "sources": [
+        "menu-copy#2",
+        "main-menu#5",
+        "canon#6"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "OPTIONS",
+        "Tune the block to how you play.",
+        "Changes wait for Apply. Esc backs out.",
+        "Pasted up fresh, one setting at a time."
+      ],
+      "category": "gameplay",
+      "control": "select",
+      "default": null,
+      "range": "n/a (screen title, forest-green strip colour per menu-concept)",
+      "notes": "Screen title and subtitle only. Line 1 is canon (menu.opt.options). Tier 0 currently shows the notice 'Options: not in Tier 0' (main-menu.md); this screen replaces that notice. Lines 2-4 are optional flavour; UI may pick one."
+    },
+    {
+      "id": "options-header-audio",
+      "status": "proposed",
+      "gddGap": "GDD lists only music and SFX volume; the category grouping and header wording are new.",
+      "sources": [
+        "rebellion-menu-desgin#3",
+        "main-menu#5"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "SOUND",
+        "Windows open. Music drifting out.",
+        "Turn the street up or down."
+      ],
+      "category": "audio",
+      "control": "select",
+      "default": null,
+      "range": "n/a (category header, not focusable)",
+      "notes": "Header strip for audio group. Not a setting."
+    },
+    {
+      "id": "options-header-video",
+      "status": "proposed",
+      "gddGap": "GDD defines no video settings; header and grouping are new.",
+      "sources": [
+        "main-menu#5",
+        "canon#6"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "PICTURE",
+        "How the wall looks from where you stand.",
+        "Big screen, soft shake, your call."
+      ],
+      "category": "video",
+      "control": "select",
+      "default": null,
+      "range": "n/a (category header, not focusable)",
+      "notes": "Header strip for video group. Not a setting."
+    },
+    {
+      "id": "options-header-gameplay",
+      "status": "proposed",
+      "gddGap": "GDD defines no gameplay settings; header is new.",
+      "sources": [
+        "the-rebellion#10",
+        "canon#6"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "THE FIGHT",
+        "Small things that change the feel.",
+        "Same fight, your pace."
+      ],
+      "category": "gameplay",
+      "control": "select",
+      "default": null,
+      "range": "n/a (category header, not focusable)",
+      "notes": "Header strip for gameplay group. Not a setting."
+    },
+    {
+      "id": "options-header-accessibility",
+      "status": "proposed",
+      "gddGap": "GDD has no accessibility requirements; header is new. Fits the hopeful, community tone (everyone gets a seat).",
+      "sources": [
+        "the-rebellion#6",
+        "canon#6"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "EASY ON THE EYES",
+        "Room for everyone on this block.",
+        "Pick what feels good."
+      ],
+      "category": "accessibility",
+      "control": "select",
+      "default": null,
+      "range": "n/a (category header, not focusable)",
+      "notes": "Header strip for accessibility group. Not a setting."
+    },
+    {
+      "id": "options-master-volume",
+      "status": "proposed",
+      "gddGap": "GDD defines Music volume and SFX volume only; a master volume slider is new. Fits as the parent of the two canon sliders.",
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "MASTER VOLUME",
+        "Turns the whole street up or down.",
+        "Left and right to change it.",
+        "Off",
+        "Full"
+      ],
+      "category": "audio",
+      "control": "slider",
+      "default": 80,
+      "range": "min 0, max 100, step 5",
+      "notes": "Multiplies music and SFX. Pause overlay ducks audio (pause.md), so apply duck on top of this. Audio start needs a first-input gate in browsers (OQ-M3). Default is a placeholder."
+    },
+    {
+      "id": "options-music-volume",
+      "status": "canon",
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "MUSIC",
+        "Music drifting out of the open windows.",
+        "Left and right to change it.",
+        "Off",
+        "Full"
+      ],
+      "category": "audio",
+      "control": "slider",
+      "default": 70,
+      "range": "min 0, max 100, step 5",
+      "notes": "GDD menu docx table, Music volume row: function 'Controls the music'; theme 'a slider. Posters-on-brick feels like it wants a street-ambience bed'; effect 'Changes the game music level'. The theme column suggests a street-ambience bed under the menu posters (audio asset, engine/audio owner to confirm; not a separate setting). Default 70 and step 5 are placeholders, engine to confirm."
+    },
+    {
+      "id": "options-sfx-volume",
+      "status": "canon",
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "SFX",
+        "Hits, parries and dodges.",
+        "Left and right to change it.",
+        "Off",
+        "Full"
+      ],
+      "category": "audio",
+      "control": "slider",
+      "default": 80,
+      "range": "min 0, max 100, step 5",
+      "notes": "GDD menu docx table, SFX volume row: 'a slider covering hits sounds parries and dodges'. OWNER DECISION needed: the effect column of the same row says 'Change the SFX on or off', which contradicts 'a slider'. Slider kept (0 = off) so both readings are covered; owner to choose slider vs on/off toggle. Default 80 and step 5 are placeholders."
+    },
+    {
+      "id": "options-mute-on-focus-loss",
+      "status": "proposed",
+      "gddGap": "GDD is silent on audio focus behaviour. pause.md auto-pauses on tab blur (OQ-P3); this setting covers whether sound also drops.",
+      "sources": [
+        "rebellion-menu-desgin#3",
+        "main-menu#5"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "MUTE WHEN AWAY",
+        "Goes quiet when you switch tabs.",
+        "Leave it on and your neighbours stay happy.",
+        "On",
+        "Off"
+      ],
+      "category": "audio",
+      "control": "toggle",
+      "default": true,
+      "range": "options: On, Off",
+      "notes": "Independent of auto-pause (pause.md). Browser tab blur event. Default On is a proposal."
+    },
+    {
+      "id": "options-fullscreen",
+      "status": "canon",
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "FULLSCREEN",
+        "Fill the whole screen with the wall.",
+        "Esc leaves fullscreen first in most browsers.",
+        "On",
+        "Off"
+      ],
+      "category": "video",
+      "control": "toggle",
+      "default": false,
+      "range": "options: On, Off",
+      "notes": "GDD menu docx table, Fullscreen row: function 'Makes the screen Fullscreen'; effect 'Makes the game screen big'. Phaser FIT scale at 1280x720 (flow.md A1). Browsers require a user gesture to enter fullscreen, so apply on Apply click/key press. Esc exits fullscreen at browser level and may collide with Back; implementer to verify. Toggle control and default Off are placeholders."
+    },
+    {
+      "id": "options-background-posters",
+      "status": "canon",
+      "sources": [
+        "rebellion-menu-desgin#3",
+        "menu-copy#3"
+      ],
+      "speaker": "poster",
+      "trigger": "menu",
+      "lines": [
+        "LOCAL HEROES BENEFIT",
+        "Keep the Lights On",
+        "Local Heroes Benefit: Keep the Lights On",
+        "RUST NOTICE 114",
+        "CURFEW"
+      ],
+      "category": "video",
+      "control": "select",
+      "default": null,
+      "range": "n/a (decor, not focusable)",
+      "notes": "GDD menu docx table, 'Background posters (non-interactive)'. Poster A: 'Local Heroes Benefit: Keep the Lights On', cream with forest-green text, ties back to the Local Heroes Mural idea. Poster B: Rust Notice 114 with 'CURFEW' struck through (hand-inked cross-out), brick red; shows the Rust security force's control and the community defacing it. Wording reused verbatim from poster-benefit-title and poster-rust-notice-114 (rust-and-community.json). Non-interactive: not in the focus order, skipped by navigation, no select action. Lines 1-3 are poster A (split or one-line form), lines 4-5 are poster B; CURFEW is drawn struck through."
+    },
+    {
+      "id": "options-screen-shake",
+      "status": "proposed",
+      "gddGap": "GDD asks for punchy hits and hit feedback but sets no shake setting; scaling it is new.",
+      "sources": [
+        "the-rebellion#3",
+        "the-rebellion#10"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "SCREEN SHAKE",
+        "How hard the picture rattles on a hit.",
+        "Turn it down if it is too much.",
+        "Off",
+        "Light",
+        "Full"
+      ],
+      "category": "video",
+      "control": "select",
+      "default": "Full",
+      "range": "options: Off, Light, Full (suggested multipliers 0, 0.5, 1)",
+      "notes": "Multiplier on camera shake from Asset & Animation hit feedback. Reduced motion (options-reduced-motion) should force Off or Light. Default is a placeholder."
+    },
+    {
+      "id": "options-hit-flash",
+      "status": "proposed",
+      "gddGap": "GDD asks for hit stop and feedback; a flash intensity control is new, added for photosensitivity comfort.",
+      "sources": [
+        "the-rebellion#3",
+        "the-rebellion#5"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "HIT FLASH",
+        "How bright a hit lights up.",
+        "Lower it if flashes bother your eyes.",
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "category": "video",
+      "control": "select",
+      "default": "Medium",
+      "range": "options: Low, Medium, High (suggested alpha multipliers 0.25, 0.6, 1)",
+      "notes": "Scales sprite and screen hit-flash alpha only. Never remove the hit cue entirely (keep hit stop and sound) so combat stays readable. Default is a placeholder."
+    },
+    {
+      "id": "options-timer-visibility",
+      "status": "proposed",
+      "gddGap": "GDD has a timer and a time-out lose rule but no setting to hide it; an option is new, for players who find a ticking clock stressful.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "TIMER",
+        "Show or hide the clock in the fight.",
+        "Hiding it does not stop it. Time still counts.",
+        "Shown",
+        "Hidden"
+      ],
+      "category": "gameplay",
+      "control": "toggle",
+      "default": "Shown",
+      "range": "options: Shown, Hidden",
+      "notes": "Visual only. The timer and the time-out lose rule stay active (GDD lose condition). Suggest the lose screen still reports time. Consider a 'last 10 seconds' option later. Default Shown."
+    },
+    {
+      "id": "options-notice-display",
+      "status": "proposed",
+      "gddGap": "Menu notices (main-menu.md toast, 2 s) exist but have no setting; how long they stay is new.",
+      "sources": [
+        "main-menu#5",
+        "menu-copy#2"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "NOTICES",
+        "How long little pop-up notes stay up.",
+        "Longer is easier to read. Any key clears one.",
+        "Short",
+        "Normal",
+        "Long"
+      ],
+      "category": "gameplay",
+      "control": "select",
+      "default": "Normal",
+      "range": "options: Short, Normal, Long (suggested 1 s, 2 s, 4 s)",
+      "notes": "Applies to the menu toast (480x56, auto-dismiss 2 s today). Normal matches the existing 2 s. Any input still dismisses. Reduced motion may skip the toast slide."
+    },
+    {
+      "id": "options-reduced-motion",
+      "status": "proposed",
+      "gddGap": "GDD has no accessibility settings; reduced motion is new. Fits the menu's tilting, sliding strips (main-menu.md selected state).",
+      "sources": [
+        "main-menu#5",
+        "the-rebellion#3"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "REDUCED MOTION",
+        "Calms strips that tilt, slide and rattle.",
+        "Helps if lots of movement is tiring.",
+        "On",
+        "Off"
+      ],
+      "category": "accessibility",
+      "control": "toggle",
+      "default": false,
+      "range": "options: On, Off",
+      "notes": "Suggested effects when On: skip strip rotation/slide tween (keep the '>' marker), disable menu parallax, cap screen shake at Light, shorten fades. Default should follow the browser prefers-reduced-motion media query on first run."
+    },
+    {
+      "id": "options-high-contrast",
+      "status": "proposed",
+      "gddGap": "GDD gives a palette but no high-contrast mode; this option is new and needs Art sign-off on the alternate palette.",
+      "sources": [
+        "rebellion-menu-desgin#3",
+        "main-menu#5"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "HIGH CONTRAST",
+        "Bolder lines and plainer colours.",
+        "Makes text and strips easier to pick out.",
+        "On",
+        "Off"
+      ],
+      "category": "accessibility",
+      "control": "toggle",
+      "default": false,
+      "range": "options: On, Off",
+      "notes": "Art direction owns the alternate palette (cream and near-black text pairs, thicker outlines). Selection already uses marker plus offset, not colour alone (main-menu.md). Default follows prefers-contrast if available."
+    },
+    {
+      "id": "options-text-size",
+      "status": "proposed",
+      "gddGap": "GDD sets no text sizes; flow.md A4 sets 24 px minimum body text. A scaling option is new.",
+      "sources": [
+        "main-menu#5",
+        "flow#3"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "TEXT SIZE",
+        "Makes the words on screen bigger.",
+        "Bigger text may need a little more room.",
+        "Normal",
+        "Large",
+        "Extra large"
+      ],
+      "category": "accessibility",
+      "control": "select",
+      "default": "Normal",
+      "range": "options: Normal, Large, Extra large (suggested scale 1.0, 1.25, 1.5 on the 24 px minimum)",
+      "notes": "Scales HUD and menu body text; never smaller than the 24 px minimum (flow.md A4). Layout owners must check strips (360x64) and panels for overflow at 1.5."
+    },
+    {
+      "id": "options-back",
+      "status": "proposed",
+      "gddGap": "Back behaviour on Options is new; main-menu.md Back input (Esc/B) exists for the Controls panel only.",
+      "sources": [
+        "main-menu#5",
+        "flow#3"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "BACK",
+        "Back to the wall.",
+        "Esc or B. Unapplied changes ask first."
+      ],
+      "category": "gameplay",
+      "control": "select",
+      "default": null,
+      "range": "n/a (button)",
+      "notes": "Returns focus to the Options strip on the main menu. If there are unapplied changes, show options-unsaved-notice instead of leaving."
+    },
+    {
+      "id": "options-reset-defaults",
+      "status": "proposed",
+      "gddGap": "Reset behaviour is new; no Options spec in the GDD.",
+      "sources": [
+        "main-menu#5",
+        "canon#6"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "RESET TO DEFAULTS",
+        "Puts every setting back how it started.",
+        "Nothing sticks until you press Apply.",
+        "Reset all settings?",
+        "Yes, reset",
+        "Keep mine"
+      ],
+      "category": "gameplay",
+      "control": "select",
+      "default": null,
+      "range": "n/a (button with confirm step; lines 4-6 are the confirm prompt and its two buttons)",
+      "notes": "Confirm step defaults focus to 'Keep mine' (same pattern as pause.md confirm sub-state). Resets the audio, video, gameplay and accessibility settings listed here. Reset changes the pending values only; Apply commits."
+    },
+    {
+      "id": "options-apply",
+      "status": "proposed",
+      "gddGap": "Apply and its confirmation are new; no Options spec in the GDD.",
+      "sources": [
+        "main-menu#5",
+        "canon#6"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "APPLY",
+        "Saves your changes.",
+        "Keeps them just how you like them next visit.",
+        "Saved. Nice and tidy.",
+        "Nothing to apply yet."
+      ],
+      "category": "gameplay",
+      "control": "select",
+      "default": null,
+      "range": "n/a (button; lines 4-5 are toast messages for success and no-change)",
+      "notes": "Persist to localStorage (try/catch; may be unavailable). GDD does not say progress or settings persist across reloads (OQ-F3); this assumes settings do, to confirm. Use the notice toast for lines 4-5."
+    },
+    {
+      "id": "options-unsaved-notice",
+      "status": "proposed",
+      "gddGap": "Unsaved-change warning is new; no Options spec in the GDD.",
+      "sources": [
+        "main-menu#5",
+        "canon#6"
+      ],
+      "speaker": "narrator",
+      "trigger": "menu",
+      "lines": [
+        "You changed a few things.",
+        "Apply them before you go?",
+        "Apply",
+        "Leave without saving",
+        "Stay here"
+      ],
+      "category": "gameplay",
+      "control": "select",
+      "default": null,
+      "range": "n/a (confirm prompt; lines 3-5 are its buttons)",
+      "notes": "Shown when Back or Esc is pressed with pending changes. Default focus on Apply. Three buttons, horizontal navigation (pause.md confirm pattern). Tone is plain, never scolding."
     },
     {
       "id": "rust-notice",

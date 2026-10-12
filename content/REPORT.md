@@ -8,13 +8,13 @@ _2026-10-11_
 - read `GameDesignDocument/The Rebellion.docx` (primary), 10 chunks
 - read `PDf/The Rebellion -Frist Draft.pdf` (reference), 2 chunks
 - read `PDf/The Rebellion- Final Gdd.pdf` (reference), 5 chunks
-- read `README.md` (reference), 0 chunks
+- read `README.md` (reference), 2 chunks
 - read `design/art/asset-manifest.md` (derived), 13 chunks
 - read `design/art/hit-feedback-spec.md` (derived), 7 chunks
 - read `design/art/style-guide.md` (derived), 15 chunks
 - read `design/art/zed-pixellab-prompt.md` (derived), 8 chunks
 - read `design/lore/canon.md` (derived), 13 chunks
-- read `design/lore/critic-log.md` (derived), 10 chunks
+- read `design/lore/critic-log.md` (derived), 16 chunks
 - read `design/lore/menu-copy.md` (derived), 4 chunks
 - read `design/team/agent-diagrams.md` (derived), 7 chunks
 - read `design/team/agent-team-setups.md` (derived), 13 chunks
@@ -46,9 +46,9 @@ _2026-10-11_
 | lore | 26 | 7 | 0 |
 | enemies | 6 | 5 | 0 |
 | levels | 5 | 5 | 0 |
-| dialogue | 40 | 39 | 0 |
+| dialogue | 62 | 57 | 0 |
 
-## Proposed items awaiting owner approval (56)
+## Proposed items awaiting owner approval (74)
 - **lore/rust-grunt**: The GDD says only 'Rust Enemies'. 'Rust grunt' is the working Tier 0 enemy name from the asset manifest and canon open question 6; the owner has not confirmed it as the player-facing term.
 - **lore/rust-notice-114**: The menu design doc shows a poster 'Rust Notice 114 / CURFEW' but the main GDD never says the Rust issue curfews or numbered notices (canon open question 1). Kept as flavour pending owner approval.
 - **lore/local-heroes-benefit**: The menu poster 'Local Heroes Benefit: Keep the Lights On' implies community fundraising events, which the GDD does not describe.
@@ -90,6 +90,24 @@ _2026-10-11_
 - **dialogue/poster-community-defaced**: Menu concept shows the community defacing the Rust notice; these hand-inked responses extend that idea.
 - **dialogue/poster-small-print-extra**: Extra small print in the same style as menu-copy.md's proposed set: no named characters or places, community flavour only.
 - **dialogue/narrator-level-intro**: GDD mentions no narration or dialogue delivery (narrative-critic flags this); short intro captions are a proposed delivery mechanism.
+- **dialogue/options-screen-title**: GDD names the OPTIONS strip but defines no Options screen; title wording and sub-line are new. OPTIONS itself is canon (menu-copy).
+- **dialogue/options-header-audio**: GDD lists only music and SFX volume; the category grouping and header wording are new.
+- **dialogue/options-header-video**: GDD defines no video settings; header and grouping are new.
+- **dialogue/options-header-gameplay**: GDD defines no gameplay settings; header is new.
+- **dialogue/options-header-accessibility**: GDD has no accessibility requirements; header is new. Fits the hopeful, community tone (everyone gets a seat).
+- **dialogue/options-master-volume**: GDD defines Music volume and SFX volume only; a master volume slider is new. Fits as the parent of the two canon sliders.
+- **dialogue/options-mute-on-focus-loss**: GDD is silent on audio focus behaviour. pause.md auto-pauses on tab blur (OQ-P3); this setting covers whether sound also drops.
+- **dialogue/options-screen-shake**: GDD asks for punchy hits and hit feedback but sets no shake setting; scaling it is new.
+- **dialogue/options-hit-flash**: GDD asks for hit stop and feedback; a flash intensity control is new, added for photosensitivity comfort.
+- **dialogue/options-timer-visibility**: GDD has a timer and a time-out lose rule but no setting to hide it; an option is new, for players who find a ticking clock stressful.
+- **dialogue/options-notice-display**: Menu notices (main-menu.md toast, 2 s) exist but have no setting; how long they stay is new.
+- **dialogue/options-reduced-motion**: GDD has no accessibility settings; reduced motion is new. Fits the menu's tilting, sliding strips (main-menu.md selected state).
+- **dialogue/options-high-contrast**: GDD gives a palette but no high-contrast mode; this option is new and needs Art sign-off on the alternate palette.
+- **dialogue/options-text-size**: GDD sets no text sizes; flow.md A4 sets 24 px minimum body text. A scaling option is new.
+- **dialogue/options-back**: Back behaviour on Options is new; main-menu.md Back input (Esc/B) exists for the Controls panel only.
+- **dialogue/options-reset-defaults**: Reset behaviour is new; no Options spec in the GDD.
+- **dialogue/options-apply**: Apply and its confirmation are new; no Options spec in the GDD.
+- **dialogue/options-unsaved-notice**: Unsaved-change warning is new; no Options spec in the GDD.
 - **dialogue/rust-notice**: GDD mentions 'security violations' and the Rust surveilling districts; numbered curfew notices are only implied by the menu poster (canon open question 1).
 - **dialogue/rust-taunt**: GDD gives no enemy speech; these are cold, official lines extending the Rust as a bureaucratic security force.
 - **dialogue/neighbour-cheer**: GDD says people on the block look out for each other but gives no neighbour lines.
