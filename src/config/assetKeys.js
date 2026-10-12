@@ -66,4 +66,9 @@ export const MENU_FONTS = {
   mono: "'Courier Prime', 'Courier New', monospace",
 };
 
+// Title screen (design: GameDesignDocument/The Title Screen.docx, mock PDf/the-rebellion-title-screen.png).
+// Art is drawn with Phaser graphics; only the approved copy is loaded (key -> path).
+export const TITLE_COPY = { key: 'title.copy', path: 'content/dialogue/title-screen.json' };
+export const TITLE_TIMING = { blinkOnMs: 600, blinkOffMs: 400, loadMs: 1500 };
+
 export const GAME_VERSION = 'v0.1';

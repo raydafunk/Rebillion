@@ -1,11 +1,12 @@
 # Content pipeline report
-_2026-10-11_
+_2026-10-12_
 
 ## Sources read
-35 of 35 documents ingested.
+36 of 36 documents ingested.
 
 - read `GameDesignDocument/Rebellion menu desgin.docx` (primary), 4 chunks
 - read `GameDesignDocument/The Rebellion.docx` (primary), 10 chunks
+- read `GameDesignDocument/The Title Screen.docx` (primary), 1 chunks
 - read `PDf/The Rebellion -Frist Draft.pdf` (reference), 2 chunks
 - read `PDf/The Rebellion- Final Gdd.pdf` (reference), 5 chunks
 - read `README.md` (reference), 2 chunks
@@ -46,7 +47,7 @@ _2026-10-11_
 | lore | 26 | 7 | 0 |
 | enemies | 6 | 5 | 0 |
 | levels | 5 | 5 | 0 |
-| dialogue | 62 | 57 | 0 |
+| dialogue | 69 | 57 | 0 |
 
 ## Proposed items awaiting owner approval (74)
 - **lore/rust-grunt**: The GDD says only 'Rust Enemies'. 'Rust grunt' is the working Tier 0 enemy name from the asset manifest and canon open question 6; the owner has not confirmed it as the player-facing term.

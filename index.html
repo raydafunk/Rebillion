@@ -16,6 +16,7 @@
 <body>
   <div id="game"></div>
   <script type="module">
+    import TitleScene from './src/ui/TitleScene.js';
     import MenuScene from './src/ui/MenuScene.js';
     import ArenaScene from './src/scenes/ArenaScene.js';
     import HudScene from './src/scenes/HudScene.js';
@@ -32,7 +33,7 @@
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
       input: { gamepad: true },
       physics: { default: 'arcade', arcade: { debug: false } },
-      scene: [MenuScene, ArenaScene, HudScene, ResultScene],
+      scene: [TitleScene, MenuScene, ArenaScene, HudScene, ResultScene],
     });
     game.events.on('start-game', () => console.log('start-game event received'));
     window.__game = game;
