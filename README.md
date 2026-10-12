@@ -3,16 +3,22 @@
 content-director-agent
 description: Orchestrator for The Rebellion's content pipeline. Reads every doc in the project (GDD docx, PDFs, design specs), builds the retrieval corpus and per-type briefs, runs the writer agents (lore, enemies, levels, dialogue) in dependency order, gates on the validator, runs the critic, and reports what needs owner approval. Use when asked to generate or refresh game content from the GDD.
 
-1. Add menu
-   after content-director-agent it
+1. Add main for the menu
+   after content-director-agent read the pipeline 
+   
+   <img width="940" height="607" alt="image" src="https://github.com/user-attachments/assets/5c155b38-60bf-435f-a943-cb8a2bd32314" />
 
-Implemented
-Move: A/D and arrow keys.
-Jump: W, Space or Up, with coyote time and input buffering.
-Light attack: J or Z, with a 3-hit chain.
-Heavy attack: K or X, cancelable from light 1 and light 2.
-Parry: the first 8 frames of a fresh block. The docx gives it no key of its own.
-Menu and pause controls: navigation, confirm, mouse, gamepad, Esc/Backspace to close the Controls panel, and restart/main-menu with a confirm step.
+   it generated the menu based on my game document and this was the outcome  
+
+2.
+ the content-director-agent read the and menu ui agent
+made the opitions menu
+<img width="400" height="383" alt="image" src="https://github.com/user-attachments/assets/2bde6eed-6979-4483-be17-6977e7f83f3f" />
+
+3.
+ Content-director0agent  read the game menu document and added the update the controls on the controls panel that will move the player  
+<img width="560" height="537" alt="image" src="https://github.com/user-attachments/assets/86fc0bb6-234b-48b6-8828-70bcf80fdaaa" />
+
 RAG Implementation 
 
 told me bout  what is 
