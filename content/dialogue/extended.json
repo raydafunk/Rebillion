@@ -1,0 +1,374 @@
+[
+  {
+    "id": "zed-fight-start-brick-red-alley",
+    "status": "proposed",
+    "gddGap": "Level-specific barks are not in the GDD; built on Brick-Red Alley, where Zed's kids learned to fight, dance and argue like family.",
+    "speaker": "zed",
+    "trigger": "fight_start",
+    "level": "level-01-brick-red-alley",
+    "lines": [
+      "Home alley. I know every step.",
+      "Kids learned to dance here first.",
+      "Brick-red alley, round one.",
+      "Mind the steps. I won't.",
+      "Argue like family, fight like it too."
+    ],
+    "sources": ["the-rebellion#7", "the-rebellion#10"]
+  },
+  {
+    "id": "zed-fight-start-mustard-row",
+    "status": "proposed",
+    "gddGap": "Mustard Row is a proposed district; lines lean on the GDD's mustard-yellow storefronts and corner shops.",
+    "speaker": "zed",
+    "trigger": "fight_start",
+    "level": "level-02-mustard-row",
+    "lines": [
+      "Mustard Row. Open the shutters.",
+      "Corner shops are the heart of this.",
+      "Late-night sparring started right here.",
+      "Somebody save me a seat inside.",
+      "Shopfronts up. Rust out."
+    ],
+    "sources": ["the-rebellion#7", "the-rebellion#6", "the-rebellion#9"]
+  },
+  {
+    "id": "zed-fight-start-greenline-courts",
+    "status": "proposed",
+    "gddGap": "Greenline Courts is a proposed district; lines follow the GDD's forest-green basketball courts and Zed's wish for kids to play again.",
+    "speaker": "zed",
+    "trigger": "fight_start",
+    "level": "level-03-greenline-courts",
+    "lines": [
+      "Courts are shut. Not for long.",
+      "Kids belong on this court.",
+      "Hoops first, then we talk.",
+      "Greenline. My kind of arena.",
+      "Give the ball back to the block."
+    ],
+    "sources": ["the-rebellion#8", "the-rebellion#9"]
+  },
+  {
+    "id": "zed-fight-start-stewpot-gardens",
+    "status": "proposed",
+    "gddGap": "Stewpot Gardens is a proposed district; lines draw on the community garden and the stew from his mother's food stall (her fate is not stated).",
+    "speaker": "zed",
+    "trigger": "fight_start",
+    "level": "level-04-stewpot-gardens",
+    "lines": [
+      "Used to smell like stew round here.",
+      "Fences down. Let the garden breathe.",
+      "Garden crew, I'm coming through.",
+      "Somebody's still got a spoon, right?",
+      "Plant something after this."
+    ],
+    "sources": ["the-rebellion#7", "the-rebellion#8"]
+  },
+  {
+    "id": "zed-fight-start-songwindow-heights",
+    "status": "proposed",
+    "gddGap": "Songwindow Heights is a proposed district; lines use the GDD's open windows with music drifting out and the surveillance towers.",
+    "speaker": "zed",
+    "trigger": "fight_start",
+    "level": "level-05-songwindow-heights",
+    "lines": [
+      "Open the windows. Turn it up.",
+      "Screens off. Music on.",
+      "Last climb. Let's make some noise.",
+      "Every window, a song. Let's go.",
+      "Lights on, towers down."
+    ],
+    "sources": ["the-rebellion#6", "the-rebellion#8", "the-rebellion#9"]
+  },
+  {
+    "id": "zed-level-won-brick-red-alley",
+    "status": "proposed",
+    "gddGap": "Per-level win lines are not in the GDD; extends Zed's 'one district at a time' mission. Father is hinted at only as longing, no answer given.",
+    "speaker": "zed",
+    "trigger": "level_won",
+    "level": "level-01-brick-red-alley",
+    "lines": [
+      "Alley's ours. One down.",
+      "Dad's colours would look good here.",
+      "Home steps again. Keep moving.",
+      "Hear the kids? Almost like before.",
+      "First district. Plenty more."
+    ],
+    "sources": ["the-rebellion#9", "the-rebellion#7"]
+  },
+  {
+    "id": "zed-level-won-greenline-courts",
+    "status": "proposed",
+    "gddGap": "Per-level win lines are not in the GDD; built on Zed fighting so kids can play on the courts again.",
+    "speaker": "zed",
+    "trigger": "level_won",
+    "level": "level-03-greenline-courts",
+    "lines": [
+      "Courts are open. Play ball.",
+      "Hear that bounce? Perfect.",
+      "Kids can play here again.",
+      "Greenline is back on the map.",
+      "Who wants next game?"
+    ],
+    "sources": ["the-rebellion#9", "the-rebellion#6"]
+  },
+  {
+    "id": "zed-level-won-songwindow-heights",
+    "status": "proposed",
+    "gddGap": "Final-level win lines are not in the GDD; kept hopeful and open-ended, since the GDD does not say what Zed finds about his father.",
+    "speaker": "zed",
+    "trigger": "level_won",
+    "level": "level-05-songwindow-heights",
+    "lines": [
+      "Windows open. Music's back.",
+      "The whole city sounds different.",
+      "We did this together.",
+      "Murals next. Somebody grab a brush.",
+      "Still looking. Never stopping."
+    ],
+    "sources": ["the-rebellion#9", "the-rebellion#10"]
+  },
+  {
+    "id": "zed-pause",
+    "status": "proposed",
+    "gddGap": "No pause copy in the GDD; short, warm lines for the pause overlay in the neighbourhood voice.",
+    "speaker": "zed",
+    "trigger": "pause",
+    "lines": [
+      "Breather. Back in a second.",
+      "Hold that thought.",
+      "Catching my breath.",
+      "Quick water break.",
+      "Pausing. Do not touch my snacks."
+    ],
+    "sources": ["the-rebellion#10", "canon#6"]
+  },
+  {
+    "id": "zed-grab-pickup",
+    "status": "proposed",
+    "gddGap": "GDD names pick-up objects in combat but no bark; lines are cheeky improvisation matching his jokes mid-fight.",
+    "speaker": "zed",
+    "trigger": "heavy_hit",
+    "level": "level-02-mustard-row",
+    "lines": [
+      "Borrowed from the corner shop!",
+      "Thanks for the loan!",
+      "Handy. Very handy.",
+      "That's what shelves are for!",
+      "Delivery!"
+    ],
+    "sources": ["the-rebellion#1", "the-rebellion#2", "the-rebellion#10"]
+  },
+  {
+    "id": "zed-wave-clear-stewpot-gardens",
+    "status": "proposed",
+    "gddGap": "Level-specific wave-clear barks are not in the GDD; use the community garden and food stall details.",
+    "speaker": "zed",
+    "trigger": "wave_clear",
+    "level": "level-04-stewpot-gardens",
+    "lines": [
+      "Gate's open. Come on in.",
+      "Soil's still good here.",
+      "A bowl of stew would help right now.",
+      "Garden gets a little greener.",
+      "Next row, same plan."
+    ],
+    "sources": ["the-rebellion#7", "the-rebellion#9"]
+  },
+  {
+    "id": "zed-low-hp-songwindow-heights",
+    "status": "proposed",
+    "gddGap": "Level-specific barks are not in the GDD; hold to 'stubborn' and 'refuses to back down', with hope for music from the windows.",
+    "speaker": "zed",
+    "trigger": "low_hp",
+    "level": "level-05-songwindow-heights",
+    "lines": [
+      "Somebody hum something. Please.",
+      "Up. Window music. Up.",
+      "Almost there. Don't stop now.",
+      "I've got one more verse in me.",
+      "Not finishing on a low note."
+    ],
+    "sources": ["the-rebellion#10", "the-rebellion#6"]
+  },
+  {
+    "id": "rust-taunt-baton-scout",
+    "status": "proposed",
+    "gddGap": "GDD has no enemy speech; Baton Scout is a proposed enemy. Cold, official patrol-style lines.",
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Halt for inspection.",
+      "Papers. Now.",
+      "Patrol is in progress.",
+      "Clear the lane, citizen.",
+      "Scout reporting a violation."
+    ],
+    "sources": ["the-rebellion#8", "canon#6"]
+  },
+  {
+    "id": "rust-taunt-enforcer",
+    "status": "proposed",
+    "gddGap": "GDD has no enemy speech; Enforcer is a proposed bruiser. Blunt bureaucratic lines, no threats of death or gore.",
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Resistance is a violation.",
+      "You will be escorted out.",
+      "Stand down. Final notice.",
+      "This block is closed.",
+      "Order will be restored."
+    ],
+    "sources": ["the-rebellion#8", "canon#6"]
+  },
+  {
+    "id": "rust-taunt-dart-marksman",
+    "status": "proposed",
+    "gddGap": "GDD has no enemy speech; Dart Marksman is a proposed ranged enemy. Lines stay clinical and official, never lethal.",
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Target acquired. Hold still.",
+      "Range confirmed.",
+      "Compliance will be enforced.",
+      "Stay where you are.",
+      "Aim line is live."
+    ],
+    "sources": ["the-rebellion#8", "canon#6"]
+  },
+  {
+    "id": "rust-taunt-shield-sergeant",
+    "status": "proposed",
+    "gddGap": "GDD has no enemy speech; Shield Sergeant is a proposed elite. Stiff, rule-quoting lines.",
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Form up. Hold the line.",
+      "Regulation applies to you too.",
+      "Your appeal is denied.",
+      "Rust holds this street.",
+      "Step back from the barrier."
+    ],
+    "sources": ["the-rebellion#8", "canon#6"]
+  },
+  {
+    "id": "rust-taunt-signal-warden",
+    "status": "proposed",
+    "gddGap": "GDD has no enemy speech; Signal Warden is a proposed support enemy that calls in others via radio and screens.",
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Control, we have a violation.",
+      "Requesting more officers.",
+      "All units, converge.",
+      "Signal sent. Do not move.",
+      "Broadcast: stay indoors."
+    ],
+    "sources": ["the-rebellion#8", "canon#6"]
+  },
+  {
+    "id": "rust-notice-screens",
+    "status": "proposed",
+    "gddGap": "GDD says surveillance towers and propaganda screens replaced the murals; their specific slogans are invented flavour.",
+    "speaker": "rust",
+    "trigger": "notice",
+    "lines": [
+      "A SAFER CITY IS A QUIET CITY.",
+      "REPORT UNAUTHORISED ART.",
+      "YOUR BLOCK IS BEING WATCHED.",
+      "SECURITY VIOLATIONS WILL BE FINED.",
+      "THANK YOU FOR YOUR COMPLIANCE."
+    ],
+    "sources": ["the-rebellion#8", "canon#9"]
+  },
+  {
+    "id": "neighbour-cheer-level-won",
+    "status": "proposed",
+    "gddGap": "GDD has no neighbour lines; extends 'people who looked out for each other' with level-clear celebration.",
+    "speaker": "neighbour",
+    "trigger": "level_won",
+    "lines": [
+      "You did it, Zed!",
+      "Windows open, everybody!",
+      "Come by for hot plates!",
+      "Our block again. Thank you.",
+      "Somebody put a song on!",
+      "We never stopped believing."
+    ],
+    "sources": ["the-rebellion#7", "the-rebellion#9"]
+  },
+  {
+    "id": "neighbour-low-hp",
+    "status": "proposed",
+    "gddGap": "GDD has no neighbour lines; shows the community encouraging Zed when he is hurt.",
+    "speaker": "neighbour",
+    "trigger": "low_hp",
+    "lines": [
+      "Hang in there, Zed!",
+      "Get up, we've got you!",
+      "Stubborn kid. Go on!",
+      "We're right behind you!",
+      "You've got the whole block!"
+    ],
+    "sources": ["the-rebellion#7", "the-rebellion#10"]
+  },
+  {
+    "id": "neighbour-retry",
+    "status": "proposed",
+    "gddGap": "GDD has no neighbour lines; encouraging retry copy from the community, in line with canon lose-screen tone.",
+    "speaker": "neighbour",
+    "trigger": "retry",
+    "lines": [
+      "Go again, Zed. We believe in you.",
+      "Shake it off. One more try.",
+      "Dust off. The block's waiting.",
+      "Almost had it. Again!",
+      "Take a breath, then go."
+    ],
+    "sources": ["the-rebellion#7", "canon#6", "lose#2"]
+  },
+  {
+    "id": "poster-community-defaced",
+    "status": "proposed",
+    "gddGap": "Menu concept shows the community defacing the Rust notice; these hand-inked responses extend that idea.",
+    "speaker": "poster",
+    "trigger": "poster",
+    "lines": [
+      "CURFEW (crossed out in marker)",
+      "Lights stay on.",
+      "Nobody asked you, Rust.",
+      "Music at nine instead.",
+      "We live here."
+    ],
+    "sources": ["rebellion-menu-desgin#3", "menu-concept#4", "menu-copy#3"]
+  },
+  {
+    "id": "poster-small-print-extra",
+    "status": "proposed",
+    "gddGap": "Extra small print in the same style as menu-copy.md's proposed set: no named characters or places, community flavour only.",
+    "speaker": "poster",
+    "trigger": "menu",
+    "lines": [
+      "Mural wall needs paint. Bring a brush.",
+      "Kids' dance class. Alley steps, 5pm.",
+      "Bring a chair. Stories on the stoop.",
+      "Lost: one basketball. Found: a lot of friends.",
+      "Open windows, open doors."
+    ],
+    "sources": ["menu-copy#3", "the-rebellion#6", "the-rebellion#7"]
+  },
+  {
+    "id": "narrator-level-intro",
+    "status": "proposed",
+    "gddGap": "GDD mentions no narration or dialogue delivery (narrative-critic flags this); short intro captions are a proposed delivery mechanism.",
+    "speaker": "narrator",
+    "trigger": "fight_start",
+    "lines": [
+      "One district at a time.",
+      "The Fallen City is still listening.",
+      "Music in the windows, hope in the street.",
+      "The block remembers who it belongs to.",
+      "Zed steps out, and the neighbourhood holds its breath."
+    ],
+    "sources": ["the-rebellion#9", "the-rebellion#6", "narrative-critic#4"]
+  }
+]

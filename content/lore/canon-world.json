@@ -1,0 +1,72 @@
+[
+  {
+    "id": "fallen-city", "status": "canon", "kind": "location", "name": "The Fallen City",
+    "summary": "A lived-in, culturally rich city of corner shops, murals, music and community, overtaken by a corrupt private security force.",
+    "body": "Before the Rust, the city was loud, hopeful and full of people who looked out for each other: corner shops, open windows with music drifting out, basketball courts, food stalls and community gardens. Its colours are mustard yellow, brick red, forest green and warm browns.\n\nIt is made of districts, and Zed means to take it back one district at a time.",
+    "tags": ["city", "setting"],
+    "sources": ["the-rebellion#1", "the-rebellion#6", "the-rebellion#7", "the-rebellion#9"]
+  },
+  {
+    "id": "brick-red-alley", "status": "canon", "kind": "location", "name": "Brick-Red Alley",
+    "summary": "The alley where the neighbourhood kids learned to fight, dance and argue like family.",
+    "body": "Zed's home block is known for its mustard-yellow storefronts, forest-green basketball courts and this brick-red alley. It was not perfect, but it was alive.\n\nThe Rust now patrol the alleys where kids used to play.",
+    "tags": ["zed", "home", "alley"],
+    "sources": ["the-rebellion#7", "the-rebellion#8"]
+  },
+  {
+    "id": "food-stall", "status": "canon", "kind": "location", "name": "The Food Stall",
+    "summary": "Zed's mother's tiny stall near the community garden, serving hot bowls of stew to anyone who needed one.",
+    "body": "A small, warm centre of the block. Seized by the Rust for \"security violations\", it stands for the food stalls Zed fights to bring back.",
+    "tags": ["food-stall", "family", "community"],
+    "sources": ["the-rebellion#7", "the-rebellion#8", "the-rebellion#9"]
+  },
+  {
+    "id": "community-garden", "status": "canon", "kind": "location", "name": "The Community Garden",
+    "summary": "A shared garden beside the food stall, fenced off when the Rust took over.",
+    "body": "The garden belonged to everyone on the block. The Rust fenced it off, and reopening it is part of giving the neighbourhood its heartbeat back.",
+    "tags": ["garden", "community"],
+    "sources": ["the-rebellion#6", "the-rebellion#7", "the-rebellion#8"]
+  },
+  {
+    "id": "basketball-courts", "status": "canon", "kind": "location", "name": "The Basketball Courts",
+    "summary": "Forest-green courts where the block played, shut down by the Rust.",
+    "body": "Part of Zed's block and of the city's everyday life. Zed fights so kids can play on them again.",
+    "tags": ["courts", "community"],
+    "sources": ["the-rebellion#6", "the-rebellion#7", "the-rebellion#8", "the-rebellion#9"]
+  },
+  {
+    "id": "local-heroes-murals", "status": "canon", "kind": "object", "name": "The Local Heroes Murals",
+    "summary": "Murals across the district walls celebrating everyday heroes: cooks, musicians, activists and teachers.",
+    "body": "Painted largely by Zed's father, the murals told the city's stories. The Rust tore them down, his included, and put surveillance towers and propaganda screens in their place.\n\nZed fights so murals can rise again, celebrating real heroes.",
+    "tags": ["murals", "heroes", "art"],
+    "sources": ["the-rebellion#6", "the-rebellion#7", "the-rebellion#8", "the-rebellion#9"]
+  },
+  {
+    "id": "surveillance-towers", "status": "canon", "kind": "object", "name": "Surveillance Towers and Propaganda Screens",
+    "summary": "What the Rust put up where the murals used to be.",
+    "body": "Cold, boxy and official, they are the opposite of a painted wall. They show the Rust watching the neighbourhood instead of belonging to it.",
+    "tags": ["rust", "surveillance"],
+    "sources": ["the-rebellion#8"]
+  },
+  {
+    "id": "the-neighbourhood", "status": "canon", "kind": "faction", "name": "The Neighbourhood",
+    "summary": "Zed's side: ordinary people who look out for each other, warm, casual and expressive.",
+    "body": "Cooks, musicians, teachers, kids and neighbours in casual fits and expressive colours. They answer the Rust with paint, music and plain stubbornness.",
+    "tags": ["community", "zed"],
+    "sources": ["the-rebellion#6", "the-rebellion#7", "the-rebellion#10"]
+  },
+  {
+    "id": "the-rust", "status": "canon", "kind": "faction", "name": "The Rust",
+    "summary": "A corrupt private security force that swept through the districts and overtook the Fallen City.",
+    "body": "The Rust did not arrive like soldiers; they arrived like thieves. They shut the courts, fenced the gardens, patrolled the alleys and tore down the murals. They are uniformed, symmetrical, visored and cold, and their ordinary members are the Rust grunts Zed knocks back in each arena.\n\nThey are people in a force, not a place or a stain, and the neighbourhood always has an answer for them.",
+    "tags": ["rust", "antagonist"],
+    "sources": ["the-rebellion#1", "the-rebellion#2", "the-rebellion#8"]
+  },
+  {
+    "id": "rust-takeover", "status": "canon", "kind": "event", "name": "The Takeover",
+    "summary": "The day everything changed: the Rust swept through the districts and the city's heartbeat went quiet.",
+    "body": "Courts were shut, gardens fenced, murals torn down and stalls seized. Zed's father disappeared confronting the Rust at a mural teardown, and friends vanished.\n\nZed did not have a choice. He had to fight.",
+    "tags": ["rust", "backstory"],
+    "sources": ["the-rebellion#8"]
+  }
+]

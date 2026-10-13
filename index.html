@@ -10,13 +10,17 @@
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Rubik:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&family=Permanent+Marker&family=Rubik:wght@500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
 </head>
 <body>
   <div id="game"></div>
   <script type="module">
+    import TitleScene from './src/ui/TitleScene.js';
     import MenuScene from './src/ui/MenuScene.js';
+    import ArenaScene from './src/scenes/ArenaScene.js';
+    import HudScene from './src/scenes/HudScene.js';
+    import ResultScene from './src/scenes/ResultScene.js';
     import { waitForFonts } from './src/config/assetKeys.js';
     // Wait for web fonts (2.5s cap) so the first canvas frame is not in a fallback font.
     await waitForFonts();
@@ -27,7 +31,9 @@
       height: 720,
       backgroundColor: '#2E1F16',
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
-      scene: [MenuScene],
+      input: { gamepad: true },
+      physics: { default: 'arcade', arcade: { debug: false } },
+      scene: [TitleScene, MenuScene, ArenaScene, HudScene, ResultScene],
     });
     game.events.on('start-game', () => console.log('start-game event received'));
     window.__game = game;

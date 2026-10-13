@@ -1,0 +1,157 @@
+[
+  {
+    "id": "zed-fight-start",
+    "status": "proposed",
+    "gddGap": "GDD gives Zed's tone (expressive, stubborn, jokes mid-fight) but no scripted barks; these lines extend that voice.",
+    "speaker": "zed",
+    "trigger": "fight_start",
+    "lines": [
+      "Alright, who's first?",
+      "Not on my block.",
+      "Come on, I've got all day.",
+      "This street is ours. Let's go.",
+      "Warming up. Don't mind me.",
+      "Somebody turn the music up."
+    ],
+    "sources": ["the-rebellion#10", "the-rebellion#9"]
+  },
+  {
+    "id": "zed-combo",
+    "status": "proposed",
+    "gddGap": "No combo barks in the GDD; written from his rhythm-and-dance fighting style and joking nature.",
+    "speaker": "zed",
+    "trigger": "combo",
+    "lines": [
+      "Keep the beat!",
+      "One, two, three, and again!",
+      "Straight off the alley steps!",
+      "Dance with it!",
+      "Told you I was quick.",
+      "Late-night sparring pays off."
+    ],
+    "sources": ["the-rebellion#8", "the-rebellion#9", "the-rebellion#10"]
+  },
+  {
+    "id": "zed-heavy-hit",
+    "status": "proposed",
+    "gddGap": "No heavy-hit barks in the GDD; extends the scrappy-but-sharp brawler tone.",
+    "speaker": "zed",
+    "trigger": "heavy_hit",
+    "lines": [
+      "That one had stew in it!",
+      "Sit down a minute!",
+      "Brick-red special!",
+      "Feel that? That's the block.",
+      "Knock knock!"
+    ],
+    "sources": ["the-rebellion#8", "the-rebellion#10"]
+  },
+  {
+    "id": "zed-low-hp",
+    "status": "proposed",
+    "gddGap": "No low-health barks in the GDD; built from 'stubborn' and 'refuses to back down'.",
+    "speaker": "zed",
+    "trigger": "low_hp",
+    "lines": [
+      "Still on my feet.",
+      "I'm not done yet.",
+      "Ow. Rude. Keep going.",
+      "Not backing down.",
+      "Breathe. Get up. Go.",
+      "Stubborn, remember?"
+    ],
+    "sources": ["the-rebellion#10"]
+  },
+  {
+    "id": "zed-block",
+    "status": "proposed",
+    "gddGap": "No block barks in the GDD; extends the defensive-tools pillar with a cheeky tone.",
+    "speaker": "zed",
+    "trigger": "block",
+    "lines": [
+      "Nice try.",
+      "Not today.",
+      "Learned that one behind the corner shop.",
+      "Too slow!",
+      "Come again?"
+    ],
+    "sources": ["the-rebellion#9", "the-rebellion#10"]
+  },
+  {
+    "id": "zed-wave-clear",
+    "status": "proposed",
+    "gddGap": "No wave-clear barks in the GDD; draws on what Zed fights for (courts, music, murals).",
+    "speaker": "zed",
+    "trigger": "wave_clear",
+    "lines": [
+      "One block at a time.",
+      "Keep the music playing.",
+      "That one's for the garden.",
+      "Next. We're getting somewhere.",
+      "The courts are getting closer.",
+      "Who's next?"
+    ],
+    "sources": ["the-rebellion#9", "the-rebellion#10"]
+  },
+  {
+    "id": "zed-level-won",
+    "status": "proposed",
+    "gddGap": "No victory lines in the GDD; written from Zed's mission of taking the Fallen City back one district at a time.",
+    "speaker": "zed",
+    "trigger": "level_won",
+    "lines": [
+      "The block is ours again.",
+      "One district down. Keep going.",
+      "Hear that? Music in the windows.",
+      "Nice work, Zed.",
+      "Kids can play here again.",
+      "Somebody grab a paintbrush."
+    ],
+    "sources": ["the-rebellion#9", "the-rebellion#2"]
+  },
+  {
+    "id": "zed-lose-ko",
+    "status": "proposed",
+    "gddGap": "GDD lose condition is 'knocked out by health bar'; no lines exist. Copy encourages a retry per tone rules.",
+    "speaker": "zed",
+    "trigger": "lose_ko",
+    "lines": [
+      "Knocked down. Not out. Go again.",
+      "That one got me. Shake it off.",
+      "Back up. One more round.",
+      "Dust off and try again.",
+      "Stubborn, remember? Again."
+    ],
+    "sources": ["the-rebellion#2", "the-rebellion#10", "lose#2"]
+  },
+  {
+    "id": "zed-lose-timeout",
+    "status": "proposed",
+    "gddGap": "GDD lose condition includes time running out; no lines exist. Wording follows canon.md's encouraging lose-copy example.",
+    "speaker": "zed",
+    "trigger": "lose_timeout",
+    "lines": [
+      "Time ran out. Shake it off and go again.",
+      "Clock beat us. Not next time.",
+      "Lost the beat this round. We'll find it.",
+      "Out of time. Not out of heart.",
+      "Run it back. We've got this."
+    ],
+    "sources": ["the-rebellion#2", "canon#6", "lose#2"]
+  },
+  {
+    "id": "zed-retry",
+    "status": "proposed",
+    "gddGap": "GDD lists retry as a game-state rule but has no copy; lines extend Zed's refusal to back down.",
+    "speaker": "zed",
+    "trigger": "retry",
+    "lines": [
+      "Round two.",
+      "Again. I know the steps now.",
+      "Let's try that again.",
+      "Same street. Better plan.",
+      "Ready when you are."
+    ],
+    "sources": ["the-rebellion#2", "the-rebellion#10", "lose#2"]
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "corner-shops",
+    "status": "canon",
+    "kind": "location",
+    "name": "The Corner Shops",
+    "summary": "Mustard-yellow storefronts on every corner, and the backdrop for Zed's late-night sparring.",
+    "body": "Corner shops are the first thing the Theme names when it describes the neighbourhood. Zed's block was known for its mustard-yellow storefronts, and the space behind them is where he sparred late at night.",
+    "tags": ["neighbourhood", "shops", "mustard"],
+    "sources": ["the-rebellion#6", "the-rebellion#7", "the-rebellion#9"]
+  },
+  {
+    "id": "zeds-mission",
+    "status": "canon",
+    "kind": "event",
+    "name": "Taking the City Back",
+    "summary": "Zed's goal: take the Fallen City back one district at a time and find out what happened to his father.",
+    "body": "Every wave Zed clears and every arena he survives brings him closer to the answer about his father and to restoring the community that raised him. He fights so kids can play on the courts, music can drift from open windows, and murals can rise again, celebrating real heroes.",
+    "tags": ["zed", "mission", "hope"],
+    "sources": ["the-rebellion#9", "the-rebellion#1"]
+  },
+  {
+    "id": "zeds-colours",
+    "status": "canon",
+    "kind": "object",
+    "name": "Zed's City Colours",
+    "summary": "Zed wears mustard yellow, brick red and forest green as a reminder of what he is fighting for.",
+    "body": "The neighbourhood palette is mustard yellow, brick red, forest green and warm browns. Zed carries the first three in his outfit, casual and expressive, so the city goes into every fight with him.",
+    "tags": ["zed", "palette", "outfit"],
+    "sources": ["the-rebellion#10", "the-rebellion#6"]
+  },
+  {
+    "id": "neighbours-and-friends",
+    "status": "canon",
+    "kind": "event",
+    "name": "The Quiet After the Takeover",
+    "summary": "After the Rust arrived, friends vanished, neighbours were hurt and the city's heartbeat went quiet.",
+    "body": "The GDD says friends vanished and neighbours were beaten, and the stall was seized for security violations. It stops there: it names no one and gives no further detail. This is why Zed had no choice but to fight.",
+    "tags": ["rust", "community", "takeover"],
+    "sources": ["the-rebellion#8", "canon#9"]
+  },
+  {
+    "id": "rust-grunt",
+    "status": "proposed",
+    "gddGap": "The GDD says only 'Rust Enemies'. 'Rust grunt' is the working Tier 0 enemy name from the asset manifest and canon open question 6; the owner has not confirmed it as the player-facing term.",
+    "kind": "character",
+    "name": "Rust Grunt",
+    "summary": "The rank-and-file member of the Rust: uniformed, visored and boxy, and the one enemy type in Tier 0.",
+    "body": "A Rust grunt is a person in a uniform, not a monster. Cold hues, steel and a cyan visor set them apart from the warm neighbourhood. They arrive in waves, and Zed knocks them down and pushes them back.",
+    "tags": ["rust", "enemy", "tier0"],
+    "sources": ["the-rebellion#2", "canon#8"]
+  }
+]

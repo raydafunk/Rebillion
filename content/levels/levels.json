@@ -1,0 +1,310 @@
+[
+  {
+    "id": "level-01-brick-red-alley",
+    "status": "proposed",
+    "gddGap": "The GDD says 'urban districts' and 'Defeat Wave / Clear Arena ... in time' but sets no level count, order, wave counts or time limit. Wave numbers and the 120 s limit copy the Tier 0 placeholders in src/waves/waveData.js and src/state/config.js, so they are engine-matched but not GDD-confirmed.",
+    "sources": [
+      "the-rebellion#1",
+      "the-rebellion#2",
+      "the-rebellion#7",
+      "the-rebellion#3"
+    ],
+    "name": "Brick-Red Alley",
+    "order": 1,
+    "district": "brick-red-alley",
+    "theme": "Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music.",
+    "palette": [
+      "#A8402E",
+      "#E3A92B",
+      "#6B4423",
+      "#2F6B3F"
+    ],
+    "timeLimitSec": 120,
+    "intro": "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.",
+    "outro": "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.",
+    "waves": [
+      {
+        "enemy": "grunt",
+        "count": 3,
+        "maxAlive": 3,
+        "spawnIntervalMs": 900,
+        "startDelayMs": 800
+      },
+      {
+        "enemy": "grunt",
+        "count": 4,
+        "maxAlive": 3,
+        "spawnIntervalMs": 800,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "grunt",
+        "count": 5,
+        "maxAlive": 4,
+        "spawnIntervalMs": 700,
+        "startDelayMs": 1500
+      }
+    ]
+  },
+  {
+    "id": "level-02-mustard-row",
+    "status": "proposed",
+    "gddGap": "No level structure in the GDD. Introduces the Rust Baton Scout (proposed enemy) as the first new threat; wave sizes and 135 s limit are assumed.",
+    "sources": [
+      "the-rebellion#6",
+      "the-rebellion#7",
+      "the-rebellion#3",
+      "systems-designer#8"
+    ],
+    "name": "Mustard Row",
+    "order": 2,
+    "district": "mustard-row",
+    "theme": "Mustard-yellow corner shops with hand-lettered signs and shutters the Rust have chained down.",
+    "palette": [
+      "#E3A92B",
+      "#F2C04D",
+      "#A8402E",
+      "#6B4423"
+    ],
+    "timeLimitSec": 135,
+    "intro": "Shutters chained, signs faded. Zed's neighbours are watching from behind the glass. Clear the row and open a shop.",
+    "outro": "Chains drop, shutters roll up, and the first hand-lettered sign goes back in the window. Mustard Row is open for business.",
+    "waves": [
+      {
+        "enemy": "grunt",
+        "count": 4,
+        "maxAlive": 3,
+        "spawnIntervalMs": 850,
+        "startDelayMs": 800
+      },
+      {
+        "enemy": "rust-baton-scout",
+        "count": 4,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1100,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "grunt",
+        "count": 5,
+        "maxAlive": 4,
+        "spawnIntervalMs": 700,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-baton-scout",
+        "count": 5,
+        "maxAlive": 3,
+        "spawnIntervalMs": 800,
+        "startDelayMs": 1500
+      }
+    ]
+  },
+  {
+    "id": "level-03-greenline-courts",
+    "status": "proposed",
+    "gddGap": "No level structure in the GDD. Introduces the Rust Enforcer (proposed bruiser) after the scout; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.",
+    "sources": [
+      "the-rebellion#6",
+      "the-rebellion#9",
+      "the-rebellion#3",
+      "systems-designer#8"
+    ],
+    "name": "Greenline Courts",
+    "order": 3,
+    "district": "greenline-courts",
+    "theme": "Forest-green basketball courts: chain-link, faded lines, a hoop with no net.",
+    "palette": [
+      "#2F6B3F",
+      "#E3A92B",
+      "#6B4423",
+      "#A8402E",
+      "#F4E6C8"
+    ],
+    "timeLimitSec": 150,
+    "intro": "Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.",
+    "outro": "Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.",
+    "waves": [
+      {
+        "enemy": "grunt",
+        "count": 5,
+        "maxAlive": 4,
+        "spawnIntervalMs": 750,
+        "startDelayMs": 800
+      },
+      {
+        "enemy": "rust-enforcer",
+        "count": 5,
+        "maxAlive": 1,
+        "spawnIntervalMs": 1500,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-baton-scout",
+        "count": 5,
+        "maxAlive": 3,
+        "spawnIntervalMs": 700,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-enforcer",
+        "count": 5,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1300,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "grunt",
+        "count": 6,
+        "maxAlive": 5,
+        "spawnIntervalMs": 500,
+        "startDelayMs": 1200
+      }
+    ]
+  },
+  {
+    "id": "level-04-stewpot-gardens",
+    "status": "proposed",
+    "gddGap": "No level structure in the GDD. Introduces the Rust Dart Marksman (proposed ranged enemy) and pairs it with melee waves so the player must use lane movement. Also introduces the proposed Rust Signal Warden (support, buffs grunts); engine waves hold one enemy type each, so a Warden wave stands alone until mixed waves exist (further gap). 180 s limit assumed.",
+    "sources": [
+      "the-rebellion#6",
+      "the-rebellion#7",
+      "the-rebellion#9",
+      "the-rebellion#3"
+    ],
+    "name": "Stewpot Gardens",
+    "order": 4,
+    "district": "stewpot-gardens",
+    "theme": "Food stalls with striped awnings and community garden planters behind Rust fencing.",
+    "palette": [
+      "#2F6B3F",
+      "#E3A92B",
+      "#A8402E",
+      "#6B4423",
+      "#F2D9A0"
+    ],
+    "timeLimitSec": 180,
+    "intro": "Zed's mother's stall stood just past the fence. Keep moving, sidestep those darts, and bring dinner back.",
+    "outro": "The fence comes down, the planters get watered, and a pot of stew goes on. Everyone gets a bowl.",
+    "waves": [
+      {
+        "enemy": "grunt",
+        "count": 5,
+        "maxAlive": 4,
+        "spawnIntervalMs": 700,
+        "startDelayMs": 800
+      },
+      {
+        "enemy": "rust-signal-warden",
+        "count": 5,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1500,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-dart-marksman",
+        "count": 5,
+        "maxAlive": 1,
+        "spawnIntervalMs": 1600,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-baton-scout",
+        "count": 5,
+        "maxAlive": 3,
+        "spawnIntervalMs": 650,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-dart-marksman",
+        "count": 5,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1200,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-enforcer",
+        "count": 5,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1000,
+        "startDelayMs": 1500
+      }
+    ]
+  },
+  {
+    "id": "level-05-songwindow-heights",
+    "status": "proposed",
+    "gddGap": "No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Shield Sergeant (proposed elite); the finale mixes every enemy type including the proposed Rust Signal Warden; 210 s limit assumed. Five levels is an assumption.",
+    "sources": [
+      "the-rebellion#6",
+      "the-rebellion#9",
+      "the-rebellion#3",
+      "narrative-critic#1"
+    ],
+    "name": "Songwindow Heights",
+    "order": 5,
+    "district": "songwindow-heights",
+    "theme": "Tall apartment blocks, painted-over mural walls and open windows waiting for music.",
+    "palette": [
+      "#A8402E",
+      "#E3A92B",
+      "#2F6B3F",
+      "#6B4423",
+      "#F4E6C8"
+    ],
+    "timeLimitSec": 210,
+    "intro": "Every window is shut and every mural is painted over. Zed climbs the Heights so the music can drift out again.",
+    "outro": "A window opens, then another. Music pours down the block and the murals start to rise. The city sings.",
+    "waves": [
+      {
+        "enemy": "grunt",
+        "count": 6,
+        "maxAlive": 5,
+        "spawnIntervalMs": 600,
+        "startDelayMs": 800
+      },
+      {
+        "enemy": "rust-shield-sergeant",
+        "count": 6,
+        "maxAlive": 1,
+        "spawnIntervalMs": 1800,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-baton-scout",
+        "count": 6,
+        "maxAlive": 4,
+        "spawnIntervalMs": 600,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-dart-marksman",
+        "count": 6,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1000,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-signal-warden",
+        "count": 6,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1200,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-enforcer",
+        "count": 6,
+        "maxAlive": 3,
+        "spawnIntervalMs": 900,
+        "startDelayMs": 1500
+      },
+      {
+        "enemy": "rust-shield-sergeant",
+        "count": 6,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1400,
+        "startDelayMs": 1800
+      }
+    ]
+  }
+]

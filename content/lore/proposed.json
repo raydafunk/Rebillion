@@ -1,0 +1,56 @@
+[
+  {
+    "id": "rust-notice-114", "status": "proposed",
+    "gddGap": "The menu design doc shows a poster 'Rust Notice 114 / CURFEW' but the main GDD never says the Rust issue curfews or numbered notices (canon open question 1). Kept as flavour pending owner approval.",
+    "kind": "object", "name": "Rust Notice 114",
+    "summary": "A cold, official curfew notice the Rust post on walls, always crossed out by the neighbourhood.",
+    "body": "Brick red and bossy, it is the Rust's way of speaking to the block. Somebody always gets to it first with a hand-inked cross-out.",
+    "tags": ["rust", "poster", "curfew"],
+    "sources": ["rebellion-menu-desgin#2", "menu-copy#3", "canon#13"]
+  },
+  {
+    "id": "local-heroes-benefit", "status": "proposed",
+    "gddGap": "The menu poster 'Local Heroes Benefit: Keep the Lights On' implies community fundraising events, which the GDD does not describe.",
+    "kind": "event", "name": "Local Heroes Benefit",
+    "summary": "A neighbourhood benefit night, Keep the Lights On, that keeps the community together under the Rust.",
+    "body": "Posters for it turn up on the walls the Rust have not yet cleaned. It is proof the block is still looking out for each other.",
+    "tags": ["community", "poster"],
+    "sources": ["rebellion-menu-desgin#2", "menu-copy#3", "menu-concept#4"]
+  },
+  {
+    "id": "mustard-row", "status": "proposed",
+    "gddGap": "The GDD says 'urban districts' but names none. Built from the mustard-yellow storefronts and corner shops of the Theme.",
+    "kind": "district", "name": "Mustard Row",
+    "summary": "The shopfront street of mustard-yellow corner shops, where the first arena could sit.",
+    "body": "Awnings, hand-lettered signs and shutters the Rust have chained down. Reopening a shop here is the first small win.",
+    "tags": ["district", "corner-shops", "mustard"],
+    "sources": ["the-rebellion#6", "the-rebellion#7"]
+  },
+  {
+    "id": "greenline-courts", "status": "proposed",
+    "gddGap": "No districts are named in the GDD. Built from the forest-green basketball courts of Zed's block.",
+    "kind": "district", "name": "Greenline Courts",
+    "summary": "The forest-green court district, shut down and waiting for kids to come back.",
+    "body": "Chain-link, faded lines and a hoop with no net. When the Rust are pushed back, the first sound should be a bouncing ball.",
+    "tags": ["district", "courts", "forest-green"],
+    "sources": ["the-rebellion#6", "the-rebellion#7", "the-rebellion#8"]
+  },
+  {
+    "id": "stewpot-gardens", "status": "proposed",
+    "gddGap": "No districts are named in the GDD. Built from the food stalls and community gardens of the Theme and Zed's mother's stall.",
+    "kind": "district", "name": "Stewpot Gardens",
+    "summary": "Food stalls and fenced-off community gardens, the warmest corner of the city.",
+    "body": "Stall awnings, planters behind Rust fencing and the memory of stew. Reclaiming it means the smell of dinner is back.",
+    "tags": ["district", "food-stall", "garden"],
+    "sources": ["the-rebellion#6", "the-rebellion#7", "the-rebellion#8"]
+  },
+  {
+    "id": "songwindow-heights", "status": "proposed",
+    "gddGap": "No districts are named in the GDD. Built from the open windows with music and the murals celebrating local heroes.",
+    "kind": "district", "name": "Songwindow Heights",
+    "summary": "Tall apartment blocks where music used to drift from open windows, now watched by Rust towers.",
+    "body": "Mural walls rise between the buildings, mostly painted over. It is the district where the music comes back.",
+    "tags": ["district", "music", "murals"],
+    "sources": ["the-rebellion#6", "the-rebellion#8"]
+  }
+]
