@@ -1,0 +1,88 @@
+[
+  {
+    "id": "rust-notice",
+    "status": "proposed",
+    "gddGap": "GDD mentions 'security violations' and the Rust surveilling districts; numbered curfew notices are only implied by the menu poster (canon open question 1).",
+    "speaker": "rust",
+    "trigger": "notice",
+    "lines": [
+      "NOTICE: Gatherings after curfew are a security violation.",
+      "NOTICE: Unauthorised murals will be removed.",
+      "By order of the Rust. Lights out at nine.",
+      "NOTICE: This area is under Rust supervision.",
+      "NOTICE: Stalls without a permit will be seized."
+    ],
+    "sources": ["the-rebellion#8", "menu-concept#4", "menu-copy#3"]
+  },
+  {
+    "id": "rust-taunt",
+    "status": "proposed",
+    "gddGap": "GDD gives no enemy speech; these are cold, official lines extending the Rust as a bureaucratic security force.",
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Move along, citizen.",
+      "You are in violation.",
+      "This is your final warning.",
+      "Disperse. Immediately.",
+      "Your block is under review.",
+      "Compliance is mandatory."
+    ],
+    "sources": ["the-rebellion#8", "canon#6"]
+  },
+  {
+    "id": "neighbour-cheer",
+    "status": "proposed",
+    "gddGap": "GDD says people on the block look out for each other but gives no neighbour lines.",
+    "speaker": "neighbour",
+    "trigger": "wave_clear",
+    "lines": [
+      "Go on, Zed. We're watching!",
+      "Hot plates by the steps after this!",
+      "That's our block!",
+      "Keep the lights on!",
+      "We heard that from the garden!"
+    ],
+    "sources": ["the-rebellion#7", "the-rebellion#8"]
+  },
+  {
+    "id": "poster-benefit-title",
+    "status": "canon",
+    "speaker": "poster",
+    "trigger": "poster",
+    "lines": [
+      "LOCAL HEROES BENEFIT",
+      "Keep the Lights On",
+      "Local Heroes Benefit: Keep the Lights On"
+    ],
+    "sources": ["rebellion-menu-desgin#2", "menu-copy#3"]
+  },
+  {
+    "id": "poster-rust-notice-114",
+    "status": "proposed",
+    "gddGap": "Rust Notice 114 with CURFEW struck through appears only in the menu concept, not the primary GDD (canon open question 1).",
+    "speaker": "poster",
+    "trigger": "poster",
+    "lines": [
+      "RUST NOTICE 114",
+      "CURFEW",
+      "By order of the Rust. Lights out at nine.",
+      "NOTICE 114: Curfew in effect."
+    ],
+    "sources": ["menu-concept#4", "menu-copy#3"]
+  },
+  {
+    "id": "poster-small-print",
+    "status": "proposed",
+    "gddGap": "Small print is marked proposed in menu-copy.md; community flavour from the lived-in neighbourhood theme.",
+    "speaker": "poster",
+    "trigger": "menu",
+    "lines": [
+      "Corner shop open late. Come by.",
+      "Music at the court Saturday. Bring a friend.",
+      "Garden crew needs hands. Bring gloves.",
+      "Hot plates by the steps. Pay what you can."
+    ],
+    "sources": ["menu-copy#3", "the-rebellion#6"]
+  }
+]

@@ -1,0 +1,105 @@
+[
+  {
+    "id": "title-banner",
+    "status": "canon",
+    "sources": ["the-title-screen#1", "canon#2"],
+    "speaker": "poster",
+    "trigger": "menu",
+    "lines": [
+      "THE REBELLION",
+      "FISTS OF THE FALLEN CITY",
+      "THE REBELLION: Fists of the Fallen City"
+    ],
+    "notes": "Line 1 stencil banner, line 2 stacked block type (break after OF THE; keep the break with the city name), line 3 full title for window/tab title."
+  },
+  {
+    "id": "title-tagline",
+    "status": "canon",
+    "gddGap": "Tagline appears only in the title-screen mock image (PDf/the-rebellion-title-screen.png); the .docx does not mention it. Wording echoes the pitch ('get it back').",
+    "sources": ["the-title-screen#1", "the-rebellion#1", "the-rebellion#9"],
+    "speaker": "poster",
+    "trigger": "menu",
+    "lines": [
+      "Brawl through the blocks. Take the city back.",
+      "Brawl through the blocks.",
+      "Take the city back.",
+      "Fight for the block you love."
+    ],
+    "notes": "Line 1 is the mock-up small print (primary pick). Lines 2-3 are the same split in two. Line 4 is an optional alternate."
+  },
+  {
+    "id": "title-press-prompt",
+    "status": "canon",
+    "sources": ["the-title-screen#1"],
+    "speaker": "narrator",
+    "trigger": "menu",
+    "lines": [
+      "PRESS ANY BUTTON",
+      "CH. 01",
+      "(c) 2026"
+    ],
+    "notes": "Blinking pill on hazard tape. Click, any key or any gamepad button advances. CH. 01 and (c) 2026 flank the prompt in the mock image only. Suggested blink about 1.0 s cycle (about 0.6 s on, 0.4 s off); a placeholder value, not in the GDD."
+  },
+  {
+    "id": "title-loading-bar",
+    "status": "canon",
+    "gddGap": "Spec says a short 'Loading the fallen city' bar runs after input, then 'it resets' (unclear: resets to title, or hands off to Main menu). Lower-case 'fallen city' breaks canon and the validator; reworded to 'the Fallen City'. Handoff target assumed to be the Main menu.",
+    "sources": ["the-title-screen#1", "canon#2"],
+    "speaker": "narrator",
+    "trigger": "menu",
+    "lines": [
+      "Loading the Fallen City...",
+      "Pasting up the posters...",
+      "Opening the windows...",
+      "Turning the music up...",
+      "Lights on. Almost there."
+    ],
+    "notes": "Rotate or pick one per load. Bar duration about 1.5 s (placeholder). Flow: Title -> any input -> bar fills -> Main menu."
+  },
+  {
+    "id": "title-wall-writing",
+    "status": "canon",
+    "sources": ["the-title-screen#1"],
+    "speaker": "poster",
+    "trigger": "poster",
+    "lines": [
+      "HOLD THE LINE",
+      "Nobody's coming. Be somebody.",
+      "Rebels",
+      "Sector 7 →",
+      "we were here"
+    ],
+    "notes": "Urban writing named in the spec. Mock image also shows 'BLOCK CREW' small print on the HOLD THE LINE sheet."
+  },
+  {
+    "id": "title-stamp-extras",
+    "status": "canon",
+    "gddGap": "Raised-fist stamp is in the spec but has no text; 'RISE' and 'BLOCK CREW' appear only in the mock image. Spare wheatpaste scraps added in the community voice.",
+    "sources": ["the-title-screen#1", "the-rebellion#6", "the-rebellion#7"],
+    "speaker": "poster",
+    "trigger": "poster",
+    "lines": [
+      "RISE",
+      "BLOCK CREW",
+      "Keep the lights on.",
+      "Stories on the stoop, 7pm.",
+      "Paint the wall. Bring a brush."
+    ],
+    "notes": "Lines 1-2 from the mock image. Lines 3-5 are optional spare background posters."
+  },
+  {
+    "id": "title-intro-card",
+    "status": "canon",
+    "gddGap": "Spec has no intro or lore text for the title screen. Optional 4-line card, shown once before the prompt or on idle; paraphrases the canon pitch only (Rust took the districts, Zed fights to get the block back). Owner may drop it.",
+    "sources": ["the-rebellion#1", "the-rebellion#7", "canon#9"],
+    "speaker": "narrator",
+    "trigger": "menu",
+    "lines": [
+      "The Rust swept in and fenced off the Fallen City.",
+      "The murals stayed. So did the music.",
+      "Zed is going to get his block back.",
+      "One block at a time."
+    ],
+    "notes": "Idle attract line after about 15 s without input (placeholder), cycle one line at a time at the bottom of the sky."
+  }
+]

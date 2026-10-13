@@ -43,5 +43,30 @@
     "fx.spark": "assets/fx/spark-placeholder.svg",
     "fx.telegraph": "assets/fx/telegraph-icon-placeholder.svg"
   },
-  "hitFeedbackSpec": "design/art/hit-feedback-spec.md"
+  "hitFeedbackSpec": "design/art/hit-feedback-spec.md",
+  "menu": {
+    "menu.sky": "assets/menu/menu-sky.svg",
+    "menu.buildings.far": "assets/menu/menu-buildings-far.svg",
+    "menu.buildings.near": "assets/menu/menu-buildings-near.svg",
+    "menu.street": "assets/menu/menu-street.svg",
+    "menu.wall": "assets/menu/menu-wall.svg",
+    "menu.strip.a": "assets/menu/strip-torn-a.svg",
+    "menu.strip.b": "assets/menu/strip-torn-b.svg",
+    "menu.strip.c": "assets/menu/strip-torn-c.svg",
+    "menu.poster.heroes": "assets/menu/poster-local-heroes.svg",
+    "menu.poster.curfew": "assets/menu/poster-curfew.svg"
+  },
+  "menuPalette": {
+    "brick": "#9C3B2E",
+    "brickDark": "#7A2F25",
+    "mustard": "#E1A92B",
+    "forest": "#2F5D3A",
+    "brown": "#6B4A2F",
+    "cream": "#E8DCC0",
+    "nearBlack": "#1D1A16"
+  },
+  "menuFonts": {
+    "display": "Anton, Impact, sans-serif",
+    "mono": "'Courier Prime', 'Courier New', monospace"
+  }
 }
