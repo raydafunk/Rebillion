@@ -58,3 +58,19 @@ function rig() {
   assert.deepEqual(of(EVENTS.PLAYER_HEALTH_CHANGED).at(-1), { hp: 0, maxHp: 20 });
 }
 console.log('state tests passed');
+
+// hit-stop: pure durations per hit type, no stacking, and the round timer ignores it
+{
+  const { hitStopMs, mergeHitStop } = await import('../combat/hitStop.js');
+  assert.equal(hitStopMs('light'), 50);
+  assert.equal(hitStopMs('heavy'), 100);
+  assert.equal(hitStopMs('nope'), 0);
+  assert.equal(hitStopMs('max'), 0);
+  assert.equal(mergeHitStop(50, 'heavy'), 100);
+  assert.equal(mergeHitStop(120, 'light'), 120);
+  assert.equal(mergeHitStop(0, 'ko', { ko: 500, max: 150 }), 150);
+  const { ev, of } = rig(); const s = createRoundState(ev, { seconds: 3 });
+  let stop = mergeHitStop(0, 'heavy'); // entities frozen for `stop` ms; timer must still tick
+  s.tick(1000); stop = Math.max(0, stop - 1000);
+  assert.deepEqual(of(EVENTS.TIMER_TICK).map((p) => p.secondsLeft), [2]);
+}

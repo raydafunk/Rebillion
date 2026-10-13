@@ -1,0 +1,16 @@
+{
+  "builtAt": "2026-10-13T17:30:00.000Z", "item": "GAP-004", "attempt": 1,
+  "verdict": "pass",
+  "npmTest": {"passed": 17, "failed": 0},
+  "acceptance": [
+    {"statement": "Hit-stop config and pure helper return ms per hit type (light, heavy)", "met": true, "evidence": "src/shared/hitFeedback.js:2, src/combat/hitStop.js:4; asserted at src/state/state.test.mjs hitStopMs light=50 heavy=100"},
+    {"statement": "A test asserts the round timer keeps counting during hit-stop", "met": true, "evidence": "src/state/state.test.mjs end block: tick(1000) while stop active yields TIMER_TICK secondsLeft 2. Weak: see finding"},
+    {"statement": "npm test stays green", "met": true, "evidence": "17 pass, 0 fail"}
+  ],
+  "findings": [
+    {"severity": "should-fix", "where": "src/state/state.test.mjs (last block)", "problem": "Timer assertion does not depend on hit-stop at all; it would pass with any helper, since the timer never reads hit-stop state. It documents intent but does not guard it.", "fix": "Acceptable while hit-stop is not wired; when ArenaScene applies it, add a test that ticks the timer while the scene hit-stop is active."},
+    {"severity": "nit", "where": "src/shared/combatData.test.mjs", "problem": "Still not in npm test (package.json unowned), so it does not run in the 17.", "fix": "Lead to add it to the test script."},
+    {"severity": "nit", "where": "src/state/state.test.mjs", "problem": "Uses top-level await dynamic import inside a block; fine but inconsistent with other tests.", "fix": "Optionally hoist to a static import."}
+  ],
+  "requests": ["Lead: wire hitStopMs/mergeHitStop in ArenaScene.js (freeze attacker and target only); add combatData.test.mjs to package.json test script."]
+}

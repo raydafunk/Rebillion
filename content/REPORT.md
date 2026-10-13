@@ -1,8 +1,8 @@
 # Content pipeline report
-_2026-10-12_
+_2026-10-13_
 
 ## Sources read
-36 of 36 documents ingested.
+38 of 38 documents ingested.
 
 - read `GameDesignDocument/Rebellion menu desgin.docx` (primary), 4 chunks
 - read `GameDesignDocument/The Rebellion.docx` (primary), 10 chunks
@@ -10,6 +10,8 @@ _2026-10-12_
 - read `PDf/The Rebellion -Frist Draft.pdf` (reference), 2 chunks
 - read `PDf/The Rebellion- Final Gdd.pdf` (reference), 5 chunks
 - read `README.md` (reference), 2 chunks
+- read `blackboard/README.md` (reference), 5 chunks
+- read `blackboard/log.md` (reference), 1 chunks
 - read `design/art/asset-manifest.md` (derived), 13 chunks
 - read `design/art/hit-feedback-spec.md` (derived), 7 chunks
 - read `design/art/style-guide.md` (derived), 15 chunks

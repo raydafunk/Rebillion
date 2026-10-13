@@ -6,6 +6,7 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { ROUND_TIME_SECONDS } from '../state/config.js';
 import { Zed } from '../player/Zed.js';
+import { ZedVisual, loadZedSprites } from '../player/zedVisual.js';
 import { Arena } from '../arena/Arena.js';
 import { WORLD, LANE } from '../arena/arenaData.js';
 import { WAVES } from '../waves/waveData.js';
@@ -22,7 +23,7 @@ export default class ArenaScene extends Phaser.Scene {
   preload() {
     this.load.on('loaderror', () => {});
     this.load.svg(ASSET_KEYS.BG_ARENA, ASSET_PATHS[ASSET_KEYS.BG_ARENA], { width: WORLD.w, height: WORLD.h });
-    this.load.svg('zed.visual', 'assets/sprites/zed-placeholder.svg', { width: 128, height: 128 });
+    loadZedSprites(this, ['Idle', 'Jumping']);
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
     this.load.svg(TELEGRAPH_FX_KEY, 'assets/fx/telegraph-icon-placeholder.svg', { width: 48, height: 48 });
     this.load.svg('fx.spark', 'assets/fx/spark-placeholder.svg', { width: 48, height: 48 });
@@ -48,7 +49,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.zed = new Zed(this, 200, GROUND_Y - 36);
     this.zed.sprite.setAlpha(0);                       // physics body only; the visual below is the art
     this.zedShadow = this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25);
-    this.zedVisual = this.add.image(0, 0, 'zed.visual').setOrigin(0.5, 0.94).setDisplaySize(112, 112);
+    this.zedVisual = new ZedVisual(this);
     this.gfx = this.add.graphics().setDepth(5000);
 
     this.arena = new Arena({
@@ -68,7 +69,9 @@ export default class ArenaScene extends Phaser.Scene {
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene');
-    this.scene.get('HudScene').events.once('create', () => { this.arena.start(); this.state.start(); });
+    // ?sandbox: empty arena for testing Zed's moves; no waves, timer or lose condition.
+    this.sandbox = new URLSearchParams(globalThis.location?.search).has('sandbox');
+    this.scene.get('HudScene').events.once('create', () => { if (this.sandbox) return; this.arena.start(); this.state.start(); });
 
     this.keys = this.input.keyboard.addKeys({ esc: 'ESC', p: 'P' });
     // Pause spec: auto-pause on tab blur, gamepad Start opens pause.
@@ -106,7 +109,7 @@ export default class ArenaScene extends Phaser.Scene {
     const c = this.arena.bounds.clamp({ x: this.zed.x, y: GROUND_Y });
     if (c.x !== this.zed.x) { this.zed.sprite.x = c.x; this.zed.sprite.body.setVelocityX(0); }
 
-    if (!this.ended) {
+    if (!this.ended && !this.sandbox) {
       this.arena.update(dt);
       this.state.tick(dt);
     }
@@ -144,15 +147,8 @@ export default class ArenaScene extends Phaser.Scene {
     const z = this.zed;
     const feetY = GROUND_Y;
     const airborne = Math.max(0, feetY - (z.y + 36));
-    this.zedVisual.setPosition(z.x, z.y + 36).setDepth(z.y + 36).setFlipX(z.facing < 0);
+    this.zedVisual.update(z, dt, z.x, z.y + 36, z.y + 36);
     this.zedShadow.setPosition(z.x, feetY).setDepth(feetY - 1).setScale(1 - Math.min(0.4, airborne / 400));
-    const st = z.state;
-    this.zedVisual.setAlpha(z.dead ? 0.35 : 1);
-    if (st === 'hitstun') this.zedVisual.setTintFill(0xffffff);
-    else if (st === 'block') this.zedVisual.setTint(0x88aaff);
-    else if (st === 'dodge') this.zedVisual.setAlpha(0.5).clearTint();
-    else this.zedVisual.clearTint();
-    this.zedVisual.setAngle(z.dead ? 80 * z.facing : 0);
 
     for (const g of this.arena.enemies.list()) {
       let v = this.sprites.get(g.id);

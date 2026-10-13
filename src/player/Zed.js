@@ -1,6 +1,6 @@
 // Zed: Phaser Arcade sprite wrapper. Movement + state machine. Uses global Phaser.
 import { ZED_CONFIG } from './config.js';
-import { InputState } from './input.js';
+import { InputState, padToKeys } from './input.js';
 import { JumpController } from './jump.js';
 import { PlayerStateMachine } from './stateMachine.js';
 import { EVENTS } from '../shared/events.js';
@@ -40,6 +40,7 @@ export class Zed {
     this._onUp = (e) => this.down.delete(e.code);
     kb.on('keydown', this._onDown);
     kb.on('keyup', this._onUp);
+    kb.addCapture(WATCHED.filter((c) => c === 'Space' || c.startsWith('Arrow'))); // stop page scroll
 
     this._onDamage = (d) => this._handleDamage(d);
     this._onDied = (d) => { if (d.id === PLAYER_ID) this.dead = true; };
@@ -106,7 +107,8 @@ export class Zed {
     const cfg = this.cfg;
     const body = this.sprite.body;
     const grounded = body.blocked.down || body.touching.down;
-    this.input.poll(this.down);
+    const pad = this.scene.input.gamepad && this.scene.input.gamepad.total ? this.scene.input.gamepad.getPad(0) : null;
+    this.input.poll(pad ? new Set([...this.down, ...padToKeys(pad)]) : this.down);
     const inp = this.input;
     if (this.dead) { this.sprite.setFlipX(this.facing < 0); body.setVelocityX(0); return; }
     const locked = this.machine.state === 'attack' || this.machine.state === 'dodge' || this.machine.state === 'hitstun' || this.machine.state === 'block';
@@ -146,6 +148,7 @@ export class Zed {
     this.events.emit(EVENTS.ENTITY_UNREGISTERED, { id: PLAYER_ID });
     this.scene.input.keyboard.off('keydown', this._onDown);
     this.scene.input.keyboard.off('keyup', this._onUp);
+    this.scene.input.keyboard.removeCapture(['Space', 'ArrowLeft', 'ArrowRight', 'ArrowUp']);
     this.sprite.destroy();
   }
 }

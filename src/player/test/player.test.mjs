@@ -127,3 +127,61 @@ test('combo then hit-stun simulation', () => {
   for (let i = 0; i < 12; i++) m.step(NONE);
   assert.equal(m.state, 'idle');
 });
+
+import { zedPose, zedTextureKey, ZED_SPRITE } from '../zedVisual.js';
+import { readFileSync, existsSync } from 'node:fs';
+
+test('zed visual: pose is data-driven per state and sprites exist', () => {
+  assert.equal(zedPose({ state: 'attack', phase: 'active', moveId: 'light1', t: 0 }).tint, 0xfff2b0);
+  assert.equal(zedPose({ state: 'hitstun', t: 0 }).tintFill, 0xffffff);
+  assert.equal(zedPose({ state: 'block', t: 0 }).tint, 0x88aaff);
+  assert.equal(zedPose({ state: 'idle', t: 0 }).alpha, 1);
+  assert.ok(zedPose({ state: 'attack', phase: 'active', moveId: 'heavy1', facing: 1, t: 0 }).ox > zedPose({ state: 'attack', phase: 'active', moveId: 'light1', facing: 1, t: 0 }).ox);
+  assert.ok(zedPose({ state: 'attack', phase: 'active', moveId: 'light1', facing: -1, t: 0 }).ox < 0);
+  assert.equal(zedTextureKey('Idle', 'east'), 'zed.idle.east');
+  for (const d of Object.values(ZED_SPRITE.dir)) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/Idle/rotations/${d}.png`, import.meta.url)));
+});
+
+import { ZED_ANIMS, zedFrameKey, zedAnimKey, zedFramePath } from '../zedVisual.js';
+test('zed walk anim: keys, files, metadata agree', () => {
+  assert.equal(zedAnimKey('run', 'east'), 'zed.run.east');
+  assert.equal(zedFrameKey('run', 'west', 3), 'zed.run.west.3');
+  const meta = JSON.parse(readFileSync(new URL('../../../assets/sprites/zed/metadata.json', import.meta.url), 'utf8'));
+  for (const a of ZED_ANIMS) {
+    const st = meta.states.find((x) => x.folder === a.folder);
+    // metadata.json is regenerated per export and may list only the newest state; files below are the hard check
+    if (st) assert.deepEqual([st.character.size.width, st.character.size.height], [ZED_SPRITE.size, ZED_SPRITE.size]);
+    for (const d of Object.values(ZED_SPRITE.dir)) {
+      if (st) assert.equal(st.frames.animations[a.anim][d].length, a.frames);
+      for (let i = 0; i < a.frames; i++) {
+        if (st) assert.equal(st.frames.animations[a.anim][d][i], zedFramePath(a, d, i));
+        assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(a, d, i)}`, import.meta.url)));
+      }
+    }
+  }
+  assert.ok(ZED_ANIMS.every((a) => a.fps >= 10 && a.fps <= 12));
+  assert.equal(ZED_ANIMS[0].state, 'run');
+});
+
+import { ZED_POSES } from '../zedVisual.js';
+import { KEY_MAP, padToKeys } from '../input.js';
+test('jump: pose textures exist, keys and gamepad map to jump edge', () => {
+  assert.equal(ZED_POSES.jump.state, 'Jumping');
+  assert.equal(zedTextureKey(ZED_POSES.jump.state, 'west'), 'zed.jumping.west');
+  for (const d of Object.values(ZED_SPRITE.dir)) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/Jumping/rotations/${d}.png`, import.meta.url)));
+  assert.ok(zedPose({ state: 'jump', vy: -100, t: 0 }).sy > 1);
+  assert.ok(zedPose({ state: 'jump', vy: 100, t: 0 }).sy < 1);
+  // no snap at the apex: the shape changes smoothly as vy crosses zero
+  const a = zedPose({ state: 'jump', vy: -5, t: 0 }), b = zedPose({ state: 'jump', vy: 5, t: 0 });
+  assert.ok(Math.abs(a.sy - b.sy) < 0.01 && Math.abs(a.sx - b.sx) < 0.01);
+  for (const k of ['Space', 'KeyW', 'ArrowUp']) {
+    const i = new InputState(); i.poll([]); assert.equal(i.poll([k]).pressed.jump, true);
+    assert.equal(i.poll([k]).pressed.jump, false); // held, no re-trigger
+  }
+  assert.ok(KEY_MAP.jump.includes('Space'));
+  const pad = { buttons: Array.from({ length: 16 }, () => ({ pressed: false })), axes: [0, 0] };
+  pad.buttons[0].pressed = true;
+  assert.equal(new InputState().poll(padToKeys(pad)).pressed.jump, true);
+  pad.buttons[0].pressed = false; pad.axes[0] = 0.9;
+  assert.equal(new InputState().poll(padToKeys(pad)).moveX, 1);
+});

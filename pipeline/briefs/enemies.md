@@ -1,5 +1,5 @@
 # Content brief: enemies
-_Generated 2026-10-12T21:22:13.064Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
+_Generated 2026-10-13T15:52:07.393Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
 
 **Writer agent:** enemy-designer-agent  |  **Output dir:** `content/enemies/`  |  **Produces:** Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.
 
@@ -503,13 +503,13 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 **Problem:** The pitch claims "modern combo systems, character progression, and dynamic enemy behaviours". The systems sections do not mention progression. There are no stats, unlocks, upgrades, moves gained over time, level count, or difficulty ramp. Pacing across a full playthrough cannot be assessed because the document never says how long a playthrough is or how a level differs from the last. The "Corrupt private security force" is the only enemy described, and there are no enemy types, bosses or districts beyond "urban districts".
 **Source:** The pitch sentence above, and the absence of any progression, level list or enemy roster anywhere else in the document.
 
-### [business-analyst#2] reference - gdd-review-kit-main/reviews/business-analyst.md - Finding 2: Pitch promises a full-featured brawler, but the scoped systems cover only movement, combos, a timer, and a win check
-- **Problem:** The pitch claims "character progression" and "dynamic enemy behaviours". It also claims "urban districts", pick-up objects, and a "modern combo system". None of the progression is specified, and the district and level structure is not specified either. The Agent table lists only five agents: movement, combos, timer, enemy, and game loop. Progression, pick-ups, districts, and levels have no owner, no budget, and no content plan. The listed scope is a tech demo, but the pitch sells a shippable game. Those are two different products with two different costs.
-- **Source:** The Pitch ("character progression, and dynamic enemy behaviours"; "urban districts"). Game Mechanics ("pick-up objects"). AI Architecture Team table (five agents, none covering progression or content).
-- **Severity:** MAJOR
+### [adversarial-qa#2] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 2: Enemy spawning has no rules, so the wave system can be broken or become unwinnable (MAJOR)
+**Problem:** "Enemies spawn to fight" is the entire spawn spec. Nothing defines spawn triggers, caps, rates, positions or whether spawns are timer-driven or clear-driven. If spawns are time-driven, a player who is slow (or one who hoards enemies with juggles) faces unbounded enemy accumulation. If spawns are clear-driven, a player can stand at an edge and exploit spawn positions. It is also unclear whether enemies spawn inside the player's attack range or behind the player.
+**Source:** "Enemies spawn to fight", "Enemy Agent: Control the A.I Enemies" (no behavior described), and the Pitch's claim of "dynamic enemy behaviours" with no definition.
+**Exploits and edge cases:** Juggle routes are advertised ("Combos and Juggle routes"). There are no rules on infinite combos, enemy hit-stun decay, or boss and heavy-enemy immunity. This is the classic brawler exploit and the document does not address it.
 
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 359 chunks across 36 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 365 chunks across 38 documents.

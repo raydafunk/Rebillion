@@ -42,3 +42,21 @@ export class InputState {
     return this;
   }
 }
+
+// Standard-mapping gamepad -> the same key codes, so InputState needs no second path.
+// A=jump, X=light, Y=heavy, B/RB=dodge, LB/LT/RT=block, d-pad / left stick = move.
+export const PAD_MAP = { jump: [0], light: [2], heavy: [3], dodge: [1, 5], block: [4, 6, 7], left: [14], right: [15] };
+export function padToKeys(pad, deadzone = 0.35) {
+  const out = [];
+  if (!pad || !pad.buttons) return out;
+  const on = (i) => !!(pad.buttons[i] && pad.buttons[i].pressed);
+  const ax = pad.axes && pad.axes.length ? pad.axes[0] : 0;
+  const rep = { jump: 'Space', light: 'KeyJ', heavy: 'KeyK', dodge: 'KeyV', block: 'KeyL' };
+  for (const [a, btns] of Object.entries(PAD_MAP)) {
+    if (a === 'left' || a === 'right') continue;
+    if (btns.some(on)) out.push(rep[a]);
+  }
+  if (on(PAD_MAP.left[0]) || ax < -deadzone) out.push('ArrowLeft');
+  if (on(PAD_MAP.right[0]) || ax > deadzone) out.push('ArrowRight');
+  return out;
+}

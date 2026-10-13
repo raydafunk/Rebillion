@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-10-12T21:22:13.058Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-10-13T15:52:07.354Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -389,4 +389,4 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 **Severity:** MINOR
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 359 chunks across 36 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 365 chunks across 38 documents.

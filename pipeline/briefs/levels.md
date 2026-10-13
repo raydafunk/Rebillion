@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-10-12T21:22:13.071Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-10-13T15:52:07.422Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -326,4 +326,4 @@ Agent Development role Gameplay Effect Player Mechanics Movement, jump, The play
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 359 chunks across 36 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 365 chunks across 38 documents.

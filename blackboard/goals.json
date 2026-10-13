@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "objective": "Bring the Phaser game in src/ in line with the GDD, Tier 0 first, by closing the highest-value gaps.",
+  "goals": [
+    {
+      "id": "G1-read-gdd",
+      "title": "Extract testable requirements from the GDD",
+      "desired_state": "facts/gdd-requirements.json lists every GDD requirement with id, text, tier and source chunk ids",
+      "owner": "gdd-reader-agent",
+      "needs": [],
+      "produces": "facts/gdd-requirements.json",
+      "status": "done",
+      "attempts": 2,
+      "maxAttempts": 2,
+      "note": "70 requirements"
+    },
+    {
+      "id": "G2-scan-code",
+      "title": "Inventory what src/ implements",
+      "desired_state": "facts/code-inventory.json lists every feature found in src/ with file evidence and test coverage",
+      "owner": "code-scanner-agent",
+      "needs": [],
+      "produces": "facts/code-inventory.json",
+      "status": "done",
+      "attempts": 1,
+      "maxAttempts": 2,
+      "note": "22 features, tests 17/0"
+    },
+    {
+      "id": "G3-find-gaps",
+      "title": "Compare requirements with code",
+      "desired_state": "facts/gaps.json classifies every requirement as met, partial, missing or contradicted, with evidence",
+      "owner": "gap-analyst-agent",
+      "needs": [
+        "G1-read-gdd",
+        "G2-scan-code"
+      ],
+      "produces": "facts/gaps.json",
+      "status": "done",
+      "attempts": 2,
+      "maxAttempts": 2,
+      "note": "38 gaps (6 missing, 3 contradicted, 29 partial)"
+    },
+    {
+      "id": "G4-prioritise",
+      "title": "Rank the gaps",
+      "desired_state": "facts/priorities.json is an ordered queue of gaps with score, rationale, owning code agent and files allowed",
+      "owner": "prioritiser-agent",
+      "needs": [
+        "G3-find-gaps"
+      ],
+      "produces": "facts/priorities.json",
+      "status": "done",
+      "attempts": 2,
+      "maxAttempts": 2,
+      "note": "10 queued (1 partial carry-over needsOwner), top: hit-stop config"
+    },
+    {
+      "id": "G5-generate-code",
+      "title": "Implement the top-ranked gap",
+      "desired_state": "The top open item in facts/priorities.json is implemented with tests, and facts/generated.json records the change",
+      "owner": "code-generator-agent",
+      "needs": [
+        "G4-prioritise"
+      ],
+      "produces": "facts/generated.json",
+      "status": "done",
+      "attempts": 2,
+      "maxAttempts": 3,
+      "note": "GAP-004 implemented"
+    },
+    {
+      "id": "G6-review",
+      "title": "Review the generated change",
+      "desired_state": "facts/review.json holds a pass/fail verdict with findings; npm test is green",
+      "owner": "reviewer-agent",
+      "needs": [
+        "G5-generate-code"
+      ],
+      "produces": "facts/review.json",
+      "status": "done",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "note": "pass"
+    }
+  ]
+}

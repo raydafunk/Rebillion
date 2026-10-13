@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-12T21:22:13.016Z",
+  "builtAt": "2026-10-13T15:52:07.262Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
@@ -17,15 +17,13 @@
     {
       "file": "GameDesignDocument/The Rebellion.docx",
       "authority": "primary",
-      "bytes": 491607,
-      "sha1": "eab88c8b8057",
+      "bytes": 46437,
+      "sha1": "16c2bf8cfdaa",
       "status": "ingested",
       "docId": "the-rebellion",
       "chunks": 10,
       "chars": 8416,
-      "warnings": [
-        "contains embedded images (pixels not read)"
-      ]
+      "warnings": []
     },
     {
       "file": "GameDesignDocument/The Title Screen.docx",
@@ -65,12 +63,34 @@
     {
       "file": "README.md",
       "authority": "reference",
-      "bytes": 1548,
-      "sha1": "ffbef74bb144",
+      "bytes": 1660,
+      "sha1": "89cbad99cf9d",
       "status": "ingested",
       "docId": "readme",
       "chunks": 2,
-      "chars": 1472,
+      "chars": 1589,
+      "warnings": []
+    },
+    {
+      "file": "blackboard/README.md",
+      "authority": "reference",
+      "bytes": 2692,
+      "sha1": "5aeba0cdad5a",
+      "status": "ingested",
+      "docId": "readme-2",
+      "chunks": 5,
+      "chars": 2424,
+      "warnings": []
+    },
+    {
+      "file": "blackboard/log.md",
+      "authority": "reference",
+      "bytes": 1289,
+      "sha1": "cdb9cc456a34",
+      "status": "ingested",
+      "docId": "log",
+      "chunks": 1,
+      "chars": 1270,
       "warnings": []
     },
     {
@@ -109,45 +129,45 @@
     {
       "file": "design/art/zed-pixellab-prompt.md",
       "authority": "derived",
-      "bytes": 5866,
-      "sha1": "422b86dff41f",
+      "bytes": 5954,
+      "sha1": "5cdca47f6d7a",
       "status": "ingested",
       "docId": "zed-pixellab-prompt",
       "chunks": 8,
-      "chars": 5621,
+      "chars": 5670,
       "warnings": []
     },
     {
       "file": "design/lore/canon.md",
       "authority": "derived",
-      "bytes": 6975,
-      "sha1": "27fe0510e91a",
+      "bytes": 7073,
+      "sha1": "1c27e5aca274",
       "status": "ingested",
       "docId": "canon",
       "chunks": 13,
-      "chars": 6456,
+      "chars": 6483,
       "warnings": []
     },
     {
       "file": "design/lore/critic-log.md",
       "authority": "derived",
-      "bytes": 9272,
-      "sha1": "4383ce20eb09",
+      "bytes": 9367,
+      "sha1": "dd14dbf0282a",
       "status": "ingested",
       "docId": "critic-log",
       "chunks": 16,
-      "chars": 8652,
+      "chars": 8688,
       "warnings": []
     },
     {
       "file": "design/lore/menu-copy.md",
       "authority": "derived",
-      "bytes": 1552,
-      "sha1": "8242e0969a12",
+      "bytes": 1590,
+      "sha1": "fef199e145b8",
       "status": "ingested",
       "docId": "menu-copy",
       "chunks": 4,
-      "chars": 1426,
+      "chars": 1445,
       "warnings": []
     },
     {
@@ -230,23 +250,23 @@
     {
       "file": "design/ux/main-menu.md",
       "authority": "derived",
-      "bytes": 9509,
-      "sha1": "0b40d957f3c6",
+      "bytes": 9646,
+      "sha1": "ecc9f223e63a",
       "status": "ingested",
       "docId": "main-menu",
       "chunks": 14,
-      "chars": 8437,
+      "chars": 8511,
       "warnings": []
     },
     {
       "file": "design/ux/menu-concept.md",
       "authority": "derived",
-      "bytes": 3001,
-      "sha1": "d2dc2a98bdd3",
+      "bytes": 3039,
+      "sha1": "23a55b3b6846",
       "status": "ingested",
       "docId": "menu-concept",
       "chunks": 6,
-      "chars": 2787,
+      "chars": 2803,
       "warnings": []
     },
     {
@@ -288,7 +308,7 @@
       "bytes": 3580,
       "sha1": "101dd834f10b",
       "status": "ingested",
-      "docId": "readme-2",
+      "docId": "readme-2-2",
       "chunks": 8,
       "chars": 3360,
       "warnings": []

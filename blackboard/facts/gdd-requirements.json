@@ -1,0 +1,1097 @@
+{
+  "builtAt": "2026-10-13T15:53:13.248Z",
+  "docsRead": 3,
+  "docsSkipped": [],
+  "requirements": [
+    {
+      "id": "R-001",
+      "area": "content",
+      "text": "The game is a fast-paced 2D side-scrolling brawler.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-002",
+      "area": "player",
+      "text": "The player controls Zed.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#7"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-003",
+      "area": "content",
+      "text": "The enemy faction is Rust, a corrupt private security force.",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#8"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-004",
+      "area": "combat",
+      "text": "The player has light attacks.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-005",
+      "area": "combat",
+      "text": "The player has heavy attacks.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-006",
+      "area": "combat",
+      "text": "The player can pick up objects.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-007",
+      "area": "combat",
+      "text": "Combos exist: light and heavy attacks chain into combos.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-008",
+      "area": "combat",
+      "text": "Juggle routes exist as an offensive option.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-009",
+      "area": "combat",
+      "text": "The player can block.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-010",
+      "area": "combat",
+      "text": "The player can dodge.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-011",
+      "area": "combat",
+      "text": "The player can parry.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-012",
+      "area": "combat",
+      "text": "Attacks, combos, cancel windows and hit stun are driven by one state machine.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#3",
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-013",
+      "area": "combat",
+      "text": "Hits land, damage registers and the player can die, using shared health, damage and hitbox/hurtbox data.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#3",
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-014",
+      "area": "combat",
+      "text": "Hit feedback includes hit stop so hits feel punchy.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-015",
+      "area": "player",
+      "text": "The player can move, jump and handle input responsively.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-016",
+      "area": "player",
+      "text": "Player sprite animations exist for idle, walk and jump.",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-017",
+      "area": "enemy",
+      "text": "Enemies are AI-controlled.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-018",
+      "area": "enemy",
+      "text": "Enemies chase and attack the player.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-019",
+      "area": "enemy",
+      "text": "There is an attacker cap limiting simultaneous attacking enemies.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-020",
+      "area": "enemy",
+      "text": "Enemy attacks have readable telegraphs.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-021",
+      "area": "enemy",
+      "text": "Only one enemy type is required first.",
+      "tier": 0,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-rebellion#5",
+        "the-rebellion#6"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-022",
+      "area": "waves",
+      "text": "Enemies spawn in waves.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-023",
+      "area": "waves",
+      "text": "Spawn triggers, rate, cap and positions are defined by the wave spawner.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-024",
+      "area": "waves",
+      "text": "Difficulty comes from how waves arrive.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-025",
+      "area": "state",
+      "text": "The player wins a level by defeating the wave / clearing the arena within the time frame.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-026",
+      "area": "state",
+      "text": "Win condition: fight to the end of the level while beating Rust enemies.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-027",
+      "area": "state",
+      "text": "Lose condition: the player is knocked out (health bar empty).",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-028",
+      "area": "state",
+      "text": "Lose condition: time runs out.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-029",
+      "area": "state",
+      "text": "A level timer exists and is tracked.",
+      "tier": 0,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#6"
+      ],
+      "confidence": "stated",
+      "conflict": "First draft names a Timer Agent (the-rebellion-frist-draft#2); final docx lists none."
+    },
+    {
+      "id": "R-030",
+      "area": "state",
+      "text": "Game state handles win check, lose state, time-out result and retry.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-031",
+      "area": "state",
+      "text": "After a level is won, the next level begins.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-032",
+      "area": "state",
+      "text": "Core loop: enter city level, enemies spawn, fight, wave cleared, level won / lose state, next level.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-033",
+      "area": "camera",
+      "text": "The arena camera locks during an arena fight.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-034",
+      "area": "camera",
+      "text": "World bounds exist.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-035",
+      "area": "camera",
+      "text": "An unreachable-enemy failsafe prevents an off-screen soft lock.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-036",
+      "area": "ui",
+      "text": "A HUD shows health and timer.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-037",
+      "area": "ui",
+      "text": "Win and lose screens exist and show why the player won or lost.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "the-rebellion#3",
+        "the-rebellion#5"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-038",
+      "area": "ui",
+      "text": "The player can start a game from a menu.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "the-rebellion#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-039",
+      "area": "content",
+      "text": "Tier 0 scope: one character, one enemy type, waves and a timer.",
+      "tier": 0,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#6"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-040",
+      "area": "content",
+      "text": "Engine is Phaser (Arcade physics), running in browser.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "the-rebellion#6"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-041",
+      "area": "art",
+      "text": "Colour palette: mustard yellow, brick red, forest green, warm browns.",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-rebellion#6",
+        "rebellion-menu-desgin#1"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-042",
+      "area": "art",
+      "text": "Visual theme is lived-in, human, culturally rich (corner shops, murals, basketball courts, food stalls, gardens).",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-rebellion#6"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-043",
+      "area": "art",
+      "text": "Zed's outfit uses mustard yellow, brick red and forest green.",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-rebellion#10"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-044",
+      "area": "player",
+      "text": "Move left/right is bound to A/D (primary) and Left/Right arrows (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "A/D",
+        "alternate": "Left/Right arrows"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-045",
+      "area": "player",
+      "text": "Jump is bound to W or Space (primary) and Up arrow (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "W or Space",
+        "alternate": "Up arrow"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-046",
+      "area": "player",
+      "text": "Crouch is bound to S (primary) and Down arrow (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "S",
+        "alternate": "Down arrow"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-047",
+      "area": "player",
+      "text": "Light attack is bound to J (primary) and Z (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "J",
+        "alternate": "Z"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-048",
+      "area": "player",
+      "text": "Heavy attack is bound to K (primary) and X (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "K",
+        "alternate": "X"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-049",
+      "area": "player",
+      "text": "Dodge is bound to L (primary) and C (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "L",
+        "alternate": "C"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-050",
+      "area": "player",
+      "text": "Pick up is bound to P (primary) and N (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "P",
+        "alternate": "N"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-051",
+      "area": "player",
+      "text": "Parry is bound to T (primary) and M (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "T",
+        "alternate": "M"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-052",
+      "area": "player",
+      "text": "Block is bound to I (primary) and V (alternate).",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "primary": "I",
+        "alternate": "V"
+      },
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-053",
+      "area": "ui",
+      "text": "Main menu options in order: Fight, Controls, Options, Quit.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-054",
+      "area": "ui",
+      "text": "Main menu title reads THE REBELLION (cream on black strip tilted about 2 degrees) with subtitle Fists of the Fallen City in mustard monospace.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-055",
+      "area": "ui",
+      "text": "Each menu option is a tilted torn-edge paper strip; selected option straightens, moves right and takes the brightest colour.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-056",
+      "area": "ui",
+      "text": "Selection tween: rotation to 0 and x +10px over about 100 ms.",
+      "tier": null,
+      "kind": "number",
+      "value": {
+        "ms": 100,
+        "dx": 10
+      },
+      "sources": [
+        "rebellion-menu-desgin#4"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-057",
+      "area": "ui",
+      "text": "Menu strip colours: Fight mustard, Controls cream, Options forest green, Quit warm brown.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-058",
+      "area": "ui",
+      "text": "Menu footer hint reads W/S select / Enter confirm, bottom right.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-059",
+      "area": "ui",
+      "text": "Menu is keyboard-driven (W/S, Enter) and mouse hover and click match.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#4",
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-060",
+      "area": "ui",
+      "text": "Fight starts the game.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-061",
+      "area": "ui",
+      "text": "A Controls screen lists the key bindings.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-062",
+      "area": "ui",
+      "text": "Options has a Music volume slider.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-063",
+      "area": "ui",
+      "text": "Options has an SFX volume slider covering hits, parries and dodges.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-064",
+      "area": "ui",
+      "text": "Options has a Fullscreen setting.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-065",
+      "area": "art",
+      "text": "Menu scene: brick wall left half, dusk city street right, 3 parallax layers (sky and sun, buildings, brick wall).",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#1",
+        "rebellion-menu-desgin#4"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-066",
+      "area": "art",
+      "text": "Menu has non-interactive background posters: Local Heroes Benefit and Rust Notice 114 with CURFEW struck through.",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-067",
+      "area": "art",
+      "text": "Visual style is flat shapes with torn edges, no gradients or glow; heavy condensed display type, monospace small print.",
+      "tier": null,
+      "kind": "rule",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-068",
+      "area": "art",
+      "text": "Menu palette hexes: #9C3B2E/#7A2F25, #E1A92B, #2F5D3A, #6B4A2F, #E8DCC0, #1D1A16.",
+      "tier": null,
+      "kind": "number",
+      "value": null,
+      "sources": [
+        "rebellion-menu-desgin#3"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-069",
+      "area": "ui",
+      "text": "Title screen shows THE REBELLION stencil banner on a mustard halftone wheatpaste poster, with FISTS OF THE FALLEN CITY stacked below and a raised-fist stamp.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "the-title-screen#1"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-070",
+      "area": "art",
+      "text": "Title screen shows a fallen skyline at dusk with one toppled tower, smoke and sweeping searchlights.",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-title-screen#1"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-071",
+      "area": "art",
+      "text": "Title screen graffiti includes HOLD THE LINE, Nobody's coming. Be somebody., Rebels tag, Sector 7 arrow and we were here.",
+      "tier": null,
+      "kind": "content",
+      "value": null,
+      "sources": [
+        "the-title-screen#1"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-072",
+      "area": "ui",
+      "text": "Title screen shows a blinking PRESS ANY BUTTON pill on hazard tape at the bottom.",
+      "tier": null,
+      "kind": "ui",
+      "value": null,
+      "sources": [
+        "the-title-screen#1"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    },
+    {
+      "id": "R-073",
+      "area": "ui",
+      "text": "Click, any key or gamepad button on the title screen starts a short Loading the fallen city bar, then it resets.",
+      "tier": null,
+      "kind": "behaviour",
+      "value": null,
+      "sources": [
+        "the-title-screen#1"
+      ],
+      "confidence": "stated",
+      "conflict": null
+    }
+  ],
+  "ambiguities": [
+    {
+      "topic": "Timer length",
+      "why": "GDD says win in time frame but gives no seconds.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#2"
+      ]
+    },
+    {
+      "topic": "Damage, health and hit values",
+      "why": "No numbers for player/enemy health or damage.",
+      "sources": [
+        "the-rebellion#3",
+        "the-rebellion#5"
+      ]
+    },
+    {
+      "topic": "Wave count and size, attacker cap value",
+      "why": "Only said to exist.",
+      "sources": [
+        "the-rebellion#5"
+      ]
+    },
+    {
+      "topic": "Tier definitions beyond Tier 0",
+      "why": "Only Tier 0 stated in primary docs; tiers for block/dodge/parry/pick-ups/juggle not given (review kit proposes Tier 1/2).",
+      "sources": [
+        "the-rebellion#6",
+        "synthesis#8"
+      ]
+    },
+    {
+      "topic": "Timer Agent",
+      "why": "First draft lists a Timer Agent; final lists none yet pillar text still names it.",
+      "sources": [
+        "the-rebellion-frist-draft#2",
+        "the-rebellion#1"
+      ]
+    },
+    {
+      "topic": "Wave Spawner role text duplicates Game State text",
+      "why": "Table row appears copy-pasted.",
+      "sources": [
+        "the-rebellion#3"
+      ]
+    },
+    {
+      "topic": "Embedded images unread",
+      "why": "Menu design and Title Screen docx contain images whose pixels were not read; mockup details not captured.",
+      "sources": [
+        "rebellion-menu-desgin#1",
+        "the-title-screen#1"
+      ]
+    },
+    {
+      "topic": "Level count, level content, character progression",
+      "why": "Pitch mentions character progression and districts; no detail.",
+      "sources": [
+        "the-rebellion#1"
+      ]
+    },
+    {
+      "topic": "Retry rules and next-level flow",
+      "why": "Retry stated but not specified.",
+      "sources": [
+        "the-rebellion#3"
+      ]
+    },
+    {
+      "topic": "Block, parry, crouch behaviour",
+      "why": "Bindings exist but no behaviour (damage reduction, parry window, crouch effect).",
+      "sources": [
+        "rebellion-menu-desgin#2"
+      ]
+    },
+    {
+      "topic": "Pause and gamepad",
+      "why": "No pause binding in GDD; gamepad only mentioned on the title screen.",
+      "sources": [
+        "the-title-screen#1"
+      ]
+    },
+    {
+      "topic": "Pick-up object types",
+      "why": "Not defined.",
+      "sources": [
+        "the-rebellion#1"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-10-12T21:22:13.010Z",
+ "builtAt": "2026-10-13T15:52:07.257Z",
  "chunks": [
   {
    "id": "rebellion-menu-desgin#1",
@@ -191,7 +191,55 @@
    "file": "README.md",
    "authority": "reference",
    "heading": "Content pipeline",
-   "text": "3.\r\n Content-director0agent read the game menu document and added the update the controls on the controls panel that will move the player \r\n<img width=\"560\" height=\"537\" alt=\"image\" src=\"https://github.com/user-attachments/assets/86fc0bb6-234b-48b6-8828-70bcf80fdaaa\" />\nRAG Implementation\ntold me bout what is \r\nthe conflict\nThe docx binds Dodge to L/C and Block to I/V. The code binds Block to L/C and Dodge to ShiftLeft/V. I is unbound, and V does the opposite of what the docx says.\r\nThe fix is in the KEY_MAP in input.js and the WATCHED list in Zed.js."
+   "text": "3.\r\n Content-director0agent read the game menu document and added the update the controls on the controls panel that will move the player \r\n<img width=\"560\" height=\"537\" alt=\"image\" src=\"https://github.com/user-attachments/assets/86fc0bb6-234b-48b6-8828-70bcf80fdaaa\" />\ntold me bout what is \r\nthe conflict Agent found these conflicts in the game design document \r\nThe docx binds Dodge to L/C and Block to I/V. The code binds Block to L/C and Dodge to ShiftLeft/V. I is unbound, and V does the opposite of what the docx says.\r\nThe fix is in the KEY_MAP in input.js and the WATCHED list in Zed.js. i reviewed before the build and then had the pipeline regenerated the screen."
+  },
+  {
+   "id": "readme-2#1",
+   "doc": "readme-2",
+   "file": "blackboard/README.md",
+   "authority": "reference",
+   "heading": "Blackboard",
+   "text": "Shared workspace for the goal-oriented agents. Agents never message each other. They read the board, claim a goal they own, post a fact, and mark the goal done.\n```\nblackboard/\n goals.json goals, owners, preconditions (needs), status, attempts\n facts/ what agents have published (one file per goal)\n log.md append-only history\n board.mjs the only thing that edits goals.json\n```"
+  },
+  {
+   "id": "readme-2#2",
+   "doc": "readme-2",
+   "file": "blackboard/README.md",
+   "authority": "reference",
+   "heading": "Goal chain",
+   "text": "```\nG1 read-gdd ----\\\n >-- G3 find-gaps -- G4 prioritise -- G5 generate-code -- G6 review\nG2 scan-code ---/ ^ |\n +---- fail --------+\n```\n| Goal | Agent | Reads | Publishes |\n|---|---|---|---|\n| G1 | `gdd-reader-agent` | `pipeline/corpus/`, GDD docs | `facts/gdd-requirements.json` |\n| G2 | `code-scanner-agent` | `src/`, tests, `assets/asset-keys.json` | `facts/code-inventory.json` |\n| G3 | `gap-analyst-agent` | G1 + G2 facts | `facts/gaps.json` |\n| G4 | `prioritiser-agent` | `facts/gaps.json` | `facts/priorities.json` |\n| G5 | `code-generator-agent` | `facts/priorities.json`, `design/team/contracts.md` | code in `src/`, `facts/generated.json` |\n| G6 | `reviewer-agent` | `facts/generated.json`, the diff, `npm test` | `facts/review.json` |\nG1 and G2 are independent, so run them in parallel. A failed review reopens G5, which resets G6 (`board.mjs reopen`). After `maxAttempts` the goal becomes `blocked` and the director reports it to the owner."
+  },
+  {
+   "id": "readme-2#3",
+   "doc": "readme-2",
+   "file": "blackboard/README.md",
+   "authority": "reference",
+   "heading": "Commands",
+   "text": "```bash\nnode blackboard/board.mjs status\nnode blackboard/board.mjs ready\nnode blackboard/board.mjs claim <goal-id>\nnode blackboard/board.mjs done <goal-id> \"note\"\nnode blackboard/board.mjs block <goal-id> \"reason\"\nnode blackboard/board.mjs reopen <goal-id> \"reason\"\nnode blackboard/board.mjs reset\n```"
+  },
+  {
+   "id": "readme-2#4",
+   "doc": "readme-2",
+   "file": "blackboard/README.md",
+   "authority": "reference",
+   "heading": "Run it",
+   "text": "Ask Claude Code: **\"use blackboard-director-agent to run the goal board\"**. It loops: `ready`, spawn the owners (in parallel when several are ready), repeat, until nothing is open. To run another round on the next gap, `reset` then run again; G1/G2 will refresh the facts."
+  },
+  {
+   "id": "readme-2#5",
+   "doc": "readme-2",
+   "file": "blackboard/README.md",
+   "authority": "reference",
+   "heading": "Rules every agent follows",
+   "text": "1. Claim before working (`claim`). If the claim fails, stop: someone else has it or the needs are unmet.\n2. Write only your own `facts/` file, and only the code your goal allows.\n3. Every fact carries evidence: a chunk id (`the-rebellion#8`) or `file:line`. No evidence, mark it `suspected`.\n4. Missing input? `block` the goal with the reason. Never guess.\n5. Need something new? Add it to the `requests` array of your fact file for the director to turn into a goal.\n6. Never edit `GameDesignDocument/` or `goals.json`."
+  },
+  {
+   "id": "log#1",
+   "doc": "log",
+   "file": "blackboard/log.md",
+   "authority": "reference",
+   "heading": "Blackboard log",
+   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2"
   },
   {
    "id": "asset-manifest#1",
@@ -479,7 +527,7 @@
    "file": "design/art/zed-pixellab-prompt.md",
    "authority": "derived",
    "heading": "Zed: Pixel Lab prompt pack",
-   "text": "Source: `design/art/asset-manifest.md` (Zed section) and `design/art/style-guide.md` sections 2 and 5.\nThis file is standalone. It does not change the manifest, so the shipped placeholder stays until you swap in `assets/sprites/zed.png`.\nNOTE: pixel-art Zed over a flat-vector world is the approved exception in the style guide (section 1 and Do and Don't). Zed will not match the vector Rust, UI and backgrounds in rendering, so keep the palette and outline rules below so he still reads as the same world. Whether other art also goes pixel is still style-guide Open Question 1.\nPLACEHOLDER NOTE: \"young\", \"street-level\", \"short dark hair\" and \"brown skin\" below are working guesses for the look only. The GDD does not set Zed's age, role, backstory or appearance (canon.md open question 3; style-guide open question 5). Do not treat them as canon, and do not add backstory to prompts."
+   "text": "Source: `design/art/asset-manifest.md` (Zed section) and `design/art/style-guide.md` sections 2 and 5.\r\nThis file is standalone. It does not change the manifest, so the shipped placeholder stays until you swap in `assets/sprites/zed.png`.\nNOTE: pixel-art Zed over a flat-vector world is the approved exception in the style guide (section 1 and Do and Don't). Zed will not match the vector Rust, UI and backgrounds in rendering, so keep the palette and outline rules below so he still reads as the same world. Whether other art also goes pixel is still style-guide Open Question 1.\nPLACEHOLDER NOTE: \"young\", \"street-level\", \"short dark hair\" and \"brown skin\" below are working guesses for the look only. The GDD does not set Zed's age, role, backstory or appearance (canon.md open question 3; style-guide open question 5). Do not treat them as canon, and do not add backstory to prompts."
   },
   {
    "id": "zed-pixellab-prompt#2",
@@ -487,7 +535,7 @@
    "file": "design/art/zed-pixellab-prompt.md",
    "authority": "derived",
    "heading": "1. Settings",
-   "text": "- Canvas: 128x128 per frame, side view, facing right, transparent background.\n- Feet at bottom-centre. The figure is about 96px tall, so leave about 32px headroom for jump and attack smears.\n- Outline: 1 selective dark outline, colour #2E1F16.\n- Shading: flat 2 to 3 tones per colour, light source top left, no gradients, no dithering, no blur, no texture.\n- Palette (keep to these, max ~12 colours):\n - Mustard #E3A92B, Mustard Light #F2C04D (jacket, highlights)\n - Warm Brown #6B4423 (trousers)\n - Skin Brown #8A5A3B (skin, open to revision)\n - Dark Brown #2E1F16 (outline, hair, boots)\n - Cream #F4E6C8 (shirt, shoe soles, small accents)\n - Brick Red #A8402E and Forest Green #2F6B3F (small casual-fit accents only, e.g. wristband, sneaker laces)\n- Do NOT use Telegraph Red #FF3B30 or any cold slate/cyan (those belong to the Rust enemy and combat signals).\n- Do not draw a ground shadow in the sprite. The game draws the flat 25 percent black ellipse under every character at runtime."
+   "text": "- Canvas: 128x128 per frame, side view, facing right, transparent background.\r\n- Feet at bottom-centre. The figure is about 96px tall, so leave about 32px headroom for jump and attack smears.\r\n- Outline: 1 selective dark outline, colour #2E1F16.\r\n- Shading: flat 2 to 3 tones per colour, light source top left, no gradients, no dithering, no blur, no texture.\r\n- Palette (keep to these, max ~12 colours):\r\n - Mustard #E3A92B, Mustard Light #F2C04D (jacket, highlights)\r\n - Warm Brown #6B4423 (trousers)\r\n - Skin Brown #8A5A3B (skin, open to revision)\r\n - Dark Brown #2E1F16 (outline, hair, boots)\r\n - Cream #F4E6C8 (shirt, shoe soles, small accents)\r\n - Brick Red #A8402E and Forest Green #2F6B3F (small casual-fit accents only, e.g. wristband, sneaker laces)\r\n- Do NOT use Telegraph Red #FF3B30 or any cold slate/cyan (those belong to the Rust enemy and combat signals).\r\n- Do not draw a ground shadow in the sprite. The game draws the flat 25 percent black ellipse under every character at runtime."
   },
   {
    "id": "zed-pixellab-prompt#3",
@@ -495,7 +543,7 @@
    "file": "design/art/zed-pixellab-prompt.md",
    "authority": "derived",
    "heading": "2. Character prompt (create Zed first, then animate)",
-   "text": "```\nSide-view 2D pixel art fighting-game hero, facing right, 128x128 canvas, transparent background.\nZed: young street-level neighbourhood hero, warm, rounded, casual and expressive.\nMustard yellow jacket, warm brown trousers, cream t-shirt, dark brown sneakers with cream soles,\nshort dark hair, brown skin. Friendly determined face, relaxed but ready stance, fists loosely raised.\nChunky readable silhouette, round shapes, slightly oversized jacket.\nClean 1-pixel dark brown outline (#2E1F16), flat cel shading with 2 to 3 tones per colour,\nlight from top left, limited warm palette, no gradients, no dithering, no anti-aliasing blur.\nFull body, feet at bottom centre, about 96 pixels tall.\n```\nNegative prompt, if supported:\n```\n3D, realistic, gradients, glow, blur, text, background, ground shadow, red enemy colours,\ncold blue or grey clothing, military uniform, helmet, weapons\n```\nApprove one idle pose before animating. Re-use that exact image as the reference/skeleton source for everything below."
+   "text": "```\r\nSide-view 2D pixel art fighting-game hero, facing right, 128x128 canvas, transparent background.\r\nZed: young street-level neighbourhood hero, warm, rounded, casual and expressive.\r\nMustard yellow jacket, warm brown trousers, cream t-shirt, dark brown sneakers with cream soles,\r\nshort dark hair, brown skin. Friendly determined face, relaxed but ready stance, fists loosely raised.\r\nChunky readable silhouette, round shapes, slightly oversized jacket.\r\nClean 1-pixel dark brown outline (#2E1F16), flat cel shading with 2 to 3 tones per colour,\r\nlight from top left, limited warm palette, no gradients, no dithering, no anti-aliasing blur.\r\nFull body, feet at bottom centre, about 96 pixels tall.\r\n```\nNegative prompt, if supported:\r\n```\r\n3D, realistic, gradients, glow, blur, text, background, ground shadow, red enemy colours,\r\ncold blue or grey clothing, military uniform, helmet, weapons\r\n```\nApprove one idle pose before animating. Re-use that exact image as the reference/skeleton source for everything below."
   },
   {
    "id": "zed-pixellab-prompt#4",
@@ -511,7 +559,7 @@
    "file": "design/art/zed-pixellab-prompt.md",
    "authority": "derived",
    "heading": "3. Animations (keys must match the manifest exactly)",
-   "text": "| Key | Frames | FPS | Loop | Prompt |\n|---|---|---|---|---|\n| `zed.idle` | 6 | 8 | yes | \"Fighting-stance idle, gentle breathing bob, shoulders and jacket rise and fall 1 to 2 pixels, fists loosely up, feet planted. Seamless loop.\" |\n| `zed.walk` | 8 | 12 | yes | \"Confident street walk cycle toward the right, relaxed fists, alternating legs, slight body bounce, jacket sways. Seamless 8 frame loop.\" |\n| `zed.jump` | 4 | 10 | no | \"Jump in 4 frames: 1 crouch and push off rising, 2 apex with knees tucked, 3 falling with legs reaching down, 4 landing squash with bent knees.\" |\n| `zed.light` | 4 | 24 | no | \"Quick light punch, fast jab with right fist. Frame 1 windup pulling fist back, frame 2 STRIKE arm fully extended forward with small motion smear, frame 3 active arm held extended, frame 4 recover pulling back to stance.\" |\n| `zed.heavy` | 6 | 20 | no | \"Heavy haymaker punch, big committed swing. Frames 1 to 2 windup leaning back and coiling the shoulder, frame 3 STRIKE huge swing with a large arc smear, frame 4 active arm fully extended with body twisted forward, frames 5 to 6 recover returning to stance.\" |\n| `zed.hit` | 2 | 12 | no | \"Hit reaction: frame 1 head snaps back and body recoils with eyes squeezed shut, frame 2 staggered backward, off balance.\" |\n| `zed.ko` | 6 | 10 | no | \"Knockout fall: staggers, is knocked backward off his feet, falls and lands flat on his back, ends lying on the ground, last frame is held still.\" |"
+   "text": "| Key | Frames | FPS | Loop | Prompt |\r\n|---|---|---|---|---|\r\n| `zed.idle` | 6 | 8 | yes | \"Fighting-stance idle, gentle breathing bob, shoulders and jacket rise and fall 1 to 2 pixels, fists loosely up, feet planted. Seamless loop.\" |\r\n| `zed.walk` | 8 | 12 | yes | \"Confident street walk cycle toward the right, relaxed fists, alternating legs, slight body bounce, jacket sways. Seamless 8 frame loop.\" |\r\n| `zed.jump` | 4 | 10 | no | \"Jump in 4 frames: 1 crouch and push off rising, 2 apex with knees tucked, 3 falling with legs reaching down, 4 landing squash with bent knees.\" |\r\n| `zed.light` | 4 | 24 | no | \"Quick light punch, fast jab with right fist. Frame 1 windup pulling fist back, frame 2 STRIKE arm fully extended forward with small motion smear, frame 3 active arm held extended, frame 4 recover pulling back to stance.\" |\r\n| `zed.heavy` | 6 | 20 | no | \"Heavy haymaker punch, big committed swing. Frames 1 to 2 windup leaning back and coiling the shoulder, frame 3 STRIKE huge swing with a large arc smear, frame 4 active arm fully extended with body twisted forward, frames 5 to 6 recover returning to stance.\" |\r\n| `zed.hit` | 2 | 12 | no | \"Hit reaction: frame 1 head snaps back and body recoils with eyes squeezed shut, frame 2 staggered backward, off balance.\" |\r\n| `zed.ko` | 6 | 10 | no | \"Knockout fall: staggers, is knocked backward off his feet, falls and lands flat on his back, ends lying on the ground, last frame is held still.\" |"
   },
   {
    "id": "zed-pixellab-prompt#6",
@@ -519,7 +567,7 @@
    "file": "design/art/zed-pixellab-prompt.md",
    "authority": "derived",
    "heading": "3. Animations (keys must match the manifest exactly)",
-   "text": "Rules for every animation:\n- Keep Zed facing right (the game flips him for left).\n- Keep the feet on the same baseline except in `zed.jump` and `zed.ko`.\n- Keep the same colours, outline and proportions in every frame.\n- `zed.light` strike is frame 2 and `zed.heavy` strike is frame 3. Report these as the hit-active frames."
+   "text": "Rules for every animation:\r\n- Keep Zed facing right (the game flips him for left).\r\n- Keep the feet on the same baseline except in `zed.jump` and `zed.ko`.\r\n- Keep the same colours, outline and proportions in every frame.\r\n- `zed.light` strike is frame 2 and `zed.heavy` strike is frame 3. Report these as the hit-active frames."
   },
   {
    "id": "zed-pixellab-prompt#7",
@@ -527,7 +575,7 @@
    "file": "design/art/zed-pixellab-prompt.md",
    "authority": "derived",
    "heading": "4. Assembling the sheet",
-   "text": "Frame order (36 frames), 8 columns by 5 rows, 1024x640:\n| Row | Columns 1 to 8 |\n|---|---|\n| 1 | idle 1 to 6, walk 1 to 2 |\n| 2 | walk 3 to 8, jump 1 to 2 |\n| 3 | jump 3 to 4, light 1 to 4, heavy 1 to 2 |\n| 4 | heavy 3 to 6, hit 1 to 2, ko 1 to 2 |\n| 5 | ko 3 to 6 |\nExport as a PNG with a transparent background and no padding or spacing between cells. Save as `assets/sprites/zed.png`.\nIf the tool exports one GIF or strip per animation, join them in Aseprite or LibreSprite (File, Import Sprite Sheet / Export Sprite Sheet) in the order above."
+   "text": "Frame order (36 frames), 8 columns by 5 rows, 1024x640:\n| Row | Columns 1 to 8 |\r\n|---|---|\r\n| 1 | idle 1 to 6, walk 1 to 2 |\r\n| 2 | walk 3 to 8, jump 1 to 2 |\r\n| 3 | jump 3 to 4, light 1 to 4, heavy 1 to 2 |\r\n| 4 | heavy 3 to 6, hit 1 to 2, ko 1 to 2 |\r\n| 5 | ko 3 to 6 |\nExport as a PNG with a transparent background and no padding or spacing between cells. Save as `assets/sprites/zed.png`.\r\nIf the tool exports one GIF or strip per animation, join them in Aseprite or LibreSprite (File, Import Sprite Sheet / Export Sprite Sheet) in the order above."
   },
   {
    "id": "zed-pixellab-prompt#8",
@@ -535,7 +583,7 @@
    "file": "design/art/zed-pixellab-prompt.md",
    "authority": "derived",
    "heading": "5. Check before accepting",
-   "text": "- Same face, outfit and colours in all 36 frames.\n- Feet land on the same baseline in `idle`, `walk`, `light`, `heavy` and `hit`.\n- Idle and walk loop with no pop between the last and first frame.\n- The strike frames read clearly (light 2, heavy 3).\n- No Rust or combat-signal colours leaked in."
+   "text": "- Same face, outfit and colours in all 36 frames.\r\n- Feet land on the same baseline in `idle`, `walk`, `light`, `heavy` and `hit`.\r\n- Idle and walk loop with no pop between the last and first frame.\r\n- The strike frames read clearly (light 2, heavy 3).\r\n- No Rust or combat-signal colours leaked in."
   },
   {
    "id": "canon#1",
@@ -551,7 +599,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Names and spellings",
-   "text": "| Thing | Canonical | Notes |\n|---|---|---|\n| Game title | The Rebellion: Fists of the Fallen City | Menu may split it: title \"THE REBELLION\", subtitle \"Fists of the Fallen City\". |\n| City | the Fallen City | Always with \"City\". Never \"Fallen\" alone. Pitch's \"fight your way through Fallen\" and \"first of the Fallen city\" should read \"the Fallen City\". |\n| Hero | Zed | Player character. |\n| Antagonist | the Rust | Corrupt private security force. Always \"Rust\", never \"Rush\". |\n| Rust members | Rust enemies / Rust grunt | \"Rust grunt\" is the one Tier 0 enemy type (asset-manifest). |\n| Zed's side | the neighbourhood, the community, local heroes | Wording from Theme. |"
+   "text": "| Thing | Canonical | Notes |\r\n|---|---|---|\r\n| Game title | The Rebellion: Fists of the Fallen City | Menu may split it: title \"THE REBELLION\", subtitle \"Fists of the Fallen City\". |\r\n| City | the Fallen City | Always with \"City\". Never \"Fallen\" alone. Pitch's \"fight your way through Fallen\" and \"first of the Fallen city\" should read \"the Fallen City\". |\r\n| Hero | Zed | Player character. |\r\n| Antagonist | the Rust | Corrupt private security force. Always \"Rust\", never \"Rush\". |\r\n| Rust members | Rust enemies / Rust grunt | \"Rust grunt\" is the one Tier 0 enemy type (asset-manifest). |\r\n| Zed's side | the neighbourhood, the community, local heroes | Wording from Theme. |"
   },
   {
    "id": "canon#3",
@@ -559,7 +607,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Factions",
-   "text": "- **Zed and the neighbourhood:** warm, rounded, casual, expressive. Fights back to get the city back.\n- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect."
+   "text": "- **Zed and the neighbourhood:** warm, rounded, casual, expressive. Fights back to get the city back.\r\n- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect."
   },
   {
    "id": "canon#4",
@@ -583,7 +631,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Tone rules",
-   "text": "- Hopeful, energetic, full of personality and stories. Fighting back, reclaiming a home.\n- Never grim, never gory, never sneering. Lose screens encourage a retry, never gloat.\n- Zed's side copy is warm and plain-spoken, in a neighbourhood voice. No military or clinical phrasing.\n- Rust copy may be cold and official (notices, orders), but it is always shown as something the community answers or defaces."
+   "text": "- Hopeful, energetic, full of personality and stories. Fighting back, reclaiming a home.\r\n- Never grim, never gory, never sneering. Lose screens encourage a retry, never gloat.\r\n- Zed's side copy is warm and plain-spoken, in a neighbourhood voice. No military or clinical phrasing.\r\n- Rust copy may be cold and official (notices, orders), but it is always shown as something the community answers or defaces."
   },
   {
    "id": "canon#7",
@@ -591,7 +639,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Wording",
-   "text": "| Avoid | Prefer |\n|---|---|\n| Rush (typo) | Rust |\n| \"Rust has been driven out of the arena\" (Rust as place or stain) | \"The Rust have been pushed back.\" / \"The Rust are on the run.\" |\n| \"Fallen\" alone | \"the Fallen City\" |\n| TARGETS ELIMINATED, MISSION COMPLETE, HOSTILES NEUTRALISED | The block is ours again. / Nice work, Zed. |\n| Generic game-speak (ENEMIES DEFEATED, ENEMIES LEFT) | Rust pushed back / Rust still standing (proposal; HUD owner decides) |\n| Gloating lose text (YOU DIED, PATHETIC) | Time ran out. Shake it off and go again. |\n| \"Rust\" plural as \"Rusts\" | \"the Rust\" takes plural verbs: \"the Rust are...\". |"
+   "text": "| Avoid | Prefer |\r\n|---|---|\r\n| Rush (typo) | Rust |\r\n| \"Rust has been driven out of the arena\" (Rust as place or stain) | \"The Rust have been pushed back.\" / \"The Rust are on the run.\" |\r\n| \"Fallen\" alone | \"the Fallen City\" |\r\n| TARGETS ELIMINATED, MISSION COMPLETE, HOSTILES NEUTRALISED | The block is ours again. / Nice work, Zed. |\r\n| Generic game-speak (ENEMIES DEFEATED, ENEMIES LEFT) | Rust pushed back / Rust still standing (proposal; HUD owner decides) |\r\n| Gloating lose text (YOU DIED, PATHETIC) | Time ran out. Shake it off and go again. |\r\n| \"Rust\" plural as \"Rusts\" | \"the Rust\" takes plural verbs: \"the Rust are...\". |"
   },
   {
    "id": "canon#8",
@@ -615,7 +663,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Why Zed Fights",
-   "text": "Zed isn’t a soldier. He’s a kid from a lived‑in neighbourhood who learned to fight the same way he learned to dance — through rhythm, instinct, and community.\nHis style reflects the game’s pillars:\n- Impactful, fast-paced combat — Zed’s punches feel like brick‑red alley brawls, scrappy but sharp.\n- Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.\n- Wave-clearing under pressure — fighting groups is nothing new; he grew up protecting younger kids from trouble.\nHe fights not for glory, but to reclaim the places that shaped him — the food stalls, the murals, the music drifting from open windows. The city isn’t just his home; it’s his identity."
+   "text": "Zed isn’t a soldier. He’s a kid from a lived‑in neighbourhood who learned to fight the same way he learned to dance — through rhythm, instinct, and community.\nHis style reflects the game’s pillars:\n- Impactful, fast-paced combat — Zed’s punches feel like brick‑red alley brawls, scrappy but sharp.\r\n- Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.\r\n- Wave-clearing under pressure — fighting groups is nothing new; he grew up protecting younger kids from trouble.\nHe fights not for glory, but to reclaim the places that shaped him — the food stalls, the murals, the music drifting from open windows. The city isn’t just his home; it’s his identity."
   },
   {
    "id": "canon#11",
@@ -639,7 +687,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Open lore questions (GDD silent)",
-   "text": "1. Does the Rust impose curfews or issue numbered notices? Menu poster \"Rust Notice 114 / CURFEW\" implies it. Treated as flavour, not canon, until the owner confirms.\n2. Is \"Rust\" used as a plural noun (\"the Rust are\") or a collective singular (\"the Rust is\")? Sheet assumes plural.\n3. Who is Zed (age, role, backstory)? Is there a named \"local hero\" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)\n4. Names of districts, the arena locations, or any Rust leader.\n5. What does \"get it back\" mean in story terms (who held the city before)?\n6. Is \"Rust enemy\" or \"Rust grunt\" the player-facing term for the enemy?\n7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)"
+   "text": "1. Does the Rust impose curfews or issue numbered notices? Menu poster \"Rust Notice 114 / CURFEW\" implies it. Treated as flavour, not canon, until the owner confirms.\r\n2. Is \"Rust\" used as a plural noun (\"the Rust are\") or a collective singular (\"the Rust is\")? Sheet assumes plural.\r\n3. Who is Zed (age, role, backstory)? Is there a named \"local hero\" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)\r\n4. Names of districts, the arena locations, or any Rust leader.\r\n5. What does \"get it back\" mean in story terms (who held the city before)?\r\n6. Is \"Rust enemy\" or \"Rust grunt\" the player-facing term for the enemy?\r\n7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)"
   },
   {
    "id": "critic-log#1",
@@ -663,7 +711,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Changes applied (design/lore only)",
-   "text": "| # | File | Line | Before | After | Rule | Owner |\n|---|---|---|---|---|---|---|\n| 1 | `design/lore/menu-copy.md` | menu.footer | \"W/S select / Enter confirm\" (menu-concept.md:20) | \"W/S to choose / Enter to go\" | Tone drift: terse, system-speak (\"confirm\") on Zed's side; prefer plain neighbourhood voice | ui |"
+   "text": "| # | File | Line | Before | After | Rule | Owner |\r\n|---|---|---|---|---|---|---|\r\n| 1 | `design/lore/menu-copy.md` | menu.footer | \"W/S select / Enter confirm\" (menu-concept.md:20) | \"W/S to choose / Enter to go\" | Tone drift: terse, system-speak (\"confirm\") on Zed's side; prefer plain neighbourhood voice | ui |"
   },
   {
    "id": "critic-log#4",
@@ -671,7 +719,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Proposed, not applied (outside design/lore)",
-   "text": "| # | File | Line | Before | After | Rule | Owner |\n|---|---|---|---|---|---|---|\n| 2 | `GameDesignDocument/The Rebellion.docx` (Pitch) | n/a | \"overtaken Rush a corrupt private Security Force\" | \"overtaken by the Rust, a corrupt private Security Force\" | Lore break: Rush/Rust spelling | GDD owner |\n| 3 | same | n/a | \"The Rebellion first of the Fallen city\" | \"The Rebellion: Fists of the Fallen City\" | Lore break: title and \"Fallen City\" capitalisation | GDD owner |\n| 4 | same | n/a | \"fight your way through Fallen to get it back\" | \"fight your way through the Fallen City to get it back\" | Lore break: \"Fallen\" alone; canonical name is \"Fallen City\" | GDD owner |\n| 5 | `design/ux/menu-concept.md` | 4 | \"edge of a fallen city block\" | \"edge of a Fallen City block\" | Lore: lowercase reads as a generic description, not the place name | Art/UX owner (design/ux not in this pass's edit scope) |\n| 6 | `design/ux/main-menu.md` | 29, 43-45 | Wireframe shows \"START GAME\" and prompt \"Enter / A : Select\"; concept shows \"Fight\" and \"W/S select / Enter confirm\" | Use FIGHT and the footer in `menu-copy.md` | Consistency: two specs disagree on button label and footer | ui |\n| 7 | `design/ux/win.md` | 17 | \"Rust has been driven out of the arena.\" | \"The Rust have been pushed back.\" | Lore: Rust read as a place or stain (known candidate, not part of this menu pass) | ux owner |"
+   "text": "| # | File | Line | Before | After | Rule | Owner |\r\n|---|---|---|---|---|---|---|\r\n| 2 | `GameDesignDocument/The Rebellion.docx` (Pitch) | n/a | \"overtaken Rush a corrupt private Security Force\" | \"overtaken by the Rust, a corrupt private Security Force\" | Lore break: Rush/Rust spelling | GDD owner |\r\n| 3 | same | n/a | \"The Rebellion first of the Fallen city\" | \"The Rebellion: Fists of the Fallen City\" | Lore break: title and \"Fallen City\" capitalisation | GDD owner |\r\n| 4 | same | n/a | \"fight your way through Fallen to get it back\" | \"fight your way through the Fallen City to get it back\" | Lore break: \"Fallen\" alone; canonical name is \"Fallen City\" | GDD owner |\r\n| 5 | `design/ux/menu-concept.md` | 4 | \"edge of a fallen city block\" | \"edge of a Fallen City block\" | Lore: lowercase reads as a generic description, not the place name | Art/UX owner (design/ux not in this pass's edit scope) |\r\n| 6 | `design/ux/main-menu.md` | 29, 43-45 | Wireframe shows \"START GAME\" and prompt \"Enter / A : Select\"; concept shows \"Fight\" and \"W/S select / Enter confirm\" | Use FIGHT and the footer in `menu-copy.md` | Consistency: two specs disagree on button label and footer | ui |\r\n| 7 | `design/ux/win.md` | 17 | \"Rust has been driven out of the arena.\" | \"The Rust have been pushed back.\" | Lore: Rust read as a place or stain (known candidate, not part of this menu pass) | ux owner |"
   },
   {
    "id": "critic-log#5",
@@ -679,7 +727,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Audited and fine",
-   "text": "- Title \"THE REBELLION\" and subtitle \"Fists of the Fallen City\": match GDD title; \"Fallen City\" correct.\n- Option labels Fight, Controls, Options, Quit: short, active, fit the voice. FIGHT suits the \"Fists\" title. Note that Options has no spec and Quit is not meaningful in a browser (open question 7 in canon).\n- Poster \"Local Heroes Benefit: Keep the Lights On\": hopeful, community voice, matches the GDD's murals of local heroes. No change.\n- Poster \"Rust Notice 114 / CURFEW struck through\": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.\n- Rust/Rush: no occurrence of \"Rush\" in any menu text. The only instance is the GDD Pitch (item 2)."
+   "text": "- Title \"THE REBELLION\" and subtitle \"Fists of the Fallen City\": match GDD title; \"Fallen City\" correct.\r\n- Option labels Fight, Controls, Options, Quit: short, active, fit the voice. FIGHT suits the \"Fists\" title. Note that Options has no spec and Quit is not meaningful in a browser (open question 7 in canon).\r\n- Poster \"Local Heroes Benefit: Keep the Lights On\": hopeful, community voice, matches the GDD's murals of local heroes. No change.\r\n- Poster \"Rust Notice 114 / CURFEW struck through\": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.\r\n- Rust/Rush: no occurrence of \"Rush\" in any menu text. The only instance is the GDD Pitch (item 2)."
   },
   {
    "id": "critic-log#6",
@@ -703,7 +751,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Changes applied",
-   "text": "| # | File | Line | Before | After | Rule | Owner |\n|---|---|---|---|---|---|---|\n| 8 | `design/art/style-guide.md` | 27 | \"Shadows are flat 25 percent black ellipses under every character.\" (read as baked in, conflicting with Zed's \"not baked in\"; also 4px outline stated with no Zed exception vs Zed's 1px) | \"...under every character, drawn by the game at runtime (never baked into any sprite, Zed's included).\" plus \"Zed is the exception, 1px pixel outline\" | Spec conflict | art |\n| 9 | `design/art/style-guide.md` | OQ 4 | \"Final animation source: hand-authored spritesheets, skeletal rig..., or tween-driven vector parts? Affects frame counts in the manifest.\" | Scoped to Rust enemies and FX; states Zed is settled (36-frame pixel sheet fixed in manifest) | Spec conflict with manifest | art |\n| 10 | `design/art/zed-pixellab-prompt.md` | 6 | \"the style guide currently says flat vector and 'don't mix pixel art and vector'. If you go pixel art, either approve it...\" (stale; exception is now approved) | States the approved exception and points to OQ 1 for other art | Stale spec | art |\n| 11 | `design/art/zed-pixellab-prompt.md` | 22 | \"The game adds a flat 25 percent black ellipse.\" | \"The game draws the flat 25 percent black ellipse under every character at runtime.\" | Wording consistency | art |\n| 12 | `design/art/zed-pixellab-prompt.md` | after 6 | (none) | Added PLACEHOLDER NOTE: young, street-level, short dark hair, brown skin are not canon | Lore: never invent (canon OQ 3) | art |\n| 13 | `design/art/style-guide.md` | OQ 5 | \"Zed's design (skin tone, hair, silhouette) needs creative sign-off\" | Adds \"young street hero\" read and cites canon OQ 3 | Lore: never invent | art |\n| 14 | `design/lore/canon.md` | OQ 3 | \"Who is Zed (age, role, backstory)?...\" | Appended note that the current look is placeholder, not canon | Lore | critic |"
+   "text": "| # | File | Line | Before | After | Rule | Owner |\r\n|---|---|---|---|---|---|---|\r\n| 8 | `design/art/style-guide.md` | 27 | \"Shadows are flat 25 percent black ellipses under every character.\" (read as baked in, conflicting with Zed's \"not baked in\"; also 4px outline stated with no Zed exception vs Zed's 1px) | \"...under every character, drawn by the game at runtime (never baked into any sprite, Zed's included).\" plus \"Zed is the exception, 1px pixel outline\" | Spec conflict | art |\r\n| 9 | `design/art/style-guide.md` | OQ 4 | \"Final animation source: hand-authored spritesheets, skeletal rig..., or tween-driven vector parts? Affects frame counts in the manifest.\" | Scoped to Rust enemies and FX; states Zed is settled (36-frame pixel sheet fixed in manifest) | Spec conflict with manifest | art |\r\n| 10 | `design/art/zed-pixellab-prompt.md` | 6 | \"the style guide currently says flat vector and 'don't mix pixel art and vector'. If you go pixel art, either approve it...\" (stale; exception is now approved) | States the approved exception and points to OQ 1 for other art | Stale spec | art |\r\n| 11 | `design/art/zed-pixellab-prompt.md` | 22 | \"The game adds a flat 25 percent black ellipse.\" | \"The game draws the flat 25 percent black ellipse under every character at runtime.\" | Wording consistency | art |\r\n| 12 | `design/art/zed-pixellab-prompt.md` | after 6 | (none) | Added PLACEHOLDER NOTE: young, street-level, short dark hair, brown skin are not canon | Lore: never invent (canon OQ 3) | art |\r\n| 13 | `design/art/style-guide.md` | OQ 5 | \"Zed's design (skin tone, hair, silhouette) needs creative sign-off\" | Adds \"young street hero\" read and cites canon OQ 3 | Lore: never invent | art |\r\n| 14 | `design/lore/canon.md` | OQ 3 | \"Who is Zed (age, role, backstory)?...\" | Appended note that the current look is placeholder, not canon | Lore | critic |"
   },
   {
    "id": "critic-log#9",
@@ -711,7 +759,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Verified, no change",
-   "text": "- Zed details vs canon: GDD gives no age or looks, so nothing contradicts it once marked placeholder. \"Zed's side is warm, rounded, casual\" matches the prompt. Style guide Skin Brown row already says placeholder.\n- Hit/KO prompts (\"eyes squeezed shut\", \"falls flat on his back\") are non-gory and fit tone.\n- Remaining \"flat-vector\" wording in style-guide sections 1, 6 (gradients rule) and 9 (menu) is scoped to non-Zed art; fine."
+   "text": "- Zed details vs canon: GDD gives no age or looks, so nothing contradicts it once marked placeholder. \"Zed's side is warm, rounded, casual\" matches the prompt. Style guide Skin Brown row already says placeholder.\r\n- Hit/KO prompts (\"eyes squeezed shut\", \"falls flat on his back\") are non-gory and fit tone.\r\n- Remaining \"flat-vector\" wording in style-guide sections 1, 6 (gradients rule) and 9 (menu) is scoped to non-Zed art; fine."
   },
   {
    "id": "critic-log#10",
@@ -719,7 +767,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Proposed, not applied",
-   "text": "- Item 7 (`design/ux/win.md:17` \"Rust has been driven out of the arena\") is still unfixed per Pass 1 and is in scope for ux owner; not re-checked for edits this pass.\n- Style-guide section order is 1-7, 9, 8 (menu section 9 sits before open questions 8); suggest renumbering, structure change left to art owner.\n- Phaser `pixelArt: true` would affect all textures (smooths vector SVG-to-PNG art off); recommend per-texture `setFilter(NEAREST)` for Zed only. Message to engine owner, not applied (src/ out of scope)."
+   "text": "- Item 7 (`design/ux/win.md:17` \"Rust has been driven out of the arena\") is still unfixed per Pass 1 and is in scope for ux owner; not re-checked for edits this pass.\r\n- Style-guide section order is 1-7, 9, 8 (menu section 9 sits before open questions 8); suggest renumbering, structure change left to art owner.\r\n- Phaser `pixelArt: true` would affect all textures (smooths vector SVG-to-PNG art off); recommend per-texture `setFilter(NEAREST)` for Zed only. Message to engine owner, not applied (src/ out of scope)."
   },
   {
    "id": "critic-log#11",
@@ -735,7 +783,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Changes applied",
-   "text": "| # | File | Item | Issue | Fix | Rule | Owner |\n|---|---|---|---|---|---|---|\n| 15 | `content/dialogue/options-menu.json` | `options-music-volume`, line 2 | Tone drift from the community voice (final wording: \"Music drifting out of the open windows.\") | Reworded to the open-windows image | Tone | content |\n| 16 | `content/dialogue/options-menu.json` | `options-apply`, line 3 | Tone drift (final wording is plain and never scolding) | Reworded to plain, friendly copy | Tone | content |"
+   "text": "| # | File | Item | Issue | Fix | Rule | Owner |\r\n|---|---|---|---|---|---|---|\r\n| 15 | `content/dialogue/options-menu.json` | `options-music-volume`, line 2 | Tone drift from the community voice (final wording: \"Music drifting out of the open windows.\") | Reworded to the open-windows image | Tone | content |\r\n| 16 | `content/dialogue/options-menu.json` | `options-apply`, line 3 | Tone drift (final wording is plain and never scolding) | Reworded to plain, friendly copy | Tone | content |"
   },
   {
    "id": "critic-log#13",
@@ -743,7 +791,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Proposed, not applied (owner decision)",
-   "text": "- \"The wall\" and \"the block\" are not GDD terms; confirm they are acceptable menu vocabulary.\n- 28 of 30 items are proposed placeholders (only music and SFX volume are canon).\n- Default key table (GDD) conflicts with `flow.md` / `main-menu.md` (\"bindings undefined\"); pause default P collides with Pick up default P."
+   "text": "- \"The wall\" and \"the block\" are not GDD terms; confirm they are acceptable menu vocabulary.\r\n- 28 of 30 items are proposed placeholders (only music and SFX volume are canon).\r\n- Default key table (GDD) conflicts with `flow.md` / `main-menu.md` (\"bindings undefined\"); pause default P collides with Pick up default P."
   },
   {
    "id": "critic-log#14",
@@ -759,7 +807,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Changes applied",
-   "text": "| # | File | Item | Before | After | Rule | Owner |\n|---|---|---|---|---|---|---|\n| 17 | `content/dialogue/options-controls.json` | `options-bind-jump`, line 3 | \"Not rebindable yet.\" | \"Fixed for now.\" | Tone: generic game-speak; matches \"fixed for now\" already used in `options-not-rebindable` line 1 and the PAD item | content |\n| 18 | `content/dialogue/options-controls.json` | `options-bind-crouch`, line 3 | \"Not rebindable yet.\" | \"Fixed for now.\" | Same | content |\n| 19 | `content/dialogue/options-controls.json` | `options-not-rebindable`, line 2 | \"Those three come as a set. Not rebindable yet.\" | \"Those three come as a set. Fixed for now.\" | Same | content |"
+   "text": "| # | File | Item | Before | After | Rule | Owner |\r\n|---|---|---|---|---|---|---|\r\n| 17 | `content/dialogue/options-controls.json` | `options-bind-jump`, line 3 | \"Not rebindable yet.\" | \"Fixed for now.\" | Tone: generic game-speak; matches \"fixed for now\" already used in `options-not-rebindable` line 1 and the PAD item | content |\r\n| 18 | `content/dialogue/options-controls.json` | `options-bind-crouch`, line 3 | \"Not rebindable yet.\" | \"Fixed for now.\" | Same | content |\r\n| 19 | `content/dialogue/options-controls.json` | `options-not-rebindable`, line 2 | \"Those three come as a set. Not rebindable yet.\" | \"Those three come as a set. Fixed for now.\" | Same | content |"
   },
   {
    "id": "critic-log#16",
@@ -767,7 +815,7 @@
    "file": "design/lore/critic-log.md",
    "authority": "derived",
    "heading": "Proposed, not applied (owner decision)",
-   "text": "- Consistency conflict: `options-menu.json` `options-bind-move` has `control: rebind` with hint \"Press Enter, then the key you want.\", but `options-controls.json` (`options-not-rebindable`, `options-bind-jump/crouch` notes) treats Move as read-only. Content owner must pick one; if read-only, Move line 3 should become \"Fixed for now.\"\n- Terms \"pad\", \"the wall\", \"the block\" are not GDD terms; confirm as menu vocabulary.\n- `options-pickup-pause-collision` is copy for an unresolved default clash (P); drop when resolved."
+   "text": "- Consistency conflict: `options-menu.json` `options-bind-move` has `control: rebind` with hint \"Press Enter, then the key you want.\", but `options-controls.json` (`options-not-rebindable`, `options-bind-jump/crouch` notes) treats Move as read-only. Content owner must pick one; if read-only, Move line 3 should become \"Fixed for now.\"\r\n- Terms \"pad\", \"the wall\", \"the block\" are not GDD terms; confirm as menu vocabulary.\r\n- `options-pickup-pause-collision` is copy for an unresolved default clash (P); drop when resolved."
   },
   {
    "id": "menu-copy#1",
@@ -783,7 +831,7 @@
    "file": "design/lore/menu-copy.md",
    "authority": "derived",
    "heading": "Core",
-   "text": "| id | text |\n|---|---|\n| menu.title | THE REBELLION |\n| menu.subtitle | Fists of the Fallen City |\n| menu.opt.fight | FIGHT |\n| menu.opt.controls | CONTROLS |\n| menu.opt.options | OPTIONS |\n| menu.opt.quit | QUIT |\n| menu.footer | W/S to choose / Enter to go |"
+   "text": "| id | text |\r\n|---|---|\r\n| menu.title | THE REBELLION |\r\n| menu.subtitle | Fists of the Fallen City |\r\n| menu.opt.fight | FIGHT |\r\n| menu.opt.controls | CONTROLS |\r\n| menu.opt.options | OPTIONS |\r\n| menu.opt.quit | QUIT |\r\n| menu.footer | W/S to choose / Enter to go |"
   },
   {
    "id": "menu-copy#3",
@@ -791,7 +839,7 @@
    "file": "design/lore/menu-copy.md",
    "authority": "derived",
    "heading": "Background posters",
-   "text": "| id | text |\n|---|---|\n| menu.poster.benefit.title | LOCAL HEROES BENEFIT |\n| menu.poster.benefit.line | Keep the Lights On |\n| menu.poster.rust.title | RUST NOTICE 114 |\n| menu.poster.rust.struck | CURFEW (struck through, hand-inked cross-out) |\nThe poster is one line in the concept doc (\"Local Heroes Benefit: Keep the Lights On\"); splitting at the colon into title and line is allowed. If kept on one line, use the colon form."
+   "text": "| id | text |\r\n|---|---|\r\n| menu.poster.benefit.title | LOCAL HEROES BENEFIT |\r\n| menu.poster.benefit.line | Keep the Lights On |\r\n| menu.poster.rust.title | RUST NOTICE 114 |\r\n| menu.poster.rust.struck | CURFEW (struck through, hand-inked cross-out) |\nThe poster is one line in the concept doc (\"Local Heroes Benefit: Keep the Lights On\"); splitting at the colon into title and line is allowed. If kept on one line, use the colon form."
   },
   {
    "id": "menu-copy#4",
@@ -799,7 +847,7 @@
    "file": "design/lore/menu-copy.md",
    "authority": "derived",
    "heading": "Small print (proposed, optional, ui picks any)",
-   "text": "| id | text | poster |\n|---|---|---|\n| menu.small.shop | Corner shop open late. Come by. | benefit, cream |\n| menu.small.court | Music at the court Saturday. Bring a friend. | benefit, cream |\n| menu.small.garden | Garden crew needs hands. Bring gloves. | benefit, cream |\n| menu.small.stall | Hot plates by the steps. Pay what you can. | benefit, cream |\n| menu.small.rust | By order of the Rust. Lights out at nine. | Rust notice, brick red (pending open question 1 in canon) |\nRules for small print: monospace, short, no named characters or places (the GDD names none), no gore, nothing that makes the Rust a place."
+   "text": "| id | text | poster |\r\n|---|---|---|\r\n| menu.small.shop | Corner shop open late. Come by. | benefit, cream |\r\n| menu.small.court | Music at the court Saturday. Bring a friend. | benefit, cream |\r\n| menu.small.garden | Garden crew needs hands. Bring gloves. | benefit, cream |\r\n| menu.small.stall | Hot plates by the steps. Pay what you can. | benefit, cream |\r\n| menu.small.rust | By order of the Rust. Lights out at nine. | Rust notice, brick red (pending open question 1 in canon) |\nRules for small print: monospace, short, no named characters or places (the GDD names none), no gore, nothing that makes the Rust a place."
   },
   {
    "id": "agent-diagrams#1",
@@ -1383,7 +1431,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Wireframe (1280x720)",
-   "text": "```\nx=0 x=640 x=1280\n+---------------------------+-----------------------------------------------+ y=0\n| BRICK WALL | DUSK STREET (sky, sun, buildings, lamp) |\n| +----------------+ | |\n| | THE REBELLION | | title strip 440x84, -2 deg, centre (396,110) |\n| +----------------+ | |\n| Fists of the Fallen | City (subtitle, centre 396,176) |\n| +------+ | |\n| |POSTER| > FIGHT | strip centre y=270 |\n| | A | CONTROLS | y=352 |\n| | | OPTIONS | y=434 |\n| +------+ QUIT | y=516 |\n| +------+ | |\n| |POSTER| | |\n| | B | | |\n| +------+ | |\n|~~ledge + vines~~~~~~~~~~~~|~~street, lane dashes~~~ W/S select / Enter confirm| y=688\n+---------------------------+-----------------------------------------------+ y=720\n```"
+   "text": "```\r\nx=0 x=640 x=1280\r\n+---------------------------+-----------------------------------------------+ y=0\r\n| BRICK WALL | DUSK STREET (sky, sun, buildings, lamp) |\r\n| +----------------+ | |\r\n| | THE REBELLION | | title strip 440x84, -2 deg, centre (396,110) |\r\n| +----------------+ | |\r\n| Fists of the Fallen | City (subtitle, centre 396,176) |\r\n| +------+ | |\r\n| |POSTER| > FIGHT | strip centre y=270 |\r\n| | A | CONTROLS | y=352 |\r\n| | | OPTIONS | y=434 |\r\n| +------+ QUIT | y=516 |\r\n| +------+ | |\r\n| |POSTER| | |\r\n| | B | | |\r\n| +------+ | |\r\n|~~ledge + vines~~~~~~~~~~~~|~~street, lane dashes~~~ W/S select / Enter confirm| y=688\r\n+---------------------------+-----------------------------------------------+ y=720\r\n```"
   },
   {
    "id": "main-menu#4",
@@ -1391,7 +1439,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Background (3 parallax layers, back to front)",
-   "text": "| Depth | Layer | Covers | Content |\n|---|---|---|---|\n| 0 | Sky and sun | full 1280x720 | Mustard/orange sky, low sun right of centre |\n| 1 | Buildings and street | x 640-1280 fully, bleeds to x 600 | Far then near silhouettes, lit windows, rooftop props, awnings, street y 600-720 with lane dashes and lamp |\n| 2 | Brick wall foreground | x 0-640 (right edge torn/irregular, up to 24 px overlap) | Brick, dark ledge y 640-720, boarded door, adjacent fire escape, vines along base |\nParallax is optional polish. Tier 0 default: static. If enabled, the mouse offset moves layer 0 by +/-4 px, layer 1 by +/-10 px, layer 2 by 0 (wall is the anchor). Wall pixels stay fixed so the menu text never drifts. Menu UI depth: posters 3, strips 4, title 5, footer 5, panel overlay 10."
+   "text": "| Depth | Layer | Covers | Content |\r\n|---|---|---|---|\r\n| 0 | Sky and sun | full 1280x720 | Mustard/orange sky, low sun right of centre |\r\n| 1 | Buildings and street | x 640-1280 fully, bleeds to x 600 | Far then near silhouettes, lit windows, rooftop props, awnings, street y 600-720 with lane dashes and lamp |\r\n| 2 | Brick wall foreground | x 0-640 (right edge torn/irregular, up to 24 px overlap) | Brick, dark ledge y 640-720, boarded door, adjacent fire escape, vines along base |\nParallax is optional polish. Tier 0 default: static. If enabled, the mouse offset moves layer 0 by +/-4 px, layer 1 by +/-10 px, layer 2 by 0 (wall is the anchor). Wall pixels stay fixed so the menu text never drifts. Menu UI depth: posters 3, strips 4, title 5, footer 5, panel overlay 10."
   },
   {
    "id": "main-menu#5",
@@ -1399,7 +1447,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Layout table",
-   "text": "| Element | Centre / anchor (px) | Size (px) | Tilt | Notes |\n|---|---|---|---|---|\n| Title strip \"THE REBELLION\" | centre 396,110 | 440x84 | -2 deg | Cream heavy condensed on near-black strip, torn edges |\n| Subtitle \"Fists of the Fallen City\" | centre 396,176 | max width 440, 24 px | 0 | Mustard monospace |\n| Fight strip | centre 396,270 | 360x64 | -2 deg | Default selected |\n| Controls strip | centre 396,352 | 360x64 | +1.5 deg | |\n| Options strip | centre 396,434 | 360x64 | -1 deg | |\n| Quit strip | centre 396,516 | 360x64 | +2 deg | |\n| Poster A \"Local Heroes Benefit: Keep the Lights On\" | centre 112,300 | 160x220 | -3 deg | Cream, forest-green text. Non-interactive |\n| Poster B \"Rust Notice 114\" with \"CURFEW\" struck through | centre 112,540 | 160x200 | +2 deg | Brick red. Non-interactive |\n| Footer hint \"W/S select / Enter confirm\" | right edge x=1248, baseline y=688 | auto, 20 px mono | 0 | Right-aligned, low emphasis, on the dark street |"
+   "text": "| Element | Centre / anchor (px) | Size (px) | Tilt | Notes |\r\n|---|---|---|---|---|\r\n| Title strip \"THE REBELLION\" | centre 396,110 | 440x84 | -2 deg | Cream heavy condensed on near-black strip, torn edges |\r\n| Subtitle \"Fists of the Fallen City\" | centre 396,176 | max width 440, 24 px | 0 | Mustard monospace |\r\n| Fight strip | centre 396,270 | 360x64 | -2 deg | Default selected |\r\n| Controls strip | centre 396,352 | 360x64 | +1.5 deg | |\r\n| Options strip | centre 396,434 | 360x64 | -1 deg | |\r\n| Quit strip | centre 396,516 | 360x64 | +2 deg | |\r\n| Poster A \"Local Heroes Benefit: Keep the Lights On\" | centre 112,300 | 160x220 | -3 deg | Cream, forest-green text. Non-interactive |\r\n| Poster B \"Rust Notice 114\" with \"CURFEW\" struck through | centre 112,540 | 160x200 | +2 deg | Brick red. Non-interactive |\r\n| Footer hint \"W/S select / Enter confirm\" | right edge x=1248, baseline y=688 | auto, 20 px mono | 0 | Right-aligned, low emphasis, on the dark street |"
   },
   {
    "id": "main-menu#6",
@@ -1415,7 +1463,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Strip colours (placeholder, tint reused torn-edge shapes)",
-   "text": "| State | Fight | Controls | Options | Quit |\n|---|---|---|---|---|\n| Idle | mustard (dimmed) | cream | forest green, cream text | warm brown, cream text |\n| Selected | brightest variant of its own colour, \"> \" marker shown | same rule | same rule | same rule |\nPer the concept, Fight is mustard when selected. Any strip, when selected, swaps to a bright variant, straightens and shifts right. Selection must not rely on colour alone: the \">\" marker and the x offset also change."
+   "text": "| State | Fight | Controls | Options | Quit |\r\n|---|---|---|---|---|\r\n| Idle | mustard (dimmed) | cream | forest green, cream text | warm brown, cream text |\r\n| Selected | brightest variant of its own colour, \"> \" marker shown | same rule | same rule | same rule |\nPer the concept, Fight is mustard when selected. Any strip, when selected, swaps to a bright variant, straightens and shifts right. Selection must not rely on colour alone: the \">\" marker and the x offset also change."
   },
   {
    "id": "main-menu#8",
@@ -1423,7 +1471,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Selected state",
-   "text": "- Rotation tweens to 0 deg.\n- x moves +10 px (e.g. Fight centre 396 -> 406).\n- Duration 100 ms, ease Quad.Out.\n- Bright colour variant swapped on tween start. Marker \">\" fades in at the strip's left padding.\n- The previously selected strip reverses the same tween (to its idle tilt, x back, idle colour, marker hidden).\n- Short tick sound on change (asset from art/audio, only after first input if audio is in Tier 0).\n- Exactly one strip selected at all times. On load: Fight."
+   "text": "- Rotation tweens to 0 deg.\r\n- x moves +10 px (e.g. Fight centre 396 -> 406).\r\n- Duration 100 ms, ease Quad.Out.\r\n- Bright colour variant swapped on tween start. Marker \">\" fades in at the strip's left padding.\r\n- The previously selected strip reverses the same tween (to its idle tilt, x back, idle colour, marker hidden).\r\n- Short tick sound on change (asset from art/audio, only after first input if audio is in Tier 0).\r\n- Exactly one strip selected at all times. On load: Fight."
   },
   {
    "id": "main-menu#9",
@@ -1431,7 +1479,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Input map",
-   "text": "| Action | Keyboard | Gamepad | Mouse |\n|---|---|---|---|\n| Select previous | W, Up | D-pad up, stick up | Hover over strip |\n| Select next | S, Down | D-pad down, stick down | Hover over strip |\n| Confirm | Enter, Space | A | Left click on strip |\n| Back | Esc, Backspace (closes Controls panel; nothing otherwise) | B (same) | Click outside panel |\n- Hover = keyboard selection: hover runs the same select-state tween and moves the selection. Mouse leaving a strip does not deselect (the last selection stays).\n- Hit area is the strip's untilted 360x64 rectangle plus 10 px right (covers the shifted position), so a moving strip does not flicker the hover.\n- Selection wraps first to last and last to first. Confirm fires on press once, held keys ignored. Stick: 0.5 dead zone, 0.25 s first repeat, 0.1 s repeat (`flow.md` global map).\n- Footer text is keyboard-only wording as briefed. When a gamepad was last used, show \"Up/Down select / A confirm\". Gamepad support is a minor addition; confirm with OQ-M5.\n- While the Controls panel is open, strips ignore input."
+   "text": "| Action | Keyboard | Gamepad | Mouse |\r\n|---|---|---|---|\r\n| Select previous | W, Up | D-pad up, stick up | Hover over strip |\r\n| Select next | S, Down | D-pad down, stick down | Hover over strip |\r\n| Confirm | Enter, Space | A | Left click on strip |\r\n| Back | Esc, Backspace (closes Controls panel; nothing otherwise) | B (same) | Click outside panel |\n- Hover = keyboard selection: hover runs the same select-state tween and moves the selection. Mouse leaving a strip does not deselect (the last selection stays).\r\n- Hit area is the strip's untilted 360x64 rectangle plus 10 px right (covers the shifted position), so a moving strip does not flicker the hover.\r\n- Selection wraps first to last and last to first. Confirm fires on press once, held keys ignored. Stick: 0.5 dead zone, 0.25 s first repeat, 0.1 s repeat (`flow.md` global map).\r\n- Footer text is keyboard-only wording as briefed. When a gamepad was last used, show \"Up/Down select / A confirm\". Gamepad support is a minor addition; confirm with OQ-M5.\r\n- While the Controls panel is open, strips ignore input."
   },
   {
    "id": "main-menu#10",
@@ -1439,7 +1487,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Item behaviour",
-   "text": "| Item | On confirm | Event / result |\n|---|---|---|\n| Fight | 0.3 s fade to black, start level scene, start HUD scene alongside | Emits `start-game` (no payload) |\n| Controls | Opens bindings panel (below) | None |\n| Options | Shows a notice \"Options: not in Tier 0\" | None. Strip stays selected |\n| Quit | Shows a notice \"Can't quit a browser game. Close the tab.\" | None. Does not close the window |\nNotice: small toast, 480x56, centre 396,596 (just under Quit, clear of the footer), 24 px text, auto-dismiss after 2 s or on any input, one at a time. Options and Quit strips look identical to the others (not greyed), so the menu feels complete; the notice carries the explanation."
+   "text": "| Item | On confirm | Event / result |\r\n|---|---|---|\r\n| Fight | 0.3 s fade to black, start level scene, start HUD scene alongside | Emits `start-game` (no payload) |\r\n| Controls | Opens bindings panel (below) | None |\r\n| Options | Shows a notice \"Options: not in Tier 0\" | None. Strip stays selected |\r\n| Quit | Shows a notice \"Can't quit a browser game. Close the tab.\" | None. Does not close the window |\nNotice: small toast, 480x56, centre 396,596 (just under Quit, clear of the footer), 24 px text, auto-dismiss after 2 s or on any input, one at a time. Options and Quit strips look identical to the others (not greyed), so the menu feels complete; the notice carries the explanation."
   },
   {
    "id": "main-menu#11",
@@ -1447,7 +1495,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Controls panel",
-   "text": "- Modal overlay: dim layer over the full screen (60% near-black), panel 720x420 centred at 640,360, torn-paper look, title \"CONTROLS\" 40 px at the panel top, 32 px padding.\n- Body: two-column list (action, key) at 24 px minimum. Rows: Move, Light attack, Heavy attack, Block, Dodge, Parry/pick-up, Pause. Key values are placeholders (\"TBD\") until Player Mechanics defines bindings (OQ-M1).\n- Footer inside panel: \"Esc / B close\", bottom-right of panel.\n- Opens with a 100 ms fade, closes on Back or Confirm. Focus returns to the Controls strip."
+   "text": "- Modal overlay: dim layer over the full screen (60% near-black), panel 720x420 centred at 640,360, torn-paper look, title \"CONTROLS\" 40 px at the panel top, 32 px padding.\r\n- Body: two-column list (action, key) at 24 px minimum. Rows: Move, Light attack, Heavy attack, Block, Dodge, Parry/pick-up, Pause. Key values are placeholders (\"TBD\") until Player Mechanics defines bindings (OQ-M1).\r\n- Footer inside panel: \"Esc / B close\", bottom-right of panel.\r\n- Opens with a 100 ms fade, closes on Back or Confirm. Focus returns to the Controls strip."
   },
   {
    "id": "main-menu#12",
@@ -1455,7 +1503,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Data needs",
-   "text": "| Data | Source | Use |\n|---|---|---|\n| Key bindings list | Player Mechanics (not yet defined) | Controls panel |\n| Last-used input device | UI input layer | Footer hint wording |\n| Game version string (optional) | build config | Not shown in this layout (see OQ-M6) |\n| Live game data | none | Menu needs no Game State data |\nEvents emitted: `start-game`. Events consumed: none."
+   "text": "| Data | Source | Use |\r\n|---|---|---|\r\n| Key bindings list | Player Mechanics (not yet defined) | Controls panel |\r\n| Last-used input device | UI input layer | Footer hint wording |\r\n| Game version string (optional) | build config | Not shown in this layout (see OQ-M6) |\r\n| Live game data | none | Menu needs no Game State data |\nEvents emitted: `start-game`. Events consumed: none."
   },
   {
    "id": "main-menu#13",
@@ -1463,7 +1511,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Later",
-   "text": "- Real Options (volume, rebinding, fullscreen), Level Select, Continue, Credits.\n- Quit (only in a desktop wrapper).\n- Parallax animation, animated lamp or flickering windows, character art for Zed.\n- Best time/result display on the wall (a third poster)."
+   "text": "- Real Options (volume, rebinding, fullscreen), Level Select, Continue, Credits.\r\n- Quit (only in a desktop wrapper).\r\n- Parallax animation, animated lamp or flickering windows, character art for Zed.\r\n- Best time/result display on the wall (a third poster)."
   },
   {
    "id": "main-menu#14",
@@ -1471,7 +1519,7 @@
    "file": "design/ux/main-menu.md",
    "authority": "derived",
    "heading": "Open questions",
-   "text": "- OQ-M1. Controls panel needs real bindings; none are defined in the GDD or `flow.md` (OQ-F5). Panel is built with \"TBD\" values until then. The Controls item is a second menu item and `flow.md` called it optional; this brief makes it required.\n- OQ-M2. Options and Quit are shown but inert in Tier 0 with a notice. Alternative: omit them (brief lists 4 strips, so kept). Confirm.\n- OQ-M3. Is audio in Tier 0? If yes, a \"press any key\" gate is needed for the browser autoplay rule (the tick and any music wait for first input).\n- OQ-M4. Title is live text or a logo image? Depends on `art-direction-agent`. Spec uses a 440x84 strip either way.\n- OQ-M5. Footer wording is keyboard-only per brief. Is a gamepad variant wanted?\n- OQ-M6. The old version tag was dropped to keep the footer to one hint. Confirm.\n- OQ-M7. Event name is now `start-game` (per brief), replacing the proposed `start-game-requested`. `flow.md` still says \"Start Game\" and lists the old name in the menu context; it should be updated to \"Fight\".\n- OQ-M8. Wall/street split at x=640 and posters at x 32-192 assume the art keeps the left half free of detail that clashes with text; art must keep strips' backgrounds contrast-safe."
+   "text": "- OQ-M1. Controls panel needs real bindings; none are defined in the GDD or `flow.md` (OQ-F5). Panel is built with \"TBD\" values until then. The Controls item is a second menu item and `flow.md` called it optional; this brief makes it required.\r\n- OQ-M2. Options and Quit are shown but inert in Tier 0 with a notice. Alternative: omit them (brief lists 4 strips, so kept). Confirm.\r\n- OQ-M3. Is audio in Tier 0? If yes, a \"press any key\" gate is needed for the browser autoplay rule (the tick and any music wait for first input).\r\n- OQ-M4. Title is live text or a logo image? Depends on `art-direction-agent`. Spec uses a 440x84 strip either way.\r\n- OQ-M5. Footer wording is keyboard-only per brief. Is a gamepad variant wanted?\r\n- OQ-M6. The old version tag was dropped to keep the footer to one hint. Confirm.\r\n- OQ-M7. Event name is now `start-game` (per brief), replacing the proposed `start-game-requested`. `flow.md` still says \"Start Game\" and lists the old name in the menu context; it should be updated to \"Fight\".\r\n- OQ-M8. Wall/street split at x=640 and posters at x 32-192 assume the art keeps the left half free of detail that clashes with text; art must keep strips' backgrounds contrast-safe."
   },
   {
    "id": "menu-concept#1",
@@ -1487,7 +1535,7 @@
    "file": "design/ux/menu-concept.md",
    "authority": "derived",
    "heading": "Scene layout",
-   "text": "- **Left (about half the screen): brick wall.** Red brick with a dark ledge at the base, a boarded door, a fire escape on the building beside it, and green vines along the bottom. The posters and menu sit here.\n- **Right: city street at dusk.** A mustard-and-orange sky with a low sun, layered building silhouettes, and a dark street with yellow lane dashes and a street lamp.\n- **Buildings:** Window grids with a few lit in mustard. Rooftops carry a water tank, an antenna, a rooftop hut and vents, with wires strung between them. Ground floors have four shopfronts with striped awnings, one with a sign. A fire escape is drawn on one tower."
+   "text": "- **Left (about half the screen): brick wall.** Red brick with a dark ledge at the base, a boarded door, a fire escape on the building beside it, and green vines along the bottom. The posters and menu sit here.\r\n- **Right: city street at dusk.** A mustard-and-orange sky with a low sun, layered building silhouettes, and a dark street with yellow lane dashes and a street lamp.\r\n- **Buildings:** Window grids with a few lit in mustard. Rooftops carry a water tank, an antenna, a rooftop hut and vents, with wires strung between them. Ground floors have four shopfronts with striped awnings, one with a sign. A fire escape is drawn on one tower."
   },
   {
    "id": "menu-concept#3",
@@ -1495,7 +1543,7 @@
    "file": "design/ux/menu-concept.md",
    "authority": "derived",
    "heading": "Menu elements",
-   "text": "| Element | Description |\n|---|---|\n| Title | \"THE REBELLION\" in heavy condensed type, cream on a black strip, tilted about 2 degrees. The subtitle \"Fists of the Fallen City\" sits beneath in mustard monospace. |\n| Fight (selected) | Mustard torn-paper strip, leading \">\" marker, straightens and slides right. Starts the game. |\n| Controls | Cream paper strip |\n| Options | Forest-green strip with cream text. |\n| Quit | Warm-brown strip with cream text. |\n| Footer hint | \"W/S select / Enter confirm\", bottom right. |\nEach option is a separate torn-edge paper strip, tilted slightly. The selected option straightens, moves right and takes the brightest colour. Hover gives the same feedback."
+   "text": "| Element | Description |\r\n|---|---|\r\n| Title | \"THE REBELLION\" in heavy condensed type, cream on a black strip, tilted about 2 degrees. The subtitle \"Fists of the Fallen City\" sits beneath in mustard monospace. |\r\n| Fight (selected) | Mustard torn-paper strip, leading \">\" marker, straightens and slides right. Starts the game. |\r\n| Controls | Cream paper strip |\r\n| Options | Forest-green strip with cream text. |\r\n| Quit | Warm-brown strip with cream text. |\r\n| Footer hint | \"W/S select / Enter confirm\", bottom right. |\nEach option is a separate torn-edge paper strip, tilted slightly. The selected option straightens, moves right and takes the brightest colour. Hover gives the same feedback."
   },
   {
    "id": "menu-concept#4",
@@ -1503,7 +1551,7 @@
    "file": "design/ux/menu-concept.md",
    "authority": "derived",
    "heading": "Background posters (non-interactive)",
-   "text": "- \"Local Heroes Benefit: Keep the Lights On\": cream, forest-green text. Ties back to the original Local Heroes Mural idea.\n- Rust Notice 114, \"CURFEW\" struck through: brick red. It shows the Rust security force's control and the community defacing it."
+   "text": "- \"Local Heroes Benefit: Keep the Lights On\": cream, forest-green text. Ties back to the original Local Heroes Mural idea.\r\n- Rust Notice 114, \"CURFEW\" struck through: brick red. It shows the Rust security force's control and the community defacing it."
   },
   {
    "id": "menu-concept#5",
@@ -1511,7 +1559,7 @@
    "file": "design/ux/menu-concept.md",
    "authority": "derived",
    "heading": "Visual style",
-   "text": "- Flat shapes with torn, uneven edges (clip-path style); no gradients or glow.\n- Heavy condensed display type for titles and buttons, monospace for small print.\n- Palette: brick red #9C3B2E / #7A2F25, mustard #E1A92B, forest green #2F5D3A, warm brown #6B4A2F, cream #E8DCC0, near-black #1D1A16."
+   "text": "- Flat shapes with torn, uneven edges (clip-path style); no gradients or glow.\r\n- Heavy condensed display type for titles and buttons, monospace for small print.\r\n- Palette: brick red #9C3B2E / #7A2F25, mustard #E1A92B, forest green #2F5D3A, warm brown #6B4A2F, cream #E8DCC0, near-black #1D1A16."
   },
   {
    "id": "menu-concept#6",
@@ -1519,7 +1567,7 @@
    "file": "design/ux/menu-concept.md",
    "authority": "derived",
    "heading": "Implementation notes (Phaser)",
-   "text": "- Background as 3 parallax layers: sky and sun, far and near buildings, brick wall foreground. The street strip can be reused as the arena floor backdrop.\n- Posters and buttons as sprites with irregular alpha edges; a handful of torn-edge shapes can be tinted and reused.\n- Selection: tween rotation to 0 and x +10px (about 100 ms); swap to the bright colour variant.\n- Keyboard (W/S, Enter) is primary; mouse hover and click should match.\n- Placeholder only: the mock up uses stand-in fonts and flat SVG shapes; final art comes from the Art Direction agent."
+   "text": "- Background as 3 parallax layers: sky and sun, far and near buildings, brick wall foreground. The street strip can be reused as the arena floor backdrop.\r\n- Posters and buttons as sprites with irregular alpha edges; a handful of torn-edge shapes can be tinted and reused.\r\n- Selection: tween rotation to 0 and x +10px (about 100 ms); swap to the bright colour variant.\r\n- Keyboard (W/S, Enter) is primary; mouse hover and click should match.\r\n- Placeholder only: the mock up uses stand-in fonts and flat SVG shapes; final art comes from the Art Direction agent."
   },
   {
    "id": "pause#1",
@@ -1770,64 +1818,64 @@
    "text": "- Never merge rounds; run them only when explicitly asked, so the class\n  can discuss between rounds.\n- If a subagent fails or returns something empty, re-run just that agent.\n- Do not read gdd.txt into your own context during Rounds 1-2; the whole\n  point is that only the reviewers read it independently."
   },
   {
-   "id": "readme-2#1",
-   "doc": "readme-2",
+   "id": "readme-2-2#1",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "GDD Multi-Agent Review Kit (Claude Code)",
    "text": "Six AI reviewers tear apart your game design document in parallel, then\ncross-examine each other. A moderator synthesizes the result. A second\nagent team builds an interactive visualization page. You get ranked\nproblems, unresolved disagreements, and two HTML reports. The whole\nthing runs in one Claude Code terminal.\nReview team: systems designer, narrative critic, player psychologist,\nfeasibility lead, adversarial QA, business analyst.\nVisualization team: data extractor, viz designer, HTML builder, viz\nreviewer."
   },
   {
-   "id": "readme-2#2",
-   "doc": "readme-2",
+   "id": "readme-2-2#2",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Requirements",
    "text": "[Claude Code](https://docs.claude.com/en/docs/claude-code/overview),\ninstalled and authenticated."
   },
   {
-   "id": "readme-2#3",
-   "doc": "readme-2",
+   "id": "readme-2-2#3",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Setup",
    "text": "1. Clone or unzip this kit. You get:\n - `.claude/agents/` with ten agent definitions (six reviewers, four\n for the visualization pipeline)\n - `CLAUDE.md` with orchestration rules for all five rounds\n - `reviews/` where output lands\n2. Drop your game design document in as **`gdd.txt`**. Plain text. If\n it's long, trim to the pitch and gameplay overview sections. A few\n thousand words is the sweet spot.\n3. Clear out `reviews/` if it has files from a previous run."
   },
   {
-   "id": "readme-2#4",
-   "doc": "readme-2",
+   "id": "readme-2-2#4",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Running a review",
    "text": "Open a terminal here, run `claude`, then type these one at a time:\nRun Round 1.\nRun Round 2.\nRun Round 3.\nRun Round 4.\nRun Round 5.\nRead the output between rounds."
   },
   {
-   "id": "readme-2#5",
-   "doc": "readme-2",
+   "id": "readme-2-2#5",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "What each round does",
    "text": "**Round 1** spawns all six reviewers in parallel. Each gets its own\nisolated context with only the GDD and its role. Findings go to\n`reviews/<agent>.md`.\n**Round 2** re-spawns the reviewers, this time with access to all six\nRound 1 files. They argue with each other: flag conflicts, find issues\nthat only show up when you combine two lenses, revise their own calls.\n**Round 3** turns the main session into a moderator. It reads everything\nand writes `reviews/SYNTHESIS.md` with a ranked top-5, unresolved\ndisagreements, quick wins, and a verdict.\n**Round 4** generates `review-board.html`, a self-contained dark-themed\nreport you can open in any browser. Designed to be readable on a\nprojector from the back of a room."
   },
   {
-   "id": "readme-2#6",
-   "doc": "readme-2",
+   "id": "readme-2-2#6",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "What each round does",
    "text": "**Round 5** runs the visualization team. A data extractor pulls\nstructured JSON from the reviews. A viz designer picks the right charts\nand interactions. An HTML builder produces `review-viz.html` with\ninteractive filtering, severity breakdowns, a reviewer agreement matrix,\nand drill-downs into each finding's cross-examination trail. A viz\nreviewer audits the result for accuracy. This round runs in phases\nbecause each agent depends on the one before it."
   },
   {
-   "id": "readme-2#7",
-   "doc": "readme-2",
+   "id": "readme-2-2#7",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Example GDD",
    "text": "Want to test-drive it? The Deus Ex \"Majestic Revolutions\" design doc\nworks well:\nhttps://archive.org/stream/DeusExDesignDoc11081997/Majestic%20Revolutions%20-%20Joe%20Martin_djvu.txt\nSave it as `gdd.txt`, trim to the intro pitch and gameplay overview if\nyou want faster results, and run all five rounds."
   },
   {
-   "id": "readme-2#8",
-   "doc": "readme-2",
+   "id": "readme-2-2#8",
+   "doc": "readme-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Troubleshooting",

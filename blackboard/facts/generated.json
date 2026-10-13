@@ -1,0 +1,10 @@
+{
+  "builtAt": "2026-10-13T17:00:00.000Z", "attempt": 1,
+  "item": "GAP-004", "ownerAgent": "combat-agent",
+  "filesChanged": ["src/shared/hitFeedback.js", "src/combat/hitStop.js", "src/state/state.test.mjs"],
+  "testsAdded": ["src/state/state.test.mjs"],
+  "npmTest": {"passed": 17, "failed": 0},
+  "eventsAdded": [],
+  "openQuestions": ["Hit-stop ms values come from design/art/hit-feedback-spec.md (needs playtest). src/shared/combatData.test.mjs still not in npm test (package.json unowned, see CARRY-COMBATDATA)."],
+  "requests": ["Lead follow-up: apply hitStopMs/mergeHitStop in ArenaScene.js (freeze attacker and target only; timer keeps ticking)."]
+}
