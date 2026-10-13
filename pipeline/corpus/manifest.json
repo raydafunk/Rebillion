@@ -1,0 +1,407 @@
+{
+  "builtAt": "2026-10-12T21:22:13.016Z",
+  "files": [
+    {
+      "file": "GameDesignDocument/Rebellion menu desgin.docx",
+      "authority": "primary",
+      "bytes": 172174,
+      "sha1": "480a53a77606",
+      "status": "ingested",
+      "docId": "rebellion-menu-desgin",
+      "chunks": 4,
+      "chars": 3617,
+      "warnings": [
+        "contains embedded images (pixels not read)"
+      ]
+    },
+    {
+      "file": "GameDesignDocument/The Rebellion.docx",
+      "authority": "primary",
+      "bytes": 491607,
+      "sha1": "eab88c8b8057",
+      "status": "ingested",
+      "docId": "the-rebellion",
+      "chunks": 10,
+      "chars": 8416,
+      "warnings": [
+        "contains embedded images (pixels not read)"
+      ]
+    },
+    {
+      "file": "GameDesignDocument/The Title Screen.docx",
+      "authority": "primary",
+      "bytes": 420710,
+      "sha1": "7f6984913c66",
+      "status": "ingested",
+      "docId": "the-title-screen",
+      "chunks": 1,
+      "chars": 907,
+      "warnings": [
+        "contains embedded images (pixels not read)"
+      ]
+    },
+    {
+      "file": "PDf/The Rebellion -Frist Draft.pdf",
+      "authority": "reference",
+      "bytes": 133361,
+      "sha1": "2af0b58994a8",
+      "status": "ingested",
+      "docId": "the-rebellion-frist-draft",
+      "chunks": 2,
+      "chars": 1582,
+      "warnings": []
+    },
+    {
+      "file": "PDf/The Rebellion- Final Gdd.pdf",
+      "authority": "reference",
+      "bytes": 196142,
+      "sha1": "96495d12189c",
+      "status": "ingested",
+      "docId": "the-rebellion-final-gdd",
+      "chunks": 5,
+      "chars": 4515,
+      "warnings": []
+    },
+    {
+      "file": "README.md",
+      "authority": "reference",
+      "bytes": 1548,
+      "sha1": "ffbef74bb144",
+      "status": "ingested",
+      "docId": "readme",
+      "chunks": 2,
+      "chars": 1472,
+      "warnings": []
+    },
+    {
+      "file": "design/art/asset-manifest.md",
+      "authority": "derived",
+      "bytes": 7697,
+      "sha1": "b535beff20a7",
+      "status": "ingested",
+      "docId": "asset-manifest",
+      "chunks": 13,
+      "chars": 7347,
+      "warnings": []
+    },
+    {
+      "file": "design/art/hit-feedback-spec.md",
+      "authority": "derived",
+      "bytes": 4407,
+      "sha1": "b1b4a66c5dc2",
+      "status": "ingested",
+      "docId": "hit-feedback-spec",
+      "chunks": 7,
+      "chars": 4194,
+      "warnings": []
+    },
+    {
+      "file": "design/art/style-guide.md",
+      "authority": "derived",
+      "bytes": 12049,
+      "sha1": "e0902ff2a276",
+      "status": "ingested",
+      "docId": "style-guide",
+      "chunks": 15,
+      "chars": 11596,
+      "warnings": []
+    },
+    {
+      "file": "design/art/zed-pixellab-prompt.md",
+      "authority": "derived",
+      "bytes": 5866,
+      "sha1": "422b86dff41f",
+      "status": "ingested",
+      "docId": "zed-pixellab-prompt",
+      "chunks": 8,
+      "chars": 5621,
+      "warnings": []
+    },
+    {
+      "file": "design/lore/canon.md",
+      "authority": "derived",
+      "bytes": 6975,
+      "sha1": "27fe0510e91a",
+      "status": "ingested",
+      "docId": "canon",
+      "chunks": 13,
+      "chars": 6456,
+      "warnings": []
+    },
+    {
+      "file": "design/lore/critic-log.md",
+      "authority": "derived",
+      "bytes": 9272,
+      "sha1": "4383ce20eb09",
+      "status": "ingested",
+      "docId": "critic-log",
+      "chunks": 16,
+      "chars": 8652,
+      "warnings": []
+    },
+    {
+      "file": "design/lore/menu-copy.md",
+      "authority": "derived",
+      "bytes": 1552,
+      "sha1": "8242e0969a12",
+      "status": "ingested",
+      "docId": "menu-copy",
+      "chunks": 4,
+      "chars": 1426,
+      "warnings": []
+    },
+    {
+      "file": "design/team/agent-diagrams.md",
+      "authority": "derived",
+      "bytes": 4626,
+      "sha1": "40298c21cb95",
+      "status": "ingested",
+      "docId": "agent-diagrams",
+      "chunks": 7,
+      "chars": 3872,
+      "warnings": []
+    },
+    {
+      "file": "design/team/agent-team-setups.md",
+      "authority": "derived",
+      "bytes": 9634,
+      "sha1": "107cca0b5ded",
+      "status": "ingested",
+      "docId": "agent-team-setups",
+      "chunks": 13,
+      "chars": 9228,
+      "warnings": []
+    },
+    {
+      "file": "design/team/contracts.md",
+      "authority": "derived",
+      "bytes": 3324,
+      "sha1": "70e921fd159c",
+      "status": "ingested",
+      "docId": "contracts",
+      "chunks": 4,
+      "chars": 3197,
+      "warnings": []
+    },
+    {
+      "file": "design/team/review.md",
+      "authority": "derived",
+      "bytes": 6633,
+      "sha1": "8494d6264781",
+      "status": "ingested",
+      "docId": "review",
+      "chunks": 11,
+      "chars": 6295,
+      "warnings": []
+    },
+    {
+      "file": "design/ux/flow.md",
+      "authority": "derived",
+      "bytes": 8482,
+      "sha1": "fe7945c3ddf9",
+      "status": "ingested",
+      "docId": "flow",
+      "chunks": 11,
+      "chars": 7025,
+      "warnings": []
+    },
+    {
+      "file": "design/ux/hud.md",
+      "authority": "derived",
+      "bytes": 9935,
+      "sha1": "6123a189700b",
+      "status": "ingested",
+      "docId": "hud",
+      "chunks": 14,
+      "chars": 8476,
+      "warnings": []
+    },
+    {
+      "file": "design/ux/lose.md",
+      "authority": "derived",
+      "bytes": 6876,
+      "sha1": "56eb218378d1",
+      "status": "ingested",
+      "docId": "lose",
+      "chunks": 10,
+      "chars": 5923,
+      "warnings": []
+    },
+    {
+      "file": "design/ux/main-menu.md",
+      "authority": "derived",
+      "bytes": 9509,
+      "sha1": "0b40d957f3c6",
+      "status": "ingested",
+      "docId": "main-menu",
+      "chunks": 14,
+      "chars": 8437,
+      "warnings": []
+    },
+    {
+      "file": "design/ux/menu-concept.md",
+      "authority": "derived",
+      "bytes": 3001,
+      "sha1": "d2dc2a98bdd3",
+      "status": "ingested",
+      "docId": "menu-concept",
+      "chunks": 6,
+      "chars": 2787,
+      "warnings": []
+    },
+    {
+      "file": "design/ux/pause.md",
+      "authority": "derived",
+      "bytes": 5552,
+      "sha1": "926de3a4be58",
+      "status": "ingested",
+      "docId": "pause",
+      "chunks": 10,
+      "chars": 4635,
+      "warnings": []
+    },
+    {
+      "file": "design/ux/win.md",
+      "authority": "derived",
+      "bytes": 5807,
+      "sha1": "6eec9c8a3328",
+      "status": "ingested",
+      "docId": "win",
+      "chunks": 10,
+      "chars": 4987,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/CLAUDE.md",
+      "authority": "reference",
+      "bytes": 7729,
+      "sha1": "f84bb212fb03",
+      "status": "ingested",
+      "docId": "claude",
+      "chunks": 11,
+      "chars": 7357,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/README.md",
+      "authority": "reference",
+      "bytes": 3580,
+      "sha1": "101dd834f10b",
+      "status": "ingested",
+      "docId": "readme-2",
+      "chunks": 8,
+      "chars": 3360,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/gdd.txt",
+      "authority": "reference",
+      "bytes": 1790,
+      "sha1": "f0cf73a9c055",
+      "status": "ingested",
+      "docId": "gdd",
+      "chunks": 2,
+      "chars": 1605,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/SYNTHESIS.md",
+      "authority": "reference",
+      "bytes": 8023,
+      "sha1": "2fa73c1c9975",
+      "status": "ingested",
+      "docId": "synthesis",
+      "chunks": 12,
+      "chars": 7810,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/adversarial-qa.md",
+      "authority": "reference",
+      "bytes": 11924,
+      "sha1": "c001931a758e",
+      "status": "ingested",
+      "docId": "adversarial-qa",
+      "chunks": 13,
+      "chars": 11277,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/business-analyst.md",
+      "authority": "reference",
+      "bytes": 12690,
+      "sha1": "7c3a4118145c",
+      "status": "ingested",
+      "docId": "business-analyst",
+      "chunks": 16,
+      "chars": 11932,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/feasibility-lead.md",
+      "authority": "reference",
+      "bytes": 9915,
+      "sha1": "e67d51c5ba48",
+      "status": "ingested",
+      "docId": "feasibility-lead",
+      "chunks": 13,
+      "chars": 9322,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/narrative-critic.md",
+      "authority": "reference",
+      "bytes": 10022,
+      "sha1": "bd794b9e1936",
+      "status": "ingested",
+      "docId": "narrative-critic",
+      "chunks": 13,
+      "chars": 9542,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/player-psychologist.md",
+      "authority": "reference",
+      "bytes": 10970,
+      "sha1": "b65da39d2cd1",
+      "status": "ingested",
+      "docId": "player-psychologist",
+      "chunks": 14,
+      "chars": 10305,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/systems-designer.md",
+      "authority": "reference",
+      "bytes": 9401,
+      "sha1": "fff261bc1b71",
+      "status": "ingested",
+      "docId": "systems-designer",
+      "chunks": 11,
+      "chars": 8833,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/viz-audit.md",
+      "authority": "reference",
+      "bytes": 12535,
+      "sha1": "7d115924e4b3",
+      "status": "ingested",
+      "docId": "viz-audit",
+      "chunks": 14,
+      "chars": 12249,
+      "warnings": []
+    },
+    {
+      "file": "gdd-review-kit-main/reviews/viz-spec.md",
+      "authority": "reference",
+      "bytes": 16846,
+      "sha1": "da4e395350a2",
+      "status": "ingested",
+      "docId": "viz-spec",
+      "chunks": 22,
+      "chars": 16061,
+      "warnings": []
+    }
+  ]
+}
