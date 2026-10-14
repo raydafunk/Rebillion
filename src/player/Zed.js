@@ -33,10 +33,12 @@ export class Zed {
       onActive: (moveId, m, swing) => this._emitHit(m, swing),
     });
     this.down = new Set();
+    this.tapped = new Set(); // keys pressed since the last poll, so a tap shorter than one frame still counts
+    this._pending = {};      // press edges waiting for a fixed step (render frames without a step must not eat them)
     this._acc = 0;
 
     const kb = scene.input.keyboard;
-    this._onDown = (e) => this.down.add(e.code);
+    this._onDown = (e) => { this.down.add(e.code); this.tapped.add(e.code); };
     this._onUp = (e) => this.down.delete(e.code);
     kb.on('keydown', this._onDown);
     kb.on('keyup', this._onUp);
@@ -108,7 +110,9 @@ export class Zed {
     const body = this.sprite.body;
     const grounded = body.blocked.down || body.touching.down;
     const pad = this.scene.input.gamepad && this.scene.input.gamepad.total ? this.scene.input.gamepad.getPad(0) : null;
-    this.input.poll(pad ? new Set([...this.down, ...padToKeys(pad)]) : this.down);
+    this.input.poll(new Set([...this.down, ...this.tapped, ...(pad ? padToKeys(pad) : [])]));
+    this.tapped.clear();
+    for (const a of Object.keys(this.input.pressed)) if (this.input.pressed[a]) this._pending[a] = true;
     const inp = this.input;
     if (this.dead) { this.sprite.setFlipX(this.facing < 0); body.setVelocityX(0); return; }
     const locked = this.machine.state === 'attack' || this.machine.state === 'dodge' || this.machine.state === 'hitstun' || this.machine.state === 'block';
@@ -121,11 +125,12 @@ export class Zed {
 
     // Fixed-step state machine (pressed edges delivered on first step of the frame)
     this._acc += delta;
-    let pressed = inp.pressed;
+    let pressed = this._pending;
     while (this._acc >= cfg.fixedStepMs) {
       this._acc -= cfg.fixedStepMs;
       this.machine.step({ pressed, held: inp.held, moveX: inp.moveX }, { grounded });
       pressed = {};
+      this._pending = {};
     }
 
     // Horizontal movement

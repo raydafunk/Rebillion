@@ -190,6 +190,7 @@ export default class ArenaScene extends Phaser.Scene {
 
   // ---- hit feedback (hit-feedback-spec.md, minus hit-stop for Tier 0) ----
   _onHitRequest(r) {
+    if (r.team === 'player') return; // no hitbox overlay on Zed's punches; the sprite shows the swing
     const x = r.origin.x + r.facing * r.hitbox.x - (r.facing < 0 ? r.hitbox.w : 0);
     this.swings.push({
       x, y: r.origin.y + r.hitbox.y, w: r.hitbox.w, h: r.hitbox.h, ttl: 120, life: 120,

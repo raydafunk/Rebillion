@@ -6,12 +6,12 @@
 // damage/knockback/hitstun are inputs for the hit-request (combat resolves them).
 export const MOVES = {
   light1: {
-    startup: 4, active: 3, recovery: 8, cancelFrom: 7,
+    startup: 4, active: 3, recovery: 14, cancelFrom: 7,
     damage: 6, knockback: 120, hitstun: 14, hitbox: { x: 20, y: -24, w: 40, h: 24 },
     chain: { light: 'light2', heavy: 'heavy1' },
   },
   light2: {
-    startup: 4, active: 3, recovery: 8, cancelFrom: 7,
+    startup: 4, active: 3, recovery: 14, cancelFrom: 7,
     damage: 7, knockback: 140, hitstun: 14, hitbox: { x: 20, y: -24, w: 44, h: 24 },
     chain: { light: 'light3', heavy: 'heavy1' },
   },

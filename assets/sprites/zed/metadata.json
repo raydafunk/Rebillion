@@ -3,6 +3,34 @@
   "states": [
     {
       "character": {
+        "id": "925db468-0e56-53f9-8b93-1a105416e2f6",
+        "name": "Idle",
+        "prompt": "Face\nAge: Late teens to early 20s.\n\nExpression: Determined but kind; expressive eyebrows.\n\nFeatures:\n\nSlight cheek scar or paint streak (symbolic, not edgy).\n\nWarm skin tone reflecting the city\u2019s cultural richness.\n\nHair\nStyle: Short, textured, slightly messy.\n\nMovement: Should animate well during combos.\n\nColour: Dark brown or black with subtle warm highlights.Bottom \u2014 Brick\u2011Red Joggers\nColour: Brick red (ties to the alley where he grew up).\n\nFit: Slim but flexible, allowing big kicks and acrobatics.\n\nDetails:\n\nKnee patches or reinforced stitching.\n\nSubtle paint splatter marks (from helping his father paint murals).\n\nFootwear \u2014 Forest\u2011Green Street Sneakers\nColour: Forest green (third palette pillar).\n\nStyle: High\u2011top sneakers with thick soles for impact.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-08T00:00:00+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        }
+      }
+    },
+    {
+      "character": {
         "id": "8612d607-1b13-4f20-836b-9be6e6f8a252",
         "name": "Jumping",
         "prompt": "Face\nAge: Late teens to early 20s.\n\nExpression: Determined but kind; expressive eyebrows.\n\nFeatures:\n\nSlight cheek scar or paint streak (symbolic, not edgy).\n\nWarm skin tone reflecting the city\u2019s cultural richness.\n\nHair\nStyle: Short, textured, slightly messy.\n\nMovement: Should animate well during combos.\n\nColour: Dark brown or black with subtle warm highlights.Bottom \u2014 Brick\u2011Red Joggers\nColour: Brick red (ties to the alley where he grew up).\n\nFit: Slim but flexible, allowing big kicks and acrobatics.\n\nDetails:\n\nKnee patches or reinforced stitching.\n\nSubtle paint splatter marks (from helping his father paint murals).\n\nFootwear \u2014 Forest\u2011Green Street Sneakers\nColour: Forest green (third palette pillar).\n\nStyle: High\u2011top sneakers with thick soles for impact.",
@@ -26,11 +54,234 @@
           "north-west": "Jumping/rotations/north-west.png",
           "west": "Jumping/rotations/west.png",
           "south-west": "Jumping/rotations/south-west.png"
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "3ab6f89e-3849-5ec6-8c3e-6bd23711d206",
+        "name": "walk",
+        "prompt": "Face\nAge: Late teens to early 20s.\n\nExpression: Determined but kind; expressive eyebrows.\n\nFeatures:\n\nSlight cheek scar or paint streak (symbolic, not edgy).\n\nWarm skin tone reflecting the city\u2019s cultural richness.\n\nHair\nStyle: Short, textured, slightly messy.\n\nMovement: Should animate well during combos.\n\nColour: Dark brown or black with subtle warm highlights.Bottom \u2014 Brick\u2011Red Joggers\nColour: Brick red (ties to the alley where he grew up).\n\nFit: Slim but flexible, allowing big kicks and acrobatics.\n\nDetails:\n\nKnee patches or reinforced stitching.\n\nSubtle paint splatter marks (from helping his father paint murals).\n\nFootwear \u2014 Forest\u2011Green Street Sneakers\nColour: Forest green (third palette pillar).\n\nStyle: High\u2011top sneakers with thick soles for impact.",
+        "size": {
+          "width": 64,
+          "height": 64
         },
-        "animations": {}
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-08T00:00:00+00:00"
+      },
+      "folder": "walk",
+      "frames": {
+        "rotations": {
+          "south": "walk/rotations/south.png",
+          "south-east": "walk/rotations/south-east.png",
+          "east": "walk/rotations/east.png",
+          "north-east": "walk/rotations/north-east.png",
+          "north": "walk/rotations/north.png",
+          "north-west": "walk/rotations/north-west.png",
+          "west": "walk/rotations/west.png",
+          "south-west": "walk/rotations/south-west.png"
+        },
+        "animations": {
+          "Walking": {
+            "south": [
+              "walk/animations/Walking/south/frame_000.png",
+              "walk/animations/Walking/south/frame_001.png",
+              "walk/animations/Walking/south/frame_002.png",
+              "walk/animations/Walking/south/frame_003.png",
+              "walk/animations/Walking/south/frame_004.png",
+              "walk/animations/Walking/south/frame_005.png",
+              "walk/animations/Walking/south/frame_006.png",
+              "walk/animations/Walking/south/frame_007.png"
+            ],
+            "south-east": [
+              "walk/animations/Walking/south-east/frame_000.png",
+              "walk/animations/Walking/south-east/frame_001.png",
+              "walk/animations/Walking/south-east/frame_002.png",
+              "walk/animations/Walking/south-east/frame_003.png",
+              "walk/animations/Walking/south-east/frame_004.png",
+              "walk/animations/Walking/south-east/frame_005.png",
+              "walk/animations/Walking/south-east/frame_006.png",
+              "walk/animations/Walking/south-east/frame_007.png"
+            ],
+            "east": [
+              "walk/animations/Walking/east/frame_000.png",
+              "walk/animations/Walking/east/frame_001.png",
+              "walk/animations/Walking/east/frame_002.png",
+              "walk/animations/Walking/east/frame_003.png",
+              "walk/animations/Walking/east/frame_004.png",
+              "walk/animations/Walking/east/frame_005.png",
+              "walk/animations/Walking/east/frame_006.png",
+              "walk/animations/Walking/east/frame_007.png"
+            ],
+            "north-east": [
+              "walk/animations/Walking/north-east/frame_000.png",
+              "walk/animations/Walking/north-east/frame_001.png",
+              "walk/animations/Walking/north-east/frame_002.png",
+              "walk/animations/Walking/north-east/frame_003.png",
+              "walk/animations/Walking/north-east/frame_004.png",
+              "walk/animations/Walking/north-east/frame_005.png",
+              "walk/animations/Walking/north-east/frame_006.png",
+              "walk/animations/Walking/north-east/frame_007.png"
+            ],
+            "north": [
+              "walk/animations/Walking/north/frame_000.png",
+              "walk/animations/Walking/north/frame_001.png",
+              "walk/animations/Walking/north/frame_002.png",
+              "walk/animations/Walking/north/frame_003.png",
+              "walk/animations/Walking/north/frame_004.png",
+              "walk/animations/Walking/north/frame_005.png",
+              "walk/animations/Walking/north/frame_006.png",
+              "walk/animations/Walking/north/frame_007.png"
+            ],
+            "north-west": [
+              "walk/animations/Walking/north-west/frame_000.png",
+              "walk/animations/Walking/north-west/frame_001.png",
+              "walk/animations/Walking/north-west/frame_002.png",
+              "walk/animations/Walking/north-west/frame_003.png",
+              "walk/animations/Walking/north-west/frame_004.png",
+              "walk/animations/Walking/north-west/frame_005.png",
+              "walk/animations/Walking/north-west/frame_006.png",
+              "walk/animations/Walking/north-west/frame_007.png"
+            ],
+            "west": [
+              "walk/animations/Walking/west/frame_000.png",
+              "walk/animations/Walking/west/frame_001.png",
+              "walk/animations/Walking/west/frame_002.png",
+              "walk/animations/Walking/west/frame_003.png",
+              "walk/animations/Walking/west/frame_004.png",
+              "walk/animations/Walking/west/frame_005.png",
+              "walk/animations/Walking/west/frame_006.png",
+              "walk/animations/Walking/west/frame_007.png"
+            ],
+            "south-west": [
+              "walk/animations/Walking/south-west/frame_000.png",
+              "walk/animations/Walking/south-west/frame_001.png",
+              "walk/animations/Walking/south-west/frame_002.png",
+              "walk/animations/Walking/south-west/frame_003.png",
+              "walk/animations/Walking/south-west/frame_004.png",
+              "walk/animations/Walking/south-west/frame_005.png",
+              "walk/animations/Walking/south-west/frame_006.png",
+              "walk/animations/Walking/south-west/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "642bbe4e-2ac5-449a-94fb-1a9feea75d3e",
+        "name": "Running",
+        "prompt": "Face\nAge: Late teens to early 20s.\n\nExpression: Determined but kind; expressive eyebrows.\n\nFeatures:\n\nSlight cheek scar or paint streak (symbolic, not edgy).\n\nWarm skin tone reflecting the city\u2019s cultural richness.\n\nHair\nStyle: Short, textured, slightly messy.\n\nMovement: Should animate well during combos.\n\nColour: Dark brown or black with subtle warm highlights.Bottom \u2014 Brick\u2011Red Joggers\nColour: Brick red (ties to the alley where he grew up).\n\nFit: Slim but flexible, allowing big kicks and acrobatics.\n\nDetails:\n\nKnee patches or reinforced stitching.\n\nSubtle paint splatter marks (from helping his father paint murals).\n\nFootwear \u2014 Forest\u2011Green Street Sneakers\nColour: Forest green (third palette pillar).\n\nStyle: High\u2011top sneakers with thick soles for impact.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-08T22:45:49.384964+00:00"
+      },
+      "folder": "Running",
+      "frames": {
+        "rotations": {
+          "south": "Running/rotations/south.png",
+          "south-east": "Running/rotations/south-east.png",
+          "east": "Running/rotations/east.png",
+          "north-east": "Running/rotations/north-east.png",
+          "north": "Running/rotations/north.png",
+          "north-west": "Running/rotations/north-west.png",
+          "west": "Running/rotations/west.png",
+          "south-west": "Running/rotations/south-west.png"
+        },
+        "animations": {
+          "running": {
+            "south": [
+              "Running/animations/running/south/frame_000.png",
+              "Running/animations/running/south/frame_001.png",
+              "Running/animations/running/south/frame_002.png",
+              "Running/animations/running/south/frame_003.png",
+              "Running/animations/running/south/frame_004.png",
+              "Running/animations/running/south/frame_005.png",
+              "Running/animations/running/south/frame_006.png",
+              "Running/animations/running/south/frame_007.png"
+            ],
+            "north": [
+              "Running/animations/running/north/frame_000.png",
+              "Running/animations/running/north/frame_001.png",
+              "Running/animations/running/north/frame_002.png",
+              "Running/animations/running/north/frame_003.png",
+              "Running/animations/running/north/frame_004.png",
+              "Running/animations/running/north/frame_005.png",
+              "Running/animations/running/north/frame_006.png",
+              "Running/animations/running/north/frame_007.png"
+            ],
+            "south-east": [
+              "Running/animations/running/south-east/frame_000.png",
+              "Running/animations/running/south-east/frame_001.png",
+              "Running/animations/running/south-east/frame_002.png",
+              "Running/animations/running/south-east/frame_003.png",
+              "Running/animations/running/south-east/frame_004.png",
+              "Running/animations/running/south-east/frame_005.png",
+              "Running/animations/running/south-east/frame_006.png",
+              "Running/animations/running/south-east/frame_007.png"
+            ],
+            "east": [
+              "Running/animations/running/east/frame_000.png",
+              "Running/animations/running/east/frame_001.png",
+              "Running/animations/running/east/frame_002.png",
+              "Running/animations/running/east/frame_003.png",
+              "Running/animations/running/east/frame_004.png",
+              "Running/animations/running/east/frame_005.png",
+              "Running/animations/running/east/frame_006.png",
+              "Running/animations/running/east/frame_007.png"
+            ],
+            "south-west": [
+              "Running/animations/running/south-west/frame_000.png",
+              "Running/animations/running/south-west/frame_001.png",
+              "Running/animations/running/south-west/frame_002.png",
+              "Running/animations/running/south-west/frame_003.png",
+              "Running/animations/running/south-west/frame_004.png",
+              "Running/animations/running/south-west/frame_005.png",
+              "Running/animations/running/south-west/frame_006.png",
+              "Running/animations/running/south-west/frame_007.png"
+            ],
+            "north-west": [
+              "Running/animations/running/north-west/frame_000.png",
+              "Running/animations/running/north-west/frame_001.png",
+              "Running/animations/running/north-west/frame_002.png",
+              "Running/animations/running/north-west/frame_003.png",
+              "Running/animations/running/north-west/frame_004.png",
+              "Running/animations/running/north-west/frame_005.png",
+              "Running/animations/running/north-west/frame_006.png",
+              "Running/animations/running/north-west/frame_007.png"
+            ],
+            "north-east": [
+              "Running/animations/running/north-east/frame_000.png",
+              "Running/animations/running/north-east/frame_001.png",
+              "Running/animations/running/north-east/frame_002.png",
+              "Running/animations/running/north-east/frame_003.png",
+              "Running/animations/running/north-east/frame_004.png",
+              "Running/animations/running/north-east/frame_005.png",
+              "Running/animations/running/north-east/frame_006.png",
+              "Running/animations/running/north-east/frame_007.png"
+            ],
+            "west": [
+              "Running/animations/running/west/frame_000.png",
+              "Running/animations/running/west/frame_001.png",
+              "Running/animations/running/west/frame_002.png",
+              "Running/animations/running/west/frame_003.png",
+              "Running/animations/running/west/frame_004.png",
+              "Running/animations/running/west/frame_005.png",
+              "Running/animations/running/west/frame_006.png",
+              "Running/animations/running/west/frame_007.png"
+            ]
+          }
+        }
       }
     }
   ],
   "export_version": "3.1",
-  "export_date": "2026-10-08T16:02:42.354550"
+  "export_date": "2026-10-14T08:56:26.913367"
 }

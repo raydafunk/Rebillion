@@ -23,3 +23,9 @@ Own everything Zed does, in `src/player/`:
 - Pillars: punchy hits, skill depth through combos and defence. Responsiveness beats realism.
 - Include a tiny standalone test scene or console harness so your work can be checked without the full arena.
 - Finish each task with a short note of what you built, the public events/functions you expose, and open questions.
+
+## Current combos (keep these working)
+- **Light combo (J/Z x3): punch, punch, kick.** `light1` -> `light2` -> `light3` in `moves.js`. `light1`/`light2` play the Cross_Punch clip (`zed.attack.<dir>`); `light3` is the finisher and plays High_Kick (`zed.light3.<dir>`, `assets/sprites/zed/fighting_pose_2`, registered in `ZED_ANIMS` in `zedVisual.js`).
+- Tap window: taps ~117-333 ms apart chain (cancelFrom 7, recovery 14, 8-frame buffer). Slower taps restart at `light1`.
+- Input latches short taps (`Zed.js` `tapped` / `_pending`) so a tap shorter than one frame still counts. Tests in `src/player/test/player.test.mjs` cover the chain; `npm test` must stay green.
+- Test without enemies: `index.html?sandbox`. Browsers cache ES modules, so hard-refresh after edits.
