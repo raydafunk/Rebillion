@@ -4,7 +4,7 @@
 // zed.attack) or `zed.<moveId>` (zed.light1); ZedVisual plays them when they exist
 // and skips the procedural pose. See registerZedAnimations().
 
-import { MOVES } from './moves.js';
+import { MOVES, DODGE } from './moves.js';
 
 export const ZED_SPRITE = {
   size: 48,                 // source px (metadata.json states[].character.size)
@@ -29,6 +29,8 @@ export const ZED_ANIMS = [
   // High kick is the 3rd light hit (finisher); zed.light3.<dir> takes priority over the generic zed.attack clip.
   // 80x80 canvas, same framing as the punch (standing foot rows 58-63).
   { state: 'light3', folder: 'fighting_pose_2', anim: 'High_Kick', frames: 7, fps: 24, originY: 64 / 80, repeat: 0 },
+  // Dodge sway: 9 frames, 68x68 canvas, lowest opaque row 55 -> (55 + 1 + 2px gap)/68. Stretched over DODGE.duration below.
+  { state: 'dodge', folder: 'Zed_a_young_street_dodge', anim: 'Zed_a_young_street_fighter_seen_in_side_profile_animations', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
 ];
 // Static single-pose textures shown for a machine state (rotations only, no frames yet).
 // originY: Jumping PNG feet sit at row 46 vs idle's 45 (both 48x48), so lift 1 source px to share the idle foot line.
@@ -103,7 +105,7 @@ export function zedPose(s) {
     }
     case 'hitstun': p.tintFill = 0xffffff; p.ox = -5 * f; p.angle = -10 * f; p.sx = 0.92; p.sy = 1.06; break;
     case 'block': p.tint = 0x88aaff; p.sx = 1.05; p.sy = 0.94; p.ox = -2 * f; break;
-    case 'dodge': p.alpha = 0.5; p.sx = 1.1; p.sy = 0.9; p.angle = 8 * f; break;
+    case 'dodge': p.sx = 1.1; p.sy = 0.9; p.angle = 8 * f; break;
     default: break;
   }
   return p;
@@ -144,6 +146,8 @@ export class ZedVisual {
       if (m.state === 'attack' && clip) { // stretch the punch/kick over the move: wind-up, snap on the active frames, ease out
         const mv = MOVES[m.moveId];
         if (mv) img.anims.timeScale = (clip.frames / clip.fps) / ((mv.startup + mv.active + mv.recovery * (m.moveId.startsWith('heavy') ? 0.5 : 1)) / 60);
+      } else if (m.state === 'dodge' && clip) { // play the sway exactly once across the whole dodge (duration is in 60 fps steps)
+        img.anims.timeScale = (clip.frames / clip.fps) / (DODGE.duration / 60);
       } else img.anims.timeScale = 1;
     } else {
       if (this._anim) { img.stop(); this._anim = null; img.setOrigin(ZED_SPRITE.origin.x, ZED_SPRITE.origin.y); }

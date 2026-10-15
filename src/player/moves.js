@@ -37,7 +37,7 @@ export const PLAYER_TIMING = {
 };
 
 // Defence. Dodge: i-frames then recovery. Block: first parryFrames of a fresh block is a parry.
-export const DODGE = { duration: 24, iframes: 14, cooldown: 30, speed: 380 };
+export const DODGE = { duration: 36, iframes: 20, cooldown: 30, speed: 0 }; // sway dodge: in place, slower
 export const GUARD = {
   parryFrames: 8,
   blockKnockbackFactor: 0.25, // knockback kept while blocking

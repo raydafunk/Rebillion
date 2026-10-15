@@ -9,7 +9,7 @@ import { DODGE, GUARD } from './moves.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
 const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'KeyW', 'Space',
-  'KeyJ', 'KeyZ', 'KeyK', 'KeyX', 'KeyL', 'KeyC', 'ShiftLeft', 'KeyV'];
+  'KeyJ', 'KeyZ', 'KeyK', 'KeyX', 'KeyL', 'KeyC', 'KeyI', 'KeyV'];
 
 export class Zed {
   constructor(scene, x, y, cfg = ZED_CONFIG) {

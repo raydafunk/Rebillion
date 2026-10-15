@@ -111,9 +111,9 @@ test('block starts as parry window then plain block; dodge has i-frames then end
   m.step(NONE);
   m.step({ pressed: { dodge: true }, held: {}, moveX: 0 });
   assert.equal(m.state, 'dodge'); assert.equal(m.guardType, 'dodge');
-  for (let i = 0; i < 16; i++) m.step(NONE);
+  for (let i = 0; i < 22; i++) m.step(NONE);
   assert.equal(m.state, 'dodge'); assert.equal(m.guardType, null);
-  for (let i = 0; i < 10; i++) m.step(NONE);
+  for (let i = 0; i < 20; i++) m.step(NONE);
   assert.equal(m.state, 'idle');
 });
 
@@ -243,3 +243,19 @@ test('combo works while running (moveX held) and a heavy mid-combo does not brea
   for (let i = 0; i < 8; i++) h.step(i === 7 ? press('heavy') : NONE);
   assert.equal(h.moveId, 'heavy1');
 });
+
+test('controls table bindings: dodge L/C, block I/V, no Shift, no shared keys', () => {
+  assert.deepEqual(KEY_MAP.dodge, ['KeyL', 'KeyC']);
+  assert.deepEqual(KEY_MAP.block, ['KeyI', 'KeyV']);
+  const all = Object.values(KEY_MAP).flat();
+  assert.equal(new Set(all).size, all.length, 'a key is bound to two actions');
+  assert.ok(!all.includes('ShiftLeft'));
+  for (const k of ['KeyL', 'KeyC']) { const m = mapKeys([k]); assert.equal(m.dodge, true); assert.equal(m.block, false); }
+  for (const k of ['KeyI', 'KeyV']) { const m = mapKeys([k]); assert.equal(m.block, true); assert.equal(m.dodge, false); }
+  const pad = { buttons: Array.from({ length: 16 }, () => ({ pressed: false })), axes: [0, 0] };
+  pad.buttons[1].pressed = true;
+  const p = new InputState().poll(padToKeys(pad));
+  assert.equal(p.held.dodge, true); assert.equal(p.held.block, false);
+});
+
+import { DODGE } from '../moves.js';

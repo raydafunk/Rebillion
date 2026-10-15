@@ -8,8 +8,8 @@ export const KEY_MAP = {
   jump: ['ArrowUp', 'KeyW', 'Space'],
   light: ['KeyJ', 'KeyZ'],
   heavy: ['KeyK', 'KeyX'],
-  block: ['KeyL', 'KeyC'],
-  dodge: ['ShiftLeft', 'KeyV'],
+  block: ['KeyI', 'KeyV'],
+  dodge: ['KeyL', 'KeyC'],
 };
 
 const emptyActions = () => Object.fromEntries(ACTIONS.map((a) => [a, false]));
@@ -51,7 +51,7 @@ export function padToKeys(pad, deadzone = 0.35) {
   if (!pad || !pad.buttons) return out;
   const on = (i) => !!(pad.buttons[i] && pad.buttons[i].pressed);
   const ax = pad.axes && pad.axes.length ? pad.axes[0] : 0;
-  const rep = { jump: 'Space', light: 'KeyJ', heavy: 'KeyK', dodge: 'KeyV', block: 'KeyL' };
+  const rep = { jump: 'Space', light: 'KeyJ', heavy: 'KeyK', dodge: 'KeyL', block: 'KeyI' };
   for (const [a, btns] of Object.entries(PAD_MAP)) {
     if (a === 'left' || a === 'right') continue;
     if (btns.some(on)) out.push(rep[a]);
