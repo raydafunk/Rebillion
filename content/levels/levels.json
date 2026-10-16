@@ -78,7 +78,7 @@
         "startDelayMs": 800
       },
       {
-        "enemy": "rust-baton-scout",
+        "enemy": "rust-watcher",
         "count": 4,
         "maxAlive": 2,
         "spawnIntervalMs": 1100,
@@ -92,7 +92,7 @@
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-baton-scout",
+        "enemy": "rust-watcher",
         "count": 5,
         "maxAlive": 3,
         "spawnIntervalMs": 800,
@@ -133,21 +133,21 @@
         "startDelayMs": 800
       },
       {
-        "enemy": "rust-enforcer",
+        "enemy": "rust-breaker",
         "count": 5,
         "maxAlive": 1,
         "spawnIntervalMs": 1500,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-baton-scout",
+        "enemy": "rust-watcher",
         "count": 5,
         "maxAlive": 3,
         "spawnIntervalMs": 700,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-enforcer",
+        "enemy": "rust-breaker",
         "count": 5,
         "maxAlive": 2,
         "spawnIntervalMs": 1300,
@@ -195,35 +195,35 @@
         "startDelayMs": 800
       },
       {
-        "enemy": "rust-signal-warden",
+        "enemy": "rust-architect",
         "count": 5,
         "maxAlive": 2,
         "spawnIntervalMs": 1500,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-dart-marksman",
+        "enemy": "rust-watcher",
         "count": 5,
         "maxAlive": 1,
         "spawnIntervalMs": 1600,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-baton-scout",
+        "enemy": "rust-watcher",
         "count": 5,
         "maxAlive": 3,
         "spawnIntervalMs": 650,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-dart-marksman",
+        "enemy": "rust-watcher",
         "count": 5,
         "maxAlive": 2,
         "spawnIntervalMs": 1200,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-enforcer",
+        "enemy": "rust-breaker",
         "count": 5,
         "maxAlive": 2,
         "spawnIntervalMs": 1000,
@@ -264,42 +264,42 @@
         "startDelayMs": 800
       },
       {
-        "enemy": "rust-shield-sergeant",
+        "enemy": "rust-copper-fang",
         "count": 6,
         "maxAlive": 1,
         "spawnIntervalMs": 1800,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-baton-scout",
+        "enemy": "rust-watcher",
         "count": 6,
         "maxAlive": 4,
         "spawnIntervalMs": 600,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-dart-marksman",
+        "enemy": "rust-watcher",
         "count": 6,
         "maxAlive": 2,
         "spawnIntervalMs": 1000,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-signal-warden",
+        "enemy": "rust-architect",
         "count": 6,
         "maxAlive": 2,
         "spawnIntervalMs": 1200,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-enforcer",
+        "enemy": "rust-breaker",
         "count": 6,
         "maxAlive": 3,
         "spawnIntervalMs": 900,
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-shield-sergeant",
+        "enemy": "rust-copper-fang",
         "count": 6,
         "maxAlive": 2,
         "spawnIntervalMs": 1400,

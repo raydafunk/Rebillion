@@ -1,0 +1,154 @@
+[
+  {
+    "id": "rust-iron-line-cordon",
+    "status": "proposed",
+    "gddGap": "The GDD lists Rust Grunts, 'The Iron Line', for crowd control and frontline combat, but the Tier 0 rust-grunt is the only canon stat block. This is the Iron Line's crowd-control variant: a grunt that holds a line and sweeps a wide arc, so waves can pin the lane without adding a new silhouette. The base Iron Line unit remains rust-grunt (canon).",
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#12",
+      "the-rebellion#5",
+      "hit-feedback-spec#4"
+    ],
+    "name": "Rust Iron Line Cordon",
+    "role": "grunt",
+    "tier": 1,
+    "description": "A Rust grunt of the Iron Line in cheap rust-coated slate plating, a plain steel helmet with a cyan visor and no personal marks, because the helmets hide who they are. Same boxy, symmetrical build as the grunt, with a gunmetal push-bar held across the chest.",
+    "behaviour": "Moves in at grunt speed and stops at the front of the group to hold the lane, trying to pin Zed against his own crowd. Uses one wide sweep with the push-bar that shoves Zed back along the lane. Counts against the attacker cap like any other attacker, and never attacks from behind.",
+    "telegraph": "500 ms wind-up: both arms pull the bar to one side, the red telegraph icon pops above the head, the body tints red and the outline thickens. The sweep is wide, so the red ground arc shows its reach.",
+    "weakness": "Low health and a short reach in depth. Step out of the lane (dodge) or block the shove, then punish in the recovery window. Heavy attacks from the side skip its guard-stance and juggle it clear of the line.",
+    "spriteKey": "rust.iron-line-cordon",
+    "stats": {
+      "maxHp": 36,
+      "moveSpeed": 85,
+      "attackRange": 75,
+      "telegraphMs": 500,
+      "attackMs": 260,
+      "recoverMs": 750,
+      "damage": 8,
+      "knockback": 260,
+      "hitstun": 250
+    }
+  },
+  {
+    "id": "rust-breaker",
+    "status": "proposed",
+    "gddGap": "The GDD defines Rust Bruisers, 'The Breakers': massive shock troops with heavy plating, for area denial. It gives no stats or moves. This turns them into the slow, high-threat heavy that denies a patch of the arena. Merged: replaces rust-enforcer.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#1",
+      "the-rebellion#3",
+      "hit-feedback-spec#4"
+    ],
+    "name": "Rust Breaker",
+    "role": "bruiser",
+    "tier": 2,
+    "description": "A hulking Rust Bruiser in heavily reinforced slate and steel plating, with a massive squared-off silhouette, a small helmet and a cyan visor. Cold, symmetrical and boxy; massive shock trooper enhanced with illegal muscle stimulants, built to crush resistance groups. A gunmetal brace on each forearm.",
+    "behaviour": "Walks slowly straight at Zed, ignoring the circling rules, and takes an attacker slot when one is free. Plants its feet and slams both braces into the floor, leaving a short patch of rattled ground in front of it that Zed should stay out of for a moment (area denial). Long recovery after every slam. Cannot be juggled while winding up, so the player must dodge, not just mash.",
+    "telegraph": "700 ms wind-up: both braces raised overhead, telegraph icon scaled 1.4 times and a large red ground danger ellipse at 30 percent alpha showing the slam area, per the heavy-enemy cue.",
+    "weakness": "Big, slow and predictable. Dodge out of the red ellipse, then land a full combo in the long recovery. Heavy attacks stagger it; blocking works but the shove-back is large.",
+    "spriteKey": "rust.breaker",
+    "stats": {
+      "maxHp": 90,
+      "moveSpeed": 60,
+      "attackRange": 90,
+      "telegraphMs": 700,
+      "attackMs": 320,
+      "recoverMs": 1100,
+      "damage": 16,
+      "knockback": 380,
+      "hitstun": 320
+    }
+  },
+  {
+    "id": "rust-watcher",
+    "status": "proposed",
+    "gddGap": "The GDD defines Rust Rangers, 'The Watchers': agile units with taser rifles, batons and tracking visors, for long-range harassment. It gives no stats or moves. Merged: replaces rust-dart-marksman and rust-baton-scout.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#1",
+      "the-rebellion#3",
+      "hit-feedback-spec#4"
+    ],
+    "name": "Rust Watcher",
+    "role": "ranged",
+    "tier": 2,
+    "description": "A lean, agile Rust Ranger in a slate uniform with a gunmetal taser rifle, a baton at the belt and a wide tracking visor with a cyan scan line. Symmetrical and boxy, but lighter than the grunt.",
+    "behaviour": "Stays at range, strafing along the far side of the arena and following Zed with its visor. Fires a single slow taser bolt along the lane when it holds an attacker slot, then relocates. If Zed closes in it backs off, and only swings the baton when cornered. A hunter built to harass rebels at range and chase them down.",
+    "telegraph": "650 ms wind-up for the taser: rifle raised, a cyan scan line draws along the floor toward Zed, and the red telegraph icon pops above the head. The bolt is slow enough to sidestep. The baton swing uses a 350 ms wind-up with the standard cues.",
+    "weakness": "Low health. Sidestep out of the lane to dodge, then close the gap; juggle routes that carry Zed across the arena reach it fast. Blocking the bolt is also possible but eats a chip of damage.",
+    "spriteKey": "rust.watcher",
+    "stats": {
+      "maxHp": 28,
+      "moveSpeed": 110,
+      "attackRange": 300,
+      "telegraphMs": 650,
+      "attackMs": 220,
+      "recoverMs": 1200,
+      "damage": 7,
+      "knockback": 180,
+      "hitstun": 230
+    }
+  },
+  {
+    "id": "rust-copper-fang",
+    "status": "proposed",
+    "gddGap": "The GDD defines Rust Specialists, 'The Copper Fangs': elite soldiers with electrified gauntlets, grappling hooks and tactical shields, for boss-tier encounters. It gives no stats or moves. Merged: replaces rust-shield-sergeant. Tier 3.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#13",
+      "the-rebellion#1",
+      "adversarial-qa#2",
+      "hit-feedback-spec#4"
+    ],
+    "name": "Rust Copper Fang",
+    "role": "boss",
+    "tier": 3,
+    "description": "An elite Rust Specialist in a sharper slate uniform with copper-toned gauntlets, a tactical shield strapped to one arm and a grappling hook launcher on the other. Still cold, symmetrical and boxy, with a narrow cyan visor. Psychological conditioning has removed all fear and hesitation: an elite hunter sent to eliminate priority targets.",
+    "behaviour": "Two-phase mini-boss. Phase one: advances behind the shield, blocking front light hits, then lunges with a gauntlet strike. Phase two (below half health): fires a grappling hook that yanks Zed a short way across the lane, followed by a gauntlet jab. Calls for an attacker slot before every move so it never stacks with a full cap. Hitstun scales down while it is shielded so juggles cannot loop it (boss immunity, see adversarial-qa#2).",
+    "telegraph": "650 ms wind-up for the gauntlet lunge: gauntlet drawn back and crackling, telegraph icon scaled 1.4 times with a red ground zone. The hook has a 750 ms wind-up: the launcher is raised and a thin cyan line shows the path, plus the red icon.",
+    "weakness": "Heavy attacks break the shield. Parry the lunge or dodge the hook line to open it, then juggle in the recovery window. Rewards the skill-depth pillar: block, dodge and parry all have a clear answer.",
+    "spriteKey": "rust.copper-fang",
+    "stats": {
+      "maxHp": 140,
+      "moveSpeed": 85,
+      "attackRange": 85,
+      "telegraphMs": 650,
+      "attackMs": 300,
+      "recoverMs": 1000,
+      "damage": 15,
+      "knockback": 360,
+      "hitstun": 300
+    }
+  },
+  {
+    "id": "rust-architect",
+    "status": "proposed",
+    "gddGap": "The GDD defines Rust Overseers, 'The Architects of Control': district commanders who rarely fight directly, deploying drones, turrets and squads; end-level bosses and story antagonists. It gives no stats or moves. Merged: replaces rust-signal-warden. Tier 3.",
+    "sources": [
+      "the-rebellion#13",
+      "the-rebellion#11",
+      "the-rebellion#1",
+      "the-rebellion#3",
+      "hit-feedback-spec#4"
+    ],
+    "name": "Rust Architect",
+    "role": "boss",
+    "tier": 3,
+    "description": "A Rust Overseer in a crisp slate command coat with steel shoulder plates, a tall visor with a cyan display strip and a gunmetal control console strapped to one forearm. Cold, symmetrical and boxy, standing well back from the fight. A former politician or executive, more official than armoured, a district ruler who orders rebels eliminated.",
+    "behaviour": "End-of-level boss that rarely fights directly. Stays at the back of the arena, issuing orders from its console: each cycle it calls a small squad of grunts, or deploys a turret, or sends a drone that hovers and fires one slow stun shot. Only swats with a short baton when Zed reaches it. Staggers and gives up ground when the command units around it are cleared, so the player must fight through the wave to reach it. Hitstun is low and it does not stack with the attacker cap, since its units do the attacking.",
+    "telegraph": "800 ms wind-up for each order: console arm raised, a cyan pulse ring marks where the squad, turret or drone will appear, and the red telegraph icon scaled 1.4 times pops above the head. The turret and drone shots keep their own 600 ms wind-up with the standard cues. The baton swat uses a 450 ms wind-up.",
+    "weakness": "Fragile for a boss and always at the back. Clear the squad, take out the turret or drone, then rush the lane to break its call. Rewards the wave-clearing under pressure pillar and movement over standing still.",
+    "spriteKey": "rust.architect",
+    "stats": {
+      "maxHp": 120,
+      "moveSpeed": 70,
+      "attackRange": 70,
+      "telegraphMs": 800,
+      "attackMs": 250,
+      "recoverMs": 1300,
+      "damage": 12,
+      "knockback": 280,
+      "hitstun": 260
+    }
+  }
+]

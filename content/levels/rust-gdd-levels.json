@@ -1,0 +1,61 @@
+[
+  {
+    "id": "level-06-iron-line-push",
+    "status": "proposed",
+    "gddGap": "The GDD sets no level count, tiers or level list. This is an extra proposed level (order 6, after the five in levels.json) that introduces the GDD-named Rust units in escalation: Iron Line cordon, then Watchers, then Breakers. Wave numbers and the 150 s limit are placeholders in the Tier 0 shape. Uses the proposed expansion enemies from rust-gdd-units.json, so it depends on owner approval of those.",
+    "sources": ["the-rebellion#1", "the-rebellion#3", "the-rebellion#11", "the-rebellion#12", "the-rebellion#2"],
+    "name": "The Iron Line Push",
+    "order": 6,
+    "district": "stewpot-gardens",
+    "theme": "Stewpot Gardens, where the Rust have strung a line of barriers between the planters and the food stalls; steam still rises from the stew pots behind it.",
+    "palette": ["#2F6B3F", "#E3A92B", "#A8402E", "#6B4423"],
+    "timeLimitSec": 150,
+    "intro": "The Iron Line is holding the garden gate. Faceless helmets, cheap plating. Zed's neighbours are watching from the stalls. Push the line back, then the Watchers and Breakers behind it.",
+    "outro": "The line gives way and the stew pots are steaming again. Zed's mother waves a ladle from the stall. The garden is the neighbourhood's once more.",
+    "waves": [
+      { "enemy": "rust-iron-line-cordon", "count": 3, "maxAlive": 3, "spawnIntervalMs": 900, "startDelayMs": 800 },
+      { "enemy": "rust-iron-line-cordon", "count": 4, "maxAlive": 3, "spawnIntervalMs": 800, "startDelayMs": 1500 },
+      { "enemy": "rust-watcher", "count": 4, "maxAlive": 2, "spawnIntervalMs": 1100, "startDelayMs": 1500 },
+      { "enemy": "rust-breaker", "count": 4, "maxAlive": 2, "spawnIntervalMs": 1400, "startDelayMs": 1800 }
+    ]
+  },
+  {
+    "id": "level-07-copper-fang-courts",
+    "status": "proposed",
+    "gddGap": "The GDD says Copper Fangs serve boss-tier encounters but gives no level list, tiers or boss placement. This proposes a mini-boss level (order 7): a ladder of single units rising Watcher, Breaker, Copper Fang. Each wave has count 1 because the validator requires wave counts not to shrink, so a lone boss wave must follow count-1 waves; mixed-escort boss waves need a schema extension (one enemy per wave today).",
+    "sources": ["the-rebellion#1", "the-rebellion#3", "the-rebellion#12", "the-rebellion#13", "the-rebellion#2"],
+    "name": "Copper Fang at the Courts",
+    "order": 7,
+    "district": "greenline-courts",
+    "theme": "The forest-green basketball courts, hoops bent but standing, with a Rust command post set up at centre court and kids' chalk drawings still on the asphalt.",
+    "palette": ["#2F6B3F", "#E3A92B", "#A8402E", "#6B4423"],
+    "timeLimitSec": 150,
+    "intro": "Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, dodge, parry. Give the kids their court back.",
+    "outro": "The shield cracks and the Fang is pushed back off the court. Somewhere a ball bounces, then another. Zed breathes out. Game on.",
+    "waves": [
+      { "enemy": "rust-watcher", "count": 1, "maxAlive": 1, "spawnIntervalMs": 900, "startDelayMs": 1000 },
+      { "enemy": "rust-breaker", "count": 1, "maxAlive": 1, "spawnIntervalMs": 900, "startDelayMs": 1500 },
+      { "enemy": "rust-copper-fang", "count": 1, "maxAlive": 1, "spawnIntervalMs": 900, "startDelayMs": 2000 }
+    ]
+  },
+  {
+    "id": "level-08-overseer-tower",
+    "status": "proposed",
+    "gddGap": "The GDD says Overseers (the Architects of Control) are end-level bosses and district rulers that deploy drones, turrets and squads, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push. The Architect's own squad, turret and drone calls are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district; a dedicated Overseer district is a GDD gap.",
+    "sources": ["the-rebellion#1", "the-rebellion#3", "the-rebellion#13", "the-rebellion#11", "the-rebellion#2"],
+    "name": "The Overseer's Tower",
+    "order": 8,
+    "district": "songwindow-heights",
+    "theme": "Songwindow Heights, where a surveillance tower and propaganda screens loom over the windows that used to play music; murals half-painted over in grey.",
+    "palette": ["#A8402E", "#E3A92B", "#6B4423", "#2F6B3F"],
+    "timeLimitSec": 180,
+    "intro": "The Architect runs this district from behind a console, with squads, turrets and drones at its call. Fight through, reach the back of the arena and break the order. Let the music back in.",
+    "outro": "The screens flicker out and the Architect gives up the tower. A window opens, then another, and music drifts down over the Heights. The first mural stroke goes back up.",
+    "waves": [
+      { "enemy": "rust-iron-line-cordon", "count": 1, "maxAlive": 1, "spawnIntervalMs": 900, "startDelayMs": 800 },
+      { "enemy": "rust-watcher", "count": 1, "maxAlive": 1, "spawnIntervalMs": 900, "startDelayMs": 1200 },
+      { "enemy": "rust-breaker", "count": 1, "maxAlive": 1, "spawnIntervalMs": 900, "startDelayMs": 1500 },
+      { "enemy": "rust-architect", "count": 1, "maxAlive": 1, "spawnIntervalMs": 900, "startDelayMs": 2000 }
+    ]
+  }
+]

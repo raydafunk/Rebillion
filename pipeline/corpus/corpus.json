@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-10-13T15:52:07.257Z",
+ "builtAt": "2026-10-16T15:20:39.767Z",
  "chunks": [
   {
    "id": "rebellion-menu-desgin#1",
@@ -15,7 +15,7 @@
    "file": "GameDesignDocument/Rebellion menu desgin.docx",
    "authority": "primary",
    "heading": null,
-   "text": "[table]\nElement | Description\nTitle | THE REBELLION\" in heavy condensed type, cream on a black strip, tilted about 2 degrees. The subtitle \"Fists of the Fallen City\" sits beneath in mustard monospace.\nFight (selected) | Mustard torn-paper strip, leading \">\" marker, straightens and slides right. Starts the game.\nControls | Cream paper strip\nOptions | Forest-green strip with cream text.\nQuit | Warm-brown strip with cream text.\nFooter hint | W/S select / Enter confirm\", bottom right.\nEach option is a separate torn-edge paper strip, tilted slightly. The selected option straightens, moves right and takes the brightest colour. Hover gives the same feedback.\nControls Menu elements\n[table]\nAction | Primary | Alternate\nMove Left/right | A/D | Left or Right arrows keys\nJump | W or Space | Up arrow key board\nCrouch | S | Down arrow key board\nLight attack | J | Z\nHeavy attack | K | X\nDodge | L | C\nPick up | P | N\nParry | T | M\nBlock | I | V\nOptions Menu ( elements)"
+   "text": "[table]\nElement | Description\nTitle | THE REBELLION\" in heavy condensed type, cream on a black strip, tilted about 2 degrees. The subtitle \"Fists of the Fallen City\" sits beneath in mustard monospace.\nFight (selected) | Mustard torn-paper strip, leading \">\" marker, straightens and slides right. Starts the game.\nControls | Cream paper strip\nOptions | Forest-green strip with cream text.\nQuit | Warm-brown strip with cream text.\nFooter hint | W/S select / Enter confirm\", bottom right.\nEach option is a separate torn-edge paper strip, tilted slightly. The selected option straightens, moves right and takes the brightest colour. Hover gives the same feedback.\nControls Menu elements\n[table]\nAction | Primary | Alternate\nMove Left/right | A/D | Left or Right arrows keys\nJump | W or Space | Up arrow key board\nLight attack | J | Z\nHeavy attack | K | X\nDodge | L | C\nPick up | P | N\nParry | T | M\nBlock | I | V\nOptions Menu ( elements)"
   },
   {
    "id": "rebellion-menu-desgin#3",
@@ -79,7 +79,7 @@
    "file": "GameDesignDocument/The Rebellion.docx",
    "authority": "primary",
    "heading": null,
-   "text": "Game Engine\nPhaser\nWhy Phaser is use for the game building for now.\n2D side-scrolling: Phaser is built for 2D and has Arcade physics, sprite animation, and input handling.\nPrototype goal: the GDD says Phaser is for \"creating a playable prototype\". It runs in the browser with no install, so playtesting and sharing a build are easy.\nAI-assisted build: the Technical Strategy budgets in tokens, which suggests AI agents write the code. Phaser uses JavaScript or TypeScript, which AI agents oversee well, and it has plenty of documentation and examples.\nSmall scope: Tier 0 is one character, one enemy type, waves, and a timer. Phaser manages that without much setup.\nTheme of the game\nBackground Themes\nTakeaway: Livedin, human, culturally rich.\nCorner shops, murals celebrating local heroes, open windows with music drifting out\nBasketball courts, food stalls, community gardens\nCharacters feel connected — casual fits, expressive colours\nColour palette: mustard yellow, brick red, forest green, warm browns\nAtmosphere: hopeful, energetic, full of personality and stories\nCharacter – the hero"
+   "text": "Game Engine\nPhaser\nWhy Phaser is use for the game building for now.\n2D side-scrolling: Phaser is built for 2D and has Arcade physics, sprite animation, and input handling.\nPrototype goal: the GDD says Phaser is for \"creating a playable prototype\". It runs in the browser with no install, so playtesting and sharing a build are easy.\nAI-assisted build: the Technical Strategy budgets in tokens, which suggests AI agents write the code. Phaser uses JavaScript or TypeScript, which AI agents oversee well, and it has plenty of documentation and examples.\nSmall scope: Tier 0 is one character, one enemy type, waves, and a timer. Phaser manages that without much setup.\nTheme of the game\nBackground Themes\nTakeaway: Livedin, human, culturally rich.\nCorner shops, murals celebrating local heroes, open windows with music drifting out\nBasketball courts, food stalls, community gardens\nCharacters feel connected — casual fits, expressive colours\nColour palette: mustard yellow, brick red, forest green, warm browns\nAtmosphere: hopeful, energetic, full of personality and stories\nThe Story"
   },
   {
    "id": "the-rebellion#7",
@@ -87,7 +87,7 @@
    "file": "GameDesignDocument/The Rebellion.docx",
    "authority": "primary",
    "heading": null,
-   "text": "Zed — The Boy from BrickRed Alley\nZed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out” . His block was known for its mustardyellow storefronts, forestgreen basketball courts, and the brickred alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.\nHis mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.\nThe Fall of Fallen City"
+   "text": "Character – the hero\nZed — The Boy from BrickRed Alley\nZed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out” . His block was known for its mustardyellow storefronts, forestgreen basketball courts, and the brickred alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.\nHis mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.\nThe Fall of Fallen City"
   },
   {
    "id": "the-rebellion#8",
@@ -111,7 +111,31 @@
    "file": "GameDesignDocument/The Rebellion.docx",
    "authority": "primary",
    "heading": null,
-   "text": "Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for."
+   "text": "Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.\nCharacter – the Enemy\nEnemy Faction Lore: RUST — The Private Security Force of Fallen City\nOverview\nRust began as a private security contractor hired to “stabilize” Fallen City after years of political decay and rising crime. But once they were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening control over every district and crushing resistance with brutal efficiency.\nTheir name comes from their signature oxidized metal armor, a symbol of decay — a reminder that Fallen City is rotting under their rule.\nRust’s soldiers are not just guards. They are enforcers, hunters, and executioners. Each unit is trained to suppress civilians, eliminate rebels, and maintain absolute control.\n⚙️ Rust’s Origin"
+  },
+  {
+   "id": "the-rebellion#11",
+   "doc": "the-rebellion",
+   "file": "GameDesignDocument/The Rebellion.docx",
+   "authority": "primary",
+   "heading": null,
+   "text": "Rust was founded by Commander Halden Varr, a former military strategist who believed order could only be achieved through fear. When Fallen City’s government collapsed, Varr seized the opportunity. He offered “protection” to the remaining officials, then quietly replaced them with Rust loyalists.\nWithin months:\nCurfews became mandatory\nDistricts were sealed\nSurveillance drones filled the sky\nAnyone who resisted disappeared\nRust became the law. Rust became the city.\n🔩 Rust’s Philosophy\nRust operates under a single doctrine:\n“Order is strength. Freedom is weakness.”\nThey believe Fallen City must be rebuilt through force. Civilians are treated as assets to control, not people to protect. Rust’s soldiers are conditioned to see rebels — including Zed — as threats to the “greater good.”\nRust Unit Types Enemies\n1. Rust Grunts — “The Iron Line”\nThe backbone of Rust’s force. Once ordinary citizens, they were coerced or manipulated into service. Their armor is cheap, rustcoated plating, and their helmets hide their identities — intentionally."
+  },
+  {
+   "id": "the-rebellion#12",
+   "doc": "the-rebellion",
+   "file": "GameDesignDocument/The Rebellion.docx",
+   "authority": "primary",
+   "heading": null,
+   "text": "Lore: Rust strips recruit of their names, replacing them with serial numbers. This erases individuality and ensures obedience.\nPurpose: Crowd control, intimidation, frontline combat.\n2. Rust Bruisers — “The Breakers”\nMassive enforcers enhanced with illegal muscle stimulants. Their armor is reinforced with heavy plating, giving them a hulking silhouette.\nLore: Breakers are often former criminals promised freedom in exchange for loyalty. Rust chemically augments them, making them stronger but unstable.\nPurpose: Shock troops, area denial, crushing resistance groups.\n3. Rust Rangers — “The Watchers”\nAgile units equipped with taser rifles, batons, and tracking visors.\nLore: Watchers are trained to hunt rebels through the city’s alleyways and rooftops. Their visors can scan heat signatures, making hiding nearly impossible.\nPurpose: Longrange harassment, pursuit, reconnaissance.\n4. Rust Specialists — “The Copper Fangs”\nElite soldiers with advanced gear: electrified gauntlets, grappling hooks, and tactical shields."
+  },
+  {
+   "id": "the-rebellion#13",
+   "doc": "the-rebellion",
+   "file": "GameDesignDocument/The Rebellion.docx",
+   "authority": "primary",
+   "heading": null,
+   "text": "Lore: Chosen from the most loyal Rust members, Fangs undergo psychological conditioning to remove fear and hesitation. They are Varr’s personal favorites.\nPurpose: Highpriority target elimination, bosstier encounters.\n5. Rust Overseers — “The Architects of Control”\nCommanders who manage entire districts. They rarely fight directly but deploy drones, turrets, and squads with ruthless precision.\nLore: Overseers are former politicians and corporate leaders who sided with Rust during the takeover. They maintain control through surveillance networks and propaganda.\nPurpose: end levelbosses, district rulers, story antagonists."
   },
   {
    "id": "the-title-screen#1",
@@ -239,7 +263,7 @@
    "file": "blackboard/log.md",
    "authority": "reference",
    "heading": "Blackboard log",
-   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2"
+   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass"
   },
   {
    "id": "asset-manifest#1",
@@ -599,7 +623,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Names and spellings",
-   "text": "| Thing | Canonical | Notes |\r\n|---|---|---|\r\n| Game title | The Rebellion: Fists of the Fallen City | Menu may split it: title \"THE REBELLION\", subtitle \"Fists of the Fallen City\". |\r\n| City | the Fallen City | Always with \"City\". Never \"Fallen\" alone. Pitch's \"fight your way through Fallen\" and \"first of the Fallen city\" should read \"the Fallen City\". |\r\n| Hero | Zed | Player character. |\r\n| Antagonist | the Rust | Corrupt private security force. Always \"Rust\", never \"Rush\". |\r\n| Rust members | Rust enemies / Rust grunt | \"Rust grunt\" is the one Tier 0 enemy type (asset-manifest). |\r\n| Zed's side | the neighbourhood, the community, local heroes | Wording from Theme. |"
+   "text": "| Thing | Canonical | Notes |\r\n|---|---|---|\r\n| Game title | The Rebellion: Fists of the Fallen City | Menu may split it: title \"THE REBELLION\", subtitle \"Fists of the Fallen City\". |\r\n| City | the Fallen City | Always with \"City\". Never \"Fallen\" alone. Pitch's \"fight your way through Fallen\" and \"first of the Fallen city\" should read \"the Fallen City\". |\r\n| Hero | Zed | Player character. |\r\n| Antagonist | the Rust | Corrupt private security force. Always \"Rust\", never \"Rush\". |\r\n| Rust members | Rust enemies / Rust grunt | \"Rust grunt\" is the one Tier 0 enemy type (asset-manifest). GDD unit names: Rust Grunts \"The Iron Line\", Rust Bruisers \"The Breakers\", Rust Rangers \"The Watchers\", Rust Specialists \"The Copper Fangs\", Rust Overseers \"The Architects of Control\". |\n| Rust leader | Commander Halden Varr | Name from the Rust section of the GDD; confirm with the owner (see Open lore questions). |\r\n| Zed's side | the neighbourhood, the community, local heroes | Wording from Theme. |"
   },
   {
    "id": "canon#3",
@@ -607,7 +631,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Factions",
-   "text": "- **Zed and the neighbourhood:** warm, rounded, casual, expressive. Fights back to get the city back.\r\n- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect."
+   "text": "- **Zed and the neighbourhood:** warm, rounded, casual, expressive. Fights back to get the city back.\r\n- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect. Per the GDD they turned from a protective force into a militarized occupation that crushes resistance with brutal efficiency: \"enforcers, hunters, and executioners\", each unit trained to suppress civilians, eliminate rebels and maintain absolute control. Breakers use illegal muscle stimulants; Copper Fangs undergo psychological conditioning; recruits are given serial numbers."
   },
   {
    "id": "canon#4",
@@ -631,7 +655,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Tone rules",
-   "text": "- Hopeful, energetic, full of personality and stories. Fighting back, reclaiming a home.\r\n- Never grim, never gory, never sneering. Lose screens encourage a retry, never gloat.\r\n- Zed's side copy is warm and plain-spoken, in a neighbourhood voice. No military or clinical phrasing.\r\n- Rust copy may be cold and official (notices, orders), but it is always shown as something the community answers or defaces."
+   "text": "- Hopeful, energetic, full of personality and stories. Fighting back, reclaiming a home.\r\n- Zed's side is hopeful and never gloats; lose screens encourage a retry. Never gory (no blood or dismemberment wording).\n- The Rust are menacing, as the GDD writes them: brutal, ruthless, and set on eliminating rebels. Their threat is stated plainly, not softened.\r\n- Zed's side copy is warm and plain-spoken, in a neighbourhood voice. No military or clinical phrasing.\r\n- Rust copy is cold, official and threatening (notices, orders, barks): \"suppress\", \"crush\", \"eliminate rebels\" are in character for the Rust. It is still shown as something the community answers or defaces."
   },
   {
    "id": "canon#7",
@@ -639,7 +663,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Wording",
-   "text": "| Avoid | Prefer |\r\n|---|---|\r\n| Rush (typo) | Rust |\r\n| \"Rust has been driven out of the arena\" (Rust as place or stain) | \"The Rust have been pushed back.\" / \"The Rust are on the run.\" |\r\n| \"Fallen\" alone | \"the Fallen City\" |\r\n| TARGETS ELIMINATED, MISSION COMPLETE, HOSTILES NEUTRALISED | The block is ours again. / Nice work, Zed. |\r\n| Generic game-speak (ENEMIES DEFEATED, ENEMIES LEFT) | Rust pushed back / Rust still standing (proposal; HUD owner decides) |\r\n| Gloating lose text (YOU DIED, PATHETIC) | Time ran out. Shake it off and go again. |\r\n| \"Rust\" plural as \"Rusts\" | \"the Rust\" takes plural verbs: \"the Rust are...\". |"
+   "text": "| Avoid | Prefer |\r\n|---|---|\r\n| Rush (typo) | Rust |\r\n| \"Rust has been driven out of the arena\" (Rust as place or stain) | \"The Rust have been pushed back.\" / \"The Rust are on the run.\" |\r\n| \"Fallen\" alone | \"the Fallen City\" |\r\n| TARGETS ELIMINATED, MISSION COMPLETE, HOSTILES NEUTRALISED (on Zed's side, such as the win screen; Rust lines may say \"eliminate rebels\") | The block is ours again. / Nice work, Zed. |\r\n| Generic game-speak (ENEMIES DEFEATED, ENEMIES LEFT) | Rust pushed back / Rust still standing (proposal; HUD owner decides) |\r\n| Gloating lose text (YOU DIED, PATHETIC) | Time ran out. Shake it off and go again. |\r\n| \"Rust\" plural as \"Rusts\" | \"the Rust\" takes plural verbs: \"the Rust are...\". |"
   },
   {
    "id": "canon#8",
@@ -687,7 +711,7 @@
    "file": "design/lore/canon.md",
    "authority": "derived",
    "heading": "Open lore questions (GDD silent)",
-   "text": "1. Does the Rust impose curfews or issue numbered notices? Menu poster \"Rust Notice 114 / CURFEW\" implies it. Treated as flavour, not canon, until the owner confirms.\r\n2. Is \"Rust\" used as a plural noun (\"the Rust are\") or a collective singular (\"the Rust is\")? Sheet assumes plural.\r\n3. Who is Zed (age, role, backstory)? Is there a named \"local hero\" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)\r\n4. Names of districts, the arena locations, or any Rust leader.\r\n5. What does \"get it back\" mean in story terms (who held the city before)?\r\n6. Is \"Rust enemy\" or \"Rust grunt\" the player-facing term for the enemy?\r\n7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)"
+   "text": "1. Does the Rust impose curfews or issue numbered notices? Menu poster \"Rust Notice 114 / CURFEW\" implies it. Treated as flavour, not canon, until the owner confirms.\r\n2. Is \"Rust\" used as a plural noun (\"the Rust are\") or a collective singular (\"the Rust is\")? Sheet assumes plural.\r\n3. Who is Zed (age, role, backstory)? Is there a named \"local hero\" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)\r\n4. Names of districts and arena locations. The Rust leader is Commander Halden Varr in the GDD Rust section; the \"Architect\" title and unit nicknames are GDD wording to confirm.\r\n5. What does \"get it back\" mean in story terms (who held the city before)?\r\n6. Is \"Rust enemy\" or \"Rust grunt\" the player-facing term for the enemy?\r\n7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)"
   },
   {
    "id": "critic-log#1",
@@ -1671,7 +1695,7 @@
    "file": "design/ux/win.md",
    "authority": "derived",
    "heading": "Wireframe (1280x720)",
-   "text": "```\n(0,0)\n+--------------------------------------------------------------------------+\n| [ frozen arena visible behind, dimmed 50% ] |\n| |\n| LEVEL CLEARED <- headline, y=130 |\n| Rust has been driven out of the arena. <- reason line, y=190 |\n| |\n| +------------------------------------------------+ |\n| | WAVES CLEARED 4 / 4 | <- stats panel|\n| | ENEMIES DEFEATED 18 | centre |\n| | TIME REMAINING 00:41 (of 02:00) | (640,380) |\n| | HEALTH REMAINING 64 / 100 | 720x240 |\n| +------------------------------------------------+ |\n| |\n| [ > PLAY AGAIN < ] [ MAIN MENU ] <- y=600 |\n| |\n| Enter / A : Select |\n+--------------------------------------------------------------------------+\n```"
+   "text": "```\n(0,0)\n+--------------------------------------------------------------------------+\n| [ frozen arena visible behind, dimmed 50% ] |\n| |\n| LEVEL CLEARED <- headline, y=130 |\n| The Rust have been pushed back. <- reason line, y=190 |\n| |\n| +------------------------------------------------+ |\n| | WAVES CLEARED 4 / 4 | <- stats panel|\n| | ENEMIES DEFEATED 18 | centre |\n| | TIME REMAINING 00:41 (of 02:00) | (640,380) |\n| | HEALTH REMAINING 64 / 100 | 720x240 |\n| +------------------------------------------------+ |\n| |\n| [ > PLAY AGAIN < ] [ MAIN MENU ] <- y=600 |\n| |\n| Enter / A : Select |\n+--------------------------------------------------------------------------+\n```"
   },
   {
    "id": "win#4",

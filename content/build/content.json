@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-13T15:52:07.545Z",
+  "builtAt": "2026-10-16T15:20:39.948Z",
   "lore": [
     {
       "id": "open-windows-music",
@@ -457,9 +457,428 @@
         "the-rebellion#6",
         "the-rebellion#8"
       ]
+    },
+    {
+      "id": "rust-origin",
+      "status": "canon",
+      "kind": "event",
+      "name": "How the Rust Got Their Foot in the Door",
+      "summary": "The Rust began as a private security contractor hired to steady the Fallen City, then stayed and became a militarized occupation.",
+      "body": "After years of political decay and rising crime, the city hired a private security contractor to calm things down. Once the Rust were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening its control over every district and crushing resistance with brutal efficiency.\n\nThe name comes from their oxidized metal armour, rough and weathered. The neighbourhood reads it as a reminder of what the Rust have done to the city, and Zed reads it as a challenge.",
+      "tags": [
+        "rust",
+        "origin",
+        "backstory"
+      ],
+      "sources": [
+        "the-rebellion#10"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "rust-takeover"
+      ]
+    },
+    {
+      "id": "commander-halden-varr",
+      "status": "canon",
+      "kind": "character",
+      "name": "Commander Halden Varr",
+      "summary": "The former military strategist who founded the Rust and believes order only comes through fear.",
+      "body": "Varr saw the Fallen City's government collapse and saw his chance. He offered \"protection\" to the officials who were left, then quietly swapped them for Rust loyalists. From that day the Rust were the law.\n\nHe is the face of the Rust's cold, official voice. The Copper Fangs are his personal favourites, and the Overseers run the districts in his name.",
+      "tags": [
+        "rust",
+        "leader",
+        "antagonist"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#13"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "rust-copper-fangs",
+        "rust-overseers"
+      ]
+    },
+    {
+      "id": "rust-takeover-timeline",
+      "status": "canon",
+      "kind": "event",
+      "name": "Within Months: Curfews, Sealed Districts and Drones",
+      "summary": "Curfews became mandatory, districts were sealed, drones filled the sky and people who spoke up went missing.",
+      "body": "It took the Rust only months. Curfews became mandatory. Whole districts were sealed off. Surveillance drones filled the sky. Anyone who resisted disappeared. The Rust became the law, and then they became the city.\n\nThis is the wider picture behind what Zed saw on his own block: the shut courts, the fenced gardens and the torn-down murals.",
+      "tags": [
+        "rust",
+        "curfew",
+        "drones",
+        "timeline"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#8"
+      ],
+      "relatedIds": [
+        "rust-takeover",
+        "surveillance-towers",
+        "rust-notice-114"
+      ]
+    },
+    {
+      "id": "rust-doctrine",
+      "status": "canon",
+      "kind": "object",
+      "name": "Order is Strength. Freedom is Weakness.",
+      "summary": "The single doctrine the Rust live by: rebuild the Fallen City through force, suppress civilians and eliminate rebels.",
+      "body": "\"Order is strength. Freedom is weakness.\" That is the Rust's whole creed. They hold that the Fallen City can only be rebuilt by force, and that civilians are assets to be managed rather than neighbours to look after.\n\nThey are enforcers, hunters and executioners. Each unit is trained to suppress civilians, eliminate rebels and maintain absolute control, and to see rebels, Zed included, as threats to the \"greater good\". The neighbourhood's answer is on every wall that gets repainted: strength is looking out for each other.",
+      "tags": [
+        "rust",
+        "doctrine",
+        "philosophy"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#7"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "zeds-mission"
+      ]
+    },
+    {
+      "id": "rust-serial-numbers",
+      "status": "canon",
+      "kind": "object",
+      "name": "Serial Numbers",
+      "summary": "The Rust take away recruits' names and give them serial numbers, so nobody stands out and everyone obeys.",
+      "body": "A new recruit hands over their name and gets a number. Helmets hide their faces on top of that. It wipes out who they were and keeps them in line.\n\nIt also means the person under the visor is somebody's neighbour, and nobody in the Fallen City can tell which one.",
+      "tags": [
+        "rust",
+        "identity",
+        "grunt"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "rust-grunts-iron-line",
+        "rust-grunt"
+      ]
+    },
+    {
+      "id": "rust-grunts-iron-line",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Grunts: The Iron Line",
+      "summary": "The backbone of the Rust: ordinary citizens pressed into service, in cheap rust-coated plating and anonymous helmets.",
+      "body": "The Iron Line were once ordinary citizens, coerced or talked into joining. Their plating is cheap and rust-coated, and their helmets hide who they are on purpose. Each carries a serial number instead of a name.\n\nThey are the crowd the Rust put in front: they keep the streets under watch, make a show of force and hold the front. Zed meets them in nearly every wave.",
+      "tags": [
+        "rust",
+        "enemy",
+        "grunt",
+        "unit"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "rust-grunt",
+        "rust-serial-numbers"
+      ]
+    },
+    {
+      "id": "rust-bruisers-breakers",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Bruisers: The Breakers",
+      "summary": "Hulking enforcers in heavy plating, boosted with illegal muscle stimulants that make them strong and unsteady.",
+      "body": "The Breakers are big, with reinforced plating that gives them a hulking outline. Many were once in trouble with the law and were promised their freedom in exchange for loyalty. The Rust boost them with stimulants, which makes them stronger and shaky.\n\nThe Rust use them as shock troops for area denial and for crushing resistance groups.",
+      "tags": [
+        "rust",
+        "enemy",
+        "bruiser",
+        "unit"
+      ],
+      "sources": [
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "the-rust"
+      ]
+    },
+    {
+      "id": "rust-rangers-watchers",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Rangers: The Watchers",
+      "summary": "Agile units with taser rifles, batons and tracking visors who chase rebels over alleys and rooftops.",
+      "body": "The Watchers are quick and quiet. They carry taser rifles and batons, and their tracking visors read heat, which makes hiding hard. They are trained to follow rebels through the alleys and across the rooftops.\n\nTheir job is to harass from a distance, give chase and report back. Brick-Red Alley knows its rooftops better than they do.",
+      "tags": [
+        "rust",
+        "enemy",
+        "ranger",
+        "unit",
+        "ranged"
+      ],
+      "sources": [
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "brick-red-alley"
+      ]
+    },
+    {
+      "id": "rust-copper-fangs",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Specialists: The Copper Fangs",
+      "summary": "Elite Rust soldiers with electrified gauntlets, grappling hooks and tactical shields, and Varr's personal favourites.",
+      "body": "The Copper Fangs are picked from the most loyal Rust members and put through psychological conditioning to remove fear and hesitation. Their kit is the best the Rust have: electrified gauntlets, grappling hooks and tactical shields.\n\nThey are Commander Varr's favourites and are sent on high-priority target elimination, which makes them mini-boss material in the arena.",
+      "tags": [
+        "rust",
+        "enemy",
+        "specialist",
+        "unit",
+        "elite"
+      ],
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#13"
+      ],
+      "relatedIds": [
+        "commander-halden-varr"
+      ]
+    },
+    {
+      "id": "rust-overseers",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Overseers: The Architects of Control",
+      "summary": "District commanders, once politicians and business leaders, who run drones, turrets and squads from behind the screens.",
+      "body": "The Overseers each run a whole district. They seldom fight themselves. Instead they send out drones, turrets and squads, and hold the district through surveillance networks and propaganda. Many were politicians and corporate leaders who sided with the Rust during the takeover.\n\nThey are the end-of-level bosses, the district rulers and the faces of the story's antagonists.",
+      "tags": [
+        "rust",
+        "enemy",
+        "overseer",
+        "unit",
+        "boss"
+      ],
+      "sources": [
+        "the-rebellion#13"
+      ],
+      "relatedIds": [
+        "surveillance-towers",
+        "commander-halden-varr"
+      ]
+    },
+    {
+      "id": "rust-rank-ladder",
+      "status": "proposed",
+      "gddGap": "The GDD lists five unit types but not how they relate on the ground. This ties them into one ladder (Grunts, Rangers, Breakers, Copper Fangs, Overseers) so levels and enemy writers can pace waves; the owner should confirm it.",
+      "kind": "event",
+      "name": "The Rust Ladder",
+      "summary": "A way to read the five Rust units as a ladder: Iron Line up front, Watchers and Breakers in support, Fangs and Overseers at the top.",
+      "body": "Each district tends to open with the Iron Line, add Watchers on the rooftops and Breakers in the street, and finish with a Copper Fang or the district Overseer. The tougher the unit, the closer it sits to Commander Varr.\n\nThe neighbourhood keeps score in its own way: every rung Zed knocks back is a corner, a court or a window that gets its music back.",
+      "tags": [
+        "rust",
+        "units",
+        "pacing",
+        "levels"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12",
+        "the-rebellion#13"
+      ],
+      "relatedIds": [
+        "rust-grunts-iron-line",
+        "rust-bruisers-breakers",
+        "rust-rangers-watchers",
+        "rust-copper-fangs",
+        "rust-overseers"
+      ]
+    },
+    {
+      "id": "neighbourhood-answer-to-doctrine",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust's doctrine but no community reply. The tone rules say Rust copy is always answered or defaced by the neighbourhood, so this proposes a painted answer to the creed.",
+      "kind": "object",
+      "name": "The Wall Answers Back",
+      "summary": "Every time the Rust post their creed, someone paints over it with a line about looking out for each other.",
+      "body": "Under a Rust notice, kids chalk in \"Freedom is strength\" and an arrow pointing to the food stall. Murals go back up a patch at a time. It never lasts long, but it is always there by morning.\n\nIt matches Zed's own belief: strength is protecting the people who give your life meaning.",
+      "tags": [
+        "community",
+        "doctrine",
+        "murals",
+        "defaced"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#7",
+        "menu-concept#4"
+      ],
+      "relatedIds": [
+        "rust-doctrine",
+        "rust-notice-114",
+        "local-heroes-murals"
+      ]
     }
   ],
   "enemies": [
+    {
+      "id": "rust-iron-line-cordon",
+      "status": "proposed",
+      "gddGap": "The GDD lists Rust Grunts, 'The Iron Line', for crowd control and frontline combat, but the Tier 0 rust-grunt is the only canon stat block. This is the Iron Line's crowd-control variant: a grunt that holds a line and sweeps a wide arc, so waves can pin the lane without adding a new silhouette. The base Iron Line unit remains rust-grunt (canon).",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12",
+        "the-rebellion#5",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Iron Line Cordon",
+      "role": "grunt",
+      "tier": 1,
+      "description": "A Rust grunt of the Iron Line in cheap rust-coated slate plating, a plain steel helmet with a cyan visor and no personal marks, because the helmets hide who they are. Same boxy, symmetrical build as the grunt, with a gunmetal push-bar held across the chest.",
+      "behaviour": "Moves in at grunt speed and stops at the front of the group to hold the lane, trying to pin Zed against his own crowd. Uses one wide sweep with the push-bar that shoves Zed back along the lane. Counts against the attacker cap like any other attacker, and never attacks from behind.",
+      "telegraph": "500 ms wind-up: both arms pull the bar to one side, the red telegraph icon pops above the head, the body tints red and the outline thickens. The sweep is wide, so the red ground arc shows its reach.",
+      "weakness": "Low health and a short reach in depth. Step out of the lane (dodge) or block the shove, then punish in the recovery window. Heavy attacks from the side skip its guard-stance and juggle it clear of the line.",
+      "spriteKey": "rust.iron-line-cordon",
+      "stats": {
+        "maxHp": 36,
+        "moveSpeed": 85,
+        "attackRange": 75,
+        "telegraphMs": 500,
+        "attackMs": 260,
+        "recoverMs": 750,
+        "damage": 8,
+        "knockback": 260,
+        "hitstun": 250
+      }
+    },
+    {
+      "id": "rust-breaker",
+      "status": "proposed",
+      "gddGap": "The GDD defines Rust Bruisers, 'The Breakers': massive shock troops with heavy plating, for area denial. It gives no stats or moves. This turns them into the slow, high-threat heavy that denies a patch of the arena. Merged: replaces rust-enforcer.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Breaker",
+      "role": "bruiser",
+      "tier": 2,
+      "description": "A hulking Rust Bruiser in heavily reinforced slate and steel plating, with a massive squared-off silhouette, a small helmet and a cyan visor. Cold, symmetrical and boxy; massive shock trooper enhanced with illegal muscle stimulants, built to crush resistance groups. A gunmetal brace on each forearm.",
+      "behaviour": "Walks slowly straight at Zed, ignoring the circling rules, and takes an attacker slot when one is free. Plants its feet and slams both braces into the floor, leaving a short patch of rattled ground in front of it that Zed should stay out of for a moment (area denial). Long recovery after every slam. Cannot be juggled while winding up, so the player must dodge, not just mash.",
+      "telegraph": "700 ms wind-up: both braces raised overhead, telegraph icon scaled 1.4 times and a large red ground danger ellipse at 30 percent alpha showing the slam area, per the heavy-enemy cue.",
+      "weakness": "Big, slow and predictable. Dodge out of the red ellipse, then land a full combo in the long recovery. Heavy attacks stagger it; blocking works but the shove-back is large.",
+      "spriteKey": "rust.breaker",
+      "stats": {
+        "maxHp": 90,
+        "moveSpeed": 60,
+        "attackRange": 90,
+        "telegraphMs": 700,
+        "attackMs": 320,
+        "recoverMs": 1100,
+        "damage": 16,
+        "knockback": 380,
+        "hitstun": 320
+      }
+    },
+    {
+      "id": "rust-watcher",
+      "status": "proposed",
+      "gddGap": "The GDD defines Rust Rangers, 'The Watchers': agile units with taser rifles, batons and tracking visors, for long-range harassment. It gives no stats or moves. Merged: replaces rust-dart-marksman and rust-baton-scout.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Watcher",
+      "role": "ranged",
+      "tier": 2,
+      "description": "A lean, agile Rust Ranger in a slate uniform with a gunmetal taser rifle, a baton at the belt and a wide tracking visor with a cyan scan line. Symmetrical and boxy, but lighter than the grunt.",
+      "behaviour": "Stays at range, strafing along the far side of the arena and following Zed with its visor. Fires a single slow taser bolt along the lane when it holds an attacker slot, then relocates. If Zed closes in it backs off, and only swings the baton when cornered. A hunter built to harass rebels at range and chase them down.",
+      "telegraph": "650 ms wind-up for the taser: rifle raised, a cyan scan line draws along the floor toward Zed, and the red telegraph icon pops above the head. The bolt is slow enough to sidestep. The baton swing uses a 350 ms wind-up with the standard cues.",
+      "weakness": "Low health. Sidestep out of the lane to dodge, then close the gap; juggle routes that carry Zed across the arena reach it fast. Blocking the bolt is also possible but eats a chip of damage.",
+      "spriteKey": "rust.watcher",
+      "stats": {
+        "maxHp": 28,
+        "moveSpeed": 110,
+        "attackRange": 300,
+        "telegraphMs": 650,
+        "attackMs": 220,
+        "recoverMs": 1200,
+        "damage": 7,
+        "knockback": 180,
+        "hitstun": 230
+      }
+    },
+    {
+      "id": "rust-copper-fang",
+      "status": "proposed",
+      "gddGap": "The GDD defines Rust Specialists, 'The Copper Fangs': elite soldiers with electrified gauntlets, grappling hooks and tactical shields, for boss-tier encounters. It gives no stats or moves. Merged: replaces rust-shield-sergeant. Tier 3.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#13",
+        "the-rebellion#1",
+        "adversarial-qa#2",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Copper Fang",
+      "role": "boss",
+      "tier": 3,
+      "description": "An elite Rust Specialist in a sharper slate uniform with copper-toned gauntlets, a tactical shield strapped to one arm and a grappling hook launcher on the other. Still cold, symmetrical and boxy, with a narrow cyan visor. Psychological conditioning has removed all fear and hesitation: an elite hunter sent to eliminate priority targets.",
+      "behaviour": "Two-phase mini-boss. Phase one: advances behind the shield, blocking front light hits, then lunges with a gauntlet strike. Phase two (below half health): fires a grappling hook that yanks Zed a short way across the lane, followed by a gauntlet jab. Calls for an attacker slot before every move so it never stacks with a full cap. Hitstun scales down while it is shielded so juggles cannot loop it (boss immunity, see adversarial-qa#2).",
+      "telegraph": "650 ms wind-up for the gauntlet lunge: gauntlet drawn back and crackling, telegraph icon scaled 1.4 times with a red ground zone. The hook has a 750 ms wind-up: the launcher is raised and a thin cyan line shows the path, plus the red icon.",
+      "weakness": "Heavy attacks break the shield. Parry the lunge or dodge the hook line to open it, then juggle in the recovery window. Rewards the skill-depth pillar: block, dodge and parry all have a clear answer.",
+      "spriteKey": "rust.copper-fang",
+      "stats": {
+        "maxHp": 140,
+        "moveSpeed": 85,
+        "attackRange": 85,
+        "telegraphMs": 650,
+        "attackMs": 300,
+        "recoverMs": 1000,
+        "damage": 15,
+        "knockback": 360,
+        "hitstun": 300
+      }
+    },
+    {
+      "id": "rust-architect",
+      "status": "proposed",
+      "gddGap": "The GDD defines Rust Overseers, 'The Architects of Control': district commanders who rarely fight directly, deploying drones, turrets and squads; end-level bosses and story antagonists. It gives no stats or moves. Merged: replaces rust-signal-warden. Tier 3.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#11",
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Architect",
+      "role": "boss",
+      "tier": 3,
+      "description": "A Rust Overseer in a crisp slate command coat with steel shoulder plates, a tall visor with a cyan display strip and a gunmetal control console strapped to one forearm. Cold, symmetrical and boxy, standing well back from the fight. A former politician or executive, more official than armoured, a district ruler who orders rebels eliminated.",
+      "behaviour": "End-of-level boss that rarely fights directly. Stays at the back of the arena, issuing orders from its console: each cycle it calls a small squad of grunts, or deploys a turret, or sends a drone that hovers and fires one slow stun shot. Only swats with a short baton when Zed reaches it. Staggers and gives up ground when the command units around it are cleared, so the player must fight through the wave to reach it. Hitstun is low and it does not stack with the attacker cap, since its units do the attacking.",
+      "telegraph": "800 ms wind-up for each order: console arm raised, a cyan pulse ring marks where the squad, turret or drone will appear, and the red telegraph icon scaled 1.4 times pops above the head. The turret and drone shots keep their own 600 ms wind-up with the standard cues. The baton swat uses a 450 ms wind-up.",
+      "weakness": "Fragile for a boss and always at the back. Clear the squad, take out the turret or drone, then rush the lane to break its call. Rewards the wave-clearing under pressure pillar and movement over standing still.",
+      "spriteKey": "rust.architect",
+      "stats": {
+        "maxHp": 120,
+        "moveSpeed": 70,
+        "attackRange": 70,
+        "telegraphMs": 800,
+        "attackMs": 250,
+        "recoverMs": 1300,
+        "damage": 12,
+        "knockback": 280,
+        "hitstun": 260
+      }
+    },
     {
       "id": "rust-grunt",
       "status": "canon",
@@ -487,157 +906,6 @@
         "damage": 8,
         "knockback": 220,
         "hitstun": 250
-      }
-    },
-    {
-      "id": "rust-enforcer",
-      "status": "proposed",
-      "gddGap": "GDD says one enemy type first and promises dynamic enemy behaviours later; difficulty comes from how waves arrive. A heavier bruiser gives waves a slow, high-threat piece to mix with grunts.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "hit-feedback-spec#4",
-        "systems-designer#2"
-      ],
-      "name": "Rust Enforcer",
-      "role": "bruiser",
-      "tier": 1,
-      "description": "A broader Rust officer in a squared-off slate vest with steel shoulder plates and a wide cyan visor. Same uniform language as the grunt, just bigger and blockier.",
-      "behaviour": "Walks slowly and straight at Zed, ignores circling and takes an attacker slot whenever one is free. Throws one heavy overhand swing, then plants its feet during a long recovery.",
-      "telegraph": "600 ms wind-up with both fists raised overhead. Telegraph icon scaled up 1.4 times and a red ground danger ellipse at 30 percent alpha, per the heavy-enemy cue in the hit feedback spec.",
-      "weakness": "Rewards dodging and defence: sidestep the swing, then land a combo in the long recovery window. Blocking works but the knockback is large.",
-      "spriteKey": "rust.enforcer",
-      "stats": {
-        "maxHp": 70,
-        "moveSpeed": 65,
-        "attackRange": 80,
-        "telegraphMs": 600,
-        "attackMs": 300,
-        "recoverMs": 900,
-        "damage": 14,
-        "knockback": 320,
-        "hitstun": 300
-      }
-    },
-    {
-      "id": "rust-baton-scout",
-      "status": "proposed",
-      "gddGap": "GDD lists dynamic enemy behaviours and defensive tools (block, dodge, parry) but gives no enemy roster. A fast, light attacker with a clear tell is a natural parry trainer.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "hit-feedback-spec#4",
-        "player-psychologist#4"
-      ],
-      "name": "Rust Baton Scout",
-      "role": "grunt",
-      "tier": 1,
-      "description": "A lean Rust officer in a slate uniform with a gunmetal baton and a narrow cyan visor. Straight lines, symmetrical stance, lighter than the grunt.",
-      "behaviour": "Faster than the grunt and darts in for a quick poke, then backs off to the circle radius instead of standing around. Counts against the attacker cap like any other attacker.",
-      "telegraph": "320 ms wind-up: the baton is drawn back to the shoulder with a visible lean, red telegraph icon above the head. Short enough to feel quick, long enough to react to.",
-      "weakness": "Fragile. A well-timed parry or a single combo opener ends the exchange; mashing without reading the tell gets punished by its speed.",
-      "spriteKey": "rust.baton-scout",
-      "stats": {
-        "maxHp": 22,
-        "moveSpeed": 130,
-        "attackRange": 85,
-        "telegraphMs": 320,
-        "attackMs": 180,
-        "recoverMs": 500,
-        "damage": 6,
-        "knockback": 160,
-        "hitstun": 200
-      }
-    },
-    {
-      "id": "rust-dart-marksman",
-      "status": "proposed",
-      "gddGap": "GDD asks for dynamic enemy behaviours and a player toolkit of block, dodge and parry. A ranged role forces the player to close distance and use lane movement, which melee-only enemies do not.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#5",
-        "hit-feedback-spec#4",
-        "feasibility-lead#2"
-      ],
-      "name": "Rust Dart Marksman",
-      "role": "ranged",
-      "tier": 2,
-      "description": "A Rust officer in a slate uniform with a boxy gunmetal stun-dart launcher on one arm and a visor with a cyan aim line. Non-lethal gear: the dart only stuns and pushes back.",
-      "behaviour": "Keeps to the far side of the arena and holds its distance, side-stepping away if Zed gets close. Fires one slow dart along its lane when it has an attacker slot, then reloads.",
-      "telegraph": "700 ms wind-up: raises the launcher, a cyan aim line draws along the floor toward Zed and the red telegraph icon pops above the head. The dart travels slowly enough to sidestep.",
-      "weakness": "Step out of the lane to dodge, then rush it. Weak up close with low health and a long reload, so it rewards movement and juggle routes that carry Zed across the arena.",
-      "spriteKey": "rust.dart-marksman",
-      "stats": {
-        "maxHp": 26,
-        "moveSpeed": 75,
-        "attackRange": 320,
-        "telegraphMs": 700,
-        "attackMs": 220,
-        "recoverMs": 1400,
-        "damage": 7,
-        "knockback": 180,
-        "hitstun": 220
-      }
-    },
-    {
-      "id": "rust-shield-sergeant",
-      "status": "proposed",
-      "gddGap": "GDD names block, dodge and parry as defence tools but never says which enemies reward them. A shielded elite makes the player use combos and juggles rather than button-mashing.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "hit-feedback-spec#4",
-        "adversarial-qa#10"
-      ],
-      "name": "Rust Shield Sergeant",
-      "role": "elite",
-      "tier": 3,
-      "description": "A Rust sergeant with a tall rectangular riot shield, steel helmet and a wide cyan visor. Symmetrical, squared-off and cold, with a gunmetal shield edge.",
-      "behaviour": "Advances slowly behind the shield and blocks light hits from the front. Shield bash when the player is close, then drops the shield during recovery. Calls for an attacker slot before bashing so it never stacks with a full cap.",
-      "telegraph": "650 ms wind-up: shield pulled back and braced, red telegraph icon scaled up and a ground danger zone in front of it. Light attacks from the front bounce off the shield, which is also readable.",
-      "weakness": "Heavy attacks break its guard and combos from behind or after a dodged bash land clean. Parry the bash to open the shield for a juggle.",
-      "spriteKey": "rust.shield-sergeant",
-      "stats": {
-        "maxHp": 110,
-        "moveSpeed": 60,
-        "attackRange": 75,
-        "telegraphMs": 650,
-        "attackMs": 300,
-        "recoverMs": 1000,
-        "damage": 12,
-        "knockback": 380,
-        "hitstun": 350
-      }
-    },
-    {
-      "id": "rust-signal-warden",
-      "status": "proposed",
-      "gddGap": "GDD promises dynamic enemy behaviours and says difficulty comes from how waves arrive, but names no support role. A Rust officer who buffs nearby grunts gives wave composition a priority target and rewards lane movement and juggle routes that reach the back line.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "the-rebellion#8",
-        "hit-feedback-spec#4",
-        "player-psychologist#4"
-      ],
-      "name": "Rust Signal Warden",
-      "role": "support",
-      "tier": 2,
-      "description": "A Rust officer in a slate uniform with a boxy gunmetal radio pack and a short antenna, a steel helmet and a visor with a cyan indicator bar. Symmetrical and cold, with a squared-off stance that stays at the back of the group.",
-      "behaviour": "Hangs back at the circle radius behind the grunts and never takes a melee attacker slot. Every few seconds it raises the radio to call a Rust order that speeds up grunts near it for a short time. If Zed closes in it side-steps away and only swats with a short baton jab when cornered.",
-      "telegraph": "600 ms wind-up for the radio call: arm raised with the radio, red telegraph icon above the head, and a cyan pulse ring on the floor around the grunts it will boost. The rare baton jab uses a 450 ms wind-up with the standard cues.",
-      "weakness": "Fragile and always at the back. Rushing through the lane or using a juggle route to reach it cancels the call and removes the speed boost. Rewards crowd control and movement over standing still.",
-      "spriteKey": "rust.signal-warden",
-      "stats": {
-        "maxHp": 35,
-        "moveSpeed": 80,
-        "attackRange": 60,
-        "telegraphMs": 450,
-        "attackMs": 220,
-        "recoverMs": 800,
-        "damage": 5,
-        "knockback": 150,
-        "hitstun": 200
       }
     }
   ],
@@ -721,7 +989,7 @@
           "startDelayMs": 800
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 4,
           "maxAlive": 2,
           "spawnIntervalMs": 1100,
@@ -735,7 +1003,7 @@
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 3,
           "spawnIntervalMs": 800,
@@ -776,21 +1044,21 @@
           "startDelayMs": 800
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 5,
           "maxAlive": 1,
           "spawnIntervalMs": 1500,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 3,
           "spawnIntervalMs": 700,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 1300,
@@ -838,35 +1106,35 @@
           "startDelayMs": 800
         },
         {
-          "enemy": "rust-signal-warden",
+          "enemy": "rust-architect",
           "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 1500,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-dart-marksman",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 1,
           "spawnIntervalMs": 1600,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 3,
           "spawnIntervalMs": 650,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-dart-marksman",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 1200,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 1000,
@@ -907,46 +1175,204 @@
           "startDelayMs": 800
         },
         {
-          "enemy": "rust-shield-sergeant",
+          "enemy": "rust-copper-fang",
           "count": 6,
           "maxAlive": 1,
           "spawnIntervalMs": 1800,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 6,
           "maxAlive": 4,
           "spawnIntervalMs": 600,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-dart-marksman",
+          "enemy": "rust-watcher",
           "count": 6,
           "maxAlive": 2,
           "spawnIntervalMs": 1000,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-signal-warden",
+          "enemy": "rust-architect",
           "count": 6,
           "maxAlive": 2,
           "spawnIntervalMs": 1200,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 6,
           "maxAlive": 3,
           "spawnIntervalMs": 900,
           "startDelayMs": 1500
         },
         {
-          "enemy": "rust-shield-sergeant",
+          "enemy": "rust-copper-fang",
           "count": 6,
           "maxAlive": 2,
           "spawnIntervalMs": 1400,
           "startDelayMs": 1800
+        }
+      ]
+    },
+    {
+      "id": "level-06-iron-line-push",
+      "status": "proposed",
+      "gddGap": "The GDD sets no level count, tiers or level list. This is an extra proposed level (order 6, after the five in levels.json) that introduces the GDD-named Rust units in escalation: Iron Line cordon, then Watchers, then Breakers. Wave numbers and the 150 s limit are placeholders in the Tier 0 shape. Uses the proposed expansion enemies from rust-gdd-units.json, so it depends on owner approval of those.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "the-rebellion#11",
+        "the-rebellion#12",
+        "the-rebellion#2"
+      ],
+      "name": "The Iron Line Push",
+      "order": 6,
+      "district": "stewpot-gardens",
+      "theme": "Stewpot Gardens, where the Rust have strung a line of barriers between the planters and the food stalls; steam still rises from the stew pots behind it.",
+      "palette": [
+        "#2F6B3F",
+        "#E3A92B",
+        "#A8402E",
+        "#6B4423"
+      ],
+      "timeLimitSec": 150,
+      "intro": "The Iron Line is holding the garden gate. Faceless helmets, cheap plating. Zed's neighbours are watching from the stalls. Push the line back, then the Watchers and Breakers behind it.",
+      "outro": "The line gives way and the stew pots are steaming again. Zed's mother waves a ladle from the stall. The garden is the neighbourhood's once more.",
+      "waves": [
+        {
+          "enemy": "rust-iron-line-cordon",
+          "count": 3,
+          "maxAlive": 3,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 800
+        },
+        {
+          "enemy": "rust-iron-line-cordon",
+          "count": 4,
+          "maxAlive": 3,
+          "spawnIntervalMs": 800,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-watcher",
+          "count": 4,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1100,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-breaker",
+          "count": 4,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1400,
+          "startDelayMs": 1800
+        }
+      ]
+    },
+    {
+      "id": "level-07-copper-fang-courts",
+      "status": "proposed",
+      "gddGap": "The GDD says Copper Fangs serve boss-tier encounters but gives no level list, tiers or boss placement. This proposes a mini-boss level (order 7): a ladder of single units rising Watcher, Breaker, Copper Fang. Each wave has count 1 because the validator requires wave counts not to shrink, so a lone boss wave must follow count-1 waves; mixed-escort boss waves need a schema extension (one enemy per wave today).",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "the-rebellion#12",
+        "the-rebellion#13",
+        "the-rebellion#2"
+      ],
+      "name": "Copper Fang at the Courts",
+      "order": 7,
+      "district": "greenline-courts",
+      "theme": "The forest-green basketball courts, hoops bent but standing, with a Rust command post set up at centre court and kids' chalk drawings still on the asphalt.",
+      "palette": [
+        "#2F6B3F",
+        "#E3A92B",
+        "#A8402E",
+        "#6B4423"
+      ],
+      "timeLimitSec": 150,
+      "intro": "Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, dodge, parry. Give the kids their court back.",
+      "outro": "The shield cracks and the Fang is pushed back off the court. Somewhere a ball bounces, then another. Zed breathes out. Game on.",
+      "waves": [
+        {
+          "enemy": "rust-watcher",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1000
+        },
+        {
+          "enemy": "rust-breaker",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-copper-fang",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 2000
+        }
+      ]
+    },
+    {
+      "id": "level-08-overseer-tower",
+      "status": "proposed",
+      "gddGap": "The GDD says Overseers (the Architects of Control) are end-level bosses and district rulers that deploy drones, turrets and squads, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push. The Architect's own squad, turret and drone calls are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district; a dedicated Overseer district is a GDD gap.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "the-rebellion#13",
+        "the-rebellion#11",
+        "the-rebellion#2"
+      ],
+      "name": "The Overseer's Tower",
+      "order": 8,
+      "district": "songwindow-heights",
+      "theme": "Songwindow Heights, where a surveillance tower and propaganda screens loom over the windows that used to play music; murals half-painted over in grey.",
+      "palette": [
+        "#A8402E",
+        "#E3A92B",
+        "#6B4423",
+        "#2F6B3F"
+      ],
+      "timeLimitSec": 180,
+      "intro": "The Architect runs this district from behind a console, with squads, turrets and drones at its call. Fight through, reach the back of the arena and break the order. Let the music back in.",
+      "outro": "The screens flicker out and the Architect gives up the tower. A window opens, then another, and music drifts down over the Heights. The first mural stroke goes back up.",
+      "waves": [
+        {
+          "enemy": "rust-iron-line-cordon",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 800
+        },
+        {
+          "enemy": "rust-watcher",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1200
+        },
+        {
+          "enemy": "rust-breaker",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1500
+        },
+        {
+          "enemy": "rust-architect",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 2000
         }
       ]
     }
@@ -2000,6 +2426,519 @@
         "menu-copy#3",
         "the-rebellion#6"
       ]
+    },
+    {
+      "id": "rust-notice-doctrine",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "ORDER IS STRENGTH. FREEDOM IS WEAKNESS.",
+        "The creed is posted. Read it. Obey it, or be dealt with.",
+        "By order of Commander Varr: order is strength.",
+        "Freedom is weakness. This notice is binding."
+      ]
+    },
+    {
+      "id": "rust-notice-serial-rollcall",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "Roll call. Answer to your number only.",
+        "Names are retired. Serial numbers remain.",
+        "Unit 4471, report to the Iron Line.",
+        "Unit 0932, hold position. Do not speak.",
+        "Rebels have names. Citizens have numbers."
+      ]
+    },
+    {
+      "id": "rust-notice-sealed-district",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#8"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "District sealed. Curfew is mandatory.",
+        "Lights out at nine. No exceptions.",
+        "Drones are overhead. Stay indoors.",
+        "Assembly is resistance. Resistance is eliminated."
+      ]
+    },
+    {
+      "id": "rust-overseer-announcement",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#8"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "Overseer notice: this district is under review.",
+        "All screens will carry today's message.",
+        "Surveillance keeps rebels from hiding.",
+        "Stay calm. The Rust have this district in hand.",
+        "Watch the towers. The towers watch you."
+      ]
+    },
+    {
+      "id": "rust-varr-order",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#13"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "Varr to all Overseers: tighten the districts.",
+        "Order from Commander Varr: hold every line.",
+        "Varr expects every rebel found by nightfall.",
+        "Fear keeps the peace. Crush what resists."
+      ]
+    },
+    {
+      "id": "neighbour-defaced-doctrine",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#7",
+        "menu-concept#4"
+      ],
+      "speaker": "poster",
+      "trigger": "poster",
+      "lines": [
+        "Strength is looking out for each other.",
+        "FREEDOM IS WEAKNESS? Not on this wall.",
+        "Painted over: we keep the music on.",
+        "Order? We prefer neighbours."
+      ]
+    },
+    {
+      "id": "neighbour-answers-serial",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "speaker": "neighbour",
+      "trigger": "taunt",
+      "lines": [
+        "I know your name. Your mum would, too.",
+        "Numbers are for bus stops. Come say hello.",
+        "Somebody under that helmet has a name.",
+        "Come by the stall. Bring your name."
+      ]
+    },
+    {
+      "id": "neighbour-answers-curfew",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "menu-concept#4"
+      ],
+      "speaker": "neighbour",
+      "trigger": "notice",
+      "lines": [
+        "Lights out? We lit a candle instead.",
+        "Curfew's crossed out. Music at the court.",
+        "Quiet streets? Not while Zed's around.",
+        "The sealed gate has a new mural on it."
+      ]
+    },
+    {
+      "id": "zed-answers-overseer",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#10",
+        "the-rebellion#9"
+      ],
+      "speaker": "zed",
+      "trigger": "taunt",
+      "lines": [
+        "Nice speech. Watch me turn the screen off.",
+        "Your towers are loud. Our windows are louder.",
+        "Review this: the block is ours again.",
+        "Strength? It is the neighbours. Always was."
+      ]
+    },
+    {
+      "id": "zed-answers-varr",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "taunt",
+      "lines": [
+        "Tell Varr: knock, knock. We are coming.",
+        "Fear is not a plan. Neighbours are.",
+        "Order is strength? Try a good stew.",
+        "Say hi to the Commander. Say it loud."
+      ]
+    },
+    {
+      "id": "rust-iron-line-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Iron Line, hold the lane.",
+        "Unit 4471, advancing.",
+        "Form up. Suppress the civilians."
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "rust-iron-line-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Push-bar sweep. Brace.",
+        "Hold... sweep!",
+        "Line, crush them!"
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "rust-iron-line-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Unit 4471, falling back.",
+        "Line broken. Backing off.",
+        "I just... need a minute."
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "zed-answers-iron-line",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "A bar? Let me duck under that.",
+        "Hi, Unit 4471. What is your name?",
+        "Shove me later. Music first."
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "rust-breaker-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Breaker on the block.",
+        "Smash. Break. Crush the resistance.",
+        "Stand aside or be broken."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "rust-breaker-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Winding up. Big swing.",
+        "Here it comes. Ground shakes.",
+        "Slam incoming."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "rust-breaker-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Too heavy... sitting down.",
+        "The stuff wore off. I am done.",
+        "Pushed back. Steady."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "zed-answers-breaker",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Big wind-up. I can dance around that.",
+        "Easy, big fella. Take a seat.",
+        "All that muscle, no footwork."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "rust-watcher-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Watcher on the rooftop.",
+        "Visor locked. I see you.",
+        "Rebel located. Hunting."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "rust-watcher-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Taser charging. Stay still.",
+        "Visor flash, then the shot.",
+        "Rebel in the sights. Do not move."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "rust-watcher-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Visor cracked. Pulling back.",
+        "Lost the trace. Retreating.",
+        "Off the roof. Regroup."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "zed-answers-watcher",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Cute visor. Can it see me dodge?",
+        "Up on a roof? I know every ladder.",
+        "Tracking me? Keep up, then."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "rust-copper-fang-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Copper Fang, by order of Varr.",
+        "Fear removed. Duty remains.",
+        "Rebel marked. Target to be eliminated."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "rust-copper-fang-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Hook out. Shield up.",
+        "Gauntlet crackling.",
+        "Closing on the target."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "rust-copper-fang-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Fang withdrawing. Report to Varr.",
+        "Shield down. Falling back.",
+        "Not... in the plan."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "zed-answers-copper-fang",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Shiny gloves. Mind the wires.",
+        "Varr sent his favourite? I am flattered.",
+        "Hooks and shields. Still just a person."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "rust-architect-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Overseer on the district. Rebels will be eliminated.",
+        "Drones, turrets, squads: deploy.",
+        "All screens to my channel."
+      ],
+      "enemy": "rust-architect"
+    },
+    {
+      "id": "rust-architect-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Turret online. Squad forward.",
+        "Drones released.",
+        "Target acquired. Do not move."
+      ],
+      "enemy": "rust-architect"
+    },
+    {
+      "id": "rust-architect-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "The screens... went dark.",
+        "District lost. Pulling back.",
+        "Overseer off the grid."
+      ],
+      "enemy": "rust-architect"
+    },
+    {
+      "id": "zed-answers-architect",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Pull the plug on that screen, friends.",
+        "Big boss, small voice. Switch it off.",
+        "No more speeches. Windows open."
+      ],
+      "enemy": "rust-architect"
     },
     {
       "id": "title-banner",

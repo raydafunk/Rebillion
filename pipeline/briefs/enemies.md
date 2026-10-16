@@ -1,5 +1,5 @@
 # Content brief: enemies
-_Generated 2026-10-13T15:52:07.393Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
+_Generated 2026-10-16T15:20:39.830Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
 
 **Writer agent:** enemy-designer-agent  |  **Output dir:** `content/enemies/`  |  **Produces:** Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.
 
@@ -63,12 +63,12 @@ Example:
 ```
 
 ## Already exists (extend, don't duplicate)
+- `rust-iron-line-cordon` Rust Iron Line Cordon (content/enemies/rust-gdd-units.json)
+- `rust-breaker` Rust Breaker (content/enemies/rust-gdd-units.json)
+- `rust-watcher` Rust Watcher (content/enemies/rust-gdd-units.json)
+- `rust-copper-fang` Rust Copper Fang (content/enemies/rust-gdd-units.json)
+- `rust-architect` Rust Architect (content/enemies/rust-gdd-units.json)
 - `rust-grunt` Rust Grunt (content/enemies/rust-roster.json)
-- `rust-enforcer` Rust Enforcer (content/enemies/rust-roster.json)
-- `rust-baton-scout` Rust Baton Scout (content/enemies/rust-roster.json)
-- `rust-dart-marksman` Rust Dart Marksman (content/enemies/rust-roster.json)
-- `rust-shield-sergeant` Rust Shield Sergeant (content/enemies/rust-roster.json)
-- `rust-signal-warden` Rust Signal Warden (content/enemies/rust-roster.json)
 
 
 ## Engine / spec files to stay compatible with
@@ -408,6 +408,16 @@ Zed isn’t a soldier. He’s a kid from a livedin neighbourhood who learned to 
 His style reflects the game’s pillars:
 Impactful, fast-paced combat — Zed’s punches feel like brickred alley brawls, scrappy but sharp.
 
+### [the-rebellion#10] primary - GameDesignDocument/The Rebellion.docx
+Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
+Character – the Enemy
+Enemy Faction Lore: RUST — The Private Security Force of Fallen City
+Overview
+Rust began as a private security contractor hired to “stabilize” Fallen City after years of political decay and rising crime. But once they were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening control over every district and crushing resistance with brutal efficiency.
+Their name comes from their signature oxidized metal armor, a symbol of decay — a reminder that Fallen City is rotting under their rule.
+Rust’s soldiers are not just guards. They are enforcers, hunters, and executioners. Each unit is trained to suppress civilians, eliminate rebels, and maintain absolute control.
+⚙️ Rust’s Origin
+
 ### [hit-feedback-spec#4] derived - design/art/hit-feedback-spec.md - 3. Enemy telegraphs (readable at a glance)
 Every Rust attack must be dodgeable by a player who reacts to the cue.
 | Attack | Windup | Cues |
@@ -446,7 +456,7 @@ Total: 24 frames. Placeholder: assets/sprites/rust-grunt-placeholder.svg.
 
 ### [canon#3] derived - design/lore/canon.md - Factions
 - **Zed and the neighbourhood:** warm, rounded, casual, expressive. Fights back to get the city back.
-- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect.
+- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect. Per the GDD they turned from a protective force into a militarized occupation that crushes resistance with brutal efficiency: "enforcers, hunters, and executioners", each unit trained to suppress civilians, eliminate rebels and maintain absolute control. Breakers use illegal muscle stimulants; Copper Fangs undergo psychological conditioning; recruits are given serial numbers.
 
 ### [style-guide#9] derived - design/art/style-guide.md - 5. Characters and world
 - Zed (pixel art): 128x128 frame, ~96px tall figure, mustard jacket, warm brown trousers, expressive casual fit. Facing right by default; flip for left. Pixel rules in section 1.
@@ -455,12 +465,6 @@ Total: 24 frames. Placeholder: assets/sprites/rust-grunt-placeholder.svg.
 
 ### [canon#5] derived - design/lore/canon.md - Palette words
 Mustard yellow, brick red, forest green, warm browns. Rust is the cold contrast (steel, visor cyan).
-
-### [canon#9] derived - design/lore/canon.md - The Fall of Fallen City
-Everything changed when RUST, the private security force, swept through the districts. The document describes the city as “overtaken Rust a corrupt private Security Force” — and Zed saw it firsthand.
-RUST didn’t arrive like soldiers; they arrived like thieves. They shut down the basketball courts. They fenced off the community gardens. They patrolled the alleys where kids used to play. They tore down murals — including his father’s — replacing them with surveillance towers and propaganda screens.
-Zed’s father disappeared after confronting RUST officers during a mural teardown. His mother’s food stall was seized for “security violations.” Friends vanished. Neighbours were beaten. The city’s heartbeat went quiet.
-Zed didn’t have a choice. He had to fight.
 
 ### [win#8] derived - design/ux/win.md - Data needs
 Delivered once with `round-won` or in a `round-stats` event (proposed), so the screen does not need to read live game state.
@@ -512,4 +516,4 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 365 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 368 chunks across 38 documents.

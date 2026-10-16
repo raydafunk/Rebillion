@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-10-13T15:52:07.422Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-10-16T15:20:39.838Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -70,14 +70,17 @@ Example:
 - `level-03-greenline-courts` Greenline Courts (content/levels/levels.json)
 - `level-04-stewpot-gardens` Stewpot Gardens (content/levels/levels.json)
 - `level-05-songwindow-heights` Songwindow Heights (content/levels/levels.json)
+- `level-06-iron-line-push` The Iron Line Push (content/levels/rust-gdd-levels.json)
+- `level-07-copper-fang-courts` Copper Fang at the Courts (content/levels/rust-gdd-levels.json)
+- `level-08-overseer-tower` The Overseer's Tower (content/levels/rust-gdd-levels.json)
 
 ### Upstream `enemies` content you may reference
+- `rust-iron-line-cordon` Rust Iron Line Cordon
+- `rust-breaker` Rust Breaker
+- `rust-watcher` Rust Watcher
+- `rust-copper-fang` Rust Copper Fang
+- `rust-architect` Rust Architect
 - `rust-grunt` Rust Grunt
-- `rust-enforcer` Rust Enforcer
-- `rust-baton-scout` Rust Baton Scout
-- `rust-dart-marksman` Rust Dart Marksman
-- `rust-shield-sergeant` Rust Shield Sergeant
-- `rust-signal-warden` Rust Signal Warden
 
 ### Upstream `lore` content you may reference
 - `open-windows-music` Open Windows with Music
@@ -106,6 +109,18 @@ Example:
 - `greenline-courts` Greenline Courts
 - `stewpot-gardens` Stewpot Gardens
 - `songwindow-heights` Songwindow Heights
+- `rust-origin` How the Rust Got Their Foot in the Door
+- `commander-halden-varr` Commander Halden Varr
+- `rust-takeover-timeline` Within Months: Curfews, Sealed Districts and Drones
+- `rust-doctrine` Order is Strength. Freedom is Weakness.
+- `rust-serial-numbers` Serial Numbers
+- `rust-grunts-iron-line` Rust Grunts: The Iron Line
+- `rust-bruisers-breakers` Rust Bruisers: The Breakers
+- `rust-rangers-watchers` Rust Rangers: The Watchers
+- `rust-copper-fangs` Rust Specialists: The Copper Fangs
+- `rust-overseers` Rust Overseers: The Architects of Control
+- `rust-rank-ladder` The Rust Ladder
+- `neighbourhood-answer-to-doctrine` The Wall Answers Back
 
 ## Engine / spec files to stay compatible with
 #### src/waves/waveData.js
@@ -229,7 +244,7 @@ Basketball courts, food stalls, community gardens
 Characters feel connected — casual fits, expressive colours
 Colour palette: mustard yellow, brick red, forest green, warm browns
 Atmosphere: hopeful, energetic, full of personality and stories
-Character – the hero
+The Story
 
 ### [the-rebellion#9] primary - GameDesignDocument/The Rebellion.docx
 Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.
@@ -242,6 +257,7 @@ He fights so kids can play in the basketball courts again. He fights so music ca
 Tone & Personality
 
 ### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
+Character – the hero
 Zed — The Boy from BrickRed Alley
 Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out” . His block was known for its mustardyellow storefronts, forestgreen basketball courts, and the brickred alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
 His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
@@ -326,4 +342,4 @@ Agent Development role Gameplay Effect Player Mechanics Movement, jump, The play
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 365 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 368 chunks across 38 documents.

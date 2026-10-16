@@ -1,5 +1,5 @@
 # Content brief: dialogue
-_Generated 2026-10-13T15:52:07.468Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
+_Generated 2026-10-16T15:20:39.850Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
 
 **Writer agent:** dialogue-agent  |  **Output dir:** `content/dialogue/`  |  **Produces:** Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.
 
@@ -97,6 +97,36 @@ Example:
 - `poster-benefit-title` poster (content/dialogue/rust-and-community.json)
 - `poster-rust-notice-114` poster (content/dialogue/rust-and-community.json)
 - `poster-small-print` menu (content/dialogue/rust-and-community.json)
+- `rust-notice-doctrine` notice (content/dialogue/rust-gdd.json)
+- `rust-notice-serial-rollcall` notice (content/dialogue/rust-gdd.json)
+- `rust-notice-sealed-district` notice (content/dialogue/rust-gdd.json)
+- `rust-overseer-announcement` notice (content/dialogue/rust-gdd.json)
+- `rust-varr-order` notice (content/dialogue/rust-gdd.json)
+- `neighbour-defaced-doctrine` poster (content/dialogue/rust-gdd.json)
+- `neighbour-answers-serial` taunt (content/dialogue/rust-gdd.json)
+- `neighbour-answers-curfew` notice (content/dialogue/rust-gdd.json)
+- `zed-answers-overseer` taunt (content/dialogue/rust-gdd.json)
+- `zed-answers-varr` taunt (content/dialogue/rust-gdd.json)
+- `rust-iron-line-spawn` fight_start (content/dialogue/rust-gdd.json)
+- `rust-iron-line-telegraph` taunt (content/dialogue/rust-gdd.json)
+- `rust-iron-line-pushed-back` wave_clear (content/dialogue/rust-gdd.json)
+- `zed-answers-iron-line` combo (content/dialogue/rust-gdd.json)
+- `rust-breaker-spawn` fight_start (content/dialogue/rust-gdd.json)
+- `rust-breaker-telegraph` taunt (content/dialogue/rust-gdd.json)
+- `rust-breaker-pushed-back` wave_clear (content/dialogue/rust-gdd.json)
+- `zed-answers-breaker` combo (content/dialogue/rust-gdd.json)
+- `rust-watcher-spawn` fight_start (content/dialogue/rust-gdd.json)
+- `rust-watcher-telegraph` taunt (content/dialogue/rust-gdd.json)
+- `rust-watcher-pushed-back` wave_clear (content/dialogue/rust-gdd.json)
+- `zed-answers-watcher` combo (content/dialogue/rust-gdd.json)
+- `rust-copper-fang-spawn` fight_start (content/dialogue/rust-gdd.json)
+- `rust-copper-fang-telegraph` taunt (content/dialogue/rust-gdd.json)
+- `rust-copper-fang-pushed-back` wave_clear (content/dialogue/rust-gdd.json)
+- `zed-answers-copper-fang` combo (content/dialogue/rust-gdd.json)
+- `rust-architect-spawn` fight_start (content/dialogue/rust-gdd.json)
+- `rust-architect-telegraph` taunt (content/dialogue/rust-gdd.json)
+- `rust-architect-pushed-back` wave_clear (content/dialogue/rust-gdd.json)
+- `zed-answers-architect` combo (content/dialogue/rust-gdd.json)
 - `title-banner` menu (content/dialogue/title-screen.json)
 - `title-tagline` menu (content/dialogue/title-screen.json)
 - `title-press-prompt` menu (content/dialogue/title-screen.json)
@@ -142,14 +172,26 @@ Example:
 - `greenline-courts` Greenline Courts
 - `stewpot-gardens` Stewpot Gardens
 - `songwindow-heights` Songwindow Heights
+- `rust-origin` How the Rust Got Their Foot in the Door
+- `commander-halden-varr` Commander Halden Varr
+- `rust-takeover-timeline` Within Months: Curfews, Sealed Districts and Drones
+- `rust-doctrine` Order is Strength. Freedom is Weakness.
+- `rust-serial-numbers` Serial Numbers
+- `rust-grunts-iron-line` Rust Grunts: The Iron Line
+- `rust-bruisers-breakers` Rust Bruisers: The Breakers
+- `rust-rangers-watchers` Rust Rangers: The Watchers
+- `rust-copper-fangs` Rust Specialists: The Copper Fangs
+- `rust-overseers` Rust Overseers: The Architects of Control
+- `rust-rank-ladder` The Rust Ladder
+- `neighbourhood-answer-to-doctrine` The Wall Answers Back
 
 ### Upstream `enemies` content you may reference
+- `rust-iron-line-cordon` Rust Iron Line Cordon
+- `rust-breaker` Rust Breaker
+- `rust-watcher` Rust Watcher
+- `rust-copper-fang` Rust Copper Fang
+- `rust-architect` Rust Architect
 - `rust-grunt` Rust Grunt
-- `rust-enforcer` Rust Enforcer
-- `rust-baton-scout` Rust Baton Scout
-- `rust-dart-marksman` Rust Dart Marksman
-- `rust-shield-sergeant` Rust Shield Sergeant
-- `rust-signal-warden` Rust Signal Warden
 
 ## Engine / spec files to stay compatible with
 #### design/lore/canon.md
@@ -166,13 +208,14 @@ Source of truth: `GameDesignDocument/The Rebellion.docx` (Pitch, Theme). Menu mo
 | City | the Fallen City | Always with "City". Never "Fallen" alone. Pitch's "fight your way through Fallen" and "first of the Fallen city" should read "the Fallen City". |
 | Hero | Zed | Player character. |
 | Antagonist | the Rust | Corrupt private security force. Always "Rust", never "Rush". |
-| Rust members | Rust enemies / Rust grunt | "Rust grunt" is the one Tier 0 enemy type (asset-manifest). |
+| Rust members | Rust enemies / Rust grunt | "Rust grunt" is the one Tier 0 enemy type (asset-manifest). GDD unit names: Rust Grunts "The Iron Line", Rust Bruisers "The Breakers", Rust Rangers "The Watchers", Rust Specialists "The Copper Fangs", Rust Overseers "The Architects of Control". |
+| Rust leader | Commander Halden Varr | Name from the Rust section of the GDD; confirm with the owner (see Open lore questions). |
 | Zed's side | the neighbourhood, the community, local heroes | Wording from Theme. |
 
 ## Factions
 
 - **Zed and the neighbourhood:** warm, rounded, casual, expressive. Fights back to get the city back.
-- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect.
+- **The Rust:** a force of people (uniform, symmetrical, visor, cold hue, boxy). Cold, harsh, official. Not a place, a smell, a stain or a status effect. Per the GDD they turned from a protective force into a militarized occupation that crushes resistance with brutal efficiency: "enforcers, hunters, and executioners", each unit trained to suppress civilians, eliminate rebels and maintain absolute control. Breakers use illegal muscle stimulants; Copper Fangs undergo psychological conditioning; recruits are given serial numbers.
 
 ## World (from Theme)
 
@@ -185,9 +228,10 @@ Mustard yellow, brick red, forest green, warm browns. Rust is the cold contrast 
 ## Tone rules
 
 - Hopeful, energetic, full of personality and stories. Fighting back, reclaiming a home.
-- Never grim, never gory, never sneering. Lose screens encourage a retry, never gloat.
+- Zed's side is hopeful and never gloats; lose screens encourage a retry. Never gory (no blood or dismemberment wording).
+- The Rust are menacing, as the GDD writes them: brutal, ruthless, and set on eliminating rebels. Their threat is stated plainly, not softened.
 - Zed's side copy is warm and plain-spoken, in a neighbourhood voice. No military or clinical phrasing.
-- Rust copy may be cold and official (notices, orders), but it is always shown as something the community answers or defaces.
+- Rust copy is cold, official and threatening (notices, orders, barks): "suppress", "crush", "eliminate rebels" are in character for the Rust. It is still shown as something the community answers or defaces.
 
 ## Wording
 
@@ -196,7 +240,7 @@ Mustard yellow, brick red, forest green, warm browns. Rust is the cold contrast 
 | Rush (typo) | Rust |
 | "Rust has been driven out of the arena" (Rust as place or stain) | "The Rust have been pushed back." / "The Rust are on the run." |
 | "Fallen" alone | "the Fallen City" |
-| TARGETS ELIMINATED, MISSION COMPLETE, HOSTILES NEUTRALISED | The block is ours again. / Nice work, Zed. |
+| TARGETS ELIMINATED, MISSION COMPLETE, HOSTILES NEUTRALISED (on Zed's side, such as the win screen; Rust lines may say "eliminate rebels") | The block is ours again. / Nice work, Zed. |
 | Generic game-speak (ENEMIES DEFEATED, ENEMIES LEFT) | Rust pushed back / Rust still standing (proposal; HUD owner decides) |
 | Gloating lose text (YOU DIED, PATHETIC) | Time ran out. Shake it off and go again. |
 | "Rust" plural as "Rusts" | "the Rust" takes plural verbs: "the Rust are...". |
@@ -248,7 +292,7 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 1. Does the Rust impose curfews or issue numbered notices? Menu poster "Rust Notice 114 / CURFEW" implies it. Treated as flavour, not canon, until the owner confirms.
 2. Is "Rust" used as a plural noun ("the Rust are") or a collective singular ("the Rust is")? Sheet assumes plural.
 3. Who is Zed (age, role, backstory)? Is there a named "local hero" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)
-4. Names of districts, the arena locations, or any Rust leader.
+4. Names of districts and arena locations. The Rust leader is Commander Halden Varr in the GDD Rust section; the "Architect" title and unit nicknames are GDD wording to confirm.
 5. What does "get it back" mean in story terms (who held the city before)?
 6. Is "Rust enemy" or "Rust grunt" the player-facing term for the enemy?
 7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
@@ -296,9 +340,16 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 Rules for small print: monospace, short, no named characters or places (the GDD names none), no gore, nothing that makes the Rust a place.
 ```
 
-## Retrieved GDD passages (27)
+## Retrieved GDD passages (29)
 ### [the-rebellion#10] primary - GameDesignDocument/The Rebellion.docx
 Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
+Character – the Enemy
+Enemy Faction Lore: RUST — The Private Security Force of Fallen City
+Overview
+Rust began as a private security contractor hired to “stabilize” Fallen City after years of political decay and rising crime. But once they were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening control over every district and crushing resistance with brutal efficiency.
+Their name comes from their signature oxidized metal armor, a symbol of decay — a reminder that Fallen City is rotting under their rule.
+Rust’s soldiers are not just guards. They are enforcers, hunters, and executioners. Each unit is trained to suppress civilians, eliminate rebels, and maintain absolute control.
+⚙️ Rust’s Origin
 
 ### [the-rebellion#9] primary - GameDesignDocument/The Rebellion.docx
 Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.
@@ -323,6 +374,14 @@ Health & Hitbox Agent | Owns health, damage values, and hitbox/hurt box data | H
 Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy failsafe | Prevents the off-screen soft lock
 Menu & UI Agent | Builds and owns every screen and on-screen element the player sees outside the arena action |  | The player can start a game, read the state of the fight, and see why they won or lost
 
+### [the-rebellion#13] primary - GameDesignDocument/The Rebellion.docx
+Lore: Chosen from the most loyal Rust members, Fangs undergo psychological conditioning to remove fear and hesitation. They are Varr’s personal favorites.
+Purpose: Highpriority target elimination, bosstier encounters.
+5. Rust Overseers — “The Architects of Control”
+Commanders who manage entire districts. They rarely fight directly but deploy drones, turrets, and squads with ruthless precision.
+Lore: Overseers are former politicians and corporate leaders who sided with Rust during the takeover. They maintain control through surveillance networks and propaganda.
+Purpose: end levelbosses, district rulers, story antagonists.
+
 ### [the-rebellion#8] primary - GameDesignDocument/The Rebellion.docx
 Everything changed when RUST, the private security force, swept through the districts. The document describes the city as “overtaken Rust a corrupt private Security Force” — and Zed saw it firsthand.
 RUST didn’t arrive like soldiers; they arrived like thieves. They shut down the basketball courts. They fenced off the community gardens. They patrolled the alleys where kids used to play. They tore down murals — including his father’s — replacing them with surveillance towers and propaganda screens.
@@ -332,6 +391,22 @@ Why Zed Fights
 Zed isn’t a soldier. He’s a kid from a livedin neighbourhood who learned to fight the same way he learned to dance — through rhythm, instinct, and community.
 His style reflects the game’s pillars:
 Impactful, fast-paced combat — Zed’s punches feel like brickred alley brawls, scrappy but sharp.
+
+### [the-rebellion#11] primary - GameDesignDocument/The Rebellion.docx
+Rust was founded by Commander Halden Varr, a former military strategist who believed order could only be achieved through fear. When Fallen City’s government collapsed, Varr seized the opportunity. He offered “protection” to the remaining officials, then quietly replaced them with Rust loyalists.
+Within months:
+Curfews became mandatory
+Districts were sealed
+Surveillance drones filled the sky
+Anyone who resisted disappeared
+Rust became the law. Rust became the city.
+🔩 Rust’s Philosophy
+Rust operates under a single doctrine:
+“Order is strength. Freedom is weakness.”
+They believe Fallen City must be rebuilt through force. Civilians are treated as assets to control, not people to protect. Rust’s soldiers are conditioned to see rebels — including Zed — as threats to the “greater good.”
+Rust Unit Types Enemies
+1. Rust Grunts — “The Iron Line”
+The backbone of Rust’s force. Once ordinary citizens, they were coerced or manipulated into service. Their armor is cheap, rustcoated plating, and their helmets hide their identities — intentionally.
 
 ### [rebellion-menu-desgin#3] primary - GameDesignDocument/Rebellion menu desgin.docx
 [table]
@@ -421,22 +496,38 @@ Basketball courts, food stalls, community gardens
 Characters feel connected — casual fits, expressive colours
 Colour palette: mustard yellow, brick red, forest green, warm browns
 Atmosphere: hopeful, energetic, full of personality and stories
-Character – the hero
+The Story
 
 ### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
+Character – the hero
 Zed — The Boy from BrickRed Alley
 Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out” . His block was known for its mustardyellow storefronts, forestgreen basketball courts, and the brickred alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
 His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
 The Fall of Fallen City
+
+### [the-rebellion#12] primary - GameDesignDocument/The Rebellion.docx
+Lore: Rust strips recruit of their names, replacing them with serial numbers. This erases individuality and ensures obedience.
+Purpose: Crowd control, intimidation, frontline combat.
+2. Rust Bruisers — “The Breakers”
+Massive enforcers enhanced with illegal muscle stimulants. Their armor is reinforced with heavy plating, giving them a hulking silhouette.
+Lore: Breakers are often former criminals promised freedom in exchange for loyalty. Rust chemically augments them, making them stronger but unstable.
+Purpose: Shock troops, area denial, crushing resistance groups.
+3. Rust Rangers — “The Watchers”
+Agile units equipped with taser rifles, batons, and tracking visors.
+Lore: Watchers are trained to hunt rebels through the city’s alleyways and rooftops. Their visors can scan heat signatures, making hiding nearly impossible.
+Purpose: Longrange harassment, pursuit, reconnaissance.
+4. Rust Specialists — “The Copper Fangs”
+Elite soldiers with advanced gear: electrified gauntlets, grappling hooks, and tactical shields.
 
 ### [canon#12] derived - design/lore/canon.md - Tone & Personality
 Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
 
 ### [canon#6] derived - design/lore/canon.md - Tone rules
 - Hopeful, energetic, full of personality and stories. Fighting back, reclaiming a home.
-- Never grim, never gory, never sneering. Lose screens encourage a retry, never gloat.
+- Zed's side is hopeful and never gloats; lose screens encourage a retry. Never gory (no blood or dismemberment wording).
+- The Rust are menacing, as the GDD writes them: brutal, ruthless, and set on eliminating rebels. Their threat is stated plainly, not softened.
 - Zed's side copy is warm and plain-spoken, in a neighbourhood voice. No military or clinical phrasing.
-- Rust copy may be cold and official (notices, orders), but it is always shown as something the community answers or defaces.
+- Rust copy is cold, official and threatening (notices, orders, barks): "suppress", "crush", "eliminate rebels" are in character for the Rust. It is still shown as something the community answers or defaces.
 
 ### [style-guide#9] derived - design/art/style-guide.md - 5. Characters and world
 - Zed (pixel art): 128x128 frame, ~96px tall figure, mustard jacket, warm brown trousers, expressive casual fit. Facing right by default; flip for left. Pixel rules in section 1.
@@ -475,19 +566,6 @@ RUST didn’t arrive like soldiers; they arrived like thieves. They shut down th
 Zed’s father disappeared after confronting RUST officers during a mural teardown. His mother’s food stall was seized for “security violations.” Friends vanished. Neighbours were beaten. The city’s heartbeat went quiet.
 Zed didn’t have a choice. He had to fight.
 
-### [canon#13] derived - design/lore/canon.md - Open lore questions (GDD silent)
-1. Does the Rust impose curfews or issue numbered notices? Menu poster "Rust Notice 114 / CURFEW" implies it. Treated as flavour, not canon, until the owner confirms.
-2. Is "Rust" used as a plural noun ("the Rust are") or a collective singular ("the Rust is")? Sheet assumes plural.
-3. Who is Zed (age, role, backstory)? Is there a named "local hero" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)
-4. Names of districts, the arena locations, or any Rust leader.
-5. What does "get it back" mean in story terms (who held the city before)?
-6. Is "Rust enemy" or "Rust grunt" the player-facing term for the enemy?
-7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
-
-### [menu-concept#4] derived - design/ux/menu-concept.md - Background posters (non-interactive)
-- "Local Heroes Benefit: Keep the Lights On": cream, forest-green text. Ties back to the original Local Heroes Mural idea.
-- Rust Notice 114, "CURFEW" struck through: brick red. It shows the Rust security force's control and the community defacing it.
-
 ### [menu-copy#3] derived - design/lore/menu-copy.md - Background posters
 | id | text |
 |---|---|
@@ -496,6 +574,10 @@ Zed didn’t have a choice. He had to fight.
 | menu.poster.rust.title | RUST NOTICE 114 |
 | menu.poster.rust.struck | CURFEW (struck through, hand-inked cross-out) |
 The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Lights On"); splitting at the colon into title and line is allowed. If kept on one line, use the colon form.
+
+### [menu-concept#4] derived - design/ux/menu-concept.md - Background posters (non-interactive)
+- "Local Heroes Benefit: Keep the Lights On": cream, forest-green text. Ties back to the original Local Heroes Mural idea.
+- Rust Notice 114, "CURFEW" struck through: brick red. It shows the Rust security force's control and the community defacing it.
 
 ### [critic-log#5] derived - design/lore/critic-log.md - Audited and fine
 - Title "THE REBELLION" and subtitle "Fists of the Fallen City": match GDD title; "Fallen City" correct.
@@ -542,4 +624,4 @@ Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemi
 **Why it matters:** The narrative pillars are unset. No dialogue, cutscenes, or environmental storytelling are mentioned, so the tone has no delivery mechanism.
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 365 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 368 chunks across 38 documents.

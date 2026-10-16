@@ -1,15 +1,15 @@
 {
-  "builtAt": "2026-10-13T15:52:07.262Z",
+  "builtAt": "2026-10-16T15:20:39.773Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
       "authority": "primary",
-      "bytes": 172174,
-      "sha1": "480a53a77606",
+      "bytes": 171925,
+      "sha1": "929e9730dd96",
       "status": "ingested",
       "docId": "rebellion-menu-desgin",
       "chunks": 4,
-      "chars": 3617,
+      "chars": 3583,
       "warnings": [
         "contains embedded images (pixels not read)"
       ]
@@ -17,13 +17,15 @@
     {
       "file": "GameDesignDocument/The Rebellion.docx",
       "authority": "primary",
-      "bytes": 46437,
-      "sha1": "16c2bf8cfdaa",
+      "bytes": 53082,
+      "sha1": "7d30bcb0cf5f",
       "status": "ingested",
       "docId": "the-rebellion",
-      "chunks": 10,
-      "chars": 8416,
-      "warnings": []
+      "chunks": 13,
+      "chars": 11885,
+      "warnings": [
+        "contains embedded images (pixels not read)"
+      ]
     },
     {
       "file": "GameDesignDocument/The Title Screen.docx",
@@ -85,12 +87,12 @@
     {
       "file": "blackboard/log.md",
       "authority": "reference",
-      "bytes": 1289,
-      "sha1": "cdb9cc456a34",
+      "bytes": 2119,
+      "sha1": "ffb79f8f4fcd",
       "status": "ingested",
       "docId": "log",
       "chunks": 1,
-      "chars": 1270,
+      "chars": 2100,
       "warnings": []
     },
     {
@@ -140,12 +142,12 @@
     {
       "file": "design/lore/canon.md",
       "authority": "derived",
-      "bytes": 7073,
-      "sha1": "1c27e5aca274",
+      "bytes": 8222,
+      "sha1": "e9957cc8d5f6",
       "status": "ingested",
       "docId": "canon",
       "chunks": 13,
-      "chars": 6483,
+      "chars": 7632,
       "warnings": []
     },
     {
@@ -283,12 +285,12 @@
     {
       "file": "design/ux/win.md",
       "authority": "derived",
-      "bytes": 5807,
-      "sha1": "6eec9c8a3328",
+      "bytes": 5800,
+      "sha1": "01f25d18052a",
       "status": "ingested",
       "docId": "win",
       "chunks": 10,
-      "chars": 4987,
+      "chars": 4980,
       "warnings": []
     },
     {
