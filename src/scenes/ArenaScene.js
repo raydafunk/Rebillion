@@ -3,6 +3,7 @@
 import { EVENTS } from '../shared/events.js';
 import { PLAYER_ID } from '../shared/combatData.js';
 import { createHitResolver } from '../combat/hitResolver.js';
+import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { ROUND_TIME_SECONDS } from '../state/config.js';
 import { Zed } from '../player/Zed.js';
@@ -37,6 +38,8 @@ export default class ArenaScene extends Phaser.Scene {
     this.stats = this._freshStats();
     this.sprites = new Map();  // enemy id -> { body, shadow, tele }
     this.swings = [];
+    this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
+    this.hitStopIds = new Set();
 
     this.add.image(0, 0, ASSET_KEYS.BG_ARENA).setOrigin(0, 0).setDepth(-1000);
     this.physics.world.setBounds(0, 0, WORLD.w, GROUND_Y);
@@ -65,7 +68,7 @@ export default class ArenaScene extends Phaser.Scene {
     this._listen(EVENTS.WAVE_CLEARED, () => { this.stats.wavesCleared++; });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.stats = this._freshStats(); this.swings.length = 0; });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene');
@@ -105,16 +108,39 @@ export default class ArenaScene extends Phaser.Scene {
     if (start && !this.padStartPrev && !this.ended) { this.padStartPrev = true; return this._pause(); }
     this.padStartPrev = start;
     this.simNow += dt;
-    this.zed.update(this.simNow, dt);
+    this._tickHitStop(dt);
+    const zedFrozen = this.hitStopIds.has(PLAYER_ID);
+    if (!zedFrozen) this.zed.update(this.simNow, dt);
     const c = this.arena.bounds.clamp({ x: this.zed.x, y: GROUND_Y });
     if (c.x !== this.zed.x) { this.zed.sprite.x = c.x; this.zed.sprite.body.setVelocityX(0); }
 
     if (!this.ended && !this.sandbox) {
-      this.arena.update(dt);
+      this.arena.update(dt, this.hitStopIds);
       this.state.tick(dt);
     }
     this.arena.applyToCamera(this.cameras.main, this.zed.x);
-    this._render(dt);
+    this._render(dt, zedFrozen);
+  }
+
+  // ---- hit-stop: freeze the attacker and target for a few ms; everything else (timer, waves, other enemies) keeps running ----
+  _startHitStop(type, ids) {
+    const ms = mergeHitStop(this.hitStopLeft, type);
+    if (ms <= 0) return;
+    this.hitStopLeft = ms;
+    for (const id of ids) this.hitStopIds.add(id);
+    if (this.hitStopIds.has(PLAYER_ID)) this.zed.sprite.body.moves = false; // no gravity or drift while frozen
+  }
+
+  _tickHitStop(dt) {
+    if (this.hitStopLeft <= 0) return;
+    this.hitStopLeft -= dt;
+    if (this.hitStopLeft <= 0) this._clearHitStop();
+  }
+
+  _clearHitStop() {
+    this.hitStopLeft = 0;
+    this.hitStopIds.clear();
+    if (this.zed?.sprite?.body) this.zed.sprite.body.moves = true;
   }
 
   _pause() {
@@ -143,11 +169,11 @@ export default class ArenaScene extends Phaser.Scene {
   }
 
   // ---- rendering ----
-  _render(dt) {
+  _render(dt, zedFrozen = false) {
     const z = this.zed;
     const feetY = GROUND_Y;
     const airborne = Math.max(0, feetY - (z.y + 36));
-    this.zedVisual.update(z, dt, z.x, z.y + 36, z.y + 36);
+    this.zedVisual.update(z, zedFrozen ? 0 : dt, z.x, z.y + 36, z.y + 36);
     this.zedShadow.setPosition(z.x, feetY).setDepth(feetY - 1).setScale(1 - Math.min(0.4, airborne / 400));
 
     for (const g of this.arena.enemies.list()) {
@@ -188,7 +214,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.sprites.delete(id);
   }
 
-  // ---- hit feedback (hit-feedback-spec.md, minus hit-stop for Tier 0) ----
+  // ---- hit feedback (hit-feedback-spec.md) ----
   _onHitRequest(r) {
     if (r.team === 'player') return; // no hitbox overlay on Zed's punches; the sprite shows the swing
     const x = r.origin.x + r.facing * r.hitbox.x - (r.facing < 0 ? r.hitbox.w : 0);
@@ -200,6 +226,11 @@ export default class ArenaScene extends Phaser.Scene {
 
   _onDamage(d) {
     if (d.amount <= 0) return;
+    const guarded = d.targetId === PLAYER_ID && this.zed.machine.guardType;
+    if (!guarded) {
+      const type = d.targetId === PLAYER_ID ? 'playerHurt' : d.amount >= FINISHER_DAMAGE ? 'heavy' : 'light';
+      this._startHitStop(type, [d.attackerId, d.targetId]);
+    }
     let x, y;
     if (d.targetId === PLAYER_ID) { x = this.zed.x; y = this.zed.y - 10; this.cameras.main.shake(100, 0.0023); }
     else {

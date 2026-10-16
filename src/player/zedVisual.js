@@ -4,7 +4,7 @@
 // zed.attack) or `zed.<moveId>` (zed.light1); ZedVisual plays them when they exist
 // and skips the procedural pose. See registerZedAnimations().
 
-import { MOVES, DODGE } from './moves.js';
+import { MOVES, DODGE, PARRY } from './moves.js';
 
 export const ZED_SPRITE = {
   size: 48,                 // source px (metadata.json states[].character.size)
@@ -31,6 +31,8 @@ export const ZED_ANIMS = [
   { state: 'light3', folder: 'fighting_pose_2', anim: 'High_Kick', frames: 7, fps: 24, originY: 64 / 80, repeat: 0 },
   // Dodge sway: 9 frames, 68x68 canvas, lowest opaque row 55 -> (55 + 1 + 2px gap)/68. Stretched over DODGE.duration below.
   { state: 'dodge', folder: 'Zed_a_young_street_dodge', anim: 'Zed_a_young_street_fighter_seen_in_side_profile_animations', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
+  // Parry reaction (Q): 9 frames, 68x68 canvas (same framing as dodge; foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
+  { state: 'parry', folder: 'Zed_parry_reaction_a', anim: 'Zed_parry_reaction_animation_triggered_when_hit._Q', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
 ];
 // Static single-pose textures shown for a machine state (rotations only, no frames yet).
 // originY: Jumping PNG feet sit at row 46 vs idle's 45 (both 48x48), so lift 1 source px to share the idle foot line.
@@ -148,6 +150,8 @@ export class ZedVisual {
         if (mv) img.anims.timeScale = (clip.frames / clip.fps) / ((mv.startup + mv.active + mv.recovery * (m.moveId.startsWith('heavy') ? 0.5 : 1)) / 60);
       } else if (m.state === 'dodge' && clip) { // play the sway exactly once across the whole dodge (duration is in 60 fps steps)
         img.anims.timeScale = (clip.frames / clip.fps) / (DODGE.duration / 60);
+      } else if (m.state === 'parry' && clip) { // one pass across the whole parry
+        img.anims.timeScale = (clip.frames / clip.fps) / (PARRY.duration / 60);
       } else img.anims.timeScale = 1;
     } else {
       if (this._anim) { img.stop(); this._anim = null; img.setOrigin(ZED_SPRITE.origin.x, ZED_SPRITE.origin.y); }

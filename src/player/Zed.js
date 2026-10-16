@@ -9,7 +9,7 @@ import { DODGE, GUARD } from './moves.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
 const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'KeyW', 'Space',
-  'KeyJ', 'KeyZ', 'KeyK', 'KeyX', 'KeyL', 'KeyC', 'KeyI', 'KeyV'];
+  'KeyJ', 'KeyZ', 'KeyK', 'KeyX', 'KeyL', 'KeyC', 'KeyI', 'KeyV', 'KeyQ'];
 
 export class Zed {
   constructor(scene, x, y, cfg = ZED_CONFIG) {
@@ -115,7 +115,7 @@ export class Zed {
     for (const a of Object.keys(this.input.pressed)) if (this.input.pressed[a]) this._pending[a] = true;
     const inp = this.input;
     if (this.dead) { this.sprite.setFlipX(this.facing < 0); body.setVelocityX(0); return; }
-    const locked = this.machine.state === 'attack' || this.machine.state === 'dodge' || this.machine.state === 'hitstun' || this.machine.state === 'block';
+    const locked = this.machine.state === 'attack' || this.machine.state === 'dodge' || this.machine.state === 'hitstun' || this.machine.state === 'block' || this.machine.state === 'parry';
 
     // Jump (ground only, not during attack/hitstun/block)
     if (this.jump.update({ grounded, jumpPressed: inp.pressed.jump && !locked }, delta)) {
@@ -137,6 +137,7 @@ export class Zed {
     const s = this.machine.state;
     if (this.dead) body.setVelocityX(0);
     else if (s === 'hitstun') body.setVelocityX(body.velocity.x * 0.9); // knockback set in _handleDamage, decays
+    else if (s === 'parry') body.setVelocityX(0);
     else if (s === 'dodge') body.setVelocityX(this.facing * DODGE.speed);
     else {
       const f = s === 'attack' ? cfg.attackMoveFactor : s === 'block' ? cfg.blockMoveFactor : 1;

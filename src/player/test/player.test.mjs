@@ -259,3 +259,38 @@ test('controls table bindings: dodge L/C, block I/V, no Shift, no shared keys', 
 });
 
 import { DODGE } from '../moves.js';
+
+test('parry (Q): negates hits during window, then recovers; light combo unaffected', async () => {
+  const { PARRY } = await import('../moves.js');
+  assert.deepEqual(KEY_MAP.parry, ['KeyQ']);
+  const m = new PlayerStateMachine();
+  m.step({ pressed: { parry: true }, held: {}, moveX: 0 });
+  assert.equal(m.state, 'parry'); assert.equal(m.guardType, 'parry');
+  for (let i = 0; i < PARRY.window; i++) m.step({ pressed: {}, held: {}, moveX: 0 });
+  assert.equal(m.state, 'parry'); assert.equal(m.guardType, null);
+  for (let i = 0; i < PARRY.duration; i++) m.step({ pressed: {}, held: {}, moveX: 0 });
+  assert.equal(m.state, 'idle');
+  m.step({ pressed: { light: true }, held: {}, moveX: 0 });
+  assert.equal(m.moveId, 'light1');
+});
+
+test('parry reaction clip: registered for the parry state, non-looping, 9 frames, both side dirs', async () => {
+  const { PARRY } = await import('../moves.js');
+  const a = ZED_ANIMS.find((x) => x.state === 'parry');
+  assert.ok(a); assert.equal(a.folder, 'Zed_parry_reaction_a'); assert.equal(a.frames, 9); assert.equal(a.repeat, 0);
+  assert.equal(zedAnimKey('parry', 'east'), 'zed.parry.east');
+  assert.equal(zedAnimKey('parry', 'west'), 'zed.parry.west');
+  assert.ok(PARRY.duration > 0 && (a.frames / a.fps) * 60 > 0);
+});
+
+test('heavy pressed during heavy1 does not replay it after recovery', () => {
+  const m = new PlayerStateMachine();
+  m.step(press('heavy'));
+  const swing = m.swing;
+  for (let i = 0; i < 20; i++) m.step(i === 15 ? press('heavy') : NONE); // second press late in the move
+  for (let i = 0; i < 40; i++) m.step(NONE);
+  assert.equal(m.swing, swing, 'no second heavy1 started');
+  assert.equal(m.state, 'idle');
+  m.step(press('heavy'));
+  assert.equal(m.moveId, 'heavy1', 'a fresh press after the move still works');
+});

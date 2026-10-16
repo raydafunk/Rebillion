@@ -60,9 +60,10 @@ export class EnemyManager {
 
   destroyAll() { for (const id of [...this.enemies.keys()]) this.destroy(id); }
 
-  /** target: {x,y} of the player (or null). */
-  update(dtMs, target) {
+  /** target: {x,y} of the player (or null). frozen: optional Set of enemy ids skipped this frame (hit-stop). */
+  update(dtMs, target, frozen = null) {
     for (const [id, e] of [...this.enemies]) {
+      if (frozen && frozen.has(id)) continue;
       e.grunt.update(dtMs, target);
       if (!e.grunt.alive) {
         e.deathTimer -= dtMs;

@@ -1,9 +1,12 @@
 // Pure, frame-stepped combat state machine. No Phaser, no events.
 // States: idle, run, jump, attack, hitstun, block.
-import { MOVES, OPENERS, PLAYER_TIMING, DODGE, GUARD } from './moves.js';
+import { MOVES, OPENERS, PLAYER_TIMING, DODGE, GUARD, PARRY } from './moves.js';
 
 export class PlayerStateMachine {
-  constructor({ moves = MOVES, openers = OPENERS, timing = PLAYER_TIMING, onActiveStart, onActive, onStateChange, dodge = DODGE, guard = GUARD } = {}) {
+  constructor({ moves = MOVES, openers = OPENERS, timing = PLAYER_TIMING, onActiveStart, onActive, onStateChange, dodge = DODGE, guard = GUARD, parry = PARRY } = {}) {
+    this.parryCfg = parry;
+    this.parryFrame = 0;
+    this.parryCooldown = 0;
     this.dodgeCfg = dodge;
     this.guardCfg = guard;
     this.onActive = onActive || (() => {}); // every active frame: (moveId, move, swingId)
@@ -35,6 +38,7 @@ export class PlayerStateMachine {
   /** 'dodge' | 'parry' | 'block' | null : what the player is currently defending with. */
   get guardType() {
     if (this.state === 'dodge' && this.dodgeFrame < this.dodgeCfg.iframes) return 'dodge';
+    if (this.state === 'parry' && this.parryFrame < this.parryCfg.window) return 'parry';
     if (this.state === 'block') return this.blockFrames < this.guardCfg.parryFrames ? 'parry' : 'block';
     return null;
   }
@@ -82,7 +86,10 @@ export class PlayerStateMachine {
 
     // Buffer attack presses.
     const atk = pressed.heavy ? 'heavy' : pressed.light ? 'light' : null;
-    if (atk) { this.buffered = atk; this.bufferLeft = this.timing.attackBufferFrames; }
+    // A press that would only replay the move already in progress (heavy during heavy1, which can't chain) is dropped,
+    // otherwise it sits in the buffer and restarts the same animation the moment the move ends.
+    const repeatsCurrent = atk && this.state === 'attack' && this.openers[atk] === this.moveId && !this.moves[this.moveId].chain[atk];
+    if (atk && !repeatsCurrent) { this.buffered = atk; this.bufferLeft = this.timing.attackBufferFrames; }
     else if (this.bufferLeft > 0 && --this.bufferLeft === 0) this.buffered = null;
 
     if (this.state === 'attack') {
@@ -104,6 +111,12 @@ export class PlayerStateMachine {
       else return this.state;
     }
 
+    if (this.parryCooldown > 0) this.parryCooldown--;
+    if (this.state === 'parry') {
+      if (++this.parryFrame >= this.parryCfg.duration) this._set('idle');
+      else return this.state;
+    }
+
     if (this.state !== 'attack') {
       if (!ctx.grounded) {
         this._set('jump');
@@ -113,6 +126,10 @@ export class PlayerStateMachine {
         this.dodgeFrame = 0;
         this.dodgeCooldown = this.dodgeCfg.cooldown;
         this._set('dodge');
+      } else if (pressed.parry && this.parryCooldown <= 0) {
+        this.parryFrame = 0;
+        this.parryCooldown = this.parryCfg.cooldown;
+        this._set('parry');
       } else if (held.block) {
         if (this.state !== 'block') this.blockFrames = 0; else this.blockFrames++;
         this._set('block');

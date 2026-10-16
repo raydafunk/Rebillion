@@ -31,10 +31,10 @@ export class Arena {
 
   start() { this.enemies.destroyAll(); this.spawner.start(); }
 
-  update(dtMs) {
+  update(dtMs, frozen = null) {
     const target = this.getTarget();
     this.spawner.update(dtMs);
-    this.enemies.update(dtMs, target);
+    this.enemies.update(dtMs, target, frozen);
     this.failsafe.update(dtMs, target);
   }
 
