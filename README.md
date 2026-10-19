@@ -9,3 +9,15 @@ G1 read-gdd ----\
                  >-- G3 find-gaps -- G4 prioritise -- G5 generate-code -- G6 review
 G2 scan-code ---/                                          ^                  |
                                                            +---- fail --------+
+
+Goal | Agent | Reads | Publishes |
+|---|---|---|---|
+| G1 | `gdd-reader-agent` | `pipeline/corpus/`, GDD docs | `facts/gdd-requirements.json` |
+| G2 | `code-scanner-agent` | `src/`, tests, `assets/asset-keys.json` | `facts/code-inventory.json` |
+| G3 | `gap-analyst-agent` | G1 + G2 facts | `facts/gaps.json` |
+| G4 | `prioritiser-agent` | `facts/gaps.json` | `facts/priorities.json` |
+| G5 | `code-generator-agent` | `facts/priorities.json`, `design/team/contracts.md` | code in `src/`, `facts/generated.json` |
+| G6 | `reviewer-agent` | `facts/generated.json`, the diff, `npm test` | `facts/review.json` |
+
+FEATURE DOCUMENTATION
+Rank 2: GAP-009, menu parallax (menu-ui-agent)
