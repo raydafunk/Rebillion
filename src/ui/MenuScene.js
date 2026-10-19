@@ -4,6 +4,7 @@
 import { COLORS, CSS, FONTS, MENU_ASSETS, MENU_COLORS as C, MENU_CSS as CC, MENU_FONTS as MF } from '../config/assetKeys.js';
 import OptionsPanel from './OptionsPanel.js';
 import { NOTICE_MS, loadSettings } from './optionsData.js';
+import { scrollOffset } from './parallaxData.js';
 
 const W = 1280, H = 720;
 const STRIP_W = 360, STRIP_H = 64, STRIP_CX = 396, SEL_DX = 10, TWEEN_MS = 100;
@@ -60,21 +61,30 @@ export default class MenuScene extends Phaser.Scene {
   // ---------- background ----------
   buildBackground() {
     const rect = (x, y, w, h, c, d) => this.add.rectangle(x, y, w, h, c).setOrigin(0).setDepth(d);
-    if (this.has('menu.sky')) this.add.image(0, 0, 'menu.sky').setOrigin(0).setDepth(0);
+    // Scrolling layers are tile sprites: update() slides the texture (tilePositionX) instead of moving the object,
+    // so the drift is sub-pixel smooth (Phaser rounds object positions to whole pixels, which looked jumpy at ~6 px/s).
+    this.layers = { sky: [], buildings: [] };
+    const scrolling = (id, key, y, d) => {
+      const h = this.textures.get(key).getSourceImage().height;
+      this.layers[id].push({ obj: this.add.tileSprite(0, y, W, h, key).setOrigin(0).setDepth(d) });
+    };
+    if (this.has('menu.sky')) scrolling('sky', 'menu.sky', 0, 0);
     else { rect(0, 0, W, H, 0xd07a2c, 0); rect(0, 0, W, 240, 0xb5522f, 0); this.add.circle(960, 500, 70, C.cream).setDepth(0); }
 
-    if (this.has('menu.buildings.far')) this.add.image(0, 0, 'menu.buildings.far').setOrigin(0).setDepth(1);
+    if (this.has('menu.buildings.far')) scrolling('buildings', 'menu.buildings.far', 0, 1);
     else for (let i = 0; i < 6; i++) rect(640 + i * 110, 300 - (i % 3) * 50, 100, 240 + (i % 3) * 50, 0x5b3a2e, 1);
 
-    if (this.has('menu.buildings.near')) this.add.image(0, 0, 'menu.buildings.near').setOrigin(0).setDepth(1);
+    if (this.has('menu.buildings.near')) scrolling('buildings', 'menu.buildings.near', 0, 1);
     else for (let i = 0; i < 4; i++) rect(660 + i * 150, 250 + (i % 2) * 60, 140, 270 - (i % 2) * 60, 0x2b2420, 1);
 
-    if (this.has('menu.street')) this.add.image(0, 360, 'menu.street').setOrigin(0).setDepth(1);
+    // The road scrolls together with the buildings (same layer).
+    if (this.has('menu.street')) scrolling('buildings', 'menu.street', 360, 1);
     else {
       rect(0, 520, W, 200, 0x2a2420, 1);
       for (let x = 660; x < W; x += 120) rect(x, 610, 60, 8, C.mustard, 1);
     }
 
+    // The wall art is left alone (no movement); only the city behind it moves.
     if (this.has('menu.wall')) this.add.image(0, 0, 'menu.wall').setOrigin(0).setDepth(2);
     else {
       rect(0, 0, 640, H, C.brick, 2);
@@ -286,6 +296,11 @@ export default class MenuScene extends Phaser.Scene {
   back() { if (this.options.isOpen) this.options.act('back'); else this.closePanel(); }
 
   update(time) {
+    const still = !!(this.settings && this.settings.reducedMotion);
+    for (const id in this.layers) {
+      const dx = scrollOffset(id, time, still, W);
+      for (const l of this.layers[id]) l.obj.tilePositionX = -dx;
+    }
     // Minimal gamepad: d-pad / stick up-down, A confirm, B back.
     const pad = this.input.gamepad && this.input.gamepad.total ? this.input.gamepad.getPad(0) : null;
     if (!pad) return;

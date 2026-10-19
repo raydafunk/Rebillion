@@ -1,10 +1,14 @@
 {
-  "builtAt": "2026-10-19T14:00:00.000Z", "attempt": 1,
-  "item": "GAP-004", "ownerAgent": "encounter-agent",
-  "filesChanged": ["src/enemies/gruntData.js", "src/enemies/RustGrunt.js"],
-  "testsAdded": ["src/enemies/RustGrunt.test.js"],
+  "builtAt": "2026-10-19T15:00:00.000Z", "attempt": 1,
+  "item": "GAP-026", "ownerAgent": "menu-ui-agent",
+  "filesChanged": ["src/ui/parallaxData.js", "src/ui/MenuScene.js"],
+  "testsAdded": ["src/ui/parallaxData.test.mjs"],
   "npmTest": {"passed": 31, "failed": 0},
   "eventsAdded": [],
-  "openQuestions": ["All three jab hits reuse the single GRUNT_ATTACK_COMBAT.attack numbers (8 dmg, 220 kb, 250 hitstun); no per-hit tuning exists in the GDD. Timings 100/260/420 ms and +150 ms follow-through are placeholders in gruntData.js. attackMs grew from 250 to 570 (derived)."],
-  "requests": []
+  "openQuestions": [
+    "PLACEHOLDER scroll factors (sky 0.25, buildings 0.6, wall 1.0), amplitude 10 px, period 12 s are not in the GDD and need a playtest. Motion is a gentle horizontal sway, not an endless scroll (menu images are not tileable). Honors the reducedMotion option.",
+    "src/ui/parallaxData.test.mjs is NOT in the npm test script (package.json is outside allowedFiles), so npm test's 31 passes do not include it. It passes when run directly: node src/ui/parallaxData.test.mjs.",
+    "priorities.json status not changed to implemented, per the director's instruction."
+  ],
+  "requests": ["Add src/ui/parallaxData.test.mjs to the npm test script in package.json (outside allowedFiles)."]
 }

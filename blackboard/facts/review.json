@@ -1,16 +1,16 @@
 {
-  "builtAt": "2026-10-19T14:10:00.000Z", "item": "GAP-004", "attempt": 1,
+  "builtAt": "2026-10-19T15:30:00.000Z", "item": "GAP-026", "attempt": 1,
   "verdict": "pass",
   "npmTest": {"passed": 31, "failed": 0},
   "acceptance": [
-    {"statement": "Grunt attack data defines a 3-hit jab string, each hit a distinct attackId", "met": true, "evidence": "src/enemies/gruntData.js:22 JAB_STRING (3 entries); test asserts ids j:1,j:2,j:3 (RustGrunt.test.js:~100)"},
-    {"statement": "Per-hit numbers come from combatData.js or grunt data table", "met": true, "evidence": "gruntData.js:23-27 copies GRUNT_ATTACK_COMBAT.attack; RustGrunt.js emits jab.damage/knockback/hitstun"},
-    {"statement": "Unit test: three hit-requests in order with spacing inside data-table timings", "met": true, "evidence": "RustGrunt.test.js jab string block checks order and atMs window"},
-    {"statement": "npm test green; existing grunt and wave tests unchanged", "met": true, "evidence": "31 pass, 0 fail; test diff is additions only"}
+    {"statement": "Sky, buildings, wall each have a distinct nonzero rate in a data table", "met": true, "evidence": "src/ui/parallaxData.js:4-8 (0.25 / 0.6 / 1); applied in MenuScene.update src/ui/MenuScene.js:294-299"},
+    {"statement": "Unit test: far layer moves less than near, wall most", "met": true, "evidence": "src/ui/parallaxData.test.mjs:7-12 (s < b < w at sway peak); passes when run directly; would fail without the module"},
+    {"statement": "npm test green", "met": true, "evidence": "31 pass, 0 fail"}
   ],
   "findings": [
-    {"severity": "nit", "where": "src/enemies/gruntData.js:40", "problem": "hitActiveAtMs removed; no remaining references found, but anything external reading it would break. Timings 100/260/420 and +150 are placeholders (acknowledged in openQuestions).", "fix": "none required; owner may tune later"},
-    {"severity": "nit", "where": "src/enemies/RustGrunt.js:99", "problem": "All three hits share one hitbox/damage; retry double-fire is prevented by jabIndex and hitFired reset on telegraph.", "fix": "none"}
+    {"severity": "should-fix", "where": "package.json (test script)", "problem": "src/ui/parallaxData.test.mjs is not in the npm test script, so CI/npm test would never catch a regression. package.json is outside allowedFiles, so the generator correctly did not edit it. Acceptable for this pass because the test passes when run directly (node src/ui/parallaxData.test.mjs -> 'parallaxData ok'), but it must be registered.", "fix": "Director or an authorised agent adds the file to the npm test script."},
+    {"severity": "nit", "where": "src/ui/MenuScene.js:299", "problem": "Wall layer rectangles are widened only on the left; at max rightward sway the left edge sits at x=0 exactly, so no gap, but there is no margin.", "fix": "None required."},
+    {"severity": "nit", "where": "src/ui/parallaxData.js:5-7", "problem": "Factors, 10 px amplitude, 12 s period are placeholders not in the GDD (flagged by generator).", "fix": "Playtest tuning later."}
   ],
-  "requests": []
+  "requests": ["Add src/ui/parallaxData.test.mjs to the npm test script in package.json."]
 }

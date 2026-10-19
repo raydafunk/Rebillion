@@ -73,3 +73,8 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented
 2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1
 2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass
+2026-10-19T14:18:35.865Z | director | G5-generate-code | reopened | Owner request: build GAP-026 (rank 2 todo, menu parallax, menu-ui-agent, src/ui/ only). Use placeholder scroll factors increasing back to front (sky<buildings<wall) in a data table; flag in notes as needing playtest. GAP-004 already implemented.
+2026-10-19T14:19:04.386Z | code-generator-agent | G5-generate-code | claimed | attempt 2
+2026-10-19T14:20:16.132Z | code-generator-agent | G5-generate-code | done | GAP-026 implemented
+2026-10-19T14:20:32.542Z | reviewer-agent | G6-review | claimed | attempt 2
+2026-10-19T14:21:09.473Z | reviewer-agent | G6-review | done | pass
