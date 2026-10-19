@@ -1,15 +1,15 @@
 {
- "builtAt": "2026-10-19T09:58:55.127Z",
+ "builtAt": "2026-10-19T12:58:57.354Z",
  "summary": {
-  "met": 64,
-  "partial": 7,
-  "missing": 15,
+  "met": 51,
+  "partial": 8,
+  "missing": 19,
   "contradicted": 0
  },
  "gaps": [
   {
    "id": "GAP-001",
-   "requirement": "R-012",
+   "requirement": "R-010",
    "verdict": "partial",
    "gddEvidence": [
     "rebellion-menu-desgin#2"
@@ -18,340 +18,415 @@
     "F-017",
     "src/ui/MenuScene.js:26"
    ],
-   "missing": "Pick up key is only listed in the Controls table; src/player/input.js has no pickup binding and no pickup action exists.",
-   "tier": 0,
+   "missing": "P/N appears only in the Controls table text; src/player/input.js has no pick-up binding and no pick-up action exists.",
+   "tier": null,
    "area": "combat",
    "kind": "feature"
   },
   {
    "id": "GAP-002",
-   "requirement": "R-018",
-   "verdict": "missing",
+   "requirement": "R-015",
+   "verdict": "partial",
    "gddEvidence": [
     "the-rebellion#1",
     "the-rebellion#2"
    ],
    "codeEvidence": [
-    "F-022"
+    "F-003",
+    "F-006"
    ],
-   "missing": "Searched src/ for pickup/weapon/throw logic: none. Zed has no pickups or weapons.",
-   "tier": 0,
+   "missing": "Combo chains exist (light1>2>3, heavy cancel) but no juggle/launch/air-hit state; searched src/ for juggle, none.",
+   "tier": null,
    "area": "combat",
    "kind": "feature"
   },
   {
    "id": "GAP-003",
-   "requirement": "R-021",
+   "requirement": "R-017",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#1",
     "the-rebellion#2"
    ],
    "codeEvidence": [
-    "F-003"
+    "searched src/ for pickup/pick up/prop/weapon in src/ (only MenuScene.js:26 label)"
    ],
-   "missing": "Searched src/ for juggle/airborne-launch combo logic: none. Hits only cause hitstun and knockback; no juggle routes.",
-   "tier": 0,
+   "missing": "No pick-up objects, no pick-up action, no use-in-combat.",
+   "tier": null,
    "area": "combat",
    "kind": "feature"
   },
   {
    "id": "GAP-004",
-   "requirement": "R-027",
+   "requirement": "R-024",
    "verdict": "partial",
    "gddEvidence": [
-    "the-rebellion#3",
-    "the-rebellion#5"
+    "the-rebellion#11",
+    "the-rebellion#12"
    ],
    "codeEvidence": [
-    "F-005",
     "F-008",
-    "src/shared/combatData.js:51",
-    "src/player/moves.js:7",
-    "src/enemies/gruntData.js:19"
+    "src/enemies/gruntData.js:20"
    ],
-   "missing": "Shared combatData.js exists but moves.js and gruntData.js keep their own literal copies (identical values today); combatData.test.mjs is not in npm test. Not truly single-source.",
-   "tier": 0,
-   "area": "combat",
-   "kind": "bug"
+   "missing": "Grunt has one single attack (damage 8, 250 ms); no 1-2-3 Rust Jab Combo string.",
+   "tier": null,
+   "area": "enemy",
+   "kind": "feature"
   },
   {
    "id": "GAP-005",
-   "requirement": "R-042",
-   "verdict": "partial",
+   "requirement": "R-025",
+   "verdict": "missing",
    "gddEvidence": [
-    "the-rebellion#2"
+    "the-rebellion#12"
    ],
    "codeEvidence": [
-    "F-013",
-    "F-015"
+    "searched src/ for headbutt, none; F-008 has one attack only"
    ],
-   "missing": "Win shows PLAY AGAIN or MAIN MENU only; no next level begins after a win (one arena, no level progression).",
-   "tier": 0,
-   "area": "state",
+   "missing": "Helmet Headbutt lunge + stun not implemented.",
+   "tier": null,
+   "area": "enemy",
    "kind": "feature"
   },
   {
    "id": "GAP-006",
-   "requirement": "R-065",
-   "verdict": "partial",
+   "requirement": "R-026",
+   "verdict": "missing",
    "gddEvidence": [
-    "rebellion-menu-desgin#3"
+    "the-rebellion#12"
    ],
    "codeEvidence": [
-    "F-018",
-    "src/ui/optionsData.js:16"
+    "searched src/ for Bruiser, none; F-010 enemyTypes: grunt only"
    ],
-   "missing": "Music volume setting is saved but no audio code exists in src and nothing reads registry options.",
-   "tier": 0,
-   "area": "ui",
+   "missing": "Rust Bruiser and its downward smash (ground bounce, block break) absent.",
+   "tier": null,
+   "area": "enemy",
    "kind": "feature"
   },
   {
    "id": "GAP-007",
-   "requirement": "R-066",
-   "verdict": "partial",
-   "gddEvidence": [
-    "rebellion-menu-desgin#3"
-   ],
-   "codeEvidence": [
-    "F-018",
-    "src/ui/optionsData.js:16"
-   ],
-   "missing": "SFX volume setting is saved but there are no hit/parry/dodge sounds and nothing consumes it.",
-   "tier": 0,
-   "area": "ui",
-   "kind": "feature"
-  },
-  {
-   "id": "GAP-008",
-   "requirement": "R-067",
-   "verdict": "partial",
-   "gddEvidence": [
-    "rebellion-menu-desgin#3"
-   ],
-   "codeEvidence": [
-    "F-018",
-    "src/ui/optionsData.js:16"
-   ],
-   "missing": "Fullscreen setting is saved but never applied to the Phaser scale manager.",
-   "tier": 0,
-   "area": "ui",
-   "kind": "feature"
-  },
-  {
-   "id": "GAP-009",
-   "requirement": "R-074",
-   "verdict": "partial",
-   "gddEvidence": [
-    "the-rebellion#12"
-   ],
-   "codeEvidence": [
-    "F-008",
-    "src/enemies/gruntData.js:19"
-   ],
-   "missing": "Grunt has one single-hit attack (damage 8); no 1-2-3 jab string.",
-   "tier": 0,
-   "area": "enemy",
-   "kind": "feature"
-  },
-  {
-   "id": "GAP-010",
-   "requirement": "R-075",
-   "verdict": "missing",
-   "gddEvidence": [
-    "the-rebellion#12"
-   ],
-   "codeEvidence": [
-    "F-008"
-   ],
-   "missing": "Searched src/enemies for headbutt/lunge: none. Grunt has one telegraphed punch only.",
-   "tier": 0,
-   "area": "enemy",
-   "kind": "feature"
-  },
-  {
-   "id": "GAP-011",
-   "requirement": "R-076",
-   "verdict": "missing",
-   "gddEvidence": [
-    "the-rebellion#12"
-   ],
-   "codeEvidence": [
-    "F-008"
-   ],
-   "missing": "Searched src/ for Bruiser: none. Only RustGrunt exists.",
-   "tier": 0,
-   "area": "enemy",
-   "kind": "feature"
-  },
-  {
-   "id": "GAP-012",
-   "requirement": "R-077",
+   "requirement": "R-027",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#12",
     "the-rebellion#13"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Bruiser/uppercut, none"
    ],
-   "missing": "No Bruiser, no uppercut/launch attack.",
-   "tier": 0,
+   "missing": "Rust Uppercut launcher absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-013",
-   "requirement": "R-078",
+   "id": "GAP-008",
+   "requirement": "R-028",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#13"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Body Check/super armour, none"
    ],
-   "missing": "No Bruiser, no body check or super armour.",
-   "tier": 0,
+   "missing": "Body Check dash with super armour absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-014",
-   "requirement": "R-079",
+   "id": "GAP-009",
+   "requirement": "R-029",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#13"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Ranger/Taser/projectile, none"
    ],
-   "missing": "Searched src/ for Ranger/projectile: none.",
-   "tier": 0,
+   "missing": "Rust Ranger and ranged Taser Shot absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-015",
-   "requirement": "R-080",
+   "id": "GAP-010",
+   "requirement": "R-030",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#13"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Baton, none"
    ],
-   "missing": "No Ranger, no baton strike.",
-   "tier": 0,
+   "missing": "Baton Strike absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-016",
-   "requirement": "R-081",
+   "id": "GAP-011",
+   "requirement": "R-031",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#14"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Specialist/Fang/Copper Cross/Shield Bash, none"
    ],
-   "missing": "No Specialist enemy or its moves.",
-   "tier": 0,
+   "missing": "Rust Specialist and its three moves absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-017",
-   "requirement": "R-082",
+   "id": "GAP-012",
+   "requirement": "R-032",
+   "verdict": "partial",
+   "gddEvidence": [
+    "the-rebellion#11",
+    "the-rebellion#14"
+   ],
+   "codeEvidence": [
+    "F-008",
+    "F-010"
+   ],
+   "missing": "Only Grunt of the five Rust unit types exists (no Bruiser, Ranger, Specialist, Overseer).",
+   "tier": null,
+   "area": "enemy",
+   "kind": "feature"
+  },
+  {
+   "id": "GAP-013",
+   "requirement": "R-033",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#14",
     "the-rebellion#15",
-    "the-rebellion#20"
+    "the-rebellion#16",
+    "the-rebellion#18",
+    "the-rebellion#19"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for boss/Overseer/Voss/Calder/Wren/Holt/Varr, none"
    ],
-   "missing": "Searched src/ for boss/Overseer/phase: none. No bosses or super moves.",
-   "tier": 0,
+   "missing": "No Overseer bosses, arenas or phases.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-018",
-   "requirement": "R-083",
+   "id": "GAP-014",
+   "requirement": "R-034",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#15"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Voss/phase, none"
    ],
-   "missing": "No Voss, no phase 2 or special-meter mechanic.",
-   "tier": 0,
+   "missing": "Voss phase 2 at 50% HP absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-019",
-   "requirement": "R-084",
+   "id": "GAP-015",
+   "requirement": "R-035",
    "verdict": "missing",
    "gddEvidence": [
-    "the-rebellion#16",
-    "the-rebellion#17"
+    "the-rebellion#16"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Calder, none"
    ],
-   "missing": "No Calder boss.",
-   "tier": 0,
+   "missing": "Calder phase 2 at 40% HP absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-020",
-   "requirement": "R-085",
+   "id": "GAP-016",
+   "requirement": "R-036",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#18"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Wren, none"
    ],
-   "missing": "No Wren boss.",
-   "tier": 0,
+   "missing": "Wren phase 2 at 50% HP absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-021",
-   "requirement": "R-086",
+   "id": "GAP-017",
+   "requirement": "R-037",
    "verdict": "missing",
    "gddEvidence": [
     "the-rebellion#19"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Holt, none"
    ],
-   "missing": "No Holt boss.",
-   "tier": 0,
+   "missing": "Holt phase 2 at 40% HP absent.",
+   "tier": null,
    "area": "enemy",
    "kind": "feature"
   },
   {
-   "id": "GAP-022",
-   "requirement": "R-087",
+   "id": "GAP-018",
+   "requirement": "R-038",
    "verdict": "missing",
    "gddEvidence": [
+    "the-rebellion#19",
     "the-rebellion#20"
    ],
    "codeEvidence": [
-    "F-008"
+    "searched src/ for Varr, none"
    ],
-   "missing": "No Varr boss.",
-   "tier": 0,
+   "missing": "Varr phase 2 at 30% HP absent.",
+   "tier": null,
    "area": "enemy",
+   "kind": "feature"
+  },
+  {
+   "id": "GAP-019",
+   "requirement": "R-039",
+   "verdict": "missing",
+   "gddEvidence": [
+    "the-rebellion#15"
+   ],
+   "codeEvidence": [
+    "searched src/ for Predictive Strike/laser, none"
+   ],
+   "missing": "Red-line telegraph and 1 s laser absent.",
+   "tier": null,
+   "area": "enemy",
+   "kind": "number"
+  },
+  {
+   "id": "GAP-020",
+   "requirement": "R-040",
+   "verdict": "missing",
+   "gddEvidence": [
+    "the-rebellion#15"
+   ],
+   "codeEvidence": [
+    "searched src/ for Lockdown/special meter, none"
+   ],
+   "missing": "10 s special-meter lockdown absent; no special meter exists.",
+   "tier": null,
+   "area": "enemy",
+   "kind": "number"
+  },
+  {
+   "id": "GAP-021",
+   "requirement": "R-041",
+   "verdict": "missing",
+   "gddEvidence": [
+    "the-rebellion#15"
+   ],
+   "codeEvidence": [
+    "searched src/ for Drone Swarm, none"
+   ],
+   "missing": "3-5 destroyable orbiting drones absent.",
+   "tier": null,
+   "area": "enemy",
+   "kind": "number"
+  },
+  {
+   "id": "GAP-022",
+   "requirement": "R-042",
+   "verdict": "missing",
+   "gddEvidence": [
+    "the-rebellion#17"
+   ],
+   "codeEvidence": [
+    "searched src/ for Furnace Slam, none"
+   ],
+   "missing": "2 s molten crack explosion absent.",
+   "tier": null,
+   "area": "enemy",
+   "kind": "number"
+  },
+  {
+   "id": "GAP-023",
+   "requirement": "R-046",
+   "verdict": "partial",
+   "gddEvidence": [
+    "the-rebellion#2"
+   ],
+   "codeEvidence": [
+    "F-014",
+    "F-013"
+   ],
+   "missing": "Enter-level, spawn, fight, clear and win work; F-014 says single level, no progression, so \"next level begins\" is absent.",
+   "tier": null,
+   "area": "state",
+   "kind": "feature"
+  },
+  {
+   "id": "GAP-024",
+   "requirement": "R-064",
+   "verdict": "partial",
+   "gddEvidence": [
+    "rebellion-menu-desgin#3"
+   ],
+   "codeEvidence": [
+    "F-018",
+    "src/ui/optionsData.js:17"
+   ],
+   "missing": "Music slider and settings persistence exist, but F-018 notes no audio code in src and the value is consumed by nothing.",
+   "tier": null,
+   "area": "ui",
+   "kind": "feature"
+  },
+  {
+   "id": "GAP-025",
+   "requirement": "R-065",
+   "verdict": "partial",
+   "gddEvidence": [
+    "rebellion-menu-desgin#3"
+   ],
+   "codeEvidence": [
+    "F-018"
+   ],
+   "missing": "SFX slider exists but no SFX playback and nothing reads sfxVolume.",
+   "tier": null,
+   "area": "ui",
+   "kind": "feature"
+  },
+  {
+   "id": "GAP-026",
+   "requirement": "R-068",
+   "verdict": "partial",
+   "gddEvidence": [
+    "rebellion-menu-desgin#4"
+   ],
+   "codeEvidence": [
+    "src/ui/MenuScene.js:61"
+   ],
+   "missing": "Sky, buildings and wall layers are drawn at distinct depths but are static; no parallax motion code (searched MenuScene/TitleScene for tileSprite/parallax, none).",
+   "tier": null,
+   "area": "ui",
+   "kind": "feature"
+  },
+  {
+   "id": "GAP-027",
+   "requirement": "R-080",
+   "verdict": "missing",
+   "gddEvidence": [
+    "the-rebellion#8",
+    "the-rebellion#9"
+   ],
+   "codeEvidence": [
+    "searched src/ for father/district/story text, none outside design docs"
+   ],
+   "missing": "Story (retake Fallen City, find missing father) is not presented anywhere in game.",
+   "tier": null,
+   "area": "content",
    "kind": "feature"
   }
  ],
@@ -365,37 +440,20 @@
   "R-007",
   "R-008",
   "R-009",
-  "R-010",
   "R-011",
+  "R-012",
   "R-013",
   "R-014",
-  "R-015",
   "R-016",
-  "R-017",
+  "R-018",
   "R-019",
   "R-020",
+  "R-021",
   "R-022",
   "R-023",
-  "R-024",
-  "R-025",
-  "R-026",
-  "R-028",
-  "R-029",
-  "R-030",
-  "R-031",
-  "R-032",
-  "R-033",
-  "R-034",
-  "R-036",
-  "R-037",
-  "R-038",
-  "R-039",
-  "R-040",
-  "R-041",
   "R-043",
   "R-044",
   "R-045",
-  "R-046",
   "R-047",
   "R-048",
   "R-049",
@@ -413,20 +471,20 @@
   "R-061",
   "R-062",
   "R-063",
-  "R-064",
-  "R-068",
+  "R-066",
+  "R-067",
   "R-069",
   "R-070",
   "R-071",
   "R-072",
-  "R-073"
+  "R-073",
+  "R-074",
+  "R-075",
+  "R-076",
+  "R-079"
  ],
  "ambiguousRequirements": [
-  "R-035"
- ],
- "notes": [
-  "Met verdicts rest on wiring plus code spot checks; HUD, Result, Menu, Title, Options UI and Zed.js have no automated tests (test-only risk).",
-  "R-035: GDD says both 'reach end of level' and 'clear arena'; code implements clear arena only. Owner to decide.",
-  "Tier is null in the GDD for most requirements; gaps use 0 where unspecified."
+  "R-077",
+  "R-078"
  ]
 }

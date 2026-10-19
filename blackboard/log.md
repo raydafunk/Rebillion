@@ -58,3 +58,12 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented
 2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3
 2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass
+2026-10-19T11:35:08.541Z | director | - | reset | 
+2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1
+2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1
+2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements
+2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0
+2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1
+2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying
+2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2
+2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps

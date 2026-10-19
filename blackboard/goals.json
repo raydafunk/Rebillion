@@ -12,7 +12,7 @@
       "status": "done",
       "attempts": 1,
       "maxAttempts": 2,
-      "note": "87 requirements"
+      "note": "80 requirements"
     },
     {
       "id": "G2-scan-code",
@@ -24,7 +24,7 @@
       "status": "done",
       "attempts": 1,
       "maxAttempts": 2,
-      "note": "22 features, tests 29/0"
+      "note": "19 features, tests 31/0"
     },
     {
       "id": "G3-find-gaps",
@@ -37,9 +37,9 @@
       ],
       "produces": "facts/gaps.json",
       "status": "done",
-      "attempts": 1,
+      "attempts": 2,
       "maxAttempts": 2,
-      "note": "22 gaps"
+      "note": "27 gaps"
     },
     {
       "id": "G4-prioritise",
@@ -50,10 +50,10 @@
         "G3-find-gaps"
       ],
       "produces": "facts/priorities.json",
-      "status": "done",
-      "attempts": 1,
+      "status": "open",
+      "attempts": 0,
       "maxAttempts": 2,
-      "note": "7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test"
+      "note": "reset: G3-find-gaps reopened"
     },
     {
       "id": "G5-generate-code",
@@ -64,10 +64,10 @@
         "G4-prioritise"
       ],
       "produces": "facts/generated.json",
-      "status": "done",
-      "attempts": 3,
+      "status": "open",
+      "attempts": 0,
       "maxAttempts": 3,
-      "note": "GAP-004 step 3 implemented"
+      "note": "reset: G3-find-gaps reopened"
     },
     {
       "id": "G6-review",
@@ -78,10 +78,10 @@
         "G5-generate-code"
       ],
       "produces": "facts/review.json",
-      "status": "done",
-      "attempts": 3,
+      "status": "open",
+      "attempts": 0,
       "maxAttempts": 3,
-      "note": "pass"
+      "note": "reset: G3-find-gaps reopened"
     }
   ]
 }
