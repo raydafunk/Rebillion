@@ -38,8 +38,9 @@
     "npm test green"
    ],
    "dependsOn": [],
-   "status": "todo",
-   "needsOwner": false
+   "status": "implemented",
+   "needsOwner": false,
+   "notes": "Built, then reworked by hand with the owner on 2026-10-19: the city (sky, buildings, road) now scrolls continuously right as tile sprites; the wall art stays fixed. See src/ui/parallaxData.js and MenuScene.js. Do not rebuild."
   },
   {
    "rank": 3,
@@ -58,7 +59,7 @@
     "npm test green"
    ],
    "dependsOn": [],
-   "status": "todo",
+   "status": "implemented",
    "needsOwner": false
   },
   {

@@ -3,6 +3,7 @@
 // Flat shapes only. Every asset has a drawn fallback if its file fails to load.
 import { COLORS, CSS, FONTS, MENU_ASSETS, MENU_COLORS as C, MENU_CSS as CC, MENU_FONTS as MF } from '../config/assetKeys.js';
 import OptionsPanel from './OptionsPanel.js';
+import showStoryCard from './StoryCard.js';
 import { NOTICE_MS, loadSettings } from './optionsData.js';
 import { scrollOffset } from './parallaxData.js';
 
@@ -333,6 +334,10 @@ export default class MenuScene extends Phaser.Scene {
   startGame() {
     this.started = true;
     console.log('[MenuScene] start-game');
+    showStoryCard(this, () => this.launchArena());
+  }
+
+  launchArena() {
     this.game.events.emit('start-game');
     this.cameras.main.fadeOut(300, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {

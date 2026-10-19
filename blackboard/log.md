@@ -78,3 +78,8 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-10-19T14:20:16.132Z | code-generator-agent | G5-generate-code | done | GAP-026 implemented
 2026-10-19T14:20:32.542Z | reviewer-agent | G6-review | claimed | attempt 2
 2026-10-19T14:21:09.473Z | reviewer-agent | G6-review | done | pass
+2026-10-19T16:10:41.106Z | director | G5-generate-code | reopened | Owner approved GAP-027 story intro card; GAP-026 implemented. Build GAP-027 only.
+2026-10-19T16:10:52.373Z | code-generator-agent | G5-generate-code | claimed | attempt 3
+2026-10-19T16:12:22.917Z | code-generator-agent | G5-generate-code | done | GAP-027 implemented
+2026-10-19T16:12:40.294Z | reviewer-agent | G6-review | claimed | attempt 3
+2026-10-19T16:13:41.654Z | reviewer-agent | G6-review | done | pass

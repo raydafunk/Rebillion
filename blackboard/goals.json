@@ -65,9 +65,9 @@
       ],
       "produces": "facts/generated.json",
       "status": "done",
-      "attempts": 2,
+      "attempts": 3,
       "maxAttempts": 3,
-      "note": "GAP-026 implemented"
+      "note": "GAP-027 implemented"
     },
     {
       "id": "G6-review",
@@ -79,7 +79,7 @@
       ],
       "produces": "facts/review.json",
       "status": "done",
-      "attempts": 2,
+      "attempts": 3,
       "maxAttempts": 3,
       "note": "pass"
     }
