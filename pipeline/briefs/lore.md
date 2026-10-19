@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-10-19T09:55:57.512Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-10-19T12:55:44.070Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -718,4 +718,4 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 - Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 375 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 373 chunks across 37 documents.

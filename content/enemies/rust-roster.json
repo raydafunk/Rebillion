@@ -27,6 +27,26 @@
       "damage": 8,
       "knockback": 220,
       "hitstun": 250
-    }
+    },
+    "look": "Slate uniform, steel helmet, cyan visor, cheap oxidized plating kept to cold slate tones; boxy and symmetrical, no personal marks (serial-number recruits).",
+    "moves": [
+      {
+        "name": "Rust Jab Combo",
+        "canon": true,
+        "source": "the-rebellion#12",
+        "gdd": "Quick 1-2-3 punch string, light damage, interrupts the player, often done in groups. Tier 0 engine has only the single strike (later-tier addition)."
+      },
+      {
+        "name": "Helmet Headbutt",
+        "canon": true,
+        "source": "the-rebellion#12",
+        "gdd": "Sudden forward lunge with reinforced helmet, short windup, brief stun, used when Zed is too close or grabs too often. Later-tier addition."
+      }
+    ],
+    "proposedFields": [
+      "look",
+      "telegraph timing for jab combo and headbutt (not yet in engine)"
+    ],
+    "gddGap": "Canon unit and Tier 0 numbers (copied from src/enemies/gruntData.js). The Rust Jab Combo and Helmet Headbutt are canon GDD moves not yet in the engine; look is proposed."
   }
 ]

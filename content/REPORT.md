@@ -9,7 +9,7 @@ _2026-10-19_
 - read `GameDesignDocument/The Title Screen.docx` (primary), 1 chunks
 - read `PDf/The Rebellion -Frist Draft.pdf` (reference), 2 chunks
 - read `PDf/The Rebellion- Final Gdd.pdf` (reference), 5 chunks
-- read `README.md` (reference), 2 chunks
+- read `README.md` (reference), 0 chunks
 - read `blackboard/README.md` (reference), 5 chunks
 - read `blackboard/log.md` (reference), 1 chunks
 - read `design/art/asset-manifest.md` (derived), 13 chunks

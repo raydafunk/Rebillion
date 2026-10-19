@@ -1,5 +1,5 @@
 # Content brief: dialogue
-_Generated 2026-10-19T09:55:57.531Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
+_Generated 2026-10-19T12:55:44.448Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
 
 **Writer agent:** dialogue-agent  |  **Output dir:** `content/dialogue/`  |  **Produces:** Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.
 
@@ -901,4 +901,4 @@ Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemi
 **Why it matters:** The narrative pillars are unset. No dialogue, cutscenes, or environmental storytelling are mentioned, so the tone has no delivery mechanism.
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 375 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 373 chunks across 37 documents.

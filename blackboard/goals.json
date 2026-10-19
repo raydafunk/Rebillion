@@ -50,10 +50,10 @@
         "G3-find-gaps"
       ],
       "produces": "facts/priorities.json",
-      "status": "open",
-      "attempts": 0,
+      "status": "done",
+      "attempts": 1,
       "maxAttempts": 2,
-      "note": "reset: G3-find-gaps reopened"
+      "note": "27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner"
     },
     {
       "id": "G5-generate-code",

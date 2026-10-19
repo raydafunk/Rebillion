@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-19T09:55:57.471Z",
+  "builtAt": "2026-10-19T12:55:43.978Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
@@ -65,12 +65,12 @@
     {
       "file": "README.md",
       "authority": "reference",
-      "bytes": 1660,
-      "sha1": "89cbad99cf9d",
+      "bytes": 42,
+      "sha1": "b107da4c15f5",
       "status": "ingested",
       "docId": "readme",
-      "chunks": 2,
-      "chars": 1589,
+      "chunks": 0,
+      "chars": 0,
       "warnings": []
     },
     {
@@ -87,12 +87,12 @@
     {
       "file": "blackboard/log.md",
       "authority": "reference",
-      "bytes": 3430,
-      "sha1": "bbe578955bf2",
+      "bytes": 5792,
+      "sha1": "72e454dc0018",
       "status": "ingested",
       "docId": "log",
       "chunks": 1,
-      "chars": 3411,
+      "chars": 5773,
       "warnings": []
     },
     {
