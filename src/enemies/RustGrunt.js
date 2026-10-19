@@ -29,6 +29,7 @@ export class RustGrunt {
     this.state = GruntState.IDLE;
     this.timer = data.spawnIdleMs;
     this.hitFired = false;
+    this.jabIndex = 0;              // next hit of the jab string to emit
     this.attackCounter = 0;
     this.circling = false;
     this.circleDir = (Math.abs(hashId(id)) % 2) ? 1 : -1;
@@ -92,19 +93,20 @@ export class RustGrunt {
         break;
       case GruntState.TELEGRAPH:
         this.timer -= dtMs;
-        if (this.timer <= 0) { this.timer = d.attackMs; this.hitFired = false; this._set(GruntState.ATTACK); }
+        if (this.timer <= 0) { this.timer = d.attackMs; this.hitFired = false; this.jabIndex = 0; this._set(GruntState.ATTACK); }
         break;
       case GruntState.ATTACK: {
         this.timer -= dtMs;
         const elapsed = d.attackMs - this.timer;
-        if (!this.hitFired && elapsed >= d.hitActiveAtMs) {
-          this.hitFired = true;
+        while (!this.hitFired && this.jabIndex < d.jabString.length && elapsed >= d.jabString[this.jabIndex].atMs) {
+          const jab = d.jabString[this.jabIndex++];
+          if (this.jabIndex >= d.jabString.length) this.hitFired = true;
           if (this.hooks.onHitRequest) {
             this.attackCounter++;
             this.hooks.onHitRequest({
               attackerId: this.id, attackId: `${this.id}:${this.attackCounter}`, team: d.team,
               hitbox: { ...d.attack.hitbox }, origin: { x: this.x, y: this.y }, facing: this.facing,
-              damage: d.attack.damage, knockback: d.attack.knockback, hitstun: d.attack.hitstun,
+              damage: jab.damage, knockback: jab.knockback, hitstun: jab.hitstun,
             });
           }
         }
@@ -162,7 +164,7 @@ export class RustGrunt {
   /** React to damage that combat applied (hp bookkeeping stays with combat). */
   takeHit({ hitstun = 0, knockback = 0 } = {}) {
     if (!this.alive) return;
-    this.hitFired = true; // cancel any pending attack
+    this.hitFired = true; // cancel any pending attack (rest of the jab string)
     this.kx = knockback;
     this.timer = Math.max(hitstun, this.data.hitstunMinMs);
     this._set(GruntState.HITSTUN);

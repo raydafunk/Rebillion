@@ -1,17 +1,16 @@
 {
-  "builtAt": "2026-10-19T11:20:00.000Z",
-  "item": "GAP-004 step 3",
-  "attempt": 1,
+  "builtAt": "2026-10-19T14:10:00.000Z", "item": "GAP-004", "attempt": 1,
   "verdict": "pass",
   "npmTest": {"passed": 31, "failed": 0},
   "acceptance": [
-    {"statement": "gruntData.js imports from src/shared/combatData.js", "met": true, "evidence": "src/enemies/gruntData.js:6"},
-    {"statement": "no duplicate hp/damage/knockback/hitstun literals that exist in combatData.js", "met": true, "evidence": "src/enemies/gruntData.js:23 and :39-41 now read COMBAT_DEFAULTS.GRUNT_MAX_HP and GRUNT_ATTACK_COMBAT.attack.*; values 30/8/220/250 identical to before"},
-    {"statement": "npm test green", "met": true, "evidence": "31 passed, 0 failed (run by reviewer)"}
+    {"statement": "Grunt attack data defines a 3-hit jab string, each hit a distinct attackId", "met": true, "evidence": "src/enemies/gruntData.js:22 JAB_STRING (3 entries); test asserts ids j:1,j:2,j:3 (RustGrunt.test.js:~100)"},
+    {"statement": "Per-hit numbers come from combatData.js or grunt data table", "met": true, "evidence": "gruntData.js:23-27 copies GRUNT_ATTACK_COMBAT.attack; RustGrunt.js emits jab.damage/knockback/hitstun"},
+    {"statement": "Unit test: three hit-requests in order with spacing inside data-table timings", "met": true, "evidence": "RustGrunt.test.js jab string block checks order and atMs window"},
+    {"statement": "npm test green; existing grunt and wave tests unchanged", "met": true, "evidence": "31 pass, 0 fail; test diff is additions only"}
   ],
   "findings": [
-    {"severity": "nit", "where": "src/enemies/RustGrunt.test.js:79-87", "problem": "File is outside allowedFiles (gruntData.js only); edit is additive and was directed, so not blocking. The test asserts value equality, which also held before the change, so it would not fail if the import were reverted.", "fix": "Optional: none needed; behaviour-preserving refactor. The value-lock still guards against drift between tables."},
-    {"severity": "nit", "where": "src/enemies/gruntData.js:38", "problem": "attack.hitbox literal still duplicates GRUNT_ATTACK_COMBAT.attack.hitbox. Not in acceptance (hp/damage/knockback/hitstun only).", "fix": "Optionally import the hitbox in a later step."}
+    {"severity": "nit", "where": "src/enemies/gruntData.js:40", "problem": "hitActiveAtMs removed; no remaining references found, but anything external reading it would break. Timings 100/260/420 and +150 are placeholders (acknowledged in openQuestions).", "fix": "none required; owner may tune later"},
+    {"severity": "nit", "where": "src/enemies/RustGrunt.js:99", "problem": "All three hits share one hitbox/damage; retry double-fire is prevented by jabIndex and hitFired reset on telegraph.", "fix": "none"}
   ],
   "requests": []
 }

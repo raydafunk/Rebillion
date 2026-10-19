@@ -17,6 +17,15 @@ export const GRUNT_ANIMS = {
 };
 export const TELEGRAPH_FX_KEY = 'fx.telegraph';
 
+// Rust Jab 1-2-3. atMs = when each hit-request is emitted, measured from the start of the attack state.
+// Per-hit numbers are the shared grunt attack numbers from combatData.js.
+const JAB_STRING = Object.freeze([100, 260, 420].map((atMs) => Object.freeze({
+  atMs,
+  damage: GRUNT_ATTACK_COMBAT.attack.damage,
+  knockback: GRUNT_ATTACK_COMBAT.attack.knockback,
+  hitstun: GRUNT_ATTACK_COMBAT.attack.hitstun,
+})));
+
 export const GRUNT = {
   team: 'rust',
   spriteKey: GRUNT_SPRITE_KEY,
@@ -28,8 +37,8 @@ export const GRUNT = {
   circleRadius: 180,    // hold at this distance when no attacker slot is free
   spawnIdleMs: 400,     // idle after spawn before chasing
   telegraphMs: 450,     // visible wind-up before the hit (keep >= 300 for readability)
-  attackMs: 250,        // total attack state length
-  hitActiveAtMs: 100,   // hit-request is emitted this far into the attack state
+  attackMs: JAB_STRING[JAB_STRING.length - 1].atMs + 150, // total attack state length: last jab + follow-through
+  jabString: JAB_STRING, // 1-2-3 Rust Jab: one hit-request per entry, each with its own attackId
   recoverMs: 700,
   hitstunMinMs: 150,
   knockbackDecay: 600,  // px/s^2

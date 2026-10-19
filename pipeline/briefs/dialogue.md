@@ -1,5 +1,5 @@
 # Content brief: dialogue
-_Generated 2026-10-19T12:55:44.448Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
+_Generated 2026-10-19T13:25:33.933Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
 
 **Writer agent:** dialogue-agent  |  **Output dir:** `content/dialogue/`  |  **Produces:** Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.
 
@@ -195,6 +195,10 @@ Example:
 - `rust-overseer-calder` Overseer Rhea Calder
 - `rust-overseer-wren` Overseer Silas Wren
 - `rust-overseer-holt` Overseer Dr. Maren Holt
+- `rust-voss-drone` Rust Surveillance Drone
+- `rust-voss-megadrone` Rust MegaDrone
+- `rust-hologram-decoy` Rust Hologram Decoy
+- `rust-elite-drone` Rust Elite Drone
 - `rust-grunt` Rust Grunt
 
 ## Engine / spec files to stay compatible with
@@ -344,7 +348,7 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 Rules for small print: monospace, short, no named characters or places (the GDD names none), no gore, nothing that makes the Rust a place.
 ```
 
-## Retrieved GDD passages (36)
+## Retrieved GDD passages (35)
 ### [the-rebellion#10] primary - GameDesignDocument/The Rebellion.docx
 Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
 Character – the Enemy
@@ -388,6 +392,21 @@ Zed isn’t a soldier. He’s a kid from a livedin neighbourhood who learned to 
 His style reflects the game’s pillars:
 Impactful, fast-paced combat — Zed’s punches feel like brickred alley brawls, scrappy but sharp.
 
+### [rebellion-menu-desgin#3] primary - GameDesignDocument/Rebellion menu desgin.docx
+[table]
+Settings | functions | Theme | What happens in game
+Music volume | Controls the music | a slider. Posters-on-brick feels like it wants a street-ambience bed | Changes the game music level
+SFX volume | a slider covering hits sounds parries and dodges | Same theme as the music volume | Change the SFX on or off
+Fullscreen | Makes the screen Fullscreen | Same theme as the music volume | Makes the game screen big
+Background posters (non-interactive)
+"Local Heroes Benefit: Keep the Lights On": cream, forest-green text. Ties back to the original Local Heroes Mural idea.
+Rust Notice 114, "CURFEW" struck through: brick red. It shows the Rust security force's control and the community defacing it.
+Visual style
+Flat shapes with torn, uneven edges (clip-path style); no gradients or glow.
+Heavy condensed display type for titles and buttons, monospace for small print.
+Palette: brick red #9C3B2E / #7A2F25, mustard #E1A92B, forest green #2F5D3A, warm brown #6B4A2F, cream #E8DCC0, near-black #1D1A16.
+Implementation notes (Phaser)
+
 ### [the-rebellion#11] primary - GameDesignDocument/The Rebellion.docx
 Rust was founded by Commander Halden Varr, a former military strategist who believed order could only be achieved through fear. When Fallen City’s government collapsed, Varr seized the opportunity. He offered “protection” to the remaining officials, then quietly replaced them with Rust loyalists.
 Within months:
@@ -403,21 +422,6 @@ They believe Fallen City must be rebuilt through force. Civilians are treated as
 Rust Unit Types Enemies
 1. Rust Grunts — “The Iron Line”
 The backbone of Rust’s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rustcoated plating, and their helmets hide their identities — intentionally.
-
-### [rebellion-menu-desgin#3] primary - GameDesignDocument/Rebellion menu desgin.docx
-[table]
-Settings | functions | Theme | What happens in game
-Music volume | Controls the music | a slider. Posters-on-brick feels like it wants a street-ambience bed | Changes the game music level
-SFX volume | a slider covering hits sounds parries and dodges | Same theme as the music volume | Change the SFX on or off
-Fullscreen | Makes the screen Fullscreen | Same theme as the music volume | Makes the game screen big
-Background posters (non-interactive)
-"Local Heroes Benefit: Keep the Lights On": cream, forest-green text. Ties back to the original Local Heroes Mural idea.
-Rust Notice 114, "CURFEW" struck through: brick red. It shows the Rust security force's control and the community defacing it.
-Visual style
-Flat shapes with torn, uneven edges (clip-path style); no gradients or glow.
-Heavy condensed display type for titles and buttons, monospace for small print.
-Palette: brick red #9C3B2E / #7A2F25, mustard #E1A92B, forest green #2F5D3A, warm brown #6B4A2F, cream #E8DCC0, near-black #1D1A16.
-Implementation notes (Phaser)
 
 ### [the-rebellion#1] primary - GameDesignDocument/The Rebellion.docx
 The Rebellion
@@ -828,14 +832,11 @@ stateDiagram-v2
 ### [win#2] derived - design/ux/win.md - Purpose
 Tell the player they won **and why**. The GDD win condition is: "Fight your way to the end of the level while beating Rust enemies" and "Defeat Wave / Clear Arena ... in time". The screen must show that the arena was cleared and that it was done in time, using real numbers from the run.
 
-### [flow#3] derived - design/ux/flow.md - Screen inventory (Tier 0)
-| Screen | File | Phaser scene |
-|---|---|---|
-| Main menu | `main-menu.md` | `MenuScene` |
-| HUD | `hud.md` | `HudScene` (runs in parallel over the arena scene) |
-| Pause | `pause.md` | overlay in `HudScene` |
-| Win | `win.md` | `ResultScene` (mode = win) |
-| Lose | `lose.md` | `ResultScene` (mode = lose) |
+### [flow#6] derived - design/ux/flow.md - Result-screen timing rule (applies to Win and Lose)
+- On the end event, gameplay input is locked and the arena freezes or slow-motions for 0.6 s so the player sees the final hit or the zero timer.
+- The result panel then fades in over 0.3 s.
+- Buttons accept input only after a 0.5 s delay, so a button-mashing player does not skip the screen by accident.
+- Retry is the default focus on Lose. Play Again is the default focus on Win. Retry should take less than 1 s to reach a playable state, which keeps the fail-retry loop fast.
 
 ### [canon#9] derived - design/lore/canon.md - The Fall of Fallen City
 Everything changed when RUST, the private security force, swept through the districts. The document describes the city as “overtaken Rust a corrupt private Security Force” — and Zed saw it firsthand.
@@ -895,10 +896,5 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
-### [narrative-critic#4] reference - gdd-review-kit-main/reviews/narrative-critic.md - 4. Tone is contradictory and unanchored (MAJOR)
-**Problem:** The document promises a gritty urban resistance story but describes the game in arcade terms, so tone is never established.
-**Passage:** "Fast-paced," "punchy hits," "classic beat-'em-up mechanics," and "light and heavy pick-up objects" suggest a light arcade brawler. "Corrupt," "Fallen City," and "Rebellion" suggest a serious political tone. Nothing says which wins, or how the enemy and dialogue should sound.
-**Why it matters:** The narrative pillars are unset. No dialogue, cutscenes, or environmental storytelling are mentioned, so the tone has no delivery mechanism.
-
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 373 chunks across 37 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.

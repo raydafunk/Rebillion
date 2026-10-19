@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-10-19T12:55:44.276Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-10-19T13:25:33.925Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -84,6 +84,10 @@ Example:
 - `rust-overseer-calder` Overseer Rhea Calder
 - `rust-overseer-wren` Overseer Silas Wren
 - `rust-overseer-holt` Overseer Dr. Maren Holt
+- `rust-voss-drone` Rust Surveillance Drone
+- `rust-voss-megadrone` Rust MegaDrone
+- `rust-hologram-decoy` Rust Hologram Decoy
+- `rust-elite-drone` Rust Elite Drone
 - `rust-grunt` Rust Grunt
 
 ### Upstream `lore` content you may reference
@@ -280,14 +284,14 @@ Health & Hitbox Agent | Owns health, damage values, and hitbox/hurt box data | H
 Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy failsafe | Prevents the off-screen soft lock
 Menu & UI Agent | Builds and owns every screen and on-screen element the player sees outside the arena action |  | The player can start a game, read the state of the fight, and see why they won or lost
 
-### [win#2] derived - design/ux/win.md - Purpose
-Tell the player they won **and why**. The GDD win condition is: "Fight your way to the end of the level while beating Rust enemies" and "Defeat Wave / Clear Arena ... in time". The screen must show that the arena was cleared and that it was done in time, using real numbers from the run.
-
 ### [win#10] derived - design/ux/win.md - Open questions
 - OQ-W1. What exactly is the win condition: clear all waves, or reach an end-of-level point? The GDD says both "Fight your way to the end of the level while beating Rust Enemies" (p.2) and "Defeat Wave / Clear Arena" (p.2, p.4). The core loop (p.3) shows "Wave Cleared -> Level Won, Reach the end". This spec assumes the arena clearing is the win, which makes the "reached exit" reason a Later item.
 - OQ-W2. Are the four stats the right ones? They are the minimum to show "why" and are cheap, but each needs an emitter. If any is unavailable, drop the row rather than showing 0.
 - OQ-W3. Is there a Next Level for Tier 0? (`flow.md` OQ-F2.)
 - OQ-W4. Should a win need a time-remaining bonus or grade to give the player a reason to replay (pillar 2, skill depth)? Deferred, but the data above already supports it.
+
+### [win#2] derived - design/ux/win.md - Purpose
+Tell the player they won **and why**. The GDD win condition is: "Fight your way to the end of the level while beating Rust enemies" and "Defeat Wave / Clear Arena ... in time". The screen must show that the arena was cleared and that it was done in time, using real numbers from the run.
 
 ### [canon#4] derived - design/lore/canon.md - World (from Theme)
 Lived-in, human, culturally rich. Corner shops, murals celebrating local heroes, open windows with music, basketball courts, food stalls, community gardens. Casual fits, expressive colours.
@@ -307,10 +311,10 @@ The HUD must not overlap the action zone. The arena camera and floor (Camera & B
 **Passage:** The subtitle "Fists of the Fallen City" and the tagline "fight back against Corrupt private security force" are the only narrative content. The Pitch adds "urban districts overtaken Rush a corrupt private Security Force." There is no section for story, characters, setting history, or endings. The mechanics list ends at "Defeat Wave / Clear Arena to win the level in time frame."
 **Why it matters:** "Rebellion" implies a movement, stakes, and escalation. The structure (clear arena, beat the timer, repeat) delivers only repetition. Nothing says why the player fights, what winning a level changes, or what the final victory looks like.
 
-### [feasibility-lead#5] reference - gdd-review-kit-main/reviews/feasibility-lead.md - Finding 5: Success criteria and the definition of "prototype" are vague, and the cost model has no cut plan
-- Problem: The budget is a single unit ("tokens") with no conversion to time or cost, and the 200-token figures are unfalsifiable. The document doesn't say what happens if estimates are exceeded. Levels are won by "Defeat Wave / Clear Arena ... in time frame", but there is no level count, no time-limit tuning approach, and no minimum viable slice.
-- Passage: "200 tokens" entries; "Defeat Wave / Clear Arena to win the level in time frame".
-- Severity: MINOR (compounds Finding 1)
+### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
+**Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
+**Source:** Pitch: "fight through urban districts overtaken Rush a corrupt private Security Force"; the only level structure given is "Defeat Wave / Clear Arena".
+**Severity:** MINOR
 
 ### [adversarial-qa#1] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 1: Win condition and fail state are contradictory or undefined (BLOCKING)
 **Problem:** The document gives two different win conditions and no lose condition. "Defeat Wave / Clear Arena to win the level in time frame" is ambiguous. It could mean clearing every wave, clearing the arena, or surviving until the timer ends. Nothing says what happens if the timer expires with enemies still alive. Nothing says what happens if the player's health reaches zero. There is no lives, continue or retry rule.
@@ -346,4 +350,4 @@ Agent Development role Gameplay Effect Player Mechanics Movement, jump, The play
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 373 chunks across 37 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.

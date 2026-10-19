@@ -58,6 +58,8 @@ Combat signal colours (reserved, never used for decoration):
 | Name | Hex | Use |
 |---|---|---|
 | Telegraph Red | #FF3B30 | Enemy attack warning only |
+| Overload Violet | #8E5BFF | Enemy phase-2 power glow (Calder, Voss drones, MegaDrone, Varr cracks); owner approved, replaces the GDD's red glow |
+| Overload Ice | #BFF4FF | Phase-2 core glow (Holt, Varr Rust Collapse charge) |
 | Hit White | #FFFFFF | Hit flash |
 | Spark Cream | #FFF6D6 | Spark core |
 | Low Health | #D9822B then #FF3B30 | Bar at 50 percent and 25 percent |
@@ -100,7 +102,7 @@ Font loading: canvas text must not draw before fonts are ready. Call `waitForFon
 
 Do
 - Keep silhouettes distinct: Zed is warm and round, Rust is cold and boxy.
-- Reserve Telegraph Red for enemy warnings and the low-time pulse.
+- Reserve Telegraph Red for enemy warnings and the low-time pulse. Enemy bodies never use red; phase-2 power states use Overload Violet (owner decision).
 - Use outlines on every interactive or combat element.
 - Keep the HUD readable at a glance: bar plus number, big timer.
 

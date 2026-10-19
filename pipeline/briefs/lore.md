@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-10-19T12:55:44.070Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-10-19T13:25:33.914Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -192,7 +192,7 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
 ```
 
-## Retrieved GDD passages (33)
+## Retrieved GDD passages (34)
 ### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
 Character – the hero
 Zed — The Boy from BrickRed Alley
@@ -223,16 +223,6 @@ Impactful, Fast-paced combat | Skill depth through combos and Defence | Wave-cle
 Punchy hits" with light and heavy attacks and pick-up objects, in a fast 2D side-scrolling brawl. | Combos and Juggle routes" on offense, plus block, dodge, and parry on defence. | Enemies spawn in waves, and the player must "Defeat Wave / Clear Arena to win the level in time frame", tracked by the Timer Agent.
 The Win and Lose conditions.
 
-### [the-rebellion#10] primary - GameDesignDocument/The Rebellion.docx
-Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
-Character – the Enemy
-Enemy Faction Lore: RUST — The Private Security Force of Fallen City
-Overview
-Rust began as a private security contractor hired to “stabilize” Fallen City after years of political decay and rising crime. But once they were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening control over every district and crushing resistance with brutal efficiency.
-Their name comes from their signature oxidized metal armour, a symbol of decay — a reminder that Fallen City is rotting under their rule.
-Rust’s soldiers are not just guards. They are enforcers, hunters, and executioners. Each unit is trained to suppress civilians, eliminate rebels, and maintain absolute control.
-⚙️ Rust’s Origin
-
 ### [the-rebellion#9] primary - GameDesignDocument/The Rebellion.docx
 Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.
 Wave-clearing under pressure — fighting groups is nothing new; he grew up protecting younger kids from trouble.
@@ -260,6 +250,16 @@ Characters feel connected — casual fits, expressive colours
 Colour palette: mustard yellow, brick red, forest green, warm browns
 Atmosphere: hopeful, energetic, full of personality and stories
 The Story
+
+### [the-rebellion#10] primary - GameDesignDocument/The Rebellion.docx
+Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
+Character – the Enemy
+Enemy Faction Lore: RUST — The Private Security Force of Fallen City
+Overview
+Rust began as a private security contractor hired to “stabilize” Fallen City after years of political decay and rising crime. But once they were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening control over every district and crushing resistance with brutal efficiency.
+Their name comes from their signature oxidized metal armour, a symbol of decay — a reminder that Fallen City is rotting under their rule.
+Rust’s soldiers are not just guards. They are enforcers, hunters, and executioners. Each unit is trained to suppress civilians, eliminate rebels, and maintain absolute control.
+⚙️ Rust’s Origin
 
 ### [rebellion-menu-desgin#3] primary - GameDesignDocument/Rebellion menu desgin.docx
 [table]
@@ -701,6 +701,13 @@ Tell the player they lost and **exactly why**, then get them back into the fight
 - "Local Heroes Benefit: Keep the Lights On": cream, forest-green text. Ties back to the original Local Heroes Mural idea.
 - Rust Notice 114, "CURFEW" struck through: brick red. It shows the Rust security force's control and the community defacing it.
 
+### [critic-log#5] derived - design/lore/critic-log.md - Audited and fine
+- Title "THE REBELLION" and subtitle "Fists of the Fallen City": match GDD title; "Fallen City" correct.
+- Option labels Fight, Controls, Options, Quit: short, active, fit the voice. FIGHT suits the "Fists" title. Note that Options has no spec and Quit is not meaningful in a browser (open question 7 in canon).
+- Poster "Local Heroes Benefit: Keep the Lights On": hopeful, community voice, matches the GDD's murals of local heroes. No change.
+- Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
+- Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
+
 ### [menu-copy#3] derived - design/lore/menu-copy.md - Background posters
 | id | text |
 |---|---|
@@ -710,12 +717,10 @@ Tell the player they lost and **exactly why**, then get them back into the fight
 | menu.poster.rust.struck | CURFEW (struck through, hand-inked cross-out) |
 The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Lights On"); splitting at the colon into title and line is allowed. If kept on one line, use the colon form.
 
-### [critic-log#5] derived - design/lore/critic-log.md - Audited and fine
-- Title "THE REBELLION" and subtitle "Fists of the Fallen City": match GDD title; "Fallen City" correct.
-- Option labels Fight, Controls, Options, Quit: short, active, fit the voice. FIGHT suits the "Fists" title. Note that Options has no spec and Quit is not meaningful in a browser (open question 7 in canon).
-- Poster "Local Heroes Benefit: Keep the Lights On": hopeful, community voice, matches the GDD's murals of local heroes. No change.
-- Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
-- Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
+### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
+**Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
+**Source:** Pitch: "fight through urban districts overtaken Rush a corrupt private Security Force"; the only level structure given is "Defeat Wave / Clear Arena".
+**Severity:** MINOR
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 373 chunks across 37 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.

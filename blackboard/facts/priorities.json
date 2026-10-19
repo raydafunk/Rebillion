@@ -19,7 +19,7 @@
     "npm test green; existing grunt and wave tests unchanged"
    ],
    "dependsOn": [],
-   "status": "todo",
+   "status": "implemented",
    "needsOwner": false
   },
   {

@@ -64,10 +64,10 @@
         "G4-prioritise"
       ],
       "produces": "facts/generated.json",
-      "status": "open",
-      "attempts": 0,
+      "status": "done",
+      "attempts": 1,
       "maxAttempts": 3,
-      "note": "reset: G3-find-gaps reopened"
+      "note": "GAP-004 implemented"
     },
     {
       "id": "G6-review",
@@ -78,10 +78,10 @@
         "G5-generate-code"
       ],
       "produces": "facts/review.json",
-      "status": "open",
-      "attempts": 0,
+      "status": "done",
+      "attempts": 1,
       "maxAttempts": 3,
-      "note": "reset: G3-find-gaps reopened"
+      "note": "pass"
     }
   ]
 }

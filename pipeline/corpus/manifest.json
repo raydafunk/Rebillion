@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-19T12:55:43.978Z",
+  "builtAt": "2026-10-19T13:25:33.872Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
@@ -87,12 +87,12 @@
     {
       "file": "blackboard/log.md",
       "authority": "reference",
-      "bytes": 5792,
-      "sha1": "72e454dc0018",
+      "bytes": 6648,
+      "sha1": "cb7ad28fbe85",
       "status": "ingested",
       "docId": "log",
       "chunks": 1,
-      "chars": 5773,
+      "chars": 6629,
       "warnings": []
     },
     {
@@ -104,6 +104,17 @@
       "docId": "asset-manifest",
       "chunks": 13,
       "chars": 7347,
+      "warnings": []
+    },
+    {
+      "file": "design/art/enemy-sprite-specs.md",
+      "authority": "derived",
+      "bytes": 42019,
+      "sha1": "ec6d70d5a142",
+      "status": "ingested",
+      "docId": "enemy-sprite-specs",
+      "chunks": 42,
+      "chars": 40644,
       "warnings": []
     },
     {
@@ -120,12 +131,12 @@
     {
       "file": "design/art/style-guide.md",
       "authority": "derived",
-      "bytes": 12049,
-      "sha1": "e0902ff2a276",
+      "bytes": 12209,
+      "sha1": "1eb40c633737",
       "status": "ingested",
       "docId": "style-guide",
       "chunks": 15,
-      "chars": 11596,
+      "chars": 11843,
       "warnings": []
     },
     {

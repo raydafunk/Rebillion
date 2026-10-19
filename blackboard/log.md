@@ -69,3 +69,7 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps
 2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1
 2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner
+2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1
+2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented
+2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1
+2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass

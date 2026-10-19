@@ -1,21 +1,10 @@
 {
-  "builtAt": "2026-10-19T11:12:50.419Z",
-  "attempt": 1,
-  "item": "GAP-004 step 3",
-  "ownerAgent": "encounter-agent",
-  "filesChanged": [
-    "src/enemies/gruntData.js"
-  ],
-  "testsAdded": [
-    "src/enemies/RustGrunt.test.js"
-  ],
-  "npmTest": {
-    "passed": 31,
-    "failed": 0
-  },
+  "builtAt": "2026-10-19T14:00:00.000Z", "attempt": 1,
+  "item": "GAP-004", "ownerAgent": "encounter-agent",
+  "filesChanged": ["src/enemies/gruntData.js", "src/enemies/RustGrunt.js"],
+  "testsAdded": ["src/enemies/RustGrunt.test.js"],
+  "npmTest": {"passed": 31, "failed": 0},
   "eventsAdded": [],
-  "openQuestions": [
-    "src/enemies/RustGrunt.test.js is outside allowedFiles (gruntData.js only); edit is additive, per the director's instruction."
-  ],
+  "openQuestions": ["All three jab hits reuse the single GRUNT_ATTACK_COMBAT.attack numbers (8 dmg, 220 kb, 250 hitstun); no per-hit tuning exists in the GDD. Timings 100/260/420 ms and +150 ms follow-through are placeholders in gruntData.js. attackMs grew from 250 to 570 (derived)."],
   "requests": []
 }

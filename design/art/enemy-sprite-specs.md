@@ -6,7 +6,7 @@ Sources of truth, read in full: `content/enemies/rust-roster.json` (grunt), `con
 
 ## 0. Decisions that need owner approval (summary)
 
-1. Phase-2 "red" glows (Calder suit, Voss drones) break the no-red-on-enemies rule. Recommended: Overload Violet `#8E5BFF` with Overload Ice `#BFF4FF` core. See section 3.1.
+1. Phase-2 "red" glows (Calder suit, Voss drones) break the no-red-on-enemies rule. APPROVED by the owner: Overload Violet `#8E5BFF` with Overload Ice `#BFF4FF` core. See section 3.1.
 2. KO is a knockdown, never a kill. Spec in section 3.2. The boss defeat beat (what the player sees when a boss reaches 0 HP) is a narrative question for the owner.
 3. Art style for Rust. The style guide says Rust stays flat vector next to pixel Zed, but Open Question 1 is still open. This spec is written for flat vector delivered as PNG. If the owner picks pixel art, see section 1.2 note.
 4. Copper Fang's "copper" gauntlets cannot be copper-orange (red-orange ban). Recommended muted Bronze `#9A8466`. Section 2.3.
@@ -128,7 +128,7 @@ The GDD and JSON say copper-toned gauntlets. True copper is red-orange and colli
 
 Conflict: the GDD says Calder's suit "glows red" and Voss's drones "turn red" in phase 2. Style guide and hit-feedback spec reserve red for warnings; a red enemy during a phase-2 fight would make every telegraph less readable at exactly the moment the fights get busiest. The JSON already hedges ("non-red cue tint" for Calder, "red-lit" for MegaDrone).
 
-Recommendation (needs owner decision): phase-2 power state is Overload Violet `#8E5BFF` with an Overload Ice `#BFF4FF` core.
+Decision (owner approved violet): phase-2 power state is Overload Violet `#8E5BFF` with an Overload Ice `#BFF4FF` core.
 
 - Calder: seams, hydraulic joints, back vents and visor rim glow violet, pulsing (runtime alpha pulse 1 Hz), at most 15 percent of the sprite area. Overclock Mode "the red glow itself" becomes the violet pulse.
 - Voss P2: drones (Drone P2_ clips) get violet lens rims and a violet ring under the body; MegaDrone is authored violet-lit by default (it only exists in phase 2). Voss's coat gets thin violet seam lights. Arena lights dim is a background FX.
@@ -337,7 +337,7 @@ Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from t
 ## 7. Open questions
 
 1. Rust art style: flat vector (guide default) or pixel art to match Zed (section 1.2).
-2. Phase-2 colour: Overload Violet and Ice (section 3.1), or an alternative.
+2. Phase-2 colour: DECIDED, Overload Violet and Ice (section 3.1).
 3. Wren's "Rooftop Execution" name and Varr's "executioners" wording: art shows knockdowns only; the owner may rename the move.
 4. Boss defeat beat: knockdown only (current) or a story beat (kneel, retreat, surrender)?
 5. Arena order, to settle the Calder, Wren, Holt priority.

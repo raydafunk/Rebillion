@@ -1,5 +1,5 @@
 # Content brief: enemies
-_Generated 2026-10-19T12:55:44.077Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
+_Generated 2026-10-19T13:25:33.919Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
 
 **Writer agent:** enemy-designer-agent  |  **Output dir:** `content/enemies/`  |  **Produces:** Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.
 
@@ -72,6 +72,10 @@ Example:
 - `rust-overseer-calder` Overseer Rhea Calder (content/enemies/rust-gdd-units.json)
 - `rust-overseer-wren` Overseer Silas Wren (content/enemies/rust-gdd-units.json)
 - `rust-overseer-holt` Overseer Dr. Maren Holt (content/enemies/rust-gdd-units.json)
+- `rust-voss-drone` Rust Surveillance Drone (content/enemies/rust-gdd-units.json)
+- `rust-voss-megadrone` Rust MegaDrone (content/enemies/rust-gdd-units.json)
+- `rust-hologram-decoy` Rust Hologram Decoy (content/enemies/rust-gdd-units.json)
+- `rust-elite-drone` Rust Elite Drone (content/enemies/rust-gdd-units.json)
 - `rust-grunt` Rust Grunt (content/enemies/rust-roster.json)
 
 
@@ -97,6 +101,15 @@ export const GRUNT_ANIMS = {
 };
 export const TELEGRAPH_FX_KEY = 'fx.telegraph';
 
+// Rust Jab 1-2-3. atMs = when each hit-request is emitted, measured from the start of the attack state.
+// Per-hit numbers are the shared grunt attack numbers from combatData.js.
+const JAB_STRING = Object.freeze([100, 260, 420].map((atMs) => Object.freeze({
+  atMs,
+  damage: GRUNT_ATTACK_COMBAT.attack.damage,
+  knockback: GRUNT_ATTACK_COMBAT.attack.knockback,
+  hitstun: GRUNT_ATTACK_COMBAT.attack.hitstun,
+})));
+
 export const GRUNT = {
   team: 'rust',
   spriteKey: GRUNT_SPRITE_KEY,
@@ -108,8 +121,8 @@ export const GRUNT = {
   circleRadius: 180,    // hold at this distance when no attacker slot is free
   spawnIdleMs: 400,     // idle after spawn before chasing
   telegraphMs: 450,     // visible wind-up before the hit (keep >= 300 for readability)
-  attackMs: 250,        // total attack state length
-  hitActiveAtMs: 100,   // hit-request is emitted this far into the attack state
+  attackMs: JAB_STRING[JAB_STRING.length - 1].atMs + 150, // total attack state length: last jab + follow-through
+  jabString: JAB_STRING, // 1-2-3 Rust Jab: one hit-request per entry, each with its own attackId
   recoverMs: 700,
   hitstunMinMs: 150,
   knockbackDecay: 600,  // px/s^2
@@ -145,7 +158,20 @@ export const ATTACKER_CAP = 2;
   },
   "sprites": {
     "zed": "assets/sprites/zed-placeholder.svg",
-    "rust.grunt": "assets/sprites/rust-grunt-placeholder.svg"
+    "rust.grunt": "assets/sprites/rust-grunt-placeholder.svg",
+    "rust.iron-line-cordon": "assets/sprites/rust-iron-line-cordon-placeholder.svg",
+    "rust.breaker": "assets/sprites/rust-breaker-placeholder.svg",
+    "rust.watcher": "assets/sprites/rust-watcher-placeholder.svg",
+    "rust.copper-fang": "assets/sprites/rust-copper-fang-placeholder.svg",
+    "rust.halden-varr": "assets/sprites/rust-halden-varr-placeholder.svg",
+    "rust.overseer-voss": "assets/sprites/rust-overseer-voss-placeholder.svg",
+    "rust.overseer-calder": "assets/sprites/rust-overseer-calder-placeholder.svg",
+    "rust.overseer-wren": "assets/sprites/rust-overseer-wren-placeholder.svg",
+    "rust.overseer-holt": "assets/sprites/rust-overseer-holt-placeholder.svg",
+    "rust.drone": "assets/sprites/rust-drone-placeholder.svg",
+    "rust.megadrone": "assets/sprites/rust-megadrone-placeholder.svg",
+    "rust.hologram": "assets/sprites/rust-hologram-placeholder.svg",
+    "rust.elite-drone": "assets/sprites/rust-elite-drone-placeholder.svg"
   },
   "animations": {
     "zed": [
@@ -163,7 +189,274 @@ export const ATTACKER_CAP = 2;
       "rust.grunt.telegraph",
       "rust.grunt.attack",
       "rust.grunt.hit",
-      "rust.grunt.ko"
+      "rust.grunt.ko",
+      "rust.grunt.telegraph.headbutt",
+      "rust.grunt.attack.headbutt",
+      "rust.grunt.telegraph.jab-combo",
+      "rust.grunt.attack.jab-combo"
+    ],
+    "rust.iron-line-cordon": [
+      "rust.iron-line-cordon.idle",
+      "rust.iron-line-cordon.walk",
+      "rust.iron-line-cordon.telegraph.push-bar-sweep",
+      "rust.iron-line-cordon.attack.push-bar-sweep",
+      "rust.iron-line-cordon.hit",
+      "rust.iron-line-cordon.ko",
+      "rust.iron-line-cordon.telegraph.headbutt",
+      "rust.iron-line-cordon.attack.headbutt"
+    ],
+    "rust.breaker": [
+      "rust.breaker.idle",
+      "rust.breaker.walk",
+      "rust.breaker.telegraph.gauntlet-smash",
+      "rust.breaker.attack.gauntlet-smash",
+      "rust.breaker.hit",
+      "rust.breaker.ko",
+      "rust.breaker.telegraph.rust-uppercut",
+      "rust.breaker.attack.rust-uppercut",
+      "rust.breaker.telegraph.body-check",
+      "rust.breaker.attack.body-check"
+    ],
+    "rust.watcher": [
+      "rust.watcher.idle",
+      "rust.watcher.walk",
+      "rust.watcher.telegraph.taser-shot",
+      "rust.watcher.attack.taser-shot",
+      "rust.watcher.hit",
+      "rust.watcher.ko",
+      "rust.watcher.telegraph.baton-strike",
+      "rust.watcher.attack.baton-strike"
+    ],
+    "rust.copper-fang": [
+      "rust.copper-fang.idle",
+      "rust.copper-fang.walk",
+      "rust.copper-fang.telegraph.gauntlet-lunge",
+      "rust.copper-fang.attack.gauntlet-lunge",
+      "rust.copper-fang.hit",
+      "rust.copper-fang.hit.shield",
+      "rust.copper-fang.transition.shield-break",
+      "rust.copper-fang.telegraph.fang-jab",
+      "rust.copper-fang.attack.fang-jab",
+      "rust.copper-fang.telegraph.copper-cross",
+      "rust.copper-fang.attack.copper-cross",
+      "rust.copper-fang.telegraph.shield-bash",
+      "rust.copper-fang.attack.shield-bash",
+      "rust.copper-fang.p2.idle",
+      "rust.copper-fang.p2.walk",
+      "rust.copper-fang.p2.telegraph.hook",
+      "rust.copper-fang.p2.attack.hook",
+      "rust.copper-fang.p2.hit",
+      "rust.copper-fang.p2.ko",
+      "rust.copper-fang.p2.telegraph.fang-jab",
+      "rust.copper-fang.p2.attack.fang-jab",
+      "rust.copper-fang.p2.telegraph.copper-cross",
+      "rust.copper-fang.p2.attack.copper-cross"
+    ],
+    "rust.halden-varr": [
+      "rust.halden-varr.idle",
+      "rust.halden-varr.walk",
+      "rust.halden-varr.telegraph.authority-strike",
+      "rust.halden-varr.attack.authority-strike",
+      "rust.halden-varr.hit",
+      "rust.halden-varr.telegraph.command-shield",
+      "rust.halden-varr.hold.command-shield",
+      "rust.halden-varr.hit.shield",
+      "rust.halden-varr.telegraph.command-override",
+      "rust.halden-varr.attack.command-override",
+      "rust.halden-varr.telegraph.adaptive-counter",
+      "rust.halden-varr.stance.anti-air",
+      "rust.halden-varr.stance.anti-rush",
+      "rust.halden-varr.stance.anti-combo",
+      "rust.halden-varr.transition.phase2",
+      "rust.halden-varr.p2.idle",
+      "rust.halden-varr.p2.walk",
+      "rust.halden-varr.p2.telegraph.authority-strike",
+      "rust.halden-varr.p2.attack.authority-strike",
+      "rust.halden-varr.p2.hit",
+      "rust.halden-varr.p2.ko",
+      "rust.halden-varr.p2.telegraph.rust-collapse",
+      "rust.halden-varr.p2.attack.rust-collapse",
+      "rust.halden-varr.p2.telegraph.breaker-slam",
+      "rust.halden-varr.p2.attack.breaker-slam",
+      "rust.halden-varr.p2.telegraph.taser-shot",
+      "rust.halden-varr.p2.attack.taser-shot",
+      "rust.halden-varr.p2.telegraph.fang-combo",
+      "rust.halden-varr.p2.attack.fang-combo",
+      "rust.halden-varr.p2.telegraph.drone-command",
+      "rust.halden-varr.p2.attack.drone-command"
+    ],
+    "rust.overseer-voss": [
+      "rust.overseer-voss.idle",
+      "rust.overseer-voss.walk",
+      "rust.overseer-voss.hit",
+      "rust.overseer-voss.ko",
+      "rust.overseer-voss.telegraph.predictive-strike",
+      "rust.overseer-voss.attack.predictive-strike",
+      "rust.overseer-voss.telegraph.drone-swarm",
+      "rust.overseer-voss.attack.drone-swarm",
+      "rust.overseer-voss.telegraph.hologram-decoy",
+      "rust.overseer-voss.attack.hologram-decoy",
+      "rust.overseer-voss.telegraph.data-spike",
+      "rust.overseer-voss.attack.data-spike",
+      "rust.overseer-voss.transition.phase2",
+      "rust.overseer-voss.p2.telegraph.predictive-lockdown",
+      "rust.overseer-voss.p2.attack.predictive-lockdown",
+      "rust.overseer-voss.p2.telegraph.hologram-assault",
+      "rust.overseer-voss.p2.attack.hologram-assault",
+      "rust.overseer-voss.p2.telegraph.drone-fusion",
+      "rust.overseer-voss.p2.attack.drone-fusion",
+      "rust.overseer-voss.p2.telegraph.system-crash",
+      "rust.overseer-voss.p2.attack.system-crash",
+      "rust.overseer-voss.p2.idle",
+      "rust.overseer-voss.p2.walk",
+      "rust.overseer-voss.p2.hit",
+      "rust.overseer-voss.p2.ko",
+      "rust.overseer-voss.p2.telegraph.predictive-strike",
+      "rust.overseer-voss.p2.attack.predictive-strike",
+      "rust.overseer-voss.p2.telegraph.drone-swarm",
+      "rust.overseer-voss.p2.attack.drone-swarm",
+      "rust.overseer-voss.p2.telegraph.hologram-decoy",
+      "rust.overseer-voss.p2.attack.hologram-decoy",
+      "rust.overseer-voss.p2.telegraph.data-spike",
+      "rust.overseer-voss.p2.attack.data-spike"
+    ],
+    "rust.overseer-calder": [
+      "rust.overseer-calder.idle",
+      "rust.overseer-calder.walk",
+      "rust.overseer-calder.hit",
+      "rust.overseer-calder.ko",
+      "rust.overseer-calder.telegraph.forge-hammer",
+      "rust.overseer-calder.attack.forge-hammer",
+      "rust.overseer-calder.telegraph.hydraulic-grab",
+      "rust.overseer-calder.attack.hydraulic-grab",
+      "rust.overseer-calder.telegraph.steam-burst",
+      "rust.overseer-calder.attack.steam-burst",
+      "rust.overseer-calder.hold.steam-burst",
+      "rust.overseer-calder.telegraph.conveyor-trap",
+      "rust.overseer-calder.attack.conveyor-trap",
+      "rust.overseer-calder.transition.phase2",
+      "rust.overseer-calder.p2.telegraph.furnace-slam",
+      "rust.overseer-calder.p2.attack.furnace-slam",
+      "rust.overseer-calder.prop.arm-punch",
+      "rust.overseer-calder.prop.arm-grab",
+      "rust.overseer-calder.p2.idle",
+      "rust.overseer-calder.p2.walk",
+      "rust.overseer-calder.p2.hit",
+      "rust.overseer-calder.p2.ko",
+      "rust.overseer-calder.p2.telegraph.forge-hammer",
+      "rust.overseer-calder.p2.attack.forge-hammer",
+      "rust.overseer-calder.p2.telegraph.hydraulic-grab",
+      "rust.overseer-calder.p2.attack.hydraulic-grab",
+      "rust.overseer-calder.p2.telegraph.steam-burst",
+      "rust.overseer-calder.p2.attack.steam-burst",
+      "rust.overseer-calder.p2.hold.steam-burst",
+      "rust.overseer-calder.p2.telegraph.conveyor-trap",
+      "rust.overseer-calder.p2.attack.conveyor-trap"
+    ],
+    "rust.overseer-wren": [
+      "rust.overseer-wren.idle",
+      "rust.overseer-wren.walk",
+      "rust.overseer-wren.hit",
+      "rust.overseer-wren.ko",
+      "rust.overseer-wren.telegraph.grapple-dash",
+      "rust.overseer-wren.attack.grapple-dash",
+      "rust.overseer-wren.perch",
+      "rust.overseer-wren.airborne",
+      "rust.overseer-wren.telegraph.skyline-snare",
+      "rust.overseer-wren.attack.skyline-snare",
+      "rust.overseer-wren.telegraph.silent-step",
+      "rust.overseer-wren.telegraph.rooftop-execution",
+      "rust.overseer-wren.attack.rooftop-execution",
+      "rust.overseer-wren.land.rooftop-execution",
+      "rust.overseer-wren.idle.cloak",
+      "rust.overseer-wren.walk.cloak",
+      "rust.overseer-wren.p2.telegraph.grapple-clone",
+      "rust.overseer-wren.p2.attack.grapple-clone",
+      "rust.overseer-wren.p2.telegraph.shadow-pulse",
+      "rust.overseer-wren.p2.attack.shadow-pulse",
+      "rust.overseer-wren.p2.telegraph.vanish-storm",
+      "rust.overseer-wren.p2.attack.vanish-storm",
+      "rust.overseer-wren.p2.silhouette.vanish-storm",
+      "rust.overseer-wren.p2.idle",
+      "rust.overseer-wren.p2.walk",
+      "rust.overseer-wren.p2.hit",
+      "rust.overseer-wren.p2.ko",
+      "rust.overseer-wren.p2.telegraph.grapple-dash",
+      "rust.overseer-wren.p2.attack.grapple-dash",
+      "rust.overseer-wren.p2.perch",
+      "rust.overseer-wren.p2.airborne",
+      "rust.overseer-wren.p2.telegraph.skyline-snare",
+      "rust.overseer-wren.p2.attack.skyline-snare",
+      "rust.overseer-wren.p2.telegraph.silent-step",
+      "rust.overseer-wren.p2.telegraph.rooftop-execution",
+      "rust.overseer-wren.p2.attack.rooftop-execution",
+      "rust.overseer-wren.p2.land.rooftop-execution",
+      "rust.overseer-wren.p2.idle.cloak",
+      "rust.overseer-wren.p2.walk.cloak"
+    ],
+    "rust.overseer-holt": [
+      "rust.overseer-holt.idle",
+      "rust.overseer-holt.walk",
+      "rust.overseer-holt.hit",
+      "rust.overseer-holt.ko",
+      "rust.overseer-holt.telegraph.gas-release",
+      "rust.overseer-holt.attack.gas-release",
+      "rust.overseer-holt.telegraph.toxin-burst",
+      "rust.overseer-holt.attack.toxin-burst",
+      "rust.overseer-holt.telegraph.sedative-shot",
+      "rust.overseer-holt.attack.sedative-shot",
+      "rust.overseer-holt.transition.phase2",
+      "rust.overseer-holt.p2.telegraph.corrosive-wave",
+      "rust.overseer-holt.p2.attack.corrosive-wave",
+      "rust.overseer-holt.p2.telegraph.compliance-protocol",
+      "rust.overseer-holt.p2.attack.compliance-protocol",
+      "rust.overseer-holt.p2.idle",
+      "rust.overseer-holt.p2.walk",
+      "rust.overseer-holt.p2.hit",
+      "rust.overseer-holt.p2.ko",
+      "rust.overseer-holt.p2.telegraph.gas-release",
+      "rust.overseer-holt.p2.attack.gas-release",
+      "rust.overseer-holt.p2.telegraph.toxin-burst",
+      "rust.overseer-holt.p2.attack.toxin-burst",
+      "rust.overseer-holt.p2.telegraph.sedative-shot",
+      "rust.overseer-holt.p2.attack.sedative-shot"
+    ],
+    "rust.drone": [
+      "rust.drone.idle",
+      "rust.drone.telegraph",
+      "rust.drone.attack",
+      "rust.drone.hit",
+      "rust.drone.ko",
+      "rust.drone.p2.idle",
+      "rust.drone.p2.telegraph",
+      "rust.drone.p2.attack",
+      "rust.drone.p2.hit",
+      "rust.drone.p2.ko"
+    ],
+    "rust.megadrone": [
+      "rust.megadrone.idle",
+      "rust.megadrone.spawn",
+      "rust.megadrone.telegraph.sweeping-laser",
+      "rust.megadrone.attack.sweeping-laser",
+      "rust.megadrone.hit",
+      "rust.megadrone.ko",
+      "rust.megadrone.turn"
+    ],
+    "rust.hologram": [
+      "rust.hologram.idle",
+      "rust.hologram.walk",
+      "rust.hologram.spawn",
+      "rust.hologram.ko",
+      "rust.hologram.telegraph.punch",
+      "rust.hologram.attack.punch"
+    ],
+    "rust.elite-drone": [
+      "rust.elite-drone.idle",
+      "rust.elite-drone.telegraph",
+      "rust.elite-drone.attack",
+      "rust.elite-drone.hit",
+      "rust.elite-drone.ko",
+      "rust.elite-drone.spawn"
     ]
   },
   "backgrounds": {
@@ -198,7 +491,8 @@ export const ATTACKER_CAP = 2;
   "menuFonts": {
     "display": "Anton, Impact, sans-serif",
     "mono": "'Courier Prime', 'Courier New', monospace"
-  }
+  },
+  "enemySpriteSpec": "design/art/enemy-sprite-specs.md"
 }
 ```
 
@@ -264,6 +558,8 @@ Combat signal colours (reserved, never used for decoration):
 | Name | Hex | Use |
 |---|---|---|
 | Telegraph Red | #FF3B30 | Enemy attack warning only |
+| Overload Violet | #8E5BFF | Enemy phase-2 power glow (Calder, Voss drones, MegaDrone, Varr cracks); owner approved, replaces the GDD's red glow |
+| Overload Ice | #BFF4FF | Phase-2 core glow (Holt, Varr Rust Collapse charge) |
 | Hit White | #FFFFFF | Hit flash |
 | Spark Cream | #FFF6D6 | Spark core |
 | Low Health | #D9822B then #FF3B30 | Bar at 50 percent and 25 percent |
@@ -306,7 +602,7 @@ Font loading: canvas text must not draw before fonts are ready. Call `waitForFon
 
 Do
 - Keep silhouettes distinct: Zed is warm and round, Rust is cold and boxy.
-- Reserve Telegraph Red for enemy warnings and the low-time pulse.
+- Reserve Telegraph Red for enemy warnings and the low-time pulse. Enemy bodies never use red; phase-2 power states use Overload Violet (owner decision).
 - Use outlines on every interactive or combat element.
 - Keep the HUD readable at a glance: bar plus number, big timer.
 
@@ -362,7 +658,7 @@ Layering (back to front): menu.sky, menu.buildings.far (parallax slow), menu.bui
 9. Menu SVGs are placeholders generated by script; final hand-polished art not produced. Brick wall has no texture beyond mortar lines.
 ```
 
-## Retrieved GDD passages (21)
+## Retrieved GDD passages (22)
 ### [the-rebellion#5] primary - GameDesignDocument/The Rebellion.docx
 [table]
 Agent | Technical constraint | Desponds On | Budget
@@ -376,6 +672,24 @@ Asset & Animation Lead | Sprite source, animation list, hit stop, and feedback |
 Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy failsafe | Wave Spawner | 
 Menu & UI Agent | HUD (health, timer), win/lose screens, menus | Game State, Health & Hitbox | Medium Token use as well
 Team Lead agent | Builds the Agent Orchestration |  | 
+
+### [the-rebellion#6] primary - GameDesignDocument/The Rebellion.docx
+Game Engine
+Phaser
+Why Phaser is use for the game building for now.
+2D side-scrolling: Phaser is built for 2D and has Arcade physics, sprite animation, and input handling.
+Prototype goal: the GDD says Phaser is for "creating a playable prototype". It runs in the browser with no install, so playtesting and sharing a build are easy.
+AI-assisted build: the Technical Strategy budgets in tokens, which suggests AI agents write the code. Phaser uses JavaScript or TypeScript, which AI agents oversee well, and it has plenty of documentation and examples.
+Small scope: Tier 0 is one character, one enemy type, waves, and a timer. Phaser manages that without much setup.
+Theme of the game
+Background Themes
+Takeaway: Livedin, human, culturally rich.
+Corner shops, murals celebrating local heroes, open windows with music drifting out
+Basketball courts, food stalls, community gardens
+Characters feel connected — casual fits, expressive colours
+Colour palette: mustard yellow, brick red, forest green, warm browns
+Atmosphere: hopeful, energetic, full of personality and stories
+The Story
 
 ### [the-rebellion#3] primary - GameDesignDocument/The Rebellion.docx
 [table]
@@ -434,30 +748,26 @@ Every Rust attack must be dodgeable by a player who reacts to the cue.
 - Telegraph colour is reserved (see style guide). Do not use it for any other effect.
 - Do not interrupt a windup by hit-stop on other characters.
 
-### [style-guide#10] derived - design/art/style-guide.md - 6. Do and Don't
-Do
-- Keep silhouettes distinct: Zed is warm and round, Rust is cold and boxy.
-- Reserve Telegraph Red for enemy warnings and the low-time pulse.
-- Use outlines on every interactive or combat element.
-- Keep the HUD readable at a glance: bar plus number, big timer.
-Don't
-- Don't use brick red or red-orange on enemies, which confuses damage and telegraph cues.
-- Don't put busy mural detail behind the play lane.
-- Don't add gradients, blur, or textures (breaks flat-vector consistency).
-- Don't mix pixel art and vector assets, except the approved case: pixel-art Zed over a vector world. Keep Zed's outline colour, palette and flat shading so he still sits in the same scene, and don't apply smoothing filters to him.
-- Don't rely on colour alone: telegraphs also use shape (icon) and motion.
+### [enemy-sprite-specs#26] derived - design/art/enemy-sprite-specs.md - 5. Unit specs
+Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from the unit JSON. "Key pose" = what the silhouette must show at the peak of the wind-up.
 
-### [asset-manifest#7] derived - design/art/asset-manifest.md - Rust Grunt (one enemy type), frame 128x128
-| Key | Animation | Frames | FPS | Loop | Owner |
-|---|---|---|---|---|---|
-| rust.grunt (sprite) | static placeholder | 1 | n/a | n/a | ANIM |
-| rust.grunt.idle | idle | 4 | 6 | yes | ANIM |
-| rust.grunt.walk | walk | 6 | 10 | yes | ANIM |
-| rust.grunt.telegraph | attack windup | 3 | 8 (about 400ms) | no | ANIM |
-| rust.grunt.attack | strike and recover | 4 | 20 | no | ANIM |
-| rust.grunt.hit | hit reaction | 2 | 12 | no | ANIM |
-| rust.grunt.ko | knockout | 5 | 10 | no | ANIM |
-Total: 24 frames. Placeholder: assets/sprites/rust-grunt-placeholder.svg.
+### [enemy-sprite-specs#9] derived - design/art/enemy-sprite-specs.md - 1.4 Folders, files, keys (mirrors Zed's layout)
+- Unit folder: sprite key with dots replaced by dashes: `assets/sprites/rust-grunt/`, `assets/sprites/rust-iron-line-cordon/`, `rust-breaker`, `rust-watcher`, `rust-copper-fang`, `rust-halden-varr`, `rust-overseer-voss`, `rust-overseer-calder`, `rust-overseer-wren`, `rust-overseer-holt`, `rust-drone`, `rust-megadrone`, `rust-hologram`, `rust-elite-drone`.
+- State folder (PascalCase, underscore separates state and move): `Idle`, `Walk`, `Hit`, `Ko`, `Telegraph`, `Attack`, `Telegraph_GauntletSmash`, `Attack_GauntletSmash`, `Hold_SteamBurst`, `Transition_Phase2`, and so on. Phase-2 variants carry a `P2_` prefix: `P2_Idle`, `P2_Telegraph_RustCollapse`.
+- Key pose (one static image per state, used for the Phaser texture before animations register, and as a fallback): `assets/sprites/<unit>/<State>/rotations/east.png` and `west.png`. For Telegraph states the key pose is the peak wind-up frame; for Attack states it is the strike frame; for other states it is frame 000.
+- Animation frames: `assets/sprites/<unit>/<State>/animations/<state-lowercase>/<dir>/frame_000.png`, `frame_001.png`, ... (3-digit, zero based, same as `zedFramePath`).
+- Example, Breaker smash wind-up: `assets/sprites/rust-breaker/Telegraph_GauntletSmash/rotations/east.png` and `.../Telegraph_GauntletSmash/animations/telegraph_gauntlet-smash/west/frame_004.png`. The animations subfolder name is the folder name lowercased with moves in kebab case.
+- Phaser texture key (like `zedTextureKey`): `<spriteKey>.<state>[.<move>][.p2].<dir>`; frame key adds `.<i>`. Animation key (what `asset-keys.json` lists): `rust.breaker.telegraph.gauntlet-smash`, `rust.copper-fang.p2.telegraph.hook`. Direction suffix `.east` / `.west` is appended by the loader exactly as Zed's (`zed.run.east`). Move ids are kebab case (`gauntlet-smash`).
+- The grunt's existing default clips keep their keys (`rust.grunt.telegraph`, `rust.grunt.attack`); later grunt moves add `.headbutt`, `.jab-combo`.
+- `assets/asset-keys.json` lists every animation key per unit (generated from the same table as this spec). The enemy-owner's data table (like `gruntData.js`) maps its states to these keys.
+
+### [enemy-sprite-specs#27] derived - design/art/enemy-sprite-specs.md - 5.1 rust.grunt (established)
+- Frame 128x128, figure 52x96 (scale 1.00, 0.87 of Zed). Folder `assets/sprites/rust-grunt/`.
+- Look: slate uniform, steel helmet, cyan visor, cheap oxidised plating kept to cold slate; boxy, symmetrical, no personal marks. Silhouette: square helmet on a square torso, arms straight to the sides.
+- Palette: Slate, Slate Light, Gunmetal (boots, gloves), Steel (helmet), Visor Cyan, Rust Ink.
+- Core clips (24 frames): Idle 4 (weight shift), Walk 6, Telegraph 3 (450 ms, arm pulled back, torso leaning away), Attack 4 (250 ms; hit-active frame 2, frame 4 open recovery), Hit 2, Ko 5.
+- Extra (16): Telegraph_Headbutt 3 (short wind-up, chin tucked) / Attack_Headbutt 4 (forward lunge, helmet leads); Telegraph_JabCombo 3 / Attack_JabCombo 6 (three 2-frame punches; hit-active frames 2, 4, 6). Timings for those two moves are not set (engine does not implement them yet).
+- Telegraph key pose: the strike arm cocked fully behind the back line, body lean past the foot line, visibly longer silhouette than Idle.
 
 ### [canon#3] derived - design/lore/canon.md - Factions
 - **Zed and the neighbourhood:** warm, rounded, casual, expressive. Fights back to get the city back.
@@ -467,9 +777,6 @@ Total: 24 frames. Placeholder: assets/sprites/rust-grunt-placeholder.svg.
 - Zed (pixel art): 128x128 frame, ~96px tall figure, mustard jacket, warm brown trousers, expressive casual fit. Facing right by default; flip for left. Pixel rules in section 1.
 - Rust enemies: same frame size, uniform and symmetrical, visor, no personality colour. Contrast through cold hue and straight geometry versus Zed's rounded forms.
 - Background: warm, busy mid-ground (corner shop, mural, court hoops, food stall, garden planters), calmer play lane. Background saturation and contrast lower than characters so fighters always pop. Play lane y 440 to 680 stays free of high-contrast detail.
-
-### [canon#5] derived - design/lore/canon.md - Palette words
-Mustard yellow, brick red, forest green, warm browns. Rust is the cold contrast (steel, visor cyan).
 
 ### [win#8] derived - design/ux/win.md - Data needs
 Delivered once with `round-won` or in a `round-stats` event (proposed), so the screen does not need to read live game state.
@@ -498,11 +805,6 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 **Health, damage and hitbox state (Systems Designer F4) and QA F1.** No agent owns health, damage or hitbox/hurtbox data. It is the shared state that every agent reads and writes, and it is also the missing input to the lose condition. This is the most likely integration failure point.
 **Timer time-out (Player Psychologist F2, Narrative Critic F3, QA F1).** Three lenses agree that time-out has no defined outcome. For the build, that means the Game Loop Agent has no defined transition on the most common failure event, so retry granularity (whole level or current wave) cannot be implemented.
 
-### [player-psychologist#4] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 4: Difficulty curve, death/failure handling, and player feedback are absent
-**Problem:** Brawlers commonly lose players through cheap damage, unreadable enemy attacks, and crowding. The document says enemies "spawn to fight" and are "dynamic" but gives no enemy types, attack telegraphs, limits on how many can attack at once, or difficulty ramp. It also does not say what happens on death (lives, checkpoints, continues), how health is shown, or how the game makes hits feel good beyond the phrase "punchy hits". Players will not know why they lost, which is a primary churn driver.
-**Source:** "Enemies spawn to fight"; "Enemy Agent: This will control the Enemies in the game"; the "Impactful Combat – punchy hits" bullet. Nothing about health, lives, difficulty, or telegraphing.
-**Severity:** MAJOR
-
 ### [feasibility-lead#2] reference - gdd-review-kit-main/reviews/feasibility-lead.md - Finding 2: Feature list far exceeds the budgeted work
 - Problem: The Game Mechanics section promises combos, juggle routes, block/dodge/parry, pick-up objects, wave spawning, timed levels, "character progression" and "dynamic enemy behaviours". The budget covers only "at least 1 character to move" and "the combos work". Nothing is allocated to defensive tools, juggling, pickups, progression, enemy AI, art, audio, or level content.
 - Passage: "Combos and Juggle routes", "Defensive tools(block dodge, parry)", "character progression, and dynamic enemy behaviours" versus a two-line budget table.
@@ -511,6 +813,11 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 ### [systems-designer#2] reference - gdd-review-kit-main/reviews/systems-designer.md - Finding 2: Progression is promised but has no defined system (BLOCKING)
 **Problem:** The pitch claims "modern combo systems, character progression, and dynamic enemy behaviours". The systems sections do not mention progression. There are no stats, unlocks, upgrades, moves gained over time, level count, or difficulty ramp. Pacing across a full playthrough cannot be assessed because the document never says how long a playthrough is or how a level differs from the last. The "Corrupt private security force" is the only enemy described, and there are no enemy types, bosses or districts beyond "urban districts".
 **Source:** The pitch sentence above, and the absence of any progression, level list or enemy roster anywhere else in the document.
+
+### [player-psychologist#4] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 4: Difficulty curve, death/failure handling, and player feedback are absent
+**Problem:** Brawlers commonly lose players through cheap damage, unreadable enemy attacks, and crowding. The document says enemies "spawn to fight" and are "dynamic" but gives no enemy types, attack telegraphs, limits on how many can attack at once, or difficulty ramp. It also does not say what happens on death (lives, checkpoints, continues), how health is shown, or how the game makes hits feel good beyond the phrase "punchy hits". Players will not know why they lost, which is a primary churn driver.
+**Source:** "Enemies spawn to fight"; "Enemy Agent: This will control the Enemies in the game"; the "Impactful Combat – punchy hits" bullet. Nothing about health, lives, difficulty, or telegraphing.
+**Severity:** MAJOR
 
 ### [adversarial-qa#2] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 2: Enemy spawning has no rules, so the wave system can be broken or become unwinnable (MAJOR)
 **Problem:** "Enemies spawn to fight" is the entire spawn spec. Nothing defines spawn triggers, caps, rates, positions or whether spawns are timer-driven or clear-driven. If spawns are time-driven, a player who is slow (or one who hoards enemies with juggles) faces unbounded enemy accumulation. If spawns are clear-driven, a player can stand at an edge and exploit spawn positions. It is also unclear whether enemies spawn inside the player's attack range or behind the player.
@@ -521,4 +828,4 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 373 chunks across 37 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.

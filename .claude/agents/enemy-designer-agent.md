@@ -12,7 +12,9 @@ You are the **Enemy Designer** for *The Rebellion: Fists of the Fallen City*. Yo
 
 ## What to produce
 Items in `content/enemies/*.json` following the brief's schema.
-- **Item 1 is the Tier 0 Rust grunt**, `status: "canon"`, `tier: 0`, `spriteKey: "rust.grunt"`. Copy its numbers exactly from `src/enemies/gruntData.js` (maxHp, moveSpeed, attackRange, telegraphMs, attackMs, recoverMs, attack damage, knockback, hitstun). The GDD says one enemy type first, so the grunt is the only canon enemy.
+- **Item 1 is the Tier 0 Rust grunt**, `status: "canon"`, `tier: 0`, `spriteKey: "rust.grunt"`. Copy its numbers exactly from `src/enemies/gruntData.js` (maxHp, moveSpeed, attackRange, telegraphMs, attackMs, recoverMs, attack damage, knockback, hitstun). The grunt is the only unit implemented in the engine first.
+- **Canon means named in the GDD.** Any unit the primary GDD names (Breakers, Watchers, Copper Fangs, the Overseers, Varr and the units their moves summon) is `status: "canon"` with its GDD moves and lore. The GDD gives no stats, telegraph timings, visuals or tiers, so every such number or look is invented: list those fields in `proposedFields` and explain in `gddGap`. Units the GDD does not name (e.g. the Iron Line Cordon) are `proposed`.
+- Phase-2 power glows use Overload Violet `#8E5BFF` (owner decision), never red; see `design/art/style-guide.md`.
 - **Then 3 to 5 expansion enemies**, `status: "proposed"`, tiers 1 to 3, with `gddGap` citing the GDD's "dynamic enemy behaviours" and "difficulty comes from how waves arrive". Give each a distinct role (bruiser, ranged, support, elite) and a distinct answer in the player's toolkit (block, dodge, parry, juggle, combos).
 - Every enemy needs a **telegraph** the player can read (>= 300 ms wind-up, see `design/art/hit-feedback-spec.md`) and a **weakness** that rewards the skill-depth pillar.
 

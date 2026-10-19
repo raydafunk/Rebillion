@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-10-19T12:55:43.959Z",
+ "builtAt": "2026-10-19T13:25:33.867Z",
  "chunks": [
   {
    "id": "rebellion-menu-desgin#1",
@@ -303,7 +303,7 @@
    "file": "blackboard/log.md",
    "authority": "reference",
    "heading": "Blackboard log",
-   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1"
+   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying\n2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps\n2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner\n2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass"
   },
   {
    "id": "asset-manifest#1",
@@ -410,6 +410,342 @@
    "text": "Pick-up objects, block/dodge/parry effects, additional enemies, audio, title logo, extra levels. Pick-ups and block/parry are in the GDD pillars; flagged as a gap."
   },
   {
+   "id": "enemy-sprite-specs#1",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "Rust Enemy Sprite Specs (all 14 units)",
+   "text": "Owner: art-direction-agent. Status: DRAFT for owner approval. Nothing in this file is final art. Every sprite in `assets/sprites/rust-*-placeholder.svg` is a generated PLACEHOLDER box (slate body, steel helmet, cyan visor) so other agents can wire keys now.\nSources of truth, read in full: `content/enemies/rust-roster.json` (grunt), `content/enemies/rust-gdd-units.json` (the other 13), `design/art/style-guide.md`, `design/art/hit-feedback-spec.md`, `design/art/asset-manifest.md`, `assets/asset-keys.json`, `src/player/zedVisual.js` and `assets/sprites/zed/` (Zed's loading convention). Telegraph and attack timings below are copied from the unit JSON; where a move has no timing in the JSON the cell says \"not set\" and the enemy owner must set it (rule: never below 300 ms)."
+  },
+  {
+   "id": "enemy-sprite-specs#2",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "0. Decisions that need owner approval (summary)",
+   "text": "1. Phase-2 \"red\" glows (Calder suit, Voss drones) break the no-red-on-enemies rule. APPROVED by the owner: Overload Violet `#8E5BFF` with Overload Ice `#BFF4FF` core. See section 3.1.\n2. KO is a knockdown, never a kill. Spec in section 3.2. The boss defeat beat (what the player sees when a boss reaches 0 HP) is a narrative question for the owner.\n3. Art style for Rust. The style guide says Rust stays flat vector next to pixel Zed, but Open Question 1 is still open. This spec is written for flat vector delivered as PNG. If the owner picks pixel art, see section 1.2 note.\n4. Copper Fang's \"copper\" gauntlets cannot be copper-orange (red-orange ban). Recommended muted Bronze `#9A8466`. Section 2.3.\n5. Grunt display height (96 px figure) is shorter than Zed (frame 120 px on screen, figure unmeasured here, roughly 100 to 110 px). Confirm in-engine that the grunt does not read as a child next to Zed. Sizes below keep the grunt as the base (1.00).\n6. Unit assumptions marked \"ASSUMPTION\" in the unit sections (Copper Fang phase-2 shield, Hologram attack is a punch only, Cordon has no Jab Combo, Varr stance colours, Wren Rooftop Execution shown as a knockdown dive).\n7. The placeholder `assets/sprites/rust-grunt-placeholder.svg` has a baked ground-shadow ellipse. That breaks the style-guide rule (the game draws the shadow). I did not edit it. New placeholders do not bake a shadow."
+  },
+  {
+   "id": "enemy-sprite-specs#3",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.1 Frame size, scale, feet anchor",
+   "text": "- Frames are authored at final on-screen size. Display scale is 1.0 for every enemy, with one exception: if Rust becomes pixel art (1.2).\n- One canvas size per unit, used for every state and both facings, so the engine never needs a per-clip origin table (Zed needs one because its clips have mixed canvases; enemies must not).\n- Feet anchor: the lowest standing-foot pixel row is `frameHeight * 15/16 - 1` (128 frame: row 119, matching the grunt placeholder). Engine origin for every ground unit is `(0.5, 0.9375)`, horizontally centred on the body mass at rest. Flyers (drones, MegaDrone): the same baseline row marks the ground point under the unit; the body floats 20 px above it in Idle, bob up to 3 px is authored into the Idle loop.\n- Keep the figure inside the canvas in every pose, including raised weapons, lunges and the extended-arm poses. Leave 4 px of empty border on every side.\n- No ground shadow in any frame (the game draws the flat 25 percent ellipse)."
+  },
+  {
+   "id": "enemy-sprite-specs#4",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.1 Frame size, scale, feet anchor",
+   "text": "| Unit | Sprite key | Frame (px) | Figure at rest (W x H) | Height vs grunt | Height vs Zed (about 110) |\n|---|---|---|---|---|---|\n| Grunt | rust.grunt | 128x128 | 52x96 | 1.00 | 0.87 |\n| Iron Line Cordon | rust.iron-line-cordon | 128x128 | 56x96 | 1.00 | 0.87 |\n| Breaker | rust.breaker | 192x192 | 110x150 | 1.56 | 1.36 |\n| Watcher | rust.watcher | 128x128 | 44x92 | 0.96 | 0.84 |\n| Copper Fang | rust.copper-fang | 160x160 | 70x112 | 1.17 | 1.02 |\n| Halden Varr | rust.halden-varr | 224x224 | P1 84x130, P2 100x160 | 1.35 / 1.67 | 1.18 / 1.45 |\n| Voss | rust.overseer-voss | 160x160 | 66x108 | 1.13 | 0.98 |\n| Calder | rust.overseer-calder | 256x256 | 140x190 | 1.98 | 1.73 |\n| Wren | rust.overseer-wren | 160x160 | 48x100 | 1.04 | 0.91 |\n| Holt | rust.overseer-holt | 160x160 | 60x108 | 1.13 | 0.98 |\n| Voss Drone | rust.drone | 64x64 | 40x36 (body) | 0.38 | n/a (hovers at head height) |\n| MegaDrone | rust.megadrone | 192x128 | 150x80 (body) | 0.83 | n/a |\n| Hologram Decoy | rust.hologram | 160x160 | 66x108 (same as Voss) | 1.13 | 0.98 |\n| Elite Drone | rust.elite-drone | 80x80 | 52x44 (body) | 0.46 | n/a |"
+  },
+  {
+   "id": "enemy-sprite-specs#5",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.1 Frame size, scale, feet anchor",
+   "text": "Rationale: Varr and Voss are near Zed's height so the duel reads as equals; the Breaker and Calder are the only units clearly bigger than Zed (heavy-enemy cue); the Watcher and Wren are slimmer, not shorter, so their lean silhouette is the cue."
+  },
+  {
+   "id": "enemy-sprite-specs#6",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.2 Style",
+   "text": "- Flat vector look: 2 to 3 flat tones per colour, no gradients, no textures, no dithering. Outline `#14181C` (Rust Ink), 4 px at 128 px frame height, scaled proportionally (192 frame: 6 px, 256 frame: 8 px, 64 frame: 2 px). Light from top left.\n- Deliver as PNG (transparent, straight alpha). Vector source (SVG or layered file) is kept alongside under `assets/sprites/_src/<unit>/` if the artist wants, but the game loads PNG only.\n- Silhouette first: every unit must be identifiable as a solid black shape. Boxy, symmetrical, straight edges (Zed is round and warm).\n- NOTE if the owner chooses pixel art for Rust: author at Zed's pixel density (1 source px = 2.5 screen px), so frame sizes above divide by 2.5 (grunt about 51x51, rounded up to a multiple of 4), display scale 2.5, nearest-neighbour filtering, 1 px outline `#14181C`. Counts, states and naming do not change."
+  },
+  {
+   "id": "enemy-sprite-specs#7",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.3 Facing",
+   "text": "- Side view only, east and west textures per frame, same as Zed (`ZED_SPRITE.dir`: right = east, left = west). The engine swaps textures; never `flipX`.\n- West may be generated as a mirror export of east (units are boxy and symmetrical) but the artist must check asymmetric props after mirroring: Calder's hammer arm, Copper Fang's shield/hook sides, Varr's gauntlet/emitter sides, Watcher's rifle. The prop side may swap after mirroring, which is acceptable; text, serial numbers and logos must be re-set so they do not read backwards. Do not ship the 6 other Zed directions (south, north etc.); not needed."
+  },
+  {
+   "id": "enemy-sprite-specs#8",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.4 Folders, files, keys (mirrors Zed's layout)",
+   "text": "Zed layout, for reference: `assets/sprites/zed/<State>/rotations/<dir>.png` and `assets/sprites/zed/<Folder>/animations/<AnimName>/<dir>/frame_000.png`.\nEnemy layout:"
+  },
+  {
+   "id": "enemy-sprite-specs#9",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.4 Folders, files, keys (mirrors Zed's layout)",
+   "text": "- Unit folder: sprite key with dots replaced by dashes: `assets/sprites/rust-grunt/`, `assets/sprites/rust-iron-line-cordon/`, `rust-breaker`, `rust-watcher`, `rust-copper-fang`, `rust-halden-varr`, `rust-overseer-voss`, `rust-overseer-calder`, `rust-overseer-wren`, `rust-overseer-holt`, `rust-drone`, `rust-megadrone`, `rust-hologram`, `rust-elite-drone`.\n- State folder (PascalCase, underscore separates state and move): `Idle`, `Walk`, `Hit`, `Ko`, `Telegraph`, `Attack`, `Telegraph_GauntletSmash`, `Attack_GauntletSmash`, `Hold_SteamBurst`, `Transition_Phase2`, and so on. Phase-2 variants carry a `P2_` prefix: `P2_Idle`, `P2_Telegraph_RustCollapse`.\n- Key pose (one static image per state, used for the Phaser texture before animations register, and as a fallback): `assets/sprites/<unit>/<State>/rotations/east.png` and `west.png`. For Telegraph states the key pose is the peak wind-up frame; for Attack states it is the strike frame; for other states it is frame 000.\n- Animation frames: `assets/sprites/<unit>/<State>/animations/<state-lowercase>/<dir>/frame_000.png`, `frame_001.png`, ... (3-digit, zero based, same as `zedFramePath`).\n- Example, Breaker smash wind-up: `assets/sprites/rust-breaker/Telegraph_GauntletSmash/rotations/east.png` and `.../Telegraph_GauntletSmash/animations/telegraph_gauntlet-smash/west/frame_004.png`. The animations subfolder name is the folder name lowercased with moves in kebab case.\n- Phaser texture key (like `zedTextureKey`): `<spriteKey>.<state>[.<move>][.p2].<dir>`; frame key adds `.<i>`. Animation key (what `asset-keys.json` lists): `rust.breaker.telegraph.gauntlet-smash`, `rust.copper-fang.p2.telegraph.hook`. Direction suffix `.east` / `.west` is appended by the loader exactly as Zed's (`zed.run.east`). Move ids are kebab case (`gauntlet-smash`).\n- The grunt's existing default clips keep their keys (`rust.grunt.telegraph`, `rust.grunt.attack`); later grunt moves add `.headbutt`, `.jab-combo`.\n- `assets/asset-keys.json` lists every animation key per unit (generated from the same table as this spec). The enemy-owner's data table (like `gruntData.js`) maps its states to these keys."
+  },
+  {
+   "id": "enemy-sprite-specs#10",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.5 Clips, tempo and the telegraph rule",
+   "text": "- Nominal fps for authoring: Idle 6, Walk 10, Hit 12, Ko 10, Attack 20, Hold loops 6. Telegraph clips are authored at a nominal 8 fps but the engine stretches them to the unit's `telegraphMs` (`anims.timeScale = (frames / fps) / (telegraphMs / 1000)`, the same technique `zedVisual.js` uses for punches, dodge and parry). So artists draw poses, not timings.\n- Telegraph clip construction (all units, all moves), per `hit-feedback-spec.md` section 3:\n 1. Frame 1 already differs from Idle in silhouette. The cue starts at t = 0, not after a lead-in.\n 2. The peak pose (last frame) is reached by about the first third of the wind-up and then holds. Totals: the peak pose is on screen for at least 300 ms for any wind-up of 450 ms or more; for the 320 to 400 ms wind-ups (Fang Jab, Watcher baton, Varr Authority Strike, Wren GrappleDash) the whole wind-up is at least 300 ms by the JSON floor and the peak holds for the remaining 60 percent.\n 3. The peak pose reads in solid-black silhouette alone: the weapon or limb must leave the body outline (arm cocked back, braces overhead, rifle raised), never an interior detail.\n 4. Outline is 1 px wider (scaled: 5 px at 128 frame) on every frame of a Telegraph clip. This is baked, it is cue 4 of the hit-feedback spec.\n 5. Never bake red anywhere. The red icon (`fx.telegraph`), the 15 percent red body tint, ground danger zones, scan lines and hit-flash are all runtime effects. The art must be cold enough that a 15 percent `#FF3B30` tint is visible: keep slate/steel mid-tones, avoid large near-white areas on the body (white wins over red in the flash rules, but a white torso hides the tint).\n 6. The window between the end of Telegraph and the strike is the Attack clip. Attack frame 2 is the hit-active frame unless a unit section says otherwise (Zed uses the same one-frame rule). The final Attack frame is a recovery pose that is clearly different from Idle (open, off balance), so the player sees the punish window.\n- Super armour or guard states (Breaker Body Check dash, Calder Hydraulic Grab startup, Varr Command Shield, Copper Fang shield) are shown by a bright outline `#BFF4FF` drawn by the FX layer at runtime. Art must leave a clean outer silhouette for that outline to hug. FX owner to confirm (open question 6).\n- Hit clip (2 frames): frame 1 snaps the head back and tilts the torso away; frame 2 holds the stagger. Heavy units flinch less: the Breaker and Calder Hit clips are 2 frames with a small shift only (they are unflinching during wind-ups; the engine simply does not play Hit then)."
+  },
+  {
+   "id": "enemy-sprite-specs#11",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.6 KO, tone",
+   "text": "See section 3.2. Short form: KO is a knockdown. Held last frame is the lying pose; the game fades or removes the body."
+  },
+  {
+   "id": "enemy-sprite-specs#12",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "1.7 Derived exports (no new drawing)",
+   "text": "Flag `d` in the counts below = a script or palette swap of already-drawn frames:\n- `P2_` palette-swap exports for bosses whose phase 2 is a recolour/glow (Voss, Calder, Wren, Holt, Drone).\n- `Idle_Cloak` and `Walk_Cloak` (Wren): outline-only variant of Idle/Walk, fill removed, 2 px outline `#4FB3D9`.\n- Hologram `Idle` and `Walk`: Voss Idle and Walk re-exported flat Visor Cyan at 45 percent alpha with horizontal scanlines.\nEach export script must be committed with the art so a later change to the base frames can be re-exported."
+  },
+  {
+   "id": "enemy-sprite-specs#13",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "2. Palette (Rust)",
+   "text": "Existing (style-guide section 2): Slate `#3C4650`, Gunmetal `#2A3138`, Steel `#7C8A96`, Visor Cyan `#4FB3D9`, Rust Ink `#14181C`. Reserved and forbidden on enemies: Telegraph Red `#FF3B30`, Brick Red `#A8402E`, Low Health orange `#D9822B`, Mustard (Zed's colour), Health Green."
+  },
+  {
+   "id": "enemy-sprite-specs#14",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "2.1 Additions proposed (owner approval, flagged)",
+   "text": "| Name | Hex | Use |\n|---|---|---|\n| Slate Light | #566471 | Top-left lit planes, second tone on slate |\n| Steel Light | #A9B6C1 | Helmet and shoulder highlights |\n| Bronze Muted | #9A8466 | Copper Fang gauntlets only (hue about 37 degrees, saturation about 20 percent, so it never reads as red-orange) |\n| Overload Violet | #8E5BFF | Phase-2 power state glow (seams, vents, drone rims, cracks), max 15 percent of the sprite area |\n| Overload Ice | #BFF4FF | Core of the glow, super-armour outline, Holt's phase-2 glow |\n| Lens Bright | #7FE3F5 | Elite Drone lens and Varr command accents |\n| Hologram Cyan | #4FB3D9 at 45 percent alpha | Hologram Decoy body |"
+  },
+  {
+   "id": "enemy-sprite-specs#15",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "2.2 Per-unit accent rules",
+   "text": "- All units: slate body, steel helmet or head plate, cyan visor or lens. No personal marks on grunts and Cordon (serial-number recruits). Overseers get ONE signature accent each, below.\n- No yellow-green or orange hazard stripes anywhere on enemies."
+  },
+  {
+   "id": "enemy-sprite-specs#16",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "2.3 Copper Fang bronze",
+   "text": "The GDD and JSON say copper-toned gauntlets. True copper is red-orange and collides with Telegraph Red and Brick Red. Use Bronze Muted `#9A8466` with Steel Light highlights. Flag for owner: accept bronze, or approve a deeper copper."
+  },
+  {
+   "id": "enemy-sprite-specs#17",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "3.1 Phase-2 red (Calder suit, Voss drones)",
+   "text": "Conflict: the GDD says Calder's suit \"glows red\" and Voss's drones \"turn red\" in phase 2. Style guide and hit-feedback spec reserve red for warnings; a red enemy during a phase-2 fight would make every telegraph less readable at exactly the moment the fights get busiest. The JSON already hedges (\"non-red cue tint\" for Calder, \"red-lit\" for MegaDrone).\nDecision (owner approved violet): phase-2 power state is Overload Violet `#8E5BFF` with an Overload Ice `#BFF4FF` core."
+  },
+  {
+   "id": "enemy-sprite-specs#18",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "3.1 Phase-2 red (Calder suit, Voss drones)",
+   "text": "- Calder: seams, hydraulic joints, back vents and visor rim glow violet, pulsing (runtime alpha pulse 1 Hz), at most 15 percent of the sprite area. Overclock Mode \"the red glow itself\" becomes the violet pulse.\n- Voss P2: drones (Drone P2_ clips) get violet lens rims and a violet ring under the body; MegaDrone is authored violet-lit by default (it only exists in phase 2). Voss's coat gets thin violet seam lights. Arena lights dim is a background FX.\n- Varr P2: armour cracks glow violet; Rust Collapse charge brightens them to Overload Ice. The red ground danger zone is a runtime FX, not part of the sprite.\n- Wren P2: no glow; \"faster and quieter\" is darker slate and thinner outline.\n- Holt P2: \"glows with chemical pressure\": use Overload Ice (not violet) so the glow cannot be confused with her purple Fear Gas fog. Her phase-2 visor and vial belt glow ice-white/cyan."
+  },
+  {
+   "id": "enemy-sprite-specs#19",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "3.1 Phase-2 red (Calder suit, Voss drones)",
+   "text": "Why violet: not in Zed's palette, not near red or red-orange in hue, high enough luminance against slate, and still reads as \"electrical overload\" next to the cyan base. Colour is never the only cue: the P2 state also carries shape changes (glowing seams outline the body, drones add a ring) and the Transition clip. If the owner insists on red, the alternative is to move Telegraph Red to another hue for the whole game; I do not recommend it. Flagged for owner and for the FX owner (the red GDD cues Voss visor scan line, Predictive Strike line, Calder shockwave lane and crack preview are all runtime FX in Telegraph Red and are fine)."
+  },
+  {
+   "id": "enemy-sprite-specs#20",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "3.2 KO is a knockdown, no gore",
+   "text": "Tone rule: no killing, no gore. For every humanoid, `Ko` (5 to 7 frames, hold last frame):\n1. Stagger back, arms out.\n2. Knees give, helmet stays on (helmets hide identity, and showing a face would humanise a recruit we are not ready to reveal).\n3. Falls flat on the back or sits slumped against the floor, one frame of bounce.\n4. Visor and lens go dark (swap cyan to Slate `#3C4650`), lying still.\n5. No blood, no debris, no missing parts, no fire. Dust puff is a runtime FX.\nDrones: spark-out, tilt, drop and land inert (4 to 5 frames); no explosion, no fire; the small cream spark FX only. Hologram Decoy: dissolves into cyan squares and fades (4 frames); it is not a character. Boss `Ko` is the same knockdown, plus the owner's call on a defeat beat (kneeling, surrender, retreat); the art delivers the knockdown only until the owner decides (open question 4). Ko is only needed in the final-phase look for two-phase bosses (see per unit)."
+  },
+  {
+   "id": "enemy-sprite-specs#21",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "4. Asset counts and priority",
+   "text": "Frames are per facing. PNG files = 2 facings x (frames + one key-pose per state folder). Core = needed for the unit to be playable. Extra = additional moves and phase-2 move art. Derived = scripted export, no new drawing."
+  },
+  {
+   "id": "enemy-sprite-specs#22",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "4. Asset counts and priority",
+   "text": "| Unit | State folders | Core frames | Extra frames | Derived frames | Drawn (core + extra) | PNG files (all) | Priority |\n|---|---|---|---|---|---|---|---|\n| rust.grunt | 10 | 24 | 16 | 0 | 40 | 100 | 1 |\n| rust.breaker | 10 | 27 | 15 | 0 | 42 | 104 | 2 |\n| rust.watcher | 8 | 24 | 7 | 0 | 31 | 78 | 2 |\n| rust.iron-line-cordon | 8 | 25 | 7 | 0 | 32 | 80 | 3 |\n| rust.drone | 10 | 15 | 0 | 15 | 15 | 80 | 4 |\n| rust.elite-drone | 6 | 15 | 3 | 0 | 18 | 48 | 4 |\n| rust.copper-fang | 23 | 51 | 38 | 0 | 89 | 224 | 5 |\n| rust.overseer-voss | 33 | 43 | 39 | 45 | 82 | 320 | 6 |\n| rust.hologram | 6 | 8 | 6 | 10 | 14 | 60 | 6 |\n| rust.megadrone | 7 | 25 | 3 | 0 | 28 | 70 | 6 |\n| rust.halden-varr | 31 | 73 | 50 | 0 | 123 | 308 | 7 |\n| rust.overseer-calder | 31 | 48 | 32 | 52 | 80 | 326 | 8 |\n| rust.overseer-wren | 39 | 23 | 50 | 66 | 73 | 356 | 9 |\n| rust.overseer-holt | 25 | 28 | 34 | 37 | 62 | 248 | 10 |\n| Total | 247 | 429 | 300 | 225 | 729 | 2402 | |"
+  },
+  {
+   "id": "enemy-sprite-specs#23",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "4. Asset counts and priority",
+   "text": "The grunt row is the established Tier 0 sheet (24 core frames, exactly `asset-manifest.md`: idle 4, walk 6, telegraph 3, attack 4, hit 2, ko 5); Headbutt and Jab Combo are later-tier extras."
+  },
+  {
+   "id": "enemy-sprite-specs#24",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "4.1 Priority order",
+   "text": "1. Grunt (core 24): the Tier 0 enemy, every other enemy borrows its rig, tempo and telegraph language. Final art first, so all the rules can be proven on one unit.\n2. Breaker and Watcher (core 27 and 24): the two Tier 2 archetypes that define opposite ends (huge and slow with a 700 ms ground-slam telegraph; lean and ranged with a 650 ms rifle raise). Their primary move only (Gauntlet Smash, Taser Shot) before any extras.\n3. Iron Line Cordon (core 25): grunt rig plus a push-bar; cheap, widens wave variety.\n4. Voss Drone and Elite Drone (core 15 each): tiny frames, cheap, needed as soon as any Overseer arrives. Hover loop first.\n5. Copper Fang (core 51): first boss-tier unit; teaches shielded and phase states.\n6. Voss kit: Voss, Hologram Decoy, MegaDrone (Hologram idle and walk derive from Voss, so Voss goes first).\n7. Halden Varr: main boss, the largest kit (123 drawn); do the phase-1 core and the Phase 2 transition early, Hybrid Assault moves last.\n8. Calder, 9. Wren, 10. Holt: order is a guess because the GDD does not fix arena order (open question 5). Move up whichever arena ships first."
+  },
+  {
+   "id": "enemy-sprite-specs#25",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "4.1 Priority order",
+   "text": "Inside every unit: pass 1 = core clips; pass 2 = extra moves (extras sorted by how often the move appears); pass 3 = derived exports. Re-export the placeholders only as final art lands (replace the file at the same path or update the path in `asset-keys.json`; keys never change)."
+  },
+  {
+   "id": "enemy-sprite-specs#26",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5. Unit specs",
+   "text": "Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from the unit JSON. \"Key pose\" = what the silhouette must show at the peak of the wind-up."
+  },
+  {
+   "id": "enemy-sprite-specs#27",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.1 rust.grunt (established)",
+   "text": "- Frame 128x128, figure 52x96 (scale 1.00, 0.87 of Zed). Folder `assets/sprites/rust-grunt/`.\n- Look: slate uniform, steel helmet, cyan visor, cheap oxidised plating kept to cold slate; boxy, symmetrical, no personal marks. Silhouette: square helmet on a square torso, arms straight to the sides.\n- Palette: Slate, Slate Light, Gunmetal (boots, gloves), Steel (helmet), Visor Cyan, Rust Ink.\n- Core clips (24 frames): Idle 4 (weight shift), Walk 6, Telegraph 3 (450 ms, arm pulled back, torso leaning away), Attack 4 (250 ms; hit-active frame 2, frame 4 open recovery), Hit 2, Ko 5.\n- Extra (16): Telegraph_Headbutt 3 (short wind-up, chin tucked) / Attack_Headbutt 4 (forward lunge, helmet leads); Telegraph_JabCombo 3 / Attack_JabCombo 6 (three 2-frame punches; hit-active frames 2, 4, 6). Timings for those two moves are not set (engine does not implement them yet).\n- Telegraph key pose: the strike arm cocked fully behind the back line, body lean past the foot line, visibly longer silhouette than Idle."
+  },
+  {
+   "id": "enemy-sprite-specs#28",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.2 rust.iron-line-cordon",
+   "text": "- Frame 128x128, figure 56x96, scale 1.00 (same height as the grunt, wider body). Folder `assets/sprites/rust-iron-line-cordon/`.\n- Look: grunt silhouette, cheap rust-coated slate plating, plain steel helmet with cyan visor and no marks, a gunmetal push-bar held across the chest at all times (the bar is what separates it from a grunt at a glance, make it 60 percent of body width).\n- Palette: grunt palette plus Gunmetal bar with Steel Light end caps.\n- Core (25): Idle 4 (guard stance, bar across chest, this is the \"guard stance\" the JSON mentions), Walk 6 (shuffle, bar stays level), Tel_PushBarSweep 4 (500 ms; both arms pull the bar to one side, bar leaves the body outline by about 30 px), Atk_PushBarSweep 4 (260 ms; wide sweep, bar travels to the opposite side, hit-active frame 2, wide reach is why the frame stays 128 wide with the bar inside it), Hit 2, Ko 5.\n- Extra (7): Tel_Headbutt 3 / Atk_Headbutt 4 (the grunt headbutt with the bar slung to one side). Not set: timing.\n- ASSUMPTION: no Jab Combo for the Cordon (the behaviour text lists only the sweep and the headbutt). If the owner wants it, reuse the grunt jab with the bar held vertically; flagged.\n- Telegraph key pose: bar angled back across one hip, torso twisted, clear gap between bar and body."
+  },
+  {
+   "id": "enemy-sprite-specs#29",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.3 rust.breaker",
+   "text": "- Frame 192x192, figure 110x150, scale 1.00 (1.56 x grunt height, about 2.1 x grunt width). Folder `assets/sprites/rust-breaker/`.\n- Look: hulking squared-off silhouette, small head and helmet with a cyan visor (the head is tiny, about 28 px wide, to make the body read huge), heavy slate and steel plating, gunmetal brace on each forearm (the braces are the glowing-bright read, make them 40 px wide). Walks hunched, knuckles low.\n- Palette: Slate, Slate Light, Gunmetal braces, Steel plates, Visor Cyan. No orange stimulant tubes; if the owner wants a stimulant read, use small Visor Cyan vials on the neck.\n- Core (27): Idle 4 (heaving shoulders), Walk 6 (slow, 8 fps, heavy foot plant), Tel_GauntletSmash 5 (700 ms; both braces raised overhead, braces extend at most 24 px above the head and stay inside the canvas), Atk_GauntletSmash 4 (320 ms; hit-active frame 2 = braces slammed into the floor, frame 3 shows rattled ground pose, frame 4 hunched recovery), Hit 2 (small shift, it is stagger-resistant), Ko 6 (slow topple onto its back, braces open).\n- Extra (15): Tel_RustUppercut 4 / Atk_RustUppercut 4 (rising fist, hit-active frame 2, the whole body leaves the ground by 12 px); Tel_BodyCheck 3 / Atk_BodyCheck 4 (shoulder lowered, forward dash; super armour outline is runtime, leave the silhouette clean, hit-active frame 2). Timings not set in the JSON for these two moves (wind-up must be at least 300 ms).\n- Telegraph key pose (smash): braces together overhead, elbows locked, knees slightly bent; visible as a tall T shape above the body."
+  },
+  {
+   "id": "enemy-sprite-specs#30",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.4 rust.watcher",
+   "text": "- Frame 128x128, figure 44x92, scale 1.00 (0.96 x grunt height, lean). Folder `assets/sprites/rust-watcher/`.\n- Look: lean slate uniform, gunmetal taser rifle, baton at the belt, wide tracking visor with a cyan scan line across it (the line stays inside the visor in the sprite; the floor scan line to Zed is a runtime FX), lighter boxy build.\n- Palette: Slate, Gunmetal rifle, Steel Light baton, Visor Cyan.\n- Core (24): Idle 4 (scan-sweep head tilt, rifle held low), Walk 6 (strafe; also reused when backing away, no extra frames), Tel_TaserShot 4 (650 ms; rifle shouldered and raised level, visor tilted at Zed), Atk_TaserShot 3 (220 ms; muzzle forward, recoil, hit-active frame 1 because it fires the bolt, frame 3 lowers the rifle), Hit 2, Ko 5.\n- Extra (7): Tel_BatonStrike 3 / Atk_BatonStrike 4 (350 ms wind-up; baton pulled back over the shoulder, hit-active frame 2).\n- The taser bolt, scan line and hit spark are FX (not in this spec).\n- Telegraph key pose (taser): rifle horizontal at shoulder height, front arm extended; a long horizontal line in silhouette, unlike every other pose."
+  },
+  {
+   "id": "enemy-sprite-specs#31",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.5 rust.copper-fang (mini-boss, 2 phases)",
+   "text": "- Frame 160x160, figure 70x112, scale 1.00 (1.17 x grunt). Folder `assets/sprites/rust-copper-fang/`.\n- Look: sharper slate uniform (narrower waist, squared shoulder plates), narrow cyan visor, Bronze Muted electrified gauntlets (crackle is runtime FX), tactical shield strapped to the left arm (east-facing; mirrored on west), grappling hook launcher on the right forearm.\n- Phase 1 (shielded): Idle 4 (shield up front), Walk 6 (advance behind shield); Tel_GauntletLunge 4 (650 ms, gauntlet drawn back, shield dropped slightly) / Atk_GauntletLunge 4 (300 ms, lunge, hit-active frame 2); Hit 2; Hit_Shield 2 (shield absorbs a light hit, body barely moves); Transition_ShieldBreak 5 (heavy attack cracks the shield and it falls away, 5 frames, plays once; also the shield is gone for phase 2). Extras: Tel_FangJab 3 (320 ms, the shortest allowed) / Atk_FangJab 3; Tel_CopperCross 4 (500 ms) / Atk_CopperCross 4; Tel_ShieldBash 4 (550 ms, shield pulled in tight) / Atk_ShieldBash 4.\n- Phase 2 (below half health, shield gone): P2_Idle 4, P2_Walk 6, P2_Tel_Hook 4 (750 ms, launcher raised level toward Zed, the thin cyan path is FX) / P2_Atk_Hook 4 (launcher fires, arm yanks back; hit-active frame 2), P2_Hit 2, P2_Ko 6 (the only Ko). Extras: P2_ FangJab 3+3, P2_ CopperCross 4+4 (the JSON says phase two ends in a gauntlet jab after the hook).\n- ASSUMPTION: the shield is destroyed at the phase change (heavy attacks break it per the weakness text). The JSON does not say if phase 2 keeps the shield; flagged.\n- Core 51, extra 38, derived 0, total 89.\n- Telegraph key poses: Lunge = gauntlet drawn behind the head height; Hook = launcher arm straight toward Zed; Jab = jab arm at the hip with the other arm up."
+  },
+  {
+   "id": "enemy-sprite-specs#32",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.6 rust.halden-varr (main boss, 2 looks)",
+   "text": "- Frame 224x224 (one canvas for both phases). Phase 1 figure 84x130 (1.35), phase 2 figure 100x160 (1.67). Folder `assets/sprites/rust-halden-varr/`. Anchor identical in both looks (feet row 209).\n- Phase 1 look: crisp slate command coat (long, straight-hemmed, symmetrical) over oxidised plating, electrified gauntlet on the near fist (Bronze-free: gauntlet is Gunmetal with Visor Cyan lines), energy-shield emitter on the other forearm (a Steel Light disc), tall cyan visor.\n- Phase 2 look: the coat is gone; full oxidised armour, heavier and boxier, shoulders 25 percent wider, helm with a tall visor, violet cracks (Overload Violet, section 3.1). Circling drones are separate sprites (rust.elite-drone).\n- Phase 1 clips: Idle 4, Walk 6, Tel_AuthorityStrike 4 (400 ms, gauntlet drawn back) / Atk_AuthorityStrike 4 (hit-active 2), Hit 2, Tel_CommandShield 3 (500 ms, emitter arm raised, glow on the emitter) / Hold_CommandShield 2 (loop; the shield bubble is FX, the pose is the guard stance), Hit_Shield 2, Tel_CommandOverride 5 (800 ms, hand slams a console pulse, rings are FX) / Atk_CommandOverride 3, Tel_AdaptiveCounter 3 (stance change, not set: timing) with three stance loops: Stance_AntiAir 2 (fist raised, shield up), Stance_AntiRush 2 (low crouch, shield forward), Stance_AntiCombo 2 (wide guard, arms open). Stance is shown by shape first and by a chest-light colour second: anti-air Visor Cyan `#4FB3D9`, anti-rush Overload Ice `#BFF4FF`, anti-combo Lens Bright `#7FE3F5` (ASSUMPTION, three cold lights that are hard to tell apart; the shape cue carries the readability; flagged).\n- Transition_Phase2 8: the coat is torn away, armour locks, violet cracks light; plays once, about 1 second. Used once.\n- Phase 2 clips: P2_Idle 4, P2_Walk 6, P2_Hit 2, P2_Ko 7, P2_Tel_AuthorityStrike 4 / P2_Atk_AuthorityStrike 4, P2_Tel_RustCollapse 8 (1500 ms charge, armour opens, cracks brighten to Ice, arms spread) / P2_Atk_RustCollapse 5 (overload burst; the explosion and floor zone are FX). Hybrid Assault (extra): P2_Tel_BreakerSlam 5 / P2_Atk_BreakerSlam 4 (Breaker pose, 700 ms), P2_Tel_TaserShot 4 / P2_Atk_TaserShot 3 (650 ms), P2_Tel_FangCombo 3 / P2_Atk_FangCombo 5 (320 to 500 ms, jab-cross-jab), P2_Tel_DroneCommand 4 / P2_Atk_DroneCommand 3 (600 ms, drones are separate sprites). Overseer control attacks in Hybrid Assault reuse the move art of the other bosses only when the owner approves (not specified, flagged).\n- Core 73, extra 50, derived 0, total 123.\n- Telegraph key poses: Strike = gauntlet cocked back; Shield = emitter arm raised high, other hand open; Collapse = arms spread, chest open, cracks lit."
+  },
+  {
+   "id": "enemy-sprite-specs#33",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.7 rust.overseer-voss (The Eye of the Market)",
+   "text": "- Frame 160x160, figure 66x108, scale 1.00 (1.13 x grunt). Folder `assets/sprites/rust-overseer-voss/`.\n- Look: slate command coat, steel shoulder plates, wide cyan visor. Official, not armoured: slim silhouette, hands behind the back in Idle. The visor in the sprite is cyan only. The thin red scan line in the GDD is the Predictive Strike telegraph line drawn as FX; do not bake it into the sprite (red rule). The real Voss \"flicker\" is a runtime effect (alpha 0.85 to 1 at about 4 Hz and a 1 px horizontal scanline shift). It must not apply to holograms.\n- Palette: Slate, Steel plates, Visor Cyan; accent: Lens Bright on the shoulder pin. Phase 2: thin Overload Violet seam lights on the coat (derived P2 exports).\n- Core (43): Idle 4, Walk 6 (floating glide, slow), Hit 2, Ko 5, Tel_PredictiveStrike 5 (1000 ms, visor lock, arm extended toward Zed; this is the longest telegraph so use the extra frames for build-up) / Atk_PredictiveStrike 3 (240 ms, hit-active frame 1 as it fires, laser is FX), Transition_Phase2 5 (lights dim, seams light), P2_Tel_SystemCrash 8 (1500 ms, arms raised, coat flares) / P2_Atk_SystemCrash 5.\n- Extra (39): Tel_DroneSwarm 4 (700 ms console flash) / Atk_DroneSwarm 3; Tel_HologramDecoy 3 (500 ms shimmer) / Atk_HologramDecoy 3; Tel_DataSpike 4 (600 ms, hand raised) / Atk_DataSpike 3 (hand slammed on console, hit-active frame 1 spawns pillars); P2_Tel_PredictiveLockdown 3 (600 ms) / 3; P2_Tel_HologramAssault 3 (500 ms) / 3; P2_Tel_DroneFusion 4 (800 ms) / 3.\n- Derived (45): P2_ exports of all 12 phase-1 clips.\n- Total drawn 82, exports 127 frames.\n- Telegraph key poses: Predictive Strike = arm straight toward Zed with the visor leaning forward (a stiff horizontal arm line); Data Spike = hand high over a console; Decoy = both hands spread."
+  },
+  {
+   "id": "enemy-sprite-specs#34",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.8 rust.overseer-calder (The Iron Matron)",
+   "text": "- Frame 256x256, figure 140x190, scale 1.00 (1.98 x grunt, the largest). Folder `assets/sprites/rust-overseer-calder/`. Feet row 239.\n- Look: heavy slate exosuit, steel plating, long hydraulic arms (shown in Idle and Walk at about 70 percent extension), squared helmet with a cyan visor, a massive hammer carried on the near arm (head about 60 px wide, Gunmetal with a Steel Light striking face), steam vents on the back (vents are drawn Steel Light slots; steam puffs are FX). Phase 2: seams, hydraulic joints, vents and visor rim glow Overload Violet (derived P2 exports, 15 percent max area).\n- Core (48): Idle 4, Walk 6 (very slow, stomping, 8 fps), Hit 2 (small), Ko 6 (suit collapses forward then onto its back, hammer dropped beside), Tel_ForgeHammer 6 (900 ms, hammer lifted overhead, the hammer head clears the helmet by 40 px; peak holds) / Atk_ForgeHammer 4 (350 ms, hit-active frame 2 impact, frame 4 stuck hammer recovery, 1300 ms recovery), Transition_Phase2 6 (suit powers up, seams ignite, shoulders flare), P2_Tel_FurnaceSlam 8 (1500 ms, crouch and leap windup; 1500 ms) / P2_Atk_FurnaceSlam 6 (leap apex, falling slam, impact; hit-active frame 5; molten cracks are FX).\n- Extra (32): Tel_HydraulicGrab 4 (600 ms, arms extended, long reach) / Atk_HydraulicGrab 5 (grab, lift, slam, slam is a knockdown not a crush); Tel_SteamBurst 3 (400 ms, vents open) / Atk_SteamBurst 3 and Hold_SteamBurst 2 (loop while invulnerable, body braced); Tel_ConveyorTrap 4 (700 ms, fist raised to console) / Atk_ConveyorTrap 3; Prop_ArmPunch 4 and Prop_ArmGrab 4 (Industrial Barrage background arms: hydraulic arms entering from the screen edge, drawn at the same scale as Calder's arms, these are separate props, frame 192x192, east and west).\n- Derived (52): P2_ exports of the 13 phase-1 clips (Overclock is the P2 glow plus faster playback, not new drawing).\n- Total drawn 80, exports 132.\n- Telegraph key poses: Hammer = vertical hammer over the head (a tall T); Grab = both arms stretched forward at full length; Steam = shoulders hunched, vents flared; Furnace = crouched with hammer on the shoulder.\n- Super armour outline on Grab startup is runtime (section 1.5)."
+  },
+  {
+   "id": "enemy-sprite-specs#35",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.9 rust.overseer-wren (The Whisper on the Rooftops)",
+   "text": "- Frame 160x160, figure 48x100 (slimmest, 1.04 x grunt height), scale 1.00. Folder `assets/sprites/rust-overseer-wren/`.\n- Look: lean dark slate suit (use Gunmetal as the main fill, Slate Light edges), grapple launcher on each forearm, slim cyan visor, a faint Visor Cyan outline on the silhouette kept at all times so the semi-invisible state still reads. Light and fast; still boxy and symmetrical.\n- Core (23): Idle 4 (low crouch, light bounce), Walk 6 (fast run, 12 fps), Hit 2, Ko 5, Tel_GrappleDash 3 (400 ms, launcher arm aimed, line is FX) / Atk_GrappleDash 3 (dash, hit-active frame 2).\n- Extra (50): Perch 2 (loop, crouched on a platform edge), Airborne 2 (loop while zipping), Tel_SkylineSnare 4 (600 ms, wire thrown out) / Atk_SkylineSnare 3, Tel_SilentStep 3 (500 ms shimmer), Tel_RooftopExecution 3 (600 ms, leaps up and aims down; the red floor shadow is FX) / Atk_RooftopExecution 3 (dive, head-first falling pose, hit-active frame 3 at the landing) / Land_RooftopExecution 3 (knee-down shockwave landing). Tone: the dive knocks Zed down and pushes him back; the sprite never aims at the head or shows contact (open question 3, the GDD move name is \"Rooftop Execution\"). Phase 2 new: P2_Tel_GrappleClone 3 (500 ms) / 3, P2_Tel_ShadowPulse 3 (450 ms) / 3, P2_Tel_VanishStorm 6 (1200 ms fade-out, 6 poses: standing, fading, outline only) / P2_Atk_VanishStorm 5 (the real Silas's heavy finishing strike, heavier outline), P2_Silhouette_VanishStorm 4 (flat dark clone silhouette strike, the clones use these).\n- Derived (66): Idle_Cloak 4, Walk_Cloak 6, and P2_ exports of all 14 phase-1 clips plus both Cloak clips. Phase 2 look = darker, thinner outline.\n- Afterimages (Grapple Clone) are runtime copies of the current frame at 40 percent alpha with Visor Cyan tint; no extra art.\n- Real Wren vs clone: real has a heavier outline (a runtime 2 px outline on top of art), clones use the Silhouette clip. Flag for FX owner.\n- Total drawn 73, exports 139.\n- Telegraph key poses: GrappleDash = arm aimed, body low; Rooftop = crouched coil before leaving the ground; SkylineSnare = wire arm swung back."
+  },
+  {
+   "id": "enemy-sprite-specs#36",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.10 rust.overseer-holt (The Voice of Compliance)",
+   "text": "- Frame 160x160, figure 60x108, scale 1.00 (1.13 x grunt). Folder `assets/sprites/rust-overseer-holt/`.\n- Look: slate lab coat (long, square hem) over light plating, rebreather with a cyan visor, belt of chemical vials, dart launcher on one forearm. The vials are small accents (Violet-tinted `#7A5CC0` and Pale Green `#8FD16A`, a few px each, never more than 4 percent of the sprite) to tie to the fog colours without matching the Health Green `#4C9A55`. Phase 2: coat and visor glow Overload Ice (section 3.1).\n- Core (28): Idle 4, Walk 6 (measured steps), Hit 2, Ko 5 (sinks to a seat against the floor, coat spread), Tel_GasRelease 4 (700 ms, vents on the belt open, arms out) / Atk_GasRelease 3 (puff release, hit-active frame 2). The same clip is used for Fear Gas, Obedience Mist and NeuroFog; fog colour and size are FX. Transition_Phase2 4 (coat vents glow ice-white).\n- Extra (34): Tel_ToxinBurst 4 (600 ms, vial raised) / Atk_ToxinBurst 3 (throw); Tel_SedativeShot 3 (450 ms, arm aimed) / Atk_SedativeShot 3; P2_Tel_CorrosiveWave 4 (700 ms, big vial lifted over head) / P2_Atk_CorrosiveWave 4 (overhand throw); P2_Tel_ComplianceProtocol 8 (1500 ms charge, arms spread, belt flaring) / P2_Atk_ComplianceProtocol 5.\n- Derived (37): P2_ exports of the 10 phase-1 clips. Stealth in the fog (NeuroFog) is a runtime alpha, not art.\n- Total drawn 62, exports 99.\n- Telegraph key poses: Gas = both arms out, palms down; Toxin = vial held high; Sedative = dart arm extended."
+  },
+  {
+   "id": "enemy-sprite-specs#37",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.11 rust.drone (Voss surveillance drone)",
+   "text": "- Frame 64x64, body 40x36, scale 1.00 (0.38 x grunt height), hovers at head height (engine offset; the 20 px gap above the baseline is baked). Folder `assets/sprites/rust-drone/`.\n- Look: small boxy slate body, a single cyan lens, short taser prong underneath, no markings, 2 px outline.\n- Clips: Idle 4 (hover bob, also used while orbiting), Tel 3 (600 ms, lens enlarges and brightens, prong points at Zed), Atk 2 (150 ms, prong recoils, hit-active frame 1), Hit 2, Ko 4 (spark-out, tilts, drops, lands inert; no fire or explosion). 15 core frames; P2_ exports of all 5 clips (derived 15): Overload Violet lens rim and a 2 px violet underside ring.\n- No Walk clip: the Idle hover loop plays while it moves.\n- Total drawn 15, exports 30.\n- Telegraph key pose: the lens at full size, prong aimed straight at Zed (it faces east or west, never away)."
+  },
+  {
+   "id": "enemy-sprite-specs#38",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.12 rust.megadrone",
+   "text": "- Frame 192x128 (wide, not square), body 150x80, scale 1.00. Folder `assets/sprites/rust-megadrone/`. Baseline at row 119; body floats 20 px above it.\n- Look: large boxy slate drone built from fused drone parts (visible panel seams), wide cyan lens bar, two beam emitters on the sides. It exists only in Voss phase 2, so it is authored violet-lit by default (violet seams and emitter rims, section 3.1), not recoloured later.\n- Clips: Idle 4 (slow drift), Spawn 5 (800 ms merge flash: parts snap together; the flash is FX), Tel_SweepingLaser 5 (800 ms, emitters swing out and charge) / Atk_SweepingLaser 4 (600 ms, beams are FX, hit-active frame 2), Hit 2, Ko 5 (shuts down, tilts, lands inert), Turn 3 (extra: east to west swap pose; the engine swaps textures, Turn is a 3-frame bridge).\n- Total drawn 28, exports 28.\n- Telegraph key pose: both emitters extended outward, level."
+  },
+  {
+   "id": "enemy-sprite-specs#39",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.13 rust.hologram (Hologram Decoy)",
+   "text": "- Frame 160x160, same figure as Voss (66x108, 1.13 x grunt) so the decoy matches him exactly. Folder `assets/sprites/rust-hologram/`.\n- Look: flat Hologram Cyan `#4FB3D9` at 45 percent alpha, steady 3 px outline `#4FB3D9` at full alpha, thin horizontal scanlines. No flicker (the real Voss flickers; the copy does not). Not red anywhere.\n- Clips: Idle 4 (derived from Voss Idle), Walk 6 (derived from Voss Walk; the decoy mimics his movement), Spawn 4 (shimmer in: scanline reveal, drawn), Ko 4 (dissolve into squares; any hit dissolves it, so there is no Hit clip), Tel_Punch 3 (500 ms) / Atk_Punch 3 (200 ms, phase 2 only).\n- ASSUMPTION: the \"weak punch or shot\" is a punch only to save art; owner can add a Shot (same frames as Voss Atk_PredictiveStrike derived).\n- Total drawn 14, derived 10, total 24.\n- Telegraph key pose: arm drawn back at the hip, scanline shimmer."
+  },
+  {
+   "id": "enemy-sprite-specs#40",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "5.14 rust.elite-drone",
+   "text": "- Frame 80x80, body 52x44, scale 1.00 (0.46 x grunt height); hovers in formation. Folder `assets/sprites/rust-elite-drone/`.\n- Look: sleeker than the Voss drone (tapered wedge body, steel plating, bright cyan lens `#7FE3F5`), no violet (it is Varr's, not Voss's).\n- Clips: Idle 4, Tel 3 (600 ms, the lens charges, nose points at the target), Atk 2 (150 ms), Hit 2, Ko 4 (spark-out, drop, inert), Spawn 3 (extra, formation arrival; cyan ring is FX).\n- Total drawn 18, exports 18.\n- Telegraph key pose: nose pointed at Zed, lens at full brightness."
+  },
+  {
+   "id": "enemy-sprite-specs#41",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "6. Placeholders and keys",
+   "text": "- Placeholder files: `assets/sprites/rust-<unit>-placeholder.svg` for each new unit, a boxy slate body with a steel head and cyan visor at the frame size above, feet baseline marked in a comment, no baked shadow, header comment saying PLACEHOLDER. The hologram placeholder is a dashed cyan box. These are generated shapes, not art.\n- Keys: `assets/asset-keys.json` now lists `sprites[\"rust.<unit>\"]` for every unit and `animations[\"rust.<unit>\"]` with every animation key from section 5. No existing key or path was changed; `rust.grunt` only gained the four later-tier keys (headbutt, jab-combo). A top-level `enemySpriteSpec` entry points to this file.\n- Swap rule: replace the placeholder by overwriting its path or changing the path value; do not rename keys. When real per-state PNGs land, add a `spriteSheets` or folder path alongside (the loader owner decides the shape; Zed's `loadZedSprites` is the model)."
+  },
+  {
+   "id": "enemy-sprite-specs#42",
+   "doc": "enemy-sprite-specs",
+   "file": "design/art/enemy-sprite-specs.md",
+   "authority": "derived",
+   "heading": "7. Open questions",
+   "text": "1. Rust art style: flat vector (guide default) or pixel art to match Zed (section 1.2).\n2. Phase-2 colour: DECIDED, Overload Violet and Ice (section 3.1).\n3. Wren's \"Rooftop Execution\" name and Varr's \"executioners\" wording: art shows knockdowns only; the owner may rename the move.\n4. Boss defeat beat: knockdown only (current) or a story beat (kneel, retreat, surrender)?\n5. Arena order, to settle the Calder, Wren, Holt priority.\n6. FX owner: the super-armour outline, the real-Voss flicker, the real-Wren outline, the Calder pulse, scan lines and ground zones all rely on runtime effects; confirm they will be built.\n7. Copper Fang gauntlets: Bronze Muted or a deeper copper.\n8. Zed's measured figure height, to confirm the grunt's 96 px vs Zed's about 110 px (section 0, item 5).\n9. Attacker-slot and timing values for moves marked \"not set\" (Grunt Headbutt and Jab Combo, Cordon Headbutt, Breaker Uppercut and Body Check, Varr Adaptive Counter) need numbers from the enemy owner; art assumes at least 300 ms."
+  },
+  {
    "id": "hit-feedback-spec#1",
    "doc": "hit-feedback-spec",
    "file": "design/art/hit-feedback-spec.md",
@@ -479,7 +815,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "1. Art style: flat vector world, pixel art Zed",
-   "text": "DECISION: Zed (the player character) is hand-authored pixel art. Everything else (Rust enemies, UI, backgrounds, FX, menu) stays flat vector until the owner decides otherwise (see Open Question 1). Zed's spec, prompts and sheet layout: `design/art/zed-pixellab-prompt.md`.\nZed pixel rules:\r\n- 128x128 frame, ~96px figure, facing right, feet at bottom-centre.\r\n- Selective 1px outline #2E1F16, 2 to 3 flat tones per colour, light from top left, no gradients, no dithering, no blur, no anti-aliasing.\r\n- Palette limited to the Hope palette in section 2 (Mustard, Mustard Light, Warm Brown, Skin Brown, Dark Brown, Cream, small Brick Red and Forest Green accents); no Rust or combat-signal colours.\r\n- Render the sprite with nearest-neighbour filtering (Phaser `pixelArt` or per-texture `setFilter(NEAREST)`), and keep sprite scale an integer so pixels stay square.\r\n- The ground shadow is not baked in; the game draws the flat 25 percent black ellipse.\nThe rest of this section describes the flat-vector style for everything that is not Zed."
+   "text": "DECISION: Zed (the player character) is hand-authored pixel art. Everything else (Rust enemies, UI, backgrounds, FX, menu) stays flat vector until the owner decides otherwise (see Open Question 1). Zed's spec, prompts and sheet layout: `design/art/zed-pixellab-prompt.md`.\nZed pixel rules:\n- 128x128 frame, ~96px figure, facing right, feet at bottom-centre.\n- Selective 1px outline #2E1F16, 2 to 3 flat tones per colour, light from top left, no gradients, no dithering, no blur, no anti-aliasing.\n- Palette limited to the Hope palette in section 2 (Mustard, Mustard Light, Warm Brown, Skin Brown, Dark Brown, Cream, small Brick Red and Forest Green accents); no Rust or combat-signal colours.\n- Render the sprite with nearest-neighbour filtering (Phaser `pixelArt` or per-texture `setFilter(NEAREST)`), and keep sprite scale an integer so pixels stay square.\n- The ground shadow is not baked in; the game draws the flat 25 percent black ellipse.\nThe rest of this section describes the flat-vector style for everything that is not Zed."
   },
   {
    "id": "style-guide#3",
@@ -487,7 +823,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "1. Art style: flat vector world, pixel art Zed",
-   "text": "Flat-vector shapes with a thick dark outline, 2 to 3 tone cel shading, no gradients, no textures.\nWhy not pixel art:\r\n- Agent-built project: SVG and simple shape rigs can be generated and edited as text by agents; hand-placed pixels cannot be generated reliably.\r\n- The GDD budgets tokens for \"at least one character to move\" and an animation lead who owns a large workload. Flat vector is the cheapest path to a consistent look.\r\n- Scales cleanly to 1280x720 and other sizes with no filtering artifacts.\r\n- The theme (murals, bold colour, casual fits) suits big colour blocks and strong silhouettes.\r\n- Placeholders and final art share one language, so swapping is low risk.\nRules: outline 4px at 128px sprite height (scale proportionally; Zed is the exception, 1px pixel outline per the Zed pixel rules above), outline colour #2E1F16 for Zed and the world, #14181C for Rust. Shadows are flat 25 percent black ellipses under every character, drawn by the game at runtime (never baked into any sprite, Zed's included). Light source top left."
+   "text": "Flat-vector shapes with a thick dark outline, 2 to 3 tone cel shading, no gradients, no textures.\nWhy not pixel art:\n- Agent-built project: SVG and simple shape rigs can be generated and edited as text by agents; hand-placed pixels cannot be generated reliably.\n- The GDD budgets tokens for \"at least one character to move\" and an animation lead who owns a large workload. Flat vector is the cheapest path to a consistent look.\n- Scales cleanly to 1280x720 and other sizes with no filtering artifacts.\n- The theme (murals, bold colour, casual fits) suits big colour blocks and strong silhouettes.\n- Placeholders and final art share one language, so swapping is low risk.\nRules: outline 4px at 128px sprite height (scale proportionally; Zed is the exception, 1px pixel outline per the Zed pixel rules above), outline colour #2E1F16 for Zed and the world, #14181C for Rust. Shadows are flat 25 percent black ellipses under every character, drawn by the game at runtime (never baked into any sprite, Zed's included). Light source top left."
   },
   {
    "id": "style-guide#4",
@@ -495,7 +831,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "2. Palette",
-   "text": "Hope palette (Zed, world, UI):\n| Name | Hex | Use |\r\n|---|---|---|\r\n| Mustard | #E3A92B | Primary accent, Zed jacket, buttons, timer frame |\r\n| Mustard Light | #F2C04D | Hover, highlights |\r\n| Brick Red | #A8402E | Panel headers, buildings, heart icon, damage, title shadow (`brickRed`) |\r\n| Forest Green | #2F6B3F | Foliage, gardens, murals |\r\n| Health Green | #4C9A55 / #7BC47F | Health fill / highlight |\r\n| Warm Brown | #6B4423 | Ground, trousers, wood |\r\n| Skin Brown | #8A5A3B | Zed skin (placeholder, open to revision) |\r\n| Dark Brown | #2E1F16 | Outlines, text, bar frames |\r\n| Cream | #F4E6C8 | Panels, light text on dark |\r\n| Sand | #F2D9A0 / #E8C27A | Background sky and walls |\nRust palette (enemy, deliberately colder and harsher):\n| Name | Hex | Use |\r\n|---|---|---|\r\n| Slate | #3C4650 | Uniform |\r\n| Gunmetal | #2A3138 | Boots, gloves |\r\n| Steel | #7C8A96 | Helmet |\r\n| Visor Cyan | #4FB3D9 | Visor, Rust UI accents |\r\n| Rust Ink | #14181C | Outline |\nCombat signal colours (reserved, never used for decoration):"
+   "text": "Hope palette (Zed, world, UI):\n| Name | Hex | Use |\n|---|---|---|\n| Mustard | #E3A92B | Primary accent, Zed jacket, buttons, timer frame |\n| Mustard Light | #F2C04D | Hover, highlights |\n| Brick Red | #A8402E | Panel headers, buildings, heart icon, damage, title shadow (`brickRed`) |\n| Forest Green | #2F6B3F | Foliage, gardens, murals |\n| Health Green | #4C9A55 / #7BC47F | Health fill / highlight |\n| Warm Brown | #6B4423 | Ground, trousers, wood |\n| Skin Brown | #8A5A3B | Zed skin (placeholder, open to revision) |\n| Dark Brown | #2E1F16 | Outlines, text, bar frames |\n| Cream | #F4E6C8 | Panels, light text on dark |\n| Sand | #F2D9A0 / #E8C27A | Background sky and walls |\nRust palette (enemy, deliberately colder and harsher):\n| Name | Hex | Use |\n|---|---|---|\n| Slate | #3C4650 | Uniform |\n| Gunmetal | #2A3138 | Boots, gloves |\n| Steel | #7C8A96 | Helmet |\n| Visor Cyan | #4FB3D9 | Visor, Rust UI accents |\n| Rust Ink | #14181C | Outline |\nCombat signal colours (reserved, never used for decoration):"
   },
   {
    "id": "style-guide#5",
@@ -503,7 +839,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "2. Palette",
-   "text": "| Name | Hex | Use |\r\n|---|---|---|\r\n| Telegraph Red | #FF3B30 | Enemy attack warning only |\r\n| Hit White | #FFFFFF | Hit flash |\r\n| Spark Cream | #FFF6D6 | Spark core |\r\n| Low Health | #D9822B then #FF3B30 | Bar at 50 percent and 25 percent |\nContrast: all text must reach 4.5:1 (Cream on Dark Brown ~11:1; Dark Brown on Mustard ~7:1)."
+   "text": "| Name | Hex | Use |\n|---|---|---|\n| Telegraph Red | #FF3B30 | Enemy attack warning only |\n| Overload Violet | #8E5BFF | Enemy phase-2 power glow (Calder, Voss drones, MegaDrone, Varr cracks); owner approved, replaces the GDD's red glow |\n| Overload Ice | #BFF4FF | Phase-2 core glow (Holt, Varr Rust Collapse charge) |\n| Hit White | #FFFFFF | Hit flash |\n| Spark Cream | #FFF6D6 | Spark core |\n| Low Health | #D9822B then #FF3B30 | Bar at 50 percent and 25 percent |\nContrast: all text must reach 4.5:1 (Cream on Dark Brown ~11:1; Dark Brown on Mustard ~7:1)."
   },
   {
    "id": "style-guide#6",
@@ -511,7 +847,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "3. Typography",
-   "text": "Street-style set, all Google Fonts under the SIL OFL (licensing confirmed). Real values live in `src/config/assetKeys.js` (`FONTS`).\n- Display (game title and large splash text): \"Permanent Marker\"; fallback `Impact, sans-serif`.\r\n- Buttons and result headings (WIN/LOSE): \"Anton\"; fallback `Impact, sans-serif`.\r\n- Body and small text: \"Rubik\" weights 500 and 700; fallback `Arial, sans-serif`.\r\n- Numerals (timer, wave counter): Rubik 700, tabular figures.\r\n- Sizes at 1280x720 (as built in the menu prototype): title 96px, subtitle 32px, button 36px, result heading 72px, HUD label 20px, timer 40px, minimum body 18px.\r\n- Text: Cream with 4px Dark Brown stroke over action; Dark Brown on Mustard/Cream surfaces.\nTitle treatment: Mustard #E3A92B fill, Dark Brown #2E1F16 outline about 10px, hard Brick Red #A8402E offset shadow 7px right and 7px down with no blur, rotated -2.5 degrees. Subtitle: uppercase Rubik 700, Cream, same -2.5 degree tilt (6px Dark Brown stroke).\nRule: tilt only the title and subtitle. Never rotate HUD, timer, button or other gameplay text."
+   "text": "Street-style set, all Google Fonts under the SIL OFL (licensing confirmed). Real values live in `src/config/assetKeys.js` (`FONTS`).\n- Display (game title and large splash text): \"Permanent Marker\"; fallback `Impact, sans-serif`.\n- Buttons and result headings (WIN/LOSE): \"Anton\"; fallback `Impact, sans-serif`.\n- Body and small text: \"Rubik\" weights 500 and 700; fallback `Arial, sans-serif`.\n- Numerals (timer, wave counter): Rubik 700, tabular figures.\n- Sizes at 1280x720 (as built in the menu prototype): title 96px, subtitle 32px, button 36px, result heading 72px, HUD label 20px, timer 40px, minimum body 18px.\n- Text: Cream with 4px Dark Brown stroke over action; Dark Brown on Mustard/Cream surfaces.\nTitle treatment: Mustard #E3A92B fill, Dark Brown #2E1F16 outline about 10px, hard Brick Red #A8402E offset shadow 7px right and 7px down with no blur, rotated -2.5 degrees. Subtitle: uppercase Rubik 700, Cream, same -2.5 degree tilt (6px Dark Brown stroke).\nRule: tilt only the title and subtitle. Never rotate HUD, timer, button or other gameplay text."
   },
   {
    "id": "style-guide#7",
@@ -527,7 +863,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "4. UI components",
-   "text": "- Button (260x64): Mustard fill, 4px Dark Brown outline, 12px radius, solid dark-mustard drop edge. States: default, hover (#F2C04D), pressed (#C48E1F, shifted down 4px), disabled (#8C8070). Focus ring: 4px Cream outside outline, for keyboard and gamepad. Label centred.\r\n- Health bar (frame 360x32, fill 348x20): Dark Brown frame with Cream 3px border; fill Health Green with a lighter top band. Crop the fill by width (scaleX). Colour shifts at 50 percent and 25 percent. A delayed \"chip\" bar in Cream shows recent damage for 400ms. Enemy bars use Rust palette (Steel frame, Visor Cyan fill), 96x10, shown only when damaged.\r\n- Timer (frame 160x56): Dark Brown with Mustard border; digits Cream. Last 10 seconds: digits and border pulse Telegraph Red at 2 Hz.\r\n- Panel (560x360): Cream body, Dark Brown 6px outline, Brick Red header strip 48px, 16px radius. Used for pause, win, lose.\r\n- Icons (32x32): flat shapes, 3px Dark Brown outline, one fill colour, rounded joins, no inner detail.\r\n- HUD layout: health top left at (24,24), timer top centre, wave counter top right. Keep 24px safe margin. (ux-flow-designer owns final layout; this is a default.)"
+   "text": "- Button (260x64): Mustard fill, 4px Dark Brown outline, 12px radius, solid dark-mustard drop edge. States: default, hover (#F2C04D), pressed (#C48E1F, shifted down 4px), disabled (#8C8070). Focus ring: 4px Cream outside outline, for keyboard and gamepad. Label centred.\n- Health bar (frame 360x32, fill 348x20): Dark Brown frame with Cream 3px border; fill Health Green with a lighter top band. Crop the fill by width (scaleX). Colour shifts at 50 percent and 25 percent. A delayed \"chip\" bar in Cream shows recent damage for 400ms. Enemy bars use Rust palette (Steel frame, Visor Cyan fill), 96x10, shown only when damaged.\n- Timer (frame 160x56): Dark Brown with Mustard border; digits Cream. Last 10 seconds: digits and border pulse Telegraph Red at 2 Hz.\n- Panel (560x360): Cream body, Dark Brown 6px outline, Brick Red header strip 48px, 16px radius. Used for pause, win, lose.\n- Icons (32x32): flat shapes, 3px Dark Brown outline, one fill colour, rounded joins, no inner detail.\n- HUD layout: health top left at (24,24), timer top centre, wave counter top right. Keep 24px safe margin. (ux-flow-designer owns final layout; this is a default.)"
   },
   {
    "id": "style-guide#9",
@@ -535,7 +871,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "5. Characters and world",
-   "text": "- Zed (pixel art): 128x128 frame, ~96px tall figure, mustard jacket, warm brown trousers, expressive casual fit. Facing right by default; flip for left. Pixel rules in section 1.\r\n- Rust enemies: same frame size, uniform and symmetrical, visor, no personality colour. Contrast through cold hue and straight geometry versus Zed's rounded forms.\r\n- Background: warm, busy mid-ground (corner shop, mural, court hoops, food stall, garden planters), calmer play lane. Background saturation and contrast lower than characters so fighters always pop. Play lane y 440 to 680 stays free of high-contrast detail."
+   "text": "- Zed (pixel art): 128x128 frame, ~96px tall figure, mustard jacket, warm brown trousers, expressive casual fit. Facing right by default; flip for left. Pixel rules in section 1.\n- Rust enemies: same frame size, uniform and symmetrical, visor, no personality colour. Contrast through cold hue and straight geometry versus Zed's rounded forms.\n- Background: warm, busy mid-ground (corner shop, mural, court hoops, food stall, garden planters), calmer play lane. Background saturation and contrast lower than characters so fighters always pop. Play lane y 440 to 680 stays free of high-contrast detail."
   },
   {
    "id": "style-guide#10",
@@ -543,7 +879,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "6. Do and Don't",
-   "text": "Do\r\n- Keep silhouettes distinct: Zed is warm and round, Rust is cold and boxy.\r\n- Reserve Telegraph Red for enemy warnings and the low-time pulse.\r\n- Use outlines on every interactive or combat element.\r\n- Keep the HUD readable at a glance: bar plus number, big timer.\nDon't\r\n- Don't use brick red or red-orange on enemies, which confuses damage and telegraph cues.\r\n- Don't put busy mural detail behind the play lane.\r\n- Don't add gradients, blur, or textures (breaks flat-vector consistency).\r\n- Don't mix pixel art and vector assets, except the approved case: pixel-art Zed over a vector world. Keep Zed's outline colour, palette and flat shading so he still sits in the same scene, and don't apply smoothing filters to him.\r\n- Don't rely on colour alone: telegraphs also use shape (icon) and motion."
+   "text": "Do\n- Keep silhouettes distinct: Zed is warm and round, Rust is cold and boxy.\n- Reserve Telegraph Red for enemy warnings and the low-time pulse. Enemy bodies never use red; phase-2 power states use Overload Violet (owner decision).\n- Use outlines on every interactive or combat element.\n- Keep the HUD readable at a glance: bar plus number, big timer.\nDon't\n- Don't use brick red or red-orange on enemies, which confuses damage and telegraph cues.\n- Don't put busy mural detail behind the play lane.\n- Don't add gradients, blur, or textures (breaks flat-vector consistency).\n- Don't mix pixel art and vector assets, except the approved case: pixel-art Zed over a vector world. Keep Zed's outline colour, palette and flat shading so he still sits in the same scene, and don't apply smoothing filters to him.\n- Don't rely on colour alone: telegraphs also use shape (icon) and motion."
   },
   {
    "id": "style-guide#11",
@@ -559,7 +895,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "9. Main menu: Wheatpaste Wall (approved brief: design/ux/menu-concept.md)",
-   "text": "Scope: main menu scene only. Same flat-vector rule (flat shapes, no gradients, no glow, no outlines needed on scenery), but edges are torn and uneven (irregular polygons) to read as pasted paper and worn walls.\nMenu palette (from the approved brief; takes precedence inside the menu scene):\n| Name | Hex | Use |\r\n|---|---|---|\r\n| Brick | #9C3B2E | Wall, Rust notice poster |\r\n| Brick Dark | #7A2F25 | Mortar, poster borders |\r\n| Mustard | #E1A92B | Selected strip, lit windows, subtitle, lane dashes |\r\n| Forest | #2F5D3A | Options strip, vines, poster text |\r\n| Brown | #6B4A2F | Quit strip, door, ledge top |\r\n| Cream | #E8DCC0 | Title text, Controls strip, posters, sun |\r\n| Near-black | #1D1A16 | Title strip, ledge, silhouettes, street |\nScenery-only derived tones (placeholder values, not UI colours): sky bands #B5522F, #D07A2C, #E1A92B, #EBC862; far buildings #5B3A2E; near buildings #2B2420 with windows #3A2F28; street #2A2420."
+   "text": "Scope: main menu scene only. Same flat-vector rule (flat shapes, no gradients, no glow, no outlines needed on scenery), but edges are torn and uneven (irregular polygons) to read as pasted paper and worn walls.\nMenu palette (from the approved brief; takes precedence inside the menu scene):\n| Name | Hex | Use |\n|---|---|---|\n| Brick | #9C3B2E | Wall, Rust notice poster |\n| Brick Dark | #7A2F25 | Mortar, poster borders |\n| Mustard | #E1A92B | Selected strip, lit windows, subtitle, lane dashes |\n| Forest | #2F5D3A | Options strip, vines, poster text |\n| Brown | #6B4A2F | Quit strip, door, ledge top |\n| Cream | #E8DCC0 | Title text, Controls strip, posters, sun |\n| Near-black | #1D1A16 | Title strip, ledge, silhouettes, street |\nScenery-only derived tones (placeholder values, not UI colours): sky bands #B5522F, #D07A2C, #E1A92B, #EBC862; far buildings #5B3A2E; near buildings #2B2420 with windows #3A2F28; street #2A2420."
   },
   {
    "id": "style-guide#13",
@@ -583,7 +919,7 @@
    "file": "design/art/style-guide.md",
    "authority": "derived",
    "heading": "8. Open questions",
-   "text": "1. Art style approval: Zed is pixel art (decided). Open: should Rust enemies, UI and backgrounds also move to pixel art, or stay flat vector next to pixel Zed?\r\n2. Resolution: 1280x720 assumed. Scale mode (FIT?) and whether pixel-perfect scaling is needed.\r\n3. Sprite frame size: 128x128 assumed. Is a larger hero (e.g. 192) wanted?\r\n4. Final animation source for Rust enemies and FX: hand-authored spritesheets, skeletal rig (Spine/DragonBones), or tween-driven vector parts? Zed is settled (hand-authored 36-frame pixel sheet, fixed in the manifest) and is out of scope here; this question only affects the Rust grunt frame counts.\r\n5. Zed's design (skin tone, hair, silhouette, and the \"young street hero\" read) needs creative sign-off from the GDD owner; current look is a placeholder. The GDD does not state Zed's age, role or backstory (canon.md open question 3).\r\n6. Resolved: fonts. Bangers replaced by Permanent Marker (display), Anton added (buttons, result headings), Rubik kept (body); all OFL. See section 3.\r\n7. Audio sync cues for hits are not in this scope; who owns them?\r\n8. Menu palette vs game palette (section 9 vs section 2): unify on one set? Also confirm Anton plus Courier Prime for the menu.\r\n9. Menu SVGs are placeholders generated by script; final hand-polished art not produced. Brick wall has no texture beyond mortar lines."
+   "text": "1. Art style approval: Zed is pixel art (decided). Open: should Rust enemies, UI and backgrounds also move to pixel art, or stay flat vector next to pixel Zed?\n2. Resolution: 1280x720 assumed. Scale mode (FIT?) and whether pixel-perfect scaling is needed.\n3. Sprite frame size: 128x128 assumed. Is a larger hero (e.g. 192) wanted?\n4. Final animation source for Rust enemies and FX: hand-authored spritesheets, skeletal rig (Spine/DragonBones), or tween-driven vector parts? Zed is settled (hand-authored 36-frame pixel sheet, fixed in the manifest) and is out of scope here; this question only affects the Rust grunt frame counts.\n5. Zed's design (skin tone, hair, silhouette, and the \"young street hero\" read) needs creative sign-off from the GDD owner; current look is a placeholder. The GDD does not state Zed's age, role or backstory (canon.md open question 3).\n6. Resolved: fonts. Bangers replaced by Permanent Marker (display), Anton added (buttons, result headings), Rubik kept (body); all OFL. See section 3.\n7. Audio sync cues for hits are not in this scope; who owns them?\n8. Menu palette vs game palette (section 9 vs section 2): unify on one set? Also confirm Anton plus Courier Prime for the menu.\n9. Menu SVGs are placeholders generated by script; final hand-polished art not produced. Brick wall has no texture beyond mortar lines."
   },
   {
    "id": "zed-pixellab-prompt#1",
