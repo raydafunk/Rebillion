@@ -20,7 +20,13 @@ Goal | Agent | Reads | Publishes |
 | G6 | `reviewer-agent` | `facts/generated.json`, the diff, `npm test` | `facts/review.json` |
 
 FEATURE DOCUMENTATION
-Rank 2: GAP-009, menu parallax (menu-ui-agent) = 
+
+Rank 2: GAP-009, menu parallax (menu-ui-agent) 
 
  i ran the blackboard and the goal agent said i need to  build because the main menu lack animations to it 
  i made changes to the speed and the movement of the backgrounds before accepting the change 
+
+ Rank 3 GAP-027: story intro card
+ it find my lore and added a story intro to the fight section from the lore documents i created 
+ which comes from the content/lore/ this feature was asked for me to review it then i have it approve then the agent build it 
+ the agent suggest it because there was not intro to the story 
