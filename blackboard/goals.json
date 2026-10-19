@@ -10,9 +10,9 @@
       "needs": [],
       "produces": "facts/gdd-requirements.json",
       "status": "done",
-      "attempts": 2,
+      "attempts": 1,
       "maxAttempts": 2,
-      "note": "70 requirements"
+      "note": "87 requirements"
     },
     {
       "id": "G2-scan-code",
@@ -24,7 +24,7 @@
       "status": "done",
       "attempts": 1,
       "maxAttempts": 2,
-      "note": "22 features, tests 17/0"
+      "note": "24 features, tests 28/0"
     },
     {
       "id": "G3-find-gaps",
@@ -37,9 +37,9 @@
       ],
       "produces": "facts/gaps.json",
       "status": "done",
-      "attempts": 2,
+      "attempts": 1,
       "maxAttempts": 2,
-      "note": "38 gaps (6 missing, 3 contradicted, 29 partial)"
+      "note": "23 gaps"
     },
     {
       "id": "G4-prioritise",
@@ -51,9 +51,9 @@
       ],
       "produces": "facts/priorities.json",
       "status": "done",
-      "attempts": 2,
+      "attempts": 1,
       "maxAttempts": 2,
-      "note": "10 queued (1 partial carry-over needsOwner), top: hit-stop config"
+      "note": "6 queued, top: Rebind parry to T/M (dodge/block already correct)"
     },
     {
       "id": "G5-generate-code",
@@ -65,9 +65,9 @@
       ],
       "produces": "facts/generated.json",
       "status": "done",
-      "attempts": 2,
+      "attempts": 1,
       "maxAttempts": 3,
-      "note": "GAP-004 implemented"
+      "note": "GAP-002 implemented"
     },
     {
       "id": "G6-review",

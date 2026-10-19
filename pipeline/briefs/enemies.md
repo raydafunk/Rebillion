@@ -1,5 +1,5 @@
 # Content brief: enemies
-_Generated 2026-10-16T15:20:39.830Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
+_Generated 2026-10-19T09:14:47.233Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
 
 **Writer agent:** enemy-designer-agent  |  **Output dir:** `content/enemies/`  |  **Produces:** Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.
 
@@ -67,7 +67,11 @@ Example:
 - `rust-breaker` Rust Breaker (content/enemies/rust-gdd-units.json)
 - `rust-watcher` Rust Watcher (content/enemies/rust-gdd-units.json)
 - `rust-copper-fang` Rust Copper Fang (content/enemies/rust-gdd-units.json)
-- `rust-architect` Rust Architect (content/enemies/rust-gdd-units.json)
+- `rust-halden-varr` Overseer Halden Varr (content/enemies/rust-gdd-units.json)
+- `rust-overseer-voss` Overseer Kade Voss (content/enemies/rust-gdd-units.json)
+- `rust-overseer-calder` Overseer Rhea Calder (content/enemies/rust-gdd-units.json)
+- `rust-overseer-wren` Overseer Silas Wren (content/enemies/rust-gdd-units.json)
+- `rust-overseer-holt` Overseer Dr. Maren Holt (content/enemies/rust-gdd-units.json)
 - `rust-grunt` Rust Grunt (content/enemies/rust-roster.json)
 
 
@@ -414,7 +418,7 @@ Character – the Enemy
 Enemy Faction Lore: RUST — The Private Security Force of Fallen City
 Overview
 Rust began as a private security contractor hired to “stabilize” Fallen City after years of political decay and rising crime. But once they were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening control over every district and crushing resistance with brutal efficiency.
-Their name comes from their signature oxidized metal armor, a symbol of decay — a reminder that Fallen City is rotting under their rule.
+Their name comes from their signature oxidized metal armour, a symbol of decay — a reminder that Fallen City is rotting under their rule.
 Rust’s soldiers are not just guards. They are enforcers, hunters, and executioners. Each unit is trained to suppress civilians, eliminate rebels, and maintain absolute control.
 ⚙️ Rust’s Origin
 
@@ -516,4 +520,4 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 368 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 375 chunks across 38 documents.

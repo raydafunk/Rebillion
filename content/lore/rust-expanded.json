@@ -25,7 +25,7 @@
     "kind": "character",
     "name": "Commander Halden Varr",
     "summary": "The former military strategist who founded the Rust and believes order only comes through fear.",
-    "body": "Varr saw the Fallen City's government collapse and saw his chance. He offered \"protection\" to the officials who were left, then quietly swapped them for Rust loyalists. From that day the Rust were the law.\n\nHe is the face of the Rust's cold, official voice. The Copper Fangs are his personal favourites, and the Overseers run the districts in his name.",
+    "body": "Varr saw the Fallen City's government collapse and saw his chance. He offered \"protection\" to the officials who were left, then quietly swapped them for Rust loyalists. From that day the Rust were the law.\n\nHe is the face of the Rust's cold, official voice. The Copper Fangs are his personal favourites, and the Overseers, his inner circle, run the districts in his name. He is an Overseer himself, \"The Architect of Rust\", and the main boss.",
     "tags": [
       "rust",
       "leader",
@@ -33,7 +33,9 @@
     ],
     "sources": [
       "the-rebellion#11",
-      "the-rebellion#13"
+      "the-rebellion#14",
+      "the-rebellion#19",
+      "the-rebellion#20"
     ],
     "relatedIds": [
       "the-rust",
@@ -197,17 +199,24 @@
     "status": "canon",
     "kind": "faction",
     "name": "Rust Overseers: The Architects of Control",
-    "summary": "District commanders, once politicians and business leaders, who run drones, turrets and squads from behind the screens.",
-    "body": "The Overseers each run a whole district. They seldom fight themselves. Instead they send out drones, turrets and squads, and hold the district through surveillance networks and propaganda. Many were politicians and corporate leaders who sided with the Rust during the takeover.\n\nThey are the end-of-level bosses, the district rulers and the faces of the story's antagonists.",
+    "summary": "District bosses and strategic masterminds, Varr's inner circle, who hold their districts through surveillance, fear and psychological control.",
+    "body": "The Overseers are the Rust's district bosses, strategic masterminds and Varr's inner circle. Each holds a district through surveillance, fear and psychological domination, in a tactical, oppressive style with its own tricks. They are the end-of-level bosses, the district rulers and the faces of the story's antagonists.\n\nFour of them are named. Kade Voss, \"The Eye of the Market\", watches the Neon Market through screens, drones and holograms. Rhea Calder, \"The Iron Matron\", runs the factory floor with machinery and brute force. Silas Wren, \"The Whisper on the Rooftops\", keeps the skyline from above. Dr. Maren Holt, \"The Voice of Compliance\", works in the undercity lab with gas and fog. Above them stands Overseer Halden Varr, \"The Architect of Rust\", who also founded the Rust and fights as the main boss in the Corporate Tower command chamber.\n\nThe neighbourhood answers every screen they put up.",
     "tags": [
       "rust",
       "enemy",
       "overseer",
       "unit",
-      "boss"
+      "boss",
+      "surveillance"
     ],
     "sources": [
-      "the-rebellion#13"
+      "the-rebellion#14",
+      "the-rebellion#15",
+      "the-rebellion#16",
+      "the-rebellion#17",
+      "the-rebellion#18",
+      "the-rebellion#19",
+      "the-rebellion#11"
     ],
     "relatedIds": [
       "surveillance-towers",

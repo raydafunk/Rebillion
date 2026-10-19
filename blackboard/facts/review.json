@@ -1,16 +1,20 @@
 {
-  "builtAt": "2026-10-13T17:30:00.000Z", "item": "GAP-004", "attempt": 1,
+  "builtAt": "2026-10-19T11:00:00.000Z", "item": "GAP-002", "attempt": 1,
   "verdict": "pass",
-  "npmTest": {"passed": 17, "failed": 0},
+  "npmTest": {"passed": 29, "failed": 0},
   "acceptance": [
-    {"statement": "Hit-stop config and pure helper return ms per hit type (light, heavy)", "met": true, "evidence": "src/shared/hitFeedback.js:2, src/combat/hitStop.js:4; asserted at src/state/state.test.mjs hitStopMs light=50 heavy=100"},
-    {"statement": "A test asserts the round timer keeps counting during hit-stop", "met": true, "evidence": "src/state/state.test.mjs end block: tick(1000) while stop active yields TIMER_TICK secondsLeft 2. Weak: see finding"},
-    {"statement": "npm test stays green", "met": true, "evidence": "17 pass, 0 fail"}
+    {"statement": "KEY_MAP.parry == ['KeyT','KeyM'], no KeyQ", "met": true, "evidence": "src/player/input.js:13; test player.test.mjs:298"},
+    {"statement": "dodge L/C and block I/V locked", "met": true, "evidence": "player.test.mjs:299-300"},
+    {"statement": "mapKeys T/M set parry only", "met": true, "evidence": "player.test.mjs:304-307"},
+    {"statement": "mapKeys KeyQ sets nothing", "met": true, "evidence": "player.test.mjs:308"},
+    {"statement": "No key shared between actions", "met": true, "evidence": "player.test.mjs:302-303"},
+    {"statement": "Parry press drives state machine to parry without block", "met": true, "evidence": "player.test.mjs:309-312"},
+    {"statement": "Zed.js WATCHED includes KeyT and KeyM", "met": true, "evidence": "src/player/Zed.js:12 (no automated test; Phaser scene)"},
+    {"statement": "Old Q assertion updated, npm test green", "met": true, "evidence": "player.test.mjs:265"}
   ],
   "findings": [
-    {"severity": "should-fix", "where": "src/state/state.test.mjs (last block)", "problem": "Timer assertion does not depend on hit-stop at all; it would pass with any helper, since the timer never reads hit-stop state. It documents intent but does not guard it.", "fix": "Acceptable while hit-stop is not wired; when ArenaScene applies it, add a test that ticks the timer while the scene hit-stop is active."},
-    {"severity": "nit", "where": "src/shared/combatData.test.mjs", "problem": "Still not in npm test (package.json unowned), so it does not run in the 17.", "fix": "Lead to add it to the test script."},
-    {"severity": "nit", "where": "src/state/state.test.mjs", "problem": "Uses top-level await dynamic import inside a block; fine but inconsistent with other tests.", "fix": "Optionally hoist to a static import."}
+    {"severity": "nit", "where": "src/player/zedVisual.js:34", "problem": "Anim name string still ends in '_Q' (asset key, must not change).", "fix": "none; leave as is"},
+    {"severity": "nit", "where": "src/player/Zed.js:12", "problem": "WATCHED membership is untested.", "fix": "optionally export WATCHED and assert it covers all KEY_MAP codes"}
   ],
-  "requests": ["Lead: wire hitStopMs/mergeHitStop in ArenaScene.js (freeze attacker and target only); add combatData.test.mjs to package.json test script."]
+  "requests": []
 }

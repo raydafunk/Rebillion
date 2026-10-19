@@ -445,62 +445,62 @@
     "enemy": "rust-copper-fang"
   },
   {
-    "id": "rust-architect-spawn",
+    "id": "rust-halden-varr-spawn",
     "status": "proposed",
     "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
     "sources": [
-      "the-rebellion#13",
+      "the-rebellion#19",
       "the-rebellion#11"
     ],
     "speaker": "rust",
     "trigger": "fight_start",
     "lines": [
-      "Overseer on the district. Rebels will be eliminated.",
-      "Drones, turrets, squads: deploy.",
-      "All screens to my channel."
+      "Order is strength. Freedom is weakness.",
+      "Command units, deploy. All screens to my channel.",
+      "This tower holds the whole city. Stand down."
     ],
-    "enemy": "rust-architect"
+    "enemy": "rust-halden-varr"
   },
   {
-    "id": "rust-architect-telegraph",
+    "id": "rust-halden-varr-telegraph",
     "status": "proposed",
     "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
     "sources": [
-      "the-rebellion#13",
+      "the-rebellion#19",
       "hit-feedback-spec#4"
     ],
     "speaker": "rust",
     "trigger": "taunt",
     "lines": [
-      "Turret online. Squad forward.",
-      "Drones released.",
-      "Target acquired. Do not move."
+      "Shield up. Units forward.",
+      "Override: drones released.",
+      "Stance adjusted. You are predictable."
     ],
-    "enemy": "rust-architect"
+    "enemy": "rust-halden-varr"
   },
   {
-    "id": "rust-architect-pushed-back",
+    "id": "rust-halden-varr-pushed-back",
     "status": "proposed",
     "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
     "sources": [
-      "the-rebellion#13",
+      "the-rebellion#19",
       "the-rebellion#11"
     ],
     "speaker": "rust",
     "trigger": "wave_clear",
     "lines": [
       "The screens... went dark.",
-      "District lost. Pulling back.",
+      "Tower lost. Pulling back.",
       "Overseer off the grid."
     ],
-    "enemy": "rust-architect"
+    "enemy": "rust-halden-varr"
   },
   {
-    "id": "zed-answers-architect",
+    "id": "zed-answers-halden-varr",
     "status": "proposed",
     "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
     "sources": [
-      "the-rebellion#13",
+      "the-rebellion#19",
       "the-rebellion#10"
     ],
     "speaker": "zed",
@@ -510,6 +510,6 @@
       "Big boss, small voice. Switch it off.",
       "No more speeches. Windows open."
     ],
-    "enemy": "rust-architect"
+    "enemy": "rust-halden-varr"
   }
 ]

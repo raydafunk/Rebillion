@@ -260,9 +260,9 @@ test('controls table bindings: dodge L/C, block I/V, no Shift, no shared keys', 
 
 import { DODGE } from '../moves.js';
 
-test('parry (Q): negates hits during window, then recovers; light combo unaffected', async () => {
+test('parry (T or M): negates hits during window, then recovers; light combo unaffected', async () => {
   const { PARRY } = await import('../moves.js');
-  assert.deepEqual(KEY_MAP.parry, ['KeyQ']);
+  assert.deepEqual(KEY_MAP.parry, ['KeyT', 'KeyM']);
   const m = new PlayerStateMachine();
   m.step({ pressed: { parry: true }, held: {}, moveX: 0 });
   assert.equal(m.state, 'parry'); assert.equal(m.guardType, 'parry');
@@ -293,4 +293,21 @@ test('heavy pressed during heavy1 does not replay it after recovery', () => {
   assert.equal(m.state, 'idle');
   m.step(press('heavy'));
   assert.equal(m.moveId, 'heavy1', 'a fresh press after the move still works');
+});
+
+test('defence keys: dodge L/C, block I/V, parry T/M; no shared or legacy keys', () => {
+  assert.deepEqual(KEY_MAP.dodge, ['KeyL', 'KeyC']);
+  assert.deepEqual(KEY_MAP.block, ['KeyI', 'KeyV']);
+  assert.deepEqual(KEY_MAP.parry, ['KeyT', 'KeyM']);
+  const all = Object.values(KEY_MAP).flat();
+  assert.equal(new Set(all).size, all.length);
+  for (const k of ['KeyT', 'KeyM']) {
+    const a = mapKeys([k]);
+    assert.equal(a.parry, true); assert.equal(a.block, false); assert.equal(a.dodge, false);
+  }
+  assert.ok(Object.values(mapKeys(['KeyQ'])).every((v) => v === false));
+  const i = new InputState().poll(['KeyT']);
+  const m = new PlayerStateMachine();
+  m.step({ pressed: i.pressed, held: i.held, moveX: 0 });
+  assert.equal(m.state, 'parry'); assert.equal(m.guardType, 'parry');
 });

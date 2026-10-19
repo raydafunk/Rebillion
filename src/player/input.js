@@ -10,7 +10,7 @@ export const KEY_MAP = {
   heavy: ['KeyK', 'KeyX'],
   block: ['KeyI', 'KeyV'],
   dodge: ['KeyL', 'KeyC'],
-  parry: ['KeyQ'],
+  parry: ['KeyT', 'KeyM'],
 };
 
 const emptyActions = () => Object.fromEntries(ACTIONS.map((a) => [a, false]));

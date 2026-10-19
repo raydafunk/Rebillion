@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-10-16T15:20:39.820Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-10-19T09:14:47.229Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -192,7 +192,7 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
 ```
 
-## Retrieved GDD passages (26)
+## Retrieved GDD passages (33)
 ### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
 Character – the hero
 Zed — The Boy from BrickRed Alley
@@ -229,7 +229,7 @@ Character – the Enemy
 Enemy Faction Lore: RUST — The Private Security Force of Fallen City
 Overview
 Rust began as a private security contractor hired to “stabilize” Fallen City after years of political decay and rising crime. But once they were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening control over every district and crushing resistance with brutal efficiency.
-Their name comes from their signature oxidized metal armor, a symbol of decay — a reminder that Fallen City is rotting under their rule.
+Their name comes from their signature oxidized metal armour, a symbol of decay — a reminder that Fallen City is rotting under their rule.
 Rust’s soldiers are not just guards. They are enforcers, hunters, and executioners. Each unit is trained to suppress civilians, eliminate rebels, and maintain absolute control.
 ⚙️ Rust’s Origin
 
@@ -347,29 +347,302 @@ Rust operates under a single doctrine:
 They believe Fallen City must be rebuilt through force. Civilians are treated as assets to control, not people to protect. Rust’s soldiers are conditioned to see rebels — including Zed — as threats to the “greater good.”
 Rust Unit Types Enemies
 1. Rust Grunts — “The Iron Line”
-The backbone of Rust’s force. Once ordinary citizens, they were coerced or manipulated into service. Their armor is cheap, rustcoated plating, and their helmets hide their identities — intentionally.
+The backbone of Rust’s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rustcoated plating, and their helmets hide their identities — intentionally.
 
 ### [the-rebellion#12] primary - GameDesignDocument/The Rebellion.docx
 Lore: Rust strips recruit of their names, replacing them with serial numbers. This erases individuality and ensures obedience.
 Purpose: Crowd control, intimidation, frontline combat.
+Attacks/Move Lists
+Rust Jab Combo A quick 1–2–3 punch string.
+Light damage
+Used to interrupt the player
+Often done in groups to create pressure
+Helmet Headbutt A sudden forward lunge using their reinforced helmet.
+Short windup
+Causes brief stun
+Used when the player is too close or grabs too often
 2. Rust Bruisers — “The Breakers”
-Massive enforcers enhanced with illegal muscle stimulants. Their armor is reinforced with heavy plating, giving them a hulking silhouette.
+Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette.
 Lore: Breakers are often former criminals promised freedom in exchange for loyalty. Rust chemically augments them, making them stronger but unstable.
 Purpose: Shock troops, area denial, crushing resistance groups.
+Attack/ Move lists
+A downward smash with a reinforced gauntlet.
+Medium startup
+Causes ground bounce
+Breaks player block
+Signature “thud” sound on impact
+2. Rust Uppercut
+A rising punch fuelled by muscle stimulants.
+
+### [the-rebellion#13] primary - GameDesignDocument/The Rebellion.docx
+Launches the player
+Antiair option
+Used when the player jumps too often
+3. Body Check
+A shoulder slam using their plated armour.
+Short dash forward
+Knocks the player back
+Can interrupt combos
+Super armour during the dash
 3. Rust Rangers — “The Watchers”
 Agile units equipped with taser rifles, batons, and tracking visors.
 Lore: Watchers are trained to hunt rebels through the city’s alleyways and rooftops. Their visors can scan heat signatures, making hiding nearly impossible.
 Purpose: Longrange harassment, pursuit, reconnaissance.
+Attack/ Move list
+1. Taser Shot
+A quick electric bolt fired from their taser rifle.
+Light damage
+Brief stun on hit
+Used constantly to harass
+Encourages the player to close distance
+2. Baton Strike
+A fast melee hit with their electrified baton.
+Very quick startup
+Interrupts player combos
+Used when Zed gets too close
 4. Rust Specialists — “The Copper Fangs”
 Elite soldiers with advanced gear: electrified gauntlets, grappling hooks, and tactical shields.
 
-### [the-rebellion#13] primary - GameDesignDocument/The Rebellion.docx
-Lore: Chosen from the most loyal Rust members, Fangs undergo psychological conditioning to remove fear and hesitation. They are Varr’s personal favorites.
+### [the-rebellion#14] primary - GameDesignDocument/The Rebellion.docx
+Lore: Chosen from the most loyal Rust members, Fangs undergo psychological conditioning to remove fear and hesitation. They are Varr’s personal favourites.
 Purpose: Highpriority target elimination, bosstier encounters.
+Attack/Move List
+👊 Basic Attacks (Sharp, Controlled, Professional)
+1. Fang Jab
+A lightningquick electrified gauntlet jab.
+Very fast startup
+Brief stun on hit
+Used to interrupt player combos
+2. Copper Cross
+A crosspunch with crackling electricity.
+Medium damage
+Causes stagger
+Used after dodging a player attack
+3. Shield Bash
+A forward shove with their tactical shield.
+Pushes the player back
+Breaks guard
+Used to create space for followup attacks
+personal favourites.
 5. Rust Overseers — “The Architects of Control”
-Commanders who manage entire districts. They rarely fight directly but deploy drones, turrets, and squads with ruthless precision.
-Lore: Overseers are former politicians and corporate leaders who sided with Rust during the takeover. They maintain control through surveillance networks and propaganda.
-Purpose: end levelbosses, district rulers, story antagonists.
+Role: District bosses, strategic masterminds, Varr’s inner circle Theme: Control through surveillance, fear, and psychological domination Combat Style: Tactical, oppressive, each with unique mechanics
+🧠 1. Overseer Kade Voss — “The Eye of the Market”
+Boss Theme: Surveillance, prediction, drones, holograms
+
+### [the-rebellion#15] primary - GameDesignDocument/The Rebellion.docx
+Arena: Neon Market control hub with screens, drones, hologram emitters
+Phase 1 — “Data Acquisition”
+📡 Predictive Strike
+Voss’s visor scans Zed, projecting a red line showing where he thinks Zed will move.
+After 1s, a laser shot fires along that line
+Forces players to break patterns
+🛸 Drone Swarm
+Summons 3–5 drones that orbit him.
+Drones shoot small taser bolts
+Destroyable
+Creates bullethell pressure
+🔍 Hologram Decoy
+Creates 2 hologram copies.
+Copies mimic movement but don’t attack
+Real Voss flickers slightly
+Forces target identification
+📊 Data Spike
+Voss slams his hand into a console.
+Electric pillars erupt from the ground
+Pattern changes each use
+Punishes stationary players
+Phase 2 — “System Override”
+Triggered at 50% HP. Arena lights dim; drones turn red.
+🧠 Predictive Lockdown
+Voss’s visor locks onto Zed.
+Zed’s special meter is disabled for 10 seconds
+Voss becomes more aggressive
+Forces reliance on fundamentals
+🛸 Drone Fusion
+Remaining drones merge into a MegaDrone.
+Fires sweeping laser beams
+Moves slowly
+Adds a second bosslike threat
+💥 Hologram Assault
+
+### [the-rebellion#16] primary - GameDesignDocument/The Rebellion.docx
+Now holograms can attack.
+Each hologram performs a weak punch or shot
+Real Voss attacks simultaneously
+Creates chaotic multiangle pressure
+⚡ System Crash (Super Move)
+Voss overloads the arena grid.
+Entire floor becomes electrified except safe zones
+Safe zones shift every second
+Forces constant movement
+🔥 2. Overseer Rhea Calder — “The Iron Matron”
+Boss Theme: Industrial power, machinery, brute force
+Arena: Factory floor with conveyors, crushers, steam vents
+Phase 1 — “Discipline Through Strength”
+🔨 Forge Hammer Smash
+Massive overhead hammer strike.
+Shockwave travels across floor
+Can break player guard
+Slow but devastating
+💢 Hydraulic Grab
+Exosuit arms extend to grab Zed.
+Long reach
+Leads into a slam or throw
+Super Armor during startup
+🔥 Steam Burst Armor
+Calder vents steam from her suit.
+Grants temporary invulnerability
+Pushes player back
+Used to reset pressure
+📦 Conveyor Trap
+Activates conveyor belts.
+Moves player toward crushers or hazards
+Forces repositioning
+Adds environmental danger
+Phase 2 — “Factory Protocol”
+Triggered at 40% HP. Calder’s exosuit glows red.
+
+### [the-rebellion#17] primary - GameDesignDocument/The Rebellion.docx
+🔧 Overclock Mode
+Her attack speed increases.
+Hammer swings faster
+Grab startup reduced
+Steam bursts more frequent
+🛠 Industrial Barrage
+Summons robotic arms from the background.
+Arms punch or grab from offscreen
+Telegraphs with flashing lights
+Adds multidirectional threats
+💥 Furnace Slam (Super Move)
+Calder leaps and slams her hammer into the ground.
+Creates molten cracks across the floor
+Cracks explode after 2 seconds
+High damage, large AoE
+🌫 3. Overseer Silas Wren — “The Whisper on the Rooftops”
+Boss Theme: Mobility, stealth, vertical control
+Arena: Rooftop platforms, zip lines, breakable ledges
+Phase 1 — “Silent Hunter”
+🪝 GrappleDash Barrage
+Silas zips between platforms.
+Attacks from above or behind
+Very fast
+Hard to punish without prediction
+⚔️ Skyline Snare
+Throws electrified wire traps.
+Traps restrict movement
+Can immobilize briefly
+Forces careful navigation
+👣 Silent Step
+Turns semiinvisible.
+Only faint outline visible
+Next attack is guaranteed critical
+Used unpredictably
+⬇️ Rooftop Execution
+Dive attack from above.
+High damage
+Creates shockwave
+
+### [the-rebellion#18] primary - GameDesignDocument/The Rebellion.docx
+Punishes players who stay grounded
+Phase 2 — “Ghost of the Skyline”
+Triggered at 50% HP. Silas becomes faster and quieter.
+🪝 Grapple Clone
+Creates afterimages when grappling.
+Afterimages perform fake attacks
+Real Silas attacks from unexpected angle
+⚡ Shadow Pulse
+Silas releases a burst of energy.
+Knocks player back
+Resets spacing
+Used after combos
+🌫 Vanish Storm (Super Move)
+Silas disappears completely.
+Multiple silhouettes attack from all sides
+Real Silas finishes with a heavy strike
+Requires reading patterns
+☣ 4. Overseer Dr. Maren Holt — “The Voice of Compliance”
+Boss Theme: Chemicals, toxins, psychological control
+Arena: Undercity lab with gas vents, toxin pools, fog zones
+Phase 1 — “Chemical Control”
+💨 Fear Gas
+Releases purple fog.
+Distorts player controls
+Causes screen blur
+Forces careful movement
+🧪 Obedience Mist
+Green fog that slows movement.
+Reduces dodge distance
+Makes combos harder
+☣ Toxin Burst
+Throws chemical vials.
+Creates AoE damage zones
+Zones linger
+Controls space
+💉 Sedative Shot
+Fires a dart.
+Reduces player attack speed
+Used to punish aggressive players
+
+### [the-rebellion#19] primary - GameDesignDocument/The Rebellion.docx
+Phase 2 — “Doctor’s Orders”
+Triggered at 40% HP. Holt’s suit glows with chemical pressure.
+🧬 NeuroFog
+Entire arena fills with fog.
+Player vision reduced
+Holt becomes harder to track
+She uses stealth attacks
+🧪 Corrosive Wave
+Throws a large vial that explodes.
+Creates spreading acid
+Damages both player and Holt
+Forces repositioning
+☣ Compliance Protocol (Super Move)
+Holt releases a massive chemical cloud.
+Player controls reverse
+Damage over time
+Holt becomes extremely aggressive
+⚡ 5. Overseer Halden Varr — “The Architect of Rust”
+Boss Theme: Authority, mastery, hybrid combat
+Arena: Corporate Tower command chamber
+Phase 1 — “Authority”
+⚡ Authority Strike
+Electrified gauntlet punch.
+High damage
+Causes knockback
+Fast startup
+🛡 Command Shield
+Deploys energy shield.
+Blocks all frontal attacks
+Must be flanked or broken
+📡 Command Override
+Summons Rust units.
+Grunts, Rangers, or Specialists
+Varr fights alongside them
+🔧 Adaptive Counter
+Varr changes stance based on player behavior.
+Antiair stance
+Antirush stance
+Anticombo stance
+Forces adaptation
+Phase 2 — “Rust Protocol”
+
+### [the-rebellion#20] primary - GameDesignDocument/The Rebellion.docx
+Triggered at 30% HP. Varr dons full armor.
+⚙ Hybrid Assault
+Uses moves from all Rust unit types:
+Breaker slam
+Ranger taser shot
+Fang gauntlet combo
+Overseerstyle control attacks
+🛸 Drone Command
+Summons elite drones.
+Drones fire lasers
+Create bullethell patterns
+⚡ Rust Collapse (Super Move)
+Varr overloads his armor.
+Massive AoE explosion
+Arena walls electrify
+Final phase becomes relentless
 
 ### [canon#8] derived - design/lore/canon.md - Zed — The Boy from Brick‑Red Alley
 Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out”. His block was known for its mustard‑yellow storefronts, forest‑green basketball courts, and the brick‑red alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
@@ -445,4 +718,4 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 - Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 368 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 375 chunks across 38 documents.

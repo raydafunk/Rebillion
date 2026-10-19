@@ -31,7 +31,7 @@ export const ZED_ANIMS = [
   { state: 'light3', folder: 'fighting_pose_2', anim: 'High_Kick', frames: 7, fps: 24, originY: 64 / 80, repeat: 0 },
   // Dodge sway: 9 frames, 68x68 canvas, lowest opaque row 55 -> (55 + 1 + 2px gap)/68. Stretched over DODGE.duration below.
   { state: 'dodge', folder: 'Zed_a_young_street_dodge', anim: 'Zed_a_young_street_fighter_seen_in_side_profile_animations', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
-  // Parry reaction (Q): 9 frames, 68x68 canvas (same framing as dodge; foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
+  // Parry reaction (T or M): 9 frames, 68x68 canvas (same framing as dodge; foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
   { state: 'parry', folder: 'Zed_parry_reaction_a', anim: 'Zed_parry_reaction_animation_triggered_when_hit._Q', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
 ];
 // Static single-pose textures shown for a machine state (rotations only, no frames yet).

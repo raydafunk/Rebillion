@@ -22,3 +22,16 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented
 2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1
 2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass
+2026-10-19T09:14:35.555Z | director | - | reset | 
+2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1
+2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1
+2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements
+2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0
+2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1
+2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps
+2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1
+2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)
+2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1
+2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented
+2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1
+2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass

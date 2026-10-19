@@ -165,7 +165,7 @@
   {
     "id": "level-04-stewpot-gardens",
     "status": "proposed",
-    "gddGap": "No level structure in the GDD. Introduces the Rust Dart Marksman (proposed ranged enemy) and pairs it with melee waves so the player must use lane movement. Also introduces the proposed Rust Signal Warden (support, buffs grunts); engine waves hold one enemy type each, so a Warden wave stands alone until mixed waves exist (further gap). 180 s limit assumed.",
+    "gddGap": "No level structure in the GDD. Introduces the Rust Dart Marksman (proposed ranged enemy) and pairs it with melee waves so the player must use lane movement. Also fields the named Overseer Dr. Maren Holt (rust-overseer-holt) as the district boss wave; the GDD gives Holt an undercity lab arena with gas vents and fog, so the garden planters and food-stall fog are only the closest fit (no GDD level for her; flag). Engine waves hold one enemy type each and counts cannot shrink, so the boss wave keeps the wave count of 5 with maxAlive 1 until boss-encounter waves exist (further gap). 180 s limit assumed.",
     "sources": [
       "the-rebellion#6",
       "the-rebellion#7",
@@ -195,9 +195,9 @@
         "startDelayMs": 800
       },
       {
-        "enemy": "rust-architect",
+        "enemy": "rust-overseer-holt",
         "count": 5,
-        "maxAlive": 2,
+        "maxAlive": 1,
         "spawnIntervalMs": 1500,
         "startDelayMs": 1500
       },
@@ -234,7 +234,7 @@
   {
     "id": "level-05-songwindow-heights",
     "status": "proposed",
-    "gddGap": "No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Shield Sergeant (proposed elite); the finale mixes every enemy type including the proposed Rust Signal Warden; 210 s limit assumed. Five levels is an assumption.",
+    "gddGap": "No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Shield Sergeant (proposed elite); the finale mixes every enemy type including the named Overseer Silas Wren (rust-overseer-wren), whose GDD arena is rooftop platforms and zip lines, the best fit for the Heights (his wave keeps count 6 with maxAlive 1 because counts cannot shrink); 210 s limit assumed. Five levels is an assumption.",
     "sources": [
       "the-rebellion#6",
       "the-rebellion#9",
@@ -285,9 +285,9 @@
         "startDelayMs": 1500
       },
       {
-        "enemy": "rust-architect",
+        "enemy": "rust-overseer-wren",
         "count": 6,
-        "maxAlive": 2,
+        "maxAlive": 1,
         "spawnIntervalMs": 1200,
         "startDelayMs": 1500
       },
