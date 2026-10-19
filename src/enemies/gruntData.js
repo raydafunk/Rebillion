@@ -1,9 +1,10 @@
 // Rust grunt data table (Tier 0). Placeholder numbers; tune here only.
 // Times in milliseconds, speeds in px/s, rects relative to the entity origin (facing right).
-// NOTE: damage/knockback/hitstun values here are placeholders until combat's combatData.js
-// is final; the grunt reads them from this table only.
+// maxHp and attack damage/knockback/hitstun are read from src/shared/combatData.js (single source).
 // Sprite key mirrors assets/asset-keys.json sprites["rust.grunt"]. src/config/assetKeys.js does
 // not export it yet (outside my folders), so it is declared here.
+import { COMBAT_DEFAULTS, GRUNT_ATTACK_COMBAT } from '../shared/combatData.js';
+
 export const GRUNT_SPRITE_KEY = 'rust.grunt';
 export const GRUNT_ANIMS = {
   idle: 'rust.grunt.idle',
@@ -19,7 +20,7 @@ export const TELEGRAPH_FX_KEY = 'fx.telegraph';
 export const GRUNT = {
   team: 'rust',
   spriteKey: GRUNT_SPRITE_KEY,
-  maxHp: 30,
+  maxHp: COMBAT_DEFAULTS.GRUNT_MAX_HP,
   moveSpeed: 90,
   circleSpeed: 55,
   laneTolerance: 22,    // max vertical (depth) offset at which an attack may start; otherwise close the gap in y first
@@ -35,9 +36,9 @@ export const GRUNT = {
   hurtbox: { x: -20, y: -80, w: 40, h: 80 },
   attack: {
     hitbox: { x: 20, y: -65, w: 55, h: 40 },
-    damage: 8,
-    knockback: 220,
-    hitstun: 250,
+    damage: GRUNT_ATTACK_COMBAT.attack.damage,
+    knockback: GRUNT_ATTACK_COMBAT.attack.knockback,
+    hitstun: GRUNT_ATTACK_COMBAT.attack.hitstun,
   },
 };
 

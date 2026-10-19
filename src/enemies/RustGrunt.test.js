@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { RustGrunt, GruntState as S } from './RustGrunt.js';
 import { AttackSlots } from './AttackSlots.js';
 import { GRUNT } from './gruntData.js';
+import { COMBAT_DEFAULTS, GRUNT_ATTACK_COMBAT } from '../shared/combatData.js';
 
 const run = (g, target, ms, step = 16) => { for (let t = 0; t < ms; t += step) g.update(step, target); };
 const target = { x: 300, y: 0 };
@@ -74,5 +75,13 @@ const target = { x: 300, y: 0 };
   }
   assert.equal(maxAtk, 2); assert.ok(attacks > 2);
   assert.ok(gs.every((g) => g.alive));
+}
+// gruntData numbers come from combatData.js (single source)
+{
+  const c = GRUNT_ATTACK_COMBAT.attack;
+  assert.equal(GRUNT.maxHp, COMBAT_DEFAULTS.GRUNT_MAX_HP);
+  assert.equal(GRUNT.attack.damage, c.damage);
+  assert.equal(GRUNT.attack.knockback, c.knockback);
+  assert.equal(GRUNT.attack.hitstun, c.hitstun);
 }
 console.log('RustGrunt tests passed');

@@ -35,3 +35,26 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented
 2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1
 2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass
+2026-10-19T09:55:45.446Z | director | - | reset | 
+2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1
+2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1
+2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements
+2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0
+2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1
+2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps
+2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1
+2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test
+2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1
+2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented
+2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1
+2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass
+2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved
+2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2
+2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented
+2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2
+2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass
+2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved
+2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3
+2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented
+2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3
+2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass

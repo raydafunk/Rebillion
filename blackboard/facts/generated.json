@@ -1,9 +1,21 @@
 {
-  "builtAt": "2026-10-19T10:30:00.000Z", "attempt": 1,
-  "item": "GAP-002", "ownerAgent": "player-agent",
-  "filesChanged": ["src/player/input.js", "src/player/Zed.js", "src/player/moves.js", "src/player/zedVisual.js", "src/player/test/player.test.mjs"],
-  "testsAdded": ["src/player/test/player.test.mjs"],
-  "npmTest": {"passed": 29, "failed": 0},
-  "eventsAdded": [], "openQuestions": [],
-  "requests": ["Menu-ui follow-up: Controls panel should read the real KEY_MAP (already shows T/M)."]
+  "builtAt": "2026-10-19T11:12:50.419Z",
+  "attempt": 1,
+  "item": "GAP-004 step 3",
+  "ownerAgent": "encounter-agent",
+  "filesChanged": [
+    "src/enemies/gruntData.js"
+  ],
+  "testsAdded": [
+    "src/enemies/RustGrunt.test.js"
+  ],
+  "npmTest": {
+    "passed": 31,
+    "failed": 0
+  },
+  "eventsAdded": [],
+  "openQuestions": [
+    "src/enemies/RustGrunt.test.js is outside allowedFiles (gruntData.js only); edit is additive, per the director's instruction."
+  ],
+  "requests": []
 }

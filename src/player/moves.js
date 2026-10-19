@@ -4,26 +4,29 @@
 //   follow-up in `chain` may cancel into the next move.
 // hitbox: relative to entity origin, facing right (flipped by facing).
 // damage/knockback/hitstun are inputs for the hit-request (combat resolves them).
+import { PLAYER_MOVE_COMBAT as C } from '../shared/combatData.js';
+
+// damage/knockback/hitstun/hitbox come from combatData.js (single source).
 export const MOVES = {
   light1: {
     startup: 4, active: 3, recovery: 14, cancelFrom: 7,
-    damage: 6, knockback: 120, hitstun: 14, hitbox: { x: 20, y: -24, w: 40, h: 24 },
+    ...C.light1, hitbox: { ...C.light1.hitbox },
     chain: { light: 'light2', heavy: 'heavy1' },
   },
   light2: {
     startup: 4, active: 3, recovery: 14, cancelFrom: 7,
-    damage: 7, knockback: 140, hitstun: 14, hitbox: { x: 20, y: -24, w: 44, h: 24 },
+    ...C.light2, hitbox: { ...C.light2.hitbox },
     chain: { light: 'light3', heavy: 'heavy1' },
   },
   // Third hit of the 3-hit combo: finisher with bigger knockback.
   light3: {
     startup: 6, active: 4, recovery: 16, cancelFrom: 999,
-    damage: 12, knockback: 320, hitstun: 24, hitbox: { x: 20, y: -28, w: 52, h: 32 },
+    ...C.light3, hitbox: { ...C.light3.hitbox },
     chain: {},
   },
   heavy1: {
     startup: 12, active: 4, recovery: 20, cancelFrom: 999,
-    damage: 18, knockback: 380, hitstun: 28, hitbox: { x: 24, y: -30, w: 56, h: 36 },
+    ...C.heavy1, hitbox: { ...C.heavy1.hitbox },
     chain: {},
   },
 };

@@ -311,3 +311,13 @@ test('defence keys: dodge L/C, block I/V, parry T/M; no shared or legacy keys', 
   m.step({ pressed: i.pressed, held: i.held, moveX: 0 });
   assert.equal(m.state, 'parry'); assert.equal(m.guardType, 'parry');
 });
+
+test('moves.js combat numbers equal combatData.js (single source)', async () => {
+  const { PLAYER_MOVE_COMBAT } = await import('../../shared/combatData.js');
+  for (const [id, c] of Object.entries(PLAYER_MOVE_COMBAT)) {
+    assert.equal(MOVES[id].damage, c.damage, id);
+    assert.equal(MOVES[id].knockback, c.knockback, id);
+    assert.equal(MOVES[id].hitstun, c.hitstun, id);
+    assert.deepEqual(MOVES[id].hitbox, c.hitbox, id);
+  }
+});

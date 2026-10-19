@@ -24,7 +24,7 @@
       "status": "done",
       "attempts": 1,
       "maxAttempts": 2,
-      "note": "24 features, tests 28/0"
+      "note": "22 features, tests 29/0"
     },
     {
       "id": "G3-find-gaps",
@@ -39,7 +39,7 @@
       "status": "done",
       "attempts": 1,
       "maxAttempts": 2,
-      "note": "23 gaps"
+      "note": "22 gaps"
     },
     {
       "id": "G4-prioritise",
@@ -53,7 +53,7 @@
       "status": "done",
       "attempts": 1,
       "maxAttempts": 2,
-      "note": "6 queued, top: Rebind parry to T/M (dodge/block already correct)"
+      "note": "7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test"
     },
     {
       "id": "G5-generate-code",
@@ -65,9 +65,9 @@
       ],
       "produces": "facts/generated.json",
       "status": "done",
-      "attempts": 1,
+      "attempts": 3,
       "maxAttempts": 3,
-      "note": "GAP-002 implemented"
+      "note": "GAP-004 step 3 implemented"
     },
     {
       "id": "G6-review",
@@ -79,7 +79,7 @@
       ],
       "produces": "facts/review.json",
       "status": "done",
-      "attempts": 1,
+      "attempts": 3,
       "maxAttempts": 3,
       "note": "pass"
     }

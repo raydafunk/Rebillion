@@ -1,20 +1,17 @@
 {
-  "builtAt": "2026-10-19T11:00:00.000Z", "item": "GAP-002", "attempt": 1,
+  "builtAt": "2026-10-19T11:20:00.000Z",
+  "item": "GAP-004 step 3",
+  "attempt": 1,
   "verdict": "pass",
-  "npmTest": {"passed": 29, "failed": 0},
+  "npmTest": {"passed": 31, "failed": 0},
   "acceptance": [
-    {"statement": "KEY_MAP.parry == ['KeyT','KeyM'], no KeyQ", "met": true, "evidence": "src/player/input.js:13; test player.test.mjs:298"},
-    {"statement": "dodge L/C and block I/V locked", "met": true, "evidence": "player.test.mjs:299-300"},
-    {"statement": "mapKeys T/M set parry only", "met": true, "evidence": "player.test.mjs:304-307"},
-    {"statement": "mapKeys KeyQ sets nothing", "met": true, "evidence": "player.test.mjs:308"},
-    {"statement": "No key shared between actions", "met": true, "evidence": "player.test.mjs:302-303"},
-    {"statement": "Parry press drives state machine to parry without block", "met": true, "evidence": "player.test.mjs:309-312"},
-    {"statement": "Zed.js WATCHED includes KeyT and KeyM", "met": true, "evidence": "src/player/Zed.js:12 (no automated test; Phaser scene)"},
-    {"statement": "Old Q assertion updated, npm test green", "met": true, "evidence": "player.test.mjs:265"}
+    {"statement": "gruntData.js imports from src/shared/combatData.js", "met": true, "evidence": "src/enemies/gruntData.js:6"},
+    {"statement": "no duplicate hp/damage/knockback/hitstun literals that exist in combatData.js", "met": true, "evidence": "src/enemies/gruntData.js:23 and :39-41 now read COMBAT_DEFAULTS.GRUNT_MAX_HP and GRUNT_ATTACK_COMBAT.attack.*; values 30/8/220/250 identical to before"},
+    {"statement": "npm test green", "met": true, "evidence": "31 passed, 0 failed (run by reviewer)"}
   ],
   "findings": [
-    {"severity": "nit", "where": "src/player/zedVisual.js:34", "problem": "Anim name string still ends in '_Q' (asset key, must not change).", "fix": "none; leave as is"},
-    {"severity": "nit", "where": "src/player/Zed.js:12", "problem": "WATCHED membership is untested.", "fix": "optionally export WATCHED and assert it covers all KEY_MAP codes"}
+    {"severity": "nit", "where": "src/enemies/RustGrunt.test.js:79-87", "problem": "File is outside allowedFiles (gruntData.js only); edit is additive and was directed, so not blocking. The test asserts value equality, which also held before the change, so it would not fail if the import were reverted.", "fix": "Optional: none needed; behaviour-preserving refactor. The value-lock still guards against drift between tables."},
+    {"severity": "nit", "where": "src/enemies/gruntData.js:38", "problem": "attack.hitbox literal still duplicates GRUNT_ATTACK_COMBAT.attack.hitbox. Not in acceptance (hp/damage/knockback/hitstun only).", "fix": "Optionally import the hitbox in a later step."}
   ],
   "requests": []
 }
