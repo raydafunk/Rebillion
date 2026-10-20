@@ -5,13 +5,14 @@ import { PLAYER_ID } from '../shared/combatData.js';
 import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
-import { ROUND_TIME_SECONDS } from '../state/config.js';
 import { Zed } from '../player/Zed.js';
 import { ZedVisual, loadZedSprites } from '../player/zedVisual.js';
 import { Arena } from '../arena/Arena.js';
-import { WORLD, LANE } from '../arena/arenaData.js';
-import { WAVES } from '../waves/waveData.js';
-import { ASSET_KEYS, ASSET_PATHS, COLORS } from '../config/assetKeys.js';
+import { WORLD, LANE, VIEW } from '../arena/arenaData.js';
+import { legacyLevel, nextLevelIndex } from '../levels/levelData.js';
+import showLevelCard from '../ui/LevelCard.js';
+import addAmbient from '../levels/ambient.js';
+import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys.js';
 import { GRUNT_SPRITE_KEY, TELEGRAPH_FX_KEY } from '../enemies/gruntData.js';
 
 const GROUND_Y = LANE.maxY - 40;      // Zed's feet line (physics floor)
@@ -21,9 +22,26 @@ const FINISHER_DAMAGE = 12;           // damage at/above which a hit gets screen
 export default class ArenaScene extends Phaser.Scene {
   constructor() { super('ArenaScene'); }
 
+  // data.levelIndex picks the level (ResultScene's NEXT LEVEL passes it); ?level=N does the same for testing.
+  init(data) {
+    this.levels = this.game.registry.get('levels') || [legacyLevel()];
+    const q = Number(new URLSearchParams(globalThis.location?.search).get('level')) - 1;
+    const want = data && Number.isInteger(data.levelIndex) ? data.levelIndex : Number.isInteger(q) && q >= 0 ? q : 0;
+    this.levelIndex = Math.min(Math.max(0, want), this.levels.length - 1);
+    this.level = this.levels[this.levelIndex];
+    this.bgKey = ASSET_KEYS.BG_ARENA;
+  }
+
   preload() {
     this.load.on('loaderror', () => {});
     this.load.svg(ASSET_KEYS.BG_ARENA, ASSET_PATHS[ASSET_KEYS.BG_ARENA], { width: WORLD.w, height: WORLD.h });
+    // Per-level background from content/levels/styles/<id>.json; the shared placeholder is the fallback.
+    const bgPath = this.level.style.background.path;
+    if (bgPath) {
+      this.bgKey = `bg.${this.level.id}`;
+      if (/.svg$/i.test(bgPath)) this.load.svg(this.bgKey, bgPath, { scale: 1 }); // intrinsic size: art may be 1920x720 or a wider multiple
+      else this.load.image(this.bgKey, bgPath);
+    }
     loadZedSprites(this, ['Idle', 'Jumping']);
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
     this.load.svg(TELEGRAPH_FX_KEY, 'assets/fx/telegraph-icon-placeholder.svg', { width: 48, height: 48 });
@@ -41,14 +59,26 @@ export default class ArenaScene extends Phaser.Scene {
     this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
     this.hitStopIds = new Set();
 
-    this.add.image(0, 0, ASSET_KEYS.BG_ARENA).setOrigin(0, 0).setDepth(-1000);
-    this.physics.world.setBounds(0, 0, WORLD.w, GROUND_Y);
-    this.cameras.main.setBounds(0, 0, WORLD.w, WORLD.h);
+    this.roundStarted = false;
+    const bgKey = this.textures.exists(this.bgKey) ? this.bgKey : ASSET_KEYS.BG_ARENA;
+    // The level is wider than one screen: the background art (1920x720, or a wider multiple) repeats along it.
+    this.world = { w: this.level.worldWidth, h: WORLD.h };
+    this.scrolling = !!this.level.scrolling;
+    this.add.tileSprite(0, 0, this.world.w, this.world.h, bgKey).setOrigin(0, 0).setDepth(-1000);
+    const ov = this.level.style.background.overlay;
+    if (ov && ov.alpha > 0) {
+      this.add.rectangle(0, 0, this.world.w, this.world.h, Phaser.Display.Color.HexStringToColor(ov.color).color, ov.alpha).setOrigin(0, 0).setDepth(-999);
+    }
+    addAmbient(this, this.level.style, this.world.w);
+    this.physics.world.setBounds(0, 0, this.world.w, GROUND_Y);
+    this.cameras.main.setBounds(0, 0, this.world.w, this.world.h);
+    this.levelDone = false;
+    if (this.scrolling) this._buildExit();
     this.cameras.main.fadeIn(250, 0, 0, 0);
 
     // Order matters: combat and state listen before anything emits.
     this.resolver = createHitResolver(ev, () => this.simNow);
-    this.state = createRoundState(ev);
+    this.state = createRoundState(ev, { seconds: this.level.timeLimitSec });
     this.zed = new Zed(this, 200, GROUND_Y - 36);
     this.zed.sprite.setAlpha(0);                       // physics body only; the visual below is the art
     this.zedShadow = this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25);
@@ -57,6 +87,9 @@ export default class ArenaScene extends Phaser.Scene {
 
     this.arena = new Arena({
       events: ev,
+      waves: this.level.waves,
+      world: this.world,
+      hold: this.scrolling,
       getTarget: () => ({ x: this.zed.x, y: GROUND_Y }),   // enemies chase the ground line, so jumping dodges
       getScrollX: () => this.cameras.main.scrollX,
     });
@@ -65,16 +98,29 @@ export default class ArenaScene extends Phaser.Scene {
     this._listen(EVENTS.HIT_REQUEST, (r) => this._onHitRequest(r));
     this._listen(EVENTS.DAMAGE_APPLIED, (d) => this._onDamage(d));
     this._listen(EVENTS.ENTITY_DIED, (d) => { if (d.team === 'rust') this.stats.defeated++; });
-    this._listen(EVENTS.WAVE_CLEARED, () => { this.stats.wavesCleared++; });
+    this._listen(EVENTS.WAVE_CLEARED, ({ index }) => {
+      this.stats.wavesCleared++;
+      if (this.scrolling && index + 1 >= this.level.waves.length) this._showExit();
+    });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
-    this.scene.launch('HudScene');
+    this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
     // ?sandbox: empty arena for testing Zed's moves; no waves, timer or lose condition.
     this.sandbox = new URLSearchParams(globalThis.location?.search).has('sandbox');
-    this.scene.get('HudScene').events.once('create', () => { if (this.sandbox) return; this.arena.start(); this.state.start(); });
+    // The round begins when both the HUD exists and the level intro card is dismissed.
+    let hudReady = false, introDone = this.sandbox;
+    const begin = () => {
+      if (!hudReady || !introDone || this.sandbox) return;
+      this.roundStarted = true; this.arena.start(); this.state.start();
+    };
+    this.scene.get('HudScene').events.once('create', () => { hudReady = true; begin(); });
+    if (!this.sandbox) {
+      showLevelCard(this, { number: this.levelIndex + 1, total: this.levels.length, name: this.level.name, text: this.level.intro },
+        () => { introDone = true; begin(); });
+    }
 
     this.keys = this.input.keyboard.addKeys({ esc: 'ESC', p: 'P' });
     // Pause spec: auto-pause on tab blur, gamepad Start opens pause.
@@ -110,17 +156,42 @@ export default class ArenaScene extends Phaser.Scene {
     this.simNow += dt;
     this._tickHitStop(dt);
     const zedFrozen = this.hitStopIds.has(PLAYER_ID);
-    if (!zedFrozen) this.zed.update(this.simNow, dt);
+    if (!zedFrozen && (this.roundStarted || this.sandbox)) this.zed.update(this.simNow, dt);
     const c = this.arena.bounds.clamp({ x: this.zed.x, y: GROUND_Y });
     if (c.x !== this.zed.x) { this.zed.sprite.x = c.x; this.zed.sprite.body.setVelocityX(0); }
 
-    if (!this.ended && !this.sandbox) {
+    if (!this.ended && !this.sandbox && this.roundStarted) {
       this.arena.update(dt, this.hitStopIds);
       this.state.tick(dt);
     }
+    if (this.scrolling && this.roundStarted && !this.ended) this._scrollProgress();
     this.arena.applyToCamera(this.cameras.main, this.zed.x);
     this._render(dt, zedFrozen);
   }
+
+  // ---- side-scroller progress: clear a wave, walk right, next wave locks the screen; after the last, reach the exit ----
+  _scrollProgress() {
+    const next = this.arena.nextLockX;
+    // The camera follows Zed once a wave is cleared; when it reaches the next lock position the wave begins.
+    if (this.arena.holding && next !== null && this.zed.x >= next + VIEW.w / 2) this.arena.advance();
+    if (this.arena.finished && !this.levelDone && this.zed.x >= this.level.exitX - 30) {
+      this.levelDone = true;
+      this.ev.emit(EVENTS.ARENA_CLEARED, {}); // round state turns this into round-won
+    }
+  }
+
+  _buildExit() {
+    const x = this.level.exitX, top = LANE.minY - 150, bottom = LANE.maxY + 10;
+    const post = (px) => this.add.rectangle(px, (top + bottom) / 2, 14, bottom - top, COLORS.mustard).setDepth(LANE.minY);
+    const glow = this.add.rectangle(x, (top + bottom) / 2, 120, bottom - top, COLORS.mustardLight, 0.22).setDepth(LANE.minY - 1);
+    const label = this.add.text(x, top - 24, 'EXIT', { fontFamily: FONTS.button, fontSize: '40px', color: CSS.mustard, stroke: CSS.darkBrown, strokeThickness: 6 })
+      .setOrigin(0.5).setDepth(LANE.minY);
+    this.exitGate = [post(x - 60), post(x + 60), glow, label];
+    this.tweens.add({ targets: glow, alpha: 0.4, yoyo: true, repeat: -1, duration: 600 });
+    this._hideExit();
+  }
+  _showExit() { (this.exitGate || []).forEach((o) => o.setVisible(true)); }
+  _hideExit() { (this.exitGate || []).forEach((o) => o.setVisible(false)); }
 
   // ---- hit-stop: freeze the attacker and target for a few ms; everything else (timer, waves, other enemies) keeps running ----
   _startHitStop(type, ids) {
@@ -152,13 +223,15 @@ export default class ArenaScene extends Phaser.Scene {
     if (this.ended) return;
     this.ended = true;
     // round-won fires inside the final entity-died dispatch, before our own counters update.
-    const total = WAVES.reduce((n, w) => n + w.count, 0);
-    if (mode === 'win') { this.stats.defeated = total; this.stats.wavesCleared = WAVES.length; }
+    const total = this.level.totalEnemies, waves = this.level.waves;
+    if (mode === 'win') { this.stats.defeated = total; this.stats.wavesCleared = waves.length; }
     const payload = {
       mode, reason,
-      wavesCleared: this.stats.wavesCleared, totalWaves: WAVES.length,
+      wavesCleared: this.stats.wavesCleared, totalWaves: waves.length,
+      levelName: this.level.name, levelNumber: this.levelIndex + 1, totalLevels: this.levels.length,
+      outro: this.level.outro, nextLevelIndex: nextLevelIndex(this.levels, this.levelIndex),
       defeated: this.stats.defeated,
-      secondsLeft: this.state.secondsLeft, totalSeconds: ROUND_TIME_SECONDS,
+      secondsLeft: this.state.secondsLeft, totalSeconds: this.level.timeLimitSec,
       enemiesLeft: total - this.stats.defeated,
       hp: this.resolver.getHealth(PLAYER_ID)?.hp ?? 0,
     };

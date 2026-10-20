@@ -14,15 +14,16 @@ import { WaveSpawner } from '../waves/WaveSpawner.js';
 import { ArenaBounds } from './ArenaBounds.js';
 import { ArenaFailsafe } from './ArenaFailsafe.js';
 import { WAVES } from '../waves/waveData.js';
+import { WORLD } from './arenaData.js';
 
 export class Arena {
-  constructor({ events, getTarget, getScrollX = () => 0, waves = WAVES, onFailsafe = null }) {
+  constructor({ events, getTarget, getScrollX = () => 0, waves = WAVES, world = WORLD, hold = false, onFailsafe = null }) {
     this.events = events; this.getTarget = getTarget;
     this.scrollX = 0;
     this.getScrollX = getScrollX;
     this.enemies = new EnemyManager({ events });
-    this.bounds = new ArenaBounds({ events, waves });
-    this.spawner = new WaveSpawner({ events, waves, spawn: (spec) => this.enemies.spawn(spec) });
+    this.bounds = new ArenaBounds({ events, waves, world });
+    this.spawner = new WaveSpawner({ events, waves, holdBetweenWaves: hold, spawn: (spec) => this.enemies.spawn(spec) });
     this.failsafe = new ArenaFailsafe({
       bounds: this.bounds, manager: this.enemies, spawner: this.spawner,
       getScrollX: () => this.getScrollX(), onAction: onFailsafe,
@@ -41,6 +42,12 @@ export class Arena {
   applyToCamera(cam, followX) { this.bounds.applyToCamera(cam, followX); }
 
   get finished() { return this.spawner.finished; }
+
+  /** Side-scrolling levels: true while a wave is cleared and the player should walk on. */
+  get holding() { return this.spawner.holding; }
+  /** Camera scrollX where the next wave locks the screen; null after the last wave. */
+  get nextLockX() { return this.spawner.nextWave ? this.spawner.nextWave.lockX : null; }
+  advance() { this.spawner.advance(); }
 
   dispose() {
     this.spawner.destroy(); this.bounds.dispose(); this.enemies.dispose();

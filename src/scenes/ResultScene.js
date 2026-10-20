@@ -23,12 +23,14 @@ export default class ResultScene extends Phaser.Scene {
         ['MAIN MENU', () => this._confirm('Leave to main menu?', () => this._menu())]];
     } else {
       const win = mode === 'win';
-      const head = win ? 'LEVEL CLEARED' : d.reason === 'timeout' ? "TIME'S UP" : 'KNOCKED OUT';
-      const line = win ? 'The Rust have been pushed back.'
+      const last = win && d.nextLevelIndex == null;
+      const head = last ? 'ALL LEVELS CLEARED' : win ? 'LEVEL CLEARED' : d.reason === 'timeout' ? "TIME'S UP" : 'KNOCKED OUT';
+      const line = win ? (d.outro || 'The Rust have been pushed back.')
         : d.reason === 'timeout' ? `Time ran out with ${d.enemiesLeft} Rust still standing. Shake it off and go again.`
         : `You ran out of health on wave ${d.wavesCleared + 1} of ${d.totalWaves}. Get back up.`;
       T(640, 130, head, 76, FONTS.button, win ? CSS.mustard : CSS.cream);
       T(640, 200, line, 26, FONTS.body);
+      this.add.text(640, 60, `LEVEL ${d.levelNumber} / ${d.totalLevels}: ${(d.levelName || '').toUpperCase()}`, { fontFamily: FONTS.body, fontSize: '22px', color: CSS.cream }).setOrigin(0.5);
       const rows = [
         ['WAVES CLEARED', `${d.wavesCleared} / ${d.totalWaves}`],
         ['ENEMIES DEFEATED', `${d.defeated}`],
@@ -41,7 +43,9 @@ export default class ResultScene extends Phaser.Scene {
         this.add.text(980, 285 + i * 60, v, { fontFamily: FONTS.button, fontSize: '32px', color: CSS.mustard }).setOrigin(1, 0.5);
       });
       if (!win) T(640, 530, d.reason === 'timeout' ? 'Press the attack, clear faster.' : 'Try blocking or dodging when the wave swarms.', 22, FONTS.body, CSS.sand);
-      items = [[win ? 'PLAY AGAIN' : 'TRY AGAIN', () => this._restart()], ['MAIN MENU', () => this._menu()]];
+      const first = win ? (last ? ['PLAY AGAIN', () => this._goToLevel(0)] : ['NEXT LEVEL', () => this._goToLevel(d.nextLevelIndex)])
+        : ['TRY AGAIN', () => this._restart()];
+      items = [first, ['MAIN MENU', () => this._menu()]];
     }
 
     this.mode = mode;
@@ -132,6 +136,11 @@ export default class ResultScene extends Phaser.Scene {
     this.scene.resume('ArenaScene');
     this.scene.stop();
     arena.game.events.emit('retry', {});
+  }
+
+  // Rebuild the arena for another level (the scene's shutdown tears down HUD, this overlay and listeners).
+  _goToLevel(levelIndex) {
+    this.scene.get('ArenaScene').scene.restart({ levelIndex });
   }
 
   _menu() {

@@ -1,7 +1,5 @@
 // HudScene: health bar, wave block, timer, wave banner. Pure event consumer (design/ux/hud.md).
 import { EVENTS } from '../shared/events.js';
-import { WAVES } from '../waves/waveData.js';
-import { ROUND_TIME_SECONDS } from '../state/config.js';
 import { COLORS, CSS, FONTS } from '../config/assetKeys.js';
 
 const mmss = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
@@ -9,19 +7,26 @@ const mmss = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s %
 export default class HudScene extends Phaser.Scene {
   constructor() { super('HudScene'); }
 
+  init(data) { this.level = data.level; this.levelNumber = data.number; this.levelTotal = data.total; }
+
   create() {
     const ev = this.game.events;
     const txt = (x, y, s, size, ox = 0, family = FONTS.button) =>
       this.add.text(x, y, s, { fontFamily: family, fontSize: `${size}px`, color: CSS.cream, stroke: CSS.darkBrown, strokeThickness: 5 }).setOrigin(ox, 0);
 
     txt(32, 20, 'ZED', 24);
+    txt(640, 100, `LEVEL ${this.levelNumber}: ${this.level.name.toUpperCase()}`, 18, 0.5, FONTS.body);
     this.hpBar = this.add.graphics();
     this.hpText = txt(400, 52, '', 20, 0, FONTS.body);
     this.waveText = txt(640, 20, '', 32, 0.5);
     this.leftText = txt(640, 60, '', 22, 0.5, FONTS.body);
-    this.timerText = txt(1248, 20, mmss(ROUND_TIME_SECONDS), 40, 1);
+    this.timerText = txt(1248, 20, mmss(this.level.timeLimitSec), 40, 1);
     this.banner = this.add.text(640, 240, '', { fontFamily: FONTS.display, fontSize: '88px', color: CSS.mustard, stroke: CSS.darkBrown, strokeThickness: 10 })
       .setOrigin(0.5).setAlpha(0);
+    // Shown after a wave is cleared in a scrolling level: tells the player to keep moving right.
+    this.go = this.add.text(1230, 360, '', { fontFamily: FONTS.button, fontSize: '56px', color: CSS.mustard, stroke: CSS.darkBrown, strokeThickness: 8, align: 'right' })
+      .setOrigin(1, 0.5).setVisible(false);
+    this.tweens.add({ targets: this.go, x: 1250, alpha: 0.55, yoyo: true, repeat: -1, duration: 450 });
     this.hint = txt(1248, 676, 'Esc: pause', 20, 1, FONTS.body);
     this.tweens.add({ targets: this.hint, alpha: 0, delay: 5000, duration: 600 });
 
@@ -34,18 +39,27 @@ export default class HudScene extends Phaser.Scene {
     on(EVENTS.TIMER_TICK, ({ secondsLeft }) => {
       this.timerText.setText(mmss(secondsLeft)).setColor(secondsLeft <= 10 ? '#D13B2C' : CSS.cream);
     });
+    const goOff = () => this.go.setVisible(false);
+    on(EVENTS.WAVE_CLEARED, ({ index }) => {
+      if (!this.level.scrolling) return;
+      const last = index + 1 >= this.level.waves.length;
+      this.go.setText(last ? 'TO THE EXIT  ▶' : 'GO  ▶').setVisible(true);
+      this._banner(last ? 'AREA CLEAR' : 'WAVE CLEARED');
+    });
+    on(EVENTS.ARENA_CLEARED, goOff);
     on(EVENTS.WAVE_STARTED, ({ index, total }) => {
+      goOff();
       this.waveIndex = index; this.killed = 0;
       this.waveText.setText(`WAVE ${index + 1} / ${total}`);
       this._left();
       this._banner(index === 0 ? 'FIGHT!' : `WAVE ${index + 1}`);
     });
     on(EVENTS.ENTITY_DIED, ({ team }) => { if (team === 'rust') { this.killed++; this._left(); } });
-    on(EVENTS.RETRY, () => { this.killed = 0; });
+    on(EVENTS.RETRY, () => { this.killed = 0; goOff(); });
   }
 
   _left() {
-    const w = WAVES[this.waveIndex];
+    const w = this.level.waves[this.waveIndex];
     this.leftText.setText(w ? `ENEMIES LEFT: ${Math.max(0, w.count - this.killed)}` : '');
   }
 

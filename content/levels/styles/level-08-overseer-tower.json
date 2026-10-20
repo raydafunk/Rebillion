@@ -1,0 +1,13 @@
+{
+  "id": "level-08-overseer-tower",
+  "status": "default",
+  "_comment": "Owned by the level style agent for this level. background.path: SVG/PNG path (1920x720) or null for the shared placeholder. overlay: tint drawn over the background.",
+  "background": {
+    "path": null,
+    "overlay": {
+      "color": "#A8402E",
+      "alpha": 0.18
+    }
+  },
+  "notes": ""
+}

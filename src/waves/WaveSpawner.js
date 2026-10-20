@@ -6,8 +6,11 @@ import { EVENTS } from '../shared/events.js';
 import { WAVES } from './waveData.js';
 
 export class WaveSpawner {
-  constructor({ events, spawn, waves = WAVES, idPrefix = 'grunt' }) {
+  // holdBetweenWaves (side-scrolling levels): a cleared wave is followed by phase 'hold' until advance() is
+  // called, and clearing the last wave does NOT emit arena-cleared (the scene emits it at the level exit).
+  constructor({ events, spawn, waves = WAVES, idPrefix = 'grunt', holdBetweenWaves = false }) {
     this.events = events; this.spawnFn = spawn; this.waves = waves; this.idPrefix = idPrefix;
+    this.hold = holdBetweenWaves;
     this.idCounter = 0;
     this.alive = new Set();
     this._onDied = (p) => { if (p && p.team === 'rust') this.remove(p.id); };
@@ -28,6 +31,8 @@ export class WaveSpawner {
 
   get aliveCount() { return this.alive.size; }
   get finished() { return this.phase === 'done'; }
+  get holding() { return this.phase === 'hold'; }
+  get nextWave() { return this.waves[this.waveIndex + 1] || null; }
   get currentWave() { return this.waves[this.waveIndex] || null; }
 
   /** Begin wave 1. Call when the round starts. */
@@ -39,6 +44,9 @@ export class WaveSpawner {
     this.phase = 'delay'; this.timer = this.waves[i].startDelayMs;
     this.events.emit(EVENTS.WAVE_STARTED, { index: i, total: this.waves.length });
   }
+
+  /** Hold mode: start the next wave (the player has walked up to it). */
+  advance() { if (this.phase === 'hold') this._beginWave(this.waveIndex + 1); }
 
   /** Remove an enemy from the alive set (death, or failsafe removal). */
   remove(id) {
@@ -52,7 +60,9 @@ export class WaveSpawner {
     this.events.emit(EVENTS.WAVE_CLEARED, { index: i });
     if (i + 1 >= this.waves.length) {
       this.phase = 'done';
-      this.events.emit(EVENTS.ARENA_CLEARED, {});
+      if (!this.hold) this.events.emit(EVENTS.ARENA_CLEARED, {});
+    } else if (this.hold) {
+      this.phase = 'hold';
     } else {
       this.phase = 'delay'; // next wave starts after its own delay, announced via wave-started
       this._beginWave(i + 1);

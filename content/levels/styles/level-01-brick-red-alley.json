@@ -1,0 +1,23 @@
+{
+  "id": "level-01-brick-red-alley",
+  "status": "styled",
+  "background": {
+    "path": "assets/levels/level-01-brick-red-alley/background.svg",
+    "overlay": {
+      "color": "#E3A92B",
+      "alpha": 0.13
+    }
+  },
+  "ambient": {
+    "period": 3840,
+    "windowY": 110,
+    "windowW": 140,
+    "windowH": 170,
+    "color": "#E3A92B",
+    "lit": [350, 1200, 1520, 2210, 2860, 3300],
+    "dark": [670, 2530],
+    "dustPerBeam": 6,
+    "beamBottom": 430
+  },
+  "notes": "Window-Light Dusk: brick back wall, mustard windows, one muted green door, long brown shadows, calm lane."
+}

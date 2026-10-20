@@ -6,6 +6,7 @@ import OptionsPanel from './OptionsPanel.js';
 import showStoryCard from './StoryCard.js';
 import { NOTICE_MS, loadSettings } from './optionsData.js';
 import { scrollOffset } from './parallaxData.js';
+import { loadLevelContent } from '../levels/levelData.js';
 
 const W = 1280, H = 720;
 const STRIP_W = 360, STRIP_H = 64, STRIP_CX = 396, SEL_DX = 10, TWEEN_MS = 100;
@@ -334,15 +335,22 @@ export default class MenuScene extends Phaser.Scene {
   startGame() {
     this.started = true;
     console.log('[MenuScene] start-game');
+    this.levelsReady = loadLevelContent((p) => fetch(p).then((r) => { if (!r.ok) throw new Error(p); return r.json(); }),
+      { onSkip: (id, errs) => console.warn('[levels] skipped', id, errs) })
+      .then((levels) => this.game.registry.set('levels', levels))
+      .catch((e) => console.warn('[levels] using Tier 0 round', e));
     showStoryCard(this, () => this.launchArena());
   }
 
   launchArena() {
     this.game.events.emit('start-game');
     this.cameras.main.fadeOut(300, 0, 0, 0);
-    this.cameras.main.once('camerafadeoutcomplete', () => {
+    // Level files load while the story card is up; the arena falls back to the Tier 0 round if they fail.
+    const levelsReady = this.levelsReady || Promise.resolve();
+    this.cameras.main.once('camerafadeoutcomplete', async () => {
+      await levelsReady;
       this.tweens.killAll();
-      this.scene.start('ArenaScene');
+      this.scene.start('ArenaScene', { levelIndex: 0 });
     });
   }
 }
