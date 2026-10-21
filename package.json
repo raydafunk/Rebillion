@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test src/combat/combat.test.mjs src/shared/combatData.test.mjs src/state/state.test.mjs src/player/test/player.test.mjs src/enemies/RustGrunt.test.js src/waves/WaveSpawner.test.mjs src/arena/arena.sim.test.mjs src/levels/levelData.test.mjs src/levels/ambientData.test.mjs src/levels/ambientOutdoor.test.mjs src/levels/ambientMarket.test.mjs src/ui/optionsData.test.mjs src/ui/parallaxData.test.mjs src/ui/storyData.test.mjs",
+    "test": "node --test src/combat/combat.test.mjs src/shared/combatData.test.mjs src/state/state.test.mjs src/player/test/player.test.mjs src/enemies/RustGrunt.test.js src/waves/WaveSpawner.test.mjs src/arena/arena.sim.test.mjs src/levels/levelData.test.mjs src/levels/ambientData.test.mjs src/levels/ambientOutdoor.test.mjs src/levels/ambientMarket.test.mjs src/levels/ambientCourt.test.mjs src/ui/optionsData.test.mjs src/ui/parallaxData.test.mjs src/ui/storyData.test.mjs",
     "content:ingest": "node pipeline/ingest.mjs",
     "content:search": "node pipeline/search.mjs",
     "content:brief": "node pipeline/brief.mjs",

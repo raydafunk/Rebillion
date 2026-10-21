@@ -69,6 +69,7 @@ export function readAmbient(style) {
     outdoor: readOutdoor(a.outdoor),
     heights: readHeights(a.heights),
     market: readMarket(a.market),
+    court: readCourt(a.court),
   };
 }
 
@@ -169,3 +170,44 @@ function readOutdoor(o) {
   };
 }
 export { readOutdoor };
+
+// ---- Court (Level 7 Copper Fang at the Courts) helpers ----
+export const lerp = (a, b, t) => a + (b - a) * t;
+
+function readCourt(c) {
+  if (!c || typeof c !== 'object') return null;
+  const nums = (v, len) => Array.isArray(v) && v.length >= len && v.slice(0, len).every(Number.isFinite) ? v.slice(0, len) : null;
+  const hoop = nums(c.hoop, 4), screen = nums(c.screen, 4), dish = nums(c.dish, 2), sun = nums(c.sun, 2);
+  if (!hoop || !screen || !dish || !sun) return null;
+  const n = (v, d, max) => Math.max(0, Math.min(max, Math.round(Number.isFinite(v) ? v : d)));
+  return {
+    hoop,                                      // [leftRimX, leftRimY, rightRimX, rightRimY]
+    screen,                                    // [x, y, w, h] of the cyan screen
+    dish, sun,                                 // [x, y]
+    roof: (Array.isArray(c.roof) ? c.roof : []).filter((p) => nums(p, 2)),   // tent edge polyline
+    banners: pointsOf(c.banners, 2),           // [x, y] diamond centres
+    lamps: pointsOf(c.lamps, 2),               // [x, y] floodlight heads
+    trees: pointsOf(c.trees, 2),               // [x, y] canopy centres that shed leaves
+    drones: n(c.drones, 2, 4), birds: n(c.birds, 4, 10), clouds: n(c.clouds, 4, 8), fireflies: n(c.fireflies, 8, 20),
+  };
+}
+export { readCourt };
+
+/** Evenly spaced dots along a polyline of [x, y] points. */
+export function roofDots(poly, n) {
+  if (!Array.isArray(poly) || poly.length < 2 || !(n > 1)) return [];
+  const segs = [];
+  let total = 0;
+  for (let i = 1; i < poly.length; i++) {
+    const len = Math.hypot(poly[i][0] - poly[i - 1][0], poly[i][1] - poly[i - 1][1]);
+    segs.push(len); total += len;
+  }
+  const out = [];
+  for (let k = 0; k < n; k++) {
+    let d = (total * k) / (n - 1), i = 0;
+    while (i < segs.length - 1 && d > segs[i]) { d -= segs[i]; i++; }
+    const t = segs[i] ? Math.min(1, d / segs[i]) : 0;
+    out.push([lerp(poly[i][0], poly[i + 1][0], t), lerp(poly[i][1], poly[i + 1][1], t)]);
+  }
+  return out;
+}
