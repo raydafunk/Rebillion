@@ -68,7 +68,33 @@ export function readAmbient(style) {
     row: readRow(a.period, a.row),
     outdoor: readOutdoor(a.outdoor),
     heights: readHeights(a.heights),
+    market: readMarket(a.market),
   };
+}
+
+// ---- Market (Level 6 Iron Line Push) helpers ----
+const pointsOf = (list, minLen) =>
+  (Array.isArray(list) ? list : []).filter((p) => Array.isArray(p) && p.length >= minLen && p.slice(0, minLen).every(Number.isFinite));
+
+function readMarket(m) {
+  if (!m || typeof m !== 'object') return null;
+  const n = (v, d, max) => Math.max(0, Math.min(max, Math.round(Number.isFinite(v) ? v : d)));
+  return {
+    steam: pointsOf(m.steam, 2),               // [x, y] of a pot rim, steam rises from here
+    puffsPerPot: n(m.puffsPerPot, 4, 8),
+    flags: pointsOf(m.flags, 2),               // [x, y, colourIndex] top-left of a bunting flag
+    flagColors: Array.isArray(m.flagColors) && m.flagColors.length ? m.flagColors : ['#A8402E', '#E3A92B', '#2F6B3F'],
+    hangers: pointsOf(m.hangers, 3),           // [x, y, stringLength, kind] kind 0 pot, 1 ladle; y is the hook
+    neighbours: pointsOf(m.neighbours, 2),     // [x, y, kind] head centre; kind 0 plain, 1 hat, 2 apron and ladle
+    visors: pointsOf(m.visors, 2),             // [x, y] of a distant Rust visor slit
+  };
+}
+export { readMarket };
+
+/** Flutter timing for the bunting: neighbouring flags are a little out of step so a gust travels along the wire. */
+export function flagPhase(x, period) {
+  if (!(period > 0) || !Number.isFinite(x)) return 0;
+  return ((x % period) / period) * 2400;
 }
 
 // ---- Heights (Level 5 Songwindow Heights) helpers ----

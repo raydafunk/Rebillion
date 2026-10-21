@@ -1,13 +1,328 @@
 {
   "id": "level-06-iron-line-push",
-  "status": "default",
+  "status": "styled",
   "_comment": "Owned by the level style agent for this level. background.path: SVG/PNG path (1920x720) or null for the shared placeholder. overlay: tint drawn over the background.",
   "background": {
-    "path": null,
+    "path": "assets/levels/level-06-iron-line-push/background.svg",
     "overlay": {
-      "color": "#2F6B3F",
-      "alpha": 0.18
+      "color": "#6B4423",
+      "alpha": 0.1
     }
   },
-  "notes": ""
+  "notes": "Stall row behind the line: striped awnings, steam pots, neighbour silhouettes, faint Rust cordon hint; calm brown lane. Ambient (period 1920, all above y 440): rolling stew steam, fluttering bunting, swinging pots and ladles, breathing neighbours (one stirs a ladle), sweeping sun band, scanning Rust visors, drifting clouds, birds, leaves and pollen.",
+  "ambient": {
+    "period": 1920,
+    "market": {
+      "steam": [
+        [
+          258,
+          352
+        ],
+        [
+          641,
+          352
+        ],
+        [
+          997,
+          352
+        ],
+        [
+          1340,
+          352
+        ],
+        [
+          1748,
+          352
+        ]
+      ],
+      "puffsPerPot": 6,
+      "flags": [
+        [
+          30,
+          52,
+          0
+        ],
+        [
+          120,
+          66,
+          1
+        ],
+        [
+          210,
+          74,
+          2
+        ],
+        [
+          300,
+          74,
+          0
+        ],
+        [
+          390,
+          66,
+          1
+        ],
+        [
+          510,
+          52,
+          2
+        ],
+        [
+          600,
+          38,
+          0
+        ],
+        [
+          690,
+          30,
+          1
+        ],
+        [
+          780,
+          30,
+          2
+        ],
+        [
+          870,
+          38,
+          0
+        ],
+        [
+          990,
+          52,
+          1
+        ],
+        [
+          1080,
+          66,
+          2
+        ],
+        [
+          1170,
+          74,
+          0
+        ],
+        [
+          1260,
+          74,
+          1
+        ],
+        [
+          1350,
+          66,
+          2
+        ],
+        [
+          1470,
+          52,
+          0
+        ],
+        [
+          1560,
+          38,
+          1
+        ],
+        [
+          1650,
+          30,
+          2
+        ],
+        [
+          1740,
+          30,
+          0
+        ],
+        [
+          1830,
+          38,
+          1
+        ]
+      ],
+      "flagColors": [
+        "#A8402E",
+        "#E3A92B",
+        "#2F6B3F"
+      ],
+      "hangers": [
+        [
+          158,
+          246,
+          22,
+          0
+        ],
+        [
+          186,
+          246,
+          9,
+          0
+        ],
+        [
+          211,
+          246,
+          6,
+          1
+        ],
+        [
+          526,
+          246,
+          22,
+          0
+        ],
+        [
+          558,
+          246,
+          9,
+          0
+        ],
+        [
+          587,
+          246,
+          6,
+          1
+        ],
+        [
+          902,
+          246,
+          22,
+          0
+        ],
+        [
+          929,
+          246,
+          9,
+          0
+        ],
+        [
+          952,
+          246,
+          6,
+          1
+        ],
+        [
+          1230,
+          246,
+          22,
+          0
+        ],
+        [
+          1261,
+          246,
+          9,
+          0
+        ],
+        [
+          1288,
+          246,
+          6,
+          1
+        ],
+        [
+          1648,
+          246,
+          22,
+          0
+        ],
+        [
+          1676,
+          246,
+          9,
+          0
+        ],
+        [
+          1701,
+          246,
+          6,
+          1
+        ]
+      ],
+      "neighbours": [
+        [
+          170,
+          300,
+          0
+        ],
+        [
+          580,
+          301,
+          0
+        ],
+        [
+          930,
+          302,
+          1
+        ],
+        [
+          1250,
+          302,
+          2
+        ]
+      ],
+      "visors": [
+        [
+          1744,
+          318
+        ],
+        [
+          1804,
+          318
+        ],
+        [
+          1864,
+          318
+        ],
+        [
+          4,
+          318
+        ],
+        [
+          64,
+          318
+        ]
+      ]
+    },
+    "outdoor": {
+      "trees": [],
+      "suns": [],
+      "shafts": [
+        [
+          700,
+          60
+        ],
+        [
+          1280,
+          50
+        ]
+      ],
+      "clouds": [
+        [
+          260,
+          126,
+          85
+        ],
+        [
+          820,
+          150,
+          70
+        ],
+        [
+          1360,
+          120,
+          95
+        ],
+        [
+          1740,
+          148,
+          60
+        ]
+      ],
+      "leaves": 4,
+      "birds": 2,
+      "motes": 10,
+      "leafColors": [
+        "#3A7B4A",
+        "#E3A92B",
+        "#F2C04D"
+      ]
+    }
+  }
 }
