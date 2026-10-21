@@ -66,5 +66,62 @@ export function readAmbient(style) {
     dustPerBeam: Math.max(0, Math.min(12, Math.round(num(a.dustPerBeam, 6)))),
     beamBottom: num(a.beamBottom, 430),
     row: readRow(a.period, a.row),
+    outdoor: readOutdoor(a.outdoor),
   };
 }
+
+// ---- Outdoor (Level 3 golden hour) helpers ----
+/** Lowest y any outdoor ambient piece may reach: just above the lane (y 460 to 680) so the fight stays readable. */
+export const OUTDOOR_MAX_Y = 440;
+
+/** Clamp a y so the piece never enters the lane. */
+export function laneSafeY(y) {
+  return Math.min(Number.isFinite(y) ? y : OUTDOOR_MAX_Y, OUTDOOR_MAX_Y);
+}
+
+/** Tile items whose first element is an x (e.g. [x, y, r]) across the world; the first element is shifted per copy. */
+export function tiledItems(items, period, worldW) {
+  if (!Array.isArray(items) || !(period > 0) || !(worldW > 0)) return [];
+  const out = [];
+  for (let offset = 0; offset < worldW; offset += period) {
+    for (const it of items) {
+      if (Array.isArray(it) && Number.isFinite(it[0]) && offset + it[0] < worldW) out.push([offset + it[0], ...it.slice(1)]);
+    }
+  }
+  return out;
+}
+
+/** Rim puff positions on the upper half of a canopy [x, y, r]: `n` points spread over the top arc. */
+export function canopyPuffs(tree, n) {
+  if (!Array.isArray(tree) || !(tree[2] > 0) || !(n > 0)) return [];
+  const [cx, cy, r] = tree, out = [];
+  for (let i = 0; i < n; i++) {
+    const a = Math.PI * (1.15 + (0.7 * (i + 0.5)) / n); // between about 207 and 333 degrees (upper arc)
+    out.push({ x: cx + Math.cos(a) * r * 0.93, y: cy + Math.sin(a) * r * 0.93 });
+  }
+  return out;
+}
+
+/** x range [min, max] in which to spawn a drifting piece: around the camera, kept inside the world. */
+export function spawnRange(scrollX, viewW, worldW, margin = 120) {
+  const lo = Math.max(0, (Number.isFinite(scrollX) ? scrollX : 0) - margin);
+  const hi = Math.min(worldW, lo + viewW + margin * 2);
+  return [lo, Math.max(lo, hi)];
+}
+
+function readOutdoor(o) {
+  if (!o || typeof o !== 'object') return null;
+  const n = (v, d, max) => Math.max(0, Math.min(max, Math.round(Number.isFinite(v) ? v : d)));
+  return {
+    trees: Array.isArray(o.trees) ? o.trees : [],
+    clouds: Array.isArray(o.clouds) ? o.clouds : [],
+    shafts: Array.isArray(o.shafts) ? o.shafts : [],
+    suns: Array.isArray(o.suns) ? o.suns : [],
+    puffsPerTree: n(o.puffsPerTree, 2, 4),
+    leaves: n(o.leaves, 8, 14),
+    birds: n(o.birds, 2, 4),
+    motes: n(o.motes, 12, 20),
+    leafColors: Array.isArray(o.leafColors) && o.leafColors.length ? o.leafColors : ['#3A7B4A', '#E3A92B'],
+  };
+}
+export { readOutdoor };

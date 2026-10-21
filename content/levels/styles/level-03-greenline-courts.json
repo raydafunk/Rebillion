@@ -1,13 +1,23 @@
 {
   "id": "level-03-greenline-courts",
-  "status": "default",
-  "_comment": "Owned by the level style agent for this level. background.path: SVG/PNG path (1920x720) or null for the shared placeholder. overlay: tint drawn over the background.",
+  "status": "styled",
   "background": {
-    "path": null,
-    "overlay": {
-      "color": "#2F6B3F",
-      "alpha": 0.18
+    "path": "assets/levels/level-03-greenline-courts/background.svg",
+    "overlay": { "color": "#E3A92B", "alpha": 0.08 }
+  },
+  "ambient": {
+    "period": 3840,
+    "outdoor": {
+      "trees": [[70,347,70],[260,324.5,85],[420,302,100],[650,347,70],[790,324.5,85],[930,302,100],[1070,347,70],[1260,324.5,85],[1400,302,100],[1560,347,70],[1700,324.5,85],[1840,302,100],[2070,347,70],[2300,324.5,85],[2440,302,100],[2600,347,70],[2740,324.5,85],[2970,302,100],[3110,347,70],[3250,324.5,85],[3410,302,100],[3550,347,70]],
+      "puffsPerTree": 2,
+      "suns": [[1250, 270, 95]],
+      "shafts": [[1000, 70], [1180, 50], [1420, 60]],
+      "clouds": [[2050, 160, 120], [2650, 115, 150], [3250, 105, 130]],
+      "leaves": 8,
+      "birds": 3,
+      "motes": 12,
+      "leafColors": ["#3A7B4A", "#E3A92B", "#6B7F4A", "#F2C04D"]
     }
   },
-  "notes": ""
+  "notes": "Golden-Hour Tree Line, 3840 wide: open-air court, sunset sky bands, forest-green trees, low wooden chain-link fence, bent net-less hoops, soft tree shadows, calm green lane with faint chalk drawings. Ambient (outdoor block, period 3840): rustling canopy rims, breathing sun and light shafts, drifting clouds, blown green and gold leaves, a few birds, pollen glints; all above y 440, lane untouched."
 }

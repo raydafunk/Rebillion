@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- Dev helper: boots straight into Level 3 (Greenline Courts), skipping title and menu.
+     Open /level3.html (add ?sandbox for an empty arena with no enemies, timer or lose condition). -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Level 3 preview: Greenline Courts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body { margin: 0; height: 100%; background: #2E1F16; overflow: hidden; }
+    #game { width: 100%; height: 100%; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+</head>
+<body>
+  <div id="game"></div>
+  <script type="module">
+    import ArenaScene from './src/scenes/ArenaScene.js';
+    import HudScene from './src/scenes/HudScene.js';
+    import ResultScene from './src/scenes/ResultScene.js';
+    import { loadLevelContent } from './src/levels/levelData.js';
+    const LEVEL_INDEX = 2; // level 3
+    const fetchJson = (p) => fetch(p, { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error(p); return r.json(); });
+    const levels = await loadLevelContent(fetchJson);
+    const game = new Phaser.Game({
+      type: Phaser.AUTO,
+      parent: 'game',
+      width: 1280,
+      height: 720,
+      backgroundColor: '#2E1F16',
+      scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+      input: { gamepad: true },
+      physics: { default: 'arcade', arcade: { debug: false } },
+      scene: [ArenaScene, HudScene, ResultScene],
+      callbacks: {
+        preBoot: (g) => g.registry.set('levels', levels),
+      },
+    });
+    // ArenaScene reads data.levelIndex or ?level=; the first scene gets neither, so force it.
+    game.events.once('ready', () => game.scene.getScene('ArenaScene').scene.restart({ levelIndex: LEVEL_INDEX }));
+    window.__game = game;
+  </script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 // and never touches the lane's gameplay.
 import { tiledXs, readAmbient } from './ambientData.js';
 import addRowAmbient from './ambientRow.js';
+import addOutdoorAmbient from './ambientOutdoor.js';
 
 const DEPTH = -998;
 
@@ -10,6 +11,7 @@ export default function addAmbient(scene, style, worldW) {
   const cfg = readAmbient(style);
   if (!cfg) return;
   if (cfg.row) addRowAmbient(scene, cfg.row, worldW);
+  if (cfg.outdoor) addOutdoorAmbient(scene, cfg.outdoor, cfg.period, worldW);
   const color = Phaser.Display.Color.HexStringToColor(cfg.color).color;
   const rnd = Phaser.Math.Between;
   const glow = (x, w, h, y, alpha) =>
