@@ -7,6 +7,7 @@ import addOutdoorAmbient from './ambientOutdoor.js';
 import addHeightsAmbient from './ambientHeights.js';
 import addMarketAmbient from './ambientMarket.js';
 import addCourtAmbient from './ambientCourt.js';
+import addTowerAmbient from './ambientTower.js';
 
 const DEPTH = -998;
 
@@ -18,6 +19,7 @@ export default function addAmbient(scene, style, worldW) {
   if (cfg.heights) addHeightsAmbient(scene, cfg.heights, cfg.period, worldW);
   if (cfg.market) addMarketAmbient(scene, cfg.market, cfg.period, worldW);
   if (cfg.court) addCourtAmbient(scene, cfg.court, cfg.period, worldW);
+  if (cfg.tower) addTowerAmbient(scene, cfg.tower, cfg.period, worldW);
   const color = Phaser.Display.Color.HexStringToColor(cfg.color).color;
   const rnd = Phaser.Math.Between;
   const glow = (x, w, h, y, alpha) =>

@@ -70,6 +70,7 @@ export function readAmbient(style) {
     heights: readHeights(a.heights),
     market: readMarket(a.market),
     court: readCourt(a.court),
+    tower: readTower(a.tower),
   };
 }
 
@@ -192,6 +193,28 @@ function readCourt(c) {
   };
 }
 export { readCourt };
+
+// ---- Tower (Level 8 The Overseer's Tower) helpers ----
+function readTower(t) {
+  if (!t || typeof t !== 'object') return null;
+  const nums = (v, len) => Array.isArray(v) && v.length >= len && v.slice(0, len).every(Number.isFinite) ? v.slice(0, len) : null;
+  const eye = nums(t.eye, 2);
+  if (!eye) return null;
+  const n = (v, d, max) => Math.max(0, Math.min(max, Math.round(Number.isFinite(v) ? v : d)));
+  return {
+    eye,                                       // [x, y] centre of the cyan eye
+    antenna: nums(t.antenna, 2),               // [x, y] of the antenna tip
+    cone: (Array.isArray(t.cone) ? t.cone : []).filter((p) => nums(p, 2)),   // light cone polygon, kept above the lane
+    beacons: pointsOf(t.beacons, 2),           // [x, y] red lights on the tower struts
+    skylineBeacons: pointsOf(t.skylineBeacons, 2),   // [x, y] red lights on the Heights
+    embers: n(t.embers, 12, 24), motes: n(t.motes, 8, 16), clouds: n(t.clouds, 3, 6),
+    sun: nums(t.sun, 2),                       // [x, y] centre of the setting sun
+    slits: pointsOf(t.slits, 2),               // [x, y] window slits on the tower shaft that flicker cyan
+    twinkles: pointsOf(t.twinkles, 2),         // [x, y] lit windows on the Heights that twinkle
+    sweeps: n(t.sweeps, 2, 4), birds: n(t.birds, 4, 8), sparks: n(t.sparks, 3, 8),
+  };
+}
+export { readTower };
 
 /** Evenly spaced dots along a polyline of [x, y] points. */
 export function roofDots(poly, n) {
