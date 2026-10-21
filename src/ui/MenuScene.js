@@ -335,7 +335,7 @@ export default class MenuScene extends Phaser.Scene {
   startGame() {
     this.started = true;
     console.log('[MenuScene] start-game');
-    this.levelsReady = loadLevelContent((p) => fetch(p).then((r) => { if (!r.ok) throw new Error(p); return r.json(); }),
+    this.levelsReady = loadLevelContent((p) => fetch(p, { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error(p); return r.json(); }),
       { onSkip: (id, errs) => console.warn('[levels] skipped', id, errs) })
       .then((levels) => this.game.registry.set('levels', levels))
       .catch((e) => console.warn('[levels] using Tier 0 round', e));

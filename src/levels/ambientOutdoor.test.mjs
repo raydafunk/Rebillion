@@ -37,3 +37,11 @@ test('readAmbient reads and clamps an outdoor block', () => {
   assert.equal(o.puffsPerTree, 2);
   assert.ok(o.leafColors.length >= 2);
 });
+
+test('readAmbient reads a heights block and drops malformed points', () => {
+  const a = readAmbient({ ambient: { period: 1920, heights: { windows: [[10, 20], 'x', [5]], laundry: [[1, 2]], notesPerWindow: 99 } } });
+  assert.deepEqual(a.heights.windows, [[10, 20]]);
+  assert.deepEqual(a.heights.laundry, [[1, 2]]);
+  assert.equal(a.heights.notesPerWindow, 4);
+  assert.equal(readAmbient({ ambient: { period: 1920 } }).heights, null);
+});

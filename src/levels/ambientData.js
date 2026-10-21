@@ -67,8 +67,26 @@ export function readAmbient(style) {
     beamBottom: num(a.beamBottom, 430),
     row: readRow(a.period, a.row),
     outdoor: readOutdoor(a.outdoor),
+    heights: readHeights(a.heights),
   };
 }
+
+// ---- Heights (Level 5 Songwindow Heights) helpers ----
+const isPoint = (p) => Array.isArray(p) && Number.isFinite(p[0]) && Number.isFinite(p[1]);
+
+function readHeights(h) {
+  if (!h || typeof h !== 'object') return null;
+  const n = (v, d, max) => Math.max(0, Math.min(max, Math.round(Number.isFinite(v) ? v : d)));
+  return {
+    windows: (Array.isArray(h.windows) ? h.windows : []).filter(isPoint),   // [x, y] top-left of a lit window
+    windowW: n(h.windowW, 45, 200), windowH: n(h.windowH, 62, 200),
+    laundry: (Array.isArray(h.laundry) ? h.laundry : []).filter(isPoint),   // [x, y] where a hanging cloth is pinned
+    laundryColors: Array.isArray(h.laundryColors) && h.laundryColors.length ? h.laundryColors : ['#F4E6C8', '#2F6B3F', '#E3A92B'],
+    noteColors: Array.isArray(h.noteColors) && h.noteColors.length ? h.noteColors : ['#F4E6C8', '#E3A92B'],
+    notesPerWindow: n(h.notesPerWindow, 2, 4),
+  };
+}
+export { readHeights };
 
 // ---- Outdoor (Level 3 golden hour) helpers ----
 /** Lowest y any outdoor ambient piece may reach: just above the lane (y 460 to 680) so the fight stays readable. */
