@@ -29,6 +29,8 @@ export class RustGrunt {
     this.state = GruntState.IDLE;
     this.timer = data.spawnIdleMs;
     this.hitFired = false;
+    this.hitstunMs = 0;             // length of the current/last stun (renderer fits the hit animation to it)
+    this.hitSeq = 0;                // bumps on every hit so the renderer can restart the hit animation
     this.jabIndex = 0;              // next hit of the jab string to emit
     this.attackCounter = 0;
     this.circling = false;
@@ -167,6 +169,8 @@ export class RustGrunt {
     this.hitFired = true; // cancel any pending attack (rest of the jab string)
     this.kx = knockback;
     this.timer = Math.max(hitstun, this.data.hitstunMinMs);
+    this.hitstunMs = this.timer;
+    this.hitSeq++;
     this._set(GruntState.HITSTUN);
   }
 

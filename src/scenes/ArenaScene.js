@@ -20,6 +20,9 @@ import {
   DIRECTIONS as BREAKER_DIRS, breakerPose, breakerRotationKey, breakerFrameKey, breakerWalkAnimKey,
   breakerRotationPath, breakerFramePath,
   BREAKER_ATTACK_FRAMES, BREAKER_ATTACK_MS, breakerAttackFrameKey, breakerAttackAnimKey, breakerAttackFramePath,
+  BREAKER_DEATH_HALF_WIDTH, BREAKER_HIT_FRAMES, BREAKER_HIT_DIRS, breakerHitFrameKey, breakerHitAnimKey, breakerHitFramePath,
+  BREAKER_DEATH_FRAMES, BREAKER_DEATH_DIRS, breakerDeathFrameKey, breakerDeathAnimKey, breakerDeathFramePath, breakerDeathTimeScale,
+  BREAKER_DEATH_DEFAULT_FPS, deathViewPhase,
 } from '../enemies/breakerData.js';
 
 const GROUND_Y = LANE.maxY - 40;      // Zed's feet line (physics floor)
@@ -59,6 +62,12 @@ export default class ArenaScene extends Phaser.Scene {
       for (let i = 0; i < BREAKER_FRAMES; i++) this.load.image(breakerFrameKey(d, i), breakerFramePath(d, i));
       for (let i = 0; i < BREAKER_ATTACK_FRAMES; i++) this.load.image(breakerAttackFrameKey(d, i), breakerAttackFramePath(d, i));
     }
+    for (const d of Object.keys(BREAKER_HIT_DIRS)) {
+      for (let i = 0; i < BREAKER_HIT_FRAMES; i++) this.load.image(breakerHitFrameKey(d, i), breakerHitFramePath(d, i));
+    }
+    for (const d of Object.keys(BREAKER_DEATH_DIRS)) {
+      for (let i = 0; i < BREAKER_DEATH_FRAMES; i++) this.load.image(breakerDeathFrameKey(d, i), breakerDeathFramePath(d, i));
+    }
     this.load.svg(TELEGRAPH_FX_KEY, 'assets/fx/telegraph-icon-placeholder.svg', { width: 48, height: 48 });
     this.load.svg('fx.spark', 'assets/fx/spark-placeholder.svg', { width: 48, height: 48 });
   }
@@ -70,6 +79,9 @@ export default class ArenaScene extends Phaser.Scene {
     this.ended = false;
     this.stats = this._freshStats();
     this._registerBreakerAnims();
+    this._registerBreakerHitAnims();
+    this._registerBreakerDeathAnims();
+    this.dying = [];           // views of removed (already dead) enemies still playing their death anim
     this.sprites = new Map();  // enemy id -> { body, shadow, tele }
     this.swings = [];
     this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
@@ -121,7 +133,7 @@ export default class ArenaScene extends Phaser.Scene {
     });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); this._destroyDying(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
@@ -184,6 +196,56 @@ export default class ArenaScene extends Phaser.Scene {
     }
   }
 
+  _registerBreakerHitAnims() {
+    for (const d of Object.keys(BREAKER_HIT_DIRS)) {
+      const key = breakerHitAnimKey(d);
+      if (this.anims.exists(key) || !this.textures.exists(breakerHitFrameKey(d, 0))) continue;
+      // Frame rate is a default only; each play sets timeScale to fit the grunt's actual hit-stun.
+      this.anims.create({
+        key, repeat: 0, frameRate: 30,
+        frames: Array.from({ length: BREAKER_HIT_FRAMES }, (_, i) => ({ key: breakerHitFrameKey(d, i) })),
+      });
+    }
+  }
+
+  _registerBreakerDeathAnims() {
+    for (const d of Object.keys(BREAKER_DEATH_DIRS)) {
+      const key = breakerDeathAnimKey(d);
+      if (this.anims.exists(key) || !this.textures.exists(breakerDeathFrameKey(d, 0))) continue;
+      // Default rate only; the play sets timeScale to fit BREAKER_DEATH_MS (play({duration}) is ignored in this build).
+      this.anims.create({
+        key, repeat: 0, frameRate: BREAKER_DEATH_DEFAULT_FPS,
+        frames: Array.from({ length: BREAKER_DEATH_FRAMES }, (_, i) => ({ key: breakerDeathFrameKey(d, i) })),
+      });
+    }
+  }
+
+  /**
+   * Death view of one enemy. Gameplay already counts it dead; the view waits until its health bar has emptied (drain + fade),
+   * then plays the collapse once, holds the last frame and fades. Returns true when the view is finished and can be destroyed.
+   */
+  _driveDeath(v, id, pose, dt, force = false) {
+    const d = (v.death ||= { t: null });
+    if (d.t === null && (force || this.hitFx.barEmptied(id))) {
+      d.t = 0;
+      if (this.anims.exists(pose.anim)) {
+        v.body.play(pose.anim);
+        v.body.anims.timeScale = breakerDeathTimeScale();
+      } else v.body.setTexture(pose.rotation);
+    }
+    if (d.t === null) return false;   // bar still draining: keep showing whatever the enemy was doing
+    d.t += dt;
+    const ph = deathViewPhase(d.t);
+    v.body.setAlpha(ph.alpha); v.shadow.setAlpha(ph.alpha);
+    // The collapsed pile is ~140px wide and centred on the enemy: nudge it inside the visible screen so it is not cropped at the edge.
+    if (d.t > 0) {
+      const cam = this.cameras.main, half = BREAKER_DEATH_HALF_WIDTH;
+      const x = Phaser.Math.Clamp(v.body.x, cam.scrollX + half, cam.scrollX + cam.width - half);
+      v.body.x = x; v.shadow.x = x;
+    }
+    return ph.phase === 'done';
+  }
+
   _freshStats() { return { defeated: 0, wavesCleared: 0 }; }
 
   _listen(name, fn) {
@@ -195,7 +257,7 @@ export default class ArenaScene extends Phaser.Scene {
     for (const [n, f] of this._listeners || []) this.ev.off(n, f);
     this._listeners = [];
     this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
-    this.sprites.clear();
+    this.sprites.clear(); this.dying.length = 0;
     this.scene.stop('HudScene'); this.scene.stop('ResultScene');
   }
 
@@ -324,8 +386,19 @@ export default class ArenaScene extends Phaser.Scene {
         // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
         const pose = breakerPose(g);
         v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(false);
-        if (pose.anim && this.anims.exists(pose.anim)) v.body.play(pose.anim, true); // attack plays once, restarts only when the state changes
-        else { v.body.anims.stop(); v.body.setTexture(pose.rotation); }
+        if (pose.death) { v.deathPose = pose; this._driveDeath(v, g.id, pose, dt); } // death view drives its own sprite state
+        else if (pose.hit && this.anims.exists(pose.anim)) {
+          // Fit the 9 frames to this stun; restart on every new hit, otherwise let it run out.
+          if (v.hitSeq !== g.hitSeq || v.body.anims.currentAnim?.key !== pose.anim) {
+            v.hitSeq = g.hitSeq;
+            // play({ duration }) is ignored by this Phaser build, so scale the 30fps default (BREAKER_HIT_FRAMES/30 s) to the stun.
+            v.body.play(pose.anim);
+            v.body.anims.timeScale = (BREAKER_HIT_FRAMES * 1000 / 30) / g.hitstunMs;
+          }
+        } else if (pose.anim && this.anims.exists(pose.anim)) {
+          v.body.anims.timeScale = 1;
+          v.body.play(pose.anim, true); // attack plays once, restarts only when the state changes
+        } else { v.body.anims.timeScale = 1; v.body.anims.stop(); v.body.setTexture(pose.rotation); }
         // Frames come in different canvas sizes (48 rotations, 64-68 walk): fixed pixel scale + origin at the frame's real feet row.
         const key = v.body.texture.key;
         v.body.setScale(BREAKER_DISPLAY_SIZE / 48).setOrigin(0.5, this._feetFrac(key));
@@ -341,7 +414,12 @@ export default class ArenaScene extends Phaser.Scene {
       const fl = this.hitFx.flashTint(g.id);
       if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
       else if (g.telegraphing) v.body.setTint(Phaser.Display.Color.GetColor(255, 130 - 80 * g.telegraphProgress, 120 - 80 * g.telegraphProgress));
-      if (!g.alive) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
+      if (!g.alive && !v.breakerArt) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
+    }
+
+    for (const dv of this.dying.splice(0)) { // removed enemies whose corpse view is still animating
+      if (this._driveDeath(dv.v, dv.id, dv.pose, dt)) this._destroyView(dv.v);
+      else this.dying.push(dv);
     }
 
     this.hitFx.update(dt, this.sprites);
@@ -361,10 +439,19 @@ export default class ArenaScene extends Phaser.Scene {
   _removeEnemyView(id) {
     const v = this.sprites.get(id);
     if (!v) return;
-    v.body.destroy(); v.shadow.destroy(); v.tele.destroy();
     this.hitFx.remove(id);
     this.sprites.delete(id);
+    v.tele.setVisible(false);
+    // A dead breaker keeps its view until the death anim finishes (gameplay has already dropped it from the list and wave counts).
+    if (v.breakerArt && v.death) {
+      this._driveDeath(v, id, v.deathPose, 0, true);
+      this.dying.push({ id, v, pose: v.deathPose });
+    } else this._destroyView(v);
   }
+
+  _destroyView(v) { v.body.destroy(); v.shadow.destroy(); v.tele.destroy(); }
+
+  _destroyDying() { for (const dv of this.dying.splice(0)) this._destroyView(dv.v); }
 
   // ---- hit feedback (hit-feedback-spec.md) ----
   _onHitRequest(r) {

@@ -100,6 +100,15 @@ export class EnemyHitFx {
     return { x: 1 + (STAGGER.scaleX - 1) * k, y: 1 + (STAGGER.scaleY - 1) * k };
   }
 
+  /** True once this enemy's health bar has fully drained and faded (or it never had one). False while a damage event is still queued. */
+  barEmptied(id) {
+    if (this.pending.some((d) => d.targetId === id)) return false;
+    const bar = this.bars.get(id);
+    if (!bar) return true;
+    const s = bar.s;
+    return !s.ko || s.koT >= s.koDelay + ENEMY_BAR.koFadeMs;
+  }
+
   /** Y for the bottom of the telegraph icon (bar top - 4px) or null when this enemy has no bar. */
   telegraphBottomY(id) {
     const bar = this.bars.get(id);

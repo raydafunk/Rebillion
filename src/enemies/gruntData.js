@@ -40,7 +40,7 @@ export const GRUNT = {
   attackMs: JAB_STRING[JAB_STRING.length - 1].atMs + 150, // total attack state length: last jab + follow-through
   jabString: JAB_STRING, // 1-2-3 Rust Jab: one hit-request per entry, each with its own attackId
   recoverMs: 700,
-  hitstunMinMs: 150,
+  hitstunMinMs: 300,
   knockbackDecay: 600,  // px/s^2
   hurtbox: { x: -20, y: -80, w: 40, h: 80 },
   attack: {
