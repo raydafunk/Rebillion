@@ -75,7 +75,7 @@ export class WaveSpawner {
     const id = `${this.idPrefix}-${++this.idCounter}`;
     this.alive.add(id);
     this.spawned++;
-    this.spawnFn({ id, enemy: w.enemy, x: pt.x, y: pt.y, waveIndex: this.waveIndex });
+    this.spawnFn({ id, enemy: w.enemy, skin: w.sourceEnemy, x: pt.x, y: pt.y, waveIndex: this.waveIndex });
   }
 
   update(dtMs) {

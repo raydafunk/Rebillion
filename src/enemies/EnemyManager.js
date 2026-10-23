@@ -29,12 +29,13 @@ export class EnemyManager {
   }
 
   /** spawn spec from WaveSpawner: {id, x, y}. */
-  spawn({ id, x, y }) {
+  spawn({ id, x, y, skin = null }) {
     if (this.enemies.has(id)) return this.enemies.get(id).grunt;
     const grunt = new RustGrunt({
       id, x, y, slots: this.slots, data: this.data,
       hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
     });
+    grunt.skin = skin; // visual variant (e.g. 'rust-breaker'); gameplay is still the grunt's
     this.enemies.set(id, { grunt, deathTimer: 0 });
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
       id, team: this.data.team, maxHp: this.data.maxHp,

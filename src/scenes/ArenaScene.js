@@ -13,11 +13,19 @@ import { legacyLevel, nextLevelIndex } from '../levels/levelData.js';
 import showLevelCard from '../ui/LevelCard.js';
 import addAmbient from '../levels/ambient.js';
 import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys.js';
-import { GRUNT_SPRITE_KEY, TELEGRAPH_FX_KEY } from '../enemies/gruntData.js';
+import { GRUNT_SPRITE_KEY, TELEGRAPH_FX_KEY, GRUNT } from '../enemies/gruntData.js';
+import { EnemyHitFx } from '../enemies/EnemyHitFx.js';
+import {
+  BREAKER_SOURCE_ID, BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, BREAKER_FRAMES, BREAKER_WALK_FPS, BREAKER_DISPLAY_SIZE,
+  DIRECTIONS as BREAKER_DIRS, breakerPose, breakerRotationKey, breakerFrameKey, breakerWalkAnimKey,
+  breakerRotationPath, breakerFramePath,
+  BREAKER_ATTACK_FRAMES, BREAKER_ATTACK_MS, breakerAttackFrameKey, breakerAttackAnimKey, breakerAttackFramePath,
+} from '../enemies/breakerData.js';
 
 const GROUND_Y = LANE.maxY - 40;      // Zed's feet line (physics floor)
 const END_DELAY_MS = 700;             // let the KO / final hit play before the result screen
 const FINISHER_DAMAGE = 12;           // damage at/above which a hit gets screen shake
+const HIT_FX_FINISHER_DAMAGE = 18;    // damage at/above which a hit gets the finisher particle tier (Zed's heavy1)
 
 export default class ArenaScene extends Phaser.Scene {
   constructor() { super('ArenaScene'); }
@@ -44,6 +52,13 @@ export default class ArenaScene extends Phaser.Scene {
     }
     loadZedSprites(this, ['Idle', 'Jumping']);
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
+    // Breaker: placeholder SVG is the fallback; Rust Bruisers PNGs (8 directions) replace it when they load.
+    this.load.svg(BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, { width: 192, height: 192 });
+    for (const d of BREAKER_DIRS) {
+      this.load.image(breakerRotationKey(d), breakerRotationPath(d));
+      for (let i = 0; i < BREAKER_FRAMES; i++) this.load.image(breakerFrameKey(d, i), breakerFramePath(d, i));
+      for (let i = 0; i < BREAKER_ATTACK_FRAMES; i++) this.load.image(breakerAttackFrameKey(d, i), breakerAttackFramePath(d, i));
+    }
     this.load.svg(TELEGRAPH_FX_KEY, 'assets/fx/telegraph-icon-placeholder.svg', { width: 48, height: 48 });
     this.load.svg('fx.spark', 'assets/fx/spark-placeholder.svg', { width: 48, height: 48 });
   }
@@ -54,6 +69,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.simNow = 0;           // scene clock (ms); stops while the scene is paused
     this.ended = false;
     this.stats = this._freshStats();
+    this._registerBreakerAnims();
     this.sprites = new Map();  // enemy id -> { body, shadow, tele }
     this.swings = [];
     this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
@@ -94,6 +110,7 @@ export default class ArenaScene extends Phaser.Scene {
       getScrollX: () => this.cameras.main.scrollX,
     });
     this.arena.enemies.onRemoved = (id) => this._removeEnemyView(id);
+    this.hitFx = new EnemyHitFx(this, ev, { getEnemy: (id) => this.arena.enemies.get(id), maxHp: GRUNT.maxHp, hurtbox: GRUNT.hurtbox, heavyAt: FINISHER_DAMAGE, finisherAt: HIT_FX_FINISHER_DAMAGE });
 
     this._listen(EVENTS.HIT_REQUEST, (r) => this._onHitRequest(r));
     this._listen(EVENTS.DAMAGE_APPLIED, (d) => this._onDamage(d));
@@ -130,6 +147,43 @@ export default class ArenaScene extends Phaser.Scene {
     this.events.once('shutdown', () => { this.game.events.off('blur', this._onBlur); this._teardown(); });
   }
 
+  /** Fraction of the texture height where the lowest opaque pixel sits (cached); keeps feet on the shadow for any frame size. */
+  _feetFrac(key) {
+    this._feet = this._feet || new Map();
+    if (this._feet.has(key)) return this._feet.get(key);
+    let frac = 0.94;
+    try {
+      const img = this.textures.get(key).getSourceImage();
+      const w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+      const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      const cx = cv.getContext('2d'); cx.drawImage(img, 0, 0);
+      const px = cx.getImageData(0, 0, w, h).data;
+      let bot = -1;
+      for (let y = h - 1; y >= 0 && bot < 0; y--) for (let x = 0; x < w; x++) if (px[(y * w + x) * 4 + 3] > 20) { bot = y; break; }
+      if (bot >= 0) frac = (bot + 1) / h;
+    } catch { /* keep default */ }
+    this._feet.set(key, frac);
+    return frac;
+  }
+
+  _registerBreakerAnims() {
+    for (const d of BREAKER_DIRS) {
+      const key = breakerWalkAnimKey(d);
+      if (this.anims.exists(key) || !this.textures.exists(breakerFrameKey(d, 0))) continue;
+      this.anims.create({
+        key, frameRate: BREAKER_WALK_FPS, repeat: -1,
+        frames: Array.from({ length: BREAKER_FRAMES }, (_, i) => ({ key: breakerFrameKey(d, i) })),
+      });
+      const atk = breakerAttackAnimKey(d);
+      if (!this.anims.exists(atk) && this.textures.exists(breakerAttackFrameKey(d, 0))) {
+        this.anims.create({
+          key: atk, repeat: 0, duration: BREAKER_ATTACK_MS,
+          frames: Array.from({ length: BREAKER_ATTACK_FRAMES }, (_, i) => ({ key: breakerAttackFrameKey(d, i) })),
+        });
+      }
+    }
+  }
+
   _freshStats() { return { defeated: 0, wavesCleared: 0 }; }
 
   _listen(name, fn) {
@@ -140,7 +194,7 @@ export default class ArenaScene extends Phaser.Scene {
   _teardown() {
     for (const [n, f] of this._listeners || []) this.ev.off(n, f);
     this._listeners = [];
-    this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
+    this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
     this.sprites.clear();
     this.scene.stop('HudScene'); this.scene.stop('ResultScene');
   }
@@ -252,21 +306,45 @@ export default class ArenaScene extends Phaser.Scene {
     for (const g of this.arena.enemies.list()) {
       let v = this.sprites.get(g.id);
       if (!v) {
+        const breaker = true; // Rust Bruiser art replaces the rust placeholder for every enemy in levels 1-8
+        const hasArt = breaker && this.textures.exists(breakerRotationKey('east'));
+        const body = !breaker
+          ? this.add.image(0, 0, GRUNT_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(112, 112)
+          : hasArt
+            ? this.add.sprite(0, 0, breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
+            : this.add.image(0, 0, BREAKER_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(144, 144);
         v = {
           shadow: this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25),
-          body: this.add.image(0, 0, GRUNT_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(112, 112),
+          body, breakerArt: hasArt,
           tele: this.add.image(0, 0, TELEGRAPH_FX_KEY).setVisible(false).setDepth(4000),
         };
         this.sprites.set(g.id, v);
       }
-      v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(g.facing < 0);
+      if (v.breakerArt) {
+        // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
+        const pose = breakerPose(g);
+        v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(false);
+        if (pose.anim && this.anims.exists(pose.anim)) v.body.play(pose.anim, true); // attack plays once, restarts only when the state changes
+        else { v.body.anims.stop(); v.body.setTexture(pose.rotation); }
+        // Frames come in different canvas sizes (48 rotations, 64-68 walk): fixed pixel scale + origin at the frame's real feet row.
+        const key = v.body.texture.key;
+        v.body.setScale(BREAKER_DISPLAY_SIZE / 48).setOrigin(0.5, this._feetFrac(key));
+      } else v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(g.facing < 0);
       v.shadow.setPosition(g.x, g.y).setDepth(g.y - 1);
-      v.tele.setPosition(g.x, g.y - 130).setVisible(g.telegraphing && g.alive);
+      // Telegraph icon sits above the health bar once one exists (icon bottom = bar top - 4px).
+      const barBottom = this.hitFx.telegraphBottomY(g.id);
+      v.tele.setPosition(g.x, barBottom !== null ? barBottom - v.tele.displayHeight / 2 : g.y - 130).setVisible(g.telegraphing && g.alive);
+      // Single hit flash (spec 7.2): white for 66/83/100 ms, steel under reduce-flash; beats the telegraph tint.
+      const sq = this.hitFx.staggerScale(g.id);
+      if (v.breakerArt) v.body.setScale(v.body.scaleX * sq.x, v.body.scaleY * sq.y); // scale is reset every frame on the art path
       v.body.clearTint();
-      if (g.state === 'hitstun') v.body.setTintFill(0xffffff);
+      const fl = this.hitFx.flashTint(g.id);
+      if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
       else if (g.telegraphing) v.body.setTint(Phaser.Display.Color.GetColor(255, 130 - 80 * g.telegraphProgress, 120 - 80 * g.telegraphProgress));
       if (!g.alive) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
     }
+
+    this.hitFx.update(dt, this.sprites);
 
     // Swing boxes (brief, so Zed's reach and the grunt strike are readable)
     this.gfx.clear();
@@ -284,6 +362,7 @@ export default class ArenaScene extends Phaser.Scene {
     const v = this.sprites.get(id);
     if (!v) return;
     v.body.destroy(); v.shadow.destroy(); v.tele.destroy();
+    this.hitFx.remove(id);
     this.sprites.delete(id);
   }
 
@@ -310,8 +389,12 @@ export default class ArenaScene extends Phaser.Scene {
       const g = this.arena.enemies.get(d.targetId);
       if (!g) return;
       x = g.x; y = g.y - 50;
-      if (d.attackerId === PLAYER_ID && d.amount >= FINISHER_DAMAGE) this.cameras.main.shake(120, 0.003);
+      if (d.attackerId === PLAYER_ID) {
+        if (d.amount >= FINISHER_DAMAGE) this.cameras.main.shake(140, 0.004);
+        else this.cameras.main.shake(90, 0.0025); // light hits: smaller, shorter shake than heavy
+      }
     }
+    if (d.targetId !== PLAYER_ID) return; // enemy hits use EnemyHitFx (burst, chips, sparks)
     const heavy = d.amount >= FINISHER_DAMAGE;
     const s = this.add.image(x, y, 'fx.spark').setDepth(6000).setScale(heavy ? 1 : 0.6).setAngle(Phaser.Math.Between(0, 90));
     this.tweens.add({ targets: s, alpha: 0, scale: s.scale * 1.5, duration: heavy ? 180 : 120, onComplete: () => s.destroy() });
