@@ -3,29 +3,31 @@
 // cancelFrom: first frame (0-based, counted from move start) at which a buffered
 //   follow-up in `chain` may cancel into the next move.
 // hitbox: relative to entity origin, facing right (flipped by facing).
+const SWING = 'zed-swing-whoosh'; // swing whoosh key (see heavyHit.js)
+
 // damage/knockback/hitstun are inputs for the hit-request (combat resolves them).
 import { PLAYER_MOVE_COMBAT as C } from '../shared/combatData.js';
 
 // damage/knockback/hitstun/hitbox come from combatData.js (single source).
 export const MOVES = {
   light1: {
-    startup: 4, active: 3, recovery: 14, cancelFrom: 7,
+    startup: 4, active: 3, recovery: 14, cancelFrom: 7, swingSound: SWING,
     ...C.light1, hitbox: { ...C.light1.hitbox },
     chain: { light: 'light2', heavy: 'heavy1' },
   },
   light2: {
-    startup: 4, active: 3, recovery: 14, cancelFrom: 7,
+    startup: 4, active: 3, recovery: 14, cancelFrom: 7, swingSound: SWING,
     ...C.light2, hitbox: { ...C.light2.hitbox },
     chain: { light: 'light3', heavy: 'heavy1' },
   },
   // Third hit of the 3-hit combo: finisher with bigger knockback.
   light3: {
-    startup: 6, active: 4, recovery: 16, cancelFrom: 999,
+    startup: 6, active: 4, recovery: 16, cancelFrom: 999, hitSound: 'zed-kick-hit', swingSound: SWING,
     ...C.light3, hitbox: { ...C.light3.hitbox },
     chain: {},
   },
   heavy1: {
-    startup: 12, active: 4, recovery: 20, cancelFrom: 999, heavy: true,
+    startup: 12, active: 4, recovery: 20, cancelFrom: 999, heavy: true, swingSound: SWING,
     ...C.heavy1, hitbox: { ...C.heavy1.hitbox },
     chain: {},
   },

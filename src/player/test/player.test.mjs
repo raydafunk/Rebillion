@@ -335,12 +335,38 @@ test('heavy-hit sound: only Zed heavy move, only confirmed damage on an enemy', 
 test('light-hit sound: every non-heavy move uses the light key, heavy only the heavy key', async () => {
   const { hitSoundKey, isHeavyHit, LIGHT_HIT_SOUND_KEY, HEAVY_HIT_SOUND_KEY } = await import('../heavyHit.js');
   for (const id of Object.keys(MOVES)) {
+    if (id === 'light3') continue;
     assert.equal(hitSoundKey(MOVES[id]), MOVES[id].heavy ? HEAVY_HIT_SOUND_KEY : LIGHT_HIT_SOUND_KEY, id);
   }
-  assert.equal(hitSoundKey(MOVES.light3), LIGHT_HIT_SOUND_KEY);
+  assert.equal(hitSoundKey(MOVES.light1), LIGHT_HIT_SOUND_KEY);
+  assert.equal(hitSoundKey(MOVES.light2), LIGHT_HIT_SOUND_KEY);
+  assert.equal(hitSoundKey(MOVES.light3), 'zed-kick-hit', 'finisher kick plays only the kick sound');
+  assert.notEqual(hitSoundKey(MOVES.light3), LIGHT_HIT_SOUND_KEY);
+  assert.notEqual(hitSoundKey(MOVES.light3), HEAVY_HIT_SOUND_KEY);
   assert.equal(hitSoundKey(MOVES.heavy1), HEAVY_HIT_SOUND_KEY);
   const d = { attackerId: 'zed', targetId: 'g1', amount: 5 };
   assert.equal(isHeavyHit(null, d, 'zed'), false, 'miss / nothing armed');
   assert.equal(isHeavyHit(LIGHT_HIT_SOUND_KEY, { ...d, amount: 0 }, 'zed'), false, 'negated light hit');
   assert.equal(isHeavyHit(LIGHT_HIT_SOUND_KEY, d, 'zed'), true);
+});
+
+test('swing whoosh: data-driven, every attack move, once per move, never in hitstun', async () => {
+  const { swingSoundKey, SWING_SOUND_KEY } = await import('../heavyHit.js');
+  assert.equal(swingSoundKey(MOVES.light1), SWING_SOUND_KEY);
+  assert.equal(swingSoundKey(MOVES.light2), SWING_SOUND_KEY);
+  assert.equal(swingSoundKey(MOVES.heavy1), SWING_SOUND_KEY);
+  assert.equal(swingSoundKey(MOVES.light3), SWING_SOUND_KEY, 'kick finisher swings too');
+  const log = [];
+  const m = new PlayerStateMachine({ onMoveStart: (id, mv) => log.push(swingSoundKey(mv) && id) });
+  const none = { pressed: {}, held: {} };
+  m.step({ pressed: { light: true }, held: {} });
+  for (let i = 0; i < 6; i++) m.step(none);          // buffering/holding: no extra fire
+  assert.deepEqual(log, ['light1']);
+  m.step({ pressed: { light: true }, held: {} });
+  for (let i = 0; i < 12; i++) m.step(none);
+  assert.deepEqual(log, ['light1', 'light2'], 'chained move fires once');
+  for (let i = 0; i < 30; i++) m.step(none);
+  m.hit(10);
+  for (let i = 0; i < 12; i++) m.step(none);
+  assert.deepEqual(log, ['light1', 'light2'], 'hitstun fires nothing');
 });

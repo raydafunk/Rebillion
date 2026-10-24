@@ -6,7 +6,7 @@ import { PlayerStateMachine } from './stateMachine.js';
 import { EVENTS } from '../shared/events.js';
 import { TEAMS, PLAYER_ID, COMBAT_DEFAULTS } from '../shared/combatData.js';
 import { DODGE, GUARD } from './moves.js';
-import { isHeavyHit, hitSoundKey } from './heavyHit.js';
+import { isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY } from './heavyHit.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
 const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'KeyW', 'Space',
@@ -31,6 +31,7 @@ export class Zed {
     this.events = scene.game.events;
     this.dead = false;
     this.machine = new PlayerStateMachine({
+      onMoveStart: (moveId, m) => this._playSwing(m),
       onActive: (moveId, m, swing) => this._emitHit(m, swing),
     });
     this.down = new Set();
@@ -52,6 +53,23 @@ export class Zed {
     this.events.on(EVENTS.ENTITY_DIED, this._onDied);
     this.events.on(EVENTS.RETRY, this._onRetry);
     this._register();
+
+    // Footstep loop: plays only while running on the ground; follows the scene's pause/resume.
+    this._runSound = null;
+    this._onScenePause = () => { if (this._runSound && this._runSound.isPlaying) this._runSound.pause(); };
+    this._onSceneResume = () => { if (this._runSound && this._runSound.isPaused) this._runSound.resume(); };
+    scene.events.on('pause', this._onScenePause);
+    scene.events.on('resume', this._onSceneResume);
+  }
+
+  _setRunSound(on) {
+    if (on) {
+      if (!this.scene.cache.audio.exists(RUN_SOUND_KEY)) return;
+      if (!this._runSound) this._runSound = this.scene.sound.add(RUN_SOUND_KEY, { loop: true, volume: 0.6 });
+      if (!this._runSound.isPlaying && !this._runSound.isPaused) this._runSound.play();
+    } else if (this._runSound && (this._runSound.isPlaying || this._runSound.isPaused)) {
+      this._runSound.stop();
+    }
   }
 
   _register() {
@@ -64,6 +82,35 @@ export class Zed {
       // guardType is an extra, optional field: 'dodge' | 'parry' | 'block' | null
       getState: () => ({ x: this.sprite.x, y: this.sprite.y, facing: this.facing, guard: this.machine.guardType }),
     });
+  }
+
+  _playSwing(m) {
+    const key = swingSoundKey(m);
+    if (key && this.scene.cache.audio.exists(key)) this.scene.sound.play(key);
+    if (m && m.heavy) {
+      // Burst on the last active frame, when the fist is fully extended.
+      const endMs = (m.startup + m.active - 1) * (1000 / 60);
+      this.scene.time.delayedCall(endMs, () => { if (this.sprite && this.sprite.active) this._windFx(m); });
+    }
+  }
+
+  // Procedural air-rush streaks at the fist, same moment as the swing whoosh. Visual only.
+  _windFx(m) {
+    const s = this.scene, f = this.facing, hb = m.hitbox;
+    if (!s.textures.exists('fx.wind-streak')) {
+      const g = s.make.graphics({ x: 0, y: 0, add: false });
+      g.fillStyle(0xf2ead8, 1).fillRect(0, 0, 40, 3); // pale warm white (style guide neutral)
+      g.generateTexture('fx.wind-streak', 40, 3);
+      g.destroy();
+    }
+    const cx = this.sprite.x + f * (hb.x + hb.w / 2), cy = this.sprite.y + hb.y + hb.h / 2;
+    for (let i = 0; i < 7; i++) {
+      const life = Phaser.Math.Between(150, 280);
+      const p = s.add.image(cx - f * Phaser.Math.Between(10, 30), cy + Phaser.Math.Between(-18, 18), 'fx.wind-streak')
+        .setDepth(5500).setAlpha(0.7).setFlipX(f < 0).setScale(Phaser.Math.FloatBetween(0.6, 1.3), 1);
+      s.tweens.add({ targets: p, x: p.x + f * Phaser.Math.Between(50, 90), alpha: 0, scaleX: p.scaleX * 0.4,
+        duration: life, ease: 'Cubic.easeOut', onComplete: () => p.destroy() });
+    }
   }
 
   _emitHit(m, swing) {
@@ -127,7 +174,7 @@ export class Zed {
     this.tapped.clear();
     for (const a of Object.keys(this.input.pressed)) if (this.input.pressed[a]) this._pending[a] = true;
     const inp = this.input;
-    if (this.dead) { this.sprite.setFlipX(this.facing < 0); body.setVelocityX(0); return; }
+    if (this.dead) { this._setRunSound(false); this.sprite.setFlipX(this.facing < 0); body.setVelocityX(0); return; }
     const locked = this.machine.state === 'attack' || this.machine.state === 'dodge' || this.machine.state === 'hitstun' || this.machine.state === 'block' || this.machine.state === 'parry';
 
     // Jump (ground only, not during attack/hitstun/block)
@@ -158,9 +205,13 @@ export class Zed {
       body.setVelocityX(inp.moveX * cfg.runSpeed * f);
     }
     this.sprite.setFlipX(this.facing < 0);
+    this._setRunSound(s === 'run' && grounded);
   }
 
   destroy() {
+    this._setRunSound(false);
+    this.scene.events.off('pause', this._onScenePause);
+    this.scene.events.off('resume', this._onSceneResume);
     this.events.off(EVENTS.DAMAGE_APPLIED, this._onDamage);
     this.events.off(EVENTS.ENTITY_DIED, this._onDied);
     this.events.off(EVENTS.RETRY, this._onRetry);

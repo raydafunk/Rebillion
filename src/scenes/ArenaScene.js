@@ -6,7 +6,7 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { Zed } from '../player/Zed.js';
-import { HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH, LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH } from '../player/heavyHit.js';
+import { HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH, LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH, KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH, SWING_SOUND_KEY, SWING_SOUND_PATH, RUN_SOUND_KEY, RUN_SOUND_PATH } from '../player/heavyHit.js';
 import { ZedVisual, loadZedSprites } from '../player/zedVisual.js';
 import { Arena } from '../arena/Arena.js';
 import { WORLD, LANE, VIEW } from '../arena/arenaData.js';
@@ -16,6 +16,7 @@ import addAmbient from '../levels/ambient.js';
 import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys.js';
 import { GRUNT_SPRITE_KEY, TELEGRAPH_FX_KEY, GRUNT } from '../enemies/gruntData.js';
 import { EnemyHitFx } from '../enemies/EnemyHitFx.js';
+import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH, GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH } from '../enemies/gruntSound.js';
 import {
   BREAKER_SOURCE_ID, BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, BREAKER_FRAMES, BREAKER_WALK_FPS, BREAKER_DISPLAY_SIZE,
   DIRECTIONS as BREAKER_DIRS, breakerPose, breakerRotationKey, breakerFrameKey, breakerWalkAnimKey,
@@ -57,6 +58,11 @@ export default class ArenaScene extends Phaser.Scene {
     loadZedSprites(this, ['Idle', 'Jumping']);
     this.load.audio(HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH);
     this.load.audio(LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH);
+    this.load.audio(KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH);
+    this.load.audio(SWING_SOUND_KEY, SWING_SOUND_PATH);
+    this.load.audio(RUN_SOUND_KEY, RUN_SOUND_PATH);
+    this.load.audio(GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH);
+    this.load.audio(GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH);
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
     // Breaker: placeholder SVG is the fallback; Rust Bruisers PNGs (8 directions) replace it when they load.
     this.load.svg(BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, { width: 192, height: 192 });
@@ -276,6 +282,7 @@ export default class ArenaScene extends Phaser.Scene {
     this._tickHitStop(dt);
     const zedFrozen = this.hitStopIds.has(PLAYER_ID);
     if (!zedFrozen && (this.roundStarted || this.sandbox)) this.zed.update(this.simNow, dt);
+    else if (!this.roundStarted) this.zed._setRunSound(false);
     const c = this.arena.bounds.clamp({ x: this.zed.x, y: GROUND_Y });
     if (c.x !== this.zed.x) { this.zed.sprite.x = c.x; this.zed.sprite.body.setVelocityX(0); }
 

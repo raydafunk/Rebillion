@@ -13,6 +13,8 @@ import {
   createBarState, barOnDamage, barUpdate, barView, barFillArea, barPosition, telegraphIconBottomY,
   hitClass, hitDir, buildHit, capParticles, stepParticle, renderModel, starPoints, slashPoints, sparkTrailColor, flashAllowed,
 } from './hitFeedbackData.js';
+import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_VOLUME, isPlainGrunt, gruntSoundReady,
+  GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_VOLUME, gruntVoiceFor } from './gruntSound.js';
 
 export const BAR_DEPTH = 5100;       // above characters (depth = y) and the swing overlay, below sparks (6000)
 export const SHAPE_DEPTH = P.layerDepth.shapes; // 5050: flash shapes above characters, BELOW the bar so they never cover it
@@ -31,6 +33,8 @@ export class EnemyHitFx {
     this.flash = new Map();     // id -> { left, tint }
     this.stagger = new Map();   // id -> { left, total }
     this.lastReq = new Map();   // attackerId -> hit-request
+    this.diedVoiced = new Set(); // ids whose death cry already played
+    this.voiceAt = new Map();   // id -> last grunt voice time (ms), per-grunt cooldown
     this.parts = [];
     this.clockMs = 0; this.lastCoreMs = null; // rate limit clock (real time)
     this.barGfx = scene.add.graphics().setDepth(BAR_DEPTH);
@@ -45,11 +49,29 @@ export class EnemyHitFx {
     events.on(EVENTS.DAMAGE_APPLIED, this._onDmg);
   }
 
+  _playVoice(id, g, killed) {
+    const sc = this.scene;
+    if (!isPlainGrunt(g)) return;
+    const which = gruntVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (sc.cache.audio.exists(GRUNT_DEATH_SOUND_KEY)) sc.sound.play(GRUNT_DEATH_SOUND_KEY, { volume: GRUNT_DEATH_SOUND_VOLUME });
+      return;
+    }
+    if (!sc.cache.audio.exists(GRUNT_HIT_SOUND_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!gruntSoundReady(this.voiceAt.get(id), now)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(GRUNT_HIT_SOUND_KEY, { volume: GRUNT_HIT_SOUND_VOLUME });
+  }
+
   onDamage(d) {
     if (d.targetId === PLAYER_ID || d.amount <= 0) return;
     const g = this.getEnemy(d.targetId);
     if (!g) return;
     const killed = d.hpAfter <= 0;
+    this._playVoice(d.targetId, g, killed);
     const cls = hitClass(d.amount, killed, this.heavyAt, this.finisherAt);
     const reduce = this.reduceFlash();
     let bar = this.bars.get(d.targetId);
@@ -202,7 +224,7 @@ export class EnemyHitFx {
     }
   }
 
-  remove(id) { this.bars.delete(id); this.flash.delete(id); this.stagger.delete(id); }
+  remove(id) { this.voiceAt.delete(id); this.bars.delete(id); this.flash.delete(id); this.stagger.delete(id); }
 
   destroy() {
     this.events.off(EVENTS.HIT_REQUEST, this._onReq);

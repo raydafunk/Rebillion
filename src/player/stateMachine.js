@@ -3,7 +3,7 @@
 import { MOVES, OPENERS, PLAYER_TIMING, DODGE, GUARD, PARRY } from './moves.js';
 
 export class PlayerStateMachine {
-  constructor({ moves = MOVES, openers = OPENERS, timing = PLAYER_TIMING, onActiveStart, onActive, onStateChange, dodge = DODGE, guard = GUARD, parry = PARRY } = {}) {
+  constructor({ moves = MOVES, openers = OPENERS, timing = PLAYER_TIMING, onActiveStart, onActive, onStateChange, onMoveStart, dodge = DODGE, guard = GUARD, parry = PARRY } = {}) {
     this.parryCfg = parry;
     this.parryFrame = 0;
     this.parryCooldown = 0;
@@ -17,6 +17,7 @@ export class PlayerStateMachine {
     this.moves = moves;
     this.openers = openers;
     this.timing = timing;
+    this.onMoveStart = onMoveStart || (() => {}); // (moveId, moveData, swingId) once when a move begins (incl. chained)
     this.onActiveStart = onActiveStart || (() => {}); // (moveId, moveData) at first active frame
     this.onStateChange = onStateChange || (() => {});
     this.state = 'idle';
@@ -57,6 +58,7 @@ export class PlayerStateMachine {
     this.buffered = null;
     this.bufferLeft = 0;
     this._set('attack');
+    this.onMoveStart(id, this.moves[id], this.swing);
     // Re-fire state change semantics for chained moves is handled by onActiveStart per move.
   }
 

@@ -4,7 +4,7 @@
     {
       "name": "rebellion-menu",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8777"],
+      "runtimeArgs": ["dev-server.py", "8777"],
       "port": 8777
     }
   ]
