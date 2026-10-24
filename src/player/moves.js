@@ -25,7 +25,7 @@ export const MOVES = {
     chain: {},
   },
   heavy1: {
-    startup: 12, active: 4, recovery: 20, cancelFrom: 999,
+    startup: 12, active: 4, recovery: 20, cancelFrom: 999, heavy: true,
     ...C.heavy1, hitbox: { ...C.heavy1.hitbox },
     chain: {},
   },

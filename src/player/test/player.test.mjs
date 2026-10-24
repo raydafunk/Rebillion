@@ -321,3 +321,26 @@ test('moves.js combat numbers equal combatData.js (single source)', async () => 
     assert.deepEqual(MOVES[id].hitbox, c.hitbox, id);
   }
 });
+
+test('heavy-hit sound: only Zed heavy move, only confirmed damage on an enemy', async () => {
+  const { isHeavyHit } = await import('../heavyHit.js');
+  assert.deepEqual(Object.keys(MOVES).filter((k) => MOVES[k].heavy), ['heavy1']);
+  const d = { attackerId: 'zed', targetId: 'g1', amount: 18 };
+  assert.equal(isHeavyHit(true, d, 'zed'), true);
+  assert.equal(isHeavyHit(false, d, 'zed'), false, 'light attacks / no swing in flight');
+  assert.equal(isHeavyHit(true, { ...d, amount: 0 }, 'zed'), false, 'negated hit');
+  assert.equal(isHeavyHit(true, { ...d, attackerId: 'g1', targetId: 'zed' }, 'zed'), false, 'enemy hitting Zed');
+});
+
+test('light-hit sound: every non-heavy move uses the light key, heavy only the heavy key', async () => {
+  const { hitSoundKey, isHeavyHit, LIGHT_HIT_SOUND_KEY, HEAVY_HIT_SOUND_KEY } = await import('../heavyHit.js');
+  for (const id of Object.keys(MOVES)) {
+    assert.equal(hitSoundKey(MOVES[id]), MOVES[id].heavy ? HEAVY_HIT_SOUND_KEY : LIGHT_HIT_SOUND_KEY, id);
+  }
+  assert.equal(hitSoundKey(MOVES.light3), LIGHT_HIT_SOUND_KEY);
+  assert.equal(hitSoundKey(MOVES.heavy1), HEAVY_HIT_SOUND_KEY);
+  const d = { attackerId: 'zed', targetId: 'g1', amount: 5 };
+  assert.equal(isHeavyHit(null, d, 'zed'), false, 'miss / nothing armed');
+  assert.equal(isHeavyHit(LIGHT_HIT_SOUND_KEY, { ...d, amount: 0 }, 'zed'), false, 'negated light hit');
+  assert.equal(isHeavyHit(LIGHT_HIT_SOUND_KEY, d, 'zed'), true);
+});

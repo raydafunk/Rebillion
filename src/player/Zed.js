@@ -6,6 +6,7 @@ import { PlayerStateMachine } from './stateMachine.js';
 import { EVENTS } from '../shared/events.js';
 import { TEAMS, PLAYER_ID, COMBAT_DEFAULTS } from '../shared/combatData.js';
 import { DODGE, GUARD } from './moves.js';
+import { isHeavyHit, hitSoundKey } from './heavyHit.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
 const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'KeyW', 'Space',
@@ -66,6 +67,13 @@ export class Zed {
   }
 
   _emitHit(m, swing) {
+    // The resolver answers synchronously, so DAMAGE_APPLIED for this request arrives before emit returns.
+    this._hitSoundArmed = hitSoundKey(m); // heavy or light key; one sound per swing
+    this._emitHitRequest(m, swing);
+    this._hitSoundArmed = null;
+  }
+
+  _emitHitRequest(m, swing) {
     this.events.emit(EVENTS.HIT_REQUEST, {
       attackerId: PLAYER_ID,
       attackId: `${PLAYER_ID}:${swing}`, // same id on every active frame: one hit per target per swing
@@ -80,6 +88,11 @@ export class Zed {
   }
 
   _handleDamage(d) {
+    if (isHeavyHit(this._hitSoundArmed, d, PLAYER_ID)) {
+      const key = this._hitSoundArmed;
+      this._hitSoundArmed = null; // once per swing, even if it connects with several enemies
+      if (this.scene.cache.audio.exists(key)) this.scene.sound.play(key);
+    }
     if (d.targetId !== PLAYER_ID || this.dead) return;
     const guard = this.machine.guardType;
     if (guard === 'dodge' || guard === 'parry') return;  // negated (hp refund needs combat support)

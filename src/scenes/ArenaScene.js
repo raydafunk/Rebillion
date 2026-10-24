@@ -6,6 +6,7 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { Zed } from '../player/Zed.js';
+import { HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH, LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH } from '../player/heavyHit.js';
 import { ZedVisual, loadZedSprites } from '../player/zedVisual.js';
 import { Arena } from '../arena/Arena.js';
 import { WORLD, LANE, VIEW } from '../arena/arenaData.js';
@@ -54,6 +55,8 @@ export default class ArenaScene extends Phaser.Scene {
       else this.load.image(this.bgKey, bgPath);
     }
     loadZedSprites(this, ['Idle', 'Jumping']);
+    this.load.audio(HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH);
+    this.load.audio(LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH);
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
     // Breaker: placeholder SVG is the fallback; Rust Bruisers PNGs (8 directions) replace it when they load.
     this.load.svg(BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, { width: 192, height: 192 });
