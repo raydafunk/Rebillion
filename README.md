@@ -1,9 +1,4 @@
-le	Line	Before	After	Rule	Owner
-1	design/lore/menu-copy.md	menu.footer	"W/S select / Enter confirm" (menu-concept.md:20)	"W/S to choose / Enter to go"	Tone drift: terse, system-speak ("confirm") on Zed's side; prefer plain neighbourhood voice	ui
-Proposed, not applied (outside design/lore)
-#	File	Line	Before	After	Rule	Owner
-2	GameDesignDocument/The Rebellion.docx (Pitch)	n/a	"overtaken Rush a corrupt private Security Force"	"overtaken by the Rust, a corrupt private Security Force"	Lore break: Rush/Rust spelling	GDD owner
-3	same	n/a	"The Rebellion first of the Fallen city"	"The Rebellion: Fists of the Fallen City"	Lore break: title and "Fallen City" capitalisation	GDD owner
+
 
 
 # GOAL-ORIENTED CODING AGENT
