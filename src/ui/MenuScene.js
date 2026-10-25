@@ -13,6 +13,7 @@ const STRIP_W = 360, STRIP_H = 64, STRIP_CX = 396, SEL_DX = 10, TWEEN_MS = 100;
 const DEG = Math.PI / 180;
 const FOOTER = 'W/S select / Enter confirm'; // exact wording from the user; do not reword
 const TOAST_MS = 2000;
+const MENU_MUSIC = { key: 'menu.music', path: 'assets/sound/menu-theme-funked-up.mp3' }; // "Funked Up" by Joth, CC0
 
 // colours: idle / selected (brightest) variant, text colour per strip
 const ITEMS = [
@@ -35,6 +36,7 @@ export default class MenuScene extends Phaser.Scene {
   preload() {
     this.load.on('loaderror', (f) => console.warn('[MenuScene] asset failed, using fallback:', f.key));
     for (const [key, a] of Object.entries(MENU_ASSETS)) this.load.svg(key, a.path, { width: a.w, height: a.h });
+    this.load.audio(MENU_MUSIC.key, MENU_MUSIC.path);
   }
 
   create() {
@@ -56,7 +58,18 @@ export default class MenuScene extends Phaser.Scene {
     this.buildPanel();
     this.buildOptions();
     this.bindInput();
+    this.startMusic();
   }
+
+  // Looping menu theme. Phaser holds playback until the first key/click if the browser has audio locked.
+  startMusic() {
+    if (!this.cache.audio.exists(MENU_MUSIC.key)) return;
+    this.music = this.sound.add(MENU_MUSIC.key, { loop: true, volume: this.musicVolume() });
+    this.music.play();
+    this.events.once('shutdown', () => { this.music.stop(); this.music.destroy(); this.music = null; });
+  }
+
+  musicVolume() { return (this.settings?.musicVolume ?? 70) / 100; }
 
   has(key) { return this.textures.exists(key); }
 
@@ -270,6 +283,7 @@ export default class MenuScene extends Phaser.Scene {
       toast: (m) => this.showToast(m, 640, 686),
       onApplied: (v) => {
         this.settings = v; this.registry.set('options', v);
+        if (this.music) this.music.setVolume(this.musicVolume());
         try { if (this.scale.isFullscreen !== v.fullscreen) (v.fullscreen ? this.scale.startFullscreen() : this.scale.stopFullscreen()); } catch (e) { /* needs user gesture */ }
       },
       onClose: () => { this.hideToast(); },
@@ -345,6 +359,7 @@ export default class MenuScene extends Phaser.Scene {
   launchArena() {
     this.game.events.emit('start-game');
     this.cameras.main.fadeOut(300, 0, 0, 0);
+    if (this.music) this.tweens.add({ targets: this.music, volume: 0, duration: 300 });
     // Level files load while the story card is up; the arena falls back to the Tier 0 round if they fail.
     const levelsReady = this.levelsReady || Promise.resolve();
     this.cameras.main.once('camerafadeoutcomplete', async () => {
