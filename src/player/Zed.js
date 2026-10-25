@@ -6,7 +6,7 @@ import { PlayerStateMachine } from './stateMachine.js';
 import { EVENTS } from '../shared/events.js';
 import { TEAMS, PLAYER_ID, COMBAT_DEFAULTS } from '../shared/combatData.js';
 import { DODGE, GUARD } from './moves.js';
-import { isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY } from './heavyHit.js';
+import { isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY, OWW_SOUND_KEY, OWW_SOUND_VOLUME, DEATH_SOUND_KEY, DEATH_SOUND_VOLUME } from './heavyHit.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
 const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'KeyW', 'Space',
@@ -47,7 +47,11 @@ export class Zed {
     kb.addCapture(WATCHED.filter((c) => c === 'Space' || c.startsWith('Arrow'))); // stop page scroll
 
     this._onDamage = (d) => this._handleDamage(d);
-    this._onDied = (d) => { if (d.id === PLAYER_ID) this.dead = true; };
+    this._onDied = (d) => {
+      if (d.id !== PLAYER_ID) return;
+      if (!this.dead && this.scene.cache.audio.exists(DEATH_SOUND_KEY)) this.scene.sound.play(DEATH_SOUND_KEY, { volume: DEATH_SOUND_VOLUME });
+      this.dead = true;
+    };
     this._onRetry = () => this.respawn(x, y);
     this.events.on(EVENTS.DAMAGE_APPLIED, this._onDamage);
     this.events.on(EVENTS.ENTITY_DIED, this._onDied);
@@ -148,6 +152,7 @@ export class Zed {
       return; // no hitstun while blocking
     }
     this.machine.hit(Math.ceil(d.hitstun / this.cfg.fixedStepMs));
+    if (d.hpAfter > 0 && this.scene.cache.audio.exists(OWW_SOUND_KEY)) this.scene.sound.play(OWW_SOUND_KEY, { volume: OWW_SOUND_VOLUME });
     this.sprite.body.setVelocityX(d.knockback);
     this.sprite.setTint(0xff6666);
     this.scene.time.delayedCall(d.hitstun, () => this.sprite.clearTint());

@@ -33,6 +33,15 @@ export const ZED_ANIMS = [
   { state: 'dodge', folder: 'Zed_a_young_street_dodge', anim: 'Zed_a_young_street_fighter_seen_in_side_profile_animations', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
   // Parry reaction (T or M): 9 frames, 68x68 canvas (same framing as dodge; foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
   { state: 'parry', folder: 'Zed_parry_reaction_a', anim: 'Zed_parry_reaction_animation_triggered_when_hit._Q', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
+  // Hit reaction (Taking_Punch): 6 frames, 64x64 canvas like Running (lowest opaque row 53 -> 56.5/64). Played once across the hitstun (stretched in update()).
+  { state: 'hitstun', folder: 'when_getting_hit', anim: 'Taking_Punch', frames: 6, fps: 15, originY: 56.5 / 64, repeat: 0 },
+  // Death (Falling_Back_Death): 7 frames, 80x80 canvas, plays once and holds the last frame (lowest opaque row 62 -> (62 + 1 + 2px gap)/80).
+  // 7 frames / 12 fps = 583 ms, inside ArenaScene's END_DELAY_MS (700) so the lose screen waits for the fall.
+  { state: 'dead', folder: 'knock_down_death', anim: 'Falling_Back_Death', frames: 7, fps: 12, originY: 65 / 80, repeat: 0,
+    // The lying frame's body ends at row 51 in both directions (east also has a few stray pixels at rows 57-62 that
+    // aren't the body, which is why measuring "lowest opaque row" left him floating), so it's pinned at (51 + 1 + 2)/80.
+    // West's first frames sit 1px higher than east's (low row 61 vs 62).
+    dirOriginY: { west: 64 / 80 }, frameOriginY: { east: { 6: 54 / 80 }, west: { 6: 54 / 80 } } },
 ];
 // Static single-pose textures shown for a machine state (rotations only, no frames yet).
 // originY: Jumping PNG feet sit at row 46 vs idle's 45 (both 48x48), so lift 1 source px to share the idle foot line.
@@ -126,6 +135,7 @@ export class ZedVisual {
     this.base = { sx: ZED_SPRITE.scale, sy: ZED_SPRITE.scale };
     this.t = 0;
     this._anim = null;
+    this._wasDead = false;
   }
 
   /** Call every render. zed = Zed instance; feetX/feetY world position of the feet. */
@@ -136,14 +146,19 @@ export class ZedVisual {
     const dir = facing < 0 ? ZED_SPRITE.dir.left : ZED_SPRITE.dir.right;
     const grounded = zed.sprite.body.blocked.down || zed.sprite.body.touching.down;
     const stateKey = m.state === 'attack' && m.moveId ? m.moveId : m.state;
-    const animKey = [`zed.${stateKey}.${dir}`, `zed.${m.state}.${dir}`, `zed.${stateKey}`, `zed.${m.state}`].find((k) => this.scene.anims.exists(k));
+    if (this._wasDead && !zed.dead) this._anim = null; // revived (retry): force the next clip to restart
+    this._wasDead = !!zed.dead;
+    const animKey = (zed.dead ? [`zed.dead.${dir}`, 'zed.dead'] : [`zed.${stateKey}.${dir}`, `zed.${m.state}.${dir}`, `zed.${stateKey}`, `zed.${m.state}`]).find((k) => this.scene.anims.exists(k));
     const img = this.image;
     img.setPosition(feetX, feetY).setDepth(depth);
     if (animKey) { // real frames available: let them drive; keep tint/alpha only
-      const animTag = `${animKey}|${m.state === 'attack' ? m.moveId : ''}`; // chained attacks restart the clip
-      if (this._anim !== animTag) { img.play(animKey); this._anim = animTag; }
+      const animTag = `${animKey}|${zed.dead ? 'dead' : ''}|${m.state === 'attack' ? m.moveId : ''}`; // chained attacks restart the clip
+      if (zed.dead && !grounded) { // killed in the air: hold the first death frame until he lands, then fall
+        img.stop(); img.setTexture(zedFrameKey('dead', dir, 0)); this._anim = null;
+      } else if (this._anim !== animTag) { img.play(animKey); this._anim = animTag; }
       const clip = ZED_ANIMS.find((a) => animKey.startsWith(`zed.${a.state}.`));
-      img.setOrigin(ZED_SPRITE.origin.x, clip?.originY ?? ZED_SPRITE.origin.y);
+      const fi = Number(String(img.anims.currentFrame?.textureKey ?? img.texture.key).split('.').pop());
+      img.setOrigin(ZED_SPRITE.origin.x, clip?.frameOriginY?.[dir]?.[fi] ?? clip?.dirOriginY?.[dir] ?? clip?.originY ?? ZED_SPRITE.origin.y);
       img.setScale(this.base.sx, this.base.sy).setPosition(feetX, feetY).setAngle(0);
       if (m.state === 'attack' && clip) { // stretch the punch/kick over the move: wind-up, snap on the active frames, ease out
         const mv = MOVES[m.moveId];
@@ -152,7 +167,12 @@ export class ZedVisual {
         img.anims.timeScale = (clip.frames / clip.fps) / (DODGE.duration / 60);
       } else if (m.state === 'parry' && clip) { // one pass across the whole parry
         img.anims.timeScale = (clip.frames / clip.fps) / (PARRY.duration / 60);
+      } else if (m.state === 'hitstun' && clip) { // one pass across the whole hitstun (length captured when the hit lands)
+        if (this._hitTotal == null || m.hitstunLeft > this._hitLeft) this._hitTotal = m.hitstunLeft;
+        this._hitLeft = m.hitstunLeft;
+        img.anims.timeScale = (clip.frames / clip.fps) / (Math.max(1, this._hitTotal) / 60);
       } else img.anims.timeScale = 1;
+      if (m.state !== 'hitstun') this._hitTotal = null;
     } else {
       if (this._anim) { img.stop(); this._anim = null; img.setOrigin(ZED_SPRITE.origin.x, ZED_SPRITE.origin.y); }
       const pose = ZED_POSES[m.state];
@@ -167,8 +187,9 @@ export class ZedVisual {
       img.setScale(this.base.sx * p.sx, this.base.sy * p.sy);
       img.setPosition(feetX + p.ox, feetY + p.oy).setAngle(p.angle);
     } else if (m.state === 'attack') img.x = feetX + punchLunge(m, facing); // weight shift: lean back, step into the hit
-    img.setAlpha(p.alpha);
-    if (animKey && m.state === 'attack' && p.tintFill == null) img.clearTint();
+    img.setAlpha(animKey && zed.dead ? 1 : p.alpha); // the death clip is drawn at full alpha
+    if (animKey && m.state === 'hitstun') img.clearTint(); // the clip shows the hit; no solid-white flash over it
+    else if (animKey && m.state === 'attack' && p.tintFill == null) img.clearTint();
     else if (p.tintFill != null) img.setTintFill(p.tintFill);
     else if (p.tint != null) img.setTint(p.tint);
     else img.clearTint();

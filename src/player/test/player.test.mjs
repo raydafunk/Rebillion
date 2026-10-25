@@ -370,3 +370,14 @@ test('swing whoosh: data-driven, every attack move, once per move, never in hits
   for (let i = 0; i < 12; i++) m.step(none);
   assert.deepEqual(log, ['light1', 'light2'], 'hitstun fires nothing');
 });
+
+test('zed death anim: plays once, holds last frame, finishes before the lose screen (700 ms)', () => {
+  const a = ZED_ANIMS.find((x) => x.state === 'dead');
+  assert.ok(a, 'dead clip registered');
+  assert.equal(a.folder, 'knock_down_death');
+  assert.equal(a.repeat, 0);
+  assert.equal(a.frames, 7);
+  assert.ok((a.frames / a.fps) * 1000 <= 700, 'clip fits in ArenaScene END_DELAY_MS');
+  assert.ok(a.originY > 0.5 && a.originY <= 1);
+  assert.equal(zedAnimKey('dead', 'west'), 'zed.dead.west');
+});

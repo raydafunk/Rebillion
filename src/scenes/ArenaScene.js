@@ -6,7 +6,7 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { Zed } from '../player/Zed.js';
-import { HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH, LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH, KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH, SWING_SOUND_KEY, SWING_SOUND_PATH, RUN_SOUND_KEY, RUN_SOUND_PATH } from '../player/heavyHit.js';
+import { HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH, LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH, KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH, SWING_SOUND_KEY, SWING_SOUND_PATH, RUN_SOUND_KEY, RUN_SOUND_PATH, OWW_SOUND_KEY, OWW_SOUND_PATH, DEATH_SOUND_KEY, DEATH_SOUND_PATH } from '../player/heavyHit.js';
 import { ZedVisual, loadZedSprites } from '../player/zedVisual.js';
 import { Arena } from '../arena/Arena.js';
 import { WORLD, LANE, VIEW } from '../arena/arenaData.js';
@@ -16,7 +16,7 @@ import addAmbient from '../levels/ambient.js';
 import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys.js';
 import { GRUNT_SPRITE_KEY, TELEGRAPH_FX_KEY, GRUNT } from '../enemies/gruntData.js';
 import { EnemyHitFx } from '../enemies/EnemyHitFx.js';
-import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH, GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH } from '../enemies/gruntSound.js';
+import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH, GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH, GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH, pickStepper } from '../enemies/gruntSound.js';
 import {
   BREAKER_SOURCE_ID, BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, BREAKER_FRAMES, BREAKER_WALK_FPS, BREAKER_DISPLAY_SIZE,
   DIRECTIONS as BREAKER_DIRS, breakerPose, breakerRotationKey, breakerFrameKey, breakerWalkAnimKey,
@@ -61,8 +61,11 @@ export default class ArenaScene extends Phaser.Scene {
     this.load.audio(KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH);
     this.load.audio(SWING_SOUND_KEY, SWING_SOUND_PATH);
     this.load.audio(RUN_SOUND_KEY, RUN_SOUND_PATH);
+    this.load.audio(OWW_SOUND_KEY, OWW_SOUND_PATH);
+    this.load.audio(DEATH_SOUND_KEY, DEATH_SOUND_PATH);
     this.load.audio(GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH);
     this.load.audio(GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH);
+    this.load.audio(GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH);
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
     // Breaker: placeholder SVG is the fallback; Rust Bruisers PNGs (8 directions) replace it when they load.
     this.load.svg(BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, { width: 192, height: 192 });
@@ -375,6 +378,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.zedVisual.update(z, zedFrozen ? 0 : dt, z.x, z.y + 36, z.y + 36);
     this.zedShadow.setPosition(z.x, feetY).setDepth(feetY - 1).setScale(1 - Math.min(0.4, airborne / 400));
 
+    const walkers = [];
     for (const g of this.arena.enemies.list()) {
       let v = this.sprites.get(g.id);
       if (!v) {
@@ -395,6 +399,7 @@ export default class ArenaScene extends Phaser.Scene {
       if (v.breakerArt) {
         // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
         const pose = breakerPose(g);
+        if (g.alive && pose.anim === breakerWalkAnimKey(pose.dir)) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
         v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(false);
         if (pose.death) { v.deathPose = pose; this._driveDeath(v, g.id, pose, dt); } // death view drives its own sprite state
         else if (pose.hit && this.anims.exists(pose.anim)) {
@@ -423,7 +428,6 @@ export default class ArenaScene extends Phaser.Scene {
       v.body.clearTint();
       const fl = this.hitFx.flashTint(g.id);
       if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
-      else if (g.telegraphing) v.body.setTint(Phaser.Display.Color.GetColor(255, 130 - 80 * g.telegraphProgress, 120 - 80 * g.telegraphProgress));
       if (!g.alive && !v.breakerArt) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
     }
 
@@ -432,18 +436,16 @@ export default class ArenaScene extends Phaser.Scene {
       else this.dying.push(dv);
     }
 
+    // Footsteps: one shared step voice for the whole scene (see pickStepper), so crowds don't stack into a glitchy rattle.
+    const step = this.cache.audio.exists(GRUNT_STEP_SOUND_KEY) ? pickStepper(walkers, this.simNow, this.lastStepMs) : null;
+    if (step) { this.sound.play(GRUNT_STEP_SOUND_KEY, { volume: step.volume, rate: step.rate }); this.lastStepMs = this.simNow; walkers.find((w) => w.id === step.id).v.stepAt = this.simNow; }
+
     this.hitFx.update(dt, this.sprites);
 
     // Swing boxes (brief, so Zed's reach and the grunt strike are readable)
     this.gfx.clear();
     this.swings = this.swings.filter((s) => (s.ttl -= dt) > 0);
     for (const s of this.swings) this.gfx.fillStyle(s.color, 0.35 * (s.ttl / s.life)).fillRect(s.x, s.y, s.w, s.h);
-    for (const g of this.arena.enemies.list()) {
-      if (g.telegraphing) {
-        const b = g.attackHitbox();
-        this.gfx.fillStyle(0xd13b2c, 0.15 + 0.25 * g.telegraphProgress).fillRect(b.x, b.y, b.w, b.h);
-      }
-    }
   }
 
   _removeEnemyView(id) {
