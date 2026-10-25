@@ -1,4 +1,14 @@
+The Evaluator & Refiner Loop 
 
+systems using 
+
+the Critic Log 
+
+Changes applied (design/lore only)
+
+file                         Line            Before                                                   After                             Rule
+1.design/lore/menu-copy.md     menu.footer     "W/S select / Enter confirm" (menu-concept.md:20)        "W/S to choose / Enter to go"     Tone drift: terse, system-speak 
+                                                                                                                                        ("confirm") on Zed's side; prefer plain neighbourhood voice
 
 
 # GOAL-ORIENTED CODING AGENT
