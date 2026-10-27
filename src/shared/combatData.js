@@ -66,6 +66,8 @@ export const PLAYER_MOVE_COMBAT = Object.freeze({
   light1: Object.freeze({ damage: 6,  knockback: 120, hitstun: 14, hitbox: Object.freeze({ x: 20, y: -24, w: 40, h: 24 }) }),
   light2: Object.freeze({ damage: 7,  knockback: 140, hitstun: 14, hitbox: Object.freeze({ x: 20, y: -24, w: 44, h: 24 }) }),
   light3: Object.freeze({ damage: 12, knockback: 320, hitstun: 24, hitbox: Object.freeze({ x: 20, y: -28, w: 52, h: 32 }) }),
+  // Jumping flying kick (light press while airborne): big launch (knockback above heavy1), hitbox forward and low.
+  airkick: Object.freeze({ damage: 8, knockback: 520, hitstun: 18, hitbox: Object.freeze({ x: 16, y: -22, w: 48, h: 30 }) }),
   heavy1: Object.freeze({ damage: 18, knockback: 380, hitstun: 28, hitbox: Object.freeze({ x: 24, y: -30, w: 56, h: 36 }) }),
 });
 

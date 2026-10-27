@@ -30,6 +30,9 @@ export const ZED_ANIMS = [
   // High kick is the 3rd light hit (finisher); zed.light3.<dir> takes priority over the generic zed.attack clip.
   // 80x80 canvas, same framing as the punch (standing foot rows 58-63).
   { state: 'light3', folder: 'fighting_pose_2', anim: 'High_Kick', frames: 7, fps: 24, originY: 64 / 80, repeat: 0 },
+  // Jumping flying kick (airborne light press): zed.airkick.<dir>, stretched over the move, holds the last frame until landing.
+  // 80x80 canvas; foot row not measured, assumed to match the standing kick (64/80).
+  { state: 'airkick', folder: 'flying_Jumping_Kick', anim: 'Flying_Kick', frames: 6, fps: 24, originY: 64 / 80, repeat: 0 },
   // Dodge sway: 9 frames, 68x68 canvas, lowest opaque row 55 -> (55 + 1 + 2px gap)/68. Stretched over DODGE.duration below.
   { state: 'dodge', folder: 'Zed_a_young_street_dodge', anim: 'Zed_a_young_street_fighter_seen_in_side_profile_animations', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
   // Parry reaction (T or M): 9 frames, 68x68 canvas (same framing as dodge; foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
@@ -187,7 +190,7 @@ export class ZedVisual {
     if (!animKey) {
       img.setScale(this.base.sx * p.sx, this.base.sy * p.sy);
       img.setPosition(feetX + p.ox, feetY + p.oy).setAngle(p.angle);
-    } else if (m.state === 'attack') img.x = feetX + punchLunge(m, facing); // weight shift: lean back, step into the hit
+    } else if (m.state === 'attack' && m.moveId !== 'airkick') img.x = feetX + punchLunge(m, facing); // weight shift: lean back, step into the hit
     img.setAlpha(animKey && zed.dead ? 1 : p.alpha); // the death clip is drawn at full alpha
     if (animKey && m.state === 'hitstun') img.clearTint(); // the clip shows the hit; no solid-white flash over it
     else if (animKey && m.state === 'attack' && p.tintFill == null) img.clearTint();

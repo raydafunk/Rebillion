@@ -25,6 +25,7 @@ export class PlayerStateMachine {
     this.moveId = null;
     this.frame = 0;          // frames since current move / hitstun began
     this.hitstunLeft = 0;
+    this.airKickUsed = false; // one flying kick per jump; reset on landing
     this.buffered = null;    // 'light' | 'heavy'
     this.bufferLeft = 0;
   }
@@ -102,7 +103,10 @@ export class PlayerStateMachine {
       const m = this.moves[this.moveId];
       // Chain cancel
       const next = this.buffered && m.chain[this.buffered];
-      if (next && this.frame >= m.cancelFrom) {
+      if (m.airOnly && ctx.grounded) {
+        this.moveId = null;      // landing ends the flying kick
+        this._set('idle');
+      } else if (next && this.frame >= m.cancelFrom) {
         this._startMove(next);
       } else if (this.frame >= m.startup + m.active + m.recovery - 1) {
         this.moveId = null;
@@ -127,9 +131,13 @@ export class PlayerStateMachine {
       else return this.state;
     }
 
+    if (ctx.grounded) this.airKickUsed = false;
     if (this.state !== 'attack') {
       if (!ctx.grounded) {
-        this._set('jump');
+        if (this.buffered === 'light' && !this.airKickUsed && this.moves.airkick) {
+          this.airKickUsed = true;
+          this._startMove('airkick');
+        } else this._set('jump');
       } else if (this.buffered && this.openers[this.buffered]) {
         this._startMove(this.openers[this.buffered]);
       } else if (pressed.dodge && this.dodgeCooldown <= 0) {

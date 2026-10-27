@@ -4,6 +4,8 @@ import { EVENTS } from '../shared/events.js';
 import { PLAYER_ID } from '../shared/combatData.js';
 import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
+import { MOVE_FEEDBACK, shakeScale } from '../shared/hitFeedback.js';
+import { loadSettings } from '../ui/optionsData.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { Zed } from '../player/Zed.js';
 import { HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH, LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH, KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH, SWING_SOUND_KEY, SWING_SOUND_PATH, RUN_SOUND_KEY, RUN_SOUND_PATH, OWW_SOUND_KEY, OWW_SOUND_PATH, DEATH_SOUND_KEY, DEATH_SOUND_PATH } from '../player/heavyHit.js';
@@ -496,22 +498,31 @@ export default class ArenaScene extends Phaser.Scene {
   _destroyDying() { for (const dv of this.dying.splice(0)) this._destroyView(dv.v); }
 
   // ---- hit feedback (hit-feedback-spec.md) ----
+  _shake(ms, intensity) { // honours the Options "Screen Shake" setting (Off/Light/Full)
+    let setting; try { setting = loadSettings(globalThis.localStorage).screenShake; } catch (e) { /* no storage: Full */ }
+    const k = shakeScale(setting);
+    if (k > 0) this.cameras.main.shake(ms, intensity * k);
+  }
+
   _onDamage(d) {
     if (d.amount <= 0) return;
     const guarded = d.targetId === PLAYER_ID && this.zed.machine.guardType;
     if (!guarded) {
-      const type = d.targetId === PLAYER_ID ? 'playerHurt' : d.amount >= FINISHER_DAMAGE ? 'heavy' : 'light';
+      const fb = d.attackerId === PLAYER_ID ? MOVE_FEEDBACK[this.zed.machine.moveId] : null; // damage-applied is synchronous with Zed's active frame
+      const type = d.targetId === PLAYER_ID ? 'playerHurt' : fb ? fb.hitStop : d.amount >= FINISHER_DAMAGE ? 'heavy' : 'light';
       this._startHitStop(type, [d.attackerId, d.targetId]);
     }
     let x, y;
-    if (d.targetId === PLAYER_ID) { x = this.zed.x; y = this.zed.y - 10; this.cameras.main.shake(100, 0.0023); }
+    if (d.targetId === PLAYER_ID) { x = this.zed.x; y = this.zed.y - 10; this._shake(100, 0.0023); }
     else {
       const g = this.arena.enemies.get(d.targetId);
       if (!g) return;
       x = g.x; y = g.y - 50;
       if (d.attackerId === PLAYER_ID) {
-        if (d.amount >= FINISHER_DAMAGE) this.cameras.main.shake(140, 0.004);
-        else this.cameras.main.shake(90, 0.0025); // light hits: smaller, shorter shake than heavy
+        const fb = MOVE_FEEDBACK[this.zed.machine.moveId];
+        if (fb) this._shake(fb.shake.ms, fb.shake.intensity);
+        else if (d.amount >= FINISHER_DAMAGE) this._shake(140, 0.004);
+        else this._shake(90, 0.0025); // light hits: smaller, shorter shake than heavy
       }
     }
     if (d.targetId !== PLAYER_ID) return; // enemy hits use EnemyHitFx (burst, chips, sparks)

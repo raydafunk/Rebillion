@@ -394,3 +394,34 @@ test('successful parry can be cancelled into an attack; a missed parry cannot', 
   ok.step(light);
   assert.equal(ok.state, 'attack'); assert.equal(ok.moveId, 'light1');
 });
+
+test('flying kick: light while airborne, once per jump, ends on landing, no ground chain', () => {
+  const hits = [];
+  const m = new PlayerStateMachine({ onActive: (id) => hits.push(id) });
+  const air = { grounded: false };
+  m.step(NONE, air);
+  assert.equal(m.state, 'jump');
+  m.step(press('light'), air);
+  assert.equal(m.state, 'attack');
+  assert.equal(m.moveId, 'airkick');
+  for (let f = 0; f < 10; f++) m.step(NONE, air);
+  assert.ok(hits.length > 0 && hits.every((h) => h === 'airkick'));
+  assert.equal(m.state, 'attack', 'stays in the kick while airborne');
+  m.step(NONE, { grounded: true });
+  assert.equal(m.state, 'idle', 'landing ends the kick');
+  // second jump: kick allowed again; pressing light twice in one jump gives one kick
+  m.step(NONE, air);
+  m.step(press('light'), air);
+  for (let f = 0; f < 60; f++) m.step(f === 3 ? press('light') : NONE, air);
+  assert.equal(m.swing, 2, 'one kick per jump (second press ignored)');
+  assert.equal(MOVES.airkick.damage > MOVES.light1.damage, true);
+  const k = ZED_ANIMS.find((a) => a.state === 'airkick');
+  assert.ok(k, 'airkick clip registered');
+  for (const d of ['east', 'west']) for (let i = 0; i < k.frames; i++) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(k, d, i)}`, import.meta.url)));
+});
+
+test('ground light press still starts light1 (not the flying kick)', () => {
+  const m = new PlayerStateMachine();
+  m.step(press('light'));
+  assert.equal(m.moveId, 'light1');
+});

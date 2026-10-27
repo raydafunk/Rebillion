@@ -26,6 +26,12 @@ export const MOVES = {
     ...C.light3, hitbox: { ...C.light3.hitbox },
     chain: {},
   },
+  // Flying kick: airborne light press, once per jump. Active until landing ends the move (recovery is a safety cap).
+  airkick: {
+    startup: 4, active: 40, recovery: 6, cancelFrom: 999, airOnly: true, swingSound: SWING,
+    ...C.airkick, hitbox: { ...C.airkick.hitbox },
+    chain: {},
+  },
   heavy1: {
     startup: 12, active: 4, recovery: 20, cancelFrom: 999, heavy: true, swingSound: SWING,
     ...C.heavy1, hitbox: { ...C.heavy1.hitbox },
