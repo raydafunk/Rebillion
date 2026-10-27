@@ -97,7 +97,6 @@ export default class ArenaScene extends Phaser.Scene {
     this._registerBreakerDeathAnims();
     this.dying = [];           // views of removed (already dead) enemies still playing their death anim
     this.sprites = new Map();  // enemy id -> { body, shadow, tele }
-    this.swings = [];
     this.pickups = [];         // health items lying in the breather between waves
     this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
     this.hitStopIds = new Set();
@@ -126,7 +125,6 @@ export default class ArenaScene extends Phaser.Scene {
     this.zed.sprite.setAlpha(0);                       // physics body only; the visual below is the art
     this.zedShadow = this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25);
     this.zedVisual = new ZedVisual(this);
-    this.gfx = this.add.graphics().setDepth(5000);
 
     this.arena = new Arena({
       events: ev,
@@ -139,7 +137,6 @@ export default class ArenaScene extends Phaser.Scene {
     this.arena.enemies.onRemoved = (id) => this._removeEnemyView(id);
     this.hitFx = new EnemyHitFx(this, ev, { getEnemy: (id) => this.arena.enemies.get(id), maxHp: GRUNT.maxHp, hurtbox: GRUNT.hurtbox, heavyAt: FINISHER_DAMAGE, finisherAt: HIT_FX_FINISHER_DAMAGE });
 
-    this._listen(EVENTS.HIT_REQUEST, (r) => this._onHitRequest(r));
     this._listen(EVENTS.DAMAGE_APPLIED, (d) => this._onDamage(d));
     this._listen(EVENTS.ENTITY_DIED, (d) => { if (d.team === 'rust') this.stats.defeated++; });
     this._listen(EVENTS.WAVE_CLEARED, ({ index }) => {
@@ -149,7 +146,7 @@ export default class ArenaScene extends Phaser.Scene {
     });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); this._destroyDying(); this._clearPickups(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this._clearHitStop(); this._destroyDying(); this._clearPickups(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
@@ -479,11 +476,6 @@ export default class ArenaScene extends Phaser.Scene {
     if (step) { this.sound.play(GRUNT_STEP_SOUND_KEY, { volume: step.volume, rate: step.rate }); this.lastStepMs = this.simNow; walkers.find((w) => w.id === step.id).v.stepAt = this.simNow; }
 
     this.hitFx.update(dt, this.sprites);
-
-    // Swing boxes (brief, so Zed's reach and the grunt strike are readable)
-    this.gfx.clear();
-    this.swings = this.swings.filter((s) => (s.ttl -= dt) > 0);
-    for (const s of this.swings) this.gfx.fillStyle(s.color, 0.35 * (s.ttl / s.life)).fillRect(s.x, s.y, s.w, s.h);
   }
 
   _removeEnemyView(id) {
@@ -504,15 +496,6 @@ export default class ArenaScene extends Phaser.Scene {
   _destroyDying() { for (const dv of this.dying.splice(0)) this._destroyView(dv.v); }
 
   // ---- hit feedback (hit-feedback-spec.md) ----
-  _onHitRequest(r) {
-    if (r.team === 'player') return; // no hitbox overlay on Zed's punches; the sprite shows the swing
-    const x = r.origin.x + r.facing * r.hitbox.x - (r.facing < 0 ? r.hitbox.w : 0);
-    this.swings.push({
-      x, y: r.origin.y + r.hitbox.y, w: r.hitbox.w, h: r.hitbox.h, ttl: 120, life: 120,
-      color: r.team === 'player' ? 0xf2c04d : 0xd13b2c,
-    });
-  }
-
   _onDamage(d) {
     if (d.amount <= 0) return;
     const guarded = d.targetId === PLAYER_ID && this.zed.machine.guardType;

@@ -5,6 +5,7 @@
 // and skips the procedural pose. See registerZedAnimations().
 
 import { MOVES, DODGE, PARRY } from './moves.js';
+import { ZED_CONFIG } from './config.js';
 
 export const ZED_SPRITE = {
   size: 48,                 // source px (metadata.json states[].character.size)
@@ -103,7 +104,7 @@ export function zedPose(s) {
     case 'run': { const b = Math.abs(Math.sin(t / 90)); p.oy = -4 * b; p.sy = 1 + 0.03 * b; p.angle = 4 * f; break; }
     case 'jump': {
       // Follow vertical speed continuously (neutral at the apex) so the shape never snaps when vy flips sign.
-      const k = Math.max(-1, Math.min(1, -(s.vy ?? 0) / 520)); // 520 = |jumpVelocity|; +1 rising, -1 falling
+      const k = Math.max(-1, Math.min(1, -(s.vy ?? 0) / Math.abs(ZED_CONFIG.jumpVelocity))); // +1 rising, -1 falling
       p.sx = 1 - 0.07 * k; p.sy = 1 + 0.10 * k; break;
     }
     case 'attack': {

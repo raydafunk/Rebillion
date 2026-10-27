@@ -84,8 +84,14 @@ export class Zed {
       maxHp: COMBAT_DEFAULTS.PLAYER_MAX_HP,
       hurtbox: { x: -w / 2, y: -h / 2, w, h },
       // guardType is an extra, optional field: 'dodge' | 'parry' | 'block' | null
-      getState: () => ({ x: this.sprite.x, y: this.sprite.y, facing: this.facing, guard: this.machine.guardType }),
+      getState: () => ({ x: this.sprite.x, y: this.sprite.y, facing: this.facing, guard: this.machine.guardType, lift: this._lift() }),
     });
+  }
+
+  /** Feet height above the floor (px); 0 on the ground. */
+  _lift() {
+    const b = this.scene.physics.world.bounds;
+    return Math.max(0, b.bottom - (this.sprite.y + this.cfg.bodySize.h / 2));
   }
 
   _playSwing(m) {

@@ -45,7 +45,8 @@ assert.equal(log.at(-1)[1].hp, 90);
   const e2 = fakeEmitter(); const out = [];
   e2.on(EVENTS.DAMAGE_APPLIED, (p) => out.push(p));
   const hp = []; e2.on(EVENTS.PLAYER_HEALTH_CHANGED, (p) => hp.push(p));
-  createHitResolver(e2, () => 0);
+  let clock = 0;
+  createHitResolver(e2, () => clock);
   const me = { x: 0, y: 0, facing: 1, guard: null };
   e2.emit(EVENTS.ENTITY_REGISTERED, { id: 'player', team: 'player', maxHp: 100, hurtbox: hurt, getState: () => me });
   const atk = (id) => ({ attackerId: 'g', attackId: id, team: 'rust', hitbox: { x: 0, y: -40, w: 50, h: 40 },
@@ -58,5 +59,10 @@ assert.equal(log.at(-1)[1].hp, 90);
   me.guard = 'block'; e2.emit(EVENTS.HIT_REQUEST, atk('b'));
   assert.deepEqual([out[2].amount, out[2].hpAfter, out[2].knockback, out[2].hitstun], [5, 95, -50, 0]);
   assert.equal(hp.at(-1).hp, 95);
+  // airborne: a jump over the attacker's reach makes ground melee pass underneath, and the swing can still land after landing
+  me.guard = null; me.lift = 40; e2.emit(EVENTS.HIT_REQUEST, atk('air'));
+  assert.equal(out.length, 3, 'no damage while airborne');
+  clock = 1000; me.lift = 0; e2.emit(EVENTS.HIT_REQUEST, atk('air'));
+  assert.equal(out.length, 4, 'same swing connects once grounded');
 }
 console.log('combat tests passed');

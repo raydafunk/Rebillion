@@ -40,6 +40,7 @@ export function createHitResolver(events, now = () => Date.now()) {
       const key = `${req.attackId}|${id}`;
       if (seen.has(key)) continue;
       const st = e.reg.getState();
+      if ((st.lift ?? 0) >= COMBAT_DEFAULTS.AIR_DODGE_LIFT) continue; // airborne: ground melee passes underneath
       if (!rectsOverlap(box, worldRect(e.reg.hurtbox, st, st.facing))) continue;
       const dir = st.x >= req.origin.x ? 1 : -1;
       const guard = st.guard ?? null;
