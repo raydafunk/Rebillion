@@ -27,6 +27,14 @@ export function applyDamage(h, amount, now, hitstunMs = 0) {
   return { applied: true, amount: dealt, hpAfter: h.hp, died };
 }
 
+// Restores up to `amount` hp (never above maxHp, never revives). Returns the hp actually restored.
+export function applyHeal(h, amount) {
+  if (h.dead || !(amount > 0)) return 0;
+  const gained = Math.min(amount, h.maxHp - h.hp);
+  h.hp += gained;
+  return gained;
+}
+
 export function resetHealth(h) {
   h.hp = h.maxHp;
   h.dead = false;

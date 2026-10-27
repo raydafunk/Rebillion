@@ -1,5 +1,5 @@
 # Content brief: dialogue
-_Generated 2026-10-19T13:25:33.933Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
+_Generated 2026-10-25T19:02:37.533Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
 
 **Writer agent:** dialogue-agent  |  **Output dir:** `content/dialogue/`  |  **Produces:** Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.
 
@@ -348,7 +348,7 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 Rules for small print: monospace, short, no named characters or places (the GDD names none), no gore, nothing that makes the Rust a place.
 ```
 
-## Retrieved GDD passages (35)
+## Retrieved GDD passages (37)
 ### [the-rebellion#10] primary - GameDesignDocument/The Rebellion.docx
 Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
 Character – the Enemy
@@ -799,6 +799,8 @@ Varr overloads his armor.
 Massive AoE explosion
 Arena walls electrify
 Final phase becomes relentless
+Level style and Design
+Level-style-01-brick-red-alley
 
 ### [canon#12] derived - design/lore/canon.md - Tone & Personality
 Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
@@ -887,14 +889,29 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 | `critic` | `critic-agent` | `design/lore/` (canon sheet and change log). Wording-only fixes in `design/ux/` and `design/art/`; string fixes in `src/` go through the owner |
 **What the Critic does:** builds `design/lore/canon.md` from the GDD, audits every player-facing string and spec for lore breaks (Rush/Rust, "Rust has been driven out of the arena" reading as a place, "Fallen" vs "Fallen City") and tone drift (clinical or grim copy against the hopeful, community voice), and **fixes at least one real inconsistency per pass**, logging each change in `design/lore/critic-log.md` with before/after. It never edits the GDD docx; it proposes GDD text fixes in the log. If a full audit finds nothing, it must say so rather than invent a problem.
 
-### [critic-log#12] derived - design/lore/critic-log.md - Changes applied
-| # | File | Item | Issue | Fix | Rule | Owner |
-|---|---|---|---|---|---|---|
-| 15 | `content/dialogue/options-menu.json` | `options-music-volume`, line 2 | Tone drift from the community voice (final wording: "Music drifting out of the open windows.") | Reworded to the open-windows image | Tone | content |
-| 16 | `content/dialogue/options-menu.json` | `options-apply`, line 3 | Tone drift (final wording is plain and never scolding) | Reworded to plain, friendly copy | Tone | content |
+### [level-01-brick-red-alley#3] derived - design/levels/level-01-brick-red-alley.md - House rules that apply to every level
+Source: `design/art/style-guide.md`.
+- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).
+- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.
+- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.
+- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over.
+
+### [level-02-mustard-row#3] derived - design/levels/level-02-mustard-row.md - House rules that apply to every level
+Source: `design/art/style-guide.md`.
+- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).
+- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.
+- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.
+- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over.
+
+### [level-03-greenline-courts#3] derived - design/levels/level-03-greenline-courts.md - House rules that apply to every level
+Source: `design/art/style-guide.md`.
+- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).
+- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.
+- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.
+- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over.
 
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 525 chunks across 51 documents.

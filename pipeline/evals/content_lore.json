@@ -1,0 +1,11 @@
+{
+  "target": "content/lore",
+  "rounds": [
+    {
+      "round": 1,
+      "score": 8,
+      "reason": "validator clean; 2 minor: invented line under canon in rust-origin, wrong source chunk on poster items",
+      "at": "2026-10-25T19:01:22.858Z"
+    }
+  ]
+}

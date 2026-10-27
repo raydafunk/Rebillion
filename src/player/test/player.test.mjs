@@ -381,3 +381,16 @@ test('zed death anim: plays once, holds last frame, finishes before the lose scr
   assert.ok(a.originY > 0.5 && a.originY <= 1);
   assert.equal(zedAnimKey('dead', 'west'), 'zed.dead.west');
 });
+
+test('successful parry can be cancelled into an attack; a missed parry cannot', () => {
+  const light = { pressed: { light: true }, held: {}, moveX: 0 };
+  const m = new PlayerStateMachine();
+  m.step({ pressed: { parry: true }, held: {}, moveX: 0 });
+  m.step(light); // attack pressed mid-parry, no hit landed
+  assert.equal(m.state, 'parry');
+  const ok = new PlayerStateMachine();
+  ok.step({ pressed: { parry: true }, held: {}, moveX: 0 });
+  ok.parrySucceeded();
+  ok.step(light);
+  assert.equal(ok.state, 'attack'); assert.equal(ok.moveId, 'light1');
+});

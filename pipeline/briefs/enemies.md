@@ -1,5 +1,5 @@
 # Content brief: enemies
-_Generated 2026-10-19T13:25:33.919Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
+_Generated 2026-10-25T19:02:37.517Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
 
 **Writer agent:** enemy-designer-agent  |  **Output dir:** `content/enemies/`  |  **Produces:** Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.
 
@@ -124,7 +124,7 @@ export const GRUNT = {
   attackMs: JAB_STRING[JAB_STRING.length - 1].atMs + 150, // total attack state length: last jab + follow-through
   jabString: JAB_STRING, // 1-2-3 Rust Jab: one hit-request per entry, each with its own attackId
   recoverMs: 700,
-  hitstunMinMs: 150,
+  hitstunMinMs: 300,
   knockbackDecay: 600,  // px/s^2
   hurtbox: { x: -20, y: -80, w: 40, h: 80 },
   attack: {
@@ -828,4 +828,4 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 525 chunks across 51 documents.

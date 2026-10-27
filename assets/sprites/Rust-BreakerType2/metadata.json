@@ -1,0 +1,540 @@
+{
+  "group_id": "7155b754-bb95-425d-9164-1ca991528248",
+  "states": [
+    {
+      "character": {
+        "id": "4b8b78fe-71b5-4139-bb12-92b276b2fd67",
+        "name": "Idle",
+        "prompt": "The backbone of Rust\u2019s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rust coated plating, and their helmets hide their identities \u2014 intentionally.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T08:08:59.754041+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    },
+    {
+      "character": {
+        "id": "6826a893-1ea0-4c66-83e1-ea965ce7a99e",
+        "name": "Walking",
+        "prompt": "The backbone of Rust\u2019s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rust coated plating, and their helmets hide their identities \u2014 intentionally.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T08:14:20.594560+00:00"
+      },
+      "folder": "Walking",
+      "frames": {
+        "rotations": {
+          "south": "Walking/rotations/south.png",
+          "south-east": "Walking/rotations/south-east.png",
+          "east": "Walking/rotations/east.png",
+          "north-east": "Walking/rotations/north-east.png",
+          "north": "Walking/rotations/north.png",
+          "north-west": "Walking/rotations/north-west.png",
+          "west": "Walking/rotations/west.png",
+          "south-west": "Walking/rotations/south-west.png"
+        },
+        "animations": {
+          "Scary_Walk": {
+            "north": [
+              "Walking/animations/Scary_Walk/north/frame_000.png",
+              "Walking/animations/Scary_Walk/north/frame_001.png",
+              "Walking/animations/Scary_Walk/north/frame_002.png",
+              "Walking/animations/Scary_Walk/north/frame_003.png",
+              "Walking/animations/Scary_Walk/north/frame_004.png",
+              "Walking/animations/Scary_Walk/north/frame_005.png",
+              "Walking/animations/Scary_Walk/north/frame_006.png",
+              "Walking/animations/Scary_Walk/north/frame_007.png"
+            ],
+            "north-east": [
+              "Walking/animations/Scary_Walk/north-east/frame_000.png",
+              "Walking/animations/Scary_Walk/north-east/frame_001.png",
+              "Walking/animations/Scary_Walk/north-east/frame_002.png",
+              "Walking/animations/Scary_Walk/north-east/frame_003.png",
+              "Walking/animations/Scary_Walk/north-east/frame_004.png",
+              "Walking/animations/Scary_Walk/north-east/frame_005.png",
+              "Walking/animations/Scary_Walk/north-east/frame_006.png",
+              "Walking/animations/Scary_Walk/north-east/frame_007.png"
+            ],
+            "west": [
+              "Walking/animations/Scary_Walk/west/frame_000.png",
+              "Walking/animations/Scary_Walk/west/frame_001.png",
+              "Walking/animations/Scary_Walk/west/frame_002.png",
+              "Walking/animations/Scary_Walk/west/frame_003.png",
+              "Walking/animations/Scary_Walk/west/frame_004.png",
+              "Walking/animations/Scary_Walk/west/frame_005.png",
+              "Walking/animations/Scary_Walk/west/frame_006.png",
+              "Walking/animations/Scary_Walk/west/frame_007.png"
+            ],
+            "south-east": [
+              "Walking/animations/Scary_Walk/south-east/frame_000.png",
+              "Walking/animations/Scary_Walk/south-east/frame_001.png",
+              "Walking/animations/Scary_Walk/south-east/frame_002.png",
+              "Walking/animations/Scary_Walk/south-east/frame_003.png",
+              "Walking/animations/Scary_Walk/south-east/frame_004.png",
+              "Walking/animations/Scary_Walk/south-east/frame_005.png",
+              "Walking/animations/Scary_Walk/south-east/frame_006.png",
+              "Walking/animations/Scary_Walk/south-east/frame_007.png"
+            ],
+            "south": [
+              "Walking/animations/Scary_Walk/south/frame_000.png",
+              "Walking/animations/Scary_Walk/south/frame_001.png",
+              "Walking/animations/Scary_Walk/south/frame_002.png",
+              "Walking/animations/Scary_Walk/south/frame_003.png",
+              "Walking/animations/Scary_Walk/south/frame_004.png",
+              "Walking/animations/Scary_Walk/south/frame_005.png",
+              "Walking/animations/Scary_Walk/south/frame_006.png",
+              "Walking/animations/Scary_Walk/south/frame_007.png"
+            ],
+            "east": [
+              "Walking/animations/Scary_Walk/east/frame_000.png",
+              "Walking/animations/Scary_Walk/east/frame_001.png",
+              "Walking/animations/Scary_Walk/east/frame_002.png",
+              "Walking/animations/Scary_Walk/east/frame_003.png",
+              "Walking/animations/Scary_Walk/east/frame_004.png",
+              "Walking/animations/Scary_Walk/east/frame_005.png",
+              "Walking/animations/Scary_Walk/east/frame_006.png",
+              "Walking/animations/Scary_Walk/east/frame_007.png"
+            ],
+            "north-west": [
+              "Walking/animations/Scary_Walk/north-west/frame_000.png",
+              "Walking/animations/Scary_Walk/north-west/frame_001.png",
+              "Walking/animations/Scary_Walk/north-west/frame_002.png",
+              "Walking/animations/Scary_Walk/north-west/frame_003.png",
+              "Walking/animations/Scary_Walk/north-west/frame_004.png",
+              "Walking/animations/Scary_Walk/north-west/frame_005.png",
+              "Walking/animations/Scary_Walk/north-west/frame_006.png",
+              "Walking/animations/Scary_Walk/north-west/frame_007.png"
+            ],
+            "south-west": [
+              "Walking/animations/Scary_Walk/south-west/frame_000.png",
+              "Walking/animations/Scary_Walk/south-west/frame_001.png",
+              "Walking/animations/Scary_Walk/south-west/frame_002.png",
+              "Walking/animations/Scary_Walk/south-west/frame_003.png",
+              "Walking/animations/Scary_Walk/south-west/frame_004.png",
+              "Walking/animations/Scary_Walk/south-west/frame_005.png",
+              "Walking/animations/Scary_Walk/south-west/frame_006.png",
+              "Walking/animations/Scary_Walk/south-west/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "9d665cbe-9108-48be-9585-7de52039584b",
+        "name": "Action",
+        "prompt": "The backbone of Rust\u2019s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rust coated plating, and their helmets hide their identities \u2014 intentionally.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T09:07:45.132875+00:00"
+      },
+      "folder": "Action",
+      "frames": {
+        "rotations": {
+          "south": "Action/rotations/south.png",
+          "south-east": "Action/rotations/south-east.png",
+          "east": "Action/rotations/east.png",
+          "north-east": "Action/rotations/north-east.png",
+          "north": "Action/rotations/north.png",
+          "north-west": "Action/rotations/north-west.png",
+          "west": "Action/rotations/west.png",
+          "south-west": "Action/rotations/south-west.png"
+        },
+        "animations": {
+          "Front_Flip": {
+            "south": [
+              "Action/animations/Front_Flip/south/frame_000.png",
+              "Action/animations/Front_Flip/south/frame_001.png",
+              "Action/animations/Front_Flip/south/frame_002.png",
+              "Action/animations/Front_Flip/south/frame_003.png",
+              "Action/animations/Front_Flip/south/frame_004.png",
+              "Action/animations/Front_Flip/south/frame_005.png"
+            ],
+            "north-west": [
+              "Action/animations/Front_Flip/north-west/frame_000.png",
+              "Action/animations/Front_Flip/north-west/frame_001.png",
+              "Action/animations/Front_Flip/north-west/frame_002.png",
+              "Action/animations/Front_Flip/north-west/frame_003.png",
+              "Action/animations/Front_Flip/north-west/frame_004.png",
+              "Action/animations/Front_Flip/north-west/frame_005.png"
+            ],
+            "north": [
+              "Action/animations/Front_Flip/north/frame_000.png",
+              "Action/animations/Front_Flip/north/frame_001.png",
+              "Action/animations/Front_Flip/north/frame_002.png",
+              "Action/animations/Front_Flip/north/frame_003.png",
+              "Action/animations/Front_Flip/north/frame_004.png",
+              "Action/animations/Front_Flip/north/frame_005.png"
+            ],
+            "north-east": [
+              "Action/animations/Front_Flip/north-east/frame_000.png",
+              "Action/animations/Front_Flip/north-east/frame_001.png",
+              "Action/animations/Front_Flip/north-east/frame_002.png",
+              "Action/animations/Front_Flip/north-east/frame_003.png",
+              "Action/animations/Front_Flip/north-east/frame_004.png",
+              "Action/animations/Front_Flip/north-east/frame_005.png"
+            ],
+            "south-east": [
+              "Action/animations/Front_Flip/south-east/frame_000.png",
+              "Action/animations/Front_Flip/south-east/frame_001.png",
+              "Action/animations/Front_Flip/south-east/frame_002.png",
+              "Action/animations/Front_Flip/south-east/frame_003.png",
+              "Action/animations/Front_Flip/south-east/frame_004.png",
+              "Action/animations/Front_Flip/south-east/frame_005.png"
+            ],
+            "south-west": [
+              "Action/animations/Front_Flip/south-west/frame_000.png",
+              "Action/animations/Front_Flip/south-west/frame_001.png",
+              "Action/animations/Front_Flip/south-west/frame_002.png",
+              "Action/animations/Front_Flip/south-west/frame_003.png",
+              "Action/animations/Front_Flip/south-west/frame_004.png",
+              "Action/animations/Front_Flip/south-west/frame_005.png"
+            ],
+            "west": [
+              "Action/animations/Front_Flip/west/frame_000.png",
+              "Action/animations/Front_Flip/west/frame_001.png",
+              "Action/animations/Front_Flip/west/frame_002.png",
+              "Action/animations/Front_Flip/west/frame_003.png",
+              "Action/animations/Front_Flip/west/frame_004.png",
+              "Action/animations/Front_Flip/west/frame_005.png"
+            ],
+            "east": [
+              "Action/animations/Front_Flip/east/frame_000.png",
+              "Action/animations/Front_Flip/east/frame_001.png",
+              "Action/animations/Front_Flip/east/frame_002.png",
+              "Action/animations/Front_Flip/east/frame_003.png",
+              "Action/animations/Front_Flip/east/frame_004.png",
+              "Action/animations/Front_Flip/east/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "8afe2424-0e2d-460b-878d-c7d07a6dbe02",
+        "name": "Rust Jab Combo A qui",
+        "prompt": "The backbone of Rust\u2019s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rust coated plating, and their helmets hide their identities \u2014 intentionally.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T10:35:36.255400+00:00"
+      },
+      "folder": "Rust_Jab_Combo_A_qui",
+      "frames": {
+        "rotations": {
+          "south": "Rust_Jab_Combo_A_qui/rotations/south.png",
+          "south-east": "Rust_Jab_Combo_A_qui/rotations/south-east.png",
+          "east": "Rust_Jab_Combo_A_qui/rotations/east.png",
+          "north-east": "Rust_Jab_Combo_A_qui/rotations/north-east.png",
+          "north": "Rust_Jab_Combo_A_qui/rotations/north.png",
+          "north-west": "Rust_Jab_Combo_A_qui/rotations/north-west.png",
+          "west": "Rust_Jab_Combo_A_qui/rotations/west.png",
+          "south-west": "Rust_Jab_Combo_A_qui/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_rapid_three-hit_strike_se": {
+            "south-west": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-west/frame_008.png"
+            ],
+            "west": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/west/frame_008.png"
+            ],
+            "north-west": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-west/frame_008.png"
+            ],
+            "north-east": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north-east/frame_008.png"
+            ],
+            "north": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/north/frame_008.png"
+            ],
+            "south": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south/frame_008.png"
+            ],
+            "east": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/east/frame_008.png"
+            ],
+            "south-east": [
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_000.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_001.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_002.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_003.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_004.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_005.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_006.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_007.png",
+              "Rust_Jab_Combo_A_qui/animations/The_character_performs_a_rapid_three-hit_strike_se/south-east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "1dc81a6d-0f1b-41cc-bb28-d51841f7f432",
+        "name": "stunned when hit",
+        "prompt": "The backbone of Rust\u2019s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rust coated plating, and their helmets hide their identities \u2014 intentionally.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T10:44:50.061998+00:00"
+      },
+      "folder": "stunned_when_hit",
+      "frames": {
+        "rotations": {
+          "south": "stunned_when_hit/rotations/south.png",
+          "south-east": "stunned_when_hit/rotations/south-east.png",
+          "east": "stunned_when_hit/rotations/east.png",
+          "north-east": "stunned_when_hit/rotations/north-east.png",
+          "north": "stunned_when_hit/rotations/north.png",
+          "north-west": "stunned_when_hit/rotations/north-west.png",
+          "west": "stunned_when_hit/rotations/west.png",
+          "south-west": "stunned_when_hit/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "south-east": [
+              "stunned_when_hit/animations/Taking_Punch/south-east/frame_000.png",
+              "stunned_when_hit/animations/Taking_Punch/south-east/frame_001.png",
+              "stunned_when_hit/animations/Taking_Punch/south-east/frame_002.png",
+              "stunned_when_hit/animations/Taking_Punch/south-east/frame_003.png",
+              "stunned_when_hit/animations/Taking_Punch/south-east/frame_004.png",
+              "stunned_when_hit/animations/Taking_Punch/south-east/frame_005.png"
+            ],
+            "east": [
+              "stunned_when_hit/animations/Taking_Punch/east/frame_000.png",
+              "stunned_when_hit/animations/Taking_Punch/east/frame_001.png",
+              "stunned_when_hit/animations/Taking_Punch/east/frame_002.png",
+              "stunned_when_hit/animations/Taking_Punch/east/frame_003.png",
+              "stunned_when_hit/animations/Taking_Punch/east/frame_004.png",
+              "stunned_when_hit/animations/Taking_Punch/east/frame_005.png"
+            ],
+            "south": [
+              "stunned_when_hit/animations/Taking_Punch/south/frame_000.png",
+              "stunned_when_hit/animations/Taking_Punch/south/frame_001.png",
+              "stunned_when_hit/animations/Taking_Punch/south/frame_002.png",
+              "stunned_when_hit/animations/Taking_Punch/south/frame_003.png",
+              "stunned_when_hit/animations/Taking_Punch/south/frame_004.png",
+              "stunned_when_hit/animations/Taking_Punch/south/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "188b8408-54d0-4677-b86a-872089a8de10",
+        "name": "falling away death",
+        "prompt": "The backbone of Rust\u2019s force. Once ordinary citizens, they were coerced or manipulated into service. Their armour is cheap, rust coated plating, and their helmets hide their identities \u2014 intentionally.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T10:53:34.809362+00:00"
+      },
+      "folder": "falling_away_death",
+      "frames": {
+        "rotations": {
+          "south": "falling_away_death/rotations/south.png",
+          "south-east": "falling_away_death/rotations/south-east.png",
+          "east": "falling_away_death/rotations/east.png",
+          "north-east": "falling_away_death/rotations/north-east.png",
+          "north": "falling_away_death/rotations/north.png",
+          "north-west": "falling_away_death/rotations/north-west.png",
+          "west": "falling_away_death/rotations/west.png",
+          "south-west": "falling_away_death/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_experiences_a_violent_impact_causing": {
+            "north-west": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-west/frame_008.png"
+            ],
+            "south-east": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-east/frame_008.png"
+            ],
+            "north-east": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north-east/frame_008.png"
+            ],
+            "north": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/north/frame_008.png"
+            ],
+            "south-west": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south-west/frame_008.png"
+            ],
+            "east": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/east/frame_008.png"
+            ],
+            "west": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/west/frame_008.png"
+            ],
+            "south": [
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_000.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_001.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_002.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_003.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_004.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_005.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_006.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_007.png",
+              "falling_away_death/animations/The_character_experiences_a_violent_impact_causing/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-10-26T11:22:16.490114"
+}

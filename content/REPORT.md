@@ -1,25 +1,37 @@
 # Content pipeline report
-_2026-10-19_
+_2026-10-25_
 
 ## Sources read
-39 of 39 documents ingested.
+51 of 51 documents ingested.
 
 - read `GameDesignDocument/Rebellion menu desgin.docx` (primary), 4 chunks
 - read `GameDesignDocument/The Rebellion.docx` (primary), 20 chunks
 - read `GameDesignDocument/The Title Screen.docx` (primary), 1 chunks
 - read `PDf/The Rebellion -Frist Draft.pdf` (reference), 2 chunks
 - read `PDf/The Rebellion- Final Gdd.pdf` (reference), 5 chunks
-- read `README.md` (reference), 0 chunks
+- read `README.md` (reference), 3 chunks
 - read `blackboard/README.md` (reference), 5 chunks
 - read `blackboard/log.md` (reference), 1 chunks
 - read `design/art/asset-manifest.md` (derived), 13 chunks
 - read `design/art/enemy-sprite-specs.md` (derived), 42 chunks
-- read `design/art/hit-feedback-spec.md` (derived), 7 chunks
+- read `design/art/hit-feedback-spec.md` (derived), 22 chunks
 - read `design/art/style-guide.md` (derived), 15 chunks
 - read `design/art/zed-pixellab-prompt.md` (derived), 8 chunks
+- read `design/audio/CREDITS.md` (derived), 3 chunks
+- read `design/audio/audio-manifest.md` (derived), 5 chunks
+- read `design/levels/README.md` (derived), 4 chunks
+- read `design/levels/level-01-brick-red-alley.md` (derived), 9 chunks
+- read `design/levels/level-02-mustard-row.md` (derived), 11 chunks
+- read `design/levels/level-03-greenline-courts.md` (derived), 10 chunks
+- read `design/levels/level-04-stewpot-gardens.md` (derived), 12 chunks
+- read `design/levels/level-05-songwindow-heights.md` (derived), 9 chunks
+- read `design/levels/level-06-iron-line-push.md` (derived), 9 chunks
+- read `design/levels/level-07-copper-fang-courts.md` (derived), 9 chunks
+- read `design/levels/level-08-overseer-tower.md` (derived), 9 chunks
 - read `design/lore/canon.md` (derived), 13 chunks
-- read `design/lore/critic-log.md` (derived), 16 chunks
+- read `design/lore/critic-log.md` (derived), 17 chunks
 - read `design/lore/menu-copy.md` (derived), 4 chunks
+- read `design/lore/refiner-log.md` (derived), 1 chunks
 - read `design/team/agent-diagrams.md` (derived), 7 chunks
 - read `design/team/agent-team-setups.md` (derived), 13 chunks
 - read `design/team/contracts.md` (derived), 4 chunks
@@ -64,13 +76,13 @@ _2026-10-19_
 - **lore/neighbourhood-answer-to-doctrine**: The GDD gives the Rust's doctrine but no community reply. The tone rules say Rust copy is always answered or defaced by the neighbourhood, so this proposes a painted answer to the creed.
 - **enemies/rust-iron-line-cordon**: The GDD lists Rust Grunts, 'The Iron Line', for crowd control and frontline combat, but the Tier 0 rust-grunt is the only canon stat block. This is the Iron Line's crowd-control variant: a grunt that holds a line and sweeps a wide arc, so waves can pin the lane without adding a new silhouette. The base Iron Line unit remains rust-grunt (canon). FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 36 HP is about 5 light hits, same damage as the grunt, 500 ms wind-up so the wide sweep reads one beat slower. Final.
 - **levels/level-01-brick-red-alley**: The GDD says 'urban districts' and 'Defeat Wave / Clear Arena ... in time' but sets no level count, order, wave counts or time limit. Wave numbers and the 120 s limit copy the Tier 0 placeholders in src/waves/waveData.js and src/state/config.js, so they are engine-matched but not GDD-confirmed.
-- **levels/level-02-mustard-row**: No level structure in the GDD. Introduces the Rust Baton Scout (proposed enemy) as the first new threat; wave sizes and 135 s limit are assumed.
-- **levels/level-03-greenline-courts**: No level structure in the GDD. Introduces the Rust Enforcer (proposed bruiser) after the scout; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.
-- **levels/level-04-stewpot-gardens**: No level structure in the GDD. Introduces the Rust Dart Marksman (proposed ranged enemy) and pairs it with melee waves so the player must use lane movement. Also fields the named Overseer Dr. Maren Holt (rust-overseer-holt) as the district boss wave; the GDD gives Holt an undercity lab arena with gas vents and fog, so the garden planters and food-stall fog are only the closest fit (no GDD level for her; flag). Engine waves hold one enemy type each and counts cannot shrink, so the boss wave keeps the wave count of 5 with maxAlive 1 until boss-encounter waves exist (further gap). 180 s limit assumed.
-- **levels/level-05-songwindow-heights**: No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Shield Sergeant (proposed elite); the finale mixes every enemy type including the named Overseer Silas Wren (rust-overseer-wren), whose GDD arena is rooftop platforms and zip lines, the best fit for the Heights (his wave keeps count 6 with maxAlive 1 because counts cannot shrink); 210 s limit assumed. Five levels is an assumption.
+- **levels/level-02-mustard-row**: No level structure in the GDD. Introduces the Rust Watcher (rust-watcher) as the first new threat, mixed with grunts; wave sizes and 135 s limit are assumed.
+- **levels/level-03-greenline-courts**: No level structure in the GDD. Introduces the Rust Breaker (rust-breaker) bruiser alongside the Rust Watcher and grunts; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.
+- **levels/level-04-stewpot-gardens**: No level structure in the GDD. Fields the Rust Watcher (rust-watcher) in repeated waves and the Rust Breaker (rust-breaker) as the closer, with grunts, so the player must use lane movement so the player must use lane movement. Also fields the named Overseer Dr. Maren Holt (rust-overseer-holt) as the district boss wave; the GDD gives Holt an undercity lab arena with gas vents and fog, so the garden planters and food-stall fog are only the closest fit (no GDD level for her; flag). Engine waves hold one enemy type each and counts cannot shrink, so the Holt wave keeps count 5 with maxAlive 1 (an engine workaround: Holt is a single named character, and a count of 1 would break the non-decreasing wave-count rule) until boss-encounter waves exist (further gap). 180 s limit assumed.
+- **levels/level-05-songwindow-heights**: No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Copper Fang (rust-copper-fang) as the elite; the finale mixes grunts, Watchers, Breakers and Copper Fangs including the named Overseer Silas Wren (rust-overseer-wren), whose GDD arena is rooftop platforms and zip lines, the best fit for the Heights (his wave keeps count 6 with maxAlive 1 as an engine workaround: Wren is a single named character, but counts cannot shrink); 210 s limit assumed. Five levels is an assumption.
 - **levels/level-06-iron-line-push**: The GDD sets no level count, tiers or level list. This is an extra proposed level (order 6, after the five in levels.json) that introduces the GDD-named Rust units in escalation: Iron Line cordon, then Watchers, then Breakers. Wave numbers and the 150 s limit are placeholders in the Tier 0 shape. Uses the proposed expansion enemies from rust-gdd-units.json, so it depends on owner approval of those.
 - **levels/level-07-copper-fang-courts**: The GDD says Copper Fangs serve boss-tier encounters but gives no level list, tiers or boss placement. This proposes a mini-boss level (order 7): a ladder of single units rising Watcher, Breaker, Copper Fang. Each wave has count 1 because the validator requires wave counts not to shrink, so a lone boss wave must follow count-1 waves; mixed-escort boss waves need a schema extension (one enemy per wave today).
-- **levels/level-08-overseer-tower**: The GDD gives Overseer Halden Varr, "The Architect of Rust", the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet.
+- **levels/level-08-overseer-tower**: The GDD gives Commander Halden Varr (GDD wording "Overseer ... The Architect of Rust"; title to confirm with the owner per canon) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet.
 - **dialogue/zed-fight-start-brick-red-alley**: Level-specific barks are not in the GDD; built on Brick-Red Alley, where Zed's kids learned to fight, dance and argue like family.
 - **dialogue/zed-fight-start-mustard-row**: Mustard Row is a proposed district; lines lean on the GDD's mustard-yellow storefronts and corner shops.
 - **dialogue/zed-fight-start-greenline-courts**: Greenline Courts is a proposed district; lines follow the GDD's forest-green basketball courts and Zed's wish for kids to play again.

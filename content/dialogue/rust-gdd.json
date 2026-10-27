@@ -11,7 +11,7 @@
     "lines": [
       "ORDER IS STRENGTH. FREEDOM IS WEAKNESS.",
       "The creed is posted. Read it. Obey it, or be dealt with.",
-      "By order of Commander Varr: order is strength.",
+      "By order of Overseer Varr: order is strength.",
       "Freedom is weakness. This notice is binding."
     ]
   },
@@ -80,7 +80,7 @@
     "trigger": "notice",
     "lines": [
       "Varr to all Overseers: tighten the districts.",
-      "Order from Commander Varr: hold every line.",
+      "Order from Overseer Varr: hold every line.",
       "Varr expects every rebel found by nightfall.",
       "Fear keeps the peace. Crush what resists."
     ]
@@ -169,7 +169,7 @@
       "Tell Varr: knock, knock. We are coming.",
       "Fear is not a plan. Neighbours are.",
       "Order is strength? Try a good stew.",
-      "Say hi to the Commander. Say it loud."
+      "Say hi to the Overseer. Say it loud."
     ]
   },
   {

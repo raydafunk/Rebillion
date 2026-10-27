@@ -14,6 +14,8 @@ import { WaveSpawner } from '../waves/WaveSpawner.js';
 import { ArenaBounds } from './ArenaBounds.js';
 import { ArenaFailsafe } from './ArenaFailsafe.js';
 import { WAVES } from '../waves/waveData.js';
+import { EVENTS } from '../shared/events.js';
+import { ATTACKER_CAP } from '../enemies/gruntData.js';
 import { WORLD } from './arenaData.js';
 
 export class Arena {
@@ -24,6 +26,9 @@ export class Arena {
     this.enemies = new EnemyManager({ events });
     this.bounds = new ArenaBounds({ events, waves, world });
     this.spawner = new WaveSpawner({ events, waves, holdBetweenWaves: hold, spawn: (spec) => this.enemies.spawn(spec) });
+    // A wave may narrow the attacker cap (1 = one enemy swings at a time: the teaching wave).
+    this._onWave = ({ index }) => { this.enemies.slots.cap = waves[index]?.attackerCap ?? ATTACKER_CAP; };
+    events.on(EVENTS.WAVE_STARTED, this._onWave);
     this.failsafe = new ArenaFailsafe({
       bounds: this.bounds, manager: this.enemies, spawner: this.spawner,
       getScrollX: () => this.getScrollX(), onAction: onFailsafe,
@@ -50,6 +55,7 @@ export class Arena {
   advance() { this.spawner.advance(); }
 
   dispose() {
+    this.events.off(EVENTS.WAVE_STARTED, this._onWave);
     this.spawner.destroy(); this.bounds.dispose(); this.enemies.dispose();
   }
 }

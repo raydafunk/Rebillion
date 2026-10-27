@@ -1,6 +1,6 @@
 import { EVENTS } from '../shared/events.js';
 import { COMBAT_DEFAULTS, PLAYER_ID } from '../shared/combatData.js';
-import { createHealth, applyDamage, resetHealth, isInvulnerable } from './health.js';
+import { createHealth, applyDamage, applyHeal, resetHealth, isInvulnerable } from './health.js';
 
 export function worldRect(rect, origin, facing) {
   const x0 = origin.x + facing * rect.x;
@@ -87,6 +87,14 @@ export function createHitResolver(events, now = () => Date.now()) {
 
   return {
     getHealth: (id) => entities.get(id)?.health,
+    /** Restore hp (health pickups). Returns hp actually gained; 0 at full health. */
+    heal(id, amount) {
+      const e = entities.get(id);
+      if (!e) return 0;
+      const gained = applyHeal(e.health, amount);
+      if (gained > 0 && id === PLAYER_ID) emitPlayerHp(e.health);
+      return gained;
+    },
     destroy() {
       events.off(EVENTS.ENTITY_REGISTERED, onRegister);
       events.off(EVENTS.ENTITY_UNREGISTERED, onUnregister);

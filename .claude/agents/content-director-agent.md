@@ -26,7 +26,12 @@ Writers (all in `.claude/agents/`): `lore-writer-agent` -> `content/lore/`, `ene
 4. **Layer 2 (parallel):** spawn `level-designer-agent` and `dialogue-agent`.
 5. **Validate:** `node pipeline/validate.mjs`. On errors, re-run only the owning writer with the exact error list, up to 2 times. Do not fix content yourself.
 6. **Critic pass:** spawn `critic-agent` on `content/` (lore breaks and tone drift). It may edit wording only; re-run validate afterwards.
-7. **Close:** `node pipeline/validate.mjs --bundle`, then `node pipeline/run.mjs` once more to refresh `content/REPORT.md`.
+7. **Evaluate and refine loop** (per `content/` file or folder the writers produced):
+   1. Spawn `evaluator-agent` with the target and kind. It returns `SCORE` + `REASON` and records it via `node pipeline/refine.mjs record`.
+   2. `node pipeline/refine.mjs status "<target>"`: exit 0 = pass, stop; exit 1 = go to 3; exit 2 = cap (3 rounds) reached, stop and list it for owner approval.
+   3. Spawn `refiner-agent` with the target and the Evaluator's full output, then return to 1.
+   Run independent targets in parallel. Do not fix violations yourself.
+8. **Close:** `node pipeline/validate.mjs --bundle`, then `node pipeline/run.mjs` once more to refresh `content/REPORT.md`.
 
 Headless alternative that does steps 1 to 5 without this agent: `node pipeline/run.mjs --generate`.
 

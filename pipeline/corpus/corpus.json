@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-10-19T13:25:33.867Z",
+ "builtAt": "2026-10-25T19:02:37.451Z",
  "chunks": [
   {
    "id": "rebellion-menu-desgin#1",
@@ -191,7 +191,7 @@
    "file": "GameDesignDocument/The Rebellion.docx",
    "authority": "primary",
    "heading": null,
-   "text": "Triggered at 30% HP. Varr dons full armor.\n⚙ Hybrid Assault\nUses moves from all Rust unit types:\nBreaker slam\nRanger taser shot\nFang gauntlet combo\nOverseerstyle control attacks\n🛸 Drone Command\nSummons elite drones.\nDrones fire lasers\nCreate bullethell patterns\n⚡ Rust Collapse (Super Move)\nVarr overloads his armor.\nMassive AoE explosion\nArena walls electrify\nFinal phase becomes relentless"
+   "text": "Triggered at 30% HP. Varr dons full armor.\n⚙ Hybrid Assault\nUses moves from all Rust unit types:\nBreaker slam\nRanger taser shot\nFang gauntlet combo\nOverseerstyle control attacks\n🛸 Drone Command\nSummons elite drones.\nDrones fire lasers\nCreate bullethell patterns\n⚡ Rust Collapse (Super Move)\nVarr overloads his armor.\nMassive AoE explosion\nArena walls electrify\nFinal phase becomes relentless\nLevel style and Design\nLevel-style-01-brick-red-alley"
   },
   {
    "id": "the-title-screen#1",
@@ -258,6 +258,30 @@
    "text": "Game Engine\nPhaser\nWhy Phaser is use for the game building for now.\n� 2D side-scrolling: Phaser is built for 2D and has Arcade physics, sprite animation, and input handling.\n� Prototype goal: the GDD says Phaser is for \"creating a playable prototype\". It runs in the browser with no install, so playtesting and sharing a build are easy.\n� AI-assisted build: the Technical Strategy budgets in tokens, which suggests AI agents write the code. Phaser uses JavaScript or TypeScript, which AI agents oversee well, and it has plenty of documentation and examples.\n� Small scope: Tier 0 is one character, one enemy type, waves,\nand a timer. Phaser manages that without much setup."
   },
   {
+   "id": "readme#1",
+   "doc": "readme",
+   "file": "README.md",
+   "authority": "reference",
+   "heading": "GOAL-ORIENTED CODING AGENT",
+   "text": "set up the blackboard that runs the Shared workspace for the goal-oriented agents. Agents never message each other. They read the board, claim a goal they own, post a fact, and mark the goal done."
+  },
+  {
+   "id": "readme#2",
+   "doc": "readme",
+   "file": "README.md",
+   "authority": "reference",
+   "heading": "Goal chain",
+   "text": "G1 read-gdd ----\\\r\n >-- G3 find-gaps -- G4 prioritise -- G5 generate-code -- G6 review\r\nG2 scan-code ---/ ^ |\r\n +---- fail --------+\nGoal | Agent | Reads | Publishes |\r\n|---|---|---|---|\r\n| G1 | `gdd-reader-agent` | `pipeline/corpus/`, GDD docs | `facts/gdd-requirements.json` |\r\n| G2 | `code-scanner-agent` | `src/`, tests, `assets/asset-keys.json` | `facts/code-inventory.json` |\r\n| G3 | `gap-analyst-agent` | G1 + G2 facts | `facts/gaps.json` |\r\n| G4 | `prioritiser-agent` | `facts/gaps.json` | `facts/priorities.json` |\r\n| G5 | `code-generator-agent` | `facts/priorities.json`, `design/team/contracts.md` | code in `src/`, `facts/generated.json` |\r\n| G6 | `reviewer-agent` | `facts/generated.json`, the diff, `npm test` | `facts/review.json` |\nFEATURE DOCUMENTATION\nRank 2: GAP-009, menu parallax (menu-ui-agent)\ni ran the blackboard and the goal agent said i need to build because the main menu lack animations to it \r\n i made changes to the speed and the movement of the backgrounds before accepting the change"
+  },
+  {
+   "id": "readme#3",
+   "doc": "readme",
+   "file": "README.md",
+   "authority": "reference",
+   "heading": "Goal chain",
+   "text": "Rank 3 GAP-027: story intro card\r\n it find my lore and added a story intro to the fight section from the lore documents i created \r\n which comes from the content/lore/ this feature was asked for me to review it then i have it approve then the agent build it \r\n the agent suggest it because there was not intro to the story"
+  },
+  {
    "id": "readme-2#1",
    "doc": "readme-2",
    "file": "blackboard/README.md",
@@ -303,7 +327,7 @@
    "file": "blackboard/log.md",
    "authority": "reference",
    "heading": "Blackboard log",
-   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying\n2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps\n2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner\n2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass"
+   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying\n2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps\n2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner\n2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass\n2026-10-19T14:18:35.865Z | director | G5-generate-code | reopened | Owner request: build GAP-026 (rank 2 todo, menu parallax, menu-ui-agent, src/ui/ only). Use placeholder scroll factors increasing back to front (sky<buildings<wall) in a data table; flag in notes as needing playtest. GAP-004 already implemented.\n2026-10-19T14:19:04.386Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T14:20:16.132Z | code-generator-agent | G5-generate-code | done | GAP-026 implemented\n2026-10-19T14:20:32.542Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T14:21:09.473Z | reviewer-agent | G6-review | done | pass\n2026-10-19T16:10:41.106Z | director | G5-generate-code | reopened | Owner approved GAP-027 story intro card; GAP-026 implemented. Build GAP-027 only.\n2026-10-19T16:10:52.373Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T16:12:22.917Z | code-generator-agent | G5-generate-code | done | GAP-027 implemented\n2026-10-19T16:12:40.294Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T16:13:41.654Z | reviewer-agent | G6-review | done | pass"
   },
   {
    "id": "asset-manifest#1",
@@ -802,6 +826,126 @@
    "text": "- Is a combo finisher defined by Player Combos? The finisher row is conditional on that.\n- Should hit-stop also apply to the whole world for heavy hits (stronger feel, risks timer fairness)? Currently entity-only.\n- Do accessibility toggles belong on the settings screen (ux-flow-designer / menu-ui-agent)?\n- Audio hit cues are unowned."
   },
   {
+   "id": "hit-feedback-spec#8",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7. Grunt health bar and hit particles (encounter-agent implementation values)",
+   "text": "Status: decided by art direction, extends section 2 (section 2 values still apply where not overridden here). Flat vector, drawn with Phaser Graphics or rectangles, no textures needed. Style-guide section 5 already says enemy bars are Rust palette, 96x10, shown only when damaged; this section fixes the rest. Placeholder-grade: tune after playtest."
+  },
+  {
+   "id": "hit-feedback-spec#9",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.1 Enemy health bar (all Rust enemies, Grunt first)",
+   "text": "| Property | Value |\n|---|---|\n| Overall size | 96 x 10 px outer (frame included). Heavy or later enemies: 128 x 12 |\n| Position | Centred horizontally on the enemy; bottom edge 12 px above the top of the sprite body (not the hitbox). Follows enemy x/y every frame, no smoothing. Does not flip with facing |\n| Shape | Hard rectangle, square corners (Rust is boxy, Zed's UI is rounded) |\n| Frame | 2 px border #14181C (Rust Ink), then 1 px inner line #7C8A96 (Steel) top and left only as a bevel highlight |\n| Background (empty) | #2A3138 (Gunmetal), 100 percent alpha |\n| Fill area | 90 x 4 px inside the frame (outer minus 2px border and 1px padding each side). Crop by width = hp / maxHp, anchored left |\n| Fill, over 50 percent | #4FB3D9 (Visor Cyan), with a 1 px lighter top row #A9DDF0 |\n| Fill, 26 to 50 percent | #D9822B (Low Health orange), top row #F0A957 |\n| Fill, 25 percent or less | #C9452F (\"Enemy Critical\"), top row #E9715C. Deliberately NOT #FF3B30: Telegraph Red is reserved for attack warnings |\n| Drain (lag) bar | Cream #F4E6C8 segment behind the fill, covering the lost chunk. Holds 300 ms after a hit, then shrinks to the current hp over 250 ms (ease Quad.easeOut). New hit during the hold restarts the 300 ms hold and keeps the older left edge |\n| Hit pulse | On damage the whole bar scales to 1.12 (about its centre) and returns in 100 ms; fill flashes #FFFFFF for 66 ms |\n| Visibility | Hidden at full health. Appears on first damage (alpha 0 to 1 in 80 ms). Stays at alpha 1 for 3000 ms after the last damage, then fades to alpha 0.35 (never hidden again while the enemy lives) so remaining health stays readable in a crowd. Re-brightens to 1 on next damage. Under 50 percent hp it never fades below 0.6 |\n| On KO | Drain bar empties, then bar fades out over 150 ms as the enemy starts its fall |\n| Depth | Above characters, below sparks and the Zed HUD. Never occluded by other enemies |\n| Telegraph interaction | The telegraph icon (`fx.telegraph`) sits ABOVE the bar: icon bottom = bar top - 4 px, so both stay readable |\n| Text | No numbers on the bar |"
+  },
+  {
+   "id": "hit-feedback-spec#10",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.2 Enemy sprite hit flash",
+   "text": "- Flash: `setTintFill(0xFFFFFF)` for 66 ms (light), 83 ms (heavy), 100 ms (finisher), then `clearTint()`. Same as section 1; confirmed as the single flash. White wins over the telegraph red tint; if the enemy was telegraphing, restore the red pulse after the flash ends.\n- Stagger pose: scale x 1.08, y 0.94 for the hit-stop duration, return in 80 ms (promote from optional to on for the Grunt).\n- Rust enemies are never tinted warm colours on hit (warm is Zed-world).\n- Reduce-flash setting on: skip the white fill, instead tint 0xBFC8CF (light steel) for the same duration and no bar pulse flash."
+  },
+  {
+   "id": "hit-feedback-spec#11",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3 Hit particles (v2, \"punchy and layered\")",
+   "text": "Status: REVISES the first 7.3 (small star, chips, thin sparks), which read as small and sparse in test. Same direction rule, same 60 cap, same accessibility principle (extended below). Flat vector only: every piece is a Graphics primitive (fillRect, fillCircle, fillTriangle or fillPoints, strokeCircle, lineBetween, rotate). No textures."
+  },
+  {
+   "id": "hit-feedback-spec#12",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.1 Direction rule (mandatory, unchanged)",
+   "text": "Spray AWAY from the attacker. `dir = sign(target.x - attacker.x)` (if equal, attacker facing). Base angle 0 deg when dir = +1, 180 deg when dir = -1, spread +/- the cone per layer, up bias 10 deg. Never toward the attacker. Spawn point: hitbox/hurtbox overlap centre (fallback: target centre x, target y minus 60 percent of height). Non-directional pieces are only the core flash, ring and star (centred on the contact point). The slash is drawn along the attack axis but its centre is pushed 20 percent of its length in the spray direction, so it visibly leads away from the attacker."
+  },
+  {
+   "id": "hit-feedback-spec#13",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.2 Hot-to-cool ramp (sparks, trails)",
+   "text": "Colour by life fraction t. Linear interpolate RGB between stops.\n| t | Colour | Name |\n|---|---|---|\n| 0.00 | #FFFFFF | White hot |\n| 0.20 | #FFD24A | Gold |\n| 0.50 | #F58A2A | Ember orange |\n| 0.80 | #9C5A2E | Rust brown |\n| 1.00 | #9C5A2E at alpha 0 | gone |\nOther new hexes: Rust Dark #6B3E22 (flake shade), Smoke Light #AEB6BC. Existing: Spark Cream #FFF6D6, Mustard #E3A92B, Steel #7C8A96, Light Steel #BFC8CF, Rust Ink #14181C, Dust #C9B79A. Rust brown (hue about 25 deg) and Ember (about 29 deg) are warm browns and oranges, never red: Telegraph Red #FF3B30 and Enemy Critical #C9452F stay reserved and appear in no particle."
+  },
+  {
+   "id": "hit-feedback-spec#14",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.3 Layers, in draw order",
+   "text": "Two Graphics objects. Layer A \"shapes\" (ring, core, slash, star, in that order, star on top) at depth 5050: above characters, BELOW the health bar (5100), so a flash never covers the bar. Layer B \"debris\" (ground dust, smoke, flakes, shards, sparks) at depth 5800 as before.\nValues are light / heavy / finisher / KO. `t = age / life`."
+  },
+  {
+   "id": "hit-feedback-spec#15",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.3 Layers, in draw order",
+   "text": "| # | Layer | Shape and look | Count | Size (px) | Colour | Motion and easing | Life (ms) |\n|---|---|---|---|---|---|---|---|\n| 1 | Core flash | fillCircle at contact | 1 | radius 10 / 16 / 22 / 28 | #FFFFFF | radius 0.5R to R, Quad.easeOut. Alpha 0.85 x (1-t)^2 | 50 / 60 / 70 / 80 |\n| 2 | Shockwave ring | strokeCircle at contact | 1 | start radius 6, end radius 28 / 48 / 64 / 72 | #FFFFFF, switching to Gold #FFD24A at t 0.4 | radius Cubic.easeOut. Line width 4 to 1 linear (finisher and KO: 6 to 1). Alpha 1 - t^1.5 | 140 / 180 / 220 / 260 |\n| 3a | Impact star, back | 8-point jagged polygon (fillPoints), 2 px outline | 1 | outer radius 18 / 30 / 40 / 46, inner ratio 0.45, each outer tip jittered x0.8 to 1.15, whole star rotated random +/-15 deg | fill Gold #FFD24A, outline Rust Ink #14181C | scale 0.4 to 1.1 over first 50 percent, Back.easeOut, then hold. Alpha 1 until t 0.6, then linear to 0 | 100 / 150 / 180 / 200 |\n| 3b | Impact star, front | same polygon and rotation | 1 (not counted in totals, same burst) | 0.6 x back radius | #FFFFFF, no outline | same scale curve. Alpha 1 until t 0.4 then linear to 0 (gold rim lingers last) | 80 / 120 / 144 / 160 |\n| 4 | Comic hit line (slash) | tapered 4-vertex rhombus (fillPoints) through the contact point, tilt random +/-12 deg off the attack axis, centre pushed 20 percent of length in dir | 1 / 1 / 2 / 2 (2nd is a crossing slash, 60 percent length, +/-35 deg) | length 60 / 110 / 150 / 170, max thickness 6 / 10 / 12 / 14 | #FFFFFF; heavy and up add a 2 px #FFD24A outline | length 0.3 to 1.0 over the first 35 percent, Expo.easeOut. Thickness x (1-t)^2 (Quad.easeIn to 0) | 80 / 110 / 130 / 150 |\n| 5 | Sparks with trails | head: rotated rect, length 14-20 (light) or 18-26 (heavy and up), thickness 3. Trail: 5 samples of past position 14 ms apart, drawn with lineBetween, width 3 tapering to 1 | 6 / 9 / 12 / 12 (1 in 4 is a \"streamer\": speed x1.5, life x0.7, thickness 2) | see shape | head colour = ramp(t). Trail segment i colour = ramp(t + 0.12 i), so older is cooler. Alpha 1 until t 0.8, then to 0 | speed 420-780 (light), 520-900 (heavy and up). Cone +/-25 deg. Gravity 400 px/s2. Head length x(1 - 0.6 t) | 180-260 / 220-300 / 240-320 / 240-320 |\n| 6 | Metal shards | rotated rect 2:1, or fillTriangle (50 percent each). Spin random +/-540 deg/s | 4 / 7 / 10 / 11 | long side 5-8 (light), 7-12 (heavy and up); short side half | Steel #7C8A96 40 percent, Light Steel #BFC8CF 25 percent, Spark Cream #FFF6D6 20 percent, Mustard #E3A92B 15 percent | speed 220-420 light, 300-560 heavy and up. Cone +/-40 deg. Gravity 1100. FLOOR BOUNCE at floorY = target feet y + rnd(-4, 6): vy = -0.45 vy, vx x0.7, spin x0.6. Max 1 bounce (light), 2 (heavy and up). Alpha 1 until t 0.7, then to 0. No shrink | 450-650 |\n| 7 | Rust flakes | fillRect squares, spin +/-360 deg/s | 6 / 10 / 14 / 14 | 3-5 | Rust brown #9C5A2E 50 percent, Rust Dark #6B3E22 25 percent, Ember #F58A2A 25 percent | speed 120-300, cone +/-55 deg (wider, lighter). Gravity 700. On reaching floorY: stop (vx = vy = spin = 0), lie there, fade over the last 150 ms. No bounce | 350-500 |\n| 8 | Smoke puff | fillCircle, drawn as 2 stacked circles (r at full alpha, 0.6 r at half) | 3 / 4 / 6 / 6 | start diameter 10-18, grows to x2.0, Quad.easeOut | Smoke Light #AEB6BC 60 percent, Steel #7C8A96 40 percent. Start alpha 0.5, then x(1-t) | speed 30-90, cone +/-70 deg. Gravity -80 (rises). Invisible for the first 40 ms (delay) so it follows the flash | 300-450 |\n| 9 | Ground dust (KO only) | fillCircle at feet | 6 | 8-14, grows x1.6 | #C9B79A, alpha 0.6 x (1-t) | speed 60-140 along the ground, cone +/-60 deg biased 20 deg down. Gravity -50 | 400 |"
+  },
+  {
+   "id": "hit-feedback-spec#16",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.3 Layers, in draw order",
+   "text": "Particle totals per hit (rows 1, 2, 3a, 4 to 9; front star excluded): light 22, heavy 34, finisher 47, KO 54. Each is under the 60 cap alone."
+  },
+  {
+   "id": "hit-feedback-spec#17",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.4 Cap, culling, readability",
+   "text": "- Live cap 60. When over, drop in this order, oldest first within a kind: flakes, smoke, shards, ground dust. Never drop core, ring, star, slash or sparks (they define the hit and live under 320 ms). The existing `cullForCap` culls kind 'chip' first, so map flake and shard onto that priority.\n- Readability: all layer A shapes are gone by 260 ms and the core by 80 ms. Max shape radius is 46 px, centred on the contact point (about mid-torso on a 128 px sprite), and layer A sits below the health bar, so the enemy silhouette and the bar stay legible. The white core and front star are the only large near-white areas and each lasts 80 ms or less. Debris pieces are under 12 px.\n- Rate limit: if a core flash spawned less than 120 ms ago, skip the new core flash and front star (keep everything else). With the sprite flash in 7.2 this keeps aggregate white flashes under 3 per second in sustained combos.\n- Particles do not freeze during hit-stop. They spawn at hit-stop start and play on real time, not slowed.\n- Heavier classes are heavier through size, count, ring radius and the second crossing slash, not through longer screen coverage. Shake and hit-stop per class stay as in section 1 (heavy 4px/120ms, finisher 6px/160ms, KO 5px/150ms). KO also adds the ground dust and the largest ring."
+  },
+  {
+   "id": "hit-feedback-spec#18",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.5 Accessibility",
+   "text": "Reduce-flash ON: skip the core flash, the white front star and the slash. Keep the back star only if recoloured Spark Cream #FFF6D6 at alpha 0.6 with no outline flash. Keep the ring but recolour it Light Steel #BFC8CF at alpha 0.5, width 2. Sparks ramp starts at Gold (skip the white stop). Shards, flakes, smoke and dust unchanged. Reduce-shake affects camera shake only. Neither setting removes the debris layers."
+  },
+  {
+   "id": "hit-feedback-spec#19",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.3.6 Zed taking a hit (class `playerHurt`, same system, deliberately smaller so enemy hits stay the loudest thing on screen)",
+   "text": "dir away from the enemy. Ring: end radius 22, Spark Cream #FFF6D6 to Mustard #E3A92B, 120 ms. Star: 8-point, outer radius 14, fill #FFF6D6, outline 2 px #E3A92B, 90 ms. Sparks: 4, ramp stops #FFF6D6, #E3A92B, #D9822B, length 12-16, speed 350-600, 150-200 ms. Chips: 4 Spark Cream squares 4-6 px, speed 180-320, gravity 900, 250-350 ms. No core flash, shards, flakes or smoke. 10 particles."
+  },
+  {
+   "id": "hit-feedback-spec#20",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.4 Config sketch (encounter-agent can copy; replaces the previous `hitParticles` block. `enemyBar` and `enemyFlashMs` are unchanged)",
+   "text": "Per-class values are keyed `light, heavy, finisher, ko`. Ranges are [min, max]. Colours are hex strings."
+  },
+  {
+   "id": "hit-feedback-spec#21",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.4 Config sketch (encounter-agent can copy; replaces the previous `hitParticles` block. `enemyBar` and `enemyFlashMs` are unchanged)",
+   "text": "```json\n{\n \"hitParticles\": {\n \"awayFromAttacker\": true, \"upBiasDeg\": 10, \"cap\": 60,\n \"cullOrder\": [\"flake\", \"smoke\", \"shard\", \"groundDust\"],\n \"layerDepth\": { \"shapes\": 5050, \"debris\": 5800 },\n \"flashRateLimitMs\": 120,\n \"ramp\": [[0.0, \"#FFFFFF\"], [0.2, \"#FFD24A\"], [0.5, \"#F58A2A\"], [0.8, \"#9C5A2E\"]],\n \"core\": { \"radius\": { \"light\": 10, \"heavy\": 16, \"finisher\": 22, \"ko\": 28 }, \"color\": \"#FFFFFF\", \"alpha\": 0.85,\n \"lifeMs\": { \"light\": 50, \"heavy\": 60, \"finisher\": 70, \"ko\": 80 }, \"ease\": \"Quad.easeOut\" },\n \"ring\": { \"startRadius\": 6, \"radius\": { \"light\": 28, \"heavy\": 48, \"finisher\": 64, \"ko\": 72 },\n \"width\": { \"light\": [4, 1], \"heavy\": [4, 1], \"finisher\": [6, 1], \"ko\": [6, 1] },\n \"colors\": [\"#FFFFFF\", \"#FFD24A\"], \"switchAt\": 0.4,\n \"lifeMs\": { \"light\": 140, \"heavy\": 180, \"finisher\": 220, \"ko\": 260 }, \"ease\": \"Cubic.easeOut\" },\n \"star\": { \"points\": 8, \"innerRatio\": 0.45, \"tipJitter\": [0.8, 1.15], \"tiltDeg\": 15,\n \"radius\": { \"light\": 18, \"heavy\": 30, \"finisher\": 40, \"ko\": 46 },\n \"back\": { \"fill\": \"#FFD24A\", \"outline\": \"#14181C\", \"outlinePx\": 2 },\n \"front\": { \"fill\": \"#FFFFFF\", \"radiusRatio\": 0.6 },\n \"scale\": [0.4, 1.1], \"scaleEase\": \"Back.easeOut\", \"scaleUntil\": 0.5,\n \"lifeMs\": { \"light\": 100, \"heavy\": 150, \"finisher\": 180, \"ko\": 200 }, \"frontLifeRatio\": 0.8 },\n \"slash\": { \"count\": { \"light\": 1, \"heavy\": 1, \"finisher\": 2, \"ko\": 2 },\n \"length\": { \"light\": 60, \"heavy\": 110, \"finisher\": 150, \"ko\": 170 },\n \"thickness\": { \"light\": 6, \"heavy\": 10, \"finisher\": 12, \"ko\": 14 },\n \"tiltDeg\": 12, \"crossDeg\": 35, \"crossLengthRatio\": 0.6, \"leadRatio\": 0.2,\n \"fill\": \"#FFFFFF\", \"outline\": \"#FFD24A\", \"outlineFrom\": \"heavy\",\n \"lifeMs\": { \"light\": 80, \"heavy\": 110, \"finisher\": 130, \"ko\": 150 }, \"lengthEase\": \"Expo.easeOut\", \"growUntil\": 0.35 },\n \"sparks\": { \"count\": { \"light\": 6, \"heavy\": 9, \"finisher\": 12, \"ko\": 12 }, \"streamerEvery\": 4,\n \"lenPx\": { \"light\": [14, 20], \"heavy\": [18, 26] }, \"thickness\": 3, \"streamerThickness\": 2,\n \"speed\": { \"light\": [420, 780], \"heavy\": [520, 900] }, \"streamerSpeedMul\": 1.5, \"streamerLifeMul\": 0.7,\n \"coneDeg\": 25, \"gravity\": 400,\n \"lifeMs\": { \"light\": [180, 260], \"heavy\": [220, 300], \"finisher\": [240, 320], \"ko\": [240, 320] },\n \"trail\": { \"samples\": 5, \"spacingMs\": 14, \"widthPx\": [3, 1], \"coolPerSample\": 0.12 } },\n \"shards\": { \"count\": { \"light\": 4, \"heavy\": 7, \"finisher\": 10, \"ko\": 11 },\n \"sizePx\": { \"light\": [5, 8], \"heavy\": [7, 12] }, \"aspect\": 2, \"triangleShare\": 0.5,\n \"colors\": [[\"#7C8A96\", 0.4], [\"#BFC8CF\", 0.25], [\"#FFF6D6\", 0.2], [\"#E3A92B\", 0.15]],\n \"speed\": { \"light\": [220, 420], \"heavy\": [300, 560] }, \"coneDeg\": 40, \"gravity\": 1100, \"spinDegPerSec\": 540,\n \"floor\": { \"yOffset\": [-4, 6], \"restitution\": 0.45, \"vxKeep\": 0.7, \"spinKeep\": 0.6,\n \"maxBounces\": { \"light\": 1, \"heavy\": 2, \"finisher\": 2, \"ko\": 2 } },\n \"lifeMs\": [450, 650], \"fadeFrom\": 0.7 },\n \"flakes\": { \"count\": { \"light\": 6, \"heavy\": 10, \"finisher\": 14, \"ko\": 14 }, \"sizePx\": [3, 5],\n \"colors\": [[\"#9C5A2E\", 0.5], [\"#6B3E22\", 0.25], [\"#F58A2A\", 0.25]],\n \"speed\": [120, 300], \"coneDeg\": 55, \"gravity\": 700, \"spinDegPerSec\": 360,\n \"landStop\": true, \"landFadeMs\": 150, \"lifeMs\": [350, 500] },\n \"smoke\": { \"count\": { \"light\": 3, \"heavy\": 4, \"finisher\": 6, \"ko\": 6 }, \"sizePx\": [10, 18], \"grow\": 2.0, \"growEase\": \"Quad.easeOut\",\n \"colors\": [[\"#AEB6BC\", 0.6], [\"#7C8A96\", 0.4]], \"alpha\": 0.5, \"speed\": [30, 90], \"coneDeg\": 70, \"gravity\": -80,\n \"delayMs\": 40, \"lifeMs\": [300, 450] },\n \"groundDust\": { \"count\": { \"ko\": 6 }, \"sizePx\": [8, 14], \"grow\": 1.6, \"color\": \"#C9B79A\", \"alpha\": 0.6,\n \"speed\": [60, 140], \"coneDeg\": 60, \"downBiasDeg\": 20, \"gravity\": -50, \"lifeMs\": 400 },\n \"reduceFlash\": { \"skip\": [\"core\", \"slash\", \"starFront\"], \"starBack\": { \"fill\": \"#FFF6D6\", \"alpha\": 0.6 },\n \"ring\": { \"color\": \"#BFC8CF\", \"alpha\": 0.5, \"widthPx\": 2 }, \"rampSkipsWhite\": true },\n \"playerHurt\": { \"ring\": { \"radius\": 22, \"colors\": [\"#FFF6D6\", \"#E3A92B\"], \"lifeMs\": 120 },\n \"star\": { \"radius\": 14, \"fill\": \"#FFF6D6\", \"outline\": \"#E3A92B\", \"lifeMs\": 90 },\n \"sparks\": { \"count\": 4, \"ramp\": [\"#FFF6D6\", \"#E3A92B\", \"#D9822B\"], \"lenPx\": [12, 16], \"speed\": [350, 600], \"lifeMs\": [150, 200] },\n \"chips\": { \"count\": 4, \"color\": \"#FFF6D6\", \"sizePx\": [4, 6], \"speed\": [180, 320], \"gravity\": 900, \"lifeMs\": [250, 350] } }\n }\n}\n```"
+  },
+  {
+   "id": "hit-feedback-spec#22",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "7.5 Open questions and implementation notes",
+   "text": "- Renderer additions needed in `EnemyHitFx.js` (art direction does not edit src): a second Graphics layer at depth 5050; `strokeCircle` (ring); `lineBetween` or rotated rects (trails); `fillTriangle` (shard variant); per-particle position history, delay field, floor bounce, hot-to-cool colour lerp, and new kinds core, ring, slash, shard, flake, smoke. `hitFeedbackData.js` and its test still hold the OLD 7.3 values (chips, sparks, burst, dust) and will not match this spec until the encounter-agent updates them.\n- New palette colours (Ember #F58A2A, Gold #FFD24A, Rust Brown #9C5A2E, Rust Dark #6B3E22, Smoke Light #AEB6BC) are not yet in the style guide. Ember is close to the Low Health orange #D9822B used on the bar; they never share a screen role, but confirm. Owner approval needed.\n- All counts, sizes and speeds are placeholder-grade first values. If it still reads small, scale ring and star radius by 1.25 first (cheapest lever), then counts, keeping the total under 60.\n- Enemy Critical #C9452F is a new colour; confirm the owner is fine adding it to the style-guide palette (kept distinct from Telegraph Red #FF3B30).\n- Final grunt sprite height is not fixed; the 12 px bar offset assumes the 128 px frame and a bar anchored to the sprite body top.\n- Idle-fade (never fully hidden once damaged) is a readability choice; revert to hide-after-3s if it clutters."
+  },
+  {
    "id": "style-guide#1",
    "doc": "style-guide",
    "file": "design/art/style-guide.md",
@@ -984,6 +1128,726 @@
    "authority": "derived",
    "heading": "5. Check before accepting",
    "text": "- Same face, outfit and colours in all 36 frames.\r\n- Feet land on the same baseline in `idle`, `walk`, `light`, `heavy` and `hit`.\r\n- Idle and walk loop with no pop between the last and first frame.\r\n- The strike frames read clearly (light 2, heavy 3).\r\n- No Rust or combat-signal colours leaked in."
+  },
+  {
+   "id": "credits#1",
+   "doc": "credits",
+   "file": "design/audio/CREDITS.md",
+   "authority": "derived",
+   "heading": "Credits",
+   "text": "Only needed for CC-BY picks that actually ship."
+  },
+  {
+   "id": "credits#2",
+   "doc": "credits",
+   "file": "design/audio/CREDITS.md",
+   "authority": "derived",
+   "heading": "Music",
+   "text": "- \"Funky Chiptune\" by Eric Matyas, www.soundimage.org, licensed under CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/). Source: https://opengameart.org/content/funky-chiptune-looping (only if used as the backup menu_theme)"
+  },
+  {
+   "id": "credits#3",
+   "doc": "credits",
+   "file": "design/audio/CREDITS.md",
+   "authority": "derived",
+   "heading": "Optional (not required, CC0)",
+   "text": "- \"Funked Up\" by Joth, CC0. https://opengameart.org/content/funked-up"
+  },
+  {
+   "id": "audio-manifest#1",
+   "doc": "audio-manifest",
+   "file": "design/audio/audio-manifest.md",
+   "authority": "derived",
+   "heading": "Audio Manifest - The Rebellion: Fists of the Fallen City",
+   "text": "Status: only `menu_theme` researched so far. Nothing downloaded. Licences read on the source pages (opened 2026-10-25). Tracks were NOT played; fit is judged from description/tags.\nExisting code loads audio via `this.load.audio(KEY, PATH)` in `src/scenes/ArenaScene.js` (existing assets in `assets/sound/`). Wiring is for the code agents."
+  },
+  {
+   "id": "audio-manifest#2",
+   "doc": "audio-manifest",
+   "file": "design/audio/audio-manifest.md",
+   "authority": "derived",
+   "heading": "Primary: Funked Up",
+   "text": "- Title: Funked Up\n- Creator: Joth\n- Source page: https://opengameart.org/content/funked-up\n- Licence: CC0 1.0 Universal (Public Domain Dedication)\n- Attribution required: No (author says appreciated, not required)\n- Loopable: Yes (per description \"very groovy looping track\" and `loop` tag)\n- Length: not stated on page\n- Format / size: MP3, `Funked Up.mp3`, 1.3 MB\n- Tags: loop, funk, rock, groove, guitar, bass, Rhodes, drumset, 70s\n- Fit: funk/groove with a gritty-warm band feel; author suggests a pre-mission menu. Not chiptune. Judged from description/tags.\n- Note: no .ogg offered; convert to .ogg later if wanted."
+  },
+  {
+   "id": "audio-manifest#3",
+   "doc": "audio-manifest",
+   "file": "design/audio/audio-manifest.md",
+   "authority": "derived",
+   "heading": "Backup: Funky Chiptune (Looping)",
+   "text": "- Title: Funky Chiptune (Looping)\n- Creator: Eric Matyas (soundimage.org)\n- Source page: https://opengameart.org/content/funky-chiptune-looping\n- Licence: CC-BY 3.0 (Creative Commons Attribution 3.0)\n- Attribution required: Yes. \"Funky Chiptune\" by Eric Matyas www.soundimage.org\n- Loopable: Yes (tags `looping`, `seamless`)\n- Length: 1:15\n- Format / size: OGG, `funky_chiptune.ogg`, 4.5 MB (under the 5 MB flag, but close)\n- Tags: arcade, fun, funky, chiptune, looping, retro, seamless\n- Fit: high-energy retro arcade; may be too frantic/playful for a menu and better as an in-level track. Judged from description/tags."
+  },
+  {
+   "id": "audio-manifest#4",
+   "doc": "audio-manifest",
+   "file": "design/audio/audio-manifest.md",
+   "authority": "derived",
+   "heading": "Not picked (seen, not opened for licence)",
+   "text": "- \"6 Chiptune Loops\" (SuperGamersGames, CC-BY 4.0 per search snippet) contains a Menu.wav. UNVERIFIED, page not opened, excluded."
+  },
+  {
+   "id": "audio-manifest#5",
+   "doc": "audio-manifest",
+   "file": "design/audio/audio-manifest.md",
+   "authority": "derived",
+   "heading": "Gaps",
+   "text": "- None for menu_theme. All other slots not yet attempted."
+  },
+  {
+   "id": "readme-2-2#1",
+   "doc": "readme-2-2",
+   "file": "design/levels/README.md",
+   "authority": "derived",
+   "heading": "Level style guides",
+   "text": "One style guide and one agent per level. The owner gives each agent the look of its level; the agent writes the guide, the style file and the art."
+  },
+  {
+   "id": "readme-2-2#2",
+   "doc": "readme-2-2",
+   "file": "design/levels/README.md",
+   "authority": "derived",
+   "heading": "Level style guides",
+   "text": "| # | Level | Agent | Guide |\n|---|---|---|---|\n| 1 | Brick-Red Alley | `level-style-01-brick-red-alley-agent` | [level-01-brick-red-alley.md](level-01-brick-red-alley.md) |\n| 2 | Mustard Row | `level-style-02-mustard-row-agent` | [level-02-mustard-row.md](level-02-mustard-row.md) |\n| 3 | Greenline Courts | `level-style-03-greenline-courts-agent` | [level-03-greenline-courts.md](level-03-greenline-courts.md) |\n| 4 | Stewpot Gardens | `level-style-04-stewpot-gardens-agent` | [level-04-stewpot-gardens.md](level-04-stewpot-gardens.md) |\n| 5 | Songwindow Heights | `level-style-05-songwindow-heights-agent` | [level-05-songwindow-heights.md](level-05-songwindow-heights.md) |\n| 6 | The Iron Line Push | `level-style-06-iron-line-push-agent` | [level-06-iron-line-push.md](level-06-iron-line-push.md) |\n| 7 | Copper Fang at the Courts | `level-style-07-copper-fang-courts-agent` | [level-07-copper-fang-courts.md](level-07-copper-fang-courts.md) |\n| 8 | The Overseer's Tower | `level-style-08-overseer-tower-agent` | [level-08-overseer-tower.md](level-08-overseer-tower.md) |"
+  },
+  {
+   "id": "readme-2-2#3",
+   "doc": "readme-2-2",
+   "file": "design/levels/README.md",
+   "authority": "derived",
+   "heading": "How a level's style reaches the game",
+   "text": "1. `content/levels/styles/<level-id>.json` holds `background.path` (1920x720 SVG/PNG, or null for the shared placeholder) and an optional colour `overlay`.\n2. The menu loads these with the level files; the arena loads the background for the level being played.\n3. Levels are side-scrolling: the background repeats along the whole level, so art should tile left to right.\n4. Until an agent sets a style, each level shows the placeholder arena with a faint wash of its first palette colour."
+  },
+  {
+   "id": "readme-2-2#4",
+   "doc": "readme-2-2",
+   "file": "design/levels/README.md",
+   "authority": "derived",
+   "heading": "Using an agent",
+   "text": "Start the agent for the level and give it your direction, for example: \"Level 2, Mustard Row: late-afternoon gold light, striped awnings, busy market, record shop.\" Check a level in the browser at `/?level=N`.\nShared rules live in `design/art/style-guide.md`; the agents follow them."
+  },
+  {
+   "id": "level-01-brick-red-alley#1",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Level 1: Brick-Red Alley (style guide)",
+   "text": "Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style set**."
+  },
+  {
+   "id": "level-01-brick-red-alley#2",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `brick-red-alley`\n- Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music.\n- Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F\n- Time limit: 120 s. Waves: 3. Enemies named: grunt.\n- Intro: \"Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.\"\n- Outro: \"The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.\""
+  },
+  {
+   "id": "level-01-brick-red-alley#3",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-01-brick-red-alley#4",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "2. Window-Light Dusk\nScene: Low sun comes down the alley, with long warm-brown shadows. Mustard light spills from a few windows, and a plain-brick back wall sits behind them.\nPalette: Deep brown and brick base, mustard glow, a muted green door as the one cool note.\nMood: Hopeful, with a quiet \"someone is still home\" warmth. Using a mustard overlay at alpha 0.12-0.15 would unify it.\nApproved concept: plain brick-red back wall; 3-4 windows (two or three glowing mustard, one dark); a single muted forest-green door near the centre; diagonal long warm-brown shadow wedges from the left and right across the wall; faint mustard light spill below the lit windows; a calm warm-brown lane (y 460-680) with only very faint light patches; a few low crates/bins at the edges; darkest brown band at the bottom."
+  },
+  {
+   "id": "level-01-brick-red-alley#5",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles:\n  - Wall: #8F4033 (muted brick red, a step below #A8402E), mortar #7A3328\n  - Ledge / sills / crate dark: #5A3A20\n  - Lane: #6B4423 warm brown\n  - Bottom band, outlines, shadow wedges: #2E1F16 (wedges at 32 percent opacity)\n  - Window glow: #E3A92B (one #D9A02A), dark window #3A2A1E\n  - Light spill: #E3A92B at 14 percent (wall), 7 percent (lane)\n  - Door (only cool note): #2F6B3F, panel #275A35\n  - Overlay: #E3A92B at alpha 0.13\n- Time of day and lighting: low dusk sun from the sides; long shadow wedges from both left and right, window light spilling down the wall.\n- Mood: Hopeful, with a quiet \"someone is still home\" warmth."
+  },
+  {
+   "id": "level-01-brick-red-alley#6",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Background layers (world 1920x720)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\n|---|---|---|---|---|\n| far | Plain brick wall with faint mortar lines | back | with world | single image, no parallax |\n| mid | 4 windows (3 lit, 1 dark), green door at x 900-1020, spill polygons, ledge y 436-460 | wall | with world | only landmarks, sparse |\n| lane | Warm brown y 460-680, two very faint light patches, soft edge shadow wedges | ground | with world | calm, no high-contrast detail |\n| front | Bottom band y 680-720, dark brown | foreground | with world | |\nTiling: shadow wedges touch the top and lane edges with the same profile on both sides, no object crosses x 0 or 3840, so left and right edges match. The image is two screens wide with different window, crate and drainpipe placement in each half; the green door appears once per 3840."
+  },
+  {
+   "id": "level-01-brick-red-alley#7",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- Windows at x 350, 670 (dark), 1200, 1520; each 140x170.\n- Green door at tile centre (x 960).\n- Low crates and a grey-brown bin at the wall foot (y 346-436), above the lane, at x 150, 1100, 1740.\n- Landmarks are sparse so repeats along the 3500-4500 px level are not obvious; the shop, mural and music window from the theme are not drawn (open question)."
+  },
+  {
+   "id": "level-01-brick-red-alley#8",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-01-brick-red-alley/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-01-brick-red-alley.json`.\n- `assets/levels/level-01-brick-red-alley/background.svg` (3840x720, final flat vector, two different screens so landmarks repeat only every 3840 px)"
+  },
+  {
+   "id": "level-01-brick-red-alley#9",
+   "doc": "level-01-brick-red-alley",
+   "file": "design/levels/level-01-brick-red-alley.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- The theme mentions a mustard corner shop, mural panels and a music window; this direction does not. Add a shop or mural later as a separate sparse landmark?\n- Window-wall may need a tile-seam check in game, since the shadow wedge is tied to edges."
+  },
+  {
+   "id": "level-02-mustard-row#1",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Level 2: Mustard Row (style guide)",
+   "text": "Owner agent: `level-style-02-mustard-row-agent`. Status: **2026-10-21, style set**."
+  },
+  {
+   "id": "level-02-mustard-row#2",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `mustard-row`\r\n- Theme: Mustard-yellow corner shops with hand-lettered signs and shutters the Rust have chained down.\r\n- Palette (GDD family): #E3A92B, #F2C04D, #A8402E, #6B4423\r\n- Time limit: 135 s. Waves: 4. Enemies named: grunt, rust-watcher.\r\n- Intro: \"Shutters chained, signs faded. Zed's neighbours are watching from behind the glass. Clear the row and open a shop.\"\r\n- Outro: \"Chains drop, shutters roll up, and the first hand-lettered sign goes back in the window. Mustard Row is open for business.\""
+  },
+  {
+   "id": "level-02-mustard-row#3",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\r\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\r\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\r\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\r\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-02-mustard-row#4",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "\"Awnings and Neighbours: mustard shopfronts with scalloped red and cream striped awnings, hand-lettered sign boards (Hot Bread, Shoes Mended, Fresh Fish, Tea & Songs), shop windows with neighbours watching from behind the glass and displays of loaves, shoes, fish and teapots, upper floors with green shutters and flower boxes, string lights across the row, A-frame chalkboards and plants at the base. Warm, hopeful morning light. Calm warm-brown lane.\"\nApproved reference: `assets/levels/level-02-mustard-row/concepts/bg-b-awnings-neighbours-detailed.svg`."
+  },
+  {
+   "id": "level-02-mustard-row#5",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles:\r\n  - Sky (flat bands, no gradient): #F5DFA8 top, #F0D9A0 lower\r\n  - Shopfront walls (varied per shop): #E3A92B, #F2C04D, #C98F26, #E8B23C, #D9A02A\r\n  - Brick patch under cornice: #B87B2A, mortar #8A5A1E\r\n  - Cornice, awning red, plant pots: #A8402E; awning cream and sign boards: #F7E7B8 / #F2E3B4\r\n  - Shutters, foliage: #2F6B3F, #3F8A52 (cool note, kept small)\r\n  - Wood, sills, shelves: #6B4423, step #8A6A45\r\n  - Shop glass interior: #3A2A1E frame, #5A4632 inside, reflection #7A5E3E\r\n  - String lights: bulbs #F2C04D, wire #3E3A36, glow at 12 percent\r\n  - Lane: #7A5230 warm brown, top lip #8A6A45, mustard edge line #E3A92B at 35 percent; bottom band and outlines #2E1F16\r\n  - Neighbour skin and clothes: #C98F5A, #9A6B45, #E0B48A, #7A5236; shirts green, red, brown, mustard\r\n  - Overlay: #E3A92B at alpha 0.10\r\n- Time of day and lighting: warm, hopeful morning light; sky is pale sand and the shops carry a soft mustard wash.\r\n- Mood: A neighbourhood waking up and watching, ready to open."
+  },
+  {
+   "id": "level-02-mustard-row#6",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Background layers (world 3840x720, repeated along the level)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\r\n|---|---|---|---|---|\r\n| far | Flat pale-sand sky bands y 0-460 | back | with world | no parallax, no gradient |\r\n| mid | Eight shopfronts (460 px each, 477 px pitch): cornice, upper windows with green shutters and flower boxes, sign board, scalloped awning, shop window with neighbours and display, step, A-frame chalkboards or plants | wall | with world | busy only above y 460 |\r\n| lane | Warm brown y 460-680, a few faint dark dashes at 10 percent | ground | with world | calm, no high-contrast detail |\r\n| front | String lights along the top (two sags per screen), dark band y 680-720 | foreground | with world | wire at y 8 at both edges |"
+  },
+  {
+   "id": "level-02-mustard-row#7",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Background layers (world 3840x720, repeated along the level)",
+   "text": "Screen one (x 0-1920) is the Rust-chained row; screen two (x 1920-3840) is the open, hopeful row, so the level reads as the row reopening (owner-approved addition). Screen one: rolled-down slatted shutters (#7C6A52, slat lines, #5E4F3C top rail) over each shop window with crossed cold grey chains (#3E3A36) and a padlock (#6A5E4A), a grey Rust notice (#CFC8B8, text bars #555B63), faded sign boards (#D8CDB0, lettering #A39578, low contrast, with faint wear marks), faded awnings (#B5766A and #E6DCC2), and a 16 percent grey-tan wash (#B8A98A) over the walls. Neighbours show only in upper windows there; behind-the-glass neighbours and displays appear on screen two. Lane and plants unchanged."
+  },
+  {
+   "id": "level-02-mustard-row#8",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Background layers (world 3840x720, repeated along the level)",
+   "text": "Tiling: sky, wire and lane run edge to edge; shopfronts occupy x 8 to 3813, so no object crosses x 0 or 3840. Screen one (shuttered) is Hot Bread, Shoes Mended, Fresh Fish, Tea & Songs; half two reorders them with different wall tones, awning stripe phase, 2 or 3 upper windows, neighbour placement (one, two or none), peeking upper-window neighbours and chalkboard/plant swaps, so the repeat is every 3840 px."
+  },
+  {
+   "id": "level-02-mustard-row#9",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- Sign boards: Hot Bread (loaves), Shoes Mended (shoes), Fresh Fish (fish), Tea & Songs (teapots). Hand-lettered look in Georgia italic bold, brown on cream with a red underline.\r\n- Neighbours (round faces, warm tones) watch from behind shop glass, no one gloating or hostile.\r\n- A-frame chalkboards and potted plants sit on the step (y 392-460), above the lane.\r\n- Screen one shows the chains and faded signs from the theme; screen two shows green upper-window shutters and open shop windows.\r\n- Exit gate area at the far right: lane is clear, the last shop ends at x 3807 of 3840."
+  },
+  {
+   "id": "level-02-mustard-row#10",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-02-mustard-row/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-02-mustard-row.json`.\r\n- `assets/levels/level-02-mustard-row/background.svg` (3840x720, flat vector, about 105 KB, final)\r\n- `assets/levels/level-02-mustard-row/concepts/` (reference concepts, not loaded by the game)"
+  },
+  {
+   "id": "level-02-mustard-row#11",
+   "doc": "level-02-mustard-row",
+   "file": "design/levels/level-02-mustard-row.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- Sign lettering is still live SVG text (Georgia italic bold). Outlining needs a font tool (fontTools or opentype.js) that is not installed; convert later if it must look identical on every machine.\r\n- Rust-Watcher perch spots are not drawn; a small ledge or awning could serve if wanted."
+  },
+  {
+   "id": "level-03-greenline-courts#1",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Level 3: Greenline Courts (style guide)",
+   "text": "Owner agent: `level-style-03-greenline-courts-agent`. Status: **2026-10-21, style set**."
+  },
+  {
+   "id": "level-03-greenline-courts#2",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `greenline-courts`\n- Theme: Forest-green basketball courts: chain-link, faded lines, a hoop with no net.\n- Palette (GDD family): #2F6B3F, #E3A92B, #6B4423, #A8402E, #F4E6C8\n- Time limit: 150 s. Waves: 5. Enemies named: grunt, rust-breaker, rust-watcher.\n- Intro: \"Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.\"\n- Outro: \"Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.\""
+  },
+  {
+   "id": "level-03-greenline-courts#3",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-03-greenline-courts#4",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "> Golden-Hour Tree Line: open-air basketball court, not a building wall. Flat sunset sky bands (#F2D9A0, #EDC77B, #E5AE55) with a pale sun, a far muted-green hill line, a row of big forest-green trees (#2F6B3F / #3A7B4A), a low wooden chain-link fence (posts #6B4423), bent hoops with backboards and no nets, long soft tree shadows across the lane. Green court lane (#6B7F4A, lip #8A9A58) with very faint cream court lines and kids' chalk drawings (circle, heart, hopscotch) at low opacity. Warm hopeful golden-hour mood. Mustard overlay around alpha 0.08. Must look clearly different from Level 1 (brick wall dusk) and Level 2 (mustard shopfronts)."
+  },
+  {
+   "id": "level-03-greenline-courts#5",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles:\n  - Sky bands: #F2D9A0 (top), #EDC77B (middle), #E5AE55 (low horizon). Pale sun #F7E7B8.\n  - Far hills: #4C7D51 (muted green, behind the trees).\n  - Trees: #2F6B3F body, #3A7B4A highlight lobes; trunks #6B4423.\n  - Fence: posts and rails #6B4423, mesh #7A7A55 at 55 percent.\n  - Hoops: poles and arms #4A4540, backboards #F4E6C8, rims #A8402E, no nets.\n  - Lane: #6B7F4A, lip #8A9A58 (60 percent), kerb shadow #2E1F16.\n  - Court lines and chalk: #F4E6C8 at 10 to 14 percent opacity.\n  - Tree shadows: #2E1F16 at 10 percent. Overlay: mustard #E3A92B, alpha 0.08.\n- Time of day and lighting: golden hour, low sun from the right of the first screen; long soft shadows fall across the lane.\n- Mood: a warm, open evening where the court is ready for kids again."
+  },
+  {
+   "id": "level-03-greenline-courts#6",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Background layers (world 3840x720, repeated along the level)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\n|---|---|---|---|---|\n| far | three flat sky bands, pale sun (screen one), thin cloud bands (screen two), muted hill line | far | with level | hill line starts and ends at y 300 so the edges tile |\n| mid | row of big trees, low wooden chain-link fence | mid | with level | trees x 70 to 3780, none cross an edge; fence posts at x 120 to 3720 |\n| lane | green court, faint lines, chalk circle, heart, hopscotch, soft tree shadows | near | with level | y 460 to 680, calm, all marks at 10 to 14 percent opacity |\n| front | mustard overlay wash | n/a | n/a | applied by the arena, alpha 0.08 |\nTwo different screens: hoops sit at x 900 (tilt -4) and x 2780 (tilt +3), court circle and centre line repeat under each; the sun is on screen one only; hill bumps and chalk drawings differ, so the repeat is every 3840 px."
+  },
+  {
+   "id": "level-03-greenline-courts#7",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- Two bent hoops with backboards and empty rims (no nets), one per screen.\n- Low wooden chain-link fence running the full width.\n- Row of big trees; long soft shadows across the lane.\n- Kids' chalk drawings: circles, hearts, hopscotch squares, very faint.\n- Exit gate area (far right): lane clear, last tree ends near x 3780, no hoop past x 2960.\n- Lane check: lane #6B7F4A is a mid olive; Zed and the grunt read clearly against it, and the lane marks stay below 14 percent opacity.\n- Differs from Level 1 (brick wall dusk) and Level 2 (mustard shopfronts): open sky, green, no buildings."
+  },
+  {
+   "id": "level-03-greenline-courts#8",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-03-greenline-courts/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-03-greenline-courts.json`.\n- `assets/levels/level-03-greenline-courts/background.svg` (3840x720, flat vector, about 13 KB, final)"
+  },
+  {
+   "id": "level-03-greenline-courts#9",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- Hoop at x 900 is close to the first wave lock; confirm it is fine as backdrop only.\n- Ambient animation added (see Ambient animation). Confirm density and speed after a look in game."
+  },
+  {
+   "id": "level-03-greenline-courts#10",
+   "doc": "level-03-greenline-courts",
+   "file": "design/levels/level-03-greenline-courts.md",
+   "authority": "derived",
+   "heading": "Ambient animation",
+   "text": "Configured by the `ambient.outdoor` block in the style JSON (period 3840); code in `src/levels/ambientOutdoor.js`, helpers in `ambientData.js`. All pieces sit at depth -998, use Phaser tweens only, and stay above y 440 (lane untouched).\n- Canopy rustle: two small forest-green clusters per tree on the upper rim push in and out (tree positions read from background.svg).\n- Sun halo and three light shafts breathe with ADD blend at 2 to 16 percent alpha, near the screen-one sun.\n- Three thin clouds slide slowly on screen two.\n- Eight leaves (green and gold) blow rightward and fade in and out; three birds cross the sky every 9 to 16 s; twelve pollen glints rise in the sun.\n- Leaves, birds and motes spawn around the camera, so counts stay fixed regardless of level length.\n- Not done: fence or tree shadow drift on the lane (skipped to keep the lane calm)."
+  },
+  {
+   "id": "level-04-stewpot-gardens#1",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Level 4: Stewpot Gardens (style guide)",
+   "text": "Owner agent: `level-style-04-stewpot-gardens-agent`. Status: **2026-10-21, style set, animation added**."
+  },
+  {
+   "id": "level-04-stewpot-gardens#2",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `stewpot-gardens`\r\n- Theme: Food stalls with striped awnings and community garden planters behind Rust fencing.\r\n- Palette (GDD family): #2F6B3F, #E3A92B, #A8402E, #6B4423, #F2D9A0\r\n- Time limit: 180 s. Waves: 6. Enemies named: grunt, rust-overseer-holt, rust-watcher, rust-breaker.\r\n- Intro: \"Zed's mother's stall stood just past the fence. Keep moving, sidestep those darts, and bring dinner back.\"\r\n- Outro: \"The fence comes down, the planters get watered, and a pot of stew goes on. Everyone gets a bowl.\""
+  },
+  {
+   "id": "level-04-stewpot-gardens#3",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\r\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\r\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\r\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\r\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-04-stewpot-gardens#4",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "\"Golden hour market row. Sand sky, brick skyline, string lights and three striped stalls in red, green and mustard. Matches the GDD palette most directly. Added extra detail: sun with halo, soft clouds and a few birds; brick skyline of 8 buildings with cornices, chimneys, lit mustard windows, a green mural panel, laundry line and red banner; wavy string-light line (same height at left and right edges so it tiles) with soft glow halos, plus bunting in red/mustard/green/cream; three striped-awning stalls (red, green, mustard) with woodgrain counters, hanging produce, fruit/veg rows, a cream 'STEW' sign; stacked crates, a barrel, a planter with a mustard flower, a crate of green produce, a sleeping cat; calm cobbled lane in very low-contrast tones with flat shadow pools under each stall.\""
+  },
+  {
+   "id": "level-04-stewpot-gardens#5",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "Palette given: sand #F2D9A0 / #E8C27A / #F0CE8C, cream #F4E6C8, brick-red buildings #9A6A55 / #8A5A48 / #7A4A3A, mustard #E3A92B, brick red #A8402E, forest green #2F6B3F, warm brown #6B4423, outline #2E1F16, lane ground #C9A06A with cobble tones #B8905C / #BC9660. Concept preview (960x360) approved; scaled to 1920x720. Light mustard overlay in the style file."
+  },
+  {
+   "id": "level-04-stewpot-gardens#6",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Animation direction",
+   "text": "\"add cool animations to level 4\"\nPlan (data-driven `ambient` block in the style JSON, period 1920, drawn by the arena; the SVG itself is static). All pieces sit above y 440, low alpha, flat shapes, small counts.\r\n- String lights: `row` block with shopCount 0 (no shop effects). 16 bulbs, x 60 + 120n, a colour wave of glows runs along the wire. The painted wire was redrawn as eight 240 px swags (ends y 46, sag 28, bulbs at y 75) so it matches the renderer's parabola (bulbY 48, sag 28, span 240). Still tileable. The row code also sends an occasional balloon drifting over the rooftops (crazy 0, gentlest setting).\r\n- Lit windows: four mustard windows on the y 236 row (x 990, 1056, 1230, 1296) breathe; every third one flickers like a tired bulb. Only one window row is supported, so the others stay painted.\r\n- Sky: sun halo breathes (960, 230, r 150); two faint light shafts (x 800 and 1040); four soft clouds at the painted cloud positions drift slowly; a few birds (up to 3) cross now and then.\r\n- Air: 6 blown leaves (green, mustard, gold, brick red) and 10 warm motes drifting up in the sun."
+  },
+  {
+   "id": "level-04-stewpot-gardens#7",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Animation direction",
+   "text": "Not possible with the current renderer (suggestions): steam rising from the STEW pot; awnings swaying; the sleeping cat breathing; hanging produce and bunting swinging; laundry line fluttering; the red banner waving; per-window lit positions at differing heights."
+  },
+  {
+   "id": "level-04-stewpot-gardens#8",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles:\r\n  - Sky: #F0CE8C (top), #E8C27A (mid, deepest), #F2D9A0 (horizon). Sun and clouds: #F4E6C8.\r\n  - Skyline walls: #9A6A55, #8A5A48, #7A4A3A. Cornices and chimneys: #6B4423 / #7A4A3A. Lit windows #E3A92B, dark windows #5A3A2C.\r\n  - Stalls: awnings alternate cream #F4E6C8 with #A8402E, #2F6B3F or #E3A92B; counters and posts #6B4423 (grain #8A5A38).\r\n  - Lane ground: #C9A06A; cobbles #B8905C / #BC9660 at 55% opacity; stall shadow pools #B8905C at 60%.\r\n  - Outline: #2E1F16 (3 to 4 px on structures, none in the lane).\r\n  - Overlay: #E3A92B at alpha 0.10.\r\n- Time of day and lighting: golden hour, low warm sun behind the skyline, glow halos on string lights, flat shadow pools under stalls (no gradients on shapes).\r\n- Mood: a warm, hopeful market evening where the neighbourhood is ready to feed everyone."
+  },
+  {
+   "id": "level-04-stewpot-gardens#9",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Background layers (world 1920x720, tile repeats every 1920)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\r\n|---|---|---|---|---|\r\n| far | Sand sky bands, sun with halo (x 960), 4 clouds, 4 birds | y 0 to 320 | background repeat | Lowest contrast; nothing touches edges |\r\n| mid | 8 brick buildings (240 px pitch) with cornices, chimneys, lit windows, green mural (x 500), laundry line (x 1210), red banner (x 910); string-light wave (y 60 +/-14) and bunting line (y 300 +/-14) | y 40 to 460 | repeat | Both lines are periodic in 1920 so edges match |\r\n| mid-front | 3 stalls (x 150, 760, 1370; 380 wide) with striped awnings, woodgrain counters, hanging produce, fruit rows, STEW sign above stall 2 | y 262 to 462 | repeat | Counter base ends at y 460 |\r\n| lane | Cobbled #C9A06A ground, flat shadow pools under stalls | y 460 to 720 | repeat | Calm, cobbles at low contrast, no outlines |\r\n| front | none | | | Kept clear so the gate area at far right stays open |"
+  },
+  {
+   "id": "level-04-stewpot-gardens#10",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- Stacked crates (x 60), planter with mustard flower (x 590), barrel (x 1170), crate of green produce (x 1260), sleeping cat (x 1830). All sit above y 462, outside the lane.\r\n- Landmarks: cream \"STEW\" sign (x 860 to 1040), green mural, red banner. One of each per 1920 tile; at 3500 to 4500 px the repeat is about two times, so the sparse landmarks are not obvious.\r\n- Fence/Rust elements are not in the background; the arena draws them. Planters are the community-garden nod."
+  },
+  {
+   "id": "level-04-stewpot-gardens#11",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-04-stewpot-gardens/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-04-stewpot-gardens.json`.\r\n- `assets/levels/level-04-stewpot-gardens/background.svg`: 1920x720 flat vector, tileable, about 50 KB, string-light wire drawn as 240 px swags to line up with the animated bulbs. Generated, final unless the owner supplies painted art."
+  },
+  {
+   "id": "level-04-stewpot-gardens#12",
+   "doc": "level-04-stewpot-gardens",
+   "file": "design/levels/level-04-stewpot-gardens.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- Should the exit gate area (far right) get a bespoke landmark? Currently only the lane is clear and the cat sits at x 1830 above the lane.\r\n- Level data lists 3500 to 4500 px worlds; confirm the loader repeats the 1920 tile (Level 2 uses a 3840 image instead).\r\n- Is the green mural meant to say anything? Currently abstract (sun and hill)."
+  },
+  {
+   "id": "level-05-songwindow-heights#1",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Level 5: Songwindow Heights (style guide)",
+   "text": "Owner agent: `level-style-05-songwindow-heights-agent`. Status: **2026-10-21, style set**."
+  },
+  {
+   "id": "level-05-songwindow-heights#2",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `songwindow-heights`\r\n- Theme: Tall apartment blocks, painted-over mural walls and open windows waiting for music.\r\n- Palette (GDD family): #A8402E, #E3A92B, #2F6B3F, #6B4423, #F4E6C8\r\n- Time limit: 210 s. Waves: 7. Enemies named: grunt, rust-copper-fang, rust-watcher, rust-overseer-wren, rust-breaker.\r\n- Intro: \"Every window is shut and every mural is painted over. Zed climbs the Heights so the music can drift out again.\"\r\n- Outro: \"A window opens, then another. Music pours down the block and the murals start to rise. The city sings.\""
+  },
+  {
+   "id": "level-05-songwindow-heights#3",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\r\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\r\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\r\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\r\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-05-songwindow-heights#4",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "Golden Hour Climb: warm late-afternoon sky in Sand and Mustard. Brick-red apartment blocks in the mid-ground with mostly shut windows (dark brown) and a few cream or mustard lit ones, green shutters, small balconies with planters, window air-conditioner units, a fire escape, laundry lines between the blocks, a shop awning and sign, a rooftop water tank, birds, clouds and sagging power lines. Painted-over mural patches in muted beige-grey with a hint of the original forest-green and mustard mural (plant, sun) showing through. Calm warm-brown rooftop-edge lane. Mood: hope on the horizon."
+  },
+  {
+   "id": "level-05-songwindow-heights#5",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles:\r\n  - Sky bands: Sand #F2D9A0, #EDCB88, #E8C27A, with a Mustard #E3A92B band at 55 percent near the horizon.\r\n  - Sun and clouds: Cream #F4E6C8 and #F8EFD6.\r\n  - Walls (near blocks): Brick Red #A8402E, shade #8F3626 for cornices and floor lines.\r\n  - Far blocks: #9A6B4A with windows #7E5238 (hazy, low contrast).\r\n  - Windows: shut Dark Brown #2E1F16; a few lit Cream #F4E6C8 or Mustard #E3A92B; shutters Forest Green #2F6B3F.\r\n  - Painted-over murals: #C9B79A with Forest Green and Mustard remnants (plant, sun).\r\n  - Lane (rooftop edge): #C9A06A with Warm Brown #6B4423 edge, faint Brick Red stripe, #B88F5C dashes.\r\n  - Props and line work: Warm Brown #6B4423, Dark Brown #2E1F16.\r\n- Time of day and lighting: late afternoon golden hour, sun low right of centre, light from top left per house rule. Flat colour only, no glow or gradients.\r\n- Mood: hope on the horizon; the Heights are quiet but warm and waiting for music."
+  },
+  {
+   "id": "level-05-songwindow-heights#6",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Background layers (world 1920x720, SVG drawn on a 680x255 viewBox scaled 2.8235)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\r\n|---|---|---|---|---|\r\n| far | Sand and Mustard sky bands, sun, clouds, birds, sagging power lines, hazy far blocks, water tank | back | slowest (or static) | Power lines start and end at the same height so the tile seam is invisible |\r\n| mid | Brick-red blocks, windows, shutters, balconies, planters, AC units, fire escape, laundry lines, shop awning and sign, mural patches | mid | with level | Only about 5 blocks, a 72 px (reference) gap at the seam shows far blocks, so repeats read as skyline |\r\n| lane | Rooftop edge, #C9A06A, y 457 to 720 (play lane y 460 to 680) | ground | with level | Calm: only a thin brown edge, a faint red stripe and three low-contrast dashes; nothing near the right edge for the exit gate |\r\n| front | None | n/a | n/a | Kept empty so fighters stay clear |\nTiling: left and right edges match (far block continues across the seam, both power lines end at the same y, no landmark touches either edge). Repeats every 1920 px, so the sun, fire escape and shop sign recur 2 to 3 times per level; accepted as sparse enough."
+  },
+  {
+   "id": "level-05-songwindow-heights#7",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- Sun disc with Cream core, right of centre; clouds as rounded bars.\r\n- Fire escape on the left face of the tallest block; shop awning (brick) with a Mustard sign and a small door above street level.\r\n- Rooftop water tank on a far block; second tank-like chimney cap on a mid block.\r\n- Laundry lines between blocks with a few cream, mustard and green pieces.\r\n- Window AC units, small balconies with Forest Green planters, green shutters.\r\n- Two painted-over mural patches (beige-grey) with a green plant and mustard sun showing through; a low painted-over strip with green sprouts.\r\n- Birds (four small arcs) and two sagging power lines."
+  },
+  {
+   "id": "level-05-songwindow-heights#8",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-05-songwindow-heights/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-05-songwindow-heights.json`.\r\n- `background.svg`: 1920x720 flat vector, about 9 KB, tileable. Style file adds a Mustard wash at alpha 0.08."
+  },
+  {
+   "id": "level-05-songwindow-heights#9",
+   "doc": "level-05-songwindow-heights",
+   "file": "design/levels/level-05-songwindow-heights.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- Repeats: the sun recurs every 1920 px. If that is noticeable in play, a second variant tile could be added.\r\n- Lane starts about y 457 in the art, a few px above the 460 rule; the edge stripe is low contrast. Check against Zed and the grunt in game.\r\n- No changes to waves, timer or intro and outro text are needed."
+  },
+  {
+   "id": "level-06-iron-line-push#1",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Level 6: The Iron Line Push (style guide)",
+   "text": "Owner agent: `level-style-06-iron-line-push-agent`. Status: **2026-10-21, style set**."
+  },
+  {
+   "id": "level-06-iron-line-push#2",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `stewpot-gardens`\r\n- Theme: Stewpot Gardens, where the Rust have strung a line of barriers between the planters and the food stalls; steam still rises from the stew pots behind it.\r\n- Palette (GDD family): #2F6B3F, #E3A92B, #A8402E, #6B4423\r\n- Time limit: 150 s. Waves: 4. Enemies named: rust-iron-line-cordon, rust-watcher, rust-breaker.\r\n- Intro: \"The Iron Line is holding the garden gate. Faceless helmets, cheap plating. Zed's neighbours are watching from the stalls. Push the line back, then the Watchers and Breakers behind it.\"\r\n- Outro: \"The line gives way and the stew pots are steaming again. Zed's mother waves a ladle from the stall. The garden is the neighbourhood's once more.\""
+  },
+  {
+   "id": "level-06-iron-line-push#3",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\r\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\r\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\r\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\r\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-06-iron-line-push#4",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "\"Option 3: Stall Row Behind the Line. A row of awnings in mustard, brick and green, with hanging ladles, pots and chalkboard menus. Cut-out neighbour silhouettes watch from behind the stalls, which fits the intro line. Steam rises from big pots and the Rust cordon sits in front.\"\nApproved sketch: sand sky with bunting, 4 to 6 stalls per tile with scalloped striped awnings, plank walls, chalkboard menus (no live text), produce counters, steam pots, hat and green-apron neighbours, faint distant cordon hint, plain warm lane, clear right edge for the exit gate."
+  },
+  {
+   "id": "level-06-iron-line-push#5",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles (sky, walls, ground, accents, shadow):\r\n  - Sky bands: #F2D9A0, #EBD08A\r\n  - Awnings: cream #F4E6C8 striped with brick #A8402E, mustard #E3A92B or forest green #2F6B3F (brick only on food and awnings)\r\n  - Stall walls #8C5B3B (plank lines #7A4E32); counters and posts #6B4423\r\n  - Lane ground #7A5230, top edge #8A6038, dashes and front strip #6B4423\r\n  - Neighbour silhouettes #4A3224; chalkboards #3A2A20 with cream lines; stew pots #2A2420 with mustard rim; steam #F4E6C8\r\n  - Distant cordon hint (50% opacity, above lane only): slate #3C4650, gunmetal #2A3138, steel #7C8A96, visor slits #4FB3D9\r\n  - Overlay: #6B4423 at alpha 0.1\r\n- Time of day and lighting: warm late morning, flat cel light, no gradients or blur.\r\n- Mood in one sentence: a busy, hopeful market row where the neighbours watch and the stew keeps steaming behind the Rust line."
+  },
+  {
+   "id": "level-06-iron-line-push#6",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Background layers (world 1920x720)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\r\n|---|---|---|---|---|\r\n| far | sand sky bands, bunting string (symmetric, matches at both edges), faint cordon panels | back | with level | cordon low contrast, outside lane |\r\n| mid | 5 stalls (y 170 to 470) with varied widths and awning colours, neighbours, pots with steam | mid | with level | stalls kept inside x 40 to 1790 so the seam is plain |\r\n| lane | warm brown ground y 460 to 680, faint dashes | front | with level | calm, no high-contrast detail, clear at right edge |\r\n| front | #6B4423 strip y 680 to 720 | front | with level | |"
+  },
+  {
+   "id": "level-06-iron-line-push#7",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- Hanging ladles and pots, chalkboard menus (cream block lines only), tomatoes, greens and squash on counters, steam pots, bunting.\r\n- Neighbour silhouettes: one with a hat (stall 3), one with a green apron (stall 4), others plain.\r\n- Landmarks are sparse: stall pattern varies by width and awning colour, so repeats across 3500 to 4500 px are not obvious.\r\n- The Rust cordon is only a faint hint; the real cordon is game sprites."
+  },
+  {
+   "id": "level-06-iron-line-push#8",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-06-iron-line-push/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-06-iron-line-push.json`.\r\n- `background.svg` (1920x720, tileable, about 6 KB)"
+  },
+  {
+   "id": "level-06-iron-line-push#9",
+   "doc": "level-06-iron-line-push",
+   "file": "design/levels/level-06-iron-line-push.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- Should the cordon hint appear more strongly, or stay this faint?\r\n- Stall 1 and 5 are the same shape as the others; want any unique landmark (e.g. mother's ladle stall for the outro)?"
+  },
+  {
+   "id": "level-07-copper-fang-courts#1",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Level 7: Copper Fang at the Courts (style guide)",
+   "text": "Owner agent: `level-style-07-copper-fang-courts-agent`. Status: **2026-10-21, style set**."
+  },
+  {
+   "id": "level-07-copper-fang-courts#2",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `greenline-courts`\r\n- Theme: The forest-green basketball courts, hoops bent but standing, with a Rust command post set up at centre court and kids' chalk drawings still on the asphalt.\r\n- Palette (GDD family): #2F6B3F, #E3A92B, #A8402E, #6B4423\r\n- Time limit: 150 s. Waves: 3. Enemies named: rust-watcher, rust-breaker, rust-copper-fang.\r\n- Intro: \"Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, dodge, parry. Give the kids their court back.\"\r\n- Outro: \"The shield cracks and the Fang is pushed back off the court. Somewhere a ball bounces, then another. Zed breathes out. Game on.\""
+  },
+  {
+   "id": "level-07-copper-fang-courts#3",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\r\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\r\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\r\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\r\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-07-copper-fang-courts#4",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "\"Centre-court command post. Warm golden hour, bent hoops left and right, a cold slate Rust tent with a cyan screen mid-ground, faint chalk drawings on the asphalt. Most literal to the level theme. Add more detail.\"\nApproved concept: `assets/levels/level-07-copper-fang-courts/concepts/bg-1-centre-court-command-post.svg`. `background.svg` is that concept with seam fixes and no live text."
+  },
+  {
+   "id": "level-07-copper-fang-courts#5",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles (sky, walls, ground, accents, shadow):\r\n  - Sky: #F6E3B0 to #EDC77B to #E5A650 (gradient), sun #FFF6DA with glow #F9DE9A, thin clouds #F9E9BE\r\n  - Far blocks #C79A66 with lit windows #F7DC8F; hills #5C8A5A and #4C7D51; trees #2F6B3F and #3A7B4A, trunks #6B4423\r\n  - Chain-link fence mesh #6E7455, posts #5A5A48, top rail #6B6A55; faded kids' bunting in brick #A8402E, mustard #E3A92B, green #2F6B3F, cream #F4E6C8, soft cyan #4FB3D9\r\n  - Court (lane) gradient #4B8556 to #3E7549 to #2F6B3F; court lines #EBDDB0 at 38% opacity; cracks and patches #244F30; weeds #6FA85F\r\n  - Chalk (about 50% opacity): cream #F4E6C8, yellow #F7E27A, pale blue #9CCBE0, pink #F2B6C0\r\n  - Hoops: poles #4A3626, boards cream #F4E6C8 with brick square, rim #C9602E; stray ball #C9702E\r\n  - Rust command post: slate #3C4650, #46535F, #323B44, gunmetal #2A3138, steel #7C8A96, cyan screen #4FB3D9 with glow, dark interior #1B232B\r\n  - Shadow: #1F4A2B at 16%; front strip #1F4A2B and #6B4423\r\n  - Overlay: #2F6B3F at alpha 0.12\r\n- Time of day and lighting: warm golden hour, low sun on the right, long soft shadows from hoops and tent, the only cold light is the tent screen and floodlights.\r\n- Mood in one sentence: a court that is still the kids' (chalk, bunting, bent hoops) with a cold slate command post parked at its heart, ready to be pushed out."
+  },
+  {
+   "id": "level-07-copper-fang-courts#6",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Background layers (world 1920x720)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\r\n|---|---|---|---|---|\r\n| far | golden sky, sun at x 1480, thin clouds, birds, apartment blocks, two hill bands, tree line | back | with level | all above y 450; clouds kept inside x 100 to 1850 for the seam |\r\n| mid | chain-link fence with sagging bunting, Rust command post (slate tent, cyan screen, banners, dish, floodlights, crates) at centre, bent hoops at x 170 and x 1750 | mid | with level | tent spans x 636 to 1242 and y 250 to 470; hoops mirror each other |\r\n| lane | green court y 460 to 680 with faint lines, cracks, weeds, chalk drawings, long shadows | front | with level | calm, low contrast chalk; right edge clear for the exit gate (only a faint house chalk at x 1480 to 1530) |\r\n| front | dark green and brown strip y 680 to 720, grass tufts | front | with level | |"
+  },
+  {
+   "id": "level-07-copper-fang-courts#7",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- Bent hoops (left and right) with cream boards, chalk scribbles and a stray ball by the left hoop.\r\n- Rust command post: slate angular canopy, cyan map screen, antenna and dish with halo, two diamond-badge banners, floodlight pylons, crates, cables, panel barriers.\r\n- Chalk drawings: hopscotch (dots instead of numbers), smiling sun, three stick kids holding hands, house, heart, ball scribble, star, dotted line.\r\n- Fence bunting, cracks with weeds pushing through.\r\n- The tent is the one big landmark and the court is plain at both edges, so repeats are not obvious. If the owner wants a bigger gap between repeats, the tent could be offset.\r\n- The Rust are not shown as figures; the Copper Fang and troops are game sprites."
+  },
+  {
+   "id": "level-07-copper-fang-courts#8",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-07-copper-fang-courts/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-07-copper-fang-courts.json`.\r\n- `background.svg` (1920x720, tileable, about 17 KB)\r\n- `concepts/bg-1-centre-court-command-post.svg` (approved concept, not loaded by the game)"
+  },
+  {
+   "id": "level-07-copper-fang-courts#9",
+   "doc": "level-07-copper-fang-courts",
+   "file": "design/levels/level-07-copper-fang-courts.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- The command post repeats every 1920 px; is a second hoop or tent variant wanted for tile 2?\r\n- The background uses a few gradients (sky, court, glow), unlike level 6's flat fills. Keep them, or flatten?"
+  },
+  {
+   "id": "level-08-overseer-tower#1",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Level 8: The Overseer's Tower (style guide)",
+   "text": "Owner agent: `level-style-08-overseer-tower-agent`. Status: **2026-10-21, style set**."
+  },
+  {
+   "id": "level-08-overseer-tower#2",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Known from the level data (do not contradict)",
+   "text": "- District: `songwindow-heights`\n- Theme: Songwindow Heights, where a surveillance tower and propaganda screens loom over the windows that used to play music; murals half-painted over in grey.\n- Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F\n- Time limit: 180 s. Waves: 4. Enemies named: rust-iron-line-cordon, rust-watcher, rust-breaker, rust-halden-varr.\n- Intro: \"Varr runs the whole city from this tower, with squads, drones and shields at his call. Fight through, reach the command chamber and break the order. Let the music back in.\"\n- Outro: \"The screens flicker out and Varr gives up the tower. A window opens, then another, and music drifts down over the Heights. The first mural stroke goes back up.\""
+  },
+  {
+   "id": "level-08-overseer-tower#3",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "House rules that apply to every level",
+   "text": "Source: `design/art/style-guide.md`.\n- World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear).\n- Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop.\n- Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded.\n- No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over."
+  },
+  {
+   "id": "level-08-overseer-tower#4",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Owner style direction",
+   "text": "\"Grey tower at dusk. The tower dominates the skyline in cold slate with one cyan eye, while the warm sun sets behind the Heights. The first look at the final fight, with the cold tower set against the warm district.\" Owner wants more detail than earlier levels since it is the final level."
+  },
+  {
+   "id": "level-08-overseer-tower#5",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Palette with hex roles (sky, walls, ground, accents, shadow):\n  - Sky bands, top to bottom: #3B3550, #5E4560, #A2535C, #D9744B, #F0A257, #FBCF86; thin clouds warm #F6B27A and violet #7A5A78 (about 55% opacity, kept inside x 100 to 1850)\n  - Sun #FFF4CC with core halo #FBCF86 and soft radial halos, nine faint rays (7% opacity) fanning toward the tower; centre x 576 (30%), y 392, half hidden by the skyline\n  - The Heights: far brick #B4574A, near darker #7C3D45, sun-facing edge light #FBCF86 at 28%, lit windows #FFD27A, beacon lights #E8604A with soft glow\n  - Tower: slate #4A5560 (lit side), shadow side #39424C, seams and ribs #2F3740, dark window slits #1F262D (a few glowing cyan), orange rim light #D08A5C on the sun-facing edges\n  - Eye: housing #1F262D with #2F3740 frame, eye #6FE3F2, core #E6FFFF, two faint halo rings at 28% and 16%; antenna cyan tip; side struts end in red lights #E8604A\n  - Cyan light cone from the eye to a cyan pool on the street (cone 22% fading to 4%, pool 12 to 16%), thin cyan glow strip along the far edge of the floor\n  - Floor: #2C2838 to #16131C gradient, warm rim line #D08A5C along the far edge, seams and cracks #0F0C14 at 25 to 50%\n  - Barricades slate #4A5560 with mustard #E3A92B and slate stripes; amber street lamps #FFD27A with glow\n  - Overlay: #2C2838 at alpha 0.10 (mutes saturation so fighters pop)\n- Time of day and lighting: dusk. Warm low sun from the left lights the Heights and rims the tower's left edges in orange; the tower's right side is in cold shadow; the only cold light is the eye, its cone and pool.\n- Mood in one sentence: a cold grey tower with one watching eye looms over a warm, still-lit district, the first look at the final fight with the music waiting to come back."
+  },
+  {
+   "id": "level-08-overseer-tower#6",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Background layers (world 1920x720)",
+   "text": "| Layer | Content | Depth | Scroll | Notes |\n|---|---|---|---|---|\n| far | six sky bands, cloud streaks, setting sun with halos and rays, far brick skyline with spires, beacons and amber windows | back | with level | all above y 452; sun gap in the skyline at x 480 to 680; edge buildings equal height at x 0 and x 1920 for the seam |\n| mid | near darker skyline with spires and beacons; the Overseer's Tower at x 1300 (antenna y 12 to base y 458, width 190 at shoulders, 340 at buttress base) with struts and eye at y 190; two amber street lamps at x 330 and x 1640 | mid | with level | tower is the one landmark, one per 1920 px repeat; right edge skyline stays low for the exit gate |\n| lane | plum floor y 460 to 680, perspective seams, cracks, cyan pool at x 1300 y 560, thin cone, sparse embers | front | with level | calm, low contrast; pool and cone are faint so Zed and the grunt stay readable; right edge clear |\n| front | dark strip y 680 to 720 with faint warm rim | front | with level | |"
+  },
+  {
+   "id": "level-08-overseer-tower#7",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Props and landmarks",
+   "text": "- The Overseer's Tower: stepped crown, dark eye housing, ONE cyan eye with two halo rings, antenna with cyan tip, buttressed base, panel seams, vertical ribs, rivet rows, window slits (a few lit cyan), two pairs of side struts ending in red lights.\n- Cyan light cone and street pool, cyan glow strip along the far edge of the floor.\n- The Heights: two skyline layers with spires, red beacons and many amber windows (music is still waiting inside).\n- Barricades at both edges (x 30 and x 1766, sitting behind the lane at y 418 to 464) and two amber street lamps.\n- Embers: warm near the ground, cyan near the tower, none heavy in the lane.\n- The Rust are not shown as figures; Varr and troops are game sprites."
+  },
+  {
+   "id": "level-08-overseer-tower#8",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Asset list",
+   "text": "Path convention: `assets/levels/level-08-overseer-tower/` (SVG or PNG). The arena loads `background.path` from `content/levels/styles/level-08-overseer-tower.json`.\n- `background.svg` (1920x720, tileable, about 52 KB, flat vector with a few soft gradients for glows)"
+  },
+  {
+   "id": "level-08-overseer-tower#9",
+   "doc": "level-08-overseer-tower",
+   "file": "design/levels/level-08-overseer-tower.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- The tower repeats every 1920 px (twice or more across a 3500 to 4500 px level). Is that fine for the final level, or should a later tile drop the tower (needs a second image or a code change)?\n- Ambient animation (pulsing eye, flickering beacons, drifting embers) like levels 5 to 7 needs a new src module; not done because this agent may not edit `src/`.\n- The file is larger than earlier levels (about 52 KB) because of the extra detail; trim windows if that is a concern."
   },
   {
    "id": "canon#1",
@@ -1218,6 +2082,14 @@
    "text": "- Consistency conflict: `options-menu.json` `options-bind-move` has `control: rebind` with hint \"Press Enter, then the key you want.\", but `options-controls.json` (`options-not-rebindable`, `options-bind-jump/crouch` notes) treats Move as read-only. Content owner must pick one; if read-only, Move line 3 should become \"Fixed for now.\"\r\n- Terms \"pad\", \"the wall\", \"the block\" are not GDD terms; confirm as menu vocabulary.\r\n- `options-pickup-pause-collision` is copy for an unresolved default clash (P); drop when resolved."
   },
   {
+   "id": "critic-log#17",
+   "doc": "critic-log",
+   "file": "design/lore/critic-log.md",
+   "authority": "derived",
+   "heading": "Pass: content/ audit (lore, enemies, levels, dialogue)",
+   "text": "| File | Before | After | Rule | Owner |\n|---|---|---|---|---|\n| content/dialogue/extended.json (rust-taunt-shield-sergeant) | \"Rust holds this street.\" | \"Rust hold this street.\" | Rust takes plural verbs | content |\n| content/enemies/rust-roster.json (rust-grunt description) | \"Rust strips recruits ... and gives them serial numbers\" | \"the Rust strip recruits ... and give them serial numbers\" | Rust is a force of people, plural | content |\n| content/lore/rust-expanded.json (rust-origin body) | \"Rust transformed ... tightening its control\" | \"The Rust transformed ... tightening their control\" | Rust takes plural | content |\n| content/levels/rust-gdd-levels.json (level-06 outro) | \"Zed's mother waves a ladle from the stall.\" | \"A neighbour waves a ladle from the stall.\" | GDD does not say where Zed's mother is (stall seized) | content |\nAll four mirrored in content/build/content.json. Proposed, not applied: title-wall-writing \"Sector 7 ->\" (clinical, GDD names no sectors; suggest a district name such as \"Mustard Row ->\"; text comes from the title-screen mock image, owner to decide)."
+  },
+  {
    "id": "menu-copy#1",
    "doc": "menu-copy",
    "file": "design/lore/menu-copy.md",
@@ -1248,6 +2120,14 @@
    "authority": "derived",
    "heading": "Small print (proposed, optional, ui picks any)",
    "text": "| id | text | poster |\r\n|---|---|---|\r\n| menu.small.shop | Corner shop open late. Come by. | benefit, cream |\r\n| menu.small.court | Music at the court Saturday. Bring a friend. | benefit, cream |\r\n| menu.small.garden | Garden crew needs hands. Bring gloves. | benefit, cream |\r\n| menu.small.stall | Hot plates by the steps. Pay what you can. | benefit, cream |\r\n| menu.small.rust | By order of the Rust. Lights out at nine. | Rust notice, brick red (pending open question 1 in canon) |\nRules for small print: monospace, short, no named characters or places (the GDD names none), no gore, nothing that makes the Rust a place."
+  },
+  {
+   "id": "refiner-log#1",
+   "doc": "refiner-log",
+   "file": "design/lore/refiner-log.md",
+   "authority": "derived",
+   "heading": "content/levels refiner pass",
+   "text": "- levels.json level-02..05 gddGap: stale proposed enemy names (Baton Scout, Enforcer, Dart Marksman, Shield Sergeant) replaced with rust-watcher / rust-breaker / rust-copper-fang as used by waves. Rule: gddGap must match waves.\n- rust-gdd-levels.json level-08 gddGap: \"Overseer Halden Varr, The Architect of Rust\" -> \"Commander Halden Varr\" (GDD wording noted, title to confirm). Rule: canon.md name.\n- levels.json level-04/05 gddGap: Holt/Wren count workaround made explicit. Count not changed: validator forbids shrinking wave counts."
   },
   {
    "id": "agent-diagrams#1",
@@ -2218,64 +3098,64 @@
    "text": "- Never merge rounds; run them only when explicitly asked, so the class\n  can discuss between rounds.\n- If a subagent fails or returns something empty, re-run just that agent.\n- Do not read gdd.txt into your own context during Rounds 1-2; the whole\n  point is that only the reviewers read it independently."
   },
   {
-   "id": "readme-2-2#1",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#1",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "GDD Multi-Agent Review Kit (Claude Code)",
    "text": "Six AI reviewers tear apart your game design document in parallel, then\ncross-examine each other. A moderator synthesizes the result. A second\nagent team builds an interactive visualization page. You get ranked\nproblems, unresolved disagreements, and two HTML reports. The whole\nthing runs in one Claude Code terminal.\nReview team: systems designer, narrative critic, player psychologist,\nfeasibility lead, adversarial QA, business analyst.\nVisualization team: data extractor, viz designer, HTML builder, viz\nreviewer."
   },
   {
-   "id": "readme-2-2#2",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#2",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Requirements",
    "text": "[Claude Code](https://docs.claude.com/en/docs/claude-code/overview),\ninstalled and authenticated."
   },
   {
-   "id": "readme-2-2#3",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#3",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Setup",
    "text": "1. Clone or unzip this kit. You get:\n - `.claude/agents/` with ten agent definitions (six reviewers, four\n for the visualization pipeline)\n - `CLAUDE.md` with orchestration rules for all five rounds\n - `reviews/` where output lands\n2. Drop your game design document in as **`gdd.txt`**. Plain text. If\n it's long, trim to the pitch and gameplay overview sections. A few\n thousand words is the sweet spot.\n3. Clear out `reviews/` if it has files from a previous run."
   },
   {
-   "id": "readme-2-2#4",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#4",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Running a review",
    "text": "Open a terminal here, run `claude`, then type these one at a time:\nRun Round 1.\nRun Round 2.\nRun Round 3.\nRun Round 4.\nRun Round 5.\nRead the output between rounds."
   },
   {
-   "id": "readme-2-2#5",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#5",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "What each round does",
    "text": "**Round 1** spawns all six reviewers in parallel. Each gets its own\nisolated context with only the GDD and its role. Findings go to\n`reviews/<agent>.md`.\n**Round 2** re-spawns the reviewers, this time with access to all six\nRound 1 files. They argue with each other: flag conflicts, find issues\nthat only show up when you combine two lenses, revise their own calls.\n**Round 3** turns the main session into a moderator. It reads everything\nand writes `reviews/SYNTHESIS.md` with a ranked top-5, unresolved\ndisagreements, quick wins, and a verdict.\n**Round 4** generates `review-board.html`, a self-contained dark-themed\nreport you can open in any browser. Designed to be readable on a\nprojector from the back of a room."
   },
   {
-   "id": "readme-2-2#6",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#6",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "What each round does",
    "text": "**Round 5** runs the visualization team. A data extractor pulls\nstructured JSON from the reviews. A viz designer picks the right charts\nand interactions. An HTML builder produces `review-viz.html` with\ninteractive filtering, severity breakdowns, a reviewer agreement matrix,\nand drill-downs into each finding's cross-examination trail. A viz\nreviewer audits the result for accuracy. This round runs in phases\nbecause each agent depends on the one before it."
   },
   {
-   "id": "readme-2-2#7",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#7",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Example GDD",
    "text": "Want to test-drive it? The Deus Ex \"Majestic Revolutions\" design doc\nworks well:\nhttps://archive.org/stream/DeusExDesignDoc11081997/Majestic%20Revolutions%20-%20Joe%20Martin_djvu.txt\nSave it as `gdd.txt`, trim to the intro pitch and gameplay overview if\nyou want faster results, and run all five rounds."
   },
   {
-   "id": "readme-2-2#8",
-   "doc": "readme-2-2",
+   "id": "readme-2-2-2#8",
+   "doc": "readme-2-2-2",
    "file": "gdd-review-kit-main/README.md",
    "authority": "reference",
    "heading": "Troubleshooting",

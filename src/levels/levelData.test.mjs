@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { loadLevelContent, buildLevels, levelErrors, legacyLevel, nextLevelIndex, STAND_IN, WAVE_SPACING, worldWidthFor } from './levelData.js';
-import { WAVES } from '../waves/waveData.js';
 
 const fetchJson = async (p) => JSON.parse(await readFile(new URL(`../../${p}`, import.meta.url), 'utf8'));
 
@@ -23,9 +22,32 @@ for (const l of levels) {
   assert.ok(l.exitX > l.waves.at(-1).lockX + 1280 - 200 && l.exitX < l.worldWidth, 'exit is past the last fight');
   assert.equal(l.totalEnemies, l.waves.reduce((n, w) => n + w.count, 0));
 }
-// Level 1 keeps the Tier 0 wave numbers (positions differ: the level scrolls now).
-assert.deepEqual(levels[0].waves.map((w) => [w.count, w.maxAlive, w.spawnIntervalMs, w.startDelayMs]),
-  WAVES.map((w) => [w.count, w.maxAlive, w.spawnIntervalMs, w.startDelayMs]));
+// Every level gets a breather pickup after each wave except the last (pipeline/validate.mjs enforces the same rule).
+for (const l of levels) {
+  l.waves.forEach((w, i) => {
+    if (i < l.waves.length - 1) assert.ok(w.restPickup && w.restPickup.heal > 0, `${l.id} wave ${i + 1} needs a restPickup`);
+    else assert.ok(!w.restPickup, `${l.id}: no pickup after the last wave`);
+    assert.ok(w.attackerCap >= 1, `${l.id} wave ${i + 1} sets attackerCap`);
+  });
+}
+assert.equal(levels[7].waves.at(-1).hpMult, 8, 'the final boss wave is tough');
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, hpMult: 0.5 }] }).length, 'hpMult must be >= 1');
+// Level 1 is paced as an arc: quick warm-up, rising pressure, Breakers from wave 3, a big finale; health pickups in the breathers.
+{
+  const w = levels[0].waves;
+  assert.equal(w.length, 5);
+  assert.ok(w[0].count >= 4 && w[0].startDelayMs <= 800, 'wave 1 starts fast and is not trivial');
+  assert.ok(w.every((x, i) => i === 0 || x.count >= w[i - 1].count), 'enemy counts never shrink');
+  assert.ok(w.every((x, i) => i === 0 || x.spawnIntervalMs <= w[i - 1].spawnIntervalMs), 'spawns only get faster');
+  assert.ok(!w[0].elites && !w[1].elites, 'no Breaker before wave 3');
+  assert.ok(w[2].elites >= 1 && w[4].elites > w[2].elites, 'Breakers arrive in wave 3 and peak in the finale');
+  assert.ok([0, 1, 2, 3].every((i) => w[i].restPickup && w[i].restPickup.heal > 0), 'a breather pickup after waves 1-4');
+  assert.ok(w.slice(1, 4).every((x, i) => x.restPickup.heal > w[i].restPickup.heal), 'heals grow with the danger ahead');
+  assert.ok(!w[4].restPickup, 'no pickup after the finale');
+  assert.ok(w.every((x) => x.startDelayMs <= 1000), 'short waits: the breather is the walk and the pickup');
+}
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 2, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, elites: 3 }] }).length, 'elites cannot exceed count');
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 2, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, restPickup: { heal: 0 } }] }).length, 'pickup must heal');
 assert.ok(levels.some((l) => l.standIns.length), 'expansion enemies are recorded as stand-ins');
 assert.equal(nextLevelIndex(levels, 0), 1);
 assert.equal(nextLevelIndex(levels, levels.length - 1), null);

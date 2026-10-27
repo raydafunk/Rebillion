@@ -84,6 +84,16 @@ const VALIDATORS = {
       if (isNum(w.count) && (w.count < 1 || w.count > 30)) e('count must be 1-30');
       if (isNum(w.maxAlive) && isNum(w.count) && (w.maxAlive < 1 || w.maxAlive > w.count)) e('maxAlive must be 1..count');
       if (isNum(w.spawnIntervalMs) && w.spawnIntervalMs < 300) e('spawnIntervalMs < 300 floods the arena');
+      // Pacing fields (see the level-designer-agent brief): a breather pickup after every wave but the last.
+      if (w.attackerCap !== undefined && !(Number.isInteger(w.attackerCap) && w.attackerCap >= 1)) e('attackerCap must be an integer >= 1');
+      if (w.hpMult !== undefined && !(isNum(w.hpMult) && w.hpMult >= 1 && w.hpMult <= 10)) e('hpMult must be 1-10');
+      if (w.elites !== undefined) {
+        if (w.enemy !== 'grunt') e('elites only apply to grunt waves (other waves use hpMult)');
+        if (!Number.isInteger(w.elites) || w.elites < 0 || (isNum(w.count) && w.elites > w.count)) e('elites must be an integer 0..count');
+      }
+      const last = i === it.waves.length - 1;
+      if (last) { if (w.restPickup !== undefined) e('no restPickup on the last wave (the exit follows it)'); }
+      else if (!w.restPickup || !isNum(w.restPickup.heal) || w.restPickup.heal < 1 || w.restPickup.heal > 100) e('restPickup { heal: 1-100 } required: every wave but the last needs a breather');
     });
     // Difficulty should climb: total enemies per wave must not shrink.
     for (let i = 1; i < it.waves.length; i++) if (it.waves[i].count < it.waves[i - 1].count) err(`waves[${i}] has fewer enemies than waves[${i - 1}]`);

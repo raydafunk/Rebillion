@@ -17,6 +17,10 @@ export class EnemyManager {
       const e = this.enemies.get(p.targetId);
       if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback });
     };
+    this._onParryStun = ({ attackerId, hitstun }) => {
+      const e = this.enemies.get(attackerId);
+      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun, knockback: 0 });
+    };
     this._onDied = (p) => {
       if (!p || p.team !== 'rust') return;
       const e = this.enemies.get(p.id);
@@ -24,21 +28,22 @@ export class EnemyManager {
     };
     this._onRetry = () => this.destroyAll();
     events.on(EVENTS.DAMAGE_APPLIED, this._onDamage);
+    events.on(EVENTS.PARRY_STUN, this._onParryStun);
     events.on(EVENTS.ENTITY_DIED, this._onDied);
     events.on(EVENTS.RETRY, this._onRetry);
   }
 
   /** spawn spec from WaveSpawner: {id, x, y}. */
-  spawn({ id, x, y, skin = null }) {
+  spawn({ id, x, y, skin = null, hpMult = 1 }) {
     if (this.enemies.has(id)) return this.enemies.get(id).grunt;
     const grunt = new RustGrunt({
-      id, x, y, slots: this.slots, data: this.data,
+      id, x, y, slots: this.slots, data: this.data, maxHp: Math.round(this.data.maxHp * hpMult),
       hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
     });
     grunt.skin = skin; // visual variant (e.g. 'rust-breaker'); gameplay is still the grunt's
     this.enemies.set(id, { grunt, deathTimer: 0 });
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
-      id, team: this.data.team, maxHp: this.data.maxHp,
+      id, team: this.data.team, maxHp: grunt.maxHp,
       hurtbox: { ...this.data.hurtbox },
       getState: () => ({ x: grunt.x, y: grunt.y, facing: grunt.facing }),
     });
@@ -75,6 +80,7 @@ export class EnemyManager {
 
   dispose() {
     this.events.off(EVENTS.DAMAGE_APPLIED, this._onDamage);
+    this.events.off(EVENTS.PARRY_STUN, this._onParryStun);
     this.events.off(EVENTS.ENTITY_DIED, this._onDied);
     this.events.off(EVENTS.RETRY, this._onRetry);
     this.destroyAll();

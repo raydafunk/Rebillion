@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-19T13:25:33.872Z",
+  "builtAt": "2026-10-25T19:02:37.457Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
@@ -17,12 +17,12 @@
     {
       "file": "GameDesignDocument/The Rebellion.docx",
       "authority": "primary",
-      "bytes": 65388,
-      "sha1": "42090d0a20a2",
+      "bytes": 65884,
+      "sha1": "d93eb4ec870f",
       "status": "ingested",
       "docId": "the-rebellion",
       "chunks": 20,
-      "chars": 19154,
+      "chars": 19208,
       "warnings": [
         "contains embedded images (pixels not read)"
       ]
@@ -65,12 +65,12 @@
     {
       "file": "README.md",
       "authority": "reference",
-      "bytes": 42,
-      "sha1": "b107da4c15f5",
+      "bytes": 1746,
+      "sha1": "4e1f56ad0aab",
       "status": "ingested",
       "docId": "readme",
-      "chunks": 0,
-      "chars": 0,
+      "chunks": 3,
+      "chars": 1534,
       "warnings": []
     },
     {
@@ -87,12 +87,12 @@
     {
       "file": "blackboard/log.md",
       "authority": "reference",
-      "bytes": 6648,
-      "sha1": "cb7ad28fbe85",
+      "bytes": 7770,
+      "sha1": "3e33e737dcbf",
       "status": "ingested",
       "docId": "log",
       "chunks": 1,
-      "chars": 6629,
+      "chars": 7751,
       "warnings": []
     },
     {
@@ -120,12 +120,12 @@
     {
       "file": "design/art/hit-feedback-spec.md",
       "authority": "derived",
-      "bytes": 4407,
-      "sha1": "b1b4a66c5dc2",
+      "bytes": 22318,
+      "sha1": "6f56f309ffe6",
       "status": "ingested",
       "docId": "hit-feedback-spec",
-      "chunks": 7,
-      "chars": 4194,
+      "chunks": 22,
+      "chars": 20743,
       "warnings": []
     },
     {
@@ -151,6 +151,127 @@
       "warnings": []
     },
     {
+      "file": "design/audio/CREDITS.md",
+      "authority": "derived",
+      "bytes": 403,
+      "sha1": "30675361210c",
+      "status": "ingested",
+      "docId": "credits",
+      "chunks": 3,
+      "chars": 346,
+      "warnings": []
+    },
+    {
+      "file": "design/audio/audio-manifest.md",
+      "authority": "derived",
+      "bytes": 1970,
+      "sha1": "592a879ef0e4",
+      "status": "ingested",
+      "docId": "audio-manifest",
+      "chunks": 5,
+      "chars": 1766,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/README.md",
+      "authority": "derived",
+      "bytes": 2081,
+      "sha1": "cbfdf644c338",
+      "status": "ingested",
+      "docId": "readme-2-2",
+      "chunks": 4,
+      "chars": 1993,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-01-brick-red-alley.md",
+      "authority": "derived",
+      "bytes": 4551,
+      "sha1": "b8999fc61c89",
+      "status": "ingested",
+      "docId": "level-01-brick-red-alley",
+      "chunks": 9,
+      "chars": 4274,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-02-mustard-row.md",
+      "authority": "derived",
+      "bytes": 6040,
+      "sha1": "750b431fe54d",
+      "status": "ingested",
+      "docId": "level-02-mustard-row",
+      "chunks": 11,
+      "chars": 5705,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-03-greenline-courts.md",
+      "authority": "derived",
+      "bytes": 5557,
+      "sha1": "d6acf8896408",
+      "status": "ingested",
+      "docId": "level-03-greenline-courts",
+      "chunks": 10,
+      "chars": 5231,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-04-stewpot-gardens.md",
+      "authority": "derived",
+      "bytes": 6973,
+      "sha1": "91ab946c948f",
+      "status": "ingested",
+      "docId": "level-04-stewpot-gardens",
+      "chunks": 12,
+      "chars": 6607,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-05-songwindow-heights.md",
+      "authority": "derived",
+      "bytes": 5380,
+      "sha1": "59aef8cb5405",
+      "status": "ingested",
+      "docId": "level-05-songwindow-heights",
+      "chunks": 9,
+      "chars": 5026,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-06-iron-line-push.md",
+      "authority": "derived",
+      "bytes": 4462,
+      "sha1": "7bc821a3531a",
+      "status": "ingested",
+      "docId": "level-06-iron-line-push",
+      "chunks": 9,
+      "chars": 4154,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-07-copper-fang-courts.md",
+      "authority": "derived",
+      "bytes": 5369,
+      "sha1": "57e64a6f3f3b",
+      "status": "ingested",
+      "docId": "level-07-copper-fang-courts",
+      "chunks": 9,
+      "chars": 5054,
+      "warnings": []
+    },
+    {
+      "file": "design/levels/level-08-overseer-tower.md",
+      "authority": "derived",
+      "bytes": 6076,
+      "sha1": "29c57429d98a",
+      "status": "ingested",
+      "docId": "level-08-overseer-tower",
+      "chunks": 9,
+      "chars": 5796,
+      "warnings": []
+    },
+    {
       "file": "design/lore/canon.md",
       "authority": "derived",
       "bytes": 8222,
@@ -164,12 +285,12 @@
     {
       "file": "design/lore/critic-log.md",
       "authority": "derived",
-      "bytes": 9367,
-      "sha1": "dd14dbf0282a",
+      "bytes": 10528,
+      "sha1": "afcbb1caa821",
       "status": "ingested",
       "docId": "critic-log",
-      "chunks": 16,
-      "chars": 8688,
+      "chunks": 17,
+      "chars": 9787,
       "warnings": []
     },
     {
@@ -181,6 +302,17 @@
       "docId": "menu-copy",
       "chunks": 4,
       "chars": 1445,
+      "warnings": []
+    },
+    {
+      "file": "design/lore/refiner-log.md",
+      "authority": "derived",
+      "bytes": 569,
+      "sha1": "d11493214003",
+      "status": "ingested",
+      "docId": "refiner-log",
+      "chunks": 1,
+      "chars": 536,
       "warnings": []
     },
     {
@@ -321,7 +453,7 @@
       "bytes": 3580,
       "sha1": "101dd834f10b",
       "status": "ingested",
-      "docId": "readme-2-2",
+      "docId": "readme-2-2-2",
       "chunks": 8,
       "chars": 3360,
       "warnings": []

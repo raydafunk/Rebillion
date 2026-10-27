@@ -22,35 +22,52 @@
     ],
     "timeLimitSec": 150,
     "intro": "The Iron Line is holding the garden gate. Faceless helmets, cheap plating. Zed's neighbours are watching from the stalls. Push the line back, then the Watchers and Breakers behind it.",
-    "outro": "The line gives way and the stew pots are steaming again. Zed's mother waves a ladle from the stall. The garden is the neighbourhood's once more.",
+    "outro": "The line gives way and the stew pots are steaming again. A neighbour waves a ladle from the stall. The garden is the neighbourhood's once more.",
     "waves": [
       {
         "enemy": "rust-iron-line-cordon",
         "count": 3,
         "maxAlive": 3,
         "spawnIntervalMs": 900,
-        "startDelayMs": 800
+        "startDelayMs": 600,
+        "attackerCap": 3,
+        "hpMult": 2,
+        "restPickup": {
+          "heal": 40
+        }
       },
       {
         "enemy": "rust-iron-line-cordon",
         "count": 4,
         "maxAlive": 3,
         "spawnIntervalMs": 800,
-        "startDelayMs": 1500
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 2,
+        "restPickup": {
+          "heal": 45
+        }
       },
       {
         "enemy": "rust-watcher",
         "count": 4,
         "maxAlive": 2,
         "spawnIntervalMs": 1100,
-        "startDelayMs": 1500
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 1.5,
+        "restPickup": {
+          "heal": 50
+        }
       },
       {
         "enemy": "rust-breaker",
         "count": 4,
         "maxAlive": 2,
         "spawnIntervalMs": 1400,
-        "startDelayMs": 1800
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 3
       }
     ]
   },
@@ -84,28 +101,40 @@
         "count": 1,
         "maxAlive": 1,
         "spawnIntervalMs": 900,
-        "startDelayMs": 1000
+        "startDelayMs": 600,
+        "attackerCap": 3,
+        "hpMult": 1.5,
+        "restPickup": {
+          "heal": 45
+        }
       },
       {
         "enemy": "rust-breaker",
         "count": 1,
         "maxAlive": 1,
         "spawnIntervalMs": 900,
-        "startDelayMs": 1500
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 3,
+        "restPickup": {
+          "heal": 50
+        }
       },
       {
         "enemy": "rust-copper-fang",
         "count": 1,
         "maxAlive": 1,
         "spawnIntervalMs": 900,
-        "startDelayMs": 2000
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 4
       }
     ]
   },
   {
     "id": "level-08-overseer-tower",
     "status": "proposed",
-    "gddGap": "The GDD gives Overseer Halden Varr, \"The Architect of Rust\", the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet.",
+    "gddGap": "The GDD gives Overseer Halden Varr, \"The Architect of Rust\" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet.",
     "sources": [
       "the-rebellion#11",
       "the-rebellion#19",
@@ -131,28 +160,45 @@
         "count": 1,
         "maxAlive": 1,
         "spawnIntervalMs": 900,
-        "startDelayMs": 800
+        "startDelayMs": 600,
+        "attackerCap": 3,
+        "hpMult": 2,
+        "restPickup": {
+          "heal": 50
+        }
       },
       {
         "enemy": "rust-watcher",
         "count": 1,
         "maxAlive": 1,
         "spawnIntervalMs": 900,
-        "startDelayMs": 1200
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 1.5,
+        "restPickup": {
+          "heal": 50
+        }
       },
       {
         "enemy": "rust-breaker",
         "count": 1,
         "maxAlive": 1,
         "spawnIntervalMs": 900,
-        "startDelayMs": 1500
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 3,
+        "restPickup": {
+          "heal": 50
+        }
       },
       {
         "enemy": "rust-halden-varr",
         "count": 1,
         "maxAlive": 1,
         "spawnIntervalMs": 900,
-        "startDelayMs": 2000
+        "startDelayMs": 1000,
+        "attackerCap": 3,
+        "hpMult": 8
       }
     ]
   }

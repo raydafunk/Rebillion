@@ -75,7 +75,12 @@ export class WaveSpawner {
     const id = `${this.idPrefix}-${++this.idCounter}`;
     this.alive.add(id);
     this.spawned++;
-    this.spawnFn({ id, enemy: w.enemy, skin: w.sourceEnemy, x: pt.x, y: pt.y, waveIndex: this.waveIndex });
+    // The last `elites` spawns of a wave are Breakers: tougher, so the wave opens on grunts and ends on the heavy.
+    const elite = this.spawned > w.count - (w.elites || 0);
+    this.spawnFn({
+      id, enemy: w.enemy, x: pt.x, y: pt.y, waveIndex: this.waveIndex,
+      skin: elite ? 'rust-breaker' : w.sourceEnemy, hpMult: elite ? (w.eliteHpMult || 3) : (w.hpMult || 1),
+    });
   }
 
   update(dtMs) {

@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-10-19T13:25:33.925Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-10-26T13:35:03.636Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -28,7 +28,7 @@ Each item has these fields:
   "timeLimitSec": "integer 30-600",
   "intro": "string, <= 200 chars, shown on level start",
   "outro": "string, <= 200 chars, shown on level won",
-  "waves": "array of { enemy (enemy id; \"grunt\" is the built-in Tier 0 enemy), count, maxAlive, spawnIntervalMs, startDelayMs } - same fields as src/waves/waveData.js"
+  "waves": "array of { enemy (enemy id; \"grunt\" is the built-in Tier 0 enemy), count, maxAlive, spawnIntervalMs, startDelayMs } - same fields as src/waves/waveData.js. Pacing fields (all optional except restPickup, see rules): restPickup { heal 1-100 } = health item dropped on the walk to the next wave, REQUIRED on every wave except the last; attackerCap integer >= 1 = enemies allowed to attack at once; hpMult 1-10 = health multiplier for every enemy of the wave (tough specials and bosses); elites + eliteHpMult (grunt waves only) = the last N spawns become 3x-health Breakers"
 }
 ```
 Example:
@@ -52,10 +52,22 @@ Example:
   "waves": [
     {
       "enemy": "grunt",
-      "count": 3,
-      "maxAlive": 3,
+      "count": 4,
+      "maxAlive": 2,
       "spawnIntervalMs": 900,
-      "startDelayMs": 800
+      "startDelayMs": 600,
+      "attackerCap": 2,
+      "restPickup": {
+        "heal": 15
+      }
+    },
+    {
+      "enemy": "grunt",
+      "count": 6,
+      "maxAlive": 3,
+      "spawnIntervalMs": 800,
+      "startDelayMs": 1000,
+      "attackerCap": 2
     }
   ],
   "sources": [
@@ -118,7 +130,7 @@ Example:
 - `stewpot-gardens` Stewpot Gardens
 - `songwindow-heights` Songwindow Heights
 - `rust-origin` How the Rust Got Their Foot in the Door
-- `commander-halden-varr` Commander Halden Varr
+- `commander-halden-varr` Overseer Halden Varr, The Architect of Rust
 - `rust-takeover-timeline` Within Months: Curfews, Sealed Districts and Drones
 - `rust-doctrine` Order is Strength. Freedom is Weakness.
 - `rust-serial-numbers` Serial Numbers
@@ -264,13 +276,6 @@ Every wave he clears, every arena he survives, every enemy he knocks down brings
 He fights so kids can play in the basketball courts again. He fights so music can drift from open windows again. He fights so murals can rise again, celebrating real heroes — not corporate tyrants.
 Tone & Personality
 
-### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
-Character – the hero
-Zed — The Boy from BrickRed Alley
-Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out” . His block was known for its mustardyellow storefronts, forestgreen basketball courts, and the brickred alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
-His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
-The Fall of Fallen City
-
 ### [the-rebellion#3] primary - GameDesignDocument/The Rebellion.docx
 [table]
 Agent | Development role | Gameplay Effect
@@ -284,14 +289,14 @@ Health & Hitbox Agent | Owns health, damage values, and hitbox/hurt box data | H
 Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy failsafe | Prevents the off-screen soft lock
 Menu & UI Agent | Builds and owns every screen and on-screen element the player sees outside the arena action |  | The player can start a game, read the state of the fight, and see why they won or lost
 
+### [win#2] derived - design/ux/win.md - Purpose
+Tell the player they won **and why**. The GDD win condition is: "Fight your way to the end of the level while beating Rust enemies" and "Defeat Wave / Clear Arena ... in time". The screen must show that the arena was cleared and that it was done in time, using real numbers from the run.
+
 ### [win#10] derived - design/ux/win.md - Open questions
 - OQ-W1. What exactly is the win condition: clear all waves, or reach an end-of-level point? The GDD says both "Fight your way to the end of the level while beating Rust Enemies" (p.2) and "Defeat Wave / Clear Arena" (p.2, p.4). The core loop (p.3) shows "Wave Cleared -> Level Won, Reach the end". This spec assumes the arena clearing is the win, which makes the "reached exit" reason a Later item.
 - OQ-W2. Are the four stats the right ones? They are the minimum to show "why" and are cheap, but each needs an emitter. If any is unavailable, drop the row rather than showing 0.
 - OQ-W3. Is there a Next Level for Tier 0? (`flow.md` OQ-F2.)
 - OQ-W4. Should a win need a time-remaining bonus or grade to give the player a reason to replay (pillar 2, skill depth)? Deferred, but the data above already supports it.
-
-### [win#2] derived - design/ux/win.md - Purpose
-Tell the player they won **and why**. The GDD win condition is: "Fight your way to the end of the level while beating Rust enemies" and "Defeat Wave / Clear Arena ... in time". The screen must show that the arena was cleared and that it was done in time, using real numbers from the run.
 
 ### [canon#4] derived - design/lore/canon.md - World (from Theme)
 Lived-in, human, culturally rich. Corner shops, murals celebrating local heroes, open windows with music, basketball courts, food stalls, community gardens. Casual fits, expressive colours.
@@ -302,6 +307,10 @@ Lived-in, human, culturally rich. Corner shops, murals celebrating local heroes,
 | bg.arena.01 | assets/backgrounds/arena-01-placeholder.svg | 1920x720 | SVG now, PNG final | 1 | ART |
 1920 wide gives 640px of camera scroll over a 1280 viewport. Play lane y 440 to 680. Final should be split into far and near parallax layers (open question). Theme: corner shop, mural, basketball hoop, food stall, planters.
 
+### [level-01-brick-red-alley#9] derived - design/levels/level-01-brick-red-alley.md - Open questions
+- The theme mentions a mustard corner shop, mural panels and a music window; this direction does not. Add a shop or mural later as a separate sparse landmark?
+- Window-wall may need a tile-seam check in game, since the shadow wedge is tied to edges.
+
 ### [hud#5] derived - design/ux/hud.md - Layout table
 Health bar sits left because the player character commonly starts left and reads left-to-right. Timer sits right so that the two critical survival numbers frame the wave info in the middle. HUD is anchored to the viewport, not the world, and does not move with the camera.
 The HUD must not overlap the action zone. The arena camera and floor (Camera & Bounds Agent) should keep characters below y=120 where possible. Flagged in OQ-H4.
@@ -311,15 +320,20 @@ The HUD must not overlap the action zone. The arena camera and floor (Camera & B
 **Passage:** The subtitle "Fists of the Fallen City" and the tagline "fight back against Corrupt private security force" are the only narrative content. The Pitch adds "urban districts overtaken Rush a corrupt private Security Force." There is no section for story, characters, setting history, or endings. The mechanics list ends at "Defeat Wave / Clear Arena to win the level in time frame."
 **Why it matters:** "Rebellion" implies a movement, stakes, and escalation. The structure (clear arena, beat the timer, repeat) delivers only repetition. Nothing says why the player fights, what winning a level changes, or what the final victory looks like.
 
-### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
-**Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
-**Source:** Pitch: "fight through urban districts overtaken Rush a corrupt private Security Force"; the only level structure given is "Defeat Wave / Clear Arena".
-**Severity:** MINOR
-
 ### [adversarial-qa#1] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 1: Win condition and fail state are contradictory or undefined (BLOCKING)
 **Problem:** The document gives two different win conditions and no lose condition. "Defeat Wave / Clear Arena to win the level in time frame" is ambiguous. It could mean clearing every wave, clearing the arena, or surviving until the timer ends. Nothing says what happens if the timer expires with enemies still alive. Nothing says what happens if the player's health reaches zero. There is no lives, continue or retry rule.
 **Source:** Game Mechanics: "Defeat Wave / Clear Arena to win the level in time frame". Timer Agent: "Keep trick of the time the player has to beat the level". Game Loop Agent: "Control the level and win condition". No section mentions failure, death, game over or a health system.
 **Exploits and edge cases:** Does killing the last enemy at 0:00 count as a win? Can a player stall a wave so it never completes? What if an enemy is knocked off-screen or stuck (side-scroller with a "juggle" system) and cannot be reached? The arena can then never be "cleared" and the level soft-locks until the timer runs out.
+
+### [the-rebellion-frist-draft#1] reference - PDf/The Rebellion -Frist Draft.pdf
+The Rebellion
+Fists of the Fallen City
+A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections
+The Pitch The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-`me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.
+Game Mechanics -what the players does
+� Impactful Combat � punchy hits Players moves into a Areas were light and heavy pick-up objects
+� Combos and Juggle routes � Defensive tools(block dodge, parry) Enemies spawn to fight � Defeat Wave / Clear Arena to win the level in time frame
+AI Architecture Team
 
 ### [adversarial-qa#2] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 2: Enemy spawning has no rules, so the wave system can be broken or become unwinnable (MAJOR)
 **Problem:** "Enemies spawn to fight" is the entire spawn spec. Nothing defines spawn triggers, caps, rates, positions or whether spawns are timer-driven or clear-driven. If spawns are time-driven, a player who is slow (or one who hoards enemies with juggles) faces unbounded enemy accumulation. If spawns are clear-driven, a player can stand at an edge and exploit spawn positions. It is also unclear whether enemies spawn inside the player's attack range or behind the player.
@@ -350,4 +364,4 @@ Agent Development role Gameplay Effect Player Mechanics Movement, jump, The play
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 525 chunks across 51 documents.

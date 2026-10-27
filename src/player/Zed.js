@@ -5,8 +5,8 @@ import { JumpController } from './jump.js';
 import { PlayerStateMachine } from './stateMachine.js';
 import { EVENTS } from '../shared/events.js';
 import { TEAMS, PLAYER_ID, COMBAT_DEFAULTS } from '../shared/combatData.js';
-import { DODGE, GUARD } from './moves.js';
-import { isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY, OWW_SOUND_KEY, OWW_SOUND_VOLUME, DEATH_SOUND_KEY, DEATH_SOUND_VOLUME } from './heavyHit.js';
+import { DODGE, GUARD, PARRY } from './moves.js';
+import { HEAVY_HIT_SOUND_KEY, isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY, OWW_SOUND_KEY, OWW_SOUND_VOLUME, DEATH_SOUND_KEY, DEATH_SOUND_VOLUME } from './heavyHit.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
 const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'KeyW', 'Space',
@@ -138,6 +138,47 @@ export class Zed {
     });
   }
 
+  // Big white screen flash plus an expanding shockwave ring at Zed. Visual only.
+  _parryFlash() {
+    const s = this.scene, x = this.sprite.x, y = this.sprite.y - 20;
+    s.cameras.main.flash(160, 255, 255, 255, true);
+    const ring = s.add.graphics().setDepth(6000).setPosition(x, y);
+    const o = { r: 20, a: 1 };
+    s.tweens.add({
+      targets: o, r: 195, a: 0, duration: 260, ease: 'Cubic.easeOut',
+      onUpdate: () => {
+        ring.clear().lineStyle(8, 0xffffff, o.a).strokeCircle(0, 0, o.r)
+          .lineStyle(3, 0xffe9a8, o.a).strokeCircle(0, 0, o.r * 0.7);
+      },
+      onComplete: () => ring.destroy(),
+    });
+  }
+
+  // No dedicated asset: the heavy punch sample pitched up for the impact, plus a synthesized metallic ping.
+  _parrySound() {
+    const s = this.scene;
+    if (s.cache.audio.exists(HEAVY_HIT_SOUND_KEY)) s.sound.play(HEAVY_HIT_SOUND_KEY, { rate: 1.5, volume: 0.9 });
+    const ctx = s.sound.context; // only the WebAudio manager has one
+    if (!ctx) return;
+    const t = ctx.currentTime, gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.35, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+    gain.connect(ctx.destination);
+    for (const [f, mult] of [[1320, 1], [1980, 0.6], [3170, 0.35]]) { // inharmonic partials read as metal
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine'; o.frequency.value = f; g.gain.value = mult;
+      o.connect(g); g.connect(gain);
+      o.start(t); o.stop(t + 0.5);
+    }
+  }
+
+  _onParrySuccess(attackerId) {
+    this.events.emit(EVENTS.PARRY_STUN, { attackerId, hitstun: PARRY.stunMs });
+    this.machine.parrySucceeded(); // opens the counter-attack cancel
+    this._parryFlash();
+    this._parrySound();
+  }
+
   _handleDamage(d) {
     if (isHeavyHit(this._hitSoundArmed, d, PLAYER_ID)) {
       const key = this._hitSoundArmed;
@@ -146,7 +187,8 @@ export class Zed {
     }
     if (d.targetId !== PLAYER_ID || this.dead) return;
     const guard = this.machine.guardType;
-    if (guard === 'dodge' || guard === 'parry') return;  // negated (hp refund needs combat support)
+    if (guard === 'parry') { this._onParrySuccess(d.attackerId); return; } // punch landed in the parry window: negated + counter window
+    if (guard === 'dodge') return;  // negated (hp refund needs combat support)
     if (guard === 'block') {
       this.sprite.body.setVelocityX(d.knockback * GUARD.blockKnockbackFactor);
       return; // no hitstun while blocking

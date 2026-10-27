@@ -11,6 +11,7 @@ import { ZedVisual, loadZedSprites } from '../player/zedVisual.js';
 import { Arena } from '../arena/Arena.js';
 import { WORLD, LANE, VIEW } from '../arena/arenaData.js';
 import { legacyLevel, nextLevelIndex } from '../levels/levelData.js';
+import { PICKUP, pickupDrop, canCollect } from '../items/pickups.js';
 import showLevelCard from '../ui/LevelCard.js';
 import addAmbient from '../levels/ambient.js';
 import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys.js';
@@ -82,6 +83,7 @@ export default class ArenaScene extends Phaser.Scene {
     }
     this.load.svg(TELEGRAPH_FX_KEY, 'assets/fx/telegraph-icon-placeholder.svg', { width: 48, height: 48 });
     this.load.svg('fx.spark', 'assets/fx/spark-placeholder.svg', { width: 48, height: 48 });
+    this.load.image(PICKUP.spriteKey, PICKUP.spritePath);
   }
 
   create() {
@@ -96,6 +98,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.dying = [];           // views of removed (already dead) enemies still playing their death anim
     this.sprites = new Map();  // enemy id -> { body, shadow, tele }
     this.swings = [];
+    this.pickups = [];         // health items lying in the breather between waves
     this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
     this.hitStopIds = new Set();
 
@@ -142,10 +145,11 @@ export default class ArenaScene extends Phaser.Scene {
     this._listen(EVENTS.WAVE_CLEARED, ({ index }) => {
       this.stats.wavesCleared++;
       if (this.scrolling && index + 1 >= this.level.waves.length) this._showExit();
+      if (this.scrolling) this._dropPickup(index);
     });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); this._destroyDying(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this.swings.length = 0; this._clearHitStop(); this._destroyDying(); this._clearPickups(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
@@ -293,7 +297,7 @@ export default class ArenaScene extends Phaser.Scene {
       this.arena.update(dt, this.hitStopIds);
       this.state.tick(dt);
     }
-    if (this.scrolling && this.roundStarted && !this.ended) this._scrollProgress();
+    if (this.scrolling && this.roundStarted && !this.ended) { this._scrollProgress(); this._collectPickups(); }
     this.arena.applyToCamera(this.cameras.main, this.zed.x);
     this._render(dt, zedFrozen);
   }
@@ -308,6 +312,40 @@ export default class ArenaScene extends Phaser.Scene {
       this.ev.emit(EVENTS.ARENA_CLEARED, {}); // round state turns this into round-won
     }
   }
+
+  // ---- breather: a cleared wave may leave a health item on the walk to the next fight ----
+  _dropPickup(waveIndex) {
+    const waves = this.level.waves;
+    const drop = pickupDrop(waves[waveIndex], waves[waveIndex + 1], GROUND_Y);
+    if (!drop) return;
+    const img = this.add.image(drop.x, drop.y - 150, PICKUP.spriteKey).setOrigin(0.5, 1).setDepth(drop.y);
+    img.setDisplaySize(PICKUP.displaySize, PICKUP.displaySize);
+    const shadow = this.add.ellipse(drop.x, drop.y, 44, 12, 0x000000, 0.25).setDepth(drop.y - 1);
+    this.tweens.add({ targets: img, y: drop.y, duration: 320, ease: 'Bounce.easeOut', onComplete: () => {
+      if (img.active) this.tweens.add({ targets: img, y: drop.y - 10, yoyo: true, repeat: -1, duration: 700, ease: 'Sine.easeInOut' });
+    } });
+    this.pickups.push({ ...drop, img, shadow });
+  }
+
+  _collectPickups() {
+    if (!this.pickups.length) return;
+    const hp = this.resolver.getHealth(PLAYER_ID);
+    if (!hp || hp.hp >= hp.maxHp) return; // full health: pickups wait on the ground
+    const z = this.zed, airborne = Math.max(0, GROUND_Y - (z.y + 36));
+    for (const p of [...this.pickups]) {
+      if (!canCollect(p, z.x, airborne)) continue;
+      const gained = this.resolver.heal(PLAYER_ID, p.heal);
+      if (gained <= 0) continue; // already at full health: leave it for later
+      this.pickups.splice(this.pickups.indexOf(p), 1);
+      const t = this.add.text(p.x, p.y - 110, `+${gained}`, { fontFamily: FONTS.button, fontSize: '36px', color: CSS.mustard, stroke: CSS.darkBrown, strokeThickness: 6 })
+        .setOrigin(0.5).setDepth(6000);
+      this.tweens.add({ targets: t, y: t.y - 60, alpha: 0, duration: 800, onComplete: () => t.destroy() });
+      this._destroyPickup(p);
+    }
+  }
+
+  _destroyPickup(p) { this.tweens.killTweensOf(p.img); p.img.destroy(); p.shadow.destroy(); }
+  _clearPickups() { for (const p of this.pickups.splice(0)) this._destroyPickup(p); }
 
   _buildExit() {
     const x = this.level.exitX, top = LANE.minY - 150, bottom = LANE.maxY + 10;

@@ -54,9 +54,9 @@ export const SCHEMAS = {
       timeLimitSec: 'integer 30-600',
       intro: 'string, <= 200 chars, shown on level start',
       outro: 'string, <= 200 chars, shown on level won',
-      waves: 'array of { enemy (enemy id; "grunt" is the built-in Tier 0 enemy), count, maxAlive, spawnIntervalMs, startDelayMs } - same fields as src/waves/waveData.js',
+      waves: 'array of { enemy (enemy id; "grunt" is the built-in Tier 0 enemy), count, maxAlive, spawnIntervalMs, startDelayMs } - same fields as src/waves/waveData.js. Pacing fields (all optional except restPickup, see rules): restPickup { heal 1-100 } = health item dropped on the walk to the next wave, REQUIRED on every wave except the last; attackerCap integer >= 1 = enemies allowed to attack at once; hpMult 1-10 = health multiplier for every enemy of the wave (tough specials and bosses); elites + eliteHpMult (grunt waves only) = the last N spawns become 3x-health Breakers',
     },
-    example: { id: 'level-01-brick-red-alley', status: 'proposed', gddGap: 'GDD does not define levels beyond "urban districts"', name: 'Brick-Red Alley', order: 1, district: 'brick-red-alley', theme: '...', palette: ['#9C3B2E', '#E1A92B', '#2F5D3A'], timeLimitSec: 120, intro: '...', outro: '...', waves: [{ enemy: 'grunt', count: 3, maxAlive: 3, spawnIntervalMs: 900, startDelayMs: 800 }], sources: ['the-rebellion#3'] },
+    example: { id: 'level-01-brick-red-alley', status: 'proposed', gddGap: 'GDD does not define levels beyond "urban districts"', name: 'Brick-Red Alley', order: 1, district: 'brick-red-alley', theme: '...', palette: ['#9C3B2E', '#E1A92B', '#2F5D3A'], timeLimitSec: 120, intro: '...', outro: '...', waves: [{ enemy: 'grunt', count: 4, maxAlive: 2, spawnIntervalMs: 900, startDelayMs: 600, attackerCap: 2, restPickup: { heal: 15 } }, { enemy: 'grunt', count: 6, maxAlive: 3, spawnIntervalMs: 800, startDelayMs: 1000, attackerCap: 2 }], sources: ['the-rebellion#3'] },
   },
   dialogue: {
     triggers: ['fight_start', 'combo', 'heavy_hit', 'low_hp', 'block', 'wave_clear', 'level_won', 'lose_ko', 'lose_timeout', 'retry', 'pause', 'taunt', 'notice', 'poster', 'menu'],

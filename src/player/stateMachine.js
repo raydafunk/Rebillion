@@ -7,6 +7,7 @@ export class PlayerStateMachine {
     this.parryCfg = parry;
     this.parryFrame = 0;
     this.parryCooldown = 0;
+    this.parrySuccess = false;
     this.dodgeCfg = dodge;
     this.guardCfg = guard;
     this.onActive = onActive || (() => {}); // every active frame: (moveId, move, swingId)
@@ -43,6 +44,9 @@ export class PlayerStateMachine {
     if (this.state === 'block') return this.blockFrames < this.guardCfg.parryFrames ? 'parry' : 'block';
     return null;
   }
+
+  /** A hit was negated by the parry: until recovery ends, an attack press cancels into a counter. */
+  parrySucceeded() { this.parrySuccess = this.state === 'parry'; }
 
   _set(state) {
     if (state === this.state) return;
@@ -115,7 +119,11 @@ export class PlayerStateMachine {
 
     if (this.parryCooldown > 0) this.parryCooldown--;
     if (this.state === 'parry') {
-      if (++this.parryFrame >= this.parryCfg.duration) this._set('idle');
+      if (this.parrySuccess && this.buffered && this.openers[this.buffered]) {
+        // Successful parry: skip the recovery and counter with the buffered attack.
+        this.parrySuccess = false;
+        this._startMove(this.openers[this.buffered]);
+      } else if (++this.parryFrame >= this.parryCfg.duration) { this.parrySuccess = false; this._set('idle'); }
       else return this.state;
     }
 
@@ -130,6 +138,7 @@ export class PlayerStateMachine {
         this._set('dodge');
       } else if (pressed.parry && this.parryCooldown <= 0) {
         this.parryFrame = 0;
+        this.parrySuccess = false;
         this.parryCooldown = this.parryCfg.cooldown;
         this._set('parry');
       } else if (held.block) {

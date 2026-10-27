@@ -17,12 +17,13 @@ export class RustGrunt {
    * @param {object} [o.data] stats table (defaults to GRUNT)
    * @param {object} [o.hooks] { onHitRequest(info), onStateChange(next, prev), onDeath() }
    */
-  constructor({ id, x = 0, y = 0, slots, data = GRUNT, hooks = {} }) {
+  constructor({ id, x = 0, y = 0, slots, data = GRUNT, hooks = {}, maxHp = data.maxHp }) {
     this.id = id; this.x = x; this.y = y;
     this.data = data;
     this.slots = slots || new AttackSlots(ATTACKER_CAP);
     this.hooks = hooks;
-    this.hp = data.maxHp;
+    this.maxHp = maxHp;             // per-enemy: Breakers carry more than the data table's grunt value
+    this.hp = maxHp;
     this.facing = 1;
     this.vx = 0; this.vy = 0;       // locomotion velocity this frame
     this.kx = 0;                    // knockback velocity (decays)

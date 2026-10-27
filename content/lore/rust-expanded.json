@@ -5,7 +5,7 @@
     "kind": "event",
     "name": "How the Rust Got Their Foot in the Door",
     "summary": "The Rust began as a private security contractor hired to steady the Fallen City, then stayed and became a militarized occupation.",
-    "body": "After years of political decay and rising crime, the city hired a private security contractor to calm things down. Once the Rust were inside, they never left. Rust transformed from a protective force into a militarized occupation, tightening its control over every district and crushing resistance with brutal efficiency.\n\nThe name comes from their oxidized metal armour, rough and weathered. The neighbourhood reads it as a reminder of what the Rust have done to the city, and Zed reads it as a challenge.",
+    "body": "After years of political decay and rising crime, the city hired a private security contractor to calm things down. Once the Rust were inside, they never left. The Rust transformed from a protective force into a militarized occupation, tightening their control over every district and crushing resistance with brutal efficiency.\n\nThe name comes from their oxidized metal armour, rough and weathered. The neighbourhood reads it as a reminder of what the Rust have done to the city, and Zed reads it as a challenge.",
     "tags": [
       "rust",
       "origin",
@@ -23,7 +23,7 @@
     "id": "commander-halden-varr",
     "status": "canon",
     "kind": "character",
-    "name": "Commander Halden Varr",
+    "name": "Overseer Halden Varr, The Architect of Rust",
     "summary": "The former military strategist who founded the Rust and believes order only comes through fear.",
     "body": "Varr saw the Fallen City's government collapse and saw his chance. He offered \"protection\" to the officials who were left, then quietly swapped them for Rust loyalists. From that day the Rust were the law.\n\nHe is the face of the Rust's cold, official voice. The Copper Fangs are his personal favourites, and the Overseers, his inner circle, run the districts in his name. He is an Overseer himself, \"The Architect of Rust\", and the main boss.",
     "tags": [
@@ -178,7 +178,7 @@
     "kind": "faction",
     "name": "Rust Specialists: The Copper Fangs",
     "summary": "Elite Rust soldiers with electrified gauntlets, grappling hooks and tactical shields, and Varr's personal favourites.",
-    "body": "The Copper Fangs are picked from the most loyal Rust members and put through psychological conditioning to remove fear and hesitation. Their kit is the best the Rust have: electrified gauntlets, grappling hooks and tactical shields.\n\nThey are Commander Varr's favourites and are sent on high-priority target elimination, which makes them mini-boss material in the arena.",
+    "body": "The Copper Fangs are picked from the most loyal Rust members and put through psychological conditioning to remove fear and hesitation. Their kit is the best the Rust have: electrified gauntlets, grappling hooks and tactical shields.\n\nThey are Overseer Varr's favourites and are sent on high-priority target elimination, which makes them mini-boss material in the arena.",
     "tags": [
       "rust",
       "enemy",
@@ -230,7 +230,7 @@
     "kind": "event",
     "name": "The Rust Ladder",
     "summary": "A way to read the five Rust units as a ladder: Iron Line up front, Watchers and Breakers in support, Fangs and Overseers at the top.",
-    "body": "Each district tends to open with the Iron Line, add Watchers on the rooftops and Breakers in the street, and finish with a Copper Fang or the district Overseer. The tougher the unit, the closer it sits to Commander Varr.\n\nThe neighbourhood keeps score in its own way: every rung Zed knocks back is a corner, a court or a window that gets its music back.",
+    "body": "Each district tends to open with the Iron Line, add Watchers on the rooftops and Breakers in the street, and finish with a Copper Fang or the district Overseer. The tougher the unit, the closer it sits to Overseer Varr.\n\nThe neighbourhood keeps score in its own way: every rung Zed knocks back is a corner, a court or a window that gets its music back.",
     "tags": [
       "rust",
       "units",

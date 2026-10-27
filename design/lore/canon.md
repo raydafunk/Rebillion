@@ -11,7 +11,7 @@ Source of truth: `GameDesignDocument/The Rebellion.docx` (Pitch, Theme). Menu mo
 | Hero | Zed | Player character. |
 | Antagonist | the Rust | Corrupt private security force. Always "Rust", never "Rush". |
 | Rust members | Rust enemies / Rust grunt | "Rust grunt" is the one Tier 0 enemy type (asset-manifest). GDD unit names: Rust Grunts "The Iron Line", Rust Bruisers "The Breakers", Rust Rangers "The Watchers", Rust Specialists "The Copper Fangs", Rust Overseers "The Architects of Control". |
-| Rust leader | Commander Halden Varr | Name from the Rust section of the GDD; confirm with the owner (see Open lore questions). |
+| Rust leader / main boss | Overseer Halden Varr, "The Architect of Rust" | Owner decision: use the GDD's Main Boss wording. The GDD's Rust history section still says "Commander"; the owner chose "Overseer". |
 | Zed's side | the neighbourhood, the community, local heroes | Wording from Theme. |
 
 ## Factions
@@ -94,7 +94,7 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 1. Does the Rust impose curfews or issue numbered notices? Menu poster "Rust Notice 114 / CURFEW" implies it. Treated as flavour, not canon, until the owner confirms.
 2. Is "Rust" used as a plural noun ("the Rust are") or a collective singular ("the Rust is")? Sheet assumes plural.
 3. Who is Zed (age, role, backstory)? Is there a named "local hero" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)
-4. Names of districts and arena locations. The Rust leader is Commander Halden Varr in the GDD Rust section; the "Architect" title and unit nicknames are GDD wording to confirm.
+4. Names of districts and arena locations. The Rust leader is Overseer Halden Varr, "The Architect of Rust" (owner decision: GDD Main Boss wording); unit nicknames are GDD wording to confirm.
 5. What does "get it back" mean in story terms (who held the city before)?
 6. Is "Rust enemy" or "Rust grunt" the player-facing term for the enemy?
 7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)

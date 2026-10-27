@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-10-19T13:25:33.914Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-10-25T19:02:37.512Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -192,7 +192,7 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
 ```
 
-## Retrieved GDD passages (34)
+## Retrieved GDD passages (35)
 ### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
 Character – the hero
 Zed — The Boy from BrickRed Alley
@@ -643,27 +643,23 @@ Varr overloads his armor.
 Massive AoE explosion
 Arena walls electrify
 Final phase becomes relentless
+Level style and Design
+Level-style-01-brick-red-alley
+
+### [level-01-brick-red-alley#1] derived - design/levels/level-01-brick-red-alley.md - Level 1: Brick-Red Alley (style guide)
+Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style set**.
+
+### [level-01-brick-red-alley#2] derived - design/levels/level-01-brick-red-alley.md - Known from the level data (do not contradict)
+- District: `brick-red-alley`
+- Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music.
+- Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F
+- Time limit: 120 s. Waves: 3. Enemies named: grunt.
+- Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe."
+- Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
 
 ### [canon#8] derived - design/lore/canon.md - Zed — The Boy from Brick‑Red Alley
 Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out”. His block was known for its mustard‑yellow storefronts, forest‑green basketball courts, and the brick‑red alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
 His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
-
-### [canon#10] derived - design/lore/canon.md - Why Zed Fights
-Zed isn’t a soldier. He’s a kid from a lived‑in neighbourhood who learned to fight the same way he learned to dance — through rhythm, instinct, and community.
-His style reflects the game’s pillars:
-- Impactful, fast-paced combat — Zed’s punches feel like brick‑red alley brawls, scrappy but sharp.
-- Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.
-- Wave-clearing under pressure — fighting groups is nothing new; he grew up protecting younger kids from trouble.
-He fights not for glory, but to reclaim the places that shaped him — the food stalls, the murals, the music drifting from open windows. The city isn’t just his home; it’s his identity.
-
-### [canon#13] derived - design/lore/canon.md - Open lore questions (GDD silent)
-1. Does the Rust impose curfews or issue numbered notices? Menu poster "Rust Notice 114 / CURFEW" implies it. Treated as flavour, not canon, until the owner confirms.
-2. Is "Rust" used as a plural noun ("the Rust are") or a collective singular ("the Rust is")? Sheet assumes plural.
-3. Who is Zed (age, role, backstory)? Is there a named "local hero" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)
-4. Names of districts and arena locations. The Rust leader is Commander Halden Varr in the GDD Rust section; the "Architect" title and unit nicknames are GDD wording to confirm.
-5. What does "get it back" mean in story terms (who held the city before)?
-6. Is "Rust enemy" or "Rust grunt" the player-facing term for the enemy?
-7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
 
 ### [canon#9] derived - design/lore/canon.md - The Fall of Fallen City
 Everything changed when RUST, the private security force, swept through the districts. The document describes the city as “overtaken Rust a corrupt private Security Force” — and Zed saw it firsthand.
@@ -701,13 +697,6 @@ Tell the player they lost and **exactly why**, then get them back into the fight
 - "Local Heroes Benefit: Keep the Lights On": cream, forest-green text. Ties back to the original Local Heroes Mural idea.
 - Rust Notice 114, "CURFEW" struck through: brick red. It shows the Rust security force's control and the community defacing it.
 
-### [critic-log#5] derived - design/lore/critic-log.md - Audited and fine
-- Title "THE REBELLION" and subtitle "Fists of the Fallen City": match GDD title; "Fallen City" correct.
-- Option labels Fight, Controls, Options, Quit: short, active, fit the voice. FIGHT suits the "Fists" title. Note that Options has no spec and Quit is not meaningful in a browser (open question 7 in canon).
-- Poster "Local Heroes Benefit: Keep the Lights On": hopeful, community voice, matches the GDD's murals of local heroes. No change.
-- Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
-- Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
-
 ### [menu-copy#3] derived - design/lore/menu-copy.md - Background posters
 | id | text |
 |---|---|
@@ -717,10 +706,26 @@ Tell the player they lost and **exactly why**, then get them back into the fight
 | menu.poster.rust.struck | CURFEW (struck through, hand-inked cross-out) |
 The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Lights On"); splitting at the colon into title and line is allowed. If kept on one line, use the colon form.
 
+### [critic-log#5] derived - design/lore/critic-log.md - Audited and fine
+- Title "THE REBELLION" and subtitle "Fists of the Fallen City": match GDD title; "Fallen City" correct.
+- Option labels Fight, Controls, Options, Quit: short, active, fit the voice. FIGHT suits the "Fists" title. Note that Options has no spec and Quit is not meaningful in a browser (open question 7 in canon).
+- Poster "Local Heroes Benefit: Keep the Lights On": hopeful, community voice, matches the GDD's murals of local heroes. No change.
+- Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
+- Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
+
+### [canon#13] derived - design/lore/canon.md - Open lore questions (GDD silent)
+1. Does the Rust impose curfews or issue numbered notices? Menu poster "Rust Notice 114 / CURFEW" implies it. Treated as flavour, not canon, until the owner confirms.
+2. Is "Rust" used as a plural noun ("the Rust are") or a collective singular ("the Rust is")? Sheet assumes plural.
+3. Who is Zed (age, role, backstory)? Is there a named "local hero" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)
+4. Names of districts and arena locations. The Rust leader is Commander Halden Varr in the GDD Rust section; the "Architect" title and unit nicknames are GDD wording to confirm.
+5. What does "get it back" mean in story terms (who held the city before)?
+6. Is "Rust enemy" or "Rust grunt" the player-facing term for the enemy?
+7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
+
 ### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
 **Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
 **Source:** Pitch: "fight through urban districts overtaken Rush a corrupt private Security Force"; the only level structure given is "Defeat Wave / Clear Arena".
 **Severity:** MINOR
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 415 chunks across 38 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 525 chunks across 51 documents.

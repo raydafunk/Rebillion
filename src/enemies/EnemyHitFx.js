@@ -75,7 +75,7 @@ export class EnemyHitFx {
     const cls = hitClass(d.amount, killed, this.heavyAt, this.finisherAt);
     const reduce = this.reduceFlash();
     let bar = this.bars.get(d.targetId);
-    if (!bar) { bar = { s: createBarState(this.maxHp), topY: g.y - 100 }; this.bars.set(d.targetId, bar); }
+    if (!bar) { bar = { s: createBarState(g.maxHp ?? this.maxHp), topY: g.y - 100 }; this.bars.set(d.targetId, bar); }
     barOnDamage(bar.s, d.hpAfter, { killed, reduceFlash: reduce });
 
     const flashMs = ENEMY_FLASH_MS[cls === 'ko' ? 'heavy' : cls] ?? ENEMY_FLASH_MS.light;

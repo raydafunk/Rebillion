@@ -3,6 +3,8 @@
 export const EVENTS = Object.freeze({
   HIT_REQUEST: 'hit-request',
   DAMAGE_APPLIED: 'damage-applied',
+  // Zed parried this attacker: it is stunned, no knockback. { attackerId, hitstun(ms) }
+  PARRY_STUN: 'parry-stun',
   ENTITY_DIED: 'entity-died',
   PLAYER_HEALTH_CHANGED: 'player-health-changed',
   WAVE_STARTED: 'wave-started',
