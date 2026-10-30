@@ -26,7 +26,7 @@ const ITEMS = [
 // Key table from GameDesignDocument/Rebellion menu desgin.docx ("Controls Menu elements"): [action, primary, alternate].
 const BINDINGS = [
   ['Move', 'A / D', 'Left / Right'], ['Jump', 'W / Space', 'Up'], ['Crouch', 'S', 'Down'],
-  ['Light attack', 'J', 'Z'], ['Heavy attack', 'K', 'X'], ['Dodge', 'L', 'C'],
+  ['Light attack', 'J', 'Z'], ['Heavy attack', 'K', 'X'], ['Rage special', 'L', '-'],
   ['Pick up', 'P', 'N'], ['Parry', 'T', 'M'], ['Block', 'I', 'V'],
 ];
 

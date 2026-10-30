@@ -30,28 +30,32 @@ export default class ResultScene extends Phaser.Scene {
         : `You ran out of health on wave ${d.wavesCleared + 1} of ${d.totalWaves}. Get back up.`;
       T(640, 130, head, 76, FONTS.button, win ? CSS.mustard : CSS.cream);
       T(640, 200, line, 26, FONTS.body);
+      T(640, 262, `SCORE  ${(d.score || 0).toLocaleString('en-US')}`, 52, FONTS.button, CSS.mustard);
       this.add.text(640, 60, `LEVEL ${d.levelNumber} / ${d.totalLevels}: ${(d.levelName || '').toUpperCase()}`, { fontFamily: FONTS.body, fontSize: '22px', color: CSS.cream }).setOrigin(0.5);
       const rows = [
         ['WAVES CLEARED', `${d.wavesCleared} / ${d.totalWaves}`],
         ['ENEMIES DEFEATED', `${d.defeated}`],
+        ['FLAWLESS WAVES', `${d.flawlessWaves || 0}`],
+        ['PARRIES (BEST STREAK)', `${d.parries || 0} (${d.bestStreak || 0})`],
         ['TIME REMAINING', mmss(d.secondsLeft)],
         ['HEALTH REMAINING', `${Math.ceil(d.hp)} / 100`],
       ];
-      this.add.rectangle(640, 380, 720, 240, COLORS.darkBrown, 0.85).setStrokeStyle(4, COLORS.mustard);
+      this.add.rectangle(640, 440, 720, 270, COLORS.darkBrown, 0.85).setStrokeStyle(4, COLORS.mustard);
       rows.forEach(([k, v], i) => {
-        this.add.text(300, 285 + i * 60, k, { fontFamily: FONTS.body, fontSize: '26px', color: CSS.cream }).setOrigin(0, 0.5);
-        this.add.text(980, 285 + i * 60, v, { fontFamily: FONTS.button, fontSize: '32px', color: CSS.mustard }).setOrigin(1, 0.5);
+        this.add.text(300, 330 + i * 44, k, { fontFamily: FONTS.body, fontSize: '24px', color: CSS.cream }).setOrigin(0, 0.5);
+        this.add.text(980, 330 + i * 44, v, { fontFamily: FONTS.button, fontSize: '28px', color: CSS.mustard }).setOrigin(1, 0.5);
       });
-      if (!win) T(640, 530, d.reason === 'timeout' ? 'Press the attack, clear faster.' : 'Try blocking or dodging when the wave swarms.', 22, FONTS.body, CSS.sand);
+      if (!win) T(640, 596, d.reason === 'timeout' ? 'Press the attack, clear faster.' : 'Try blocking or parrying when the wave swarms.', 22, FONTS.body, CSS.sand);
       const first = win ? (last ? ['PLAY AGAIN', () => this._goToLevel(0)] : ['NEXT LEVEL', () => this._goToLevel(d.nextLevelIndex)])
         : ['TRY AGAIN', () => this._restart()];
       items = [first, ['MAIN MENU', () => this._menu()]];
     }
 
+    if (mode === 'win') this.playOutro();
     this.mode = mode;
     this.confirmUi = [];
     this.setButtons(items, mode === 'pause'
-      ? { y0: 300, dy: 76, horiz: false } : { y0: 610, dy: 0, horiz: true });
+      ? { y0: 300, dy: 76, horiz: false } : { y0: 642, dy: 0, horiz: true });
     this.add.text(640, 690, 'Enter / A select   |   Up / Down move' + (mode === 'pause' ? '   |   Esc / B resume' : ''),
       { fontFamily: FONTS.body, fontSize: '18px', color: CSS.cream }).setOrigin(0.5);
 
@@ -64,6 +68,19 @@ export default class ResultScene extends Phaser.Scene {
     if (mode === 'pause') pk(['ESC', 'P', 'BACKSPACE'], () => this._back());
     this.events.once('shutdown', () => kb.removeAllListeners());
     this.padPrev = {}; this.padCool = 0;
+  }
+
+  // Level-clear sting, then the results beat loops under the stats until the player moves on.
+  playOutro() {
+    const vol = (this.registry.get('options')?.musicVolume ?? 70) / 100;
+    const has = (k) => this.cache.audio.exists(k);
+    const loop = () => { if (!has('result.music') || !this.scene.isActive()) return; this.beat = this.sound.add('result.music', { loop: true, volume: vol * 0.8 }); this.beat.play(); };
+    if (has('result.sting')) {
+      this.sting = this.sound.add('result.sting', { volume: vol });
+      this.sting.once('complete', loop);
+      this.sting.play();
+    } else loop();
+    this.events.once('shutdown', () => { [this.sting, this.beat].forEach((s) => { if (s) { s.stop(); s.destroy(); } }); this.sting = this.beat = null; });
   }
 
   // Builds (or rebuilds) the button row/column. Used for the main set and the pause confirm sub-state.

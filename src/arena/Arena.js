@@ -19,13 +19,13 @@ import { ATTACKER_CAP } from '../enemies/gruntData.js';
 import { WORLD } from './arenaData.js';
 
 export class Arena {
-  constructor({ events, getTarget, getScrollX = () => 0, waves = WAVES, world = WORLD, hold = false, onFailsafe = null }) {
+  constructor({ events, getTarget, getScrollX = () => 0, getPlayer = null, waves = WAVES, world = WORLD, hold = false, onFailsafe = null }) {
     this.events = events; this.getTarget = getTarget;
     this.scrollX = 0;
     this.getScrollX = getScrollX;
     this.enemies = new EnemyManager({ events });
     this.bounds = new ArenaBounds({ events, waves, world });
-    this.spawner = new WaveSpawner({ events, waves, holdBetweenWaves: hold, spawn: (spec) => this.enemies.spawn(spec) });
+    this.spawner = new WaveSpawner({ events, waves, holdBetweenWaves: hold, getPlayer, spawn: (spec) => this.enemies.spawn(spec) });
     // A wave may narrow the attacker cap (1 = one enemy swings at a time: the teaching wave).
     this._onWave = ({ index }) => { this.enemies.slots.cap = waves[index]?.attackerCap ?? ATTACKER_CAP; };
     events.on(EVENTS.WAVE_STARTED, this._onWave);

@@ -7,6 +7,7 @@ const SWING = 'zed-swing-whoosh'; // swing whoosh key (see heavyHit.js)
 
 // damage/knockback/hitstun are inputs for the hit-request (combat resolves them).
 import { PLAYER_MOVE_COMBAT as C } from '../shared/combatData.js';
+import { SPECIAL_MOVE } from './rageConfig.js';
 
 // damage/knockback/hitstun/hitbox come from combatData.js (single source).
 export const MOVES = {
@@ -37,22 +38,28 @@ export const MOVES = {
     ...C.heavy1, hitbox: { ...C.heavy1.hitbox },
     chain: {},
   },
+  // Rage special: only reachable while Rage is ACTIVE (RAGE_OPENERS). Tuning in rageConfig.js.
+  special: { ...SPECIAL_MOVE, swingSound: SWING, hitbox: { ...SPECIAL_MOVE.hitbox }, chain: {} },
 };
 
 // Which move each button starts from neutral.
 export const OPENERS = { light: 'light1', heavy: 'heavy1' };
+
+// During Rage every attack button (and L) starts the single Special instead of the normal set.
+export const RAGE_OPENERS = { light: 'special', heavy: 'special' };
 
 export const PLAYER_TIMING = {
   attackBufferFrames: 8,   // how long a pressed attack waits for a cancel window
   blockStartupFrames: 0,   // block is instant (responsiveness)
 };
 
-// Defence. Dodge: i-frames then recovery. Block: first parryFrames of a fresh block is a parry.
-export const DODGE = { duration: 36, iframes: 20, cooldown: 30, speed: 0 }; // sway dodge: in place, slower
+// Defence. Block: first parryFrames of a fresh block is a parry.
 // Parry (T or M): dedicated reaction clip. First `window` frames negate hits (guardType 'parry'), rest is recovery.
 // A hit landing inside `window` is negated, stuns the attacker for `stunMs` (no knockback) and opens a
 // counter-attack cancel until `duration` ends.
 export const PARRY = { duration: 27, window: 14, cooldown: 24, stunMs: 900 };
+// Item pick-up (crouch and grab): movement/attacks locked for `duration` frames (60 fps steps), 5-frame clip at 12 fps ~ 25.
+export const PICKUP_POSE = { duration: 25 };
 export const GUARD = {
   parryFrames: 8,
   blockKnockbackFactor: 0.25, // knockback kept while blocking

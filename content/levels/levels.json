@@ -7,7 +7,8 @@
       "the-rebellion#1",
       "the-rebellion#2",
       "the-rebellion#7",
-      "the-rebellion#3"
+      "the-rebellion#3",
+      "the-story-campaign#1"
     ],
     "name": "Brick-Red Alley",
     "order": 1,
@@ -29,6 +30,7 @@
         "maxAlive": 2,
         "spawnIntervalMs": 900,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 2,
         "restPickup": {
           "heal": 15
@@ -40,6 +42,7 @@
         "maxAlive": 3,
         "spawnIntervalMs": 800,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 2,
         "restPickup": {
           "heal": 25
@@ -51,6 +54,7 @@
         "maxAlive": 4,
         "spawnIntervalMs": 700,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 2,
         "elites": 1,
         "eliteHpMult": 3,
@@ -64,6 +68,7 @@
         "maxAlive": 4,
         "spawnIntervalMs": 650,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 3,
         "elites": 2,
         "eliteHpMult": 3,
@@ -77,11 +82,23 @@
         "maxAlive": 5,
         "spawnIntervalMs": 600,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "elites": 3,
         "eliteHpMult": 3
       }
-    ]
+    ],
+    "miniBoss": "rust-brick-dugan",
+    "mainBoss": null,
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Arena flavour: tutorial alley; no main boss per the-story-campaign#1. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level.",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": null
+    }
   },
   {
     "id": "level-02-mustard-row",
@@ -91,7 +108,8 @@
       "the-rebellion#6",
       "the-rebellion#7",
       "the-rebellion#3",
-      "systems-designer#8"
+      "systems-designer#8",
+      "the-story-campaign#1"
     ],
     "name": "Mustard Row",
     "order": 2,
@@ -113,6 +131,7 @@
         "maxAlive": 3,
         "spawnIntervalMs": 850,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 2,
         "restPickup": {
           "heal": 20
@@ -124,6 +143,7 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1100,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 2,
         "hpMult": 1.5,
         "restPickup": {
@@ -136,6 +156,7 @@
         "maxAlive": 4,
         "spawnIntervalMs": 700,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 2,
         "restPickup": {
           "heal": 30
@@ -147,10 +168,22 @@
         "maxAlive": 3,
         "spawnIntervalMs": 800,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 3,
         "hpMult": 1.5
       }
-    ]
+    ],
+    "miniBoss": "rust-railgun-royce",
+    "mainBoss": null,
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). No main boss per the-story-campaign#1. Old title \"Transit District\" is flavour only. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level.",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": null
+    }
   },
   {
     "id": "level-03-greenline-courts",
@@ -160,7 +193,8 @@
       "the-rebellion#6",
       "the-rebellion#9",
       "the-rebellion#3",
-      "systems-designer#8"
+      "systems-designer#8",
+      "the-story-campaign#1"
     ],
     "name": "Greenline Courts",
     "order": 3,
@@ -183,6 +217,7 @@
         "maxAlive": 4,
         "spawnIntervalMs": 750,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 2,
         "restPickup": {
           "heal": 25
@@ -194,6 +229,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 1500,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 2,
         "hpMult": 3,
         "restPickup": {
@@ -206,6 +242,7 @@
         "maxAlive": 3,
         "spawnIntervalMs": 700,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 2,
         "hpMult": 1.5,
         "restPickup": {
@@ -218,6 +255,7 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1300,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 2,
         "hpMult": 3,
         "restPickup": {
@@ -230,9 +268,25 @@
         "maxAlive": 5,
         "spawnIntervalMs": 500,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3
       }
-    ]
+    ],
+    "miniBoss": "rust-crusher-kane",
+    "mainBoss": "rust-overseer-calder",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Calder arena flavour: factory floor (old \"Industrial Zone\" title, flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": {
+        "style": "separate-phase",
+        "after": "waves",
+        "phases": "per GDD"
+      }
+    }
   },
   {
     "id": "level-04-stewpot-gardens",
@@ -242,7 +296,8 @@
       "the-rebellion#6",
       "the-rebellion#7",
       "the-rebellion#9",
-      "the-rebellion#3"
+      "the-rebellion#3",
+      "the-story-campaign#1"
     ],
     "name": "Stewpot Gardens",
     "order": 4,
@@ -265,6 +320,7 @@
         "maxAlive": 4,
         "spawnIntervalMs": 700,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 3,
         "restPickup": {
           "heal": 30
@@ -276,6 +332,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 1500,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 5,
         "restPickup": {
@@ -288,6 +345,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 1600,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -300,6 +358,7 @@
         "maxAlive": 3,
         "spawnIntervalMs": 650,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -312,6 +371,7 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1200,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -324,10 +384,26 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1000,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "hpMult": 3
       }
-    ]
+    ],
+    "miniBoss": "rust-glitch",
+    "mainBoss": "rust-overseer-voss",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Voss arena flavour: control hub with screens and drones (old \"Neon Market\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": {
+        "style": "separate-phase",
+        "after": "waves",
+        "phases": "per GDD"
+      }
+    }
   },
   {
     "id": "level-05-songwindow-heights",
@@ -337,7 +413,8 @@
       "the-rebellion#6",
       "the-rebellion#9",
       "the-rebellion#3",
-      "narrative-critic#1"
+      "narrative-critic#1",
+      "the-story-campaign#1"
     ],
     "name": "Songwindow Heights",
     "order": 5,
@@ -360,6 +437,7 @@
         "maxAlive": 5,
         "spawnIntervalMs": 600,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 3,
         "restPickup": {
           "heal": 35
@@ -371,6 +449,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 1800,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 4,
         "restPickup": {
@@ -383,6 +462,7 @@
         "maxAlive": 4,
         "spawnIntervalMs": 600,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -395,6 +475,7 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1000,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -407,6 +488,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 1200,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 5,
         "restPickup": {
@@ -419,6 +501,7 @@
         "maxAlive": 3,
         "spawnIntervalMs": 900,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "hpMult": 3,
         "restPickup": {
@@ -431,9 +514,25 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1400,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 3,
         "hpMult": 4
       }
-    ]
+    ],
+    "miniBoss": "rust-raptor",
+    "mainBoss": "rust-overseer-wren",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Wren arena flavour: rooftops (old \"Skyline District\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": {
+        "style": "separate-phase",
+        "after": "waves",
+        "phases": "per GDD"
+      }
+    }
   }
 ]

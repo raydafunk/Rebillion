@@ -26,7 +26,7 @@ Status: proposed starting values for tuning. Assumes 60 FPS (1 frame = ~16.7ms).
 
 ## 3. Enemy telegraphs (readable at a glance)
 
-Every Rust attack must be dodgeable by a player who reacts to the cue.
+Every Rust attack must be avoidable, blockable or parryable by a player who reacts to the cue.
 
 | Attack | Windup | Cues |
 |---|---|---|
@@ -222,3 +222,62 @@ Per-class values are keyed `light, heavy, finisher, ko`. Ranges are [min, max]. 
 - Enemy Critical #C9452F is a new colour; confirm the owner is fine adding it to the style-guide palette (kept distinct from Telegraph Red #FF3B30).
 - Final grunt sprite height is not fixed; the 12 px bar offset assumes the 128 px frame and a bar anchored to the sprite body top.
 - Idle-fade (never fully hidden once damaged) is a readability choice; revert to hide-after-3s if it clutters.
+
+## 8. Rage system feedback (source: Zed Rage System Spec section 8; Level 2 onward)
+
+Status: SPEC ONLY, starting values for playtest. Look and palette: style-guide.md section 10; assets: asset-manifest.md "Rage system". Rage effects must never outrank enemy telegraphs (section 3) or the white hit flash (section 4).
+
+### 8.1 Meter pulse
+
+| State | Pulse | Detail |
+|---|---|---|
+| Building | 0.8 Hz + 2.2 Hz x (fill / 100) | fill brightness +-12 percent; small bubbles rise in the fill, spawn rate scales the same way |
+| READY | 2.5 Hz, capped | flare loop (6 frames, 12 fps), bar breathes +-20 percent; 4 s strip shrinks, last 1 s the strip blinks at 2.5 Hz |
+| Active | 2 Hz, 4 Hz in last 3 s | 9 s linear drain with numeric seconds beside the fist icon |
+
+No pulse exceeds 4 Hz and none extends beyond the meter area.
+
+### 8.2 Per-blow gain
+
+- Blow lands (+3): gain pop (4 frames) at the head of the fill, "+3" in Rage Gold floats up 10 px, 200 ms.
+- Clean-streak blow (+5): same at scale 1.3, plus a spark flying from the hit point to the meter, 280 ms.
+- Max 3 pops on screen; extras merge into the latest number. Fill grows with a 120 ms ease-out.
+- Hit taken (streak broken): 100 ms dim of the fill.
+
+### 8.3 Activation (L in READY, or buffered press firing on landing)
+
+1. Hit-stop 100 ms on Zed only (see section 1 for how hit-stop is applied).
+2. Flash: red-white radial, 2 frames, alpha max 60 percent, once.
+3. Impact frames: 6-frame shockwave at Zed feet over 300 ms.
+4. Screenshake 6 px, 250 ms decaying.
+5. Meter swaps to the active frame on the flash peak.
+6. Special move animation plays (existing, 9 frames per direction); eye and fist glow stays on for the whole Rage.
+
+### 8.4 Rage end
+
+- Timer end: glow fades over 300 ms, 6-frame ash and ember collapse at Zed (inward, cooling to blue-grey), meter returns to the building frame at 0 with a 150 ms dark dip. No flash, no shake, so it cannot be mistaken for activation.
+- Knockout: the KO animation takes priority; skip the ash effect, hide the meter.
+- READY window expires unused: flare stops, strip empties, small crack on the frame for 400 ms.
+
+### 8.5 Level 2 HUD intro
+
+Once per run on Level 2: meter slides in from the left edge over 300 ms (12 frames, 24 fps, plays once), flame ignites, then the one-time prompt appears. Gameplay is not paused.
+
+### 8.6 Accessibility
+
+- Never colour alone: each state changes icon, fill texture, frame silhouette, pulse speed and text.
+- Pulse speed is a second channel for fill level; the countdown is numeric as well as a bar.
+- One flash per activation, alpha cap 60 percent, nothing above 4 Hz.
+- Proposed, not in the GDD: a reduced-motion setting that disables shake, flash and aura wisps and keeps icons and numbers.
+
+### 8.7 Config sketch (visual values only; READY window and Rage duration must be read from the single Rage config in the spec section 9)
+
+```js
+rageFx: {
+  pulseHz: { buildMin: 0.8, buildMax: 3.0, ready: 2.5, active: 2.0, activeLast3s: 4.0 },
+  gainPopMs: 200, gainPopCleanScale: 1.3, maxGainPops: 3, fillEaseMs: 120,
+  activate: { hitStopMs: 100, flashFrames: 2, flashAlphaMax: 0.6, shakePx: 6, shakeMs: 250, impactMs: 300 },
+  end: { glowFadeMs: 300, ashFrames: 6, dipMs: 150 },
+  introMs: 300
+}
+```

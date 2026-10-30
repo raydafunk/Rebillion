@@ -22,6 +22,33 @@ export function existingContent(type) {
   return out;
 }
 
+// Names the primary GDD states (mini-bosses, level titles, unit nicknames) that no item of this type mentions yet.
+// Without this the writer only sees "Already exists" and concludes there is nothing left to write.
+export function uncoveredNames(type, corpus) {
+  const dir = path.join(PATHS.content, type);
+  const have = fs.existsSync(dir)
+    ? fs.readdirSync(dir).filter((n) => n.endsWith('.json')).map((f) => fs.readFileSync(path.join(dir, f), 'utf8')).join('\n').toLowerCase()
+    : '';
+  const rules = [
+    [/^Mini-Boss:\s*(.+)$/gm, 'mini-boss'],
+    [/^Level \d+:\s*(.+)$/gm, 'level'],
+    [/^\d\.\s*Rust [A-Za-z]+\s*[—-]\s*[“"](.+?)[”"]/gm, 'unit nickname'],
+    [/^[^\n]*Overseer ([A-Z][a-z]+ [A-Z][a-z]+)\s*[—-]/gm, 'overseer'],
+  ];
+  const seen = new Map();
+  for (const c of corpus.chunks.filter((x) => x.authority === 'primary')) {
+    for (const [re, kind] of rules) {
+      for (const m of c.text.matchAll(re)) {
+        const raw = m[1].trim().replace(/[“”"]/g, '');
+        const key = raw.split(/[,(]/)[0].replace(/^(Dr\.|Commander)\s+/, '').trim();
+        const probe = (key.split(' ').pop() || key).toLowerCase();
+        if (key.length > 2 && !have.includes(probe) && !seen.has(key)) seen.set(key, { kind, id: c.id });
+      }
+    }
+  }
+  return [...seen].map(([name, v]) => ({ name, ...v }));
+}
+
 export function buildBrief(type, corpus, { focus = '' } = {}) {
   const cfg = CONTENT_TYPES[type];
   const schema = SCHEMAS[type];
@@ -31,15 +58,15 @@ export function buildBrief(type, corpus, { focus = '' } = {}) {
   for (const q of queries) {
     for (const c of query(corpus, q, BRIEF_TOP_K)) if (!seen.has(c.id)) { seen.add(c.id); chunks.push(c); }
   }
-  // The owner's own GDD always ships in full for lore-bearing types, so nothing in it is missed by retrieval.
-  if (type === 'lore' || type === 'dialogue') {
-    for (const c of corpus.chunks.filter((x) => x.authority === 'primary' && x.file.includes('The Rebellion.docx'))) {
-      if (!seen.has(c.id)) { seen.add(c.id); chunks.push(c); }
-    }
+  // Primary docs listed in the type's `fullDocs` ship in full, so nothing in them is missed by retrieval.
+  const full = cfg.fullDocs || [];
+  for (const c of corpus.chunks.filter((x) => x.authority === 'primary' && full.some((d) => x.file.includes(d)))) {
+    if (!seen.has(c.id)) { seen.add(c.id); chunks.push(c); }
   }
   chunks.sort((a, b) => ({ primary: 0, derived: 1, reference: 2 }[a.authority] - { primary: 0, derived: 1, reference: 2 }[b.authority]));
 
   const existing = existingContent(type);
+  const gaps = uncoveredNames(type, corpus);
   const deps = cfg.needs.map((t) => [t, existingContent(t)]);
   const engine = (ENGINE_FILES[type] || []).filter((f) => fs.existsSync(path.join(ROOT, f)))
     .map((f) => `#### ${f}\n\`\`\`\n${fs.readFileSync(path.join(ROOT, f), 'utf8').trim()}\n\`\`\``).join('\n\n');
@@ -70,6 +97,9 @@ ${JSON.stringify(schema.example, null, 2)}
 
 ## Already exists (extend, don't duplicate)
 ${existing.length ? existing.map((e) => `- \`${e.id}\` ${e.name} (${e.file})`).join('\n') : '_nothing yet_'}
+
+## Uncovered GDD names (write these FIRST)
+${gaps.length ? `The GDD names these but no \`${type}\` item mentions them yet. Each needs an item (cite the chunk id shown). "Already exists" is not a reason to write nothing: you must add at least one new item per run.\n` + gaps.map((g) => `- ${g.name} (${g.kind}, see [${g.id}])`).join('\n') : '_none detected. Still add new items: pick open questions from design/lore/canon.md or the Focus line, mark them `proposed`._'}
 ${deps.map(([t, items]) => `\n### Upstream \`${t}\` content you may reference\n${items.length ? items.map((e) => `- \`${e.id}\` ${e.name}`).join('\n') : '_none generated yet; reference only what the GDD states_'}`).join('\n')}
 
 ## Engine / spec files to stay compatible with

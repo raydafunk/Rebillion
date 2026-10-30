@@ -3,6 +3,7 @@
 // exist every spawn is a grunt (STAND_IN) and the original id is kept in level.standIns for later.
 import { WAVES } from '../waves/waveData.js';
 import { ROUND_TIME_SECONDS } from '../state/config.js';
+import { SPAWN_PATTERNS } from '../waves/spawnPatterns.js';
 
 export const LEVEL_FILES = Object.freeze([
   'content/levels/levels.json',
@@ -46,9 +47,10 @@ export function buildWave(raw, i) {
     startDelayMs: raw.startDelayMs,
     lockX,
     spawnPoints: spawnPointsFor(lockX),
-    // Optional pacing fields: hpMult (every enemy of the wave), attackerCap (enemies swinging at once), elites (Breakers closing the wave),
+    // Optional pacing fields: spawnPattern (where enemies enter), hpMult (every enemy of the wave), attackerCap (enemies swinging at once), elites (Breakers closing the wave),
     // restPickup ({ heal }: health item dropped on the walk to the next wave).
     ...(raw.hpMult ? { hpMult: raw.hpMult } : {}),
+    ...(raw.spawnPattern ? { spawnPattern: raw.spawnPattern } : {}),
     ...(raw.attackerCap ? { attackerCap: raw.attackerCap } : {}),
     ...(raw.elites ? { elites: Math.min(raw.elites, raw.count), eliteHpMult: raw.eliteHpMult || 3 } : {}),
     ...(raw.restPickup ? { restPickup: { heal: raw.restPickup.heal } } : {}),
@@ -66,6 +68,7 @@ export function levelErrors(raw) {
     if (!Number.isInteger(w.maxAlive) || w.maxAlive < 1) errs.push(`wave ${i + 1}: maxAlive must be an integer >= 1`);
     if (!(w.spawnIntervalMs >= MIN_SPAWN_INTERVAL_MS)) errs.push(`wave ${i + 1}: spawnIntervalMs must be >= ${MIN_SPAWN_INTERVAL_MS}`);
     if (!(w.startDelayMs >= 0)) errs.push(`wave ${i + 1}: startDelayMs must be >= 0`);
+    if (w.spawnPattern !== undefined && !SPAWN_PATTERNS.includes(w.spawnPattern)) errs.push(`wave ${i + 1}: spawnPattern must be one of ${SPAWN_PATTERNS.join('|')}`);
     if (w.hpMult !== undefined && !(w.hpMult >= 1 && w.hpMult <= 10)) errs.push(`wave ${i + 1}: hpMult must be 1-10`);
     if (w.attackerCap !== undefined && !(Number.isInteger(w.attackerCap) && w.attackerCap >= 1)) errs.push(`wave ${i + 1}: attackerCap must be an integer >= 1`);
     if (w.elites !== undefined && !(Number.isInteger(w.elites) && w.elites >= 0 && w.elites <= w.count)) errs.push(`wave ${i + 1}: elites must be 0..count`);

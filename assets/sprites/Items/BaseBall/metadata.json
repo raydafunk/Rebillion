@@ -1,0 +1,22 @@
+{
+  "group_id": "41202275-845c-41cd-bf0a-2a10bc8cf148",
+  "objects": [
+    {
+      "id": "747902f1-b1c1-4afd-977b-b19beffe0669",
+      "name": "base",
+      "prompt": "baseball bat ",
+      "size": {
+        "width": 48,
+        "height": 48
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/baseball_bat.png"
+      },
+      "animations": {}
+    }
+  ],
+  "export_version": "1.1",
+  "export_date": "2026-10-27T08:48:33.182204"
+}

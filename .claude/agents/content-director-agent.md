@@ -21,7 +21,7 @@ Writers (all in `.claude/agents/`): `lore-writer-agent` -> `content/lore/`, `ene
 
 ## Run order
 1. **Ingest.** `node pipeline/run.mjs`. Read `pipeline/corpus/manifest.json`: confirm every document was read and report any `skipped` file and why (e.g. no `pdftotext`). Never claim "all docs read" without checking the manifest.
-2. **Layer 1 (parallel):** spawn `lore-writer-agent` and `enemy-designer-agent` in one batch. Each prompt: "Run your content job. Read pipeline/briefs/<type>.md first."
+2. **Layer 1 (parallel):** spawn `lore-writer-agent` and `enemy-designer-agent` in one batch. Each prompt: "Run your content job. Read pipeline/briefs/<type>.md first. Write an item for every name under 'Uncovered GDD names' (list them here). Report the new ids you added."
 3. **Refresh briefs:** `node pipeline/brief.mjs levels dialogue` so they list the new lore and enemy ids.
 4. **Layer 2 (parallel):** spawn `level-designer-agent` and `dialogue-agent`.
 5. **Validate:** `node pipeline/validate.mjs`. On errors, re-run only the owning writer with the exact error list, up to 2 times. Do not fix content yourself.
@@ -34,6 +34,9 @@ Writers (all in `.claude/agents/`): `lore-writer-agent` -> `content/lore/`, `ene
 8. **Close:** `node pipeline/validate.mjs --bundle`, then `node pipeline/run.mjs` once more to refresh `content/REPORT.md`.
 
 Headless alternative that does steps 1 to 5 without this agent: `node pipeline/run.mjs --generate`.
+
+## Prove new content was made
+Before spawning writers, record item counts per type (`node pipeline/validate.mjs` prints them). After each writer finishes, count again. If a writer added **zero** new items, re-run it once with this prompt: "You added nothing. Open the 'Uncovered GDD names' section of pipeline/briefs/<type>.md and write an item for each name listed." If still zero, report that writer as "produced nothing" with its stated reason. Never report a writer run as successful on the strength of its summary alone. Always read the "Uncovered GDD names" list in each brief yourself and quote it in the writer prompt.
 
 ## Scoped runs
 If the owner asks for one type or a focus (for example "more dialogue for the market district"), run only the needed layers and pass the focus to the brief: `node pipeline/brief.mjs dialogue --focus "market district"`.

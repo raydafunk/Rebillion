@@ -1,0 +1,90 @@
+{
+  "group_id": "41202275-845c-41cd-bf0a-2a10bc8cf148",
+  "objects": [
+    {
+      "id": "747902f1-b1c1-4afd-977b-b19beffe0669",
+      "name": "base",
+      "prompt": "baseball bat ",
+      "size": {
+        "width": 48,
+        "height": 48
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/baseball_bat.png"
+      },
+      "animations": {}
+    },
+    {
+      "id": "d55333d3-8810-4450-969a-1053439764e3",
+      "name": "spin when thrown",
+      "prompt": "baseball bat ",
+      "size": {
+        "width": 48,
+        "height": 48
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/spin_when_thrown.png"
+      },
+      "animations": {
+        "The_two_wooden_baseball_bats_rotate_in_a_rapid_sy": {
+          "directions": {
+            "unknown": {
+              "frames": [
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_000.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_001.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_002.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_003.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_004.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_005.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_006.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_007.png",
+                "animations/The_two_wooden_baseball_bats_rotate_in_a_rapid_sy/unknown/frame_008.png"
+              ],
+              "frame_count": 9
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "744bcf78-bd6f-4a58-bb9f-30645c2e81b2",
+      "name": "broken",
+      "prompt": "baseball bat ",
+      "size": {
+        "width": 48,
+        "height": 48
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/broken.png"
+      },
+      "animations": {
+        "The_two_wooden_bats_collide_with_sudden_jarring_f": {
+          "directions": {
+            "unknown": {
+              "frames": [
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_000.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_001.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_002.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_003.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_004.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_005.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_006.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_007.png",
+                "animations/The_two_wooden_bats_collide_with_sudden_jarring_f/unknown/frame_008.png"
+              ],
+              "frame_count": 9
+            }
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "1.1",
+  "export_date": "2026-10-27T18:26:58.818203"
+}

@@ -7,7 +7,7 @@ Owner agent: `level-style-07-copper-fang-courts-agent`. Status: **2026-10-21, st
 - Theme: The forest-green basketball courts, hoops bent but standing, with a Rust command post set up at centre court and kids' chalk drawings still on the asphalt.
 - Palette (GDD family): #2F6B3F, #E3A92B, #A8402E, #6B4423
 - Time limit: 150 s. Waves: 3. Enemies named: rust-watcher, rust-breaker, rust-copper-fang.
-- Intro: "Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, dodge, parry. Give the kids their court back."
+- Intro: "Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, parry. Give the kids their court back."
 - Outro: "The shield cracks and the Fang is pushed back off the court. Somewhere a ball bounces, then another. Zed breathes out. Game on."
 
 ## House rules that apply to every level

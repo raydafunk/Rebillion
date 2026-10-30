@@ -57,7 +57,7 @@ Rules:
 - The headline and the reason line are always both shown, so the reason is stated in words and in numbers.
 - The highlighted row uses an emphasis style (weight or marker, not only colour).
 - If both conditions happen on the same frame, health takes priority (the player was knocked out). This is a proposal (OQ-L3).
-- Optional single tip line under the panel, 22 px, chosen by reason: for `health` "Try blocking or dodging when the wave swarms."; for `time` "Press the attack, clear faster." Tips are placeholder copy to be approved (OQ-L4). Tips support the pillars (defence, pressure) and are the only advice shown.
+- Optional single tip line under the panel, 22 px, chosen by reason: for `health` "Try blocking or parrying when the wave swarms."; for `time` "Press the attack, clear faster." Tips are placeholder copy to be approved (OQ-L4). Tips support the pillars (defence, pressure) and are the only advice shown.
 
 ## Behaviour
 

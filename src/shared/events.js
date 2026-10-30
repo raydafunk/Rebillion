@@ -7,6 +7,8 @@ export const EVENTS = Object.freeze({
   PARRY_STUN: 'parry-stun',
   ENTITY_DIED: 'entity-died',
   PLAYER_HEALTH_CHANGED: 'player-health-changed',
+  // Score moved (kill, parry or flawless wave). { total, delta, reason, multiplier, streak }
+  SCORE_CHANGED: 'score-changed',
   WAVE_STARTED: 'wave-started',
   WAVE_CLEARED: 'wave-cleared',
   ARENA_CLEARED: 'arena-cleared',

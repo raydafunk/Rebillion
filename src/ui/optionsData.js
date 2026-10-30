@@ -17,7 +17,7 @@ const slider = { control: 'slider', min: 0, max: 100, step: 5 };
 export const SETTINGS = [
   { id: 'masterVolume', category: 'audio', ...slider, label: 'MASTER VOLUME', hint: 'Turns the whole street up or down.', default: 80 },
   { id: 'musicVolume', category: 'audio', ...slider, label: 'MUSIC', hint: 'Music drifting out of the open windows.', default: 70 },
-  { id: 'sfxVolume', category: 'audio', ...slider, label: 'SFX', hint: 'Hits, parries and dodges.', default: 80 },
+  { id: 'sfxVolume', category: 'audio', ...slider, label: 'SFX', hint: 'Hits and parries.', default: 80 },
   { id: 'muteOnFocusLoss', category: 'audio', control: 'toggle', ...ONOFF, label: 'MUTE WHEN AWAY', hint: 'Goes quiet when you switch tabs.', default: true },
   { id: 'fullscreen', category: 'video', control: 'toggle', ...ONOFF, label: 'FULLSCREEN', hint: 'Esc leaves fullscreen first in most browsers.', default: false },
   { id: 'screenShake', category: 'video', control: 'select', options: ['Off', 'Light', 'Full'], label: 'SCREEN SHAKE', hint: 'Turn it down if it is too much.', default: 'Full' },

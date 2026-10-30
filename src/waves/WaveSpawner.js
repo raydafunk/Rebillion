@@ -4,11 +4,14 @@
 // Emits wave-started / wave-cleared / arena-cleared; consumes entity-died (team 'rust') and retry.
 import { EVENTS } from '../shared/events.js';
 import { WAVES } from './waveData.js';
+import { pickSpawn } from './spawnPatterns.js';
 
 export class WaveSpawner {
   // holdBetweenWaves (side-scrolling levels): a cleared wave is followed by phase 'hold' until advance() is
   // called, and clearing the last wave does NOT emit arena-cleared (the scene emits it at the level exit).
-  constructor({ events, spawn, waves = WAVES, idPrefix = 'grunt', holdBetweenWaves = false }) {
+  // getPlayer (optional): () => ({ x, facing }) of Zed; waves with a spawnPattern use it to pick where enemies enter.
+  constructor({ events, spawn, waves = WAVES, idPrefix = 'grunt', holdBetweenWaves = false, getPlayer = null, rng = Math.random }) {
+    this.getPlayer = getPlayer; this.rng = rng;
     this.events = events; this.spawnFn = spawn; this.waves = waves; this.idPrefix = idPrefix;
     this.hold = holdBetweenWaves;
     this.idCounter = 0;
@@ -40,7 +43,7 @@ export class WaveSpawner {
   restart() { this.start(); }
 
   _beginWave(i) {
-    this.waveIndex = i; this.spawned = 0; this.spawnPointCursor = 0;
+    this.waveIndex = i; this.spawned = 0; this.spawnPointCursor = 0; this.surgeSide = null;
     this.phase = 'delay'; this.timer = this.waves[i].startDelayMs;
     this.events.emit(EVENTS.WAVE_STARTED, { index: i, total: this.waves.length });
   }
@@ -71,8 +74,12 @@ export class WaveSpawner {
 
   _spawnOne() {
     const w = this.currentWave;
-    const pt = w.spawnPoints[this.spawnPointCursor++ % w.spawnPoints.length];
+    const player = w.spawnPattern && this.getPlayer ? this.getPlayer() : null;
+    const pt = player
+      ? pickSpawn({ pattern: w.spawnPattern, lockX: w.lockX, index: this.spawned, count: w.count, waveIndex: this.waveIndex, player, anchorSide: this.surgeSide, rng: this.rng })
+      : w.spawnPoints[this.spawnPointCursor++ % w.spawnPoints.length];
     const id = `${this.idPrefix}-${++this.idCounter}`;
+    if (player && w.spawnPattern === 'surge' && this.spawned === 0) this.surgeSide = pt.side; // the wall keeps to the edge it started on
     this.alive.add(id);
     this.spawned++;
     // The last `elites` spawns of a wave are Breakers: tougher, so the wave opens on grunts and ends on the heavy.

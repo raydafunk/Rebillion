@@ -8,6 +8,7 @@ import { pathToFileURL } from 'node:url';
 import { PATHS, CONTENT_TYPES, ROOT } from './config.mjs';
 import { SCHEMAS, LORE_RULES, STATUS } from './schemas.mjs';
 import { loadCorpus } from './search.mjs';
+import { SPAWN_PATTERNS } from '../src/waves/spawnPatterns.js';
 
 const isStr = (v) => typeof v === 'string' && v.trim().length > 0;
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -85,6 +86,7 @@ const VALIDATORS = {
       if (isNum(w.maxAlive) && isNum(w.count) && (w.maxAlive < 1 || w.maxAlive > w.count)) e('maxAlive must be 1..count');
       if (isNum(w.spawnIntervalMs) && w.spawnIntervalMs < 300) e('spawnIntervalMs < 300 floods the arena');
       // Pacing fields (see the level-designer-agent brief): a breather pickup after every wave but the last.
+      if (!SPAWN_PATTERNS.includes(w.spawnPattern)) e(`spawnPattern must be one of ${SPAWN_PATTERNS.join(' | ')}`);
       if (w.attackerCap !== undefined && !(Number.isInteger(w.attackerCap) && w.attackerCap >= 1)) e('attackerCap must be an integer >= 1');
       if (w.hpMult !== undefined && !(isNum(w.hpMult) && w.hpMult >= 1 && w.hpMult <= 10)) e('hpMult must be 1-10');
       if (w.elites !== undefined) {

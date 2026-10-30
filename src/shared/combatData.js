@@ -21,6 +21,9 @@ export const TEAMS = Object.freeze({ PLAYER: 'player', RUST: 'rust' });
  * @property {number} damage
  * @property {number} knockback       horizontal px/s, pushed away from attacker
  * @property {number} hitstun         ms
+ * @property {boolean} [special]      Rage Special: with `boss` targets, damage is capped
+ * @property {number} [bossDamageCap] max damage per hit vs a boss (only when special/neverKills)
+ * @property {boolean} [neverKills]   vs a boss, never reduce below 1 hp
  */
 
 /**
@@ -30,6 +33,7 @@ export const TEAMS = Object.freeze({ PLAYER: 'player', RUST: 'rust' });
  * @property {string} id
  * @property {'player'|'rust'} team
  * @property {number} maxHp
+ * @property {boolean} [boss]         true for bosses; enables bossDamageCap / neverKills handling
  * @property {Rect} hurtbox
  * @property {() => {x:number,y:number,facing:1|-1}} getState
  */
@@ -42,6 +46,8 @@ export const TEAMS = Object.freeze({ PLAYER: 'player', RUST: 'rust' });
  * @property {number} hpAfter
  * @property {number} knockback  signed: positive pushes right
  * @property {number} hitstun    ms
+ * @property {boolean} [landed]  true when the blow connected, even if amount is 0 (boss clamped at 1 hp);
+ *                               false when parried. Listeners wanting 'blow landed' should use `landed`.
  */
 
 // Data-table conventions. Tables are keyed by id; numbers live here, never in scenes.

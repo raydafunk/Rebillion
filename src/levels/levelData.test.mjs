@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { SPAWN_PATTERNS } from '../waves/spawnPatterns.js';
 import { loadLevelContent, buildLevels, levelErrors, legacyLevel, nextLevelIndex, STAND_IN, WAVE_SPACING, worldWidthFor } from './levelData.js';
 
 const fetchJson = async (p) => JSON.parse(await readFile(new URL(`../../${p}`, import.meta.url), 'utf8'));
@@ -28,8 +29,11 @@ for (const l of levels) {
     if (i < l.waves.length - 1) assert.ok(w.restPickup && w.restPickup.heal > 0, `${l.id} wave ${i + 1} needs a restPickup`);
     else assert.ok(!w.restPickup, `${l.id}: no pickup after the last wave`);
     assert.ok(w.attackerCap >= 1, `${l.id} wave ${i + 1} sets attackerCap`);
+    assert.ok(SPAWN_PATTERNS.includes(w.spawnPattern), `${l.id} wave ${i + 1} sets a spawnPattern`);
+    if (i > 0) assert.notEqual(w.spawnPattern, l.waves[i - 1].spawnPattern, `${l.id}: pattern repeats at wave ${i + 1}`);
   });
 }
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, spawnPattern: 'diagonal' }] }).length, 'unknown spawnPattern rejected');
 assert.equal(levels[7].waves.at(-1).hpMult, 8, 'the final boss wave is tough');
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, hpMult: 0.5 }] }).length, 'hpMult must be >= 1');
 // Level 1 is paced as an arc: quick warm-up, rising pressure, Breakers from wave 3, a big finale; health pickups in the breathers.

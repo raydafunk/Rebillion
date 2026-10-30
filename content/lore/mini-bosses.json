@@ -1,0 +1,82 @@
+[
+  {
+    "id": "brick-dugan",
+    "status": "canon",
+    "kind": "character",
+    "name": "\"Brick\" Dugan",
+    "summary": "Level 1 mini-boss: a former dock worker recruited into the Rust, built like a human battering ram.",
+    "body": "Brick Dugan is the mini-boss of Level 1. The GDD calls him a former dock worker who was recruited into the Rust. He wears a heavy black security vest with the Rust insignia, riot-control shoulder pads, reinforced forearm guards and steel-toe security boots, with a utility belt carrying restraints and radio equipment.\n\nHis moves are the Brick Breaker Punch, a Running Shoulder Charge, a Ground Stomp, a Grab and Wall Slam, and a Rage Punch when his health is low. The GDD wants him to feel like a human battering ram: slow but intimidating, easy to understand but hard to face head-on, and the player's first major skill check.",
+    "tags": ["mini-boss", "level-1", "rust", "dock-worker"],
+    "sources": ["the-rebellion#14", "the-rebellion#15"]
+  },
+  {
+    "id": "railgun-royce",
+    "status": "canon",
+    "kind": "character",
+    "name": "\"Railgun\" Royce",
+    "summary": "Level 2 mini-boss in the Transit District: a former transit security officer who introduces stun mechanics.",
+    "body": "Railgun Royce is the mini-boss of Level 2, the Transit District. The GDD describes him as a former transit security officer. He carries an electrified baton, wears an armoured trench coat and sees through a scanner visor.\n\nHis moves are a Baton Combo, a Charging Dash, a Shockwave Slam, a Rail Trap (electrified floor sections) and a Taser Burst. His role in the game is to introduce stun mechanics.",
+    "tags": ["mini-boss", "level-2", "transit-district", "rust"],
+    "sources": ["the-rebellion#15"]
+  },
+  {
+    "id": "crusher-kane",
+    "status": "canon",
+    "kind": "character",
+    "name": "\"Crusher\" Kane",
+    "summary": "Level 3 mini-boss in the Industrial Zone: Rhea Calder's chief enforcer, in a hydraulic work suit with an industrial hammer.",
+    "body": "Crusher Kane is the mini-boss of Level 3, the Industrial Zone, and the GDD names him Rhea Calder's chief enforcer. He fights in a hydraulic work suit and swings an industrial hammer.\n\nHis moves are a Hammer Slam, a Hook Chain Grab, a Furnace Kick, a Steam Vent Burst and a Crushing Uppercut. His role is to prepare players for Overseer Calder.",
+    "tags": ["mini-boss", "level-3", "industrial-zone", "rust", "calder"],
+    "sources": ["the-rebellion#15"]
+  },
+  {
+    "id": "glitch",
+    "status": "canon",
+    "kind": "character",
+    "name": "\"Glitch\"",
+    "summary": "Level 4 mini-boss in the Neon Market: a former hacker turned Rust cyber operative who introduces Voss's deception mechanics.",
+    "body": "Glitch is the mini-boss of Level 4, the Neon Market. The GDD describes a former hacker turned Rust cyber operative, wearing a holographic mask and a portable drone pack.\n\nHis moves are a Drone Barrage, a Hologram Duplicate, a Shock Disk Throw, a Data Spike and an Emergency Teleport. His role is to introduce Overseer Voss's deception mechanics.",
+    "tags": ["mini-boss", "level-4", "neon-market", "rust", "voss"],
+    "sources": ["the-rebellion#15"]
+  },
+  {
+    "id": "raptor",
+    "status": "canon",
+    "kind": "character",
+    "name": "\"Raptor\"",
+    "summary": "Level 5 mini-boss in the Skyline District: Silas Wren's personal hunter, who trains players for vertical combat.",
+    "body": "Raptor is the mini-boss of Level 5, the Skyline District, and the GDD calls him Silas Wren's personal hunter. He fights with a grapple launcher and lightweight armour.\n\nHis moves are a Dive Kick, a Wall Bounce Strike, a Grapple Pull, an Aerial Barrage and a Falcon Drop. His role is to train players for vertical combat.",
+    "tags": ["mini-boss", "level-5", "skyline-district", "rust", "wren"],
+    "sources": ["the-rebellion#15", "the-rebellion#16"]
+  },
+  {
+    "id": "holts-experiment-subject-88",
+    "status": "canon",
+    "kind": "character",
+    "name": "Dr. Holt's Experiment \"Subject 88\"",
+    "summary": "Level 6 mini-boss in the Undercity: a failed chemical test subject who introduces area denial hazards.",
+    "body": "Subject 88 is the mini-boss of Level 6, the Undercity. The GDD describes a failed chemical test subject of Dr. Holt's, with a mutated physique, chemical tanks on the back and glowing green veins.\n\nIts moves are Toxic Breath, Acid Spit, a Frenzied Charge, a Corrosion Slam and a Chemical Explosion. Its role is to introduce area denial hazards.",
+    "tags": ["mini-boss", "level-6", "undercity", "rust", "holt"],
+    "sources": ["the-rebellion#16"]
+  },
+  {
+    "id": "commander-atlas",
+    "status": "canon",
+    "kind": "character",
+    "name": "Commander Atlas",
+    "summary": "Level 7 mini-boss at the Rust Military Compound: leader of the Copper Fangs and the toughest non-boss enemy in the game.",
+    "body": "Commander Atlas is the mini-boss of Level 7, the Rust Military Compound, and the GDD names him leader of the Copper Fangs. He wears elite black armour, carries a tactical shield and fights with twin electrified gauntlets.\n\nHis moves are a Shield Bash, a Gauntlet Combo, a Grapple Hook Pull, an Electric Counter and Fang Protocol, which calls in Specialists. The GDD calls him the toughest non-boss enemy in the game.",
+    "tags": ["mini-boss", "level-7", "copper-fangs", "rust", "specialists"],
+    "sources": ["the-rebellion#16", "the-rebellion#14"]
+  },
+  {
+    "id": "sentinel-x9",
+    "status": "canon",
+    "kind": "character",
+    "name": "Sentinel-X9",
+    "summary": "Level 8 mini-boss in the Corporate Tower: an experimental combat android protecting Varr, the final challenge before the boss.",
+    "body": "Sentinel-X9 is the mini-boss of Level 8, the Corporate Tower. The GDD describes an experimental combat android protecting Varr: a corporate security robot with the Rust insignia and an energy core in its chest.\n\nIts moves are a Laser Sweep, a Rocket Punch, a Ground Pound, an Energy Shield and a Self-Repair Mode. In Phase 2 the core overloads, bringing faster attacks, a red laser barrage and explosive dash attacks. It is the final challenge before Halden Varr.",
+    "tags": ["mini-boss", "level-8", "corporate-tower", "rust", "android", "varr"],
+    "sources": ["the-rebellion#16"]
+  }
+]

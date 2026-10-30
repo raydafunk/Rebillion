@@ -102,18 +102,14 @@ test('onActive fires every active frame with one swing id; new swing per move', 
   assert.notEqual(log[log.length - 1][1], log[0][1]);
 });
 
-test('block starts as parry window then plain block; dodge has i-frames then ends', () => {
+test('block starts as parry window then plain block', () => {
   const m = new PlayerStateMachine();
   const B = { pressed: {}, held: { block: true }, moveX: 0 };
   m.step(B); assert.equal(m.guardType, 'parry');
   for (let i = 0; i < 10; i++) m.step(B);
   assert.equal(m.guardType, 'block');
   m.step(NONE);
-  m.step({ pressed: { dodge: true }, held: {}, moveX: 0 });
-  assert.equal(m.state, 'dodge'); assert.equal(m.guardType, 'dodge');
-  for (let i = 0; i < 22; i++) m.step(NONE);
-  assert.equal(m.state, 'dodge'); assert.equal(m.guardType, null);
-  for (let i = 0; i < 20; i++) m.step(NONE);
+  assert.equal(m.guardType, null);
   assert.equal(m.state, 'idle');
 });
 
@@ -244,21 +240,20 @@ test('combo works while running (moveX held) and a heavy mid-combo does not brea
   assert.equal(h.moveId, 'heavy1');
 });
 
-test('controls table bindings: dodge L/C, block I/V, no Shift, no shared keys', () => {
-  assert.deepEqual(KEY_MAP.dodge, ['KeyL', 'KeyC']);
+test('controls table bindings: special L, block I/V, no Shift, no shared keys, no dodge', () => {
+  assert.equal(KEY_MAP.dodge, undefined); assert.deepEqual(KEY_MAP.special, ['KeyL']);
   assert.deepEqual(KEY_MAP.block, ['KeyI', 'KeyV']);
   const all = Object.values(KEY_MAP).flat();
   assert.equal(new Set(all).size, all.length, 'a key is bound to two actions');
   assert.ok(!all.includes('ShiftLeft'));
-  for (const k of ['KeyL', 'KeyC']) { const m = mapKeys([k]); assert.equal(m.dodge, true); assert.equal(m.block, false); }
-  for (const k of ['KeyI', 'KeyV']) { const m = mapKeys([k]); assert.equal(m.block, true); assert.equal(m.dodge, false); }
+  assert.ok(!all.includes('KeyC'));
+  for (const k of ['KeyI', 'KeyV']) { const m = mapKeys([k]); assert.equal(m.block, true); }
   const pad = { buttons: Array.from({ length: 16 }, () => ({ pressed: false })), axes: [0, 0] };
-  pad.buttons[1].pressed = true;
+  pad.buttons[1].pressed = true; pad.buttons[5].pressed = true;
+  assert.deepEqual(padToKeys(pad), [], 'B/RB are unbound now');
   const p = new InputState().poll(padToKeys(pad));
-  assert.equal(p.held.dodge, true); assert.equal(p.held.block, false);
+  assert.equal(p.held.block, false);
 });
-
-import { DODGE } from '../moves.js';
 
 test('parry (T or M): negates hits during window, then recovers; light combo unaffected', async () => {
   const { PARRY } = await import('../moves.js');
@@ -283,6 +278,29 @@ test('parry reaction clip: registered for the parry state, non-looping, 9 frames
   assert.ok(PARRY.duration > 0 && (a.frames / a.fps) * 60 > 0);
 });
 
+test('pickup: clip registered (5 frames, non-looping); locks attacks for its duration, then idle; hit and attacks unaffected', async () => {
+  const { PICKUP_POSE } = await import('../moves.js');
+  const a = ZED_ANIMS.find((x) => x.state === 'pickup');
+  assert.ok(a); assert.equal(a.folder, 'pick_up'); assert.equal(a.frames, 5); assert.equal(a.repeat, 0);
+  assert.equal(zedAnimKey('pickup', 'west'), 'zed.pickup.west');
+  const m = new PlayerStateMachine();
+  assert.equal(m.startPickup(), true);
+  assert.equal(m.state, 'pickup');
+  assert.equal(m.step(press('light')), 'pickup', 'attack locked');
+  for (let i = 0; i < PICKUP_POSE.duration - 3; i++) assert.equal(m.step(NONE), 'pickup');
+  for (let i = 0; i < 3; i++) m.step(NONE);
+  assert.ok(['idle', 'attack'].includes(m.state) && m.state !== 'pickup', 'returns to neutral (a press buffered during the grab may start the move)');
+  const m2 = new PlayerStateMachine(); m2.startPickup();
+  for (let i = 0; i < PICKUP_POSE.duration; i++) m2.step(NONE);
+  assert.equal(m2.state, 'idle');
+  m.moveId = null; m._set('idle');
+  m.step(press('light'));
+  assert.equal(m.moveId, 'light1');
+  assert.equal(m.startPickup(), false, 'not during an attack');
+  const h = new PlayerStateMachine(); h.startPickup(); h.hit(4);
+  assert.equal(h.state, 'hitstun');
+});
+
 test('heavy pressed during heavy1 does not replay it after recovery', () => {
   const m = new PlayerStateMachine();
   m.step(press('heavy'));
@@ -295,15 +313,15 @@ test('heavy pressed during heavy1 does not replay it after recovery', () => {
   assert.equal(m.moveId, 'heavy1', 'a fresh press after the move still works');
 });
 
-test('defence keys: dodge L/C, block I/V, parry T/M; no shared or legacy keys', () => {
-  assert.deepEqual(KEY_MAP.dodge, ['KeyL', 'KeyC']);
+test('defence keys: block I/V, parry T/M; no shared or legacy keys', () => {
+  assert.deepEqual(KEY_MAP.special, ['KeyL']);
   assert.deepEqual(KEY_MAP.block, ['KeyI', 'KeyV']);
   assert.deepEqual(KEY_MAP.parry, ['KeyT', 'KeyM']);
   const all = Object.values(KEY_MAP).flat();
   assert.equal(new Set(all).size, all.length);
   for (const k of ['KeyT', 'KeyM']) {
     const a = mapKeys([k]);
-    assert.equal(a.parry, true); assert.equal(a.block, false); assert.equal(a.dodge, false);
+    assert.equal(a.parry, true); assert.equal(a.block, false);
   }
   assert.ok(Object.values(mapKeys(['KeyQ'])).every((v) => v === false));
   const i = new InputState().poll(['KeyT']);

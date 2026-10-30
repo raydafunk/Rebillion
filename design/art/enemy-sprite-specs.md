@@ -72,7 +72,7 @@ Enemy layout:
 
 ### 1.5 Clips, tempo and the telegraph rule
 
-- Nominal fps for authoring: Idle 6, Walk 10, Hit 12, Ko 10, Attack 20, Hold loops 6. Telegraph clips are authored at a nominal 8 fps but the engine stretches them to the unit's `telegraphMs` (`anims.timeScale = (frames / fps) / (telegraphMs / 1000)`, the same technique `zedVisual.js` uses for punches, dodge and parry). So artists draw poses, not timings.
+- Nominal fps for authoring: Idle 6, Walk 10, Hit 12, Ko 10, Attack 20, Hold loops 6. Telegraph clips are authored at a nominal 8 fps but the engine stretches them to the unit's `telegraphMs` (`anims.timeScale = (frames / fps) / (telegraphMs / 1000)`, the same technique `zedVisual.js` uses for punches and parry). So artists draw poses, not timings.
 - Telegraph clip construction (all units, all moves), per `hit-feedback-spec.md` section 3:
   1. Frame 1 already differs from Idle in silhouette. The cue starts at t = 0, not after a lead-in.
   2. The peak pose (last frame) is reached by about the first third of the wind-up and then holds. Totals: the peak pose is on screen for at least 300 ms for any wind-up of 450 ms or more; for the 320 to 400 ms wind-ups (Fang Jab, Watcher baton, Varr Authority Strike, Wren GrappleDash) the whole wind-up is at least 300 ms by the JSON floor and the peak holds for the remaining 60 percent.

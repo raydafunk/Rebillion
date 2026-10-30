@@ -1,15 +1,15 @@
 {
-  "builtAt": "2026-10-25T19:02:37.457Z",
+  "builtAt": "2026-10-28T13:10:39.977Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
       "authority": "primary",
-      "bytes": 171925,
-      "sha1": "929e9730dd96",
+      "bytes": 172098,
+      "sha1": "43b2fe82d099",
       "status": "ingested",
       "docId": "rebellion-menu-desgin",
       "chunks": 4,
-      "chars": 3583,
+      "chars": 3601,
       "warnings": [
         "contains embedded images (pixels not read)"
       ]
@@ -17,15 +17,26 @@
     {
       "file": "GameDesignDocument/The Rebellion.docx",
       "authority": "primary",
-      "bytes": 65884,
-      "sha1": "d93eb4ec870f",
+      "bytes": 71302,
+      "sha1": "238ccf1ea224",
       "status": "ingested",
       "docId": "the-rebellion",
-      "chunks": 20,
-      "chars": 19208,
+      "chunks": 22,
+      "chars": 21891,
       "warnings": [
         "contains embedded images (pixels not read)"
       ]
+    },
+    {
+      "file": "GameDesignDocument/The Rebellon gameplay System.docx",
+      "authority": "primary",
+      "bytes": 13608,
+      "sha1": "b5290c095711",
+      "status": "ingested",
+      "docId": "the-rebellon-gameplay-system",
+      "chunks": 4,
+      "chars": 3922,
+      "warnings": []
     },
     {
       "file": "GameDesignDocument/The Title Screen.docx",
@@ -39,6 +50,28 @@
       "warnings": [
         "contains embedded images (pixels not read)"
       ]
+    },
+    {
+      "file": "GameDesignDocument/Zed Rage System Spec.docx",
+      "authority": "primary",
+      "bytes": 14414,
+      "sha1": "5741bfb412a5",
+      "status": "ingested",
+      "docId": "zed-rage-system-spec",
+      "chunks": 18,
+      "chars": 6901,
+      "warnings": []
+    },
+    {
+      "file": "GameDesignDocument/the story campaign .docx",
+      "authority": "primary",
+      "bytes": 14870,
+      "sha1": "8589cfacdd3a",
+      "status": "ingested",
+      "docId": "the-story-campaign",
+      "chunks": 1,
+      "chars": 438,
+      "warnings": []
     },
     {
       "file": "PDf/The Rebellion -Frist Draft.pdf",
@@ -65,8 +98,8 @@
     {
       "file": "README.md",
       "authority": "reference",
-      "bytes": 1746,
-      "sha1": "4e1f56ad0aab",
+      "bytes": 1750,
+      "sha1": "159df135b056",
       "status": "ingested",
       "docId": "readme",
       "chunks": 3,
@@ -98,45 +131,45 @@
     {
       "file": "design/art/asset-manifest.md",
       "authority": "derived",
-      "bytes": 7697,
-      "sha1": "b535beff20a7",
+      "bytes": 11446,
+      "sha1": "7a2336a9a290",
       "status": "ingested",
       "docId": "asset-manifest",
-      "chunks": 13,
-      "chars": 7347,
+      "chunks": 16,
+      "chars": 11066,
       "warnings": []
     },
     {
       "file": "design/art/enemy-sprite-specs.md",
       "authority": "derived",
-      "bytes": 42019,
-      "sha1": "ec6d70d5a142",
+      "bytes": 42012,
+      "sha1": "0b9f1d4ca563",
       "status": "ingested",
       "docId": "enemy-sprite-specs",
       "chunks": 42,
-      "chars": 40644,
+      "chars": 40637,
       "warnings": []
     },
     {
       "file": "design/art/hit-feedback-spec.md",
       "authority": "derived",
-      "bytes": 22318,
-      "sha1": "6f56f309ffe6",
+      "bytes": 25585,
+      "sha1": "0e6e1395baf9",
       "status": "ingested",
       "docId": "hit-feedback-spec",
-      "chunks": 22,
-      "chars": 20743,
+      "chunks": 30,
+      "chars": 23582,
       "warnings": []
     },
     {
       "file": "design/art/style-guide.md",
       "authority": "derived",
-      "bytes": 12209,
-      "sha1": "1eb40c633737",
+      "bytes": 15867,
+      "sha1": "49360240ce5f",
       "status": "ingested",
       "docId": "style-guide",
-      "chunks": 15,
-      "chars": 11843,
+      "chunks": 22,
+      "chars": 15043,
       "warnings": []
     },
     {
@@ -252,12 +285,12 @@
     {
       "file": "design/levels/level-07-copper-fang-courts.md",
       "authority": "derived",
-      "bytes": 5369,
-      "sha1": "57e64a6f3f3b",
+      "bytes": 5300,
+      "sha1": "f6ec3267b2ba",
       "status": "ingested",
       "docId": "level-07-copper-fang-courts",
       "chunks": 9,
-      "chars": 5054,
+      "chars": 5014,
       "warnings": []
     },
     {
@@ -274,12 +307,12 @@
     {
       "file": "design/lore/canon.md",
       "authority": "derived",
-      "bytes": 8222,
-      "sha1": "e9957cc8d5f6",
+      "bytes": 8217,
+      "sha1": "5cff1432e184",
       "status": "ingested",
       "docId": "canon",
       "chunks": 13,
-      "chars": 7632,
+      "chars": 7698,
       "warnings": []
     },
     {
@@ -318,45 +351,45 @@
     {
       "file": "design/team/agent-diagrams.md",
       "authority": "derived",
-      "bytes": 4626,
-      "sha1": "40298c21cb95",
+      "bytes": 4620,
+      "sha1": "291cc1718471",
       "status": "ingested",
       "docId": "agent-diagrams",
       "chunks": 7,
-      "chars": 3872,
+      "chars": 3866,
       "warnings": []
     },
     {
       "file": "design/team/agent-team-setups.md",
       "authority": "derived",
-      "bytes": 9634,
-      "sha1": "107cca0b5ded",
+      "bytes": 9497,
+      "sha1": "409e984e382a",
       "status": "ingested",
       "docId": "agent-team-setups",
       "chunks": 13,
-      "chars": 9228,
+      "chars": 9154,
       "warnings": []
     },
     {
       "file": "design/team/contracts.md",
       "authority": "derived",
-      "bytes": 3324,
-      "sha1": "70e921fd159c",
+      "bytes": 3268,
+      "sha1": "5636d2b40132",
       "status": "ingested",
       "docId": "contracts",
       "chunks": 4,
-      "chars": 3197,
+      "chars": 3156,
       "warnings": []
     },
     {
       "file": "design/team/review.md",
       "authority": "derived",
-      "bytes": 6633,
-      "sha1": "8494d6264781",
+      "bytes": 6589,
+      "sha1": "a0211ac4b26d",
       "status": "ingested",
       "docId": "review",
       "chunks": 11,
-      "chars": 6295,
+      "chars": 6251,
       "warnings": []
     },
     {
@@ -384,23 +417,23 @@
     {
       "file": "design/ux/lose.md",
       "authority": "derived",
-      "bytes": 6876,
-      "sha1": "56eb218378d1",
+      "bytes": 6877,
+      "sha1": "1110c34c05ac",
       "status": "ingested",
       "docId": "lose",
       "chunks": 10,
-      "chars": 5923,
+      "chars": 5924,
       "warnings": []
     },
     {
       "file": "design/ux/main-menu.md",
       "authority": "derived",
-      "bytes": 9646,
-      "sha1": "ecc9f223e63a",
+      "bytes": 9550,
+      "sha1": "1bc34fe67904",
       "status": "ingested",
       "docId": "main-menu",
       "chunks": 14,
-      "chars": 8511,
+      "chars": 8478,
       "warnings": []
     },
     {
@@ -434,6 +467,39 @@
       "docId": "win",
       "chunks": 10,
       "chars": 4980,
+      "warnings": []
+    },
+    {
+      "file": "exports/critic-log.docx",
+      "authority": "reference",
+      "bytes": 7464,
+      "sha1": "19750556e1ca",
+      "status": "ingested",
+      "docId": "critic-log-2",
+      "chunks": 17,
+      "chars": 9371,
+      "warnings": []
+    },
+    {
+      "file": "exports/level-01-brick-red-alley.pdf",
+      "authority": "reference",
+      "bytes": 155752,
+      "sha1": "9a1157557613",
+      "status": "ingested",
+      "docId": "level-01-brick-red-alley-2",
+      "chunks": 9,
+      "chars": 7672,
+      "warnings": []
+    },
+    {
+      "file": "exports/pipeline-connection.pdf",
+      "authority": "reference",
+      "bytes": 141730,
+      "sha1": "954cdab2fd70",
+      "status": "ingested",
+      "docId": "pipeline-connection",
+      "chunks": 5,
+      "chars": 3766,
       "warnings": []
     },
     {

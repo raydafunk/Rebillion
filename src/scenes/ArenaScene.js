@@ -7,6 +7,7 @@ import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { MOVE_FEEDBACK, shakeScale } from '../shared/hitFeedback.js';
 import { loadSettings } from '../ui/optionsData.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
+import { createScore } from '../state/score.js';
 import { Zed } from '../player/Zed.js';
 import { HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH, LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH, KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH, SWING_SOUND_KEY, SWING_SOUND_PATH, RUN_SOUND_KEY, RUN_SOUND_PATH, OWW_SOUND_KEY, OWW_SOUND_PATH, DEATH_SOUND_KEY, DEATH_SOUND_PATH } from '../player/heavyHit.js';
 import { ZedVisual, loadZedSprites } from '../player/zedVisual.js';
@@ -69,6 +70,8 @@ export default class ArenaScene extends Phaser.Scene {
     this.load.audio(GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH);
     this.load.audio(GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH);
     this.load.audio(GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH);
+    this.load.audio('result.sting', 'assets/sound/level-complete-sting.mp3'); // "Level Complete Splash" by GreyFrogGames, CC0
+    this.load.audio('result.music', 'assets/sound/results-funky-house.mp3'); // "Funky House" by Of Far Different Nature, CC0
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
     // Breaker: placeholder SVG is the fallback; Rust Bruisers PNGs (8 directions) replace it when they load.
     this.load.svg(BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, { width: 192, height: 192 });
@@ -100,6 +103,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.dying = [];           // views of removed (already dead) enemies still playing their death anim
     this.sprites = new Map();  // enemy id -> { body, shadow, tele }
     this.pickups = [];         // health items lying in the breather between waves
+    this.score = createScore(); // kills, parry streak + boost, flawless waves (HUD and result screen read it)
     this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
     this.hitStopIds = new Set();
 
@@ -124,6 +128,8 @@ export default class ArenaScene extends Phaser.Scene {
     this.resolver = createHitResolver(ev, () => this.simNow);
     this.state = createRoundState(ev, { seconds: this.level.timeLimitSec });
     this.zed = new Zed(this, 200, GROUND_Y - 36);
+    this.zed.setLevel(this.levelIndex + 1);            // Rage meter: hidden on level 1, active from level 2
+    this.rageWaveHold = false;                         // Rage drain pauses between waves (wave-cleared -> wave-started)
     this.zed.sprite.setAlpha(0);                       // physics body only; the visual below is the art
     this.zedShadow = this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25);
     this.zedVisual = new ZedVisual(this);
@@ -133,6 +139,7 @@ export default class ArenaScene extends Phaser.Scene {
       waves: this.level.waves,
       world: this.world,
       hold: this.scrolling,
+      getPlayer: () => ({ x: this.zed.x, facing: this.zed.facing }),   // spawn patterns react to where Zed is and faces
       getTarget: () => ({ x: this.zed.x, y: GROUND_Y }),   // enemies chase the ground line, so jumping dodges
       getScrollX: () => this.cameras.main.scrollX,
     });
@@ -140,15 +147,26 @@ export default class ArenaScene extends Phaser.Scene {
     this.hitFx = new EnemyHitFx(this, ev, { getEnemy: (id) => this.arena.enemies.get(id), maxHp: GRUNT.maxHp, hurtbox: GRUNT.hurtbox, heavyAt: FINISHER_DAMAGE, finisherAt: HIT_FX_FINISHER_DAMAGE });
 
     this._listen(EVENTS.DAMAGE_APPLIED, (d) => this._onDamage(d));
-    this._listen(EVENTS.ENTITY_DIED, (d) => { if (d.team === 'rust') this.stats.defeated++; });
+    this._listen(EVENTS.ENTITY_DIED, (d) => {
+      if (d.team !== 'rust') return;
+      this.stats.defeated++;
+      const g = this.arena.enemies.get(d.id);
+      this._award(this.score.onKill(g ? g.maxHp / GRUNT.maxHp : 1, this.simNow), g);
+    });
+    this._listen(EVENTS.PARRY_STUN, () => this._award(this.score.onParry(this.simNow), this.zed));
+    this._listen(EVENTS.DAMAGE_APPLIED, (d) => { if (d.targetId === PLAYER_ID && d.amount > 0) this.score.onDamage(); });
+    this._listen(EVENTS.WAVE_STARTED, () => this.score.onWaveStart());
     this._listen(EVENTS.WAVE_CLEARED, ({ index }) => {
       this.stats.wavesCleared++;
       if (this.scrolling && index + 1 >= this.level.waves.length) this._showExit();
       if (this.scrolling) this._dropPickup(index);
+      this._award(this.score.onWaveCleared(this.simNow), null);
     });
+    this._listen(EVENTS.WAVE_CLEARED, () => { this.rageWaveHold = true; });
+    this._listen(EVENTS.WAVE_STARTED, () => { this.rageWaveHold = false; });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this._hideExit(); this.stats = this._freshStats(); this._clearHitStop(); this._destroyDying(); this._clearPickups(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this.rageWaveHold = false; this._hideExit(); this.stats = this._freshStats(); this._clearHitStop(); this._destroyDying(); this._clearPickups(); this.score.reset(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
@@ -289,6 +307,8 @@ export default class ArenaScene extends Phaser.Scene {
     const zedFrozen = this.hitStopIds.has(PLAYER_ID);
     if (!zedFrozen && (this.roundStarted || this.sandbox)) this.zed.update(this.simNow, dt);
     else if (!this.roundStarted) this.zed._setRunSound(false);
+    // Rage clocks: frozen by intro card/cutscene (round not started), wave transitions and round end. The pause menu stops this update entirely.
+    this.zed.tickRage(dt, !(this.roundStarted || this.sandbox) || this.ended || this.rageWaveHold);
     const c = this.arena.bounds.clamp({ x: this.zed.x, y: GROUND_Y });
     if (c.x !== this.zed.x) { this.zed.sprite.x = c.x; this.zed.sprite.body.setVelocityX(0); }
 
@@ -310,6 +330,19 @@ export default class ArenaScene extends Phaser.Scene {
       this.levelDone = true;
       this.ev.emit(EVENTS.ARENA_CLEARED, {}); // round state turns this into round-won
     }
+  }
+
+  // ---- score: tell the HUD, and float the points above whoever earned them ----
+  _award(r, at) {
+    if (!r || r.delta <= 0) return;
+    this.ev.emit(EVENTS.SCORE_CHANGED, r);
+    if (r.reason === 'kill') return; // kills show in the running total only; parries and flawless waves get a popup
+    const cam = this.cameras.main;
+    const x = at ? at.x : cam.scrollX + 640, y = at ? (at.y ?? GROUND_Y) - 150 : 300;
+    const label = r.reason === 'parry' ? `PARRY${r.streak > 1 ? ` x${r.streak}` : ''}  +${r.delta}` : `FLAWLESS${r.run > 1 ? ` x${r.run}` : ''}  +${r.delta}`;
+    const t = this.add.text(x, y, label, { fontFamily: FONTS.button, fontSize: r.reason === 'flawless' ? '52px' : '38px', color: r.reason === 'flawless' ? CSS.mustard : CSS.cream, stroke: CSS.darkBrown, strokeThickness: 7 })
+      .setOrigin(0.5).setDepth(6500);
+    this.tweens.add({ targets: t, y: y - 70, alpha: 0, delay: 500, duration: 700, onComplete: () => t.destroy() });
   }
 
   // ---- breather: a cleared wave may leave a health item on the walk to the next fight ----
@@ -336,6 +369,7 @@ export default class ArenaScene extends Phaser.Scene {
       const gained = this.resolver.heal(PLAYER_ID, p.heal);
       if (gained <= 0) continue; // already at full health: leave it for later
       this.pickups.splice(this.pickups.indexOf(p), 1);
+      this.zed.startPickup(); // crouch-and-grab clip; the heal above already applied
       const t = this.add.text(p.x, p.y - 110, `+${gained}`, { fontFamily: FONTS.button, fontSize: '36px', color: CSS.mustard, stroke: CSS.darkBrown, strokeThickness: 6 })
         .setOrigin(0.5).setDepth(6000);
       this.tweens.add({ targets: t, y: t.y - 60, alpha: 0, duration: 800, onComplete: () => t.destroy() });
@@ -400,6 +434,7 @@ export default class ArenaScene extends Phaser.Scene {
       secondsLeft: this.state.secondsLeft, totalSeconds: this.level.timeLimitSec,
       enemiesLeft: total - this.stats.defeated,
       hp: this.resolver.getHealth(PLAYER_ID)?.hp ?? 0,
+      score: this.score.state.total, parries: this.score.state.parries, bestStreak: this.score.state.bestStreak, flawlessWaves: this.score.state.flawlessWaves,
     };
     this.time.delayedCall(END_DELAY_MS, () => {
       this.scene.launch('ResultScene', payload);

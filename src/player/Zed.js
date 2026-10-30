@@ -5,7 +5,9 @@ import { JumpController } from './jump.js';
 import { PlayerStateMachine } from './stateMachine.js';
 import { EVENTS } from '../shared/events.js';
 import { TEAMS, PLAYER_ID, COMBAT_DEFAULTS } from '../shared/combatData.js';
-import { DODGE, GUARD, PARRY } from './moves.js';
+import { GUARD, PARRY } from './moves.js';
+import { RageMeter } from './rage.js';
+import { RAGE_EVENTS } from './rageConfig.js';
 import { HEAVY_HIT_SOUND_KEY, isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY, OWW_SOUND_KEY, OWW_SOUND_VOLUME, DEATH_SOUND_KEY, DEATH_SOUND_VOLUME } from './heavyHit.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
@@ -30,6 +32,13 @@ export class Zed {
     this.jump = new JumpController(cfg);
     this.events = scene.game.events;
     this.dead = false;
+    // Rage meter (hidden until setLevel(>=2)). Meter events are re-emitted on game.events as RAGE_EVENTS.*.
+    const rageNames = { change: RAGE_EVENTS.CHANGED, state: RAGE_EVENTS.STATE, gain: RAGE_EVENTS.GAIN, ready: RAGE_EVENTS.READY,
+      activated: RAGE_EVENTS.ACTIVATED, ended: RAGE_EVENTS.ENDED, buffer: RAGE_EVENTS.BUFFER };
+    this.rage = new RageMeter({ onEvent: (name, payload) => {
+      if (name === 'ended') this.machine.endRage();
+      this.events.emit(rageNames[name], payload);
+    } });
     this.machine = new PlayerStateMachine({
       onMoveStart: (moveId, m) => this._playSwing(m),
       onActive: (moveId, m, swing) => this._emitHit(m, swing),
@@ -51,6 +60,7 @@ export class Zed {
       if (d.id !== PLAYER_ID) return;
       if (!this.dead && this.scene.cache.audio.exists(DEATH_SOUND_KEY)) this.scene.sound.play(DEATH_SOUND_KEY, { volume: DEATH_SOUND_VOLUME });
       this.dead = true;
+      this.rage.onKnockout(); // ends Rage (a knockdown does not)
     };
     this._onRetry = () => this.respawn(x, y);
     this.events.on(EVENTS.DAMAGE_APPLIED, this._onDamage);
@@ -83,7 +93,7 @@ export class Zed {
       team: TEAMS.PLAYER,
       maxHp: COMBAT_DEFAULTS.PLAYER_MAX_HP,
       hurtbox: { x: -w / 2, y: -h / 2, w, h },
-      // guardType is an extra, optional field: 'dodge' | 'parry' | 'block' | null
+      // guardType is an extra, optional field: 'parry' | 'block' | null
       getState: () => ({ x: this.sprite.x, y: this.sprite.y, facing: this.facing, guard: this.machine.guardType, lift: this._lift() }),
     });
   }
@@ -141,6 +151,8 @@ export class Zed {
       damage: m.damage,
       knockback: m.knockback,
       hitstun: m.hitstun * (1000 / 60),
+      // Rage Special only: combat may cap damage vs bosses (extra optional fields, absent on normal moves).
+      ...(m.special ? { special: true, bossDamageCap: m.bossDamageCap, neverKills: !!m.neverKills } : {}),
     });
   }
 
@@ -191,14 +203,15 @@ export class Zed {
       this._hitSoundArmed = null; // once per swing, even if it connects with several enemies
       if (this.scene.cache.audio.exists(key)) this.scene.sound.play(key);
     }
+    if (d.attackerId === PLAYER_ID && d.targetId !== PLAYER_ID && (d.landed ?? d.amount > 0)) this.rage.onBlowLanded(); // any Rust enemy, boss included
     if (d.targetId !== PLAYER_ID || this.dead) return;
     const guard = this.machine.guardType;
     if (guard === 'parry') { this._onParrySuccess(d.attackerId); return; } // punch landed in the parry window: negated + counter window
-    if (guard === 'dodge') return;  // negated (hp refund needs combat support)
     if (guard === 'block') {
       this.sprite.body.setVelocityX(d.knockback * GUARD.blockKnockbackFactor);
       return; // no hitstun while blocking
     }
+    this.rage.onHitTaken(); // ends the clean streak, cancels a buffered L press (blocked/parried hits return above)
     this.machine.hit(Math.ceil(d.hitstun / this.cfg.fixedStepMs));
     if (d.hpAfter > 0 && this.scene.cache.audio.exists(OWW_SOUND_KEY)) this.scene.sound.play(OWW_SOUND_KEY, { volume: OWW_SOUND_VOLUME });
     this.sprite.body.setVelocityX(d.knockback);
@@ -209,8 +222,33 @@ export class Zed {
   respawn(x, y) {
     this.dead = false;
     this.sprite.setPosition(x, y).setVelocity(0, 0).clearTint();
+    this.machine.endRage(); this.rage.reset(this.rage.level); // retry: meter back to 0, nothing carries over
     this.machine.hitstunLeft = 0; this.machine.moveId = null; this.machine._set('idle');
     this._register();
+  }
+
+  /** Play the crouch-and-grab clip and lock input briefly. Call when an item is collected. Ignored if airborne/busy/dead. */
+  startPickup() {
+    const body = this.sprite.body;
+    if (this.dead || !(body.blocked.down || body.touching.down)) return false;
+    return this.machine.startPickup();
+  }
+
+  /** Set the 1-based level number (call at level start). Resets the meter; hidden below level 2. */
+  setLevel(levelNumber) { this.rage.reset(levelNumber); }
+
+  _grounded() { const b = this.sprite.body; return b.blocked.down || b.touching.down; }
+
+  _canStartSpecial() { return !this.dead && this.machine.canStartSpecial(this._grounded()); }
+
+  _startRage() { this.machine.beginRage(); } // onMoveStart plays the swing sound
+
+  /**
+   * Advance the Rage clocks. Call every scene update with the real frame delta (ms).
+   * hold = true while paused / wave transition / cutscene / round not running: nothing drains.
+   */
+  tickRage(deltaMs, hold = false) {
+    if (this.rage.update(deltaMs / 1000, hold, { canStart: this._canStartSpecial() })) this._startRage();
   }
 
   get x() { return this.sprite.x; }
@@ -228,13 +266,19 @@ export class Zed {
     for (const a of Object.keys(this.input.pressed)) if (this.input.pressed[a]) this._pending[a] = true;
     const inp = this.input;
     if (this.dead) { this._setRunSound(false); this.sprite.setFlipX(this.facing < 0); body.setVelocityX(0); return; }
-    const locked = this.machine.state === 'attack' || this.machine.state === 'dodge' || this.machine.state === 'hitstun' || this.machine.state === 'block' || this.machine.state === 'parry';
+    const locked = this.machine.state === 'attack' || this.machine.state === 'hitstun' || this.machine.state === 'block' || this.machine.state === 'parry' || this.machine.state === 'pickup';
 
     // Jump (ground only, not during attack/hitstun/block)
     if (this.jump.update({ grounded, jumpPressed: inp.pressed.jump && !locked }, delta)) {
       body.setVelocityY(cfg.jumpVelocity);
     }
     if (inp.released.jump && body.velocity.y < 0) body.setVelocityY(body.velocity.y * cfg.jumpCutMultiplier);
+
+    // L: start Rage now if READY and free, else buffer until Zed can (lands). Latched edge so a short tap counts.
+    if (this._pending.special) {
+      this._pending.special = false;
+      if (this.rage.pressSpecial(this._canStartSpecial()) === 'started') this._startRage();
+    }
 
     // Fixed-step state machine (pressed edges delivered on first step of the frame)
     this._acc += delta;
@@ -250,8 +294,7 @@ export class Zed {
     const s = this.machine.state;
     if (this.dead) body.setVelocityX(0);
     else if (s === 'hitstun') body.setVelocityX(body.velocity.x * 0.9); // knockback set in _handleDamage, decays
-    else if (s === 'parry') body.setVelocityX(0);
-    else if (s === 'dodge') body.setVelocityX(this.facing * DODGE.speed);
+    else if (s === 'parry' || s === 'pickup') body.setVelocityX(0);
     else {
       const f = s === 'attack' ? cfg.attackMoveFactor : s === 'block' ? cfg.blockMoveFactor : 1;
       if (inp.moveX !== 0 && s !== 'attack' && s !== 'block') this.facing = inp.moveX;

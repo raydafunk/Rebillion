@@ -4,7 +4,7 @@
 // zed.attack) or `zed.<moveId>` (zed.light1); ZedVisual plays them when they exist
 // and skips the procedural pose. See registerZedAnimations().
 
-import { MOVES, DODGE, PARRY } from './moves.js';
+import { MOVES, PARRY, PICKUP_POSE } from './moves.js';
 import { ZED_CONFIG } from './config.js';
 
 export const ZED_SPRITE = {
@@ -33,12 +33,14 @@ export const ZED_ANIMS = [
   // Jumping flying kick (airborne light press): zed.airkick.<dir>, stretched over the move, holds the last frame until landing.
   // 80x80 canvas; foot row not measured, assumed to match the standing kick (64/80).
   { state: 'airkick', folder: 'flying_Jumping_Kick', anim: 'Flying_Kick', frames: 6, fps: 24, originY: 64 / 80, repeat: 0 },
-  // Dodge sway: 9 frames, 68x68 canvas, lowest opaque row 55 -> (55 + 1 + 2px gap)/68. Stretched over DODGE.duration below.
-  { state: 'dodge', folder: 'Zed_a_young_street_dodge', anim: 'Zed_a_young_street_fighter_seen_in_side_profile_animations', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
-  // Parry reaction (T or M): 9 frames, 68x68 canvas (same framing as dodge; foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
+  // Parry reaction (T or M): 9 frames, 68x68 canvas (foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
   { state: 'parry', folder: 'Zed_parry_reaction_a', anim: 'Zed_parry_reaction_animation_triggered_when_hit._Q', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
   // Hit reaction (Taking_Punch): 6 frames, 64x64 canvas like Running (lowest opaque row 53 -> 56.5/64). Played once across the hitstun (stretched in update()).
   { state: 'hitstun', folder: 'when_getting_hit', anim: 'Taking_Punch', frames: 6, fps: 15, originY: 56.5 / 64, repeat: 0 },
+  // Pick up an item (Picking_Up): 5 frames, 64x64 canvas like Running (foot row assumed 53 -> 56.5/64). Stretched over PICKUP_POSE.duration.
+  { state: 'pickup', folder: 'pick_up', anim: 'Picking_Up', frames: 5, fps: 12, originY: 56.5 / 64, repeat: 0 },
+  // Rage Special (zed.special.<dir>): 9 frames, 68x68 canvas (foot row unmeasured, assumed 58/68). Stretched over the move.
+  { state: 'special', folder: 'Super_special_move', anim: 'The_character_pivots_sharply_right_hand_drawing_to', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
   // Death (Falling_Back_Death): 7 frames, 80x80 canvas, plays once and holds the last frame (lowest opaque row 62 -> (62 + 1 + 2px gap)/80).
   // 7 frames / 12 fps = 583 ms, inside ArenaScene's END_DELAY_MS (700) so the lose screen waits for the fall.
   { state: 'dead', folder: 'knock_down_death', anim: 'Falling_Back_Death', frames: 7, fps: 12, originY: 65 / 80, repeat: 0,
@@ -120,7 +122,6 @@ export function zedPose(s) {
     }
     case 'hitstun': p.tintFill = 0xffffff; p.ox = -5 * f; p.angle = -10 * f; p.sx = 0.92; p.sy = 1.06; break;
     case 'block': p.tint = 0x88aaff; p.sx = 1.05; p.sy = 0.94; p.ox = -2 * f; break;
-    case 'dodge': p.sx = 1.1; p.sy = 0.9; p.angle = 8 * f; break;
     default: break;
   }
   return p;
@@ -167,10 +168,10 @@ export class ZedVisual {
       if (m.state === 'attack' && clip) { // stretch the punch/kick over the move: wind-up, snap on the active frames, ease out
         const mv = MOVES[m.moveId];
         if (mv) img.anims.timeScale = (clip.frames / clip.fps) / ((mv.startup + mv.active + mv.recovery * (m.moveId.startsWith('heavy') ? 0.5 : 1)) / 60);
-      } else if (m.state === 'dodge' && clip) { // play the sway exactly once across the whole dodge (duration is in 60 fps steps)
-        img.anims.timeScale = (clip.frames / clip.fps) / (DODGE.duration / 60);
       } else if (m.state === 'parry' && clip) { // one pass across the whole parry
         img.anims.timeScale = (clip.frames / clip.fps) / (PARRY.duration / 60);
+      } else if (m.state === 'pickup' && clip) { // one pass across the whole pick-up
+        img.anims.timeScale = (clip.frames / clip.fps) / (PICKUP_POSE.duration / 60);
       } else if (m.state === 'hitstun' && clip) { // one pass across the whole hitstun (length captured when the hit lands)
         if (this._hitTotal == null || m.hitstunLeft > this._hitLeft) this._hitTotal = m.hitstunLeft;
         this._hitLeft = m.hitstunLeft;

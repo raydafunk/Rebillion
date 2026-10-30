@@ -8,11 +8,12 @@
       "the-rebellion#3",
       "the-rebellion#11",
       "the-rebellion#12",
-      "the-rebellion#2"
+      "the-rebellion#2",
+      "the-story-campaign#1"
     ],
     "name": "The Iron Line Push",
     "order": 6,
-    "district": "stewpot-gardens",
+    "district": "iron-line-push",
     "theme": "Stewpot Gardens, where the Rust have strung a line of barriers between the planters and the food stalls; steam still rises from the stew pots behind it.",
     "palette": [
       "#2F6B3F",
@@ -30,6 +31,7 @@
         "maxAlive": 3,
         "spawnIntervalMs": 900,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 3,
         "hpMult": 2,
         "restPickup": {
@@ -42,6 +44,7 @@
         "maxAlive": 3,
         "spawnIntervalMs": 800,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 2,
         "restPickup": {
@@ -54,6 +57,7 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1100,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -66,10 +70,26 @@
         "maxAlive": 2,
         "spawnIntervalMs": 1400,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 3,
         "hpMult": 3
       }
-    ]
+    ],
+    "miniBoss": "rust-holts-experiment-subject-88",
+    "mainBoss": "rust-overseer-holt",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Holt arena flavour: lab with gas vents (old \"Undercity\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": {
+        "style": "separate-phase",
+        "after": "waves",
+        "phases": "per GDD"
+      }
+    }
   },
   {
     "id": "level-07-copper-fang-courts",
@@ -80,11 +100,12 @@
       "the-rebellion#3",
       "the-rebellion#12",
       "the-rebellion#13",
-      "the-rebellion#2"
+      "the-rebellion#2",
+      "the-story-campaign#1"
     ],
     "name": "Copper Fang at the Courts",
     "order": 7,
-    "district": "greenline-courts",
+    "district": "copper-fang-courts",
     "theme": "The forest-green basketball courts, hoops bent but standing, with a Rust command post set up at centre court and kids' chalk drawings still on the asphalt.",
     "palette": [
       "#2F6B3F",
@@ -102,6 +123,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 900,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -114,6 +136,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 900,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 3,
         "restPickup": {
@@ -126,10 +149,22 @@
         "maxAlive": 1,
         "spawnIntervalMs": 900,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "hpMult": 4
       }
-    ]
+    ],
+    "miniBoss": "rust-commander-atlas",
+    "mainBoss": null,
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Campaign main boss is \"Elite Rust Gauntlet\", which has no enemy item: open question, not invented. Old \"Rust Military Compound\" title is flavour only. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level. Main boss 'Elite Rust Gauntlet' to be defined by the owner in the GDD; not invented here.",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": null
+    }
   },
   {
     "id": "level-08-overseer-tower",
@@ -139,11 +174,12 @@
       "the-rebellion#11",
       "the-rebellion#19",
       "the-rebellion#20",
-      "the-rebellion#2"
+      "the-rebellion#2",
+      "the-story-campaign#1"
     ],
     "name": "The Overseer's Tower",
     "order": 8,
-    "district": "songwindow-heights",
+    "district": "overseer-tower",
     "theme": "Songwindow Heights, where a surveillance tower and propaganda screens loom over the windows that used to play music; murals half-painted over in grey.",
     "palette": [
       "#A8402E",
@@ -161,6 +197,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 900,
         "startDelayMs": 600,
+        "spawnPattern": "alternate",
         "attackerCap": 3,
         "hpMult": 2,
         "restPickup": {
@@ -173,6 +210,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 900,
         "startDelayMs": 1000,
+        "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
@@ -185,6 +223,7 @@
         "maxAlive": 1,
         "spawnIntervalMs": 900,
         "startDelayMs": 1000,
+        "spawnPattern": "ambush",
         "attackerCap": 3,
         "hpMult": 3,
         "restPickup": {
@@ -197,9 +236,25 @@
         "maxAlive": 1,
         "spawnIntervalMs": 900,
         "startDelayMs": 1000,
+        "spawnPattern": "surge",
         "attackerCap": 3,
         "hpMult": 8
       }
-    ]
+    ],
+    "miniBoss": "rust-sentinel-x9",
+    "mainBoss": "rust-halden-varr",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Varr arena flavour: command chamber (old \"Corporate Tower\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+    "bossStructure": {
+      "miniBoss": {
+        "style": "mini-wave",
+        "gate": false,
+        "note": "beatable pressure wave led by the mini-boss"
+      },
+      "mainBoss": {
+        "style": "separate-phase",
+        "after": "waves",
+        "phases": "per GDD"
+      }
+    }
   }
 ]

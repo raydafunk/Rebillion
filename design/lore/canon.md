@@ -72,7 +72,7 @@ Zed isn’t a soldier. He’s a kid from a lived‑in neighbourhood who learned 
 His style reflects the game’s pillars:
 
 - Impactful, fast-paced combat — Zed’s punches feel like brick‑red alley brawls, scrappy but sharp.
-- Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.
+- Skill depth through combos and defence — he learned to juggle, block, and parry from street tournaments and late-night sparring behind corner shops.
 - Wave-clearing under pressure — fighting groups is nothing new; he grew up protecting younger kids from trouble.
 
 He fights not for glory, but to reclaim the places that shaped him — the food stalls, the murals, the music drifting from open windows. The city isn’t just his home; it’s his identity.

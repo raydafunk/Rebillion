@@ -1,0 +1,117 @@
+[
+  {
+    "id": "zeds-rage",
+    "status": "canon",
+    "sources": ["zed-rage-system-spec#3", "the-rebellion#8"],
+    "kind": "event",
+    "name": "Zed's Rage",
+    "summary": "Zed's rage is born of the Rust's false promises, his father's disappearance and his willingness to fight for his city.",
+    "body": "The Rage spec gives Zed's rage three roots: the Rust's false promises, the disappearance of his father, and Zed's own willingness to fight for his city. The Rust are the source of it, which is why every Rust enemy feeds it.\n\nThe father's story is only implied. The spec leaves it for cutscenes and dialogue to reveal, so nothing about what happened to him is stated here.",
+    "tags": ["zed", "rage", "father", "rust"]
+  },
+  {
+    "id": "rage-meter",
+    "status": "canon",
+    "sources": ["zed-rage-system-spec#5", "zed-rage-system-spec#2", "zed-rage-system-spec#4"],
+    "kind": "object",
+    "name": "The Rage Meter",
+    "summary": "A meter that fills as Zed lands blows on Rust enemies, from Level 2 onward, and starts fresh every level.",
+    "body": "From Level 2 onward Zed's Rage builds with every blow he lands on a Rust enemy, bosses included. Light, heavy or jump kick, each blow counts the same. Misses give nothing, and a knockdown or a finishing blow adds no extra.\n\nThe meter starts empty at the beginning of every level and on a retry. Nothing carries over from one fight to the next. Level 1 is the pace level: the meter is hidden there and cannot fill.",
+    "tags": ["rage", "meter", "hud", "levels"]
+  },
+  {
+    "id": "rage-clean-streak",
+    "status": "canon",
+    "sources": ["zed-rage-system-spec#6", "zed-rage-system-spec#2"],
+    "kind": "event",
+    "name": "Staying Clean",
+    "summary": "Landing blows without taking a hit in between builds Rage faster; a hit ends the streak.",
+    "body": "The spec rewards aggressive, clean play. Blows landed without a hit taken in between add a bonus to the meter, and taking a hit ends the streak.\n\nSloppy play is never locked out of Rage. It only takes longer to get there.",
+    "tags": ["rage", "streak", "skill"]
+  },
+  {
+    "id": "rage-ready",
+    "status": "canon",
+    "sources": ["zed-rage-system-spec#8", "zed-rage-system-spec#7"],
+    "kind": "event",
+    "name": "Rage Ready",
+    "summary": "When the meter is full, Rage is READY and holds for a short window before it starts to fade.",
+    "body": "A full meter means Rage is READY. It holds there for a 4-second window so Zed can finish what he is doing and answer with the L button. If the window passes, the meter starts to drain and has to be built again.\n\nThe meter drains on a timer the whole time, fighting or not, and pauses for the pause menu, wave transitions and cutscenes.",
+    "tags": ["rage", "ready", "meter"]
+  },
+  {
+    "id": "zeds-special-move",
+    "status": "canon",
+    "sources": ["zed-rage-system-spec#3", "zed-rage-system-spec#10", "zed-rage-system-spec#18"],
+    "kind": "event",
+    "name": "Zed Rage",
+    "summary": "Zed Rage is the Special: the release of Zed's rage, a refusal to let his city fall.",
+    "body": "The Special move is called Zed Rage. While Rage is active, Zed's normal attacks are replaced by this one move. The spec calls it the release of his rage, a refusal to let his city fall. It is just a move: it carries no story about Zed's father.\n\nThe Special hits hard but never finishes a boss on its own. Zed still moves, jumps and blocks during Rage, and there is no dodge. It is triggered with L.",
+    "tags": ["zed", "special", "rage"]
+  },
+  {
+    "id": "rage-ending",
+    "status": "canon",
+    "sources": ["zed-rage-system-spec#11", "zed-rage-system-spec#10"],
+    "kind": "event",
+    "name": "When the Rage Settles",
+    "summary": "Rage lasts a short, fixed time and ends when the meter runs out or Zed is knocked out; his normal moves return.",
+    "body": "Rage runs for 9 seconds on a fixed clock. Nothing Zed does speeds it up or slows it down. It ends when the meter reaches zero, or straight away if Zed is knocked out. A knockdown from a hit does not end it.\n\nAfterwards his normal moves come back, and the meter has to be built again from the start by landing blows on Rust enemies.",
+    "tags": ["rage", "ending", "zed"]
+  },
+  {
+    "id": "rage-is-for-the-neighbourhood",
+    "status": "proposed",
+    "gddGap": "The spec names the roots of Zed's rage but not how it feels to him or how it fits his warm character. Proposed so rage reads as determination for his neighbourhood, not hatred, matching the Theme and Zed's loyalty.",
+    "sources": ["zed-rage-system-spec#3", "the-rebellion#9", "the-rebellion#10"],
+    "kind": "event",
+    "name": "Not Hatred, Not a Grudge",
+    "summary": "Zed's rage is determination for the people and places he is fighting to get back, and it never makes him cruel.",
+    "body": "Zed is stubborn and fiercely loyal, and his rage is the same loyalty turned all the way up. It is not about the Rust as people. It is about the courts, the stall, the murals and the music that were taken from his neighbourhood.\n\nEven at its loudest he keeps his feet moving and knocks his opponents down, never worse. The neighbourhood would recognise it as him, only louder.\n\nZed is silent about the Rage: he never speaks or jokes about it, in or out of Zed Rage. It shows in the move, the meter and the music, not in his lines.",
+    "tags": ["zed", "rage", "tone", "neighbourhood", "silent"]
+  },
+  {
+    "id": "rage-grief-into-fire",
+    "status": "proposed",
+    "gddGap": "The art direction hints that grief turns to fire but gives no in-world description of how Rage looks or feels. Proposed wording for art and dialogue, built on that hint and the Theme palette.",
+    "sources": ["zed-rage-system-spec#13", "zed-rage-system-spec#3"],
+    "kind": "event",
+    "name": "Grief Turning to Fire",
+    "summary": "When Rage builds, people on the block see Zed's grief warm into something bright and steady, like a stove coming up to heat.",
+    "body": "The spec lets the art hint at the loss behind the Rage, with grief turning to fire: an ember glow that climbs toward orange and a red-white heat as the meter fills, with a stronger light in his eyes and fists once Rage is active.\n\nIn the world this is the warmth of the neighbourhood, not a threat. The people who feel it describe it as the kitchen light coming back on.",
+    "tags": ["rage", "art", "grief", "ember"]
+  },
+  {
+    "id": "rage-feeds-on-the-rust",
+    "status": "proposed",
+    "gddGap": "The spec says every Rust enemy feeds the rage but not why in the world. Proposed explanation: each pushed-back Rust enemy is a reminder of what the neighbourhood is owed, not something Zed enjoys.",
+    "sources": ["zed-rage-system-spec#3", "zed-rage-system-spec#5"],
+    "kind": "event",
+    "name": "Every Rust Enemy Counts",
+    "summary": "Each Rust enemy Zed meets, from Grunts to Overseers, stirs the same rage, because they all stand for the same false promise.",
+    "body": "The Rust offered protection and delivered curfews, fences and sealed districts. Every Grunt, Breaker, Watcher, Copper Fang and Overseer stands in front of Zed as a piece of that broken promise, so every blow he lands on them stirs the rage a little.\n\nIt rises from standing his ground, not from enjoying a fight. Finishing a fight adds nothing extra; landing blows is what feeds it, which fits a Zed who knocks his opponents down and moves on.",
+    "tags": ["rage", "rust", "zed"]
+  },
+  {
+    "id": "rage-fades-like-held-breath",
+    "status": "proposed",
+    "gddGap": "The spec says the meter drains constantly, even when full, but gives no in-world reason. Proposed: rage is a feeling Zed has to keep earning, like holding a breath, which he does not want to carry forever.",
+    "sources": ["zed-rage-system-spec#7", "zed-rage-system-spec#8", "zed-rage-system-spec#11"],
+    "kind": "event",
+    "name": "Held Like a Breath",
+    "summary": "Zed cannot hold his rage for long; it fades unless he keeps earning it by standing his ground.",
+    "body": "Rage is not a switch Zed can leave on. It fades if he stops fighting for his block, even when it is full, and he has about a few seconds to answer it before it settles again. That is how the neighbourhood tells it: you can't hoard a feeling like that.\n\nWhen it settles he is still Zed, a bit out of breath, and ready to start building it again from his own steady footing.",
+    "tags": ["rage", "drain", "zed"]
+  },
+  {
+    "id": "rage-waits-for-level-two",
+    "status": "proposed",
+    "gddGap": "The spec hides the meter in Level 1 and introduces it in Level 2 but does not say what changes in the story. Proposed: Level 1 is Zed finding his feet at home; the rage only wakes once he leaves Brick-Red Alley and the stakes grow.",
+    "sources": ["zed-rage-system-spec#2", "zed-rage-system-spec#4", "zed-rage-system-spec#14"],
+    "kind": "event",
+    "name": "Why It Wakes in Level Two",
+    "summary": "In Level 1 Zed is at home and finding his rhythm; the rage first wakes as the fight moves beyond the alley.",
+    "body": "Level 1 is the pace level, where Zed learns to move, chain his hits, kick from a jump and block, with nothing extra pressing on him. In the story that is Zed on his own street, steady and focused.\n\nFrom Level 2 the fight spreads across more of the city, and the rage meter slides into view with a one-time prompt to explain it. The idea is that Zed feels it properly for the first time once he is further from home.",
+    "tags": ["rage", "level-2", "tutorial", "zed"]
+  }
+]

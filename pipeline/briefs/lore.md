@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-10-25T19:02:37.512Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-10-28T13:10:40.043Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -67,14 +67,36 @@ Example:
 - `the-neighbourhood` The Neighbourhood (content/lore/canon-world.json)
 - `the-rust` The Rust (content/lore/canon-world.json)
 - `rust-takeover` The Takeover (content/lore/canon-world.json)
+- `iron-line-push` Iron Line Push (content/lore/districts-6-8.json)
+- `copper-fang-courts` Copper Fang Courts (content/lore/districts-6-8.json)
+- `overseer-tower` Overseer Tower (content/lore/districts-6-8.json)
+- `brick-dugan` "Brick" Dugan (content/lore/mini-bosses.json)
+- `railgun-royce` "Railgun" Royce (content/lore/mini-bosses.json)
+- `crusher-kane` "Crusher" Kane (content/lore/mini-bosses.json)
+- `glitch` "Glitch" (content/lore/mini-bosses.json)
+- `raptor` "Raptor" (content/lore/mini-bosses.json)
+- `holts-experiment-subject-88` Dr. Holt's Experiment "Subject 88" (content/lore/mini-bosses.json)
+- `commander-atlas` Commander Atlas (content/lore/mini-bosses.json)
+- `sentinel-x9` Sentinel-X9 (content/lore/mini-bosses.json)
 - `rust-notice-114` Rust Notice 114 (content/lore/proposed.json)
 - `local-heroes-benefit` Local Heroes Benefit (content/lore/proposed.json)
 - `mustard-row` Mustard Row (content/lore/proposed.json)
 - `greenline-courts` Greenline Courts (content/lore/proposed.json)
 - `stewpot-gardens` Stewpot Gardens (content/lore/proposed.json)
 - `songwindow-heights` Songwindow Heights (content/lore/proposed.json)
+- `zeds-rage` Zed's Rage (content/lore/rage.json)
+- `rage-meter` The Rage Meter (content/lore/rage.json)
+- `rage-clean-streak` Staying Clean (content/lore/rage.json)
+- `rage-ready` Rage Ready (content/lore/rage.json)
+- `zeds-special-move` Zed Rage (content/lore/rage.json)
+- `rage-ending` When the Rage Settles (content/lore/rage.json)
+- `rage-is-for-the-neighbourhood` Not Hatred, Not a Grudge (content/lore/rage.json)
+- `rage-grief-into-fire` Grief Turning to Fire (content/lore/rage.json)
+- `rage-feeds-on-the-rust` Every Rust Enemy Counts (content/lore/rage.json)
+- `rage-fades-like-held-breath` Held Like a Breath (content/lore/rage.json)
+- `rage-waits-for-level-two` Why It Wakes in Level Two (content/lore/rage.json)
 - `rust-origin` How the Rust Got Their Foot in the Door (content/lore/rust-expanded.json)
-- `commander-halden-varr` Commander Halden Varr (content/lore/rust-expanded.json)
+- `commander-halden-varr` Overseer Halden Varr, The Architect of Rust (content/lore/rust-expanded.json)
 - `rust-takeover-timeline` Within Months: Curfews, Sealed Districts and Drones (content/lore/rust-expanded.json)
 - `rust-doctrine` Order is Strength. Freedom is Weakness. (content/lore/rust-expanded.json)
 - `rust-serial-numbers` Serial Numbers (content/lore/rust-expanded.json)
@@ -85,6 +107,16 @@ Example:
 - `rust-overseers` Rust Overseers: The Architects of Control (content/lore/rust-expanded.json)
 - `rust-rank-ladder` The Rust Ladder (content/lore/rust-expanded.json)
 - `neighbourhood-answer-to-doctrine` The Wall Answers Back (content/lore/rust-expanded.json)
+- `weapon-system` Street Weapons (content/lore/weapons.json)
+- `baseball-bat` Baseball Bat (content/lore/weapons.json)
+- `pipe` Pipe (content/lore/weapons.json)
+- `weapon-box` Weapon Box (content/lore/weapons.json)
+- `weapon-breakage-and-drops` Worn Out, Dropped, Picked Up Again (content/lore/weapons.json)
+- `thrown-weapon` The Throw (content/lore/weapons.json)
+- `weapons-from-the-corner-shops` Boxes Left Behind the Shops (content/lore/weapons.json)
+
+## Uncovered GDD names (write these FIRST)
+_none detected. Still add new items: pick open questions from design/lore/canon.md or the Focus line, mark them `proposed`._
 
 
 ## Engine / spec files to stay compatible with
@@ -103,7 +135,7 @@ Source of truth: `GameDesignDocument/The Rebellion.docx` (Pitch, Theme). Menu mo
 | Hero | Zed | Player character. |
 | Antagonist | the Rust | Corrupt private security force. Always "Rust", never "Rush". |
 | Rust members | Rust enemies / Rust grunt | "Rust grunt" is the one Tier 0 enemy type (asset-manifest). GDD unit names: Rust Grunts "The Iron Line", Rust Bruisers "The Breakers", Rust Rangers "The Watchers", Rust Specialists "The Copper Fangs", Rust Overseers "The Architects of Control". |
-| Rust leader | Commander Halden Varr | Name from the Rust section of the GDD; confirm with the owner (see Open lore questions). |
+| Rust leader / main boss | Overseer Halden Varr, "The Architect of Rust" | Owner decision: use the GDD's Main Boss wording. The GDD's Rust history section still says "Commander"; the owner chose "Overseer". |
 | Zed's side | the neighbourhood, the community, local heroes | Wording from Theme. |
 
 ## Factions
@@ -164,7 +196,7 @@ Zed isn’t a soldier. He’s a kid from a lived‑in neighbourhood who learned 
 His style reflects the game’s pillars:
 
 - Impactful, fast-paced combat — Zed’s punches feel like brick‑red alley brawls, scrappy but sharp.
-- Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.
+- Skill depth through combos and defence — he learned to juggle, block, and parry from street tournaments and late-night sparring behind corner shops.
 - Wave-clearing under pressure — fighting groups is nothing new; he grew up protecting younger kids from trouble.
 
 He fights not for glory, but to reclaim the places that shaped him — the food stalls, the murals, the music drifting from open windows. The city isn’t just his home; it’s his identity.
@@ -186,13 +218,13 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 1. Does the Rust impose curfews or issue numbered notices? Menu poster "Rust Notice 114 / CURFEW" implies it. Treated as flavour, not canon, until the owner confirms.
 2. Is "Rust" used as a plural noun ("the Rust are") or a collective singular ("the Rust is")? Sheet assumes plural.
 3. Who is Zed (age, role, backstory)? Is there a named "local hero" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)
-4. Names of districts and arena locations. The Rust leader is Commander Halden Varr in the GDD Rust section; the "Architect" title and unit nicknames are GDD wording to confirm.
+4. Names of districts and arena locations. The Rust leader is Overseer Halden Varr, "The Architect of Rust" (owner decision: GDD Main Boss wording); unit nicknames are GDD wording to confirm.
 5. What does "get it back" mean in story terms (who held the city before)?
 6. Is "Rust enemy" or "Rust grunt" the player-facing term for the enemy?
 7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
 ```
 
-## Retrieved GDD passages (35)
+## Retrieved GDD passages (61)
 ### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
 Character – the hero
 Zed — The Boy from BrickRed Alley
@@ -216,7 +248,7 @@ Fists of the Fallen City
 A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force.
 Executives Sections
 The Pitch
-The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rust a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours. Take control of Zed and fight your way through Fallen to get it back.
+The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rust a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours. Take control of Zed and fight your way through Fallen to get it back. Take control of Zed and fight your way through Fallen City to get it back.
 The 3 Pillars of Game Play
 [table]
 Impactful, Fast-paced combat | Skill depth through combos and Defence | Wave-clearing under pressure
@@ -276,6 +308,102 @@ Heavy condensed display type for titles and buttons, monospace for small print.
 Palette: brick red #9C3B2E / #7A2F25, mustard #E1A92B, forest green #2F5D3A, warm brown #6B4A2F, cream #E8DCC0, near-black #1D1A16.
 Implementation notes (Phaser)
 
+### [the-rebellon-gameplay-system#1] primary - GameDesignDocument/The Rebellon gameplay System.docx
+The Rebellion
+Fists of the Fallen City
+Game Play Systems
+Weapon System
+Starting in Level 2, weapon boxes are introduced across the levels, giving players access to baseball bats and pipes for combating Grunt enemies
+How it works
+From Level 2 onwards, Zed can break weapon boxes, pick up baseball bats and pipes using the pickup animation, and carry them using the carrying animation before attacking enemies.
+Weapon Rules
+Damage: Bats and pipes hit harder than Zed's heavy attack.
+Speed and reach: The baseball bat has a quick swing. The pipe has a longer reach but a slower startup.
+Durability: Each weapon wears out after a set number of hits. Exact hit counts are listed under Weapon Balance Values.
+Breakage: When a weapon runs out of hits it breaks, a short break effect plays, and Zed goes back to using his fists.
+Throwing: Zed can throw a carried weapon. A thrown weapon spins through the air and damages the first enemy it hits. Throwing costs durability and the weapon can be picked up again if it survives, see Weapon Balance Values.
+
+### [the-rebellon-gameplay-system#2] primary - GameDesignDocument/The Rebellon gameplay System.docx
+Dropping: There is no drop button. Zed drops a carried weapon when he is hit more than 3 times while carrying it, which means the weapon drops on the 4th hit. A dropped weapon lies on the floor and Zed can pick it up again. It keeps its remaining durability. Picking the weapon back up does not reset the hit count.
+Attacks with a weapon: Weapons use the existing light and heavy attack buttons. There are no new inputs and no separate weapon move set. The light and heavy mentioned in the core mechanics refer to Zed's light and heavy attacks, not to light and heavy objects.
+Weapon types: Only the baseball bat and the pipe exist for now. There are no other weapons or upgraded versions.
+Weapon boxes: Each level from Level 2 has one weapon box in a fixed placement. The box holds one weapon, either a baseball bat or a pipe. Which weapon it holds is fixed for each level and is chosen by the level designer. It is not random. Boxes do not respawn.
+Enemy use: Weapons are for Zed only. Enemies cannot pick up or use weapons.
+
+### [the-rebellon-gameplay-system#4] primary - GameDesignDocument/The Rebellon gameplay System.docx
+Light and heavy buttons: The light button swings the weapon at the values above. The heavy button does the same swing with 25 percent more damage and 25 percent more knockback, and costs 2 durability instead of 1. The heavy swing deals 25 damage with the bat and 30 damage with the pipe. A heavy swing still goes through when the weapon has only 1 durability left, and the weapon breaks afterwards.
+Thrown weapon: Damage 15, knockback 300, hitstun 20 frames. It travels at 480 pixels per second for up to 320 pixels and hits the first enemy in its path. A throw costs 2 durability, the same as a heavy swing. If the weapon still has durability left after the throw, it lands on the floor where it hit an enemy or at the end of its flight, and Zed can pick it up and keep using it until its durability runs out. If the weapon has 2 durability or less when thrown, the throw still goes through and the weapon breaks when it lands, with the same break effect as a worn-out weapon.
+Weapon box: A weapon box breaks after 2 hits from Zed. The box break animation is added separately.
+
+### [the-rebellon-gameplay-system#3] primary - GameDesignDocument/The Rebellon gameplay System.docx
+HUD: While Zed carries a weapon, the HUD shows a small icon of that weapon with its remaining durability next to the health bar.
+Weapon Balance Values
+Reference: Starting values, tuned against Zed's current moves (light hits 6, 7 and 12 damage, heavy attack 18 damage with a 12 frame startup) and a Grunt's 30 HP. Frames are at 60 per second. These are first-pass numbers and can be retuned in playtesting.
+Baseball bat: Damage 20. Startup 7 frames, active 4, recovery 16. Reach is a hitbox 64 wide. Knockback 400. Hitstun 26 frames. Durability 10 hits. A Grunt goes down in 2 hits.
+Pipe: Damage 24. Startup 12 frames, active 4, recovery 20. Reach is a hitbox 84 wide, the longest in the game. Knockback 360. Hitstun 28 frames. Durability 8 hits. A Grunt goes down in 2 hits.
+
+### [rebellion-menu-desgin#2] primary - GameDesignDocument/Rebellion menu desgin.docx
+[table]
+Element | Description
+Title | THE REBELLION" in heavy condensed type, cream on a black strip, tilted about 2 degrees. The subtitle "Fists of the Fallen City" sits beneath in mustard monospace.
+Fight (selected) | Mustard torn-paper strip, leading ">" marker, straightens and slides right. Starts the game.
+Controls | Cream paper strip
+Options | Forest-green strip with cream text.
+Quit | Warm-brown strip with cream text.
+Footer hint | W/S select / Enter confirm", bottom right.
+Each option is a separate torn-edge paper strip, tilted slightly. The selected option straightens, moves right and takes the brightest colour. Hover gives the same feedback.
+Controls Menu elements(keyboard)q
+[table]
+Action | Primary | Alternate
+Move Left/right | A/D | Left or Right arrows keys
+Jump | W or Space | Up arrow key board
+Light attack | J | Z
+Heavy attack | K | X
+Special Move | L | C
+Pick up | P | N
+Parry | T | M
+Block | I | V
+Options Menu ( elements)
+
+### [zed-rage-system-spec#14] primary - GameDesignDocument/Zed Rage System Spec.docx - Asset list
+Rage meter frame and fill, in 3 visual states (building, READY, active)
+READY flare and L button prompt icon
+Zed aura overlay for building and Rage
+Gain pop and spark effect
+Activation flash and impact frames
+Rage-end effect
+Level 2 HUD intro animation
+Special move animation (one exists in assets/sprites/zed/Super_special_move/)
+
+### [zed-rage-system-spec#10] primary - GameDesignDocument/Zed Rage System Spec.docx - 6.2 During Rage
+Rage lasts 9 seconds, with the meter draining about 11 per second on a fixed clock. Nothing speeds it up or slows it down: not hits landed, not kills, not damage taken.
+Zed's normal attacks are replaced by one Special move. It does not add to them.
+Zed can still move, jump and block. There is no dodge during Rage.
+The meter gains no Rage during Rage, and kills during Rage give nothing.
+The Special does strong damage but never a full boss kill. The player must still finish a boss with normal attacks.
+
+### [zed-rage-system-spec#18] primary - GameDesignDocument/Zed Rage System Spec.docx - 11. Decision Log
+[table]
+# | Decision
+Q1 | Special is triggered by L. The gamepad binding comes later.
+Q2 | One single move.
+Q3 | Lore as in Section 2.
+Q4 | Rage resets each level.
+Q5 | The meter drains, including when full. Rage is a timed state in which the Special replaces normal attacks.
+Q6 | Kills during Rage give nothing. The meter is built by landing blows on Rust enemies.
+Q7 | The Special does strong damage, never a full boss kill.
+Q8 | A buffered press fires when Zed lands. He can move, jump and block in Rage, and there is no dodge.
+Extra | Rage ends if Zed is knocked out. All Rust enemies, including bosses, fill the meter. The drain pauses on the pause menu and wave transitions.
+
+### [zed-rage-system-spec#2] primary - GameDesignDocument/Zed Rage System Spec.docx - 1. Design Intent
+Level 1 is the pace level. The player learns movement, the light and heavy chain, jump kick and block with no extra pressure. From Level 2 onward, a Rage meter rewards aggressive, clean play and builds toward a short, powerful state in which Zed unleashes his Special move.
+
+### [zed-rage-system-spec#15] primary - GameDesignDocument/Zed Rage System Spec.docx - 9. Implementation Notes
+Treat special as a named input action, bound to L on keyboard, so the gamepad binding can be added later without changing the state machine.
+Keep all tuning numbers (gain, bonus, streak length, drain, READY window, Rage duration) in one config.
+Rage needs a state in the player state machine that swaps the attack set for the single Special move and disables dodge.
+The meter system listens for blows landed, hits taken, knockout, level start, retry, pause and wave transition.
+
 ### [the-rebellion#2] primary - GameDesignDocument/The Rebellion.docx
 [table]
 Win conditions | Lose conditions
@@ -334,7 +462,7 @@ Menu & UI Agent | HUD (health, timer), win/lose screens, menus | Game State, Hea
 Team Lead agent | Builds the Agent Orchestration |  | 
 
 ### [the-rebellion#11] primary - GameDesignDocument/The Rebellion.docx
-Rust was founded by Commander Halden Varr, a former military strategist who believed order could only be achieved through fear. When Fallen City’s government collapsed, Varr seized the opportunity. He offered “protection” to the remaining officials, then quietly replaced them with Rust loyalists.
+Rust was founded by Overseer Commander Halden Varr, a former military strategist who believed order could only be achieved through fear. When Fallen City’s government collapsed, Varr seized the opportunity. He offered “protection” to the remaining officials, then quietly replaced them with Rust loyalists.
 Within months:
 Curfews became mandatory
 Districts were sealed
@@ -424,12 +552,145 @@ Pushes the player back
 Breaks guard
 Used to create space for followup attacks
 personal favourites.
-5. Rust Overseers — “The Architects of Control”
+Mini Bosses in the Each level
+Level 1
+Mini-Boss: "Brick" Dugan
+Former dock worker recruited into Rust.
+Appearance
+ Heavy black security vest with the Rust insignia
+ Riot-control shoulder pads
+ Reinforced forearm guards
+ Steel-toe security boots
+ Utility belt carrying restraints and radio equipment
+Move Set
+Brick Breaker Punch
+Running Shoulder Charge
+Ground Stomp
+Grab & Wall Slam
+Rage Punch (low health)
+
+### [the-rebellion#15] primary - GameDesignDocument/The Rebellion.docx
+Fight Theme
+Brick should feel like:
+A human battering ram
+The player's first major skill check
+Slow but intimidating
+Easy to understand but hard to face head-on
+Level 2: Transit District
+Mini-Boss: "Railgun" Royce
+Former transit security officer.
+Appearance
+Electrified baton
+Armoured trench coat
+Scanner visor
+Move Set
+Baton Combo
+Charging Dash
+Shockwave Slam
+Rail Trap (electrified floor sections)
+Taser Burst
+Role
+Introduces stun mechanics.
+Level 3: Industrial Zone
+Mini-Boss: "Crusher" Kane
+Rhea Calder's chief enforcer.
+Appearance
+Hydraulic work suit
+Industrial hammer
+Move Set
+Hammer Slam
+Hook Chain Grab
+Furnace Kick
+Steam Vent Burst
+Crushing Uppercut
+Role
+Prepares players for Overseer Calder.
+Level 4: Neon Market
+Mini-Boss: "Glitch"
+A former hacker turned Rust cyber operative.
+Appearance
+Holographic mask
+Portable drone pack
+Move Set
+Drone Barrage
+Hologram Duplicate
+Shock Disk Throw
+Data Spike
+Emergency Teleport
+Role
+Introduces Voss's deception mechanics.
+Level 5: Skyline District
+Mini-Boss: "Raptor"
+Silas Wren's personal hunter.
+Appearance
+Grapple launcher
+Lightweight armour
+Move Set
+
+### [the-rebellion#16] primary - GameDesignDocument/The Rebellion.docx
+Dive Kick
+Wall Bounce Strike
+Grapple Pull
+Aerial Barrage
+Falcon Drop
+Role
+Trains players for vertical combat.
+Level 6: Undercity
+Mini-Boss: Dr. Holt's Experiment "Subject 88"
+A failed chemical test subject.
+Appearance
+Mutated physique
+Chemical tanks on back
+Glowing green veins
+Move Set
+Toxic Breath
+Acid Spit
+Frenzied Charge
+Corrosion Slam
+Chemical Explosion
+Role
+Introduces area denial hazards.
+Level 7: Rust Military Compound
+Mini-Boss: Commander Atlas
+Leader of the Copper Fangs.
+Appearance
+Elite black armour
+Tactical shield
+Twin electrified gauntlets
+Move Set
+Shield Bash
+Gauntlet Combo
+Grapple Hook Pull
+Electric Counter
+Fang Protocol (calls Specialists)
+Role
+The toughest non-boss enemy in the game.
+Level 8: Corporate Tower
+Mini-Boss: Sentinel-X9
+An experimental combat android protecting Varr.
+Appearance
+Corporate security robot
+Rust insignia
+Energy core chest
+Move Set
+Laser Sweep
+Rocket Punch
+Ground Pound
+Energy Shield
+Self-Repair Mode
+Phase 2
+Core overloads:
+Faster attacks
+Red laser barrage
+Explosive dash attacks
+Role
+Final challenge before Halden Varr.
+
+### [the-rebellion#17] primary - GameDesignDocument/The Rebellion.docx
+5. Rust Overseers — “The Architects of Control” end of level boss
 Role: District bosses, strategic masterminds, Varr’s inner circle Theme: Control through surveillance, fear, and psychological domination Combat Style: Tactical, oppressive, each with unique mechanics
 🧠 1. Overseer Kade Voss — “The Eye of the Market”
 Boss Theme: Surveillance, prediction, drones, holograms
-
-### [the-rebellion#15] primary - GameDesignDocument/The Rebellion.docx
 Arena: Neon Market control hub with screens, drones, hologram emitters
 Phase 1 — “Data Acquisition”
 📡 Predictive Strike
@@ -452,6 +713,8 @@ Electric pillars erupt from the ground
 Pattern changes each use
 Punishes stationary players
 Phase 2 — “System Override”
+
+### [the-rebellion#18] primary - GameDesignDocument/The Rebellion.docx
 Triggered at 50% HP. Arena lights dim; drones turn red.
 🧠 Predictive Lockdown
 Voss’s visor locks onto Zed.
@@ -464,8 +727,6 @@ Fires sweeping laser beams
 Moves slowly
 Adds a second bosslike threat
 💥 Hologram Assault
-
-### [the-rebellion#16] primary - GameDesignDocument/The Rebellion.docx
 Now holograms can attack.
 Each hologram performs a weak punch or shot
 Real Voss attacks simultaneously
@@ -488,6 +749,8 @@ Slow but devastating
 Exosuit arms extend to grab Zed.
 Long reach
 Leads into a slam or throw
+
+### [the-rebellion#19] primary - GameDesignDocument/The Rebellion.docx
 Super Armor during startup
 🔥 Steam Burst Armor
 Calder vents steam from her suit.
@@ -501,8 +764,6 @@ Forces repositioning
 Adds environmental danger
 Phase 2 — “Factory Protocol”
 Triggered at 40% HP. Calder’s exosuit glows red.
-
-### [the-rebellion#17] primary - GameDesignDocument/The Rebellion.docx
 🔧 Overclock Mode
 Her attack speed increases.
 Hammer swings faster
@@ -526,6 +787,8 @@ Phase 1 — “Silent Hunter”
 Silas zips between platforms.
 Attacks from above or behind
 Very fast
+
+### [the-rebellion#20] primary - GameDesignDocument/The Rebellion.docx
 Hard to punish without prediction
 ⚔️ Skyline Snare
 Throws electrified wire traps.
@@ -541,8 +804,6 @@ Used unpredictably
 Dive attack from above.
 High damage
 Creates shockwave
-
-### [the-rebellion#18] primary - GameDesignDocument/The Rebellion.docx
 Punishes players who stay grounded
 Phase 2 — “Ghost of the Skyline”
 Triggered at 50% HP. Silas becomes faster and quieter.
@@ -566,6 +827,8 @@ Arena: Undercity lab with gas vents, toxin pools, fog zones
 Phase 1 — “Chemical Control”
 💨 Fear Gas
 Releases purple fog.
+
+### [the-rebellion#21] primary - GameDesignDocument/The Rebellion.docx
 Distorts player controls
 Causes screen blur
 Forces careful movement
@@ -582,8 +845,6 @@ Controls space
 Fires a dart.
 Reduces player attack speed
 Used to punish aggressive players
-
-### [the-rebellion#19] primary - GameDesignDocument/The Rebellion.docx
 Phase 2 — “Doctor’s Orders”
 Triggered at 40% HP. Holt’s suit glows with chemical pressure.
 🧬 NeuroFog
@@ -611,6 +872,8 @@ High damage
 Causes knockback
 Fast startup
 🛡 Command Shield
+
+### [the-rebellion#22] primary - GameDesignDocument/The Rebellion.docx
 Deploys energy shield.
 Blocks all frontal attacks
 Must be flanked or broken
@@ -625,8 +888,6 @@ Antirush stance
 Anticombo stance
 Forces adaptation
 Phase 2 — “Rust Protocol”
-
-### [the-rebellion#20] primary - GameDesignDocument/The Rebellion.docx
 Triggered at 30% HP. Varr dons full armor.
 ⚙ Hybrid Assault
 Uses moves from all Rust unit types:
@@ -645,6 +906,88 @@ Arena walls electrify
 Final phase becomes relentless
 Level style and Design
 Level-style-01-brick-red-alley
+
+### [zed-rage-system-spec#1] primary - GameDesignDocument/Zed Rage System Spec.docx - Zed Special Attack: Rage System
+The Rebellion: Game Design Document section. Final draft for review.
+Status: design complete. Numbers are starting values to be tuned in playtests. See Section 10 for open items.
+
+### [zed-rage-system-spec#3] primary - GameDesignDocument/Zed Rage System Spec.docx - 2. Lore
+Zed's rage is born from the Rust's false promises, the disappearance of his father, and his willingness to fight for his city.
+The Special is the release of that rage: a refusal to let his city fall the way his father was taken from it. The Rust is the source of the rage, so every Rust enemy feeds it. The father's story stays implied in the Special itself and is left for cutscenes and dialogue to reveal.
+
+### [zed-rage-system-spec#4] primary - GameDesignDocument/Zed Rage System Spec.docx - 3. Availability
+[table]
+Level | Rage meter | Special
+Level 1 (pace level) | Hidden, cannot fill | Unavailable
+Level 2 onward | Visible and active | Available when the meter is full
+The meter resets to 0 at the start of every level and on a retry. Nothing carries over.
+On Level 2 the meter slides into the HUD and a one-time prompt explains it.
+
+### [zed-rage-system-spec#5] primary - GameDesignDocument/Zed Rage System Spec.docx - 4.1 Source
+Landing a blow on any Rust enemy, including bosses, adds Rage.
+Every blow adds the same base amount, whichever normal move lands it (light, heavy or jump kick).
+All of Zed's normal moves work as usual until the meter is full.
+Misses give nothing. Kills and combo finishers give no extra bonus.
+
+### [zed-rage-system-spec#6] primary - GameDesignDocument/Zed Rage System Spec.docx - 4.2 Clean-streak bonus
+Landing blows without taking a hit in between adds a bonus. Taking a hit ends the streak.
+
+### [zed-rage-system-spec#7] primary - GameDesignDocument/Zed Rage System Spec.docx - 4.3 Drain
+The meter drains on a timer at all times, whether or not the player is fighting. The drain pauses during the pause menu, wave transitions and any cutscenes.
+[table]
+Setting | Value
+Meter range | 0 to 100
+Base gain per blow | +3
+Clean-streak bonus | +2 extra per blow after 3 consecutive clean blows (so +5)
+Streak resets when | Zed takes a hit
+Drain while building | 2 per second
+
+### [zed-rage-system-spec#8] primary - GameDesignDocument/Zed Rage System Spec.docx - 5. Ready State
+When the meter reaches 100, Rage is READY. It holds at 100 for a 4-second window so the player can finish what they are doing and press L. If the window passes without the press, the meter starts draining from 100 on the normal timer and must be rebuilt.
+The window exists because a full meter that drained at once would fall below 100 and could never fire.
+
+### [zed-rage-system-spec#9] primary - GameDesignDocument/Zed Rage System Spec.docx - 6.1 Activation
+With the meter READY, the player presses L (keyboard). The gamepad binding is to be designed.
+If Zed cannot start Rage at that moment (for example, mid-jump), the press is buffered and Rage begins when he lands.
+A hit or a knockout cancels a buffered press. The press is also lost if the READY window runs out first.
+
+### [zed-rage-system-spec#11] primary - GameDesignDocument/Zed Rage System Spec.docx - 6.3 Ending
+Rage ends when the meter reaches 0, or immediately if Zed is knocked out (health reaches 0). A knockdown from a hit does not end it. Zed's normal moves then return, and the meter must be refilled from 0 by landing blows on Rust enemies.
+
+### [zed-rage-system-spec#12] primary - GameDesignDocument/Zed Rage System Spec.docx - 7. Expected Pacing
+Assuming about 1.2 blows per second in active combat:
+[table]
+Play style | Time to fill
+Sloppy (frequently hit, little bonus) | About 60 seconds
+Clean (long no-hit streaks) | About 25 seconds
+Not fighting | Meter drains to 0 in about 50 seconds
+The target is one or two Rages per level for most players. Clean play is visibly faster, but sloppy play is never locked out.
+
+### [zed-rage-system-spec#13] primary - GameDesignDocument/Zed Rage System Spec.docx - 8. Art Direction
+For the Art Director. A rage meter that visibly fills from Level 2 onward, placed near Zed's health bar but clearly distinct from it in shape and colour.
+Palette: ember to orange to red-white as it fills.
+Motion: the meter bubbles or pulses, and the pulse gets faster as the fill rises.
+READY state: the frame flares, a READY cue and the L prompt appear, and a visible 4-second window shows how long the player has.
+Rage active: the meter shows a clear 9-second countdown.
+Zed: a subtle aura while building, and a stronger glow on his eyes and fists for the whole of Rage. The art can hint at the loss behind it, with grief turning to fire.
+Feedback: spark or number pops at the meter on each blow, a flash and impact beat on activation, and a distinct effect when Rage ends.
+Accessibility: do not rely on colour alone. Use pulse speed and icon changes as well.
+
+### [zed-rage-system-spec#16] primary - GameDesignDocument/Zed Rage System Spec.docx - 10. Open Items
+[table]
+Item | Status
+Special move damage and recovery time | Placeholders. Set during balancing. Per-hit damage and the 9-second duration must be balanced together so the Special is strong but never a full boss kill.
+Gamepad binding | To be designed.
+Final tuning | All numbers in Sections 4 to 6 are starting values for playtests.
+
+### [zed-rage-system-spec#17] primary - GameDesignDocument/Zed Rage System Spec.docx - Assumptions to confirm at sign-off
+The 4-second READY window (added so a draining full meter can still be used).
+The starting numbers: +3 per blow, +2 bonus after 3 clean blows, drain of 2 per second, Rage duration of 9 seconds.
+A heavy attack and a jump kick give the same Rage as a light attack.
+A knockdown does not end Rage. Only a knockout does.
+A hit cancels a buffered L press.
+The meter resets on a retry as well as at level start.
+Lore wording has not yet been checked against the existing GDD and content/lore files.
 
 ### [level-01-brick-red-alley#1] derived - design/levels/level-01-brick-red-alley.md - Level 1: Brick-Red Alley (style guide)
 Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style set**.
@@ -713,19 +1056,25 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 - Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
 - Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
 
-### [canon#13] derived - design/lore/canon.md - Open lore questions (GDD silent)
-1. Does the Rust impose curfews or issue numbered notices? Menu poster "Rust Notice 114 / CURFEW" implies it. Treated as flavour, not canon, until the owner confirms.
-2. Is "Rust" used as a plural noun ("the Rust are") or a collective singular ("the Rust is")? Sheet assumes plural.
-3. Who is Zed (age, role, backstory)? Is there a named "local hero" on the murals? (Art currently shows Zed as a young street hero with short dark hair and brown skin; all of that is PLACEHOLDER, see `design/art/zed-pixellab-prompt.md`, not canon.)
-4. Names of districts and arena locations. The Rust leader is Commander Halden Varr in the GDD Rust section; the "Architect" title and unit nicknames are GDD wording to confirm.
-5. What does "get it back" mean in story terms (who held the city before)?
-6. Is "Rust enemy" or "Rust grunt" the player-facing term for the enemy?
-7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
+### [level-01-brick-red-alley-2#1] reference - exports/level-01-brick-red-alley.pdf
+Level 1: Brick-Red Alley (style guide)
+Owner agent: level-style-01-brick-red-alley-agent . Status: 2026-10-20, style set.
+Known from the level data (do not contradict)
+District: brick-red-alley Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music. Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F Time limit: 120 s. Waves: 3. Enemies named: grunt. Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe." Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
+House rules that apply to every level
+Source: design/art/style-guide.md .
 
 ### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
 **Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
 **Source:** Pitch: "fight through urban districts overtaken Rush a corrupt private Security Force"; the only level structure given is "Defeat Wave / Clear Arena".
 **Severity:** MINOR
 
+### [critic-log-2#5] reference - exports/critic-log.docx - Audited and fine
+Title "THE REBELLION" and subtitle "Fists of the Fallen City": match GDD title; "Fallen City" correct.
+Option labels Fight, Controls, Options, Quit: short, active, fit the voice. FIGHT suits the "Fists" title. Note that Options has no spec and Quit is not meaningful in a browser (open question 7 in canon).
+Poster "Local Heroes Benefit: Keep the Lights On": hopeful, community voice, matches the GDD's murals of local heroes. No change.
+Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
+Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
+
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 525 chunks across 51 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 599 chunks across 57 documents.
