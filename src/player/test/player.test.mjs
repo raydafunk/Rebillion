@@ -102,18 +102,14 @@ test('onActive fires every active frame with one swing id; new swing per move', 
   assert.notEqual(log[log.length - 1][1], log[0][1]);
 });
 
-test('block starts as parry window then plain block; dodge has i-frames then ends', () => {
+test('block starts as parry window then plain block', () => {
   const m = new PlayerStateMachine();
   const B = { pressed: {}, held: { block: true }, moveX: 0 };
   m.step(B); assert.equal(m.guardType, 'parry');
   for (let i = 0; i < 10; i++) m.step(B);
   assert.equal(m.guardType, 'block');
   m.step(NONE);
-  m.step({ pressed: { dodge: true }, held: {}, moveX: 0 });
-  assert.equal(m.state, 'dodge'); assert.equal(m.guardType, 'dodge');
-  for (let i = 0; i < 16; i++) m.step(NONE);
-  assert.equal(m.state, 'dodge'); assert.equal(m.guardType, null);
-  for (let i = 0; i < 10; i++) m.step(NONE);
+  assert.equal(m.guardType, null);
   assert.equal(m.state, 'idle');
 });
 
@@ -126,4 +122,324 @@ test('combo then hit-stun simulation', () => {
   assert.equal(m.state, 'hitstun');
   for (let i = 0; i < 12; i++) m.step(NONE);
   assert.equal(m.state, 'idle');
+});
+
+import { zedPose, zedTextureKey, ZED_SPRITE } from '../zedVisual.js';
+import { readFileSync, existsSync } from 'node:fs';
+
+test('zed visual: pose is data-driven per state and sprites exist', () => {
+  assert.equal(zedPose({ state: 'attack', phase: 'active', moveId: 'light1', t: 0 }).tint, 0xfff2b0);
+  assert.equal(zedPose({ state: 'hitstun', t: 0 }).tintFill, 0xffffff);
+  assert.equal(zedPose({ state: 'block', t: 0 }).tint, 0x88aaff);
+  assert.equal(zedPose({ state: 'idle', t: 0 }).alpha, 1);
+  // idle breathes gently: height only, never squashes below 1, max ~1%, feet stay on the ground
+  let maxSy = 1;
+  for (let t = 0; t < 3000; t += 50) {
+    const p = zedPose({ state: 'idle', t });
+    assert.equal(p.sx, 1); assert.equal(p.oy, 0); assert.ok(p.sy >= 1 && p.sy <= 1.0101);
+    maxSy = Math.max(maxSy, p.sy);
+  }
+  assert.ok(maxSy > 1.005, 'idle still breathes');
+  assert.ok(zedPose({ state: 'attack', phase: 'active', moveId: 'heavy1', facing: 1, t: 0 }).ox > zedPose({ state: 'attack', phase: 'active', moveId: 'light1', facing: 1, t: 0 }).ox);
+  assert.ok(zedPose({ state: 'attack', phase: 'active', moveId: 'light1', facing: -1, t: 0 }).ox < 0);
+  assert.equal(zedTextureKey('Idle', 'east'), 'zed.idle.east');
+  for (const d of Object.values(ZED_SPRITE.dir)) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/Idle/rotations/${d}.png`, import.meta.url)));
+});
+
+import { ZED_ANIMS, zedFrameKey, zedAnimKey, zedFramePath } from '../zedVisual.js';
+test('zed run anim: keys, files, metadata agree', () => {
+  assert.equal(zedAnimKey('run', 'east'), 'zed.run.east');
+  assert.equal(zedFrameKey('run', 'west', 3), 'zed.run.west.3');
+  const meta = JSON.parse(readFileSync(new URL('../../../assets/sprites/zed/metadata.json', import.meta.url), 'utf8'));
+  for (const a of ZED_ANIMS) {
+    const st = meta.states.find((x) => x.folder === a.folder);
+    // metadata.json is regenerated per export and may list only the newest state; files below are the hard check
+    for (const d of Object.values(ZED_SPRITE.dir)) {
+      if (st) assert.equal(st.frames.animations[a.anim][d].length, a.frames);
+      for (let i = 0; i < a.frames; i++) {
+        if (st) assert.equal(st.frames.animations[a.anim][d][i], zedFramePath(a, d, i));
+        assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(a, d, i)}`, import.meta.url)));
+      }
+    }
+  }
+  assert.ok(ZED_ANIMS.every((a) => a.fps >= 10 && a.fps <= 30));
+  assert.equal(ZED_ANIMS[0].state, 'run');
+  assert.equal(new Set(ZED_ANIMS.map((a) => a.state)).size, ZED_ANIMS.length, 'frame texture keys must not collide');
+});
+
+import { ZED_POSES } from '../zedVisual.js';
+import { KEY_MAP, padToKeys } from '../input.js';
+test('jump: pose textures exist, keys and gamepad map to jump edge', () => {
+  assert.equal(ZED_POSES.jump.state, 'Jumping');
+  assert.equal(zedTextureKey(ZED_POSES.jump.state, 'west'), 'zed.jumping.west');
+  for (const d of Object.values(ZED_SPRITE.dir)) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/Jumping/rotations/${d}.png`, import.meta.url)));
+  assert.ok(zedPose({ state: 'jump', vy: -100, t: 0 }).sy > 1);
+  assert.ok(zedPose({ state: 'jump', vy: 100, t: 0 }).sy < 1);
+  // no snap at the apex: the shape changes smoothly as vy crosses zero
+  const a = zedPose({ state: 'jump', vy: -5, t: 0 }), b = zedPose({ state: 'jump', vy: 5, t: 0 });
+  assert.ok(Math.abs(a.sy - b.sy) < 0.01 && Math.abs(a.sx - b.sx) < 0.01);
+  for (const k of ['Space', 'KeyW', 'ArrowUp']) {
+    const i = new InputState(); i.poll([]); assert.equal(i.poll([k]).pressed.jump, true);
+    assert.equal(i.poll([k]).pressed.jump, false); // held, no re-trigger
+  }
+  assert.ok(KEY_MAP.jump.includes('Space'));
+  const pad = { buttons: Array.from({ length: 16 }, () => ({ pressed: false })), axes: [0, 0] };
+  pad.buttons[0].pressed = true;
+  assert.equal(new InputState().poll(padToKeys(pad)).pressed.jump, true);
+  pad.buttons[0].pressed = false; pad.axes[0] = 0.9;
+  assert.equal(new InputState().poll(padToKeys(pad)).moveX, 1);
+});
+
+import { punchLunge } from '../zedVisual.js';
+test('punch lunge: coils back, steps forward, settles; mirrors with facing', () => {
+  const at = (frame, moveId = 'light1', facing = 1) => punchLunge({ moveId, frame }, facing);
+  assert.ok(at(3) < 0, 'wind-up pulls back');
+  assert.ok(at(6) > 0, 'active frames step into the hit');
+  assert.ok(Math.abs(at(14)) < Math.abs(at(6)), 'recovery settles');
+  assert.equal(at(6, 'light1', -1), -at(6, 'light1', 1));
+  assert.ok(at(18, 'heavy1') > at(6, 'light1'), 'heavy lunges further');
+  assert.equal(punchLunge({ moveId: null, frame: 0 }), 0);
+});
+
+// Human tap rhythm: 3 single-frame taps `gap` frames apart must reach punch -> punch -> kick.
+test('3 taps at human rhythm (7-20 frames apart, 117-333 ms) reach light3', () => {
+  for (let gap = 7; gap <= 20; gap++) {
+    const fired = [];
+    const m = new PlayerStateMachine({ onActiveStart: (id) => fired.push(id) });
+    for (let f = 0; f < 3 * gap + 80; f++) {
+      m.step(f % gap === 0 && f / gap < 3 ? press('light') : NONE);
+    }
+    assert.deepEqual(fired, ['light1', 'light2', 'light3'], `gap ${gap}`);
+  }
+});
+
+test('light3 kick: onActive fires with its hitbox, clip finishes, west/east frames exist', () => {
+  const hits = [];
+  const m = new PlayerStateMachine({ onActive: (id, mv) => hits.push([id, mv.hitbox.w]) });
+  m.step(press('light'));
+  for (let f = 0; f < 60; f++) m.step(f === 6 || f === 14 ? press('light') : NONE);
+  assert.equal(hits.filter((h) => h[0] === 'light3').length, MOVES.light3.active);
+  assert.equal(hits.find((h) => h[0] === 'light3')[1], MOVES.light3.hitbox.w);
+  assert.equal(m.state, 'idle');
+  const k = ZED_ANIMS.find((a) => a.state === 'light3');
+  assert.ok(k, 'light3 clip registered');
+  assert.equal(zedAnimKey('light3', 'west'), 'zed.light3.west');
+  for (const d of ['east', 'west']) for (let i = 0; i < k.frames; i++) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(k, d, i)}`, import.meta.url)));
+});
+
+test('combo works while running (moveX held) and a heavy mid-combo does not break the chain', () => {
+  const run = (k) => ({ pressed: k ? { [k]: true } : {}, held: {}, moveX: -1 });
+  const fired = [];
+  const m = new PlayerStateMachine({ onActiveStart: (id) => fired.push(id) });
+  m.step(run('light'));
+  for (let f = 1; f < 80; f++) m.step(run(f === 9 || f === 18 ? 'light' : null));
+  assert.deepEqual(fired, ['light1', 'light2', 'light3']);
+  const h = new PlayerStateMachine();
+  h.step(press('light'));
+  for (let i = 0; i < 8; i++) h.step(i === 7 ? press('heavy') : NONE);
+  assert.equal(h.moveId, 'heavy1');
+});
+
+test('controls table bindings: special L, block I/V, no Shift, no shared keys, no dodge', () => {
+  assert.equal(KEY_MAP.dodge, undefined); assert.deepEqual(KEY_MAP.special, ['KeyL']);
+  assert.deepEqual(KEY_MAP.block, ['KeyI', 'KeyV']);
+  const all = Object.values(KEY_MAP).flat();
+  assert.equal(new Set(all).size, all.length, 'a key is bound to two actions');
+  assert.ok(!all.includes('ShiftLeft'));
+  assert.ok(!all.includes('KeyC'));
+  for (const k of ['KeyI', 'KeyV']) { const m = mapKeys([k]); assert.equal(m.block, true); }
+  const pad = { buttons: Array.from({ length: 16 }, () => ({ pressed: false })), axes: [0, 0] };
+  pad.buttons[1].pressed = true; pad.buttons[5].pressed = true;
+  assert.deepEqual(padToKeys(pad), [], 'B/RB are unbound now');
+  const p = new InputState().poll(padToKeys(pad));
+  assert.equal(p.held.block, false);
+});
+
+test('parry (T or M): negates hits during window, then recovers; light combo unaffected', async () => {
+  const { PARRY } = await import('../moves.js');
+  assert.deepEqual(KEY_MAP.parry, ['KeyT', 'KeyM']);
+  const m = new PlayerStateMachine();
+  m.step({ pressed: { parry: true }, held: {}, moveX: 0 });
+  assert.equal(m.state, 'parry'); assert.equal(m.guardType, 'parry');
+  for (let i = 0; i < PARRY.window; i++) m.step({ pressed: {}, held: {}, moveX: 0 });
+  assert.equal(m.state, 'parry'); assert.equal(m.guardType, null);
+  for (let i = 0; i < PARRY.duration; i++) m.step({ pressed: {}, held: {}, moveX: 0 });
+  assert.equal(m.state, 'idle');
+  m.step({ pressed: { light: true }, held: {}, moveX: 0 });
+  assert.equal(m.moveId, 'light1');
+});
+
+test('parry reaction clip: registered for the parry state, non-looping, 9 frames, both side dirs', async () => {
+  const { PARRY } = await import('../moves.js');
+  const a = ZED_ANIMS.find((x) => x.state === 'parry');
+  assert.ok(a); assert.equal(a.folder, 'Zed_parry_reaction_a'); assert.equal(a.frames, 9); assert.equal(a.repeat, 0);
+  assert.equal(zedAnimKey('parry', 'east'), 'zed.parry.east');
+  assert.equal(zedAnimKey('parry', 'west'), 'zed.parry.west');
+  assert.ok(PARRY.duration > 0 && (a.frames / a.fps) * 60 > 0);
+});
+
+test('pickup: clip registered (5 frames, non-looping); locks attacks for its duration, then idle; hit and attacks unaffected', async () => {
+  const { PICKUP_POSE } = await import('../moves.js');
+  const a = ZED_ANIMS.find((x) => x.state === 'pickup');
+  assert.ok(a); assert.equal(a.folder, 'pick_up'); assert.equal(a.frames, 5); assert.equal(a.repeat, 0);
+  assert.equal(zedAnimKey('pickup', 'west'), 'zed.pickup.west');
+  const m = new PlayerStateMachine();
+  assert.equal(m.startPickup(), true);
+  assert.equal(m.state, 'pickup');
+  assert.equal(m.step(press('light')), 'pickup', 'attack locked');
+  for (let i = 0; i < PICKUP_POSE.duration - 3; i++) assert.equal(m.step(NONE), 'pickup');
+  for (let i = 0; i < 3; i++) m.step(NONE);
+  assert.ok(['idle', 'attack'].includes(m.state) && m.state !== 'pickup', 'returns to neutral (a press buffered during the grab may start the move)');
+  const m2 = new PlayerStateMachine(); m2.startPickup();
+  for (let i = 0; i < PICKUP_POSE.duration; i++) m2.step(NONE);
+  assert.equal(m2.state, 'idle');
+  m.moveId = null; m._set('idle');
+  m.step(press('light'));
+  assert.equal(m.moveId, 'light1');
+  assert.equal(m.startPickup(), false, 'not during an attack');
+  const h = new PlayerStateMachine(); h.startPickup(); h.hit(4);
+  assert.equal(h.state, 'hitstun');
+});
+
+test('heavy pressed during heavy1 does not replay it after recovery', () => {
+  const m = new PlayerStateMachine();
+  m.step(press('heavy'));
+  const swing = m.swing;
+  for (let i = 0; i < 20; i++) m.step(i === 15 ? press('heavy') : NONE); // second press late in the move
+  for (let i = 0; i < 40; i++) m.step(NONE);
+  assert.equal(m.swing, swing, 'no second heavy1 started');
+  assert.equal(m.state, 'idle');
+  m.step(press('heavy'));
+  assert.equal(m.moveId, 'heavy1', 'a fresh press after the move still works');
+});
+
+test('defence keys: block I/V, parry T/M; no shared or legacy keys', () => {
+  assert.deepEqual(KEY_MAP.special, ['KeyL']);
+  assert.deepEqual(KEY_MAP.block, ['KeyI', 'KeyV']);
+  assert.deepEqual(KEY_MAP.parry, ['KeyT', 'KeyM']);
+  const all = Object.values(KEY_MAP).flat();
+  assert.equal(new Set(all).size, all.length);
+  for (const k of ['KeyT', 'KeyM']) {
+    const a = mapKeys([k]);
+    assert.equal(a.parry, true); assert.equal(a.block, false);
+  }
+  assert.ok(Object.values(mapKeys(['KeyQ'])).every((v) => v === false));
+  const i = new InputState().poll(['KeyT']);
+  const m = new PlayerStateMachine();
+  m.step({ pressed: i.pressed, held: i.held, moveX: 0 });
+  assert.equal(m.state, 'parry'); assert.equal(m.guardType, 'parry');
+});
+
+test('moves.js combat numbers equal combatData.js (single source)', async () => {
+  const { PLAYER_MOVE_COMBAT } = await import('../../shared/combatData.js');
+  for (const [id, c] of Object.entries(PLAYER_MOVE_COMBAT)) {
+    assert.equal(MOVES[id].damage, c.damage, id);
+    assert.equal(MOVES[id].knockback, c.knockback, id);
+    assert.equal(MOVES[id].hitstun, c.hitstun, id);
+    assert.deepEqual(MOVES[id].hitbox, c.hitbox, id);
+  }
+});
+
+test('heavy-hit sound: only Zed heavy move, only confirmed damage on an enemy', async () => {
+  const { isHeavyHit } = await import('../heavyHit.js');
+  assert.deepEqual(Object.keys(MOVES).filter((k) => MOVES[k].heavy), ['heavy1']);
+  const d = { attackerId: 'zed', targetId: 'g1', amount: 18 };
+  assert.equal(isHeavyHit(true, d, 'zed'), true);
+  assert.equal(isHeavyHit(false, d, 'zed'), false, 'light attacks / no swing in flight');
+  assert.equal(isHeavyHit(true, { ...d, amount: 0 }, 'zed'), false, 'negated hit');
+  assert.equal(isHeavyHit(true, { ...d, attackerId: 'g1', targetId: 'zed' }, 'zed'), false, 'enemy hitting Zed');
+});
+
+test('light-hit sound: every non-heavy move uses the light key, heavy only the heavy key', async () => {
+  const { hitSoundKey, isHeavyHit, LIGHT_HIT_SOUND_KEY, HEAVY_HIT_SOUND_KEY } = await import('../heavyHit.js');
+  for (const id of Object.keys(MOVES)) {
+    if (id === 'light3') continue;
+    assert.equal(hitSoundKey(MOVES[id]), MOVES[id].heavy ? HEAVY_HIT_SOUND_KEY : LIGHT_HIT_SOUND_KEY, id);
+  }
+  assert.equal(hitSoundKey(MOVES.light1), LIGHT_HIT_SOUND_KEY);
+  assert.equal(hitSoundKey(MOVES.light2), LIGHT_HIT_SOUND_KEY);
+  assert.equal(hitSoundKey(MOVES.light3), 'zed-kick-hit', 'finisher kick plays only the kick sound');
+  assert.notEqual(hitSoundKey(MOVES.light3), LIGHT_HIT_SOUND_KEY);
+  assert.notEqual(hitSoundKey(MOVES.light3), HEAVY_HIT_SOUND_KEY);
+  assert.equal(hitSoundKey(MOVES.heavy1), HEAVY_HIT_SOUND_KEY);
+  const d = { attackerId: 'zed', targetId: 'g1', amount: 5 };
+  assert.equal(isHeavyHit(null, d, 'zed'), false, 'miss / nothing armed');
+  assert.equal(isHeavyHit(LIGHT_HIT_SOUND_KEY, { ...d, amount: 0 }, 'zed'), false, 'negated light hit');
+  assert.equal(isHeavyHit(LIGHT_HIT_SOUND_KEY, d, 'zed'), true);
+});
+
+test('swing whoosh: data-driven, every attack move, once per move, never in hitstun', async () => {
+  const { swingSoundKey, SWING_SOUND_KEY } = await import('../heavyHit.js');
+  assert.equal(swingSoundKey(MOVES.light1), SWING_SOUND_KEY);
+  assert.equal(swingSoundKey(MOVES.light2), SWING_SOUND_KEY);
+  assert.equal(swingSoundKey(MOVES.heavy1), SWING_SOUND_KEY);
+  assert.equal(swingSoundKey(MOVES.light3), SWING_SOUND_KEY, 'kick finisher swings too');
+  const log = [];
+  const m = new PlayerStateMachine({ onMoveStart: (id, mv) => log.push(swingSoundKey(mv) && id) });
+  const none = { pressed: {}, held: {} };
+  m.step({ pressed: { light: true }, held: {} });
+  for (let i = 0; i < 6; i++) m.step(none);          // buffering/holding: no extra fire
+  assert.deepEqual(log, ['light1']);
+  m.step({ pressed: { light: true }, held: {} });
+  for (let i = 0; i < 12; i++) m.step(none);
+  assert.deepEqual(log, ['light1', 'light2'], 'chained move fires once');
+  for (let i = 0; i < 30; i++) m.step(none);
+  m.hit(10);
+  for (let i = 0; i < 12; i++) m.step(none);
+  assert.deepEqual(log, ['light1', 'light2'], 'hitstun fires nothing');
+});
+
+test('zed death anim: plays once, holds last frame, finishes before the lose screen (700 ms)', () => {
+  const a = ZED_ANIMS.find((x) => x.state === 'dead');
+  assert.ok(a, 'dead clip registered');
+  assert.equal(a.folder, 'knock_down_death');
+  assert.equal(a.repeat, 0);
+  assert.equal(a.frames, 7);
+  assert.ok((a.frames / a.fps) * 1000 <= 700, 'clip fits in ArenaScene END_DELAY_MS');
+  assert.ok(a.originY > 0.5 && a.originY <= 1);
+  assert.equal(zedAnimKey('dead', 'west'), 'zed.dead.west');
+});
+
+test('successful parry can be cancelled into an attack; a missed parry cannot', () => {
+  const light = { pressed: { light: true }, held: {}, moveX: 0 };
+  const m = new PlayerStateMachine();
+  m.step({ pressed: { parry: true }, held: {}, moveX: 0 });
+  m.step(light); // attack pressed mid-parry, no hit landed
+  assert.equal(m.state, 'parry');
+  const ok = new PlayerStateMachine();
+  ok.step({ pressed: { parry: true }, held: {}, moveX: 0 });
+  ok.parrySucceeded();
+  ok.step(light);
+  assert.equal(ok.state, 'attack'); assert.equal(ok.moveId, 'light1');
+});
+
+test('flying kick: light while airborne, once per jump, ends on landing, no ground chain', () => {
+  const hits = [];
+  const m = new PlayerStateMachine({ onActive: (id) => hits.push(id) });
+  const air = { grounded: false };
+  m.step(NONE, air);
+  assert.equal(m.state, 'jump');
+  m.step(press('light'), air);
+  assert.equal(m.state, 'attack');
+  assert.equal(m.moveId, 'airkick');
+  for (let f = 0; f < 10; f++) m.step(NONE, air);
+  assert.ok(hits.length > 0 && hits.every((h) => h === 'airkick'));
+  assert.equal(m.state, 'attack', 'stays in the kick while airborne');
+  m.step(NONE, { grounded: true });
+  assert.equal(m.state, 'idle', 'landing ends the kick');
+  // second jump: kick allowed again; pressing light twice in one jump gives one kick
+  m.step(NONE, air);
+  m.step(press('light'), air);
+  for (let f = 0; f < 60; f++) m.step(f === 3 ? press('light') : NONE, air);
+  assert.equal(m.swing, 2, 'one kick per jump (second press ignored)');
+  assert.equal(MOVES.airkick.damage > MOVES.light1.damage, true);
+  const k = ZED_ANIMS.find((a) => a.state === 'airkick');
+  assert.ok(k, 'airkick clip registered');
+  for (const d of ['east', 'west']) for (let i = 0; i < k.frames; i++) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(k, d, i)}`, import.meta.url)));
+});
+
+test('ground light press still starts light1 (not the flying kick)', () => {
+  const m = new PlayerStateMachine();
+  m.step(press('light'));
+  assert.equal(m.moveId, 'light1');
 });

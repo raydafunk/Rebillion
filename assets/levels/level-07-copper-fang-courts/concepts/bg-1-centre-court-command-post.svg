@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 720" width="1920" height="720">
+<!-- Level 7 concept 1: Centre-court command post. Golden hour, bent hoops, slate Rust tent with cyan screen, chalk drawings. Lane y 460-680 kept calm. -->
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6E3B0"/><stop offset=".55" stop-color="#EDC77B"/><stop offset="1" stop-color="#E5A650"/></linearGradient>
+<radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF3CF"/><stop offset=".35" stop-color="#F9DE9A" stop-opacity=".85"/><stop offset="1" stop-color="#F2C46B" stop-opacity="0"/></radialGradient>
+<linearGradient id="court" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4B8556"/><stop offset=".5" stop-color="#3E7549"/><stop offset="1" stop-color="#2F6B3F"/></linearGradient>
+<linearGradient id="screenGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FB3D9" stop-opacity=".55"/><stop offset="1" stop-color="#4FB3D9" stop-opacity="0"/></linearGradient>
+<radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7FD6F2" stop-opacity=".55"/><stop offset="1" stop-color="#4FB3D9" stop-opacity="0"/></radialGradient>
+<linearGradient id="warm" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#F8D27A" stop-opacity=".22"/><stop offset="1" stop-color="#F8D27A" stop-opacity="0"/></linearGradient>
+<pattern id="mesh" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 0L20 20M20 0L0 20" stroke="#6E7455" stroke-width="1.6" fill="none"/></pattern>
+<g id="panel"><rect width="58" height="120" fill="#3C4650"/><rect width="58" height="10" fill="#2A3138"/><path d="M0 120L58 10M58 120L0 10" stroke="#7C8A96" stroke-width="4" fill="none"/><rect x="4" y="112" width="50" height="8" fill="#2A3138"/></g>
+<g id="tree"><rect x="-6" y="40" width="12" height="70" fill="#6B4423"/><circle cx="0" cy="10" r="52" fill="#2F6B3F"/><circle cx="-30" cy="34" r="30" fill="#3A7B4A"/><circle cx="30" cy="30" r="28" fill="#2F6B3F"/></g>
+<g id="flag"><path d="M0 0H18L9 24Z"/></g>
+<!-- bent hoop, drawn facing right; mirrored for the other side -->
+<g id="hoop">
+<path d="M0 0V-120Q0 -190 30 -250" fill="none" stroke="#4A3626" stroke-width="16" stroke-linecap="round"/>
+<path d="M0 0V-120Q0 -190 30 -250" fill="none" stroke="#8A6A4C" stroke-width="4" stroke-linecap="round" transform="translate(-4 0)"/>
+<rect x="-14" y="-10" width="28" height="12" fill="#3A2A20"/>
+<g transform="translate(30 -250) rotate(-9)">
+<rect x="-6" y="-4" width="16" height="70" fill="#4A3626"/>
+<rect x="6" y="-60" width="104" height="76" rx="4" fill="#F4E6C8" stroke="#6B4423" stroke-width="5"/>
+<path d="M46 -22H88V0H46Z" fill="none" stroke="#A8402E" stroke-width="4"/>
+<path d="M14 -52L36 -30M100 -52L80 -34" stroke="#6B4423" stroke-width="2" opacity=".5"/>
+<path d="M62 -58L74 -34L66 -28L80 -6" stroke="#6B4423" stroke-width="2" fill="none" opacity=".6"/>
+<g transform="rotate(14 112 18)"><ellipse cx="124" cy="22" rx="30" ry="7" fill="none" stroke="#C9602E" stroke-width="5"/>
+<path d="M100 24L106 52M112 28L112 56M124 29L124 58M136 28L138 54M148 24L142 50" stroke="#EDE3CC" stroke-width="2" opacity=".75"/>
+<path d="M104 40L112 52L120 42" stroke="#EDE3CC" stroke-width="2" fill="none" opacity=".7"/></g>
+</g>
+</g>
+</defs>
+
+<!-- SKY -->
+<rect width="1920" height="720" fill="url(#sky)"/>
+<circle cx="1480" cy="300" r="230" fill="url(#sun)"/>
+<circle cx="1480" cy="300" r="62" fill="#FFF6DA" opacity=".95"/>
+<g fill="#F9E9BE" opacity=".55"><ellipse cx="300" cy="90" rx="200" ry="14"/><ellipse cx="420" cy="116" rx="140" ry="10"/><ellipse cx="1100" cy="70" rx="230" ry="14"/><ellipse cx="1760" cy="130" rx="170" ry="12"/><ellipse cx="760" cy="180" rx="150" ry="10"/></g>
+<g fill="#7A5A3A" opacity=".5"><path d="M1130 150q10-10 20 0q10-10 20 0" fill="none" stroke="#7A5A3A" stroke-width="3"/><path d="M1190 120q8-8 16 0q8-8 16 0" fill="none" stroke="#7A5A3A" stroke-width="3"/></g>
+
+<!-- far: apartment blocks and tree line -->
+<g fill="#C79A66" opacity=".7">
+<rect x="30" y="230" width="150" height="220"/><rect x="200" y="270" width="120" height="180"/><rect x="560" y="250" width="140" height="200"/>
+<rect x="1180" y="240" width="130" height="210"/><rect x="1560" y="220" width="160" height="230"/><rect x="1740" y="270" width="140" height="180"/>
+</g>
+<g fill="#F7DC8F" opacity=".75">
+<rect x="48" y="250" width="14" height="18"/><rect x="78" y="250" width="14" height="18"/><rect x="108" y="250" width="14" height="18"/><rect x="48" y="290" width="14" height="18"/><rect x="108" y="290" width="14" height="18"/><rect x="138" y="330" width="14" height="18"/><rect x="78" y="330" width="14" height="18"/>
+<rect x="216" y="290" width="14" height="18"/><rect x="246" y="330" width="14" height="18"/><rect x="276" y="290" width="14" height="18"/>
+<rect x="578" y="270" width="14" height="18"/><rect x="608" y="310" width="14" height="18"/><rect x="638" y="270" width="14" height="18"/><rect x="668" y="350" width="14" height="18"/>
+<rect x="1198" y="262" width="14" height="18"/><rect x="1258" y="302" width="14" height="18"/><rect x="1228" y="342" width="14" height="18"/>
+<rect x="1580" y="244" width="14" height="18"/><rect x="1640" y="244" width="14" height="18"/><rect x="1610" y="284" width="14" height="18"/><rect x="1670" y="324" width="14" height="18"/>
+<rect x="1760" y="292" width="14" height="18"/><rect x="1820" y="332" width="14" height="18"/>
+</g>
+<polygon points="0,330 150,310 330,338 520,300 720,334 900,308 1100,336 1300,302 1500,332 1700,306 1920,330 1920,450 0,450" fill="#5C8A5A"/>
+<polygon points="0,372 200,356 420,380 640,352 880,378 1100,356 1340,380 1560,352 1760,376 1920,360 1920,450 0,450" fill="#4C7D51"/>
+<g opacity=".95"><use href="#tree" x="40" y="330"/><use href="#tree" x="470" y="338" transform="translate(0 0) scale(1)"/><use href="#tree" x="690" y="342"/><use href="#tree" x="1010" y="336"/><use href="#tree" x="1330" y="340"/><use href="#tree" x="1860" y="334"/></g>
+
+<!-- chain-link fence -->
+<g>
+<rect y="372" width="1920" height="78" fill="url(#mesh)" opacity=".85"/>
+<rect y="370" width="1920" height="6" fill="#6B6A55"/>
+<g fill="#5A5A48"><rect x="60" y="362" width="9" height="92"/><rect x="300" y="362" width="9" height="92"/><rect x="540" y="362" width="9" height="92"/><rect x="780" y="362" width="9" height="92"/><rect x="1020" y="362" width="9" height="92"/><rect x="1260" y="362" width="9" height="92"/><rect x="1500" y="362" width="9" height="92"/><rect x="1740" y="362" width="9" height="92"/></g>
+<!-- sagging section and kids' faded bunting on the fence -->
+<path d="M60 380Q180 420 300 380" fill="none" stroke="#6B4423" stroke-width="2.5"/>
+<g fill="#A8402E" opacity=".75"><use href="#flag" x="90" y="394"/></g><g fill="#E3A92B" opacity=".8"><use href="#flag" x="130" y="402"/></g><g fill="#4FB3D9" opacity=".7"><use href="#flag" x="170" y="406"/></g><g fill="#F4E6C8" opacity=".8"><use href="#flag" x="212" y="402"/></g><g fill="#2F6B3F" opacity=".8"><use href="#flag" x="252" y="394"/></g>
+<path d="M1500 380Q1620 420 1740 380" fill="none" stroke="#6B4423" stroke-width="2.5"/>
+<g fill="#E3A92B" opacity=".8"><use href="#flag" x="1530" y="394"/></g><g fill="#A8402E" opacity=".75"><use href="#flag" x="1572" y="402"/></g><g fill="#F4E6C8" opacity=".8"><use href="#flag" x="1614" y="406"/></g><g fill="#2F6B3F" opacity=".8"><use href="#flag" x="1656" y="402"/></g><g fill="#4FB3D9" opacity=".7"><use href="#flag" x="1698" y="394"/></g>
+</g>
+<rect y="446" width="1920" height="8" fill="#6B4423" opacity=".6"/>
+
+<!-- COURT SURFACE -->
+<rect y="450" width="1920" height="270" fill="url(#court)"/>
+<rect y="450" width="1920" height="10" fill="#5A9566" opacity=".6"/>
+<!-- court lines, low contrast -->
+<g fill="none" stroke="#EBDDB0" stroke-width="5" opacity=".38">
+<path d="M0 468H1920"/>
+<path d="M960 470V690"/>
+<ellipse cx="960" cy="580" rx="170" ry="58"/>
+<path d="M0 520H330L400 690H0" stroke-width="4"/>
+<path d="M1920 520H1590L1520 690H1920" stroke-width="4"/>
+<path d="M330 520Q470 600 400 690" stroke-width="4"/>
+<path d="M1590 520Q1450 600 1520 690" stroke-width="4"/>
+</g>
+<!-- asphalt cracks and patches -->
+<g fill="none" stroke="#244F30" stroke-width="2.5" opacity=".55" stroke-linecap="round">
+<path d="M520 610l30 12l-8 24l34 14"/><path d="M1330 520l-22 16l26 18l-12 22"/><path d="M780 668l40-8l24 14"/><path d="M1710 640l-30-10l-10-28"/>
+<path d="M210 660l24-12l8 20"/><path d="M1090 520l18 14l-6 20"/>
+</g>
+<g fill="#244F30" opacity=".18"><ellipse cx="640" cy="640" rx="60" ry="10"/><ellipse cx="1400" cy="610" rx="70" ry="9"/></g>
+<!-- weeds pushing through cracks -->
+<g stroke="#6FA85F" stroke-width="2.5" stroke-linecap="round" opacity=".85">
+<path d="M551 622l-4-12M551 622l4-14M551 622l10-8"/><path d="M1308 536l-4-10M1308 536l6-12"/><path d="M844 674l-3-10M844 674l6-9"/>
+</g>
+
+<!-- chalk drawings (faint) -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" opacity=".5">
+<!-- hopscotch -->
+<g stroke="#F4E6C8"><rect x="450" y="640" width="36" height="28"/><rect x="450" y="612" width="36" height="28"/><rect x="414" y="584" width="36" height="28"/><rect x="450" y="584" width="36" height="28"/><rect x="450" y="556" width="36" height="28"/><rect x="414" y="528" width="36" height="28"/><rect x="450" y="528" width="36" height="28"/><path d="M436 500Q468 478 500 500Q468 522 436 500" /></g>
+<g fill="#F4E6C8" stroke="none" font-family="Comic Sans MS, cursive, sans-serif" font-size="17"><text x="462" y="662">1</text><text x="462" y="634">2</text><text x="426" y="606">3</text><text x="462" y="606">4</text><text x="462" y="578">5</text><text x="426" y="550">6</text><text x="462" y="550">7</text></g>
+<!-- sun with face -->
+<g stroke="#F7E27A"><circle cx="640" cy="572" r="22"/><path d="M640 536v-12M640 608v12M604 572h-12M676 572h12M614 546l-9-9M666 546l9-9M614 598l-9 9M666 598l9 9"/></g>
+<g stroke="#F7E27A" stroke-width="2.5"><path d="M632 566v3M648 566v3M631 578q9 8 18 0"/></g>
+<!-- stick kids holding hands -->
+<g stroke="#9CCBE0"><circle cx="1290" cy="560" r="9"/><path d="M1290 569v26M1290 576l-14 8M1290 595l-9 18M1290 595l9 18"/>
+<circle cx="1340" cy="552" r="9"/><path d="M1340 561v32M1340 570l-14 -2M1340 570l16 -2M1340 593l-9 20M1340 593l9 20"/>
+<path d="M1290 576L1340 570" stroke="#9CCBE0"/>
+<circle cx="1392" cy="560" r="9"/><path d="M1392 569v26M1392 576l-14 -2M1392 576l12 8M1392 595l-9 18M1392 595l9 18"/>
+<path d="M1356 568L1378 574"/></g>
+<!-- house, heart, ball scribble -->
+<g stroke="#F2B6C0"><path d="M1480 650v-30h40v30zM1474 620l26-22l26 22"/><path d="M1496 650v-14h8v14"/></g>
+<g stroke="#F2B6C0"><path d="M1230 628q-14-18 0-24q8-4 12 6q4-10 12-6q14 6 0 24l-12 12z"/></g>
+<g stroke="#F4E6C8"><path d="M200 590q30-40 60 0t60 0" stroke-width="3"/><path d="M180 640h160" stroke-dasharray="2 12" stroke-width="5"/></g>
+<g stroke="#F7E27A"><path d="M760 520l6 14l15 1l-11 10l4 15l-14-8l-14 8l4-15l-11-10l15-1z" stroke-width="3"/></g>
+</g>
+
+<!-- long golden-hour shadows of the hoops and tent across the court -->
+<g fill="#1F4A2B" opacity=".16">
+<polygon points="196,466 150,466 -40,540 -10,560"/>
+<polygon points="1772,466 1730,466 1960,540 1930,556"/>
+<polygon points="780,462 1140,462 1420,540 1300,560 880,520"/>
+</g>
+
+<!-- RUST COMMAND POST at centre court -->
+<g>
+<!-- cold light spill -->
+<polygon points="900,440 1020,440 1160,600 760,600" fill="url(#screenGlow)" opacity=".4"/>
+<ellipse cx="960" cy="470" rx="250" ry="20" fill="#16202A" opacity=".3"/>
+<!-- sandbag-like cubes and barriers flanking -->
+<use href="#panel" x="690" y="352"/><use href="#panel" x="1172" y="352"/><use href="#panel" x="636" y="352"/><use href="#panel" x="1226" y="352"/>
+<g fill="#4FB3D9"><rect x="708" y="368" width="22" height="4"/><rect x="1190" y="368" width="22" height="4"/><rect x="654" y="368" width="22" height="4"/><rect x="1244" y="368" width="22" height="4"/></g>
+<!-- antenna mast and dish -->
+<path d="M960 250V150" stroke="#2A3138" stroke-width="6"/>
+<path d="M960 230L940 250M960 200L980 250" stroke="#2A3138" stroke-width="2" fill="none"/>
+<path d="M938 168Q960 190 982 168Z" fill="#7C8A96" stroke="#2A3138" stroke-width="3"/>
+<path d="M960 168V150" stroke="#2A3138" stroke-width="4"/>
+<circle cx="960" cy="146" r="6" fill="#4FB3D9"/>
+<circle cx="960" cy="146" r="22" fill="url(#halo)"/>
+<path d="M960 150l60-50" stroke="#2A3138" stroke-width="2" opacity=".6"/>
+<!-- tent body: slate angular canopy -->
+<polygon points="740,458 960,246 1180,458" fill="#3C4650"/>
+<polygon points="740,458 960,246 960,458" fill="#46535F"/>
+<polygon points="960,246 1180,458 960,458" fill="#323B44"/>
+<path d="M960 246L850 458M960 246L1070 458" stroke="#2A3138" stroke-width="3" opacity=".7"/>
+<path d="M740 458L960 246L1180 458" fill="none" stroke="#7C8A96" stroke-width="5" stroke-linejoin="miter"/>
+<!-- valance panels -->
+<g fill="#2A3138"><rect x="740" y="450" width="440" height="14"/></g>
+<g fill="#4FB3D9"><rect x="760" y="454" width="16" height="4"/><rect x="800" y="454" width="16" height="4"/><rect x="1104" y="454" width="16" height="4"/><rect x="1144" y="454" width="16" height="4"/></g>
+<!-- open front: dark interior -->
+<polygon points="800,458 960,312 1120,458" fill="#1B232B"/>
+<!-- cyan screen -->
+<g>
+<circle cx="960" cy="400" r="130" fill="url(#halo)"/>
+<rect x="888" y="352" width="144" height="86" rx="4" fill="#0F2A36" stroke="#7C8A96" stroke-width="5"/>
+<rect x="896" y="360" width="128" height="70" fill="#4FB3D9"/>
+<rect x="896" y="360" width="128" height="70" fill="#CFF1FB" opacity=".18"/>
+<g stroke="#0F2A36" stroke-width="1.5" opacity=".28"><path d="M896 368H1024M896 376H1024M896 384H1024M896 392H1024M896 400H1024M896 408H1024M896 416H1024M896 424H1024"/></g>
+<!-- map / court diagram on screen -->
+<g fill="none" stroke="#E6FAFF" stroke-width="2.5" opacity=".9"><rect x="906" y="368" width="52" height="30"/><circle cx="932" cy="383" r="8"/><path d="M932 368v30"/><path d="M968 372l14 20l12-14l18 18" /></g>
+<g fill="#E6FAFF" opacity=".9"><rect x="968" y="402" width="26" height="4"/><rect x="968" y="412" width="40" height="4"/><circle cx="1008" cy="378" r="4"/></g>
+<rect x="940" y="438" width="40" height="10" fill="#2A3138"/>
+</g>
+<!-- table and equipment under the screen -->
+<rect x="860" y="440" width="200" height="18" fill="#2A3138"/><rect x="870" y="458" width="8" height="12" fill="#2A3138"/><rect x="1042" y="458" width="8" height="12" fill="#2A3138"/>
+<g><rect x="872" y="426" width="26" height="14" fill="#7C8A96"/><circle cx="885" cy="433" r="3" fill="#4FB3D9"/><rect x="1022" y="428" width="30" height="12" fill="#7C8A96"/><rect x="1030" y="422" width="14" height="6" fill="#2A3138"/></g>
+<!-- Rust banner -->
+<g><rect x="1196" y="306" width="46" height="108" fill="#2A3138"/><path d="M1196 414l23 -16l23 16Z" fill="#2A3138"/><polygon points="1219,328 1236,352 1219,376 1202,352" fill="#4FB3D9"/><polygon points="1219,340 1228,352 1219,364 1210,352" fill="#2A3138"/><rect x="1216" y="296" width="6" height="14" fill="#7C8A96"/></g>
+<g><rect x="678" y="306" width="46" height="108" fill="#2A3138"/><path d="M678 414l23 -16l23 16Z" fill="#2A3138"/><polygon points="701,328 718,352 701,376 684,352" fill="#4FB3D9"/><polygon points="701,340 710,352 701,364 692,352" fill="#2A3138"/><rect x="698" y="296" width="6" height="14" fill="#7C8A96"/></g>
+<!-- cables to the court -->
+<path d="M884 458Q840 490 760 480T620 500" fill="none" stroke="#161C22" stroke-width="5"/>
+<path d="M1040 458Q1100 492 1180 482T1300 506" fill="none" stroke="#161C22" stroke-width="5"/>
+<!-- crates / supply -->
+<g><rect x="1110" y="430" width="48" height="34" fill="#46535F" stroke="#2A3138" stroke-width="3"/><path d="M1110 430L1158 464M1158 430L1110 464" stroke="#2A3138" stroke-width="2"/><rect x="1130" y="408" width="38" height="24" fill="#3C4650" stroke="#2A3138" stroke-width="3"/><rect x="1136" y="416" width="10" height="3" fill="#4FB3D9"/></g>
+<g><rect x="760" y="426" width="44" height="38" fill="#46535F" stroke="#2A3138" stroke-width="3"/><path d="M760 426L804 464M804 426L760 464" stroke="#2A3138" stroke-width="2"/></g>
+<!-- floodlight pylons -->
+<g stroke="#2A3138" stroke-width="5" fill="#2A3138"><path d="M610 470V296"/><rect x="590" y="280" width="40" height="20"/><path d="M1310 470V296"/><rect x="1290" y="280" width="40" height="20"/></g>
+<g fill="#CFF1FB" opacity=".85"><rect x="596" y="285" width="28" height="9"/><rect x="1296" y="285" width="28" height="9"/></g>
+<polygon points="596,294 624,294 700,470 520,470" fill="#CFF1FB" opacity=".06"/>
+<polygon points="1296,294 1324,294 1400,470 1220,470" fill="#CFF1FB" opacity=".06"/>
+</g>
+
+<!-- bent hoops left and right -->
+<use href="#hoop" x="170" y="466"/>
+<use href="#hoop" x="0" y="0" transform="translate(1750 466) scale(-1 1)"/>
+<!-- stray ball by the left hoop -->
+<g><circle cx="262" cy="458" r="14" fill="#C9702E"/><path d="M248 458h28M262 444v28M251 448q11 10 22 0M251 468q11-10 22 0" stroke="#5A2E12" stroke-width="1.8" fill="none" opacity=".8"/></g>
+
+<!-- warm golden-hour wash and foreground edge -->
+<rect width="1920" height="720" fill="url(#warm)"/>
+<rect y="684" width="1920" height="36" fill="#1F4A2B" opacity=".5"/>
+<rect y="680" width="1920" height="6" fill="#6B4423" opacity=".6"/>
+<g fill="#6FA85F" opacity=".85"><path d="M70 720q-4-20 -12-30q10 8 14 24q4-18 14-24q-6 12-6 30z"/><path d="M1320 720q-4-20 -12-30q10 8 14 24q4-18 14-24q-6 12-6 30z"/><path d="M1840 720q-4-18 -10-26q8 6 12 20q4-16 12-20q-4 10-4 26z"/></g>
+</svg>

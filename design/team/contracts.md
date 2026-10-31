@@ -27,7 +27,7 @@ Everything communicates through Phaser's global event emitter (`game.events`). C
 - `attackId` is unique per swing. combat ignores a repeat (attackId, target) pair, so one swing hits a target once.
 - Player id is `'player'`. Enemy ids unique (e.g. `grunt-1`).
 - Player/enemy own movement and animation; combat owns hp, hit-stun and invulnerability flags. On `damage-applied` the target applies knockback and plays hurt; on `entity-died` it plays death and removes itself, then emits `entity-unregistered`.
-- `getState()` may include optional `guard: 'dodge' | 'parry' | 'block' | null`, read by combat at hit time. dodge/parry: damage negated, `damage-applied` still emitted with `amount: 0, knockback: 0, hitstun: 0` and unchanged `hpAfter` (no hp change, no invulnerability consumed). block: damage x `BLOCK_DAMAGE_MULT` (0.25, min 1), knockback x `BLOCK_KNOCKBACK_MULT` (0.25), hitstun 0. Dedupe per (attackId, target) still applies.
+- `getState()` may include optional `guard: 'parry' | 'block' | null`, read by combat at hit time. parry: damage negated, `damage-applied` still emitted with `amount: 0, knockback: 0, hitstun: 0` and unchanged `hpAfter` (no hp change, no invulnerability consumed). block: damage x `BLOCK_DAMAGE_MULT` (0.25, min 1), knockback x `BLOCK_KNOCKBACK_MULT` (0.25), hitstun 0. Dedupe per (attackId, target) still applies.
 - Invulnerable or dead targets take no damage and emit no `damage-applied`.
 - After `round-won`/`round-lost`, combat ignores `hit-request` until `retry`.
 - On `retry`: state resets timer/state, combat resets all hp and clears registrations' flags. waves restarts at wave 1; player/enemy respawn and re-emit `entity-registered`.

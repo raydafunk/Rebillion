@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blackboard goal board</title>
+<style>
+  :root {
+    --bg: #ffffff; --card: #f5f4ef; --text: #1f1e1d; --muted: #5f5e5a; --line: #888780;
+    --done-fill: #E1F5EE; --done-stroke: #0F6E56; --done-title: #085041; --done-sub: #0F6E56;
+    --block-fill: #FCEBEB; --block-stroke: #A32D2D; --block-title: #791F1F; --block-sub: #A32D2D;
+    --open-fill: #F1EFE8; --open-stroke: #5F5E5A; --open-title: #444441; --open-sub: #5F5E5A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1f1e1d; --card: #2c2c2a; --text: #f1efe8; --muted: #b4b2a9; --line: #888780;
+      --done-fill: #085041; --done-stroke: #9FE1CB; --done-title: #E1F5EE; --done-sub: #9FE1CB;
+      --block-fill: #791F1F; --block-stroke: #F7C1C1; --block-title: #FCEBEB; --block-sub: #F7C1C1;
+      --open-fill: #444441; --open-stroke: #D3D1C7; --open-title: #F1EFE8; --open-sub: #D3D1C7;
+    }
+  }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+  svg { width: 100%; height: auto; }
+  svg text { font-family: system-ui, sans-serif; fill: var(--text); }
+  .arr { stroke: var(--line); stroke-width: 1.5; fill: none; }
+  .th { font-size: 14px; font-weight: 500; }
+  .ts { font-size: 12px; fill: var(--muted); }
+  .node { cursor: pointer; }
+  .node:hover { opacity: .8; }
+  .node:focus { outline: none; }
+  .node:focus-visible rect { stroke-width: 2; }
+  .done rect { fill: var(--done-fill); stroke: var(--done-stroke); }
+  .done .th { fill: var(--done-title); } .done .ts { fill: var(--done-sub); }
+  .blocked rect { fill: var(--block-fill); stroke: var(--block-stroke); }
+  .blocked .th { fill: var(--block-title); } .blocked .ts { fill: var(--block-sub); }
+  .open rect { fill: var(--open-fill); stroke: var(--open-stroke); }
+  .open .th { fill: var(--open-title); } .open .ts { fill: var(--open-sub); }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin: 4px 0 12px; }
+  .sw { display: inline-block; width: 10px; height: 10px; border: .5px solid; vertical-align: -1px; margin-right: 4px; }
+  #d { background: var(--card); border-radius: 8px; padding: 1rem; font-size: 14px; min-height: 96px; }
+  #d b { font-weight: 500; display: block; }
+  #d .m { color: var(--muted); }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+  .stat { background: var(--card); border-radius: 8px; padding: 12px; }
+  .stat span { font-size: 12px; color: var(--muted); display: block; }
+  .stat strong { font-size: 22px; font-weight: 500; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 16px; }
+  @media (max-width: 480px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+</head>
+<body>
+<main>
+<h1>Blackboard goal board</h1>
+<p class="sub">The Rebellion: gap-closing round, snapshot of 2026-10-13. Click a goal for details.</p>
+
+<svg viewBox="0 0 680 210" role="img" aria-label="Goal chain: G1 and G2 feed G3, G4, G5, G6. G1 to G4 done, G5 blocked, G6 not run.">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<line x1="128" y1="62" x2="154" y2="90" class="arr" marker-end="url(#arrow)"/>
+<line x1="128" y1="134" x2="154" y2="106" class="arr" marker-end="url(#arrow)"/>
+<line x1="260" y1="98" x2="286" y2="98" class="arr" marker-end="url(#arrow)"/>
+<line x1="392" y1="98" x2="418" y2="98" class="arr" marker-end="url(#arrow)"/>
+<line x1="524" y1="98" x2="550" y2="98" class="arr" marker-end="url(#arrow)"/>
+<path d="M604 126 L604 158 L472 158 L472 128" class="arr" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+<text class="ts" x="538" y="178" text-anchor="middle">review fails: reopen G5</text>
+
+<g class="node done" tabindex="0" data-k="G1"><rect x="24" y="34" width="104" height="56" rx="6" stroke-width="0.5"/><text class="th" x="76" y="54" text-anchor="middle" dominant-baseline="central">G1 read GDD</text><text class="ts" x="76" y="73" text-anchor="middle" dominant-baseline="central">58 requirements</text></g>
+<g class="node done" tabindex="0" data-k="G2"><rect x="24" y="106" width="104" height="56" rx="6" stroke-width="0.5"/><text class="th" x="76" y="126" text-anchor="middle" dominant-baseline="central">G2 scan code</text><text class="ts" x="76" y="145" text-anchor="middle" dominant-baseline="central">22 features</text></g>
+<g class="node done" tabindex="0" data-k="G3"><rect x="156" y="70" width="104" height="56" rx="6" stroke-width="0.5"/><text class="th" x="208" y="90" text-anchor="middle" dominant-baseline="central">G3 find gaps</text><text class="ts" x="208" y="109" text-anchor="middle" dominant-baseline="central">17 gaps</text></g>
+<g class="node done" tabindex="0" data-k="G4"><rect x="288" y="70" width="104" height="56" rx="6" stroke-width="0.5"/><text class="th" x="340" y="90" text-anchor="middle" dominant-baseline="central">G4 prioritise</text><text class="ts" x="340" y="109" text-anchor="middle" dominant-baseline="central">6 queued</text></g>
+<g class="node blocked" tabindex="0" data-k="G5"><rect x="420" y="70" width="104" height="56" rx="6" stroke-width="0.5"/><text class="th" x="472" y="90" text-anchor="middle" dominant-baseline="central">G5 generate</text><text class="ts" x="472" y="109" text-anchor="middle" dominant-baseline="central">blocked</text></g>
+<g class="node open" tabindex="0" data-k="G6"><rect x="552" y="70" width="104" height="56" rx="6" stroke-width="0.5"/><text class="th" x="604" y="90" text-anchor="middle" dominant-baseline="central">G6 review</text><text class="ts" x="604" y="109" text-anchor="middle" dominant-baseline="central">not run</text></g>
+</svg>
+
+<div class="legend">
+  <span><i class="sw" style="background:var(--done-fill);border-color:var(--done-stroke)"></i>done</span>
+  <span><i class="sw" style="background:var(--block-fill);border-color:var(--block-stroke)"></i>blocked</span>
+  <span><i class="sw" style="background:var(--open-fill);border-color:var(--open-stroke)"></i>open</span>
+</div>
+
+<div id="d" aria-live="polite"></div>
+
+<div class="stats">
+  <div class="stat"><span>Met</span><strong>38</strong></div>
+  <div class="stat"><span>Partial</span><strong>5</strong></div>
+  <div class="stat"><span>Missing</span><strong>9</strong></div>
+  <div class="stat"><span>Contradicted</span><strong>3</strong></div>
+</div>
+
+<footer>Static snapshot. Live state: <code>node blackboard/board.mjs status</code>.</footer>
+</main>
+<script>
+var D = {
+  G1: ['G1 read GDD', 'gdd-reader-agent. Done in 1 of 2 attempts.', 'Wrote facts/gdd-requirements.json: 58 requirements, 12 ambiguities, each with GDD chunk citations.'],
+  G2: ['G2 scan code', 'code-scanner-agent. Done in 1 of 2 attempts.', 'Wrote facts/code-inventory.json: 22 features with file evidence. npm test: 17 passed, 0 failed.'],
+  G3: ['G3 find gaps', 'gap-analyst-agent. Done in 1 of 2 attempts.', 'Wrote facts/gaps.json: 38 met, 5 partial, 9 missing, 3 contradicted, 3 ambiguous. Includes the controls mismatch (GAP-003).'],
+  G4: ['G4 prioritise', 'prioritiser-agent. Done in 1 of 2 attempts.', 'Wrote facts/priorities.json: 6 items queued. Top item is GAP-009, one shared source for damage and hitbox values.'],
+  G5: ['G5 generate code', 'code-generator-agent. Blocked after 1 of 3 attempts.', 'Added shared combat data and a passing test. Stopped because moves.js and gruntData.js are outside the allowed files. Needs a decision to widen scope, then reopen.'],
+  G6: ['G6 review', 'reviewer-agent. Open, 0 of 3 attempts.', 'Waiting on G5. Will check acceptance, scope, contract and npm test, then pass or send it back.']
+};
+var d = document.getElementById('d');
+function show(k) {
+  var x = D[k];
+  d.innerHTML = '<b></b><span class="m"></span><p style="margin:6px 0 0"></p>';
+  d.querySelector('b').textContent = x[0];
+  d.querySelector('.m').textContent = x[1];
+  d.querySelector('p').textContent = x[2];
+}
+document.querySelectorAll('.node').forEach(function (n) {
+  n.addEventListener('click', function () { show(n.dataset.k); });
+  n.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(n.dataset.k); } });
+});
+show('G5');
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+{
+  "group_id": "54fa2f20-f904-4874-8e28-b592aa230a3e",
+  "states": [
+    {
+      "character": {
+        "id": "dd7f38cc-6bd4-44ae-a231-c715d6b06421",
+        "name": "Zed parry reaction a",
+        "prompt": "Face\nAge: Late teens to early 20s.\n\nExpression: Determined but kind; expressive eyebrows.\n\nFeatures:\n\nSlight cheek scar or paint streak (symbolic, not edgy).\n\nWarm skin tone reflecting the city\u2019s cultural richness.\n\nHair\nStyle: Short, textured, slightly messy.\n\nMovement: Should animate well during combos.\n\nColour: Dark brown or black with subtle warm highlights.Bottom \u2014 Brick\u2011Red Joggers\nColour: Brick red (ties to the alley where he grew up).\n\nFit: Slim but flexible, allowing big kicks and acrobatics.\n\nDetails:\n\nKnee patches or reinforced stitching.\n\nSubtle paint splatter marks (from helping his father paint murals).\n\nFootwear \u2014 Forest\u2011Green Street Sneakers\nColour: Forest green (third palette pillar).\n\nStyle: High\u2011top sneakers with thick soles for impact.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-16T08:28:27.311097+00:00"
+      },
+      "folder": "Zed_parry_reaction_a",
+      "frames": {
+        "rotations": {
+          "south": "Zed_parry_reaction_a/rotations/south.png",
+          "south-east": "Zed_parry_reaction_a/rotations/south-east.png",
+          "east": "Zed_parry_reaction_a/rotations/east.png",
+          "north-east": "Zed_parry_reaction_a/rotations/north-east.png",
+          "north": "Zed_parry_reaction_a/rotations/north.png",
+          "north-west": "Zed_parry_reaction_a/rotations/north-west.png",
+          "west": "Zed_parry_reaction_a/rotations/west.png",
+          "south-west": "Zed_parry_reaction_a/rotations/south-west.png"
+        },
+        "animations": {
+          "Zed_parry_reaction_animation_triggered_when_hit._Q": {
+            "west": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/west/frame_008.png"
+            ],
+            "north-west": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-west/frame_008.png"
+            ],
+            "north": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north/frame_008.png"
+            ],
+            "south-west": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-west/frame_008.png"
+            ],
+            "north-east": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/north-east/frame_008.png"
+            ],
+            "south-east": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south-east/frame_008.png"
+            ],
+            "east": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/east/frame_008.png"
+            ],
+            "south": [
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_000.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_001.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_002.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_003.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_004.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_005.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_006.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_007.png",
+              "Zed_parry_reaction_a/animations/Zed_parry_reaction_animation_triggered_when_hit._Q/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-10-16T09:29:26.303860"
+}

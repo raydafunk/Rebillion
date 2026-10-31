@@ -3,8 +3,12 @@
 export const EVENTS = Object.freeze({
   HIT_REQUEST: 'hit-request',
   DAMAGE_APPLIED: 'damage-applied',
+  // Zed parried this attacker: it is stunned, no knockback. { attackerId, hitstun(ms) }
+  PARRY_STUN: 'parry-stun',
   ENTITY_DIED: 'entity-died',
   PLAYER_HEALTH_CHANGED: 'player-health-changed',
+  // Score moved (kill, parry or flawless wave). { total, delta, reason, multiplier, streak }
+  SCORE_CHANGED: 'score-changed',
   WAVE_STARTED: 'wave-started',
   WAVE_CLEARED: 'wave-cleared',
   ARENA_CLEARED: 'arena-cleared',

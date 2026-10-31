@@ -1,0 +1,15 @@
+{
+  "builtAt": "2026-10-19T16:00:00.000Z", "attempt": 1,
+  "item": "GAP-027", "ownerAgent": "menu-ui-agent",
+  "filesChanged": ["src/ui/storyData.js", "src/ui/StoryCard.js", "src/ui/MenuScene.js", "package.json"],
+  "testsAdded": ["src/ui/storyData.test.mjs"],
+  "npmTest": {"passed": 33, "failed": 0},
+  "eventsAdded": [],
+  "openQuestions": [
+    "PLACEHOLDER wording: story lines are trimmed from content/lore (fallen-city, rust-takeover, zeds-father, goal); title 'THE FALLEN CITY', the prompt 'Enter / click to continue' and the 12 s autoMs are not GDD text. Owner to confirm.",
+    "package.json is outside allowedFiles; storyData.test.mjs was added to the npm test script as the owner pre-accepted.",
+    "MenuScene.js edit is limited to the import and splitting startGame() into startGame() + launchArena(); scrolling-background code and parallaxData.js untouched.",
+    "StoryCard has no Phaser-level test (pure data is tested); verify in browser that Enter on FIGHT opens the card and Enter/click/12 s continues to the arena."
+  ],
+  "requests": []
+}

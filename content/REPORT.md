@@ -1,22 +1,40 @@
 # Content pipeline report
-_2026-10-12_
+_2026-10-28_
 
 ## Sources read
-36 of 36 documents ingested.
+57 of 57 documents ingested.
 
 - read `GameDesignDocument/Rebellion menu desgin.docx` (primary), 4 chunks
-- read `GameDesignDocument/The Rebellion.docx` (primary), 10 chunks
+- read `GameDesignDocument/The Rebellion.docx` (primary), 22 chunks
+- read `GameDesignDocument/The Rebellon gameplay System.docx` (primary), 4 chunks
 - read `GameDesignDocument/The Title Screen.docx` (primary), 1 chunks
+- read `GameDesignDocument/Zed Rage System Spec.docx` (primary), 18 chunks
+- read `GameDesignDocument/the story campaign .docx` (primary), 1 chunks
 - read `PDf/The Rebellion -Frist Draft.pdf` (reference), 2 chunks
 - read `PDf/The Rebellion- Final Gdd.pdf` (reference), 5 chunks
-- read `README.md` (reference), 2 chunks
-- read `design/art/asset-manifest.md` (derived), 13 chunks
-- read `design/art/hit-feedback-spec.md` (derived), 7 chunks
-- read `design/art/style-guide.md` (derived), 15 chunks
+- read `README.md` (reference), 3 chunks
+- read `blackboard/README.md` (reference), 5 chunks
+- read `blackboard/log.md` (reference), 1 chunks
+- read `design/art/asset-manifest.md` (derived), 16 chunks
+- read `design/art/enemy-sprite-specs.md` (derived), 42 chunks
+- read `design/art/hit-feedback-spec.md` (derived), 30 chunks
+- read `design/art/style-guide.md` (derived), 22 chunks
 - read `design/art/zed-pixellab-prompt.md` (derived), 8 chunks
+- read `design/audio/CREDITS.md` (derived), 3 chunks
+- read `design/audio/audio-manifest.md` (derived), 5 chunks
+- read `design/levels/README.md` (derived), 4 chunks
+- read `design/levels/level-01-brick-red-alley.md` (derived), 9 chunks
+- read `design/levels/level-02-mustard-row.md` (derived), 11 chunks
+- read `design/levels/level-03-greenline-courts.md` (derived), 10 chunks
+- read `design/levels/level-04-stewpot-gardens.md` (derived), 12 chunks
+- read `design/levels/level-05-songwindow-heights.md` (derived), 9 chunks
+- read `design/levels/level-06-iron-line-push.md` (derived), 9 chunks
+- read `design/levels/level-07-copper-fang-courts.md` (derived), 9 chunks
+- read `design/levels/level-08-overseer-tower.md` (derived), 9 chunks
 - read `design/lore/canon.md` (derived), 13 chunks
-- read `design/lore/critic-log.md` (derived), 16 chunks
+- read `design/lore/critic-log.md` (derived), 17 chunks
 - read `design/lore/menu-copy.md` (derived), 4 chunks
+- read `design/lore/refiner-log.md` (derived), 1 chunks
 - read `design/team/agent-diagrams.md` (derived), 7 chunks
 - read `design/team/agent-team-setups.md` (derived), 13 chunks
 - read `design/team/contracts.md` (derived), 4 chunks
@@ -28,6 +46,9 @@ _2026-10-12_
 - read `design/ux/menu-concept.md` (derived), 6 chunks
 - read `design/ux/pause.md` (derived), 10 chunks
 - read `design/ux/win.md` (derived), 10 chunks
+- read `exports/critic-log.docx` (reference), 17 chunks
+- read `exports/level-01-brick-red-alley.pdf` (reference), 9 chunks
+- read `exports/pipeline-connection.pdf` (reference), 5 chunks
 - read `gdd-review-kit-main/CLAUDE.md` (reference), 11 chunks
 - read `gdd-review-kit-main/README.md` (reference), 8 chunks
 - read `gdd-review-kit-main/gdd.txt` (reference), 2 chunks
@@ -44,29 +65,38 @@ _2026-10-12_
 ## Content
 | Type | Items | Proposed (needs owner approval) | Errors |
 |---|---|---|---|
-| lore | 26 | 7 | 0 |
-| enemies | 6 | 5 | 0 |
-| levels | 5 | 5 | 0 |
-| dialogue | 69 | 57 | 0 |
+| lore | 67 | 17 | 0 |
+| enemies | 22 | 1 | 0 |
+| levels | 8 | 8 | 0 |
+| dialogue | 99 | 87 | 0 |
 
-## Proposed items awaiting owner approval (74)
+## Proposed items awaiting owner approval (113)
 - **lore/rust-grunt**: The GDD says only 'Rust Enemies'. 'Rust grunt' is the working Tier 0 enemy name from the asset manifest and canon open question 6; the owner has not confirmed it as the player-facing term.
+- **lore/iron-line-push**: The GDD's campaign table names the Level 6 district 'Iron-line-push' and the Level 6 mini-boss and boss arena (an undercity lab), but never describes the district. The look and story here are derived from the Level 6 style guide and the Holt arena line.
+- **lore/copper-fang-courts**: The GDD's campaign table names the Level 7 district 'Copper-fang-courts' and its mini-boss, Commander Atlas, but gives no description. The main boss, 'Elite Rust Gauntlet', is named only; the owner will define it later, so nothing about it is invented here.
+- **lore/overseer-tower**: The GDD's campaign table names the Level 8 district 'Overseer-tower' with Sentinel-X9 and Halden Varr, and the Varr arena as a corporate tower command chamber. It does not describe the rest of the tower; the climb and the skyline are derived from the Level 8 style guide.
 - **lore/rust-notice-114**: The menu design doc shows a poster 'Rust Notice 114 / CURFEW' but the main GDD never says the Rust issue curfews or numbered notices (canon open question 1). Kept as flavour pending owner approval.
 - **lore/local-heroes-benefit**: The menu poster 'Local Heroes Benefit: Keep the Lights On' implies community fundraising events, which the GDD does not describe.
 - **lore/mustard-row**: The GDD says 'urban districts' but names none. Built from the mustard-yellow storefronts and corner shops of the Theme.
 - **lore/greenline-courts**: No districts are named in the GDD. Built from the forest-green basketball courts of Zed's block.
 - **lore/stewpot-gardens**: No districts are named in the GDD. Built from the food stalls and community gardens of the Theme and Zed's mother's stall.
 - **lore/songwindow-heights**: No districts are named in the GDD. Built from the open windows with music and the murals celebrating local heroes.
-- **enemies/rust-enforcer**: GDD says one enemy type first and promises dynamic enemy behaviours later; difficulty comes from how waves arrive. A heavier bruiser gives waves a slow, high-threat piece to mix with grunts.
-- **enemies/rust-baton-scout**: GDD lists dynamic enemy behaviours and defensive tools (block, dodge, parry) but gives no enemy roster. A fast, light attacker with a clear tell is a natural parry trainer.
-- **enemies/rust-dart-marksman**: GDD asks for dynamic enemy behaviours and a player toolkit of block, dodge and parry. A ranged role forces the player to close distance and use lane movement, which melee-only enemies do not.
-- **enemies/rust-shield-sergeant**: GDD names block, dodge and parry as defence tools but never says which enemies reward them. A shielded elite makes the player use combos and juggles rather than button-mashing.
-- **enemies/rust-signal-warden**: GDD promises dynamic enemy behaviours and says difficulty comes from how waves arrive, but names no support role. A Rust officer who buffs nearby grunts gives wave composition a priority target and rewards lane movement and juggle routes that reach the back line.
-- **levels/level-01-brick-red-alley**: The GDD says 'urban districts' and 'Defeat Wave / Clear Arena ... in time' but sets no level count, order, wave counts or time limit. Wave numbers and the 120 s limit copy the Tier 0 placeholders in src/waves/waveData.js and src/state/config.js, so they are engine-matched but not GDD-confirmed.
-- **levels/level-02-mustard-row**: No level structure in the GDD. Introduces the Rust Baton Scout (proposed enemy) as the first new threat; wave sizes and 135 s limit are assumed.
-- **levels/level-03-greenline-courts**: No level structure in the GDD. Introduces the Rust Enforcer (proposed bruiser) after the scout; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.
-- **levels/level-04-stewpot-gardens**: No level structure in the GDD. Introduces the Rust Dart Marksman (proposed ranged enemy) and pairs it with melee waves so the player must use lane movement. Also introduces the proposed Rust Signal Warden (support, buffs grunts); engine waves hold one enemy type each, so a Warden wave stands alone until mixed waves exist (further gap). 180 s limit assumed.
-- **levels/level-05-songwindow-heights**: No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Shield Sergeant (proposed elite); the finale mixes every enemy type including the proposed Rust Signal Warden; 210 s limit assumed. Five levels is an assumption.
+- **lore/rage-is-for-the-neighbourhood**: The spec names the roots of Zed's rage but not how it feels to him or how it fits his warm character. Proposed so rage reads as determination for his neighbourhood, not hatred, matching the Theme and Zed's loyalty.
+- **lore/rage-grief-into-fire**: The art direction hints that grief turns to fire but gives no in-world description of how Rage looks or feels. Proposed wording for art and dialogue, built on that hint and the Theme palette.
+- **lore/rage-feeds-on-the-rust**: The spec says every Rust enemy feeds the rage but not why in the world. Proposed explanation: each pushed-back Rust enemy is a reminder of what the neighbourhood is owed, not something Zed enjoys.
+- **lore/rage-fades-like-held-breath**: The spec says the meter drains constantly, even when full, but gives no in-world reason. Proposed: rage is a feeling Zed has to keep earning, like holding a breath, which he does not want to carry forever.
+- **lore/rage-waits-for-level-two**: The spec hides the meter in Level 1 and introduces it in Level 2 but does not say what changes in the story. Proposed: Level 1 is Zed finding his feet at home; the rage only wakes once he leaves Brick-Red Alley and the stakes grow.
+- **lore/rust-rank-ladder**: The GDD lists five unit types but not how they relate on the ground. This ties them into one ladder (Grunts, Rangers, Breakers, Copper Fangs, Overseers) so levels and enemy writers can pace waves; the owner should confirm it.
+- **lore/neighbourhood-answer-to-doctrine**: The GDD gives the Rust's doctrine but no community reply. The tone rules say Rust copy is always answered or defaced by the neighbourhood, so this proposes a painted answer to the creed.
+- **enemies/rust-iron-line-cordon**: The GDD lists Rust Grunts, 'The Iron Line', for crowd control and frontline combat, but the Tier 0 rust-grunt is the only canon stat block. This is the Iron Line's crowd-control variant: a grunt that holds a line and sweeps a wide arc, so waves can pin the lane without adding a new silhouette. The base Iron Line unit remains rust-grunt (canon). FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 36 HP is about 5 light hits, same damage as the grunt, 500 ms wind-up so the wide sweep reads one beat slower. Final.
+- **levels/level-01-brick-red-alley**: The GDD says "urban districts" and "Defeat Wave / Clear Arena ... in time" but sets no level count, order, wave counts or time limit. Level 1 is paced as a tutorial arc (warm-up, pressure, first Breaker, escalation, finale) with health pickups in the breathers; wave numbers and the 210 s limit are design assumptions, not GDD-confirmed.
+- **levels/level-02-mustard-row**: No level structure in the GDD. Introduces the Rust Watcher (rust-watcher) as the first new threat, mixed with grunts; wave sizes and 135 s limit are assumed.
+- **levels/level-03-greenline-courts**: No level structure in the GDD. Introduces the Rust Breaker (rust-breaker) bruiser alongside the Rust Watcher and grunts; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.
+- **levels/level-04-stewpot-gardens**: No level structure in the GDD. Fields the Rust Watcher (rust-watcher) in repeated waves and the Rust Breaker (rust-breaker) as the closer, with grunts, so the player must use lane movement so the player must use lane movement. Also fields the named Overseer Dr. Maren Holt (rust-overseer-holt) as the district boss wave; the GDD gives Holt an undercity lab arena with gas vents and fog, so the garden planters and food-stall fog are only the closest fit (no GDD level for her; flag). Engine waves hold one enemy type each and counts cannot shrink, so the Holt wave keeps count 5 with maxAlive 1 (an engine workaround: Holt is a single named character, and a count of 1 would break the non-decreasing wave-count rule) until boss-encounter waves exist (further gap). 180 s limit assumed.
+- **levels/level-05-songwindow-heights**: No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Copper Fang (rust-copper-fang) as the elite; the finale mixes grunts, Watchers, Breakers and Copper Fangs including the named Overseer Silas Wren (rust-overseer-wren), whose GDD arena is rooftop platforms and zip lines, the best fit for the Heights (his wave keeps count 6 with maxAlive 1 as an engine workaround: Wren is a single named character, but counts cannot shrink); 210 s limit assumed. Five levels is an assumption.
+- **levels/level-06-iron-line-push**: The GDD sets no level count, tiers or level list. This is an extra proposed level (order 6, after the five in levels.json) that introduces the GDD-named Rust units in escalation: Iron Line cordon, then Watchers, then Breakers. Wave numbers and the 150 s limit are placeholders in the Tier 0 shape. Uses the proposed expansion enemies from rust-gdd-units.json, so it depends on owner approval of those.
+- **levels/level-07-copper-fang-courts**: The GDD says Copper Fangs serve boss-tier encounters but gives no level list, tiers or boss placement. This proposes a mini-boss level (order 7): a ladder of single units rising Watcher, Breaker, Copper Fang. Each wave has count 1 because the validator requires wave counts not to shrink, so a lone boss wave must follow count-1 waves; mixed-escort boss waves need a schema extension (one enemy per wave today).
+- **levels/level-08-overseer-tower**: The GDD gives Overseer Halden Varr, "The Architect of Rust" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet.
 - **dialogue/zed-fight-start-brick-red-alley**: Level-specific barks are not in the GDD; built on Brick-Red Alley, where Zed's kids learned to fight, dance and argue like family.
 - **dialogue/zed-fight-start-mustard-row**: Mustard Row is a proposed district; lines lean on the GDD's mustard-yellow storefronts and corner shops.
 - **dialogue/zed-fight-start-greenline-courts**: Greenline Courts is a proposed district; lines follow the GDD's forest-green basketball courts and Zed's wish for kids to play again.
@@ -114,6 +144,36 @@ _2026-10-12_
 - **dialogue/neighbour-cheer**: GDD says people on the block look out for each other but gives no neighbour lines.
 - **dialogue/poster-rust-notice-114**: Rust Notice 114 with CURFEW struck through appears only in the menu concept, not the primary GDD (canon open question 1).
 - **dialogue/poster-small-print**: Small print is marked proposed in menu-copy.md; community flavour from the lived-in neighbourhood theme.
+- **dialogue/rust-notice-doctrine**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-notice-serial-rollcall**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-notice-sealed-district**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-overseer-announcement**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-varr-order**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/neighbour-defaced-doctrine**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/neighbour-answers-serial**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/neighbour-answers-curfew**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-answers-overseer**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-answers-varr**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-iron-line-spawn**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-iron-line-telegraph**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-iron-line-pushed-back**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-answers-iron-line**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-breaker-spawn**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-breaker-telegraph**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-breaker-pushed-back**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-answers-breaker**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-watcher-spawn**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-watcher-telegraph**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-watcher-pushed-back**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-answers-watcher**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-copper-fang-spawn**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-copper-fang-telegraph**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-copper-fang-pushed-back**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-answers-copper-fang**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-halden-varr-spawn**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-halden-varr-telegraph**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/rust-halden-varr-pushed-back**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-answers-halden-varr**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
 - **dialogue/zed-fight-start**: GDD gives Zed's tone (expressive, stubborn, jokes mid-fight) but no scripted barks; these lines extend that voice.
 - **dialogue/zed-combo**: No combo barks in the GDD; written from his rhythm-and-dance fighting style and joking nature.
 - **dialogue/zed-heavy-hit**: No heavy-hit barks in the GDD; extends the scrappy-but-sharp brawler tone.

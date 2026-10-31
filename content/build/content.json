@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-12T21:22:13.158Z",
+  "builtAt": "2026-10-28T13:10:40.207Z",
   "lore": [
     {
       "id": "open-windows-music",
@@ -348,6 +348,219 @@
       ]
     },
     {
+      "id": "iron-line-push",
+      "status": "proposed",
+      "gddGap": "The GDD's campaign table names the Level 6 district 'Iron-line-push' and the Level 6 mini-boss and boss arena (an undercity lab), but never describes the district. The look and story here are derived from the Level 6 style guide and the Holt arena line.",
+      "kind": "district",
+      "name": "Iron Line Push",
+      "summary": "Level 6 district: the undercity, where the Rust push their line down below the streets and Dr. Holt's lab keeps the air heavy.",
+      "body": "The Iron Line Push is Level 6 in the GDD's campaign table. Its mini-boss is Dr. Holt's Experiment, Subject 88, and its boss is Overseer Dr. Maren Holt, whose arena the GDD describes as an undercity lab with gas vents, toxin pools and fog zones. The name echoes the Rust Grunts, the Iron Line, who are the backbone of the force.\n\nHere the neighbourhood's warmth is hardest to find. The stew pots and the stalls are far overhead, and down below the Rust have run their line of barriers through the tunnels, with Watchers and Breakers behind it. The way through is clear air: every vent shut, every fog bank crossed, one careful step at a time.\n\nThe Level 6 style guide still shows a stall-row garden look from an earlier pass; this entry follows the GDD's undercity wording and the style guide will need to catch up. Zed's neighbours are watching from the edges of the lane in spirit, not in sight: the hope in this district is the daylight at the far end.",
+      "tags": [
+        "district",
+        "level-6",
+        "undercity",
+        "holt",
+        "subject-88",
+        "iron-line"
+      ],
+      "sources": [
+        "the-story-campaign#1",
+        "the-rebellion#16",
+        "the-rebellion#20",
+        "the-rebellion#11"
+      ]
+    },
+    {
+      "id": "copper-fang-courts",
+      "status": "proposed",
+      "gddGap": "The GDD's campaign table names the Level 7 district 'Copper-fang-courts' and its mini-boss, Commander Atlas, but gives no description. The main boss, 'Elite Rust Gauntlet', is named only; the owner will define it later, so nothing about it is invented here.",
+      "kind": "district",
+      "name": "Copper Fang Courts",
+      "summary": "Level 7 district: the forest-green courts, now a Copper Fang stronghold, where Commander Atlas stands between the kids and their game.",
+      "body": "The Copper Fang Courts are Level 7 in the GDD's campaign table. Commander Atlas, leader of the Copper Fangs and the toughest non-boss enemy in the game, is the mini-boss. The GDD lists the level's main boss as the Elite Rust Gauntlet and gives no more detail yet, so this entry leaves it open.\n\nIt grows out of the Greenline Courts, the forest-green basketball courts that the Rust shut down at the start of the takeover. The Copper Fangs, Varr's personal favourites, now hold the courts as a command post: the hoops are bent but standing, chalk drawings from the kids still show on the asphalt, and a cold slate tent sits at centre court.\n\nThe fight is about holding your nerve against disciplined, shielded opponents. When the Fangs are pushed back, the first sound should be a ball bouncing on the asphalt, then another.",
+      "tags": [
+        "district",
+        "level-7",
+        "courts",
+        "copper-fangs",
+        "commander-atlas"
+      ],
+      "sources": [
+        "the-story-campaign#1",
+        "the-rebellion#14",
+        "the-rebellion#16"
+      ]
+    },
+    {
+      "id": "overseer-tower",
+      "status": "proposed",
+      "gddGap": "The GDD's campaign table names the Level 8 district 'Overseer-tower' with Sentinel-X9 and Halden Varr, and the Varr arena as a corporate tower command chamber. It does not describe the rest of the tower; the climb and the skyline are derived from the Level 8 style guide.",
+      "kind": "district",
+      "name": "Overseer Tower",
+      "summary": "Level 8, the final district: the corporate tower from which Overseer Halden Varr runs the whole Fallen City.",
+      "body": "The Overseer Tower is Level 8 in the GDD's campaign table. Its mini-boss is Sentinel-X9, an experimental combat android protecting Varr, and its boss is Overseer Halden Varr, The Architect of Rust. The GDD places his arena in the tower's command chamber.\n\nFrom the Heights the tower is the one cold shape on the skyline: grey slate against a warm dusk, with a single cyan eye watching the windows that used to play music. Squads, drones and shields answer to Varr from here, and the screens and surveillance towers seen in every other district are fed from this room.\n\nFor Zed it is the last stop on taking the Fallen City back. The hope is plain: break the order in the command chamber and the music can come back into the windows.",
+      "tags": [
+        "district",
+        "level-8",
+        "tower",
+        "varr",
+        "sentinel-x9",
+        "final-level"
+      ],
+      "sources": [
+        "the-story-campaign#1",
+        "the-rebellion#16",
+        "the-rebellion#21",
+        "the-rebellion#11"
+      ]
+    },
+    {
+      "id": "brick-dugan",
+      "status": "canon",
+      "kind": "character",
+      "name": "\"Brick\" Dugan",
+      "summary": "Level 1 mini-boss: a former dock worker recruited into the Rust, built like a human battering ram.",
+      "body": "Brick Dugan is the mini-boss of Level 1. The GDD calls him a former dock worker who was recruited into the Rust. He wears a heavy black security vest with the Rust insignia, riot-control shoulder pads, reinforced forearm guards and steel-toe security boots, with a utility belt carrying restraints and radio equipment.\n\nHis moves are the Brick Breaker Punch, a Running Shoulder Charge, a Ground Stomp, a Grab and Wall Slam, and a Rage Punch when his health is low. The GDD wants him to feel like a human battering ram: slow but intimidating, easy to understand but hard to face head-on, and the player's first major skill check.",
+      "tags": [
+        "mini-boss",
+        "level-1",
+        "rust",
+        "dock-worker"
+      ],
+      "sources": [
+        "the-rebellion#14",
+        "the-rebellion#15"
+      ]
+    },
+    {
+      "id": "railgun-royce",
+      "status": "canon",
+      "kind": "character",
+      "name": "\"Railgun\" Royce",
+      "summary": "Level 2 mini-boss in the Transit District: a former transit security officer who introduces stun mechanics.",
+      "body": "Railgun Royce is the mini-boss of Level 2, the Transit District. The GDD describes him as a former transit security officer. He carries an electrified baton, wears an armoured trench coat and sees through a scanner visor.\n\nHis moves are a Baton Combo, a Charging Dash, a Shockwave Slam, a Rail Trap (electrified floor sections) and a Taser Burst. His role in the game is to introduce stun mechanics.",
+      "tags": [
+        "mini-boss",
+        "level-2",
+        "transit-district",
+        "rust"
+      ],
+      "sources": [
+        "the-rebellion#15"
+      ]
+    },
+    {
+      "id": "crusher-kane",
+      "status": "canon",
+      "kind": "character",
+      "name": "\"Crusher\" Kane",
+      "summary": "Level 3 mini-boss in the Industrial Zone: Rhea Calder's chief enforcer, in a hydraulic work suit with an industrial hammer.",
+      "body": "Crusher Kane is the mini-boss of Level 3, the Industrial Zone, and the GDD names him Rhea Calder's chief enforcer. He fights in a hydraulic work suit and swings an industrial hammer.\n\nHis moves are a Hammer Slam, a Hook Chain Grab, a Furnace Kick, a Steam Vent Burst and a Crushing Uppercut. His role is to prepare players for Overseer Calder.",
+      "tags": [
+        "mini-boss",
+        "level-3",
+        "industrial-zone",
+        "rust",
+        "calder"
+      ],
+      "sources": [
+        "the-rebellion#15"
+      ]
+    },
+    {
+      "id": "glitch",
+      "status": "canon",
+      "kind": "character",
+      "name": "\"Glitch\"",
+      "summary": "Level 4 mini-boss in the Neon Market: a former hacker turned Rust cyber operative who introduces Voss's deception mechanics.",
+      "body": "Glitch is the mini-boss of Level 4, the Neon Market. The GDD describes a former hacker turned Rust cyber operative, wearing a holographic mask and a portable drone pack.\n\nHis moves are a Drone Barrage, a Hologram Duplicate, a Shock Disk Throw, a Data Spike and an Emergency Teleport. His role is to introduce Overseer Voss's deception mechanics.",
+      "tags": [
+        "mini-boss",
+        "level-4",
+        "neon-market",
+        "rust",
+        "voss"
+      ],
+      "sources": [
+        "the-rebellion#15"
+      ]
+    },
+    {
+      "id": "raptor",
+      "status": "canon",
+      "kind": "character",
+      "name": "\"Raptor\"",
+      "summary": "Level 5 mini-boss in the Skyline District: Silas Wren's personal hunter, who trains players for vertical combat.",
+      "body": "Raptor is the mini-boss of Level 5, the Skyline District, and the GDD calls him Silas Wren's personal hunter. He fights with a grapple launcher and lightweight armour.\n\nHis moves are a Dive Kick, a Wall Bounce Strike, a Grapple Pull, an Aerial Barrage and a Falcon Drop. His role is to train players for vertical combat.",
+      "tags": [
+        "mini-boss",
+        "level-5",
+        "skyline-district",
+        "rust",
+        "wren"
+      ],
+      "sources": [
+        "the-rebellion#15",
+        "the-rebellion#16"
+      ]
+    },
+    {
+      "id": "holts-experiment-subject-88",
+      "status": "canon",
+      "kind": "character",
+      "name": "Dr. Holt's Experiment \"Subject 88\"",
+      "summary": "Level 6 mini-boss in the Undercity: a failed chemical test subject who introduces area denial hazards.",
+      "body": "Subject 88 is the mini-boss of Level 6, the Undercity. The GDD describes a failed chemical test subject of Dr. Holt's, with a mutated physique, chemical tanks on the back and glowing green veins.\n\nIts moves are Toxic Breath, Acid Spit, a Frenzied Charge, a Corrosion Slam and a Chemical Explosion. Its role is to introduce area denial hazards.",
+      "tags": [
+        "mini-boss",
+        "level-6",
+        "undercity",
+        "rust",
+        "holt"
+      ],
+      "sources": [
+        "the-rebellion#16"
+      ]
+    },
+    {
+      "id": "commander-atlas",
+      "status": "canon",
+      "kind": "character",
+      "name": "Commander Atlas",
+      "summary": "Level 7 mini-boss at the Rust Military Compound: leader of the Copper Fangs and the toughest non-boss enemy in the game.",
+      "body": "Commander Atlas is the mini-boss of Level 7, the Rust Military Compound, and the GDD names him leader of the Copper Fangs. He wears elite black armour, carries a tactical shield and fights with twin electrified gauntlets.\n\nHis moves are a Shield Bash, a Gauntlet Combo, a Grapple Hook Pull, an Electric Counter and Fang Protocol, which calls in Specialists. The GDD calls him the toughest non-boss enemy in the game.",
+      "tags": [
+        "mini-boss",
+        "level-7",
+        "copper-fangs",
+        "rust",
+        "specialists"
+      ],
+      "sources": [
+        "the-rebellion#16",
+        "the-rebellion#14"
+      ]
+    },
+    {
+      "id": "sentinel-x9",
+      "status": "canon",
+      "kind": "character",
+      "name": "Sentinel-X9",
+      "summary": "Level 8 mini-boss in the Corporate Tower: an experimental combat android protecting Varr, the final challenge before the boss.",
+      "body": "Sentinel-X9 is the mini-boss of Level 8, the Corporate Tower. The GDD describes an experimental combat android protecting Varr: a corporate security robot with the Rust insignia and an energy core in its chest.\n\nIts moves are a Laser Sweep, a Rocket Punch, a Ground Pound, an Energy Shield and a Self-Repair Mode. In Phase 2 the core overloads, bringing faster attacks, a red laser barrage and explosive dash attacks. It is the final challenge before Halden Varr.",
+      "tags": [
+        "mini-boss",
+        "level-8",
+        "corporate-tower",
+        "rust",
+        "android",
+        "varr"
+      ],
+      "sources": [
+        "the-rebellion#16"
+      ]
+    },
+    {
       "id": "rust-notice-114",
       "status": "proposed",
       "gddGap": "The menu design doc shows a poster 'Rust Notice 114 / CURFEW' but the main GDD never says the Rust issue curfews or numbered notices (canon open question 1). Kept as flavour pending owner approval.",
@@ -457,23 +670,1936 @@
         "the-rebellion#6",
         "the-rebellion#8"
       ]
+    },
+    {
+      "id": "zeds-rage",
+      "status": "canon",
+      "sources": [
+        "zed-rage-system-spec#3",
+        "the-rebellion#8"
+      ],
+      "kind": "event",
+      "name": "Zed's Rage",
+      "summary": "Zed's rage is born of the Rust's false promises, his father's disappearance and his willingness to fight for his city.",
+      "body": "The Rage spec gives Zed's rage three roots: the Rust's false promises, the disappearance of his father, and Zed's own willingness to fight for his city. The Rust are the source of it, which is why every Rust enemy feeds it.\n\nThe father's story is only implied. The spec leaves it for cutscenes and dialogue to reveal, so nothing about what happened to him is stated here.",
+      "tags": [
+        "zed",
+        "rage",
+        "father",
+        "rust"
+      ]
+    },
+    {
+      "id": "rage-meter",
+      "status": "canon",
+      "sources": [
+        "zed-rage-system-spec#5",
+        "zed-rage-system-spec#2",
+        "zed-rage-system-spec#4"
+      ],
+      "kind": "object",
+      "name": "The Rage Meter",
+      "summary": "A meter that fills as Zed lands blows on Rust enemies, from Level 2 onward, and starts fresh every level.",
+      "body": "From Level 2 onward Zed's Rage builds with every blow he lands on a Rust enemy, bosses included. Light, heavy or jump kick, each blow counts the same. Misses give nothing, and a knockdown or a finishing blow adds no extra.\n\nThe meter starts empty at the beginning of every level and on a retry. Nothing carries over from one fight to the next. Level 1 is the pace level: the meter is hidden there and cannot fill.",
+      "tags": [
+        "rage",
+        "meter",
+        "hud",
+        "levels"
+      ]
+    },
+    {
+      "id": "rage-clean-streak",
+      "status": "canon",
+      "sources": [
+        "zed-rage-system-spec#6",
+        "zed-rage-system-spec#2"
+      ],
+      "kind": "event",
+      "name": "Staying Clean",
+      "summary": "Landing blows without taking a hit in between builds Rage faster; a hit ends the streak.",
+      "body": "The spec rewards aggressive, clean play. Blows landed without a hit taken in between add a bonus to the meter, and taking a hit ends the streak.\n\nSloppy play is never locked out of Rage. It only takes longer to get there.",
+      "tags": [
+        "rage",
+        "streak",
+        "skill"
+      ]
+    },
+    {
+      "id": "rage-ready",
+      "status": "canon",
+      "sources": [
+        "zed-rage-system-spec#8",
+        "zed-rage-system-spec#7"
+      ],
+      "kind": "event",
+      "name": "Rage Ready",
+      "summary": "When the meter is full, Rage is READY and holds for a short window before it starts to fade.",
+      "body": "A full meter means Rage is READY. It holds there for a 4-second window so Zed can finish what he is doing and answer with the L button. If the window passes, the meter starts to drain and has to be built again.\n\nThe meter drains on a timer the whole time, fighting or not, and pauses for the pause menu, wave transitions and cutscenes.",
+      "tags": [
+        "rage",
+        "ready",
+        "meter"
+      ]
+    },
+    {
+      "id": "zeds-special-move",
+      "status": "canon",
+      "sources": [
+        "zed-rage-system-spec#3",
+        "zed-rage-system-spec#10",
+        "zed-rage-system-spec#18"
+      ],
+      "kind": "event",
+      "name": "Zed Rage",
+      "summary": "Zed Rage is the Special: the release of Zed's rage, a refusal to let his city fall.",
+      "body": "The Special move is called Zed Rage. While Rage is active, Zed's normal attacks are replaced by this one move. The spec calls it the release of his rage, a refusal to let his city fall. It is just a move: it carries no story about Zed's father.\n\nThe Special hits hard but never finishes a boss on its own. Zed still moves, jumps and blocks during Rage, and there is no dodge. It is triggered with L.",
+      "tags": [
+        "zed",
+        "special",
+        "rage"
+      ]
+    },
+    {
+      "id": "rage-ending",
+      "status": "canon",
+      "sources": [
+        "zed-rage-system-spec#11",
+        "zed-rage-system-spec#10"
+      ],
+      "kind": "event",
+      "name": "When the Rage Settles",
+      "summary": "Rage lasts a short, fixed time and ends when the meter runs out or Zed is knocked out; his normal moves return.",
+      "body": "Rage runs for 9 seconds on a fixed clock. Nothing Zed does speeds it up or slows it down. It ends when the meter reaches zero, or straight away if Zed is knocked out. A knockdown from a hit does not end it.\n\nAfterwards his normal moves come back, and the meter has to be built again from the start by landing blows on Rust enemies.",
+      "tags": [
+        "rage",
+        "ending",
+        "zed"
+      ]
+    },
+    {
+      "id": "rage-is-for-the-neighbourhood",
+      "status": "proposed",
+      "gddGap": "The spec names the roots of Zed's rage but not how it feels to him or how it fits his warm character. Proposed so rage reads as determination for his neighbourhood, not hatred, matching the Theme and Zed's loyalty.",
+      "sources": [
+        "zed-rage-system-spec#3",
+        "the-rebellion#9",
+        "the-rebellion#10"
+      ],
+      "kind": "event",
+      "name": "Not Hatred, Not a Grudge",
+      "summary": "Zed's rage is determination for the people and places he is fighting to get back, and it never makes him cruel.",
+      "body": "Zed is stubborn and fiercely loyal, and his rage is the same loyalty turned all the way up. It is not about the Rust as people. It is about the courts, the stall, the murals and the music that were taken from his neighbourhood.\n\nEven at its loudest he keeps his feet moving and knocks his opponents down, never worse. The neighbourhood would recognise it as him, only louder.\n\nZed is silent about the Rage: he never speaks or jokes about it, in or out of Zed Rage. It shows in the move, the meter and the music, not in his lines.",
+      "tags": [
+        "zed",
+        "rage",
+        "tone",
+        "neighbourhood",
+        "silent"
+      ]
+    },
+    {
+      "id": "rage-grief-into-fire",
+      "status": "proposed",
+      "gddGap": "The art direction hints that grief turns to fire but gives no in-world description of how Rage looks or feels. Proposed wording for art and dialogue, built on that hint and the Theme palette.",
+      "sources": [
+        "zed-rage-system-spec#13",
+        "zed-rage-system-spec#3"
+      ],
+      "kind": "event",
+      "name": "Grief Turning to Fire",
+      "summary": "When Rage builds, people on the block see Zed's grief warm into something bright and steady, like a stove coming up to heat.",
+      "body": "The spec lets the art hint at the loss behind the Rage, with grief turning to fire: an ember glow that climbs toward orange and a red-white heat as the meter fills, with a stronger light in his eyes and fists once Rage is active.\n\nIn the world this is the warmth of the neighbourhood, not a threat. The people who feel it describe it as the kitchen light coming back on.",
+      "tags": [
+        "rage",
+        "art",
+        "grief",
+        "ember"
+      ]
+    },
+    {
+      "id": "rage-feeds-on-the-rust",
+      "status": "proposed",
+      "gddGap": "The spec says every Rust enemy feeds the rage but not why in the world. Proposed explanation: each pushed-back Rust enemy is a reminder of what the neighbourhood is owed, not something Zed enjoys.",
+      "sources": [
+        "zed-rage-system-spec#3",
+        "zed-rage-system-spec#5"
+      ],
+      "kind": "event",
+      "name": "Every Rust Enemy Counts",
+      "summary": "Each Rust enemy Zed meets, from Grunts to Overseers, stirs the same rage, because they all stand for the same false promise.",
+      "body": "The Rust offered protection and delivered curfews, fences and sealed districts. Every Grunt, Breaker, Watcher, Copper Fang and Overseer stands in front of Zed as a piece of that broken promise, so every blow he lands on them stirs the rage a little.\n\nIt rises from standing his ground, not from enjoying a fight. Finishing a fight adds nothing extra; landing blows is what feeds it, which fits a Zed who knocks his opponents down and moves on.",
+      "tags": [
+        "rage",
+        "rust",
+        "zed"
+      ]
+    },
+    {
+      "id": "rage-fades-like-held-breath",
+      "status": "proposed",
+      "gddGap": "The spec says the meter drains constantly, even when full, but gives no in-world reason. Proposed: rage is a feeling Zed has to keep earning, like holding a breath, which he does not want to carry forever.",
+      "sources": [
+        "zed-rage-system-spec#7",
+        "zed-rage-system-spec#8",
+        "zed-rage-system-spec#11"
+      ],
+      "kind": "event",
+      "name": "Held Like a Breath",
+      "summary": "Zed cannot hold his rage for long; it fades unless he keeps earning it by standing his ground.",
+      "body": "Rage is not a switch Zed can leave on. It fades if he stops fighting for his block, even when it is full, and he has about a few seconds to answer it before it settles again. That is how the neighbourhood tells it: you can't hoard a feeling like that.\n\nWhen it settles he is still Zed, a bit out of breath, and ready to start building it again from his own steady footing.",
+      "tags": [
+        "rage",
+        "drain",
+        "zed"
+      ]
+    },
+    {
+      "id": "rage-waits-for-level-two",
+      "status": "proposed",
+      "gddGap": "The spec hides the meter in Level 1 and introduces it in Level 2 but does not say what changes in the story. Proposed: Level 1 is Zed finding his feet at home; the rage only wakes once he leaves Brick-Red Alley and the stakes grow.",
+      "sources": [
+        "zed-rage-system-spec#2",
+        "zed-rage-system-spec#4",
+        "zed-rage-system-spec#14"
+      ],
+      "kind": "event",
+      "name": "Why It Wakes in Level Two",
+      "summary": "In Level 1 Zed is at home and finding his rhythm; the rage first wakes as the fight moves beyond the alley.",
+      "body": "Level 1 is the pace level, where Zed learns to move, chain his hits, kick from a jump and block, with nothing extra pressing on him. In the story that is Zed on his own street, steady and focused.\n\nFrom Level 2 the fight spreads across more of the city, and the rage meter slides into view with a one-time prompt to explain it. The idea is that Zed feels it properly for the first time once he is further from home.",
+      "tags": [
+        "rage",
+        "level-2",
+        "tutorial",
+        "zed"
+      ]
+    },
+    {
+      "id": "rust-origin",
+      "status": "canon",
+      "kind": "event",
+      "name": "How the Rust Got Their Foot in the Door",
+      "summary": "The Rust began as a private security contractor hired to steady the Fallen City, then stayed and became a militarized occupation.",
+      "body": "After years of political decay and rising crime, the city hired a private security contractor to calm things down. Once the Rust were inside, they never left. The Rust transformed from a protective force into a militarized occupation, tightening their control over every district and crushing resistance with brutal efficiency.\n\nThe name comes from their oxidized metal armour, rough and weathered. The neighbourhood reads it as a reminder of what the Rust have done to the city, and Zed reads it as a challenge.",
+      "tags": [
+        "rust",
+        "origin",
+        "backstory"
+      ],
+      "sources": [
+        "the-rebellion#10"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "rust-takeover"
+      ]
+    },
+    {
+      "id": "commander-halden-varr",
+      "status": "canon",
+      "kind": "character",
+      "name": "Overseer Halden Varr, The Architect of Rust",
+      "summary": "The former military strategist who founded the Rust and believes order only comes through fear.",
+      "body": "Varr saw the Fallen City's government collapse and saw his chance. He offered \"protection\" to the officials who were left, then quietly swapped them for Rust loyalists. From that day the Rust were the law.\n\nHe is the face of the Rust's cold, official voice. The Copper Fangs are his personal favourites, and the Overseers, his inner circle, run the districts in his name. He is an Overseer himself, \"The Architect of Rust\", and the main boss.",
+      "tags": [
+        "rust",
+        "leader",
+        "antagonist"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#14",
+        "the-rebellion#19",
+        "the-rebellion#20"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "rust-copper-fangs",
+        "rust-overseers"
+      ]
+    },
+    {
+      "id": "rust-takeover-timeline",
+      "status": "canon",
+      "kind": "event",
+      "name": "Within Months: Curfews, Sealed Districts and Drones",
+      "summary": "Curfews became mandatory, districts were sealed, drones filled the sky and people who spoke up went missing.",
+      "body": "It took the Rust only months. Curfews became mandatory. Whole districts were sealed off. Surveillance drones filled the sky. Anyone who resisted disappeared. The Rust became the law, and then they became the city.\n\nThis is the wider picture behind what Zed saw on his own block: the shut courts, the fenced gardens and the torn-down murals.",
+      "tags": [
+        "rust",
+        "curfew",
+        "drones",
+        "timeline"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#8"
+      ],
+      "relatedIds": [
+        "rust-takeover",
+        "surveillance-towers",
+        "rust-notice-114"
+      ]
+    },
+    {
+      "id": "rust-doctrine",
+      "status": "canon",
+      "kind": "object",
+      "name": "Order is Strength. Freedom is Weakness.",
+      "summary": "The single doctrine the Rust live by: rebuild the Fallen City through force, suppress civilians and eliminate rebels.",
+      "body": "\"Order is strength. Freedom is weakness.\" That is the Rust's whole creed. They hold that the Fallen City can only be rebuilt by force, and that civilians are assets to be managed rather than neighbours to look after.\n\nThey are enforcers, hunters and executioners. Each unit is trained to suppress civilians, eliminate rebels and maintain absolute control, and to see rebels, Zed included, as threats to the \"greater good\". The neighbourhood's answer is on every wall that gets repainted: strength is looking out for each other.",
+      "tags": [
+        "rust",
+        "doctrine",
+        "philosophy"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#7"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "zeds-mission"
+      ]
+    },
+    {
+      "id": "rust-serial-numbers",
+      "status": "canon",
+      "kind": "object",
+      "name": "Serial Numbers",
+      "summary": "The Rust take away recruits' names and give them serial numbers, so nobody stands out and everyone obeys.",
+      "body": "A new recruit hands over their name and gets a number. Helmets hide their faces on top of that. It wipes out who they were and keeps them in line.\n\nIt also means the person under the visor is somebody's neighbour, and nobody in the Fallen City can tell which one.",
+      "tags": [
+        "rust",
+        "identity",
+        "grunt"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "rust-grunts-iron-line",
+        "rust-grunt"
+      ]
+    },
+    {
+      "id": "rust-grunts-iron-line",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Grunts: The Iron Line",
+      "summary": "The backbone of the Rust: ordinary citizens pressed into service, in cheap rust-coated plating and anonymous helmets.",
+      "body": "The Iron Line were once ordinary citizens, coerced or talked into joining. Their plating is cheap and rust-coated, and their helmets hide who they are on purpose. Each carries a serial number instead of a name.\n\nThey are the crowd the Rust put in front: they keep the streets under watch, make a show of force and hold the front. Zed meets them in nearly every wave.",
+      "tags": [
+        "rust",
+        "enemy",
+        "grunt",
+        "unit"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "rust-grunt",
+        "rust-serial-numbers"
+      ]
+    },
+    {
+      "id": "rust-bruisers-breakers",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Bruisers: The Breakers",
+      "summary": "Hulking enforcers in heavy plating, boosted with illegal muscle stimulants that make them strong and unsteady.",
+      "body": "The Breakers are big, with reinforced plating that gives them a hulking outline. Many were once in trouble with the law and were promised their freedom in exchange for loyalty. The Rust boost them with stimulants, which makes them stronger and shaky.\n\nThe Rust use them as shock troops for area denial and for crushing resistance groups.",
+      "tags": [
+        "rust",
+        "enemy",
+        "bruiser",
+        "unit"
+      ],
+      "sources": [
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "the-rust"
+      ]
+    },
+    {
+      "id": "rust-rangers-watchers",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Rangers: The Watchers",
+      "summary": "Agile units with taser rifles, batons and tracking visors who chase rebels over alleys and rooftops.",
+      "body": "The Watchers are quick and quiet. They carry taser rifles and batons, and their tracking visors read heat, which makes hiding hard. They are trained to follow rebels through the alleys and across the rooftops.\n\nTheir job is to harass from a distance, give chase and report back. Brick-Red Alley knows its rooftops better than they do.",
+      "tags": [
+        "rust",
+        "enemy",
+        "ranger",
+        "unit",
+        "ranged"
+      ],
+      "sources": [
+        "the-rebellion#12"
+      ],
+      "relatedIds": [
+        "the-rust",
+        "brick-red-alley"
+      ]
+    },
+    {
+      "id": "rust-copper-fangs",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Specialists: The Copper Fangs",
+      "summary": "Elite Rust soldiers with electrified gauntlets, grappling hooks and tactical shields, and Varr's personal favourites.",
+      "body": "The Copper Fangs are picked from the most loyal Rust members and put through psychological conditioning to remove fear and hesitation. Their kit is the best the Rust have: electrified gauntlets, grappling hooks and tactical shields.\n\nThey are Overseer Varr's favourites and are sent on high-priority target elimination, which makes them mini-boss material in the arena.",
+      "tags": [
+        "rust",
+        "enemy",
+        "specialist",
+        "unit",
+        "elite"
+      ],
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#13"
+      ],
+      "relatedIds": [
+        "commander-halden-varr"
+      ]
+    },
+    {
+      "id": "rust-overseers",
+      "status": "canon",
+      "kind": "faction",
+      "name": "Rust Overseers: The Architects of Control",
+      "summary": "District bosses and strategic masterminds, Varr's inner circle, who hold their districts through surveillance, fear and psychological control.",
+      "body": "The Overseers are the Rust's district bosses, strategic masterminds and Varr's inner circle. Each holds a district through surveillance, fear and psychological domination, in a tactical, oppressive style with its own tricks. They are the end-of-level bosses, the district rulers and the faces of the story's antagonists.\n\nFour of them are named. Kade Voss, \"The Eye of the Market\", watches the Neon Market through screens, drones and holograms. Rhea Calder, \"The Iron Matron\", runs the factory floor with machinery and brute force. Silas Wren, \"The Whisper on the Rooftops\", keeps the skyline from above. Dr. Maren Holt, \"The Voice of Compliance\", works in the undercity lab with gas and fog. Above them stands Overseer Halden Varr, \"The Architect of Rust\", who also founded the Rust and fights as the main boss in the Corporate Tower command chamber.\n\nThe neighbourhood answers every screen they put up.",
+      "tags": [
+        "rust",
+        "enemy",
+        "overseer",
+        "unit",
+        "boss",
+        "surveillance"
+      ],
+      "sources": [
+        "the-rebellion#14",
+        "the-rebellion#15",
+        "the-rebellion#16",
+        "the-rebellion#17",
+        "the-rebellion#18",
+        "the-rebellion#19",
+        "the-rebellion#11"
+      ],
+      "relatedIds": [
+        "surveillance-towers",
+        "commander-halden-varr"
+      ]
+    },
+    {
+      "id": "rust-rank-ladder",
+      "status": "proposed",
+      "gddGap": "The GDD lists five unit types but not how they relate on the ground. This ties them into one ladder (Grunts, Rangers, Breakers, Copper Fangs, Overseers) so levels and enemy writers can pace waves; the owner should confirm it.",
+      "kind": "event",
+      "name": "The Rust Ladder",
+      "summary": "A way to read the five Rust units as a ladder: Iron Line up front, Watchers and Breakers in support, Fangs and Overseers at the top.",
+      "body": "Each district tends to open with the Iron Line, add Watchers on the rooftops and Breakers in the street, and finish with a Copper Fang or the district Overseer. The tougher the unit, the closer it sits to Overseer Varr.\n\nThe neighbourhood keeps score in its own way: every rung Zed knocks back is a corner, a court or a window that gets its music back.",
+      "tags": [
+        "rust",
+        "units",
+        "pacing",
+        "levels"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12",
+        "the-rebellion#13"
+      ],
+      "relatedIds": [
+        "rust-grunts-iron-line",
+        "rust-bruisers-breakers",
+        "rust-rangers-watchers",
+        "rust-copper-fangs",
+        "rust-overseers"
+      ]
+    },
+    {
+      "id": "neighbourhood-answer-to-doctrine",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust's doctrine but no community reply. The tone rules say Rust copy is always answered or defaced by the neighbourhood, so this proposes a painted answer to the creed.",
+      "kind": "object",
+      "name": "The Wall Answers Back",
+      "summary": "Every time the Rust post their creed, someone paints over it with a line about looking out for each other.",
+      "body": "Under a Rust notice, kids chalk in \"Freedom is strength\" and an arrow pointing to the food stall. Murals go back up a patch at a time. It never lasts long, but it is always there by morning.\n\nIt matches Zed's own belief: strength is protecting the people who give your life meaning.",
+      "tags": [
+        "community",
+        "doctrine",
+        "murals",
+        "defaced"
+      ],
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#7",
+        "menu-concept#4"
+      ],
+      "relatedIds": [
+        "rust-doctrine",
+        "rust-notice-114",
+        "local-heroes-murals"
+      ]
+    },
+    {
+      "id": "weapon-system",
+      "status": "canon",
+      "sources": [
+        "the-rebellon-gameplay-system#1",
+        "the-rebellon-gameplay-system#2",
+        "the-rebellon-gameplay-system#3"
+      ],
+      "kind": "object",
+      "name": "Street Weapons",
+      "summary": "From Level 2, Zed can crack open weapon boxes and pick up a baseball bat or a pipe to take on the Rust Grunts.",
+      "body": "Only two weapons exist for now, the baseball bat and the pipe. Zed breaks a box, picks the weapon up, carries it and swings with the same light and heavy buttons he already uses. Both hit harder than his heavy attack, but they wear out, so every swing counts.",
+      "tags": [
+        "weapons",
+        "level-2",
+        "pickup",
+        "zed"
+      ]
+    },
+    {
+      "id": "baseball-bat",
+      "status": "canon",
+      "sources": [
+        "the-rebellon-gameplay-system#1",
+        "the-rebellon-gameplay-system#3",
+        "the-rebellon-gameplay-system#4"
+      ],
+      "kind": "object",
+      "name": "Baseball Bat",
+      "summary": "The quick weapon: a fast swing, short reach and ten hits of wear before it breaks.",
+      "body": "Damage 20, with a 7 frame startup, 4 active and 16 recovery. Its hitbox is 64 wide, knockback is 400 and hitstun 26 frames. It lasts 10 hits, and a Grunt goes down in 2.\n\nThe heavy swing does 25 damage and costs 2 durability instead of 1. A heavy swing still goes through with 1 durability left, and the bat breaks afterwards.",
+      "tags": [
+        "weapons",
+        "bat",
+        "fast"
+      ]
+    },
+    {
+      "id": "pipe",
+      "status": "canon",
+      "sources": [
+        "the-rebellon-gameplay-system#1",
+        "the-rebellon-gameplay-system#3",
+        "the-rebellon-gameplay-system#4"
+      ],
+      "kind": "object",
+      "name": "Pipe",
+      "summary": "The reach weapon: the longest hitbox in the game, a slower start and eight hits of wear.",
+      "body": "Damage 24, with a 12 frame startup, 4 active and 20 recovery. Its hitbox is 84 wide, the longest in the game. Knockback is 360 and hitstun 28 frames. It lasts 8 hits, and a Grunt goes down in 2.\n\nThe heavy swing does 30 damage and costs 2 durability. Zed has to commit to the slower startup to get the reach.",
+      "tags": [
+        "weapons",
+        "pipe",
+        "reach"
+      ]
+    },
+    {
+      "id": "weapon-box",
+      "status": "canon",
+      "sources": [
+        "the-rebellon-gameplay-system#1",
+        "the-rebellon-gameplay-system#2",
+        "the-rebellon-gameplay-system#4"
+      ],
+      "kind": "object",
+      "name": "Weapon Box",
+      "summary": "One fixed box per level from Level 2, holding a bat or a pipe, breaking after 2 hits from Zed.",
+      "body": "Each level from Level 2 has one weapon box in a fixed spot. What is inside is chosen by the level designer and is never random. Boxes do not respawn.\n\nThe box break animation is added separately.",
+      "tags": [
+        "weapons",
+        "box",
+        "level-design"
+      ]
+    },
+    {
+      "id": "weapon-breakage-and-drops",
+      "status": "canon",
+      "sources": [
+        "the-rebellon-gameplay-system#1",
+        "the-rebellon-gameplay-system#2",
+        "the-rebellon-gameplay-system#3"
+      ],
+      "kind": "object",
+      "name": "Worn Out, Dropped, Picked Up Again",
+      "summary": "Weapons break after a set number of hits, and Zed drops one if he is hit more than 3 times while carrying it.",
+      "body": "When a weapon runs out of hits it breaks, a short break effect plays and Zed goes back to his fists. There is no drop button: the weapon falls on the 4th hit he takes. It lies on the floor, keeps its remaining durability, and Zed can pick it up again. Picking it up does not reset the hit count.\n\nWhile Zed carries a weapon, the HUD shows its icon and remaining durability beside the health bar.",
+      "tags": [
+        "weapons",
+        "durability",
+        "hud"
+      ]
+    },
+    {
+      "id": "thrown-weapon",
+      "status": "canon",
+      "sources": [
+        "the-rebellon-gameplay-system#1",
+        "the-rebellon-gameplay-system#4"
+      ],
+      "kind": "object",
+      "name": "The Throw",
+      "summary": "Zed can hurl a carried weapon; it spins through the air and hits the first Rust enemy in its path.",
+      "body": "A throw does 15 damage with knockback 300 and 20 frames of hitstun. It travels at 480 pixels per second for up to 320 pixels and costs 2 durability.\n\nIf the weapon survives, it lands where it hit or at the end of its flight and Zed can pick it up again. With 2 durability or less, the throw still goes through and the weapon breaks when it lands.",
+      "tags": [
+        "weapons",
+        "throw",
+        "combat"
+      ]
+    },
+    {
+      "id": "weapons-from-the-corner-shops",
+      "status": "canon",
+      "sources": [
+        "the-rebellon-gameplay-system#1",
+        "the-rebellion#6"
+      ],
+      "kind": "object",
+      "name": "Boxes Left Behind the Shops",
+      "summary": "Where the weapon boxes come from: crates the neighbourhood tucked away behind the corner shops, for when the block needs them.",
+      "body": "Nobody says who packed them. A bat from somebody's old pickup game, a length of pipe from a shuttered stall. The neighbourhood keeps looking out for each other, even after the Rust came through.\n\nZed does not fight for glory, so he borrows these only while they last.",
+      "tags": [
+        "weapons",
+        "corner-shops",
+        "community"
+      ]
     }
   ],
   "enemies": [
     {
+      "id": "rust-brick-dugan",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 1 mini-boss role, former dock worker backstory, gear and the five named moves are canon (lore item brick-dugan). Stats, telegraph timings, tier, look palette and the low-health trigger threshold are invented because the GDD gives no numbers. Tier 2 (the player's first major skill check, so above Breaker HP but below the Overseers).",
+      "sources": [
+        "the-rebellion#14",
+        "the-rebellion#15"
+      ],
+      "name": "\"Brick\" Dugan",
+      "role": "boss",
+      "tier": 2,
+      "description": "A broad former dock worker recruited into the Rust, built like a human battering ram. Heavy black security vest with the Rust insignia, riot-control shoulder pads, reinforced forearm guards, steel-toe boots and a utility belt of restraints and radio gear. Boxy and symmetrical, slate and gunmetal tones, narrow cyan visor. Lore: brick-dugan.",
+      "behaviour": "Slow but intimidating and easy to read. Walks Zed down, uses Brick Breaker Punch up close, Running Shoulder Charge along a lane from range, Ground Stomp when Zed is airborne or crowding him, and Grab and Wall Slam if Zed stays in melee range too long. Below 30 percent health (proposed threshold) he enters Rage Punch mode: one extra-heavy punch, still telegraphed. Takes an attacker slot before every move. Boss hitstun immunity so juggles cannot loop him.",
+      "telegraph": "Brick Breaker Punch 650 ms: fist drawn back, shoulders squared. Running Shoulder Charge 800 ms: he lowers his shoulder and scrapes a boot, red ground strip along the lane. Ground Stomp 700 ms: knee lifts high, red circle under his boots. Grab and Wall Slam 600 ms: both arms open wide, red icon. Rage Punch 900 ms: longer wind-up with a held fist and a bigger red icon.",
+      "weakness": "Dodge sideways out of the charge lane and he crashes into the arena wall, leaving a long recovery to punish. Jump the Ground Stomp, back-step the grab. Do not trade blows head-on: block the punch, then hit him in recovery. Teaches dodging as the first real skill check.",
+      "spriteKey": "rust.brick-dugan",
+      "stats": {
+        "maxHp": 150,
+        "moveSpeed": 55,
+        "attackRange": 85,
+        "telegraphMs": 700,
+        "attackMs": 350,
+        "recoverMs": 1300,
+        "damage": 16,
+        "knockback": 400,
+        "hitstun": 280
+      },
+      "moves": [
+        {
+          "name": "Brick Breaker Punch",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Running Shoulder Charge",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Ground Stomp",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Grab and Wall Slam",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Rage Punch",
+          "canon": true,
+          "source": "the-rebellion#15"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 2",
+        "low-health threshold",
+        "look palette"
+      ],
+      "level": 1,
+      "loreRef": "brick-dugan"
+    },
+    {
+      "id": "rust-railgun-royce",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 2 (Transit District) mini-boss role, former transit security officer, electrified baton, armoured trench coat, scanner visor, five named moves and the stun-mechanics role are canon (lore item railgun-royce). Stats, timings, tier, stun duration and Rail Trap layout are invented.",
+      "sources": [
+        "the-rebellion#15"
+      ],
+      "name": "\"Railgun\" Royce",
+      "role": "boss",
+      "tier": 2,
+      "description": "A former transit security officer in a long armoured trench coat, slate with gunmetal panels, carrying an electrified baton and wearing a scanner visor that glows cyan. Upright, symmetrical, boxy shoulders. Lore: railgun-royce.",
+      "behaviour": "Mid-range controller who introduces stun. Opens with a Baton Combo, closes distance with a Charging Dash, answers a crowding Zed with Shockwave Slam, and lays Rail Trap electrified floor strips that block part of the lane for a few seconds (proposed 4 s). Taser Burst is a short-range stun shot. Being stunned briefly locks Zed's inputs (proposed 600 ms), never more, so the player learns to avoid rather than die to it. Takes an attacker slot before every move.",
+      "telegraph": "Baton Combo 500 ms: baton raised and crackling. Charging Dash 650 ms: crouch with the visor flashing, red ground strip. Shockwave Slam 750 ms: baton planted overhead, red circle around him. Rail Trap 800 ms: he kneels and a cyan line marks the floor strip before it electrifies. Taser Burst 550 ms: arm extends, visor locks on with a red icon.",
+      "weakness": "Stay off the marked Rail Trap strips and dodge the Taser Burst by moving out of line. Parry or jump the dash, then heavy-attack him in the long recovery after Shockwave Slam. Rewards reading the floor and the dodge.",
+      "spriteKey": "rust.railgun-royce",
+      "stats": {
+        "maxHp": 160,
+        "moveSpeed": 85,
+        "attackRange": 110,
+        "telegraphMs": 600,
+        "attackMs": 280,
+        "recoverMs": 1000,
+        "damage": 13,
+        "knockback": 300,
+        "hitstun": 250
+      },
+      "moves": [
+        {
+          "name": "Baton Combo",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Charging Dash",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Shockwave Slam",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Rail Trap",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Taser Burst",
+          "canon": true,
+          "source": "the-rebellion#15"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 2",
+        "stun duration",
+        "Rail Trap duration and layout"
+      ],
+      "level": 2,
+      "loreRef": "railgun-royce"
+    },
+    {
+      "id": "rust-crusher-kane",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 3 (Industrial Zone) mini-boss role, chief enforcer to Rhea Calder, hydraulic work suit, industrial hammer, five named moves and the role of preparing players for Calder are canon (lore item crusher-kane). Stats, timings, tier and steam vent geometry are invented. Deliberately a slower, heavier version of the grunt's timing, foreshadowing Calder's 900 ms telegraphs.",
+      "sources": [
+        "the-rebellion#15"
+      ],
+      "name": "\"Crusher\" Kane",
+      "role": "boss",
+      "tier": 3,
+      "description": "Rhea Calder's chief enforcer in a bulky hydraulic work suit, slate with gunmetal pistons and steam pipes along the arms, swinging a huge industrial hammer. Visor slit glows cyan. Symmetrical, boxy and slow-moving. Lore: crusher-kane; serves rust-overseer-calder.",
+      "behaviour": "Heavy slow bruiser who previews Calder. Hammer Slam is his main attack, Hook Chain Grab pulls Zed in from range, Furnace Kick is a short sweeping kick, Steam Vent Burst vents a cone of steam from the suit that leaves a hazard patch (proposed 3 s), Crushing Uppercut launches Zed upward if he is standing close. Slow movement, long recoveries. Takes an attacker slot before every move. Boss hitstun immunity.",
+      "telegraph": "Hammer Slam 850 ms: hammer lifted overhead with a red ground circle. Hook Chain Grab 700 ms: chain whirls above his head and the hook flashes, red icon. Furnace Kick 600 ms: leg pulls back, steam hisses from the knee. Steam Vent Burst 900 ms: suit shakes and steam builds on the shoulders, red cone on the ground. Crushing Uppercut 750 ms: hammer swung low behind him, red strip in front.",
+      "weakness": "Dodge out of the red circle and strike during the long Hammer Slam recovery. Break line of sight on the Hook Chain, stay out of steam patches. Back away from the uppercut and punish. Trains the player to wait for big telegraphs before Overseer Calder.",
+      "spriteKey": "rust.crusher-kane",
+      "stats": {
+        "maxHp": 220,
+        "moveSpeed": 50,
+        "attackRange": 105,
+        "telegraphMs": 850,
+        "attackMs": 340,
+        "recoverMs": 1400,
+        "damage": 20,
+        "knockback": 420,
+        "hitstun": 300
+      },
+      "moves": [
+        {
+          "name": "Hammer Slam",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Hook Chain Grab",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Furnace Kick",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Steam Vent Burst",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Crushing Uppercut",
+          "canon": true,
+          "source": "the-rebellion#15"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 3",
+        "steam hazard duration and geometry"
+      ],
+      "level": 3,
+      "loreRef": "crusher-kane"
+    },
+    {
+      "id": "rust-glitch",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 4 (Neon Market) mini-boss role, former hacker turned Rust cyber operative, holographic mask, portable drone pack, five named moves and the role of introducing Voss's deception mechanics are canon (lore item glitch). Stats, timings, tier, clone count and teleport rules are invented. Drones he launches reuse rust-voss-drone and his Hologram Duplicate reuses rust-hologram-decoy.",
+      "sources": [
+        "the-rebellion#15"
+      ],
+      "name": "\"Glitch\"",
+      "role": "boss",
+      "tier": 2,
+      "description": "A former hacker turned Rust cyber operative, thinner than other Rust units, slate uniform under a flickering holographic mask and a portable drone pack on his back with cyan indicator lights. Still symmetrical and boxy at the shoulders. Lore: glitch; previews rust-overseer-voss.",
+      "behaviour": "Evasive deception fighter who keeps his distance. Drone Barrage launches a small volley of drones (reuses the Voss drone unit, proposed 2 at a time), Hologram Duplicate creates one decoy of himself that throws a weak punch (reuses the hologram decoy), Shock Disk Throw is a straight ranged projectile, Data Spike is a short ground line attack. Emergency Teleport triggers when Zed gets close or health drops past a threshold (proposed 50 percent): he blinks to the far side of the arena with a brief vulnerable pause on arrival. Takes an attacker slot before every move.",
+      "telegraph": "Drone Barrage 700 ms: pack opens and lights blink, red icon above the pack. Hologram Duplicate 500 ms: mask flickers and the decoy shimmers into place. Shock Disk Throw 550 ms: disk spun up in his hand, red line of flight. Data Spike 600 ms: he crouches and a cyan line draws on the floor before the spike. Emergency Teleport 400 ms: mask static then a cyan flash, and a 700 ms vulnerable pause on arrival.",
+      "weakness": "Pick out the real Glitch (the decoy's outline wobbles and it has no pack), dodge the disk line and punish him right after the teleport arrival. Breaking the drones with a quick combo keeps pressure off. Introduces the 'which one is real' skill before Overseer Voss.",
+      "spriteKey": "rust.glitch",
+      "stats": {
+        "maxHp": 110,
+        "moveSpeed": 100,
+        "attackRange": 300,
+        "telegraphMs": 550,
+        "attackMs": 220,
+        "recoverMs": 900,
+        "damage": 9,
+        "knockback": 200,
+        "hitstun": 220
+      },
+      "moves": [
+        {
+          "name": "Drone Barrage",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Hologram Duplicate",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Shock Disk Throw",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Data Spike",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Emergency Teleport",
+          "canon": true,
+          "source": "the-rebellion#15"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 2",
+        "teleport trigger and pause",
+        "drone and decoy counts"
+      ],
+      "level": 4,
+      "loreRef": "glitch"
+    },
+    {
+      "id": "rust-raptor",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 5 (Skyline District) mini-boss role, Silas Wren's personal hunter, grapple launcher, lightweight armour, five named moves and the role of training vertical combat are canon (lore item raptor). Stats, timings, tier and the look (slate, light plating) are invented. Fast and fragile compared with Kane, mirroring Wren's 400 ms telegraphs.",
+      "sources": [
+        "the-rebellion#15",
+        "the-rebellion#16"
+      ],
+      "name": "\"Raptor\"",
+      "role": "boss",
+      "tier": 2,
+      "description": "Silas Wren's personal hunter in lightweight slate armour with a shoulder-mounted grapple launcher, a swept-back visor and a narrow, agile frame. Cold hue, symmetrical, boxy plates kept light. Lore: raptor; serves rust-overseer-wren.",
+      "behaviour": "Fast vertical attacker. Dive Kick drops from a jump onto Zed's position, Wall Bounce Strike rebounds off the arena edge into a diagonal strike, Grapple Pull yanks Zed a short way, Aerial Barrage is a flurry of kicks in the air, Falcon Drop is a high leap followed by a heavy slam on a marked spot. Often airborne, so ground-only attacks miss him. Takes an attacker slot before every move. Boss hitstun immunity.",
+      "telegraph": "Dive Kick 450 ms: crouch and jump with a red ground marker where he will land. Wall Bounce Strike 500 ms: he skids toward the wall and flashes the visor. Grapple Pull 550 ms: launcher raised, a thin cyan cable line to Zed. Aerial Barrage 600 ms: he rises with legs pulled up, red icon overhead. Falcon Drop 800 ms: he leaps off-screen with a long shadow growing on the ground before the slam.",
+      "weakness": "Anti-air hits and jump attacks catch him in the air, and the red ground marker shows exactly where to step away from. Dodge the cable line, then punish his landing recovery. Trains vertical awareness before Overseer Wren.",
+      "spriteKey": "rust.raptor",
+      "stats": {
+        "maxHp": 130,
+        "moveSpeed": 130,
+        "attackRange": 90,
+        "telegraphMs": 450,
+        "attackMs": 240,
+        "recoverMs": 900,
+        "damage": 13,
+        "knockback": 320,
+        "hitstun": 230
+      },
+      "moves": [
+        {
+          "name": "Dive Kick",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Wall Bounce Strike",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Grapple Pull",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Aerial Barrage",
+          "canon": true,
+          "source": "the-rebellion#15"
+        },
+        {
+          "name": "Falcon Drop",
+          "canon": true,
+          "source": "the-rebellion#15"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 2",
+        "look"
+      ],
+      "level": 5,
+      "loreRef": "raptor"
+    },
+    {
+      "id": "rust-holts-experiment-subject-88",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 6 (Undercity) mini-boss role, failed chemical test subject of Dr. Holt, mutated physique, back chemical tanks, glowing green veins, five named moves and the area-denial role are canon (lore item holts-experiment-subject-88). Stats, timings, tier and hazard sizes are invented. Subject 88 is a person from Holt's experiments, not a monster: describe him with care, no gore. Green glow is canon; Overload Violet is reserved for phase-2 power glows and is not used here.",
+      "sources": [
+        "the-rebellion#16"
+      ],
+      "name": "Dr. Holt's Experiment \"Subject 88\"",
+      "role": "boss",
+      "tier": 3,
+      "description": "A hulking, hunched test subject from Dr. Holt's experiments, with a mutated physique, chemical tanks strapped to the back and glowing green veins along the arms and neck. Torn Rust-issue clothing hangs off the shoulders. Confused and in distress rather than cruel. Lore: holts-experiment-subject-88; ties to rust-overseer-holt.",
+      "behaviour": "Area-denial bruiser. Toxic Breath is a short cone of gas that lingers, Acid Spit lobs a puddle at Zed's position (proposed 3 s), Frenzied Charge is a lane charge when he flares, Corrosion Slam is a heavy overhead strike that leaves a small puddle, Chemical Explosion bursts from the tanks in a ring at low health (proposed 40 percent) and is the only time he stops advancing. Hazards stay on the ground and slowly fade. Takes an attacker slot before every move.",
+      "telegraph": "Toxic Breath 600 ms: chest swells and green mist leaks from the tanks. Acid Spit 650 ms: head tilts back, a green circle forms on the ground. Frenzied Charge 800 ms: he roars and the veins brighten, red lane strip. Corrosion Slam 750 ms: both fists raised, red circle. Chemical Explosion 1000 ms: tanks glow brighter and rattle, ring warning grows on the floor.",
+      "weakness": "Keep moving: hazards punish standing still. Dodge the lane charge into the wall, then heavy-attack in recovery. Step out of the ring before the Chemical Explosion and hit him afterward. Rewards positioning and spacing.",
+      "spriteKey": "rust.subject-88",
+      "stats": {
+        "maxHp": 200,
+        "moveSpeed": 75,
+        "attackRange": 180,
+        "telegraphMs": 700,
+        "attackMs": 320,
+        "recoverMs": 1200,
+        "damage": 15,
+        "knockback": 280,
+        "hitstun": 240
+      },
+      "moves": [
+        {
+          "name": "Toxic Breath",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Acid Spit",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Frenzied Charge",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Corrosion Slam",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Chemical Explosion",
+          "canon": true,
+          "source": "the-rebellion#16"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 3",
+        "hazard sizes and durations",
+        "low-health threshold"
+      ],
+      "level": 6,
+      "loreRef": "holts-experiment-subject-88"
+    },
+    {
+      "id": "rust-commander-atlas",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 7 (Rust Military Compound) mini-boss role, leader of the Copper Fangs, elite black armour, tactical shield, twin electrified gauntlets, five named moves (including Fang Protocol calling in Specialists) and the 'toughest non-boss enemy' claim are canon (lore item commander-atlas). Stats, timings, tier, Specialist count and phase thresholds are invented. Deliberately tuned above rust-copper-fang (140 HP) and below Overseers to honour 'toughest non-boss'.",
+      "sources": [
+        "the-rebellion#16",
+        "the-rebellion#14"
+      ],
+      "name": "Commander Atlas",
+      "role": "boss",
+      "tier": 3,
+      "description": "The leader of the Copper Fangs: elite black armour with copper-toned gauntlets, a large tactical shield and twin electrified gauntlets, a hard symmetrical helmet with a narrow cyan visor. The sharpest, most composed Rust unit in the game. Lore: commander-atlas; leads rust-copper-fang units.",
+      "behaviour": "Disciplined shield-and-gauntlet duelist. Shield Bash opens and breaks Zed's guard, Gauntlet Combo is a fast 3-hit string, Grapple Hook Pull yanks Zed in, Electric Counter is a stance that punishes mashed attacks while he holds the shield up, and Fang Protocol calls in Specialists (proposed 2 rust-copper-fang units, never more than 2 on screen, called once per phase). Below 50 percent health he drops the shield stance for faster gauntlet strings. Takes an attacker slot before every move. Boss hitstun immunity.",
+      "telegraph": "Shield Bash 550 ms: shield pulled in, red ground strip in front. Gauntlet Combo 400 ms: gauntlets spark and cross in front of him, each hit has a short flash. Grapple Hook Pull 650 ms: launcher raised, cyan cable line shows the path. Electric Counter 500 ms: shield held up with crackling gauntlets, red shield-edge flash if Zed attacks into it. Fang Protocol 900 ms: he raises one fist and a signal flare pulses, Specialists arrive after 1200 ms.",
+      "weakness": "Wait out the Electric Counter stance rather than mashing, dodge the cable line, then heavy-attack to break the shield. Parry the Gauntlet Combo's first hit to open a juggle. Defeating or avoiding the Specialists first reduces pressure. Rewards patience and parrying, the full toolkit of block, dodge, parry and combos.",
+      "spriteKey": "rust.commander-atlas",
+      "stats": {
+        "maxHp": 240,
+        "moveSpeed": 80,
+        "attackRange": 90,
+        "telegraphMs": 550,
+        "attackMs": 300,
+        "recoverMs": 1000,
+        "damage": 17,
+        "knockback": 380,
+        "hitstun": 260
+      },
+      "moves": [
+        {
+          "name": "Shield Bash",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Gauntlet Combo",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Grapple Hook Pull",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Electric Counter",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Fang Protocol",
+          "canon": true,
+          "source": "the-rebellion#16"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 3",
+        "Specialist count and timing",
+        "phase threshold"
+      ],
+      "level": 7,
+      "loreRef": "commander-atlas"
+    },
+    {
+      "id": "rust-sentinel-x9",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: name, Level 8 (Corporate Tower) mini-boss role, experimental combat android protecting Varr, Rust insignia, chest energy core, five named moves, the phase-2 core overload (faster attacks, red laser barrage, explosive dash attacks) and its role as the final challenge before Varr are canon (lore item sentinel-x9). Stats, timings, tier, Self-Repair rate and phase threshold are invented. The GDD's red laser barrage conflicts with the owner decision that phase-2 power glows use Overload Violet and enemy bodies never use red: the barrage is drawn Overload Violet with a Telegraph Red ground warning (open question for the owner). It is a machine, so it is powered down rather than destroyed on defeat.",
+      "sources": [
+        "the-rebellion#16"
+      ],
+      "name": "Sentinel-X9",
+      "role": "boss",
+      "tier": 3,
+      "description": "An experimental corporate combat android, tall and perfectly symmetrical, with slate and steel plating, a Rust insignia on the chest plate and a round energy core glowing cyan in the chest. Visor slit cyan. In phase 2 the core overloads and glows Overload Violet with cracks of light along the plating. Lore: sentinel-x9; protects rust-halden-varr.",
+      "behaviour": "Mechanical, rhythmic and precise. Laser Sweep arcs a beam across the lane from the eyes, Rocket Punch fires a fist forward in a straight line and it returns, Ground Pound is a heavy slam with a shockwave ring, Energy Shield blocks front hits until a heavy break, Self-Repair Mode rises when health is low and heals slowly while he is stationary (proposed 5 HP per second for up to 4 s, interruptible). Phase 2 (below 50 percent health): faster attacks, a Laser Sweep that becomes a laser barrage (multiple beams) and explosive dash attacks. Takes an attacker slot before every move. Boss hitstun immunity.",
+      "telegraph": "Laser Sweep 700 ms: head turns, eyes charge cyan, red arc on the ground. Rocket Punch 600 ms: arm retracts with a whine, red lane strip. Ground Pound 800 ms: both fists rise overhead, red ring around him. Energy Shield 400 ms: core flares and a shield bubble forms. Self-Repair Mode 500 ms: panels open and green sparks. Phase 2 laser barrage 600 ms and explosive dash 450 ms (faster), each with a violet core pulse and red ground warning.",
+      "weakness": "Heavy attacks break the Energy Shield, interrupt Self-Repair with a burst of damage before it heals, and dodge the lane strips. Phase 2 punishes standing still but its shorter pauses after the dash give a clear opening. A final test of block, dodge, parry and combos before Halden Varr.",
+      "spriteKey": "rust.sentinel-x9",
+      "stats": {
+        "maxHp": 280,
+        "moveSpeed": 90,
+        "attackRange": 160,
+        "telegraphMs": 600,
+        "attackMs": 300,
+        "recoverMs": 1000,
+        "damage": 18,
+        "knockback": 360,
+        "hitstun": 220
+      },
+      "moves": [
+        {
+          "name": "Laser Sweep",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Rocket Punch",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Ground Pound",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Energy Shield",
+          "canon": true,
+          "source": "the-rebellion#16"
+        },
+        {
+          "name": "Self-Repair Mode",
+          "canon": true,
+          "source": "the-rebellion#16"
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "tier 3",
+        "Self-Repair rate",
+        "phase threshold",
+        "violet barrage colour"
+      ],
+      "level": 8,
+      "loreRef": "sentinel-x9"
+    },
+    {
+      "id": "rust-iron-line-cordon",
+      "status": "proposed",
+      "gddGap": "The GDD lists Rust Grunts, 'The Iron Line', for crowd control and frontline combat, but the Tier 0 rust-grunt is the only canon stat block. This is the Iron Line's crowd-control variant: a grunt that holds a line and sweeps a wide arc, so waves can pin the lane without adding a new silhouette. The base Iron Line unit remains rust-grunt (canon). FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 36 HP is about 5 light hits, same damage as the grunt, 500 ms wind-up so the wide sweep reads one beat slower. Final.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Iron Line Cordon",
+      "role": "grunt",
+      "tier": 1,
+      "description": "A Rust grunt of the Iron Line in cheap rust-coated slate plating, a plain steel helmet with a cyan visor and no personal marks, because the helmets hide who they are. Same boxy, symmetrical build as the grunt, with a gunmetal push-bar held across the chest.",
+      "behaviour": "Moves in at grunt speed and stops at the front of the group to hold the lane, trying to pin Zed against his own crowd. Uses one wide sweep with the push-bar that shoves Zed back along the lane. Counts against the attacker cap like any other attacker, and never attacks from behind. When Zed gets too close or grabs too often it answers with the grunt Helmet Headbutt (short wind-up, brief stun) from the GDD Iron Line move list.",
+      "telegraph": "500 ms wind-up: both arms pull the bar to one side, the red telegraph icon pops above the head, the body tints red and the outline thickens. The sweep is wide, so the red ground arc shows its reach.",
+      "weakness": "Low health and a short reach in depth. Step out of the lane (dodge) or block the shove, then punish in the recovery window. Heavy attacks from the side skip its guard-stance and juggle it clear of the line.",
+      "spriteKey": "rust.iron-line-cordon",
+      "stats": {
+        "maxHp": 36,
+        "moveSpeed": 85,
+        "attackRange": 75,
+        "telegraphMs": 500,
+        "attackMs": 260,
+        "recoverMs": 750,
+        "damage": 8,
+        "knockback": 260,
+        "hitstun": 250
+      },
+      "look": "Grunt silhouette in rust-coated slate plating with a gunmetal push-bar across the chest; plain steel helmet, cyan visor.",
+      "moves": [
+        {
+          "name": "Rust Jab Combo",
+          "canon": true,
+          "source": "the-rebellion#12",
+          "gdd": "GDD Iron Line move: quick 1-2-3 string, light damage."
+        },
+        {
+          "name": "Helmet Headbutt",
+          "canon": true,
+          "source": "the-rebellion#12",
+          "gdd": "GDD Iron Line move: short windup lunge, brief stun."
+        },
+        {
+          "name": "Push-bar Sweep",
+          "canon": false,
+          "source": "the-rebellion#11",
+          "gdd": "Wide lane-holding sweep. Not in the GDD; supports the GDD purpose line (crowd control, frontline combat)."
+        }
+      ],
+      "proposedFields": [
+        "whole variant",
+        "Push-bar Sweep",
+        "stats",
+        "telegraph timings",
+        "look"
+      ]
+    },
+    {
+      "id": "rust-breaker",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD defines Rust Bruisers, \"The Breakers\": massive shock troops on muscle stimulants (former criminals promised freedom for loyalty) for area denial, with three named moves: Gauntlet Smash, Rust Uppercut and Body Check. It gives no stats. The stat block and telegraph timings are proposed; the three moves are canon. Open question for the combat contract: ground bounce, block-break and super armour do not exist in the engine yet. Merged: replaces rust-enforcer. FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 90 HP is about 5 heavy hits, 16 damage is two grunt hits, 700 ms wind-up and 1100 ms recovery give a big punish window. Final.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#13",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Breaker",
+      "role": "bruiser",
+      "tier": 2,
+      "description": "A hulking Rust Bruiser in heavily reinforced slate and steel plating, with a massive squared-off silhouette, a small helmet and a cyan visor. Cold, symmetrical and boxy; massive shock trooper enhanced with illegal muscle stimulants, built to crush resistance groups. A gunmetal brace on each forearm.",
+      "behaviour": "Walks slowly straight at Zed, ignoring the circling rules, and takes an attacker slot when one is free. Plants its feet and slams both braces into the floor, leaving a short patch of rattled ground in front of it that Zed should stay out of for a moment (area denial). Long recovery after every slam. Cannot be juggled while winding up, so the player must dodge, not just mash. GDD move list. 1) Gauntlet Smash: downward smash with a reinforced gauntlet, medium startup, causes ground bounce, breaks player block, signature thud on impact (this is the slam above). 2) Rust Uppercut: a rising punch that launches Zed and works as an anti-air option; used when Zed jumps too often. 3) Body Check: a shoulder slam with plated armour, a short forward dash that knocks Zed back, can interrupt combos, and has super armour during the dash.",
+      "telegraph": "700 ms wind-up: both braces raised overhead, telegraph icon scaled 1.4 times and a large red ground danger ellipse at 30 percent alpha showing the slam area, per the heavy-enemy cue.",
+      "weakness": "Big, slow and predictable. Dodge out of the red ellipse, then land a full combo in the long recovery. Heavy attacks stagger it; blocking works but the shove-back is large. Do not try to trade hits during the Body Check dash (super armour): sidestep it. Stop jumping in on it, or the Uppercut answers. Block does not hold against the Smash (it breaks block), so dodge it.",
+      "spriteKey": "rust.breaker",
+      "stats": {
+        "maxHp": 90,
+        "moveSpeed": 60,
+        "attackRange": 90,
+        "telegraphMs": 700,
+        "attackMs": 320,
+        "recoverMs": 1100,
+        "damage": 16,
+        "knockback": 380,
+        "hitstun": 320
+      },
+      "look": "Hulking squared-off silhouette in heavy slate and steel plating, small helmet, cyan visor, gunmetal gauntlet brace on each forearm.",
+      "moves": [
+        {
+          "name": "Gauntlet Smash",
+          "canon": true,
+          "source": "the-rebellion#12",
+          "gdd": "Downward smash with a reinforced gauntlet; medium startup, ground bounce, breaks player block, signature thud."
+        },
+        {
+          "name": "Rust Uppercut",
+          "canon": true,
+          "source": "the-rebellion#12",
+          "gdd": "Rising punch fuelled by stimulants; launches the player, anti-air option, used when the player jumps too often."
+        },
+        {
+          "name": "Body Check",
+          "canon": true,
+          "source": "the-rebellion#13",
+          "gdd": "Shoulder slam with plated armour; short forward dash, knocks player back, can interrupt combos, super armour during the dash."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "ground danger ellipse",
+        "look",
+        "tier 2"
+      ]
+    },
+    {
+      "id": "rust-watcher",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD defines Rust Rangers, \"The Watchers\": agile units with taser rifles, batons and tracking visors that scan heat signatures, for long-range harassment, pursuit and reconnaissance, with two named moves: Taser Shot and Baton Strike. It gives no stats. Stats are proposed. Conflict to resolve: the GDD gives the Baton Strike a \"very quick startup\", but the readability rule keeps telegraphs at 300 ms or more, so this entry uses 350 ms. Merged: replaces rust-dart-marksman and rust-baton-scout. FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 28 HP (fragile, rewards closing in), 7 damage per bolt, 650 ms taser wind-up, 350 ms baton wind-up. Final.",
+      "sources": [
+        "the-rebellion#13",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Watcher",
+      "role": "ranged",
+      "tier": 2,
+      "description": "A lean, agile Rust Ranger in a slate uniform with a gunmetal taser rifle, a baton at the belt and a wide tracking visor with a cyan scan line. Symmetrical and boxy, but lighter than the grunt.",
+      "behaviour": "Stays at range, strafing along the far side of the arena and following Zed with its visor. Fires a single slow taser bolt along the lane when it holds an attacker slot, then relocates. If Zed closes in it backs off, and only swings the baton when cornered. A hunter built to harass rebels at range and chase them down. GDD move list. Taser Shot: a quick electric bolt, light damage, brief stun on hit, used constantly to harass and to encourage Zed to close distance. Baton Strike: a fast electrified-baton hit with very quick startup that interrupts combos, used when Zed gets too close. Lore: trained to track rebels through alleyways and rooftops; the visor scans heat signatures, so hiding barely works.",
+      "telegraph": "650 ms wind-up for the taser: rifle raised, a cyan scan line draws along the floor toward Zed, and the red telegraph icon pops above the head. The bolt is slow enough to sidestep. The baton swing uses a 350 ms wind-up with the standard cues.",
+      "weakness": "Low health. Sidestep out of the lane to dodge, then close the gap; juggle routes that carry Zed across the arena reach it fast. Blocking the bolt is also possible but eats a chip of damage.",
+      "spriteKey": "rust.watcher",
+      "stats": {
+        "maxHp": 28,
+        "moveSpeed": 110,
+        "attackRange": 300,
+        "telegraphMs": 650,
+        "attackMs": 220,
+        "recoverMs": 1200,
+        "damage": 7,
+        "knockback": 180,
+        "hitstun": 230
+      },
+      "look": "Lean slate uniform, gunmetal taser rifle, baton at the belt, wide tracking visor with a cyan scan line; lighter boxy build than the grunt.",
+      "moves": [
+        {
+          "name": "Taser Shot",
+          "canon": true,
+          "source": "the-rebellion#13",
+          "gdd": "Quick electric bolt, light damage, brief stun on hit, used constantly to harass, encourages Zed to close distance."
+        },
+        {
+          "name": "Baton Strike",
+          "canon": true,
+          "source": "the-rebellion#13",
+          "gdd": "Fast electrified baton hit, very quick startup, interrupts combos, used when Zed gets too close."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings (350 ms baton is the readability-floor reading of \"very quick startup\")",
+        "look",
+        "tier 2"
+      ]
+    },
+    {
+      "id": "rust-copper-fang",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD defines Rust Specialists, \"The Copper Fangs\": elite soldiers with electrified gauntlets, grappling hooks and tactical shields, Varr's personal favourites, conditioned to remove fear and hesitation, for high-priority targets and boss-tier encounters. The GDD now lists three Basic Attacks (Fang Jab, Copper Cross, Shield Bash), which are canon; the shield-breaking, grappling-hook and two-phase mini-boss structure and every number here are proposed. Merged: replaces rust-shield-sergeant. Tier 3. FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 140 HP, 15 damage, 650 ms wind-up, 750 ms hook. Numbers final.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#14",
+        "adversarial-qa#2",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Rust Copper Fang",
+      "role": "boss",
+      "tier": 3,
+      "description": "An elite Rust Specialist in a sharper slate uniform with copper-toned gauntlets, a tactical shield strapped to one arm and a grappling hook launcher on the other. Still cold, symmetrical and boxy, with a narrow cyan visor. Psychological conditioning has removed all fear and hesitation: an elite hunter sent to eliminate priority targets.",
+      "behaviour": "Two-phase mini-boss. Phase one: advances behind the shield, blocking front light hits, then lunges with a gauntlet strike. Phase two (below half health): fires a grappling hook that yanks Zed a short way across the lane, followed by a gauntlet jab. Calls for an attacker slot before every move so it never stacks with a full cap. Hitstun scales down while it is shielded so juggles cannot loop it (boss immunity, see adversarial-qa#2). GDD Basic Attacks (\"Sharp, Controlled, Professional\"). 1) Fang Jab: a lightning-quick electrified gauntlet jab with very fast startup and brief stun on hit, used to interrupt player combos. 2) Copper Cross: a cross-punch with crackling electricity, medium damage, causes stagger, used after dodging a player attack (the Fang answers Zed's dodges with it). 3) Shield Bash: a forward shove with the tactical shield that pushes Zed back and breaks guard, used to create space for follow-up attacks.",
+      "telegraph": "650 ms wind-up for the gauntlet lunge: gauntlet drawn back and crackling, telegraph icon scaled 1.4 times with a red ground zone. The hook has a 750 ms wind-up: the launcher is raised and a thin cyan line shows the path, plus the red icon. Fang Jab: 320 ms wind-up, the shortest the readability rule allows, with the red icon and a spark on the gauntlet. Copper Cross: 500 ms, crackling arm drawn back. Shield Bash: 550 ms, shield pulled in and a red ground strip in front.",
+      "weakness": "Heavy attacks break the shield. Parry the lunge or dodge the hook line to open it, then juggle in the recovery window. Rewards the skill-depth pillar: block, dodge and parry all have a clear answer.",
+      "spriteKey": "rust.copper-fang",
+      "stats": {
+        "maxHp": 140,
+        "moveSpeed": 85,
+        "attackRange": 85,
+        "telegraphMs": 650,
+        "attackMs": 300,
+        "recoverMs": 1000,
+        "damage": 15,
+        "knockback": 360,
+        "hitstun": 300
+      },
+      "look": "Sharper slate uniform, copper-toned electrified gauntlets, tactical shield on one arm, grappling hook launcher on the other, narrow cyan visor.",
+      "moves": [
+        {
+          "name": "Fang Jab",
+          "canon": true,
+          "source": "the-rebellion#14",
+          "gdd": "Lightning-quick electrified gauntlet jab, very fast startup, brief stun, interrupts combos."
+        },
+        {
+          "name": "Copper Cross",
+          "canon": true,
+          "source": "the-rebellion#14",
+          "gdd": "Cross-punch with crackling electricity, medium damage, causes stagger, used after dodging a player attack."
+        },
+        {
+          "name": "Shield Bash",
+          "canon": true,
+          "source": "the-rebellion#14",
+          "gdd": "Forward shove with tactical shield, pushes player back, breaks guard, creates space for follow-ups."
+        },
+        {
+          "name": "Grappling Hook",
+          "canon": false,
+          "source": "the-rebellion#13",
+          "gdd": "GDD lists grappling hooks as gear only; the hook yank move and two-phase mini-boss structure are proposed."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "Grappling Hook move",
+        "two-phase structure",
+        "look",
+        "tier 3"
+      ]
+    },
+    {
+      "id": "rust-halden-varr",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Halden Varr, \"The Architect of Rust\", as the Main Boss (Corporate Tower command chamber, theme: authority, mastery, hybrid combat) with two phases and named moves, but no stats, numbers or timings. The moves and the 30 percent HP phase trigger are canon; every stat and wind-up below is proposed. GDD wording clashes with the tone rules in places (Rust described as executioners, \"brutal\"); this entry keeps Varr cold and official, and knocks Zed down rather than harming him lethally. Also: the GDD stance name \"Antirush\" is probably a typo and is recorded here as the anti-rush-down stance. FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 320 HP is about 18 finishers and the top of the curve (grunt 30, Breaker 90, Fang 140, Architect 160); 18 damage on the fast Authority Strike keeps Zed alive for at least 5 hits; 400 ms is the shortest boss wind-up, justified by the GDD \"fast startup\", and stays above the 300 ms floor. Phase 2 (30 percent HP): moveSpeed x1.15, recoverMs x0.8, damage unchanged, so \"relentless\" comes from tempo and drones, not one-shots. Numbers final.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#19",
+        "the-rebellion#20",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Overseer Halden Varr",
+      "role": "boss",
+      "tier": 3,
+      "description": "The founder of Rust and its Main Boss: a former military strategist who believed order could only be achieved through fear, and who replaced the city officials with Rust loyalists. Phase one: a crisp slate command coat over rust-coated plating, an electrified gauntlet on one fist and an emitter for an energy shield on the other arm, a tall cyan visor. Phase two: full oxidized armour, heavier and more boxy, with drones circling. Cold, symmetrical and official. Fought in the Corporate Tower command chamber.",
+      "behaviour": "Two-phase final boss that fights alongside the units he calls. Phase 1, \"Authority\": Authority Strike (electrified gauntlet punch, high damage, knockback, fast startup); Command Shield (energy shield that blocks all frontal attacks and must be flanked or broken); Command Override (summons Rust Grunts, Watchers or Copper Fangs, Varr fights alongside them, counted against the attacker cap); Adaptive Counter (changes stance based on Zed's behaviour: anti-air stance if Zed jumps too often, anti-rush-down stance if Zed charges in, anti-combo stance if Zed strings long combos, forcing Zed to vary his play). Phase 2, \"Rust Protocol\", triggered at 30 percent HP: Hybrid Assault (uses moves from every Rust unit type: Breaker slam, Watcher taser shot, Copper Fang gauntlet combo and Overseer-style control attacks); Drone Command (summons elite drones that fire lasers in bullet-hell patterns); Rust Collapse super move (Varr overloads his armour for a massive area explosion, the arena walls electrify, and the final phase becomes relentless). Zed is knocked down and pushed back by these, never put down for good.",
+      "telegraph": "Authority Strike: 400 ms wind-up, gauntlet drawn back and crackling. Command Shield: shield emitter glows and hums before it deploys, 500 ms. Command Override: 800 ms, console pulse rings mark where units appear. Adaptive Counter: a visible stance change with a colour cue (the stance is shown, never hidden). Drones: 600 ms lock-on line before each laser. Rust Collapse: a long 1500 ms charge, armour cracks glowing, a huge red ground danger zone, and the walls flash a warning before they electrify. Every attack keeps the red telegraph icon, scaled 1.4 times, with the standard tint and thicker outline.",
+      "weakness": "Flank or break the Command Shield with heavy attacks; clear summoned units to focus Varr; vary the approach so Adaptive Counter never settles on one stance; in phase two dodge the Collapse zone and the drone lanes, then punish in the recovery. Rewards every pillar: combos, block, dodge, parry and wave-clearing under pressure.",
+      "spriteKey": "rust.halden-varr",
+      "stats": {
+        "maxHp": 320,
+        "moveSpeed": 80,
+        "attackRange": 90,
+        "telegraphMs": 400,
+        "attackMs": 280,
+        "recoverMs": 900,
+        "damage": 18,
+        "knockback": 380,
+        "hitstun": 220
+      },
+      "look": "Phase 1: crisp slate command coat over oxidized plating, electrified gauntlet on one fist, shield emitter on the other arm, tall cyan visor. Phase 2: full heavy boxy armour with circling drones.",
+      "moves": [
+        {
+          "name": "Authority Strike",
+          "canon": true,
+          "source": "the-rebellion#19",
+          "gdd": "Electrified gauntlet punch, high damage, knockback, fast startup."
+        },
+        {
+          "name": "Command Shield",
+          "canon": true,
+          "source": "the-rebellion#19",
+          "gdd": "Energy shield, blocks all frontal attacks, must be flanked or broken."
+        },
+        {
+          "name": "Command Override",
+          "canon": true,
+          "source": "the-rebellion#19",
+          "gdd": "Summons Grunts, Rangers or Specialists; Varr fights alongside them."
+        },
+        {
+          "name": "Adaptive Counter",
+          "canon": true,
+          "source": "the-rebellion#19",
+          "gdd": "Changes stance by player behaviour: anti-air, anti-rush, anti-combo."
+        },
+        {
+          "name": "Hybrid Assault",
+          "canon": true,
+          "source": "the-rebellion#20",
+          "gdd": "Phase 2 (30 percent HP): uses Breaker slam, Ranger taser shot, Fang gauntlet combo and Overseer-style control attacks."
+        },
+        {
+          "name": "Drone Command",
+          "canon": true,
+          "source": "the-rebellion#20",
+          "gdd": "Summons elite drones that fire lasers in bullet-hell patterns."
+        },
+        {
+          "name": "Rust Collapse",
+          "canon": true,
+          "source": "the-rebellion#20",
+          "gdd": "Super: armour overload, massive AoE explosion, arena walls electrify, final phase relentless."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "all telegraph timings",
+        "phase 2 tempo multipliers",
+        "look"
+      ]
+    },
+    {
+      "id": "rust-overseer-voss",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Kade Voss, \"The Eye of the Market\" (theme: surveillance, prediction, drones, holograms; arena: Neon Market control hub with screens, drones and hologram emitters). Phase 1 \"Data Acquisition\": Predictive Strike, Drone Swarm, Hologram Decoy, Data Spike. Phase 2 \"System Override\" at 50 percent HP: Predictive Lockdown, Drone Fusion, Hologram Assault, System Crash (super). Combat contract support needed: bullet-hell drone entities with their own HP, hologram decoys that can later attack, a 10 second special-meter lockout on Zed, a safe-zone floor hazard, and moving electric pillars. All Overseers are district bosses, strategic masterminds and Varr's inner circle, with a tactical, oppressive combat style and unique mechanics (GDD role line). Moves, phases, phase trigger and arena are canon; all numbers and timings are proposed. Zed is knocked down and pushed back, never put down for good. FINAL BALANCE (same method as Varr and the other tier 3 items; combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms as the anchor; every telegraph at least 300 ms; below Varr at 320 HP): 200 HP (a mobile ranged boss, fragile once reached), 10 damage per shot or pillar, 1000 ms Predictive Strike wind-up (the GDD says the shot fires after 1 s, so the red line is the telegraph). Numbers final.",
+      "sources": [
+        "the-rebellion#14",
+        "the-rebellion#15",
+        "the-rebellion#16",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Overseer Kade Voss",
+      "role": "boss",
+      "tier": 3,
+      "description": "A Rust Overseer of the Neon Market in a slate command coat with steel shoulder plates and a wide cyan visor that projects a thin red scan line. Cold, symmetrical and boxy, working from a control hub of screens, drones and hologram emitters, with a flicker in the real body that gives the copies away. Official, not armoured.",
+      "behaviour": "Phase 1, \"Data Acquisition\": Predictive Strike (the visor scans Zed and draws a red line where it expects him to move; after 1 second a laser shot fires along that line, forcing Zed to break patterns); Drone Swarm (summons 3 to 5 orbiting drones that fire small taser bolts, can be destroyed, and create bullet-hell pressure); Hologram Decoy (creates 2 hologram copies that mimic his movement but do not attack, while the real Voss flickers slightly, so Zed must identify the target); Data Spike (slams a hand into a console and electric pillars erupt from the ground in a pattern that changes each use, punishing a player who stands still). Phase 2, \"System Override\", at 50 percent HP (arena lights dim, drones turn violet; GDD says red): Predictive Lockdown (the visor locks on and Zed's special meter is disabled for 10 seconds, Voss grows more aggressive, forcing reliance on fundamentals); Drone Fusion (remaining drones merge into a slow MegaDrone that fires sweeping laser beams, a second boss-like threat); Hologram Assault (holograms now attack with a weak punch or shot, while the real Voss attacks at the same time, for chaotic multi-angle pressure); System Crash super move (overloads the arena grid, the whole floor electrifies except safe zones that shift every second, forcing constant movement). Pressure is knockdown and pushback only.",
+      "telegraph": "Predictive Strike: 1000 ms, the red predicted-path line stays visible the whole time. Drone Swarm: 700 ms console flash, drones spawn with a cyan ring. Hologram Decoy: 500 ms shimmer. Data Spike: 600 ms, glowing floor tiles mark every pillar spot. Predictive Lockdown: 600 ms visor lock-on ring. Drone Fusion: 800 ms merge flash. Hologram Assault: 500 ms. System Crash: 1500 ms, the floor flashes and the safe zones glow green before every shift. All keep the red telegraph icon scaled 1.4 times with the standard tint.",
+      "weakness": "Break the pattern: change direction before the 1 second line fires. Pick off drones, find the real Voss by the flicker, stay moving on the pillars. In phase 2 rely on basics while the special meter is locked, and follow the glowing safe zones during System Crash.",
+      "spriteKey": "rust.overseer-voss",
+      "stats": {
+        "maxHp": 200,
+        "moveSpeed": 70,
+        "attackRange": 320,
+        "telegraphMs": 1000,
+        "attackMs": 240,
+        "recoverMs": 1000,
+        "damage": 10,
+        "knockback": 200,
+        "hitstun": 220
+      },
+      "look": "Slate command coat with steel shoulder plates, wide cyan visor projecting a thin red scan line (the only red allowed is the telegraph line), real body flickers slightly among hologram copies.",
+      "moves": [
+        {
+          "name": "Predictive Strike",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "Visor projects a red line where Zed is expected to move; after 1 s a laser fires along it."
+        },
+        {
+          "name": "Drone Swarm",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "Summons 3-5 orbiting drones with small taser bolts; destroyable; bullet-hell pressure."
+        },
+        {
+          "name": "Hologram Decoy",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "2 hologram copies mimic movement but do not attack; real Voss flickers."
+        },
+        {
+          "name": "Data Spike",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "Slams a console; electric pillars erupt in a pattern that changes each use; punishes standing still."
+        },
+        {
+          "name": "Predictive Lockdown",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "Phase 2 (50 percent HP; lights dim, drones red): special meter disabled 10 s, Voss more aggressive."
+        },
+        {
+          "name": "Drone Fusion",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "Remaining drones merge into a slow MegaDrone with sweeping lasers."
+        },
+        {
+          "name": "Hologram Assault",
+          "canon": true,
+          "source": "the-rebellion#16",
+          "gdd": "Holograms now attack with a weak punch or shot while real Voss attacks too."
+        },
+        {
+          "name": "System Crash",
+          "canon": true,
+          "source": "the-rebellion#16",
+          "gdd": "Super: whole floor electrified except safe zones that shift every second."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings except the GDD 1 s Predictive Strike",
+        "look"
+      ]
+    },
+    {
+      "id": "rust-overseer-calder",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Rhea Calder, \"The Iron Matron\" (theme: industrial power, machinery, brute force; arena: factory floor with conveyors, crushers and steam vents). Phase 1 \"Discipline Through Strength\": Forge Hammer Smash, Hydraulic Grab, Steam Burst Armor, Conveyor Trap. Phase 2 \"Factory Protocol\" at 40 percent HP: Overclock Mode, Industrial Barrage, Furnace Slam (super). Combat contract support needed: traveling floor shockwave, guard break, grab/throw with super armour during startup, temporary invulnerability, conveyor and crusher hazards, off-screen arm attacks, and delayed exploding floor cracks. All Overseers are district bosses, strategic masterminds and Varr's inner circle, with a tactical, oppressive combat style and unique mechanics (GDD role line). Moves, phases, phase trigger and arena are canon; all numbers and timings are proposed. Zed is knocked down and pushed back, never put down for good. FINAL BALANCE (same method as Varr and the other tier 3 items; combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms as the anchor; every telegraph at least 300 ms; below Varr at 320 HP): 260 HP (the tankiest of the four, slow brute), 20 damage on the Forge Hammer (the highest single hit besides the super, which is about 20 percent of a 100 HP player), 900 ms wind-up and 1300 ms recovery for the \"slow but devastating\" hammer. Numbers final.",
+      "sources": [
+        "the-rebellion#16",
+        "the-rebellion#17",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Overseer Rhea Calder",
+      "role": "boss",
+      "tier": 3,
+      "description": "A Rust Overseer of the factory districts in a heavy slate exosuit with steel plating and hydraulic arms, a massive hammer on one arm and steam vents along the back. Cold, symmetrical and boxy, a cyan visor in a squared helmet. Her suit glows Overload Violet (#8E5BFF) in the second phase; the GDD says red, changed to keep red reserved for warnings.",
+      "behaviour": "Phase 1, \"Discipline Through Strength\": Forge Hammer Smash (massive overhead hammer strike; a shockwave travels across the floor and can break guard; slow but devastating); Hydraulic Grab (exosuit arms extend with long reach to grab Zed, leading into a slam or throw, with super armour during startup); Steam Burst Armor (vents steam for temporary invulnerability and pushes Zed back, used to reset pressure); Conveyor Trap (activates conveyor belts that carry Zed toward crushers or hazards, forcing repositioning). Phase 2, \"Factory Protocol\", at 40 percent HP (exosuit glows violet; GDD says red): Overclock Mode (attack speed up: faster hammer swings, shorter grab startup, more frequent steam bursts); Industrial Barrage (robotic arms from the background punch or grab from off-screen, telegraphed by flashing lights, adding multi-directional threats); Furnace Slam super move (leaps and slams the hammer down, molten cracks spread over the floor and explode after 2 seconds for high damage over a large area). Zed is knocked down, thrown or pushed, never put down for good.",
+      "telegraph": "Forge Hammer Smash: 900 ms, hammer raised overhead with a red shockwave lane on the floor. Hydraulic Grab: 600 ms, arms visibly extend with a red reach line, super armour shown as a bright outline. Steam Burst Armor: 400 ms hiss and a white puff before it deploys. Conveyor Trap: 700 ms, belt arrows light up. Overclock Mode: the violet glow itself, and phase 2 wind-ups run at 80 percent but never below 300 ms. Industrial Barrage: 700 ms flashing lights at each arm position. Furnace Slam: 1500 ms leap and a red crack preview, then the 2 second countdown on every crack. All keep the red telegraph icon scaled 1.4 times.",
+      "weakness": "Dodge out of the shockwave lane and punish the long hammer recovery. Do not poke during the grab startup (super armour) and do not wait inside a steam burst (invulnerable). Read the conveyors, watch the flashing lights for the arms, and leave the cracks before they blow.",
+      "spriteKey": "rust.overseer-calder",
+      "stats": {
+        "maxHp": 260,
+        "moveSpeed": 55,
+        "attackRange": 110,
+        "telegraphMs": 900,
+        "attackMs": 350,
+        "recoverMs": 1300,
+        "damage": 20,
+        "knockback": 420,
+        "hitstun": 320
+      },
+      "look": "Heavy slate exosuit with steel plating and hydraulic arms, massive hammer on one arm, steam vents along the back, cyan visor in a squared helmet; suit glows Overload Violet in phase 2.",
+      "moves": [
+        {
+          "name": "Forge Hammer Smash",
+          "canon": true,
+          "source": "the-rebellion#16",
+          "gdd": "Massive overhead hammer strike, shockwave travels across the floor, can break guard, slow but devastating."
+        },
+        {
+          "name": "Hydraulic Grab",
+          "canon": true,
+          "source": "the-rebellion#16",
+          "gdd": "Exosuit arms extend with long reach to grab Zed, into a slam or throw, super armour during startup."
+        },
+        {
+          "name": "Steam Burst Armor",
+          "canon": true,
+          "source": "the-rebellion#16",
+          "gdd": "Vents steam: temporary invulnerability, pushes player back, resets pressure."
+        },
+        {
+          "name": "Conveyor Trap",
+          "canon": true,
+          "source": "the-rebellion#16",
+          "gdd": "Activates conveyors that carry Zed toward crushers or hazards."
+        },
+        {
+          "name": "Overclock Mode",
+          "canon": true,
+          "source": "the-rebellion#17",
+          "gdd": "Phase 2 (40 percent HP; suit glows red): faster hammer, shorter grab startup, more frequent steam bursts."
+        },
+        {
+          "name": "Industrial Barrage",
+          "canon": true,
+          "source": "the-rebellion#17",
+          "gdd": "Robotic arms from the background punch or grab from off-screen, telegraphed by flashing lights."
+        },
+        {
+          "name": "Furnace Slam",
+          "canon": true,
+          "source": "the-rebellion#17",
+          "gdd": "Super: leap and hammer slam, molten cracks explode after 2 s, high damage, large AoE."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "look"
+      ]
+    },
+    {
+      "id": "rust-overseer-wren",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Silas Wren, \"The Whisper on the Rooftops\" (theme: mobility, stealth, vertical control; arena: rooftop platforms, zip lines and breakable ledges). Phase 1 \"Silent Hunter\": GrappleDash Barrage, Skyline Snare, Silent Step, Rooftop Execution. Phase 2 \"Ghost of the Skyline\" at 50 percent HP: Grapple Clone, Shadow Pulse, Vanish Storm (super). Combat contract support needed: platform and vertical movement with attacks from above or behind, restraint traps, a semi-invisible state, a guaranteed-critical flag (no critical hit exists in the contract), afterimages that perform fake attacks, and multiple silhouettes. Tone note: the GDD move name \"Rooftop Execution\" is kept as canon but should be shown as a dive attack that knocks Zed down, never a lethal blow; the owner may prefer to rename it. All Overseers are district bosses, strategic masterminds and Varr's inner circle, with a tactical, oppressive combat style and unique mechanics (GDD role line). Moves, phases, phase trigger and arena are canon; all numbers and timings are proposed. Zed is knocked down and pushed back, never put down for good. FINAL BALANCE (same method as Varr and the other tier 3 items; combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms as the anchor; every telegraph at least 300 ms; below Varr at 320 HP): 180 HP (the most fragile, the fastest at 120 move speed), 14 damage, 400 ms wind-up for the \"very fast\" grapple dash, kept above the 300 ms floor; the dive uses 600 ms so grounded players can read it. Numbers final.",
+      "sources": [
+        "the-rebellion#17",
+        "the-rebellion#18",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Overseer Silas Wren",
+      "role": "boss",
+      "tier": 3,
+      "description": "A Rust Overseer of the rooftops, lean in a dark slate suit with a grapple launcher on each forearm and a slim cyan visor, much lighter than the other Overseers. Cold, symmetrical and boxy even when moving fast, with a faint cyan outline that stays visible when he turns semi-invisible.",
+      "behaviour": "Phase 1, \"Silent Hunter\": GrappleDash Barrage (zips between platforms, attacking from above or from behind, very fast, hard to punish without prediction); Skyline Snare (throws electrified wire traps that restrict movement and can immobilise Zed briefly, forcing careful navigation); Silent Step (turns semi-invisible with only a faint outline, and his next attack is a guaranteed critical, used unpredictably); Rooftop Execution (a dive attack from above for high damage that creates a shockwave, punishing players who stay on the ground). Phase 2, \"Ghost of the Skyline\", at 50 percent HP (faster and quieter): Grapple Clone (afterimages left when he grapples perform fake attacks, while the real Silas attacks from an unexpected angle); Shadow Pulse (releases a burst of energy that knocks Zed back and resets spacing, used after combos); Vanish Storm super move (disappears completely, multiple silhouettes attack from all sides, and the real Silas finishes with a heavy strike; requires reading patterns). Zed is knocked down and pushed back, never put down for good.",
+      "telegraph": "GrappleDash Barrage: 400 ms, the grapple line shows and a red marker lands at the destination platform. Skyline Snare: 600 ms, the wire glints and a red strip marks the trap. Silent Step: 500 ms shimmer, then the faint outline stays. The critical hit after Silent Step has its own 500 ms cyan flash. Rooftop Execution: 600 ms, a red shadow circle grows on the floor under the dive. Grapple Clone: 500 ms. Shadow Pulse: 450 ms ring. Vanish Storm: 1200 ms fade, silhouettes each get a red icon and the real one gets a heavier outline. All keep the red telegraph icon scaled 1.4 times.",
+      "weakness": "Watch the red shadow under the dive and stay off the ground marker; check the outline during Silent Step and block or dodge the flashed critical. Keep moving through snares, hit the real Silas (the one with the heavier outline) and punish him after Shadow Pulse resets spacing.",
+      "spriteKey": "rust.overseer-wren",
+      "stats": {
+        "maxHp": 180,
+        "moveSpeed": 120,
+        "attackRange": 80,
+        "telegraphMs": 400,
+        "attackMs": 220,
+        "recoverMs": 800,
+        "damage": 14,
+        "knockback": 300,
+        "hitstun": 220
+      },
+      "look": "Lean dark slate suit, grapple launcher on each forearm, slim cyan visor; much lighter than the other Overseers; faint cyan outline remains when semi-invisible.",
+      "moves": [
+        {
+          "name": "GrappleDash Barrage",
+          "canon": true,
+          "source": "the-rebellion#17",
+          "gdd": "Zips between platforms, attacks from above or behind, very fast, hard to punish without prediction."
+        },
+        {
+          "name": "Skyline Snare",
+          "canon": true,
+          "source": "the-rebellion#17",
+          "gdd": "Electrified wire traps restrict movement, can immobilise briefly."
+        },
+        {
+          "name": "Silent Step",
+          "canon": true,
+          "source": "the-rebellion#17",
+          "gdd": "Semi-invisible with a faint outline; next attack is a guaranteed critical."
+        },
+        {
+          "name": "Rooftop Execution",
+          "canon": true,
+          "source": "the-rebellion#17",
+          "gdd": "Dive attack from above, high damage, shockwave, punishes grounded players (GDD name kept; show as knockdown only)."
+        },
+        {
+          "name": "Grapple Clone",
+          "canon": true,
+          "source": "the-rebellion#18",
+          "gdd": "Phase 2 (50 percent HP): afterimages perform fake attacks, real Silas attacks from an unexpected angle."
+        },
+        {
+          "name": "Shadow Pulse",
+          "canon": true,
+          "source": "the-rebellion#18",
+          "gdd": "Energy burst knocks player back and resets spacing, used after combos."
+        },
+        {
+          "name": "Vanish Storm",
+          "canon": true,
+          "source": "the-rebellion#18",
+          "gdd": "Super: disappears, multiple silhouettes attack from all sides, real Silas finishes with a heavy strike."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "look"
+      ]
+    },
+    {
+      "id": "rust-overseer-holt",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Dr. Maren Holt, \"The Voice of Compliance\" (theme: chemicals, toxins, psychological control; arena: undercity lab with gas vents, toxin pools and fog zones). Phase 1 \"Chemical Control\": Fear Gas, Obedience Mist, Toxin Burst, Sedative Shot. Phase 2 \"Doctor's Orders\" at 40 percent HP: NeuroFog, Corrosive Wave, Compliance Protocol (super). Combat contract support needed: control distortion and reversal on Zed, screen blur and reduced vision, movement slow and reduced dodge distance, lingering and spreading area damage zones, an attack-speed debuff, stealth attacks, damage over time, and damage that also hits Holt herself. Tone note: these are comic-book gas effects (blur, slow, reversed controls), not graphic harm; keep them clearly non-lethal. All Overseers are district bosses, strategic masterminds and Varr's inner circle, with a tactical, oppressive combat style and unique mechanics (GDD role line). Moves, phases, phase trigger and arena are canon; all numbers and timings are proposed. Zed is knocked down and pushed back, never put down for good. FINAL BALANCE (same method as Varr and the other tier 3 items; combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms as the anchor; every telegraph at least 300 ms; below Varr at 320 HP): 190 HP, 9 damage (the lowest, since her pressure is debuffs and zones), 600 ms wind-up for the vial throw. Numbers final.",
+      "sources": [
+        "the-rebellion#18",
+        "the-rebellion#19",
+        "hit-feedback-spec#4"
+      ],
+      "name": "Overseer Dr. Maren Holt",
+      "role": "boss",
+      "tier": 3,
+      "description": "A Rust Overseer of the undercity lab in a slate lab coat over light plating, a rebreather and a cyan visor, a belt of chemical vials and a dart launcher on one forearm. Cold, symmetrical and official; her suit glows with pressure in the second phase. Purple and green fog marks her gas.",
+      "behaviour": "Phase 1, \"Chemical Control\": Fear Gas (releases purple fog that distorts Zed's controls and blurs the screen, forcing careful movement); Obedience Mist (green fog that slows movement, reduces dodge distance and makes combos harder); Toxin Burst (throws chemical vials that create lingering area damage zones, controlling space); Sedative Shot (fires a dart that reduces Zed's attack speed, used to punish aggressive players). Phase 2, \"Doctor's Orders\", at 40 percent HP (suit glows with chemical pressure): NeuroFog (the whole arena fills with fog, Zed's vision is reduced, Holt becomes harder to track and uses stealth attacks); Corrosive Wave (throws a large vial that explodes into spreading acid that damages both Zed and Holt, forcing repositioning); Compliance Protocol super move (releases a massive chemical cloud, Zed's controls reverse, damage over time, and Holt becomes extremely aggressive). Effects ease off when Zed clears the fog; Zed is knocked down and pushed back, never put down for good.",
+      "telegraph": "Fear Gas: 700 ms vent hiss and purple puff. Obedience Mist: 700 ms green puff. Toxin Burst: 600 ms, red ground circle where the vial lands. Sedative Shot: 450 ms, a thin line to Zed. NeuroFog: 900 ms, vents glow before the fog rolls in. Corrosive Wave: 700 ms, a red spreading-radius preview. Compliance Protocol: 1500 ms charge, a huge cloud outline and a \"controls reversed\" icon on the HUD before it reaches Zed. All keep the red telegraph icon scaled 1.4 times.",
+      "weakness": "Stay out of the lingering zones and clear the fog by moving upwind of the vents. Do not over-commit while slowed or sedated; block or dodge the dart. Use Corrosive Wave against Holt by herding her into the acid, and learn the reversed controls during Compliance Protocol.",
+      "spriteKey": "rust.overseer-holt",
+      "stats": {
+        "maxHp": 190,
+        "moveSpeed": 65,
+        "attackRange": 260,
+        "telegraphMs": 600,
+        "attackMs": 260,
+        "recoverMs": 1000,
+        "damage": 9,
+        "knockback": 150,
+        "hitstun": 200
+      },
+      "look": "Slate lab coat over light plating, rebreather and cyan visor, belt of chemical vials, dart launcher on one forearm; purple and green fog marks her gas.",
+      "moves": [
+        {
+          "name": "Fear Gas",
+          "canon": true,
+          "source": "the-rebellion#18",
+          "gdd": "Purple fog distorts controls and blurs the screen."
+        },
+        {
+          "name": "Obedience Mist",
+          "canon": true,
+          "source": "the-rebellion#18",
+          "gdd": "Green fog slows movement, reduces dodge distance, makes combos harder."
+        },
+        {
+          "name": "Toxin Burst",
+          "canon": true,
+          "source": "the-rebellion#18",
+          "gdd": "Chemical vials create lingering AoE damage zones."
+        },
+        {
+          "name": "Sedative Shot",
+          "canon": true,
+          "source": "the-rebellion#18",
+          "gdd": "Dart reduces player attack speed, punishes aggressive players."
+        },
+        {
+          "name": "NeuroFog",
+          "canon": true,
+          "source": "the-rebellion#19",
+          "gdd": "Phase 2 (40 percent HP; suit glows): whole arena fogs, vision reduced, Holt harder to track, stealth attacks."
+        },
+        {
+          "name": "Corrosive Wave",
+          "canon": true,
+          "source": "the-rebellion#19",
+          "gdd": "Large vial explodes into spreading acid that damages both player and Holt."
+        },
+        {
+          "name": "Compliance Protocol",
+          "canon": true,
+          "source": "the-rebellion#19",
+          "gdd": "Super: massive chemical cloud, controls reverse, damage over time, Holt extremely aggressive."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "look"
+      ]
+    },
+    {
+      "id": "rust-voss-drone",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). Existence, orbiting and taser bolts are canon (#15).",
+      "sources": [
+        "the-rebellion#15"
+      ],
+      "name": "Rust Surveillance Drone",
+      "role": "support",
+      "tier": 3,
+      "description": "A small Rust surveillance drone summoned by Overseer Voss. Boxy, symmetrical, one cyan lens.",
+      "look": "Small boxy slate drone with a single cyan lens, a short taser prong underneath and no markings; hovers at head height.",
+      "behaviour": "Orbits Voss in a loose ring (3 to 5 at a time) and fires small taser bolts at Zed when it holds an attacker slot; counts against the attacker cap. Dies in one or two hits and is knocked out of the air, never destroyed with a flourish. Turns violet-lit (Overload Violet) in Voss phase 2 and fuses into the MegaDrone.",
+      "telegraph": "600 ms: the cyan ring flashes at spawn, then the lens charges and the red telegraph icon pops above it before each bolt.",
+      "weakness": "Fragile: any light attack or a juggle pops it. Clear drones to break the bullet-hell pressure and open a path to Voss.",
+      "spriteKey": "rust.drone",
+      "stats": {
+        "maxHp": 12,
+        "moveSpeed": 100,
+        "attackRange": 250,
+        "telegraphMs": 600,
+        "attackMs": 150,
+        "recoverMs": 900,
+        "damage": 4,
+        "knockback": 80,
+        "hitstun": 100
+      },
+      "moves": [
+        {
+          "name": "Taser Bolt",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "Small taser bolts fired by orbiting drones; destroyable."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "look",
+        "tier 3"
+      ]
+    },
+    {
+      "id": "rust-voss-megadrone",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). Existence, slow movement and sweeping lasers are canon (#15).",
+      "sources": [
+        "the-rebellion#15",
+        "the-rebellion#16"
+      ],
+      "name": "Rust MegaDrone",
+      "role": "support",
+      "tier": 3,
+      "description": "The MegaDrone formed when the remaining Voss drones merge in phase 2 of the Voss fight: a second boss-like threat.",
+      "look": "Large boxy slate drone with a wide cyan lens bar and two beam emitters, built from fused drone parts; violet-lit (Overload Violet) in phase 2.",
+      "behaviour": "Drifts slowly across the arena and sweeps laser beams across the lane. Counts against the attacker cap while firing.",
+      "telegraph": "800 ms merge flash, then each sweep shows its lane as a thin cyan line with the red icon scaled 1.4 times.",
+      "weakness": "Slow. Step out of the beam lane, then hit it from the side while it is turning; heavy attacks stagger it.",
+      "spriteKey": "rust.megadrone",
+      "stats": {
+        "maxHp": 60,
+        "moveSpeed": 40,
+        "attackRange": 350,
+        "telegraphMs": 800,
+        "attackMs": 600,
+        "recoverMs": 1200,
+        "damage": 10,
+        "knockback": 150,
+        "hitstun": 100
+      },
+      "moves": [
+        {
+          "name": "Sweeping Laser Beams",
+          "canon": true,
+          "source": "the-rebellion#15",
+          "gdd": "Fires sweeping laser beams, moves slowly, second boss-like threat."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "look",
+        "tier 3"
+      ]
+    },
+    {
+      "id": "rust-hologram-decoy",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). Existence, 2 copies, mimicry, phase 2 attacks and the real-Voss flicker are canon (#15, #16).",
+      "sources": [
+        "the-rebellion#15",
+        "the-rebellion#16"
+      ],
+      "name": "Rust Hologram Decoy",
+      "role": "support",
+      "tier": 3,
+      "description": "A hologram copy of Voss. Two appear in phase 1; they mimic his movement and do not attack.",
+      "look": "Flat cyan-tinted copy of Overseer Voss with a steady outline and no flicker (the real Voss flickers).",
+      "behaviour": "Phase 1: mirrors Voss, harmless. Phase 2 Hologram Assault: each copy attacks with a weak punch or shot while the real Voss attacks too. Attacks count against the attacker cap.",
+      "telegraph": "500 ms shimmer before each weak attack, with the standard red icon; in phase 1 there is no telegraph because it never attacks.",
+      "weakness": "Any hit dissolves it. Find the real Voss by the flicker and ignore the steady copies.",
+      "spriteKey": "rust.hologram",
+      "stats": {
+        "maxHp": 10,
+        "moveSpeed": 70,
+        "attackRange": 70,
+        "telegraphMs": 500,
+        "attackMs": 200,
+        "recoverMs": 900,
+        "damage": 3,
+        "knockback": 60,
+        "hitstun": 100
+      },
+      "moves": [
+        {
+          "name": "Weak Punch or Shot",
+          "canon": true,
+          "source": "the-rebellion#16",
+          "gdd": "Phase 2 hologram attack, weak; real Voss attacks simultaneously."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "look",
+        "tier 3"
+      ]
+    },
+    {
+      "id": "rust-elite-drone",
+      "status": "canon",
+      "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). Existence and laser bullet-hell patterns are canon (#20).",
+      "sources": [
+        "the-rebellion#20"
+      ],
+      "name": "Rust Elite Drone",
+      "role": "support",
+      "tier": 3,
+      "description": "An elite drone summoned by Halden Varr in phase 2 (Drone Command).",
+      "look": "Sleeker slate drone than the surveillance drone, steel plating and a bright cyan lens; hovers in formation around Varr.",
+      "behaviour": "Flies in a pattern around the arena and fires lasers in bullet-hell patterns; only the allowed number may fire at once under the attacker cap.",
+      "telegraph": "600 ms lock-on line before each laser, with the red telegraph icon.",
+      "weakness": "Fragile; pop drones with light attacks and keep out of the lock-on lanes.",
+      "spriteKey": "rust.elite-drone",
+      "stats": {
+        "maxHp": 20,
+        "moveSpeed": 90,
+        "attackRange": 300,
+        "telegraphMs": 600,
+        "attackMs": 150,
+        "recoverMs": 900,
+        "damage": 6,
+        "knockback": 80,
+        "hitstun": 100
+      },
+      "moves": [
+        {
+          "name": "Drone Lasers",
+          "canon": true,
+          "source": "the-rebellion#20",
+          "gdd": "Elite drones fire lasers in bullet-hell patterns."
+        }
+      ],
+      "proposedFields": [
+        "stats",
+        "telegraph timings",
+        "look",
+        "tier 3"
+      ]
+    },
+    {
       "id": "rust-grunt",
       "status": "canon",
       "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11",
         "the-rebellion#5",
-        "the-rebellion#1",
         "asset-manifest#7",
         "hit-feedback-spec#4"
       ],
       "name": "Rust Grunt",
       "role": "grunt",
       "tier": 0,
-      "description": "The one enemy type the GDD asks for first: a Rust security officer in a slate uniform with a steel helmet and a cyan visor. Symmetrical, boxy and cold, a sharp contrast to Zed's warm, rounded look.",
-      "behaviour": "Idles briefly after spawn, then chases Zed. Closes the lane gap first, and starts a strike once in range. At most two grunts may attack at once (attacker cap); the rest circle at a distance in neutral colours until a slot frees up.",
+      "description": "The one enemy type the GDD asks for first: a Rust security officer in a slate uniform with a steel helmet and a cyan visor. Symmetrical, boxy and cold, a sharp contrast to Zed's warm, rounded look. Lore: the Rust strip recruits of their names and give them serial numbers, so the helmets hide who is under them on purpose; many were ordinary citizens coerced or manipulated into service.",
+      "behaviour": "Idles briefly after spawn, then chases Zed. Closes the lane gap first, and starts a strike once in range. At most two grunts may attack at once (attacker cap); the rest circle at a distance in neutral colours until a slot frees up. GDD move list (Iron Line grunts): Rust Jab Combo, a quick 1-2-3 punch string of light damage, used to interrupt the player and often done in groups to create pressure; and Helmet Headbutt, a sudden forward lunge with a reinforced helmet, short wind-up, brief stun, used when Zed is too close or grabs too often. The Tier 0 engine implements the single strike only; the jab combo and headbutt are later-tier additions to gruntData.js and need the combat contract to support multi-hit strings and a stun hit.",
       "telegraph": "450 ms wind-up: three-frame anticipation pose with the arm pulled back, the red telegraph icon pops above the head, the body tints red and the outline thickens. Then a quick 250 ms strike and a 700 ms recovery where it is open to a counter.",
       "weakness": "Low health and a slow recovery. Dodge or block the telegraphed strike, then punish during recovery with a light combo.",
       "spriteKey": "rust.grunt",
@@ -487,170 +2613,40 @@
         "damage": 8,
         "knockback": 220,
         "hitstun": 250
-      }
-    },
-    {
-      "id": "rust-enforcer",
-      "status": "proposed",
-      "gddGap": "GDD says one enemy type first and promises dynamic enemy behaviours later; difficulty comes from how waves arrive. A heavier bruiser gives waves a slow, high-threat piece to mix with grunts.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "hit-feedback-spec#4",
-        "systems-designer#2"
+      },
+      "look": "Slate uniform, steel helmet, cyan visor, cheap oxidized plating kept to cold slate tones; boxy and symmetrical, no personal marks (serial-number recruits).",
+      "moves": [
+        {
+          "name": "Rust Jab Combo",
+          "canon": true,
+          "source": "the-rebellion#12",
+          "gdd": "Quick 1-2-3 punch string, light damage, interrupts the player, often done in groups. Tier 0 engine has only the single strike (later-tier addition)."
+        },
+        {
+          "name": "Helmet Headbutt",
+          "canon": true,
+          "source": "the-rebellion#12",
+          "gdd": "Sudden forward lunge with reinforced helmet, short windup, brief stun, used when Zed is too close or grabs too often. Later-tier addition."
+        }
       ],
-      "name": "Rust Enforcer",
-      "role": "bruiser",
-      "tier": 1,
-      "description": "A broader Rust officer in a squared-off slate vest with steel shoulder plates and a wide cyan visor. Same uniform language as the grunt, just bigger and blockier.",
-      "behaviour": "Walks slowly and straight at Zed, ignores circling and takes an attacker slot whenever one is free. Throws one heavy overhand swing, then plants its feet during a long recovery.",
-      "telegraph": "600 ms wind-up with both fists raised overhead. Telegraph icon scaled up 1.4 times and a red ground danger ellipse at 30 percent alpha, per the heavy-enemy cue in the hit feedback spec.",
-      "weakness": "Rewards dodging and defence: sidestep the swing, then land a combo in the long recovery window. Blocking works but the knockback is large.",
-      "spriteKey": "rust.enforcer",
-      "stats": {
-        "maxHp": 70,
-        "moveSpeed": 65,
-        "attackRange": 80,
-        "telegraphMs": 600,
-        "attackMs": 300,
-        "recoverMs": 900,
-        "damage": 14,
-        "knockback": 320,
-        "hitstun": 300
-      }
-    },
-    {
-      "id": "rust-baton-scout",
-      "status": "proposed",
-      "gddGap": "GDD lists dynamic enemy behaviours and defensive tools (block, dodge, parry) but gives no enemy roster. A fast, light attacker with a clear tell is a natural parry trainer.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "hit-feedback-spec#4",
-        "player-psychologist#4"
+      "proposedFields": [
+        "look",
+        "telegraph timing for jab combo and headbutt (not yet in engine)"
       ],
-      "name": "Rust Baton Scout",
-      "role": "grunt",
-      "tier": 1,
-      "description": "A lean Rust officer in a slate uniform with a gunmetal baton and a narrow cyan visor. Straight lines, symmetrical stance, lighter than the grunt.",
-      "behaviour": "Faster than the grunt and darts in for a quick poke, then backs off to the circle radius instead of standing around. Counts against the attacker cap like any other attacker.",
-      "telegraph": "320 ms wind-up: the baton is drawn back to the shoulder with a visible lean, red telegraph icon above the head. Short enough to feel quick, long enough to react to.",
-      "weakness": "Fragile. A well-timed parry or a single combo opener ends the exchange; mashing without reading the tell gets punished by its speed.",
-      "spriteKey": "rust.baton-scout",
-      "stats": {
-        "maxHp": 22,
-        "moveSpeed": 130,
-        "attackRange": 85,
-        "telegraphMs": 320,
-        "attackMs": 180,
-        "recoverMs": 500,
-        "damage": 6,
-        "knockback": 160,
-        "hitstun": 200
-      }
-    },
-    {
-      "id": "rust-dart-marksman",
-      "status": "proposed",
-      "gddGap": "GDD asks for dynamic enemy behaviours and a player toolkit of block, dodge and parry. A ranged role forces the player to close distance and use lane movement, which melee-only enemies do not.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#5",
-        "hit-feedback-spec#4",
-        "feasibility-lead#2"
-      ],
-      "name": "Rust Dart Marksman",
-      "role": "ranged",
-      "tier": 2,
-      "description": "A Rust officer in a slate uniform with a boxy gunmetal stun-dart launcher on one arm and a visor with a cyan aim line. Non-lethal gear: the dart only stuns and pushes back.",
-      "behaviour": "Keeps to the far side of the arena and holds its distance, side-stepping away if Zed gets close. Fires one slow dart along its lane when it has an attacker slot, then reloads.",
-      "telegraph": "700 ms wind-up: raises the launcher, a cyan aim line draws along the floor toward Zed and the red telegraph icon pops above the head. The dart travels slowly enough to sidestep.",
-      "weakness": "Step out of the lane to dodge, then rush it. Weak up close with low health and a long reload, so it rewards movement and juggle routes that carry Zed across the arena.",
-      "spriteKey": "rust.dart-marksman",
-      "stats": {
-        "maxHp": 26,
-        "moveSpeed": 75,
-        "attackRange": 320,
-        "telegraphMs": 700,
-        "attackMs": 220,
-        "recoverMs": 1400,
-        "damage": 7,
-        "knockback": 180,
-        "hitstun": 220
-      }
-    },
-    {
-      "id": "rust-shield-sergeant",
-      "status": "proposed",
-      "gddGap": "GDD names block, dodge and parry as defence tools but never says which enemies reward them. A shielded elite makes the player use combos and juggles rather than button-mashing.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "hit-feedback-spec#4",
-        "adversarial-qa#10"
-      ],
-      "name": "Rust Shield Sergeant",
-      "role": "elite",
-      "tier": 3,
-      "description": "A Rust sergeant with a tall rectangular riot shield, steel helmet and a wide cyan visor. Symmetrical, squared-off and cold, with a gunmetal shield edge.",
-      "behaviour": "Advances slowly behind the shield and blocks light hits from the front. Shield bash when the player is close, then drops the shield during recovery. Calls for an attacker slot before bashing so it never stacks with a full cap.",
-      "telegraph": "650 ms wind-up: shield pulled back and braced, red telegraph icon scaled up and a ground danger zone in front of it. Light attacks from the front bounce off the shield, which is also readable.",
-      "weakness": "Heavy attacks break its guard and combos from behind or after a dodged bash land clean. Parry the bash to open the shield for a juggle.",
-      "spriteKey": "rust.shield-sergeant",
-      "stats": {
-        "maxHp": 110,
-        "moveSpeed": 60,
-        "attackRange": 75,
-        "telegraphMs": 650,
-        "attackMs": 300,
-        "recoverMs": 1000,
-        "damage": 12,
-        "knockback": 380,
-        "hitstun": 350
-      }
-    },
-    {
-      "id": "rust-signal-warden",
-      "status": "proposed",
-      "gddGap": "GDD promises dynamic enemy behaviours and says difficulty comes from how waves arrive, but names no support role. A Rust officer who buffs nearby grunts gives wave composition a priority target and rewards lane movement and juggle routes that reach the back line.",
-      "sources": [
-        "the-rebellion#1",
-        "the-rebellion#3",
-        "the-rebellion#8",
-        "hit-feedback-spec#4",
-        "player-psychologist#4"
-      ],
-      "name": "Rust Signal Warden",
-      "role": "support",
-      "tier": 2,
-      "description": "A Rust officer in a slate uniform with a boxy gunmetal radio pack and a short antenna, a steel helmet and a visor with a cyan indicator bar. Symmetrical and cold, with a squared-off stance that stays at the back of the group.",
-      "behaviour": "Hangs back at the circle radius behind the grunts and never takes a melee attacker slot. Every few seconds it raises the radio to call a Rust order that speeds up grunts near it for a short time. If Zed closes in it side-steps away and only swats with a short baton jab when cornered.",
-      "telegraph": "600 ms wind-up for the radio call: arm raised with the radio, red telegraph icon above the head, and a cyan pulse ring on the floor around the grunts it will boost. The rare baton jab uses a 450 ms wind-up with the standard cues.",
-      "weakness": "Fragile and always at the back. Rushing through the lane or using a juggle route to reach it cancels the call and removes the speed boost. Rewards crowd control and movement over standing still.",
-      "spriteKey": "rust.signal-warden",
-      "stats": {
-        "maxHp": 35,
-        "moveSpeed": 80,
-        "attackRange": 60,
-        "telegraphMs": 450,
-        "attackMs": 220,
-        "recoverMs": 800,
-        "damage": 5,
-        "knockback": 150,
-        "hitstun": 200
-      }
+      "gddGap": "Canon unit and Tier 0 numbers (copied from src/enemies/gruntData.js). The Rust Jab Combo and Helmet Headbutt are canon GDD moves not yet in the engine; look is proposed."
     }
   ],
   "levels": [
     {
       "id": "level-01-brick-red-alley",
       "status": "proposed",
-      "gddGap": "The GDD says 'urban districts' and 'Defeat Wave / Clear Arena ... in time' but sets no level count, order, wave counts or time limit. Wave numbers and the 120 s limit copy the Tier 0 placeholders in src/waves/waveData.js and src/state/config.js, so they are engine-matched but not GDD-confirmed.",
+      "gddGap": "The GDD says \"urban districts\" and \"Defeat Wave / Clear Arena ... in time\" but sets no level count, order, wave counts or time limit. Level 1 is paced as a tutorial arc (warm-up, pressure, first Breaker, escalation, finale) with health pickups in the breathers; wave numbers and the 210 s limit are design assumptions, not GDD-confirmed.",
       "sources": [
         "the-rebellion#1",
         "the-rebellion#2",
         "the-rebellion#7",
-        "the-rebellion#3"
+        "the-rebellion#3",
+        "the-story-campaign#1"
       ],
       "name": "Brick-Red Alley",
       "order": 1,
@@ -662,42 +2658,91 @@
         "#6B4423",
         "#2F6B3F"
       ],
-      "timeLimitSec": 120,
+      "timeLimitSec": 210,
       "intro": "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.",
       "outro": "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.",
       "waves": [
         {
           "enemy": "grunt",
-          "count": 3,
-          "maxAlive": 3,
+          "count": 4,
+          "maxAlive": 2,
           "spawnIntervalMs": 900,
-          "startDelayMs": 800
+          "startDelayMs": 600,
+          "attackerCap": 2,
+          "restPickup": {
+            "heal": 15
+          }
         },
         {
           "enemy": "grunt",
-          "count": 4,
+          "count": 6,
           "maxAlive": 3,
           "spawnIntervalMs": 800,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 2,
+          "restPickup": {
+            "heal": 25
+          }
         },
         {
           "enemy": "grunt",
-          "count": 5,
+          "count": 7,
           "maxAlive": 4,
           "spawnIntervalMs": 700,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 2,
+          "elites": 1,
+          "eliteHpMult": 3,
+          "restPickup": {
+            "heal": 30
+          }
+        },
+        {
+          "enemy": "grunt",
+          "count": 8,
+          "maxAlive": 4,
+          "spawnIntervalMs": 650,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "elites": 2,
+          "eliteHpMult": 3,
+          "restPickup": {
+            "heal": 35
+          }
+        },
+        {
+          "enemy": "grunt",
+          "count": 10,
+          "maxAlive": 5,
+          "spawnIntervalMs": 600,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "elites": 3,
+          "eliteHpMult": 3
         }
-      ]
+      ],
+      "miniBoss": "rust-brick-dugan",
+      "mainBoss": null,
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Arena flavour: tutorial alley; no main boss per the-story-campaign#1. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level.",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": null
+      }
     },
     {
       "id": "level-02-mustard-row",
       "status": "proposed",
-      "gddGap": "No level structure in the GDD. Introduces the Rust Baton Scout (proposed enemy) as the first new threat; wave sizes and 135 s limit are assumed.",
+      "gddGap": "No level structure in the GDD. Introduces the Rust Watcher (rust-watcher) as the first new threat, mixed with grunts; wave sizes and 135 s limit are assumed.",
       "sources": [
         "the-rebellion#6",
         "the-rebellion#7",
         "the-rebellion#3",
-        "systems-designer#8"
+        "systems-designer#8",
+        "the-story-campaign#1"
       ],
       "name": "Mustard Row",
       "order": 2,
@@ -718,40 +2763,67 @@
           "count": 4,
           "maxAlive": 3,
           "spawnIntervalMs": 850,
-          "startDelayMs": 800
+          "startDelayMs": 600,
+          "attackerCap": 2,
+          "restPickup": {
+            "heal": 20
+          }
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 4,
           "maxAlive": 2,
           "spawnIntervalMs": 1100,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 2,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 25
+          }
         },
         {
           "enemy": "grunt",
           "count": 5,
           "maxAlive": 4,
           "spawnIntervalMs": 700,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 2,
+          "restPickup": {
+            "heal": 30
+          }
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 3,
           "spawnIntervalMs": 800,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5
         }
-      ]
+      ],
+      "miniBoss": "rust-railgun-royce",
+      "mainBoss": null,
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). No main boss per the-story-campaign#1. Old title \"Transit District\" is flavour only. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level.",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": null
+      }
     },
     {
       "id": "level-03-greenline-courts",
       "status": "proposed",
-      "gddGap": "No level structure in the GDD. Introduces the Rust Enforcer (proposed bruiser) after the scout; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.",
+      "gddGap": "No level structure in the GDD. Introduces the Rust Breaker (rust-breaker) bruiser alongside the Rust Watcher and grunts; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.",
       "sources": [
         "the-rebellion#6",
         "the-rebellion#9",
         "the-rebellion#3",
-        "systems-designer#8"
+        "systems-designer#8",
+        "the-story-campaign#1"
       ],
       "name": "Greenline Courts",
       "order": 3,
@@ -773,47 +2845,83 @@
           "count": 5,
           "maxAlive": 4,
           "spawnIntervalMs": 750,
-          "startDelayMs": 800
+          "startDelayMs": 600,
+          "attackerCap": 2,
+          "restPickup": {
+            "heal": 25
+          }
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 5,
           "maxAlive": 1,
           "spawnIntervalMs": 1500,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 2,
+          "hpMult": 3,
+          "restPickup": {
+            "heal": 30
+          }
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 3,
           "spawnIntervalMs": 700,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 2,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 35
+          }
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 1300,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 2,
+          "hpMult": 3,
+          "restPickup": {
+            "heal": 40
+          }
         },
         {
           "enemy": "grunt",
           "count": 6,
           "maxAlive": 5,
           "spawnIntervalMs": 500,
-          "startDelayMs": 1200
+          "startDelayMs": 1000,
+          "attackerCap": 3
         }
-      ]
+      ],
+      "miniBoss": "rust-crusher-kane",
+      "mainBoss": "rust-overseer-calder",
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Calder arena flavour: factory floor (old \"Industrial Zone\" title, flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": {
+          "style": "separate-phase",
+          "after": "waves",
+          "phases": "per GDD"
+        }
+      }
     },
     {
       "id": "level-04-stewpot-gardens",
       "status": "proposed",
-      "gddGap": "No level structure in the GDD. Introduces the Rust Dart Marksman (proposed ranged enemy) and pairs it with melee waves so the player must use lane movement. Also introduces the proposed Rust Signal Warden (support, buffs grunts); engine waves hold one enemy type each, so a Warden wave stands alone until mixed waves exist (further gap). 180 s limit assumed.",
+      "gddGap": "No level structure in the GDD. Fields the Rust Watcher (rust-watcher) in repeated waves and the Rust Breaker (rust-breaker) as the closer, with grunts, so the player must use lane movement so the player must use lane movement. Also fields the named Overseer Dr. Maren Holt (rust-overseer-holt) as the district boss wave; the GDD gives Holt an undercity lab arena with gas vents and fog, so the garden planters and food-stall fog are only the closest fit (no GDD level for her; flag). Engine waves hold one enemy type each and counts cannot shrink, so the Holt wave keeps count 5 with maxAlive 1 (an engine workaround: Holt is a single named character, and a count of 1 would break the non-decreasing wave-count rule) until boss-encounter waves exist (further gap). 180 s limit assumed.",
       "sources": [
         "the-rebellion#6",
         "the-rebellion#7",
         "the-rebellion#9",
-        "the-rebellion#3"
+        "the-rebellion#3",
+        "the-story-campaign#1"
       ],
       "name": "Stewpot Gardens",
       "order": 4,
@@ -835,54 +2943,96 @@
           "count": 5,
           "maxAlive": 4,
           "spawnIntervalMs": 700,
-          "startDelayMs": 800
+          "startDelayMs": 600,
+          "attackerCap": 3,
+          "restPickup": {
+            "heal": 30
+          }
         },
         {
-          "enemy": "rust-signal-warden",
+          "enemy": "rust-overseer-holt",
           "count": 5,
-          "maxAlive": 2,
+          "maxAlive": 1,
           "spawnIntervalMs": 1500,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 5,
+          "restPickup": {
+            "heal": 35
+          }
         },
         {
-          "enemy": "rust-dart-marksman",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 1,
           "spawnIntervalMs": 1600,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 40
+          }
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 3,
           "spawnIntervalMs": 650,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 45
+          }
         },
         {
-          "enemy": "rust-dart-marksman",
+          "enemy": "rust-watcher",
           "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 1200,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 50
+          }
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 1000,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 3
         }
-      ]
+      ],
+      "miniBoss": "rust-glitch",
+      "mainBoss": "rust-overseer-voss",
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Voss arena flavour: control hub with screens and drones (old \"Neon Market\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": {
+          "style": "separate-phase",
+          "after": "waves",
+          "phases": "per GDD"
+        }
+      }
     },
     {
       "id": "level-05-songwindow-heights",
       "status": "proposed",
-      "gddGap": "No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Shield Sergeant (proposed elite); the finale mixes every enemy type including the proposed Rust Signal Warden; 210 s limit assumed. Five levels is an assumption.",
+      "gddGap": "No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Introduces the Rust Copper Fang (rust-copper-fang) as the elite; the finale mixes grunts, Watchers, Breakers and Copper Fangs including the named Overseer Silas Wren (rust-overseer-wren), whose GDD arena is rooftop platforms and zip lines, the best fit for the Heights (his wave keeps count 6 with maxAlive 1 as an engine workaround: Wren is a single named character, but counts cannot shrink); 210 s limit assumed. Five levels is an assumption.",
       "sources": [
         "the-rebellion#6",
         "the-rebellion#9",
         "the-rebellion#3",
-        "narrative-critic#1"
+        "narrative-critic#1",
+        "the-story-campaign#1"
       ],
       "name": "Songwindow Heights",
       "order": 5,
@@ -904,51 +3054,344 @@
           "count": 6,
           "maxAlive": 5,
           "spawnIntervalMs": 600,
-          "startDelayMs": 800
+          "startDelayMs": 600,
+          "attackerCap": 3,
+          "restPickup": {
+            "heal": 35
+          }
         },
         {
-          "enemy": "rust-shield-sergeant",
+          "enemy": "rust-copper-fang",
           "count": 6,
           "maxAlive": 1,
           "spawnIntervalMs": 1800,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 4,
+          "restPickup": {
+            "heal": 40
+          }
         },
         {
-          "enemy": "rust-baton-scout",
+          "enemy": "rust-watcher",
           "count": 6,
           "maxAlive": 4,
           "spawnIntervalMs": 600,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 45
+          }
         },
         {
-          "enemy": "rust-dart-marksman",
+          "enemy": "rust-watcher",
           "count": 6,
           "maxAlive": 2,
           "spawnIntervalMs": 1000,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 50
+          }
         },
         {
-          "enemy": "rust-signal-warden",
+          "enemy": "rust-overseer-wren",
           "count": 6,
-          "maxAlive": 2,
+          "maxAlive": 1,
           "spawnIntervalMs": 1200,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 5,
+          "restPickup": {
+            "heal": 50
+          }
         },
         {
-          "enemy": "rust-enforcer",
+          "enemy": "rust-breaker",
           "count": 6,
           "maxAlive": 3,
           "spawnIntervalMs": 900,
-          "startDelayMs": 1500
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 3,
+          "restPickup": {
+            "heal": 50
+          }
         },
         {
-          "enemy": "rust-shield-sergeant",
+          "enemy": "rust-copper-fang",
           "count": 6,
           "maxAlive": 2,
           "spawnIntervalMs": 1400,
-          "startDelayMs": 1800
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 4
         }
-      ]
+      ],
+      "miniBoss": "rust-raptor",
+      "mainBoss": "rust-overseer-wren",
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Wren arena flavour: rooftops (old \"Skyline District\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": {
+          "style": "separate-phase",
+          "after": "waves",
+          "phases": "per GDD"
+        }
+      }
+    },
+    {
+      "id": "level-06-iron-line-push",
+      "status": "proposed",
+      "gddGap": "The GDD sets no level count, tiers or level list. This is an extra proposed level (order 6, after the five in levels.json) that introduces the GDD-named Rust units in escalation: Iron Line cordon, then Watchers, then Breakers. Wave numbers and the 150 s limit are placeholders in the Tier 0 shape. Uses the proposed expansion enemies from rust-gdd-units.json, so it depends on owner approval of those.",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "the-rebellion#11",
+        "the-rebellion#12",
+        "the-rebellion#2",
+        "the-story-campaign#1"
+      ],
+      "name": "The Iron Line Push",
+      "order": 6,
+      "district": "iron-line-push",
+      "theme": "Stewpot Gardens, where the Rust have strung a line of barriers between the planters and the food stalls; steam still rises from the stew pots behind it.",
+      "palette": [
+        "#2F6B3F",
+        "#E3A92B",
+        "#A8402E",
+        "#6B4423"
+      ],
+      "timeLimitSec": 150,
+      "intro": "The Iron Line is holding the garden gate. Faceless helmets, cheap plating. Zed's neighbours are watching from the stalls. Push the line back, then the Watchers and Breakers behind it.",
+      "outro": "The line gives way and the stew pots are steaming again. A neighbour waves a ladle from the stall. The garden is the neighbourhood's once more.",
+      "waves": [
+        {
+          "enemy": "rust-iron-line-cordon",
+          "count": 3,
+          "maxAlive": 3,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 600,
+          "attackerCap": 3,
+          "hpMult": 2,
+          "restPickup": {
+            "heal": 40
+          }
+        },
+        {
+          "enemy": "rust-iron-line-cordon",
+          "count": 4,
+          "maxAlive": 3,
+          "spawnIntervalMs": 800,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 2,
+          "restPickup": {
+            "heal": 45
+          }
+        },
+        {
+          "enemy": "rust-watcher",
+          "count": 4,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1100,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 50
+          }
+        },
+        {
+          "enemy": "rust-breaker",
+          "count": 4,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1400,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 3
+        }
+      ],
+      "miniBoss": "rust-holts-experiment-subject-88",
+      "mainBoss": "rust-overseer-holt",
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Holt arena flavour: lab with gas vents (old \"Undercity\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": {
+          "style": "separate-phase",
+          "after": "waves",
+          "phases": "per GDD"
+        }
+      }
+    },
+    {
+      "id": "level-07-copper-fang-courts",
+      "status": "proposed",
+      "gddGap": "The GDD says Copper Fangs serve boss-tier encounters but gives no level list, tiers or boss placement. This proposes a mini-boss level (order 7): a ladder of single units rising Watcher, Breaker, Copper Fang. Each wave has count 1 because the validator requires wave counts not to shrink, so a lone boss wave must follow count-1 waves; mixed-escort boss waves need a schema extension (one enemy per wave today).",
+      "sources": [
+        "the-rebellion#1",
+        "the-rebellion#3",
+        "the-rebellion#12",
+        "the-rebellion#13",
+        "the-rebellion#2",
+        "the-story-campaign#1"
+      ],
+      "name": "Copper Fang at the Courts",
+      "order": 7,
+      "district": "copper-fang-courts",
+      "theme": "The forest-green basketball courts, hoops bent but standing, with a Rust command post set up at centre court and kids' chalk drawings still on the asphalt.",
+      "palette": [
+        "#2F6B3F",
+        "#E3A92B",
+        "#A8402E",
+        "#6B4423"
+      ],
+      "timeLimitSec": 150,
+      "intro": "Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, dodge, parry. Give the kids their court back.",
+      "outro": "The shield cracks and the Fang is pushed back off the court. Somewhere a ball bounces, then another. Zed breathes out. Game on.",
+      "waves": [
+        {
+          "enemy": "rust-watcher",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 600,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 45
+          }
+        },
+        {
+          "enemy": "rust-breaker",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 3,
+          "restPickup": {
+            "heal": 50
+          }
+        },
+        {
+          "enemy": "rust-copper-fang",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 4
+        }
+      ],
+      "miniBoss": "rust-commander-atlas",
+      "mainBoss": null,
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Campaign main boss is \"Elite Rust Gauntlet\", which has no enemy item: open question, not invented. Old \"Rust Military Compound\" title is flavour only. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level. Main boss 'Elite Rust Gauntlet' to be defined by the owner in the GDD; not invented here.",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": null
+      }
+    },
+    {
+      "id": "level-08-overseer-tower",
+      "status": "proposed",
+      "gddGap": "The GDD gives Overseer Halden Varr, \"The Architect of Rust\" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#19",
+        "the-rebellion#20",
+        "the-rebellion#2",
+        "the-story-campaign#1"
+      ],
+      "name": "The Overseer's Tower",
+      "order": 8,
+      "district": "overseer-tower",
+      "theme": "Songwindow Heights, where a surveillance tower and propaganda screens loom over the windows that used to play music; murals half-painted over in grey.",
+      "palette": [
+        "#A8402E",
+        "#E3A92B",
+        "#6B4423",
+        "#2F6B3F"
+      ],
+      "timeLimitSec": 180,
+      "intro": "Varr runs the whole city from this tower, with squads, drones and shields at his call. Fight through, reach the command chamber and break the order. Let the music back in.",
+      "outro": "The screens flicker out and Varr gives up the tower. A window opens, then another, and music drifts down over the Heights. The first mural stroke goes back up.",
+      "waves": [
+        {
+          "enemy": "rust-iron-line-cordon",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 600,
+          "attackerCap": 3,
+          "hpMult": 2,
+          "restPickup": {
+            "heal": 50
+          }
+        },
+        {
+          "enemy": "rust-watcher",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 1.5,
+          "restPickup": {
+            "heal": 50
+          }
+        },
+        {
+          "enemy": "rust-breaker",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 3,
+          "restPickup": {
+            "heal": 50
+          }
+        },
+        {
+          "enemy": "rust-halden-varr",
+          "count": 1,
+          "maxAlive": 1,
+          "spawnIntervalMs": 900,
+          "startDelayMs": 1000,
+          "attackerCap": 3,
+          "hpMult": 8
+        }
+      ],
+      "miniBoss": "rust-sentinel-x9",
+      "mainBoss": "rust-halden-varr",
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Varr arena flavour: command chamber (old \"Corporate Tower\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+      "bossStructure": {
+        "miniBoss": {
+          "style": "mini-wave",
+          "gate": false,
+          "note": "beatable pressure wave led by the mini-boss"
+        },
+        "mainBoss": {
+          "style": "separate-phase",
+          "after": "waves",
+          "phases": "per GDD"
+        }
+      }
     }
   ],
   "dialogue": [
@@ -1246,7 +3689,7 @@
         "Form up. Hold the line.",
         "Regulation applies to you too.",
         "Your appeal is denied.",
-        "Rust holds this street.",
+        "Rust hold this street.",
         "Step back from the barrier."
       ],
       "sources": [
@@ -2000,6 +4443,519 @@
         "menu-copy#3",
         "the-rebellion#6"
       ]
+    },
+    {
+      "id": "rust-notice-doctrine",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "ORDER IS STRENGTH. FREEDOM IS WEAKNESS.",
+        "The creed is posted. Read it. Obey it, or be dealt with.",
+        "By order of Overseer Varr: order is strength.",
+        "Freedom is weakness. This notice is binding."
+      ]
+    },
+    {
+      "id": "rust-notice-serial-rollcall",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "Roll call. Answer to your number only.",
+        "Names are retired. Serial numbers remain.",
+        "Unit 4471, report to the Iron Line.",
+        "Unit 0932, hold position. Do not speak.",
+        "Rebels have names. Citizens have numbers."
+      ]
+    },
+    {
+      "id": "rust-notice-sealed-district",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#8"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "District sealed. Curfew is mandatory.",
+        "Lights out at nine. No exceptions.",
+        "Drones are overhead. Stay indoors.",
+        "Assembly is resistance. Resistance is eliminated."
+      ]
+    },
+    {
+      "id": "rust-overseer-announcement",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#8"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "Overseer notice: this district is under review.",
+        "All screens will carry today's message.",
+        "Surveillance keeps rebels from hiding.",
+        "Stay calm. The Rust have this district in hand.",
+        "Watch the towers. The towers watch you."
+      ]
+    },
+    {
+      "id": "rust-varr-order",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#13"
+      ],
+      "speaker": "rust",
+      "trigger": "notice",
+      "lines": [
+        "Varr to all Overseers: tighten the districts.",
+        "Order from Overseer Varr: hold every line.",
+        "Varr expects every rebel found by nightfall.",
+        "Fear keeps the peace. Crush what resists."
+      ]
+    },
+    {
+      "id": "neighbour-defaced-doctrine",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#7",
+        "menu-concept#4"
+      ],
+      "speaker": "poster",
+      "trigger": "poster",
+      "lines": [
+        "Strength is looking out for each other.",
+        "FREEDOM IS WEAKNESS? Not on this wall.",
+        "Painted over: we keep the music on.",
+        "Order? We prefer neighbours."
+      ]
+    },
+    {
+      "id": "neighbour-answers-serial",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#12"
+      ],
+      "speaker": "neighbour",
+      "trigger": "taunt",
+      "lines": [
+        "I know your name. Your mum would, too.",
+        "Numbers are for bus stops. Come say hello.",
+        "Somebody under that helmet has a name.",
+        "Come by the stall. Bring your name."
+      ]
+    },
+    {
+      "id": "neighbour-answers-curfew",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "menu-concept#4"
+      ],
+      "speaker": "neighbour",
+      "trigger": "notice",
+      "lines": [
+        "Lights out? We lit a candle instead.",
+        "Curfew's crossed out. Music at the court.",
+        "Quiet streets? Not while Zed's around.",
+        "The sealed gate has a new mural on it."
+      ]
+    },
+    {
+      "id": "zed-answers-overseer",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#10",
+        "the-rebellion#9"
+      ],
+      "speaker": "zed",
+      "trigger": "taunt",
+      "lines": [
+        "Nice speech. Watch me turn the screen off.",
+        "Your towers are loud. Our windows are louder.",
+        "Review this: the block is ours again.",
+        "Strength? It is the neighbours. Always was."
+      ]
+    },
+    {
+      "id": "zed-answers-varr",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#11",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "taunt",
+      "lines": [
+        "Tell Varr: knock, knock. We are coming.",
+        "Fear is not a plan. Neighbours are.",
+        "Order is strength? Try a good stew.",
+        "Say hi to the Overseer. Say it loud."
+      ]
+    },
+    {
+      "id": "rust-iron-line-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Iron Line, hold the lane.",
+        "Unit 4471, advancing.",
+        "Form up. Suppress the civilians."
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "rust-iron-line-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Push-bar sweep. Brace.",
+        "Hold... sweep!",
+        "Line, crush them!"
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "rust-iron-line-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Unit 4471, falling back.",
+        "Line broken. Backing off.",
+        "I just... need a minute."
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "zed-answers-iron-line",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "A bar? Let me duck under that.",
+        "Hi, Unit 4471. What is your name?",
+        "Shove me later. Music first."
+      ],
+      "enemy": "rust-iron-line-cordon"
+    },
+    {
+      "id": "rust-breaker-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Breaker on the block.",
+        "Smash. Break. Crush the resistance.",
+        "Stand aside or be broken."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "rust-breaker-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Winding up. Big swing.",
+        "Here it comes. Ground shakes.",
+        "Slam incoming."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "rust-breaker-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Too heavy... sitting down.",
+        "The stuff wore off. I am done.",
+        "Pushed back. Steady."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "zed-answers-breaker",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Big wind-up. I can dance around that.",
+        "Easy, big fella. Take a seat.",
+        "All that muscle, no footwork."
+      ],
+      "enemy": "rust-breaker"
+    },
+    {
+      "id": "rust-watcher-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Watcher on the rooftop.",
+        "Visor locked. I see you.",
+        "Rebel located. Hunting."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "rust-watcher-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Taser charging. Stay still.",
+        "Visor flash, then the shot.",
+        "Rebel in the sights. Do not move."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "rust-watcher-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Visor cracked. Pulling back.",
+        "Lost the trace. Retreating.",
+        "Off the roof. Regroup."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "zed-answers-watcher",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#12",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Cute visor. Can it see me dodge?",
+        "Up on a roof? I know every ladder.",
+        "Tracking me? Keep up, then."
+      ],
+      "enemy": "rust-watcher"
+    },
+    {
+      "id": "rust-copper-fang-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Copper Fang, by order of Varr.",
+        "Fear removed. Duty remains.",
+        "Rebel marked. Target to be eliminated."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "rust-copper-fang-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Hook out. Shield up.",
+        "Gauntlet crackling.",
+        "Closing on the target."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "rust-copper-fang-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "Fang withdrawing. Report to Varr.",
+        "Shield down. Falling back.",
+        "Not... in the plan."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "zed-answers-copper-fang",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#13",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Shiny gloves. Mind the wires.",
+        "Varr sent his favourite? I am flattered.",
+        "Hooks and shields. Still just a person."
+      ],
+      "enemy": "rust-copper-fang"
+    },
+    {
+      "id": "rust-halden-varr-spawn",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#19",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "fight_start",
+      "lines": [
+        "Order is strength. Freedom is weakness.",
+        "Command units, deploy. All screens to my channel.",
+        "This tower holds the whole city. Stand down."
+      ],
+      "enemy": "rust-halden-varr"
+    },
+    {
+      "id": "rust-halden-varr-telegraph",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#19",
+        "hit-feedback-spec#4"
+      ],
+      "speaker": "rust",
+      "trigger": "taunt",
+      "lines": [
+        "Shield up. Units forward.",
+        "Override: drones released.",
+        "Stance adjusted. You are predictable."
+      ],
+      "enemy": "rust-halden-varr"
+    },
+    {
+      "id": "rust-halden-varr-pushed-back",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#19",
+        "the-rebellion#11"
+      ],
+      "speaker": "rust",
+      "trigger": "wave_clear",
+      "lines": [
+        "The screens... went dark.",
+        "Tower lost. Pulling back.",
+        "Overseer off the grid."
+      ],
+      "enemy": "rust-halden-varr"
+    },
+    {
+      "id": "zed-answers-halden-varr",
+      "status": "proposed",
+      "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+      "sources": [
+        "the-rebellion#19",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "combo",
+      "lines": [
+        "Pull the plug on that screen, friends.",
+        "Big boss, small voice. Switch it off.",
+        "No more speeches. Windows open."
+      ],
+      "enemy": "rust-halden-varr"
     },
     {
       "id": "title-banner",

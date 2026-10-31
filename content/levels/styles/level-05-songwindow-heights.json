@@ -1,0 +1,40 @@
+{
+  "id": "level-05-songwindow-heights",
+  "status": "styled",
+  "background": {
+    "path": "assets/levels/level-05-songwindow-heights/background.svg",
+    "overlay": {
+      "color": "#E3A92B",
+      "alpha": 0.08
+    }
+  },
+  "ambient": {
+    "period": 1920,
+    "windowY": 186,
+    "windowW": 45,
+    "windowH": 62,
+    "dustPerBeam": 0,
+    "lit": [],
+    "dark": [],
+    "outdoor": {
+      "trees": [],
+      "suns": [[1547, 288, 130]],
+      "shafts": [[420, 70], [1180, 60]],
+      "clouds": [],
+      "leaves": 0,
+      "birds": 3,
+      "motes": 12,
+      "leafColors": ["#E3A92B", "#F2C04D"]
+    },
+    "heights": {
+      "windows": [[503, 186], [163, 260], [1175, 209], [1615, 328], [418, 333], [1084, 356]],
+      "windowW": 45,
+      "windowH": 62,
+      "notesPerWindow": 2,
+      "laundry": [[336, 155], [697, 133], [1005, 138], [1400, 119], [1426, 119]],
+      "laundryColors": ["#F4E6C8", "#2F6B3F", "#E3A92B", "#A8402E"],
+      "noteColors": ["#F4E6C8", "#E3A92B"]
+    }
+  },
+  "notes": "Golden Hour Climb: Sand and Mustard late-afternoon sky, brick-red blocks with mostly shut windows, painted-over murals, calm warm-brown rooftop lane. Ambient (period 1920): breathing sun and light shafts, birds, warm motes, lit windows breathing with music notes drifting out, laundry swaying on the lines; all above y 440."
+}

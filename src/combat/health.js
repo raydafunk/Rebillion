@@ -27,6 +27,22 @@ export function applyDamage(h, amount, now, hitstunMs = 0) {
   return { applied: true, amount: dealt, hpAfter: h.hp, died };
 }
 
+// A blow that connects but deals 0 hp (e.g. a never-kill hit on a boss at 1 hp). Applies hitstun/invuln only.
+export function applyGlancingHit(h, now, hitstunMs = 0) {
+  if (isInvulnerable(h, now)) return { applied: false, amount: 0, hpAfter: h.hp, died: false };
+  h.hitstunUntil = now + hitstunMs;
+  h.invulnUntil = now + h.invulnMsAfterHit;
+  return { applied: true, amount: 0, hpAfter: h.hp, died: false };
+}
+
+// Restores up to `amount` hp (never above maxHp, never revives). Returns the hp actually restored.
+export function applyHeal(h, amount) {
+  if (h.dead || !(amount > 0)) return 0;
+  const gained = Math.min(amount, h.maxHp - h.hp);
+  h.hp += gained;
+  return gained;
+}
+
 export function resetHealth(h) {
   h.hp = h.maxHp;
   h.dead = false;

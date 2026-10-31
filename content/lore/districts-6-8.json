@@ -1,0 +1,35 @@
+[
+  {
+    "id": "iron-line-push",
+    "status": "proposed",
+    "gddGap": "The GDD's campaign table names the Level 6 district 'Iron-line-push' and the Level 6 mini-boss and boss arena (an undercity lab), but never describes the district. The look and story here are derived from the Level 6 style guide and the Holt arena line.",
+    "kind": "district",
+    "name": "Iron Line Push",
+    "summary": "Level 6 district: the undercity, where the Rust push their line down below the streets and Dr. Holt's lab keeps the air heavy.",
+    "body": "The Iron Line Push is Level 6 in the GDD's campaign table. Its mini-boss is Dr. Holt's Experiment, Subject 88, and its boss is Overseer Dr. Maren Holt, whose arena the GDD describes as an undercity lab with gas vents, toxin pools and fog zones. The name echoes the Rust Grunts, the Iron Line, who are the backbone of the force.\n\nHere the neighbourhood's warmth is hardest to find. The stew pots and the stalls are far overhead, and down below the Rust have run their line of barriers through the tunnels, with Watchers and Breakers behind it. The way through is clear air: every vent shut, every fog bank crossed, one careful step at a time.\n\nThe Level 6 style guide still shows a stall-row garden look from an earlier pass; this entry follows the GDD's undercity wording and the style guide will need to catch up. Zed's neighbours are watching from the edges of the lane in spirit, not in sight: the hope in this district is the daylight at the far end.",
+    "tags": ["district", "level-6", "undercity", "holt", "subject-88", "iron-line"],
+    "sources": ["the-story-campaign#1", "the-rebellion#16", "the-rebellion#20", "the-rebellion#11"]
+  },
+  {
+    "id": "copper-fang-courts",
+    "status": "proposed",
+    "gddGap": "The GDD's campaign table names the Level 7 district 'Copper-fang-courts' and its mini-boss, Commander Atlas, but gives no description. The main boss, 'Elite Rust Gauntlet', is named only; the owner will define it later, so nothing about it is invented here.",
+    "kind": "district",
+    "name": "Copper Fang Courts",
+    "summary": "Level 7 district: the forest-green courts, now a Copper Fang stronghold, where Commander Atlas stands between the kids and their game.",
+    "body": "The Copper Fang Courts are Level 7 in the GDD's campaign table. Commander Atlas, leader of the Copper Fangs and the toughest non-boss enemy in the game, is the mini-boss. The GDD lists the level's main boss as the Elite Rust Gauntlet and gives no more detail yet, so this entry leaves it open.\n\nIt grows out of the Greenline Courts, the forest-green basketball courts that the Rust shut down at the start of the takeover. The Copper Fangs, Varr's personal favourites, now hold the courts as a command post: the hoops are bent but standing, chalk drawings from the kids still show on the asphalt, and a cold slate tent sits at centre court.\n\nThe fight is about holding your nerve against disciplined, shielded opponents. When the Fangs are pushed back, the first sound should be a ball bouncing on the asphalt, then another.",
+    "tags": ["district", "level-7", "courts", "copper-fangs", "commander-atlas"],
+    "sources": ["the-story-campaign#1", "the-rebellion#14", "the-rebellion#16"]
+  },
+  {
+    "id": "overseer-tower",
+    "status": "proposed",
+    "gddGap": "The GDD's campaign table names the Level 8 district 'Overseer-tower' with Sentinel-X9 and Halden Varr, and the Varr arena as a corporate tower command chamber. It does not describe the rest of the tower; the climb and the skyline are derived from the Level 8 style guide.",
+    "kind": "district",
+    "name": "Overseer Tower",
+    "summary": "Level 8, the final district: the corporate tower from which Overseer Halden Varr runs the whole Fallen City.",
+    "body": "The Overseer Tower is Level 8 in the GDD's campaign table. Its mini-boss is Sentinel-X9, an experimental combat android protecting Varr, and its boss is Overseer Halden Varr, The Architect of Rust. The GDD places his arena in the tower's command chamber.\n\nFrom the Heights the tower is the one cold shape on the skyline: grey slate against a warm dusk, with a single cyan eye watching the windows that used to play music. Squads, drones and shields answer to Varr from here, and the screens and surveillance towers seen in every other district are fed from this room.\n\nFor Zed it is the last stop on taking the Fallen City back. The hope is plain: break the order in the command chamber and the music can come back into the windows.",
+    "tags": ["district", "level-8", "tower", "varr", "sentinel-x9", "final-level"],
+    "sources": ["the-story-campaign#1", "the-rebellion#16", "the-rebellion#21", "the-rebellion#11"]
+  }
+]

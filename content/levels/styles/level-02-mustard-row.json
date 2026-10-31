@@ -1,0 +1,28 @@
+{
+  "id": "level-02-mustard-row",
+  "status": "styled",
+  "background": {
+    "path": "assets/levels/level-02-mustard-row/background.svg",
+    "overlay": {
+      "color": "#E3A92B",
+      "alpha": 0.1
+    }
+  },
+  "notes": "Awnings and Neighbours, 3840 wide. Screen one: Rust-chained row (shutters, chains, notices, faded signs). Screen two: open hopeful row with neighbours behind glass. Calm warm-brown lane. Ambient: rattling chained shutters shed Rust notices, open shops throw confetti, neighbours wave, music notes, awning sheen, chasing string lights, drifting balloons (src/levels/ambientRow.js).",
+  "ambient": {
+    "period": 3840,
+    "row": {
+      "shopX0": 8,
+      "shopPitch": 477,
+      "shopCount": 8,
+      "chainedCount": 4,
+      "bulbX0": 34,
+      "bulbStep": 68,
+      "bulbCount": 56,
+      "bulbY": 14,
+      "bulbSag": 22,
+      "bulbSpan": 960,
+      "crazy": 2
+    }
+  }
+}

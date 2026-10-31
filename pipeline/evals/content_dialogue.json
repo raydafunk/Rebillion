@@ -1,0 +1,11 @@
+{
+  "target": "content/dialogue",
+  "rounds": [
+    {
+      "round": 1,
+      "score": 9,
+      "reason": "validator clean (99 items, 0 errors); one minor: invented 'Sector 7' place name in title-wall-writing",
+      "at": "2026-10-25T19:01:14.869Z"
+    }
+  ]
+}

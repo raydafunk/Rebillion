@@ -99,5 +99,38 @@ Not drawn (UI owns): title strip (near-black, live text), selected ">" marker, f
 
 Hit flash, screenshake and hit-stop need no art; see `design/art/hit-feedback-spec.md`.
 
+## Rage system (Level 2 onward; source: Zed Rage System Spec section 8)
+
+Status: SPEC ONLY. Nothing below is produced except the Special move frames, which already exist. Keys and filenames are PROPOSED and are not yet in `assets/asset-keys.json` (outside this task; add when placeholders are generated). Look and palette: style-guide.md section 10. Timings: hit-feedback-spec.md section 8. HUD items are flat vector SVG at 1x for 1280x720; world FX are PNG strips (nearest-neighbour, left to right frames).
+
+| Proposed key | Filename | Size | Frames | Owner | Notes |
+|---|---|---|---|---|---|
+| ui.rage.frame.building | assets/ui/rage-frame-building.svg | 220x36 | 1 | ART | chamfered bar, flame icon slot |
+| ui.rage.frame.ready | assets/ui/rage-frame-ready.svg | 220x36 | 1 | ART | corner notches, L slot |
+| ui.rage.frame.active | assets/ui/rage-frame-active.svg | 220x36 | 1 | ART | jagged top edge, fist slot |
+| ui.rage.fill.building | assets/ui/rage-fill-building.svg | 200x20 | 1 | ART | ember to red gradient, solid; cropped by fill ratio |
+| ui.rage.fill.ready | assets/ui/rage-fill-ready.svg | 200x20 | 1 | ART | red-white, striped |
+| ui.rage.fill.active | assets/ui/rage-fill-active.svg | 200x20 | 1 | ART | red-white to red, diagonal hatch; drains over 9 s |
+| ui.rage.icon.flame | assets/ui/rage-icon-flame.svg | 24x24 | 1 | ART | building icon |
+| ui.rage.icon.fist | assets/ui/rage-icon-fist.svg | 24x24 | 1 | ART | active icon |
+| ui.rage.icon.keyL | assets/ui/rage-icon-key-l.svg | 32x32 | 2 (up, pressed) | ART | L prompt; gamepad glyph later |
+| ui.rage.ready.window | assets/ui/rage-ready-window.svg | 200x6 | 1 | ART | 4 s shrinking strip, scaled by code |
+| fx.rage.ready.flare | assets/fx/rage-ready-flare.png | 1536x64 (6 x 256x64) | 6 | ART | 12 fps, loops while READY |
+| fx.rage.aura.building | assets/fx/rage-aura-building.png | 1024x128 (8 x 128x128) | 8 | ART | overlay, 8 fps loop, additive, anchored at Zed feet |
+| fx.rage.aura.active | assets/fx/rage-aura-active.png | 1024x128 (8 x 128x128) | 8 | ART | stronger, rising embers, loop |
+| fx.rage.glow.eyes | assets/fx/rage-glow-eyes.png | 128x16 (4 x 32x16) | 4 | ART | follows head anchor per Zed frame |
+| fx.rage.glow.fists | assets/fx/rage-glow-fists.png | 128x32 (4 x 32x32) | 4 | ART | follows fist anchors, brightest on strike frame |
+| fx.rage.gain.pop | assets/fx/rage-gain-pop.png | 192x48 (4 x 48x48) | 4 | ART | at the meter on each blow; "+3"/"+5" is rendered text in Rage Gold |
+| fx.rage.gain.spark | assets/fx/rage-gain-spark.png | 128x32 (4 x 32x32) | 4 | ART | flies from hit point to meter |
+| fx.rage.activate.flash | assets/fx/rage-activate-flash.png | 1280x720 | 1 | ART | radial red-white, shown 2 game frames, alpha max 60 percent |
+| fx.rage.activate.impact | assets/fx/rage-activate-impact.png | 1152x192 (6 x 192x192) | 6 | ART | shockwave and burst at Zed feet, 20 fps, no loop |
+| fx.rage.end | assets/fx/rage-end.png | 768x128 (6 x 128x128) | 6 | ART | embers collapse to blue-grey ash, 12 fps, no loop |
+| ui.rage.intro | assets/ui/rage-intro-sheet.png | 3120x44 (12 x 260x44) | 12 | ART | Level 2 HUD slide-in, 24 fps, plays once |
+| zed.special | assets/sprites/zed/Super_special_move/ | 68x68 per frame, 8 directions | 9 per direction | ANIM | ALREADY EXISTS (animations/ and rotations/ folders; east has frame_000 to frame_008). Not produced or reviewed by this agent. 68x68 matches every other Zed sprite in the game (idle, parry), so no resize needed (owner-made, verified from the PNGs) |
+
+Gain numbers, "READY" and the seconds countdown are rendered text (Anton, Cream), not files. The one-time Level 2 prompt text belongs to UI/dialogue. Level 1 shows no Rage art.
+
 ## Not in Tier 0 scope (not produced)
-Pick-up objects, block/dodge/parry effects, additional enemies, audio, title logo, extra levels. Pick-ups and block/parry are in the GDD pillars; flagged as a gap.
+Pick-up objects, block/parry effects, additional enemies, audio, title logo, extra levels. Pick-ups and block/parry are in the GDD pillars; flagged as a gap.
+
+Note: the dodge mechanic is cut. The Zed dodge animation folder `assets/sprites/zed/Zed_a_young_street_dodge/` is retired and unused; do not load or reference it.

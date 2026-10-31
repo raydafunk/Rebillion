@@ -12,8 +12,15 @@ You are the **Level Designer** for *The Rebellion: Fists of the Fallen City*. Yo
 
 ## What to produce
 Items in `content/levels/*.json`, one per district found in `content/lore/` (kind `district` or `location`), 3 to 5 levels.
-- **Level 1** is the Tier 0 shape: 3 waves of grunts, counts 3, 4, 5, with the same `maxAlive`, `spawnIntervalMs`, `startDelayMs` as `waveData.js`, and `timeLimitSec` 120 (the current placeholder). `status: "canon"` only if every number matches the engine files and GDD; otherwise `proposed`.
-- **Later levels** add waves and introduce expansion enemies one at a time, a gentle climb. Wave `count` never shrinks within a level. Difficulty comes from how waves arrive (GDD), so vary `maxAlive` and `spawnIntervalMs` rather than only raising counts. Keep `spawnIntervalMs` >= 300.
+- **Level 1** is the tutorial arc, 5 grunt waves, counts 4, 6, 7, 8, 10 (`maxAlive` 2-5, `spawnIntervalMs` 900 down to 600, `startDelayMs` 600-1000, `timeLimitSec` 210). `elites` (Breakers) start at wave 3 (1, then 2, then 3). Always `proposed`: the GDD gives no wave numbers. Playtest showed 2-3 grunt waves with 1.5-2.5 s waits are too easy and too slow.
+- **Later levels** add waves and introduce expansion enemies one at a time, a gentle climb. Wave `count` never shrinks within a level. Difficulty comes from how waves arrive (GDD), so vary `maxAlive` and `spawnIntervalMs` rather than only raising counts. Keep `spawnIntervalMs` >= 300 and `startDelayMs` <= 1000 (waves follow each other quickly).
+- **Pacing fields on every wave** (engine reads them from the wave object):
+  - `spawnPattern` on EVERY wave: `alternate` (left/right in turn), `flank` (pairs from each side), `ambush` (from behind Zed, every third from the front), `surge` (a wall from the far side, last one from the other). Open a level with `alternate`, then vary: never the same pattern twice in a row.
+  - `restPickup: { "heal": N }` on EVERY wave except the last: a health item dropped on the walk to the next fight (the breather). Heals grow through the level (about 15-50). Never on the last wave.
+  - `attackerCap` (integer >= 1): enemies allowed to attack at once. 2 in early levels, 3 from level 4 and in finales.
+  - `hpMult` (1-10): health multiplier for the whole wave, used for tough specials and bosses (watcher 1.5, cordon 2, breaker 3, copper-fang 4, overseers 5, halden-varr 8).
+  - `elites` + `eliteHpMult` (grunt waves only): the last N spawns of the wave become Breakers with 3x health.
+- Each level should read as an arc: a quick opener, rising pressure, a new threat, a finale. Do not open with a trivial wave.
 - `district` must be a real id from `content/lore/`. `palette` uses the GDD family (mustard, brick red, forest green, warm browns); the style guide has the hex values.
 - `intro` and `outro` (<= 200 chars): a hopeful beat that shows what is being reclaimed (the courts, the garden, the music, the murals). The outro celebrates; it never gloats over the Rust.
 

@@ -1,0 +1,17 @@
+{
+  "builtAt": "2026-10-19T16:30:00.000Z", "item": "GAP-027", "attempt": 3,
+  "verdict": "pass",
+  "npmTest": {"passed": 33, "failed": 0},
+  "acceptance": [
+    {"statement": "A story text card exists in src/ui/ mentioning Fallen City, Rust and the missing father", "met": true, "evidence": "src/ui/StoryCard.js; src/ui/storyData.js:5-12 (title 'THE FALLEN CITY', Rust, Zed's father)"},
+    {"statement": "Text lives in a data module, tested for non-empty lines", "met": true, "evidence": "src/ui/storyData.js; src/ui/storyData.test.mjs:5-10 (negative cases fail without valid data)"},
+    {"statement": "npm test green", "met": true, "evidence": "33 pass / 0 fail, run by reviewer"}
+  ],
+  "findings": [
+    {"severity": "nit", "where": "src/ui/StoryCard.js:18", "problem": "The 300 ms guard compares scene.time.now, which is fine, but the card has no Phaser-level test; behaviour is only verified by reading.", "fix": "Verify in browser: Enter on FIGHT opens card, Enter/click/12 s continues once."},
+    {"severity": "nit", "where": "src/ui/storyData.js:6-12", "problem": "Title, prompt and autoMs are placeholder, not GDD wording (disclosed).", "fix": "Owner to confirm."},
+    {"severity": "nit", "where": "package.json:6", "problem": "Outside allowedFiles, but only appends the new test to the npm test script (owner pre-accepted, disclosed).", "fix": "None."}
+  ],
+  "requests": [],
+  "notes": "Verified: parallaxData.js has no git changes; MenuScene.js diff is only the import plus splitting startGame() into startGame()+launchArena() (scrolling-background code untouched); story lines reuse content/build/content.json lore (fallen-city, rust-takeover, zeds-father, goal) near verbatim; no edits to GameDesignDocument/, design/, content/. Soft-lock: card closes by Enter/Space/click or 12 s auto; done flag prevents double-fire; this.started blocks re-entry. Not run: browser/Phaser rendering."
+}

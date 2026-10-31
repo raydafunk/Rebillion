@@ -103,7 +103,7 @@ Notice: small toast, 480x56, centre 396,596 (just under Quit, clear of the foote
 ### Controls panel
 
 - Modal overlay: dim layer over the full screen (60% near-black), panel 720x420 centred at 640,360, torn-paper look, title "CONTROLS" 40 px at the panel top, 32 px padding.
-- Body: two-column list (action, key) at 24 px minimum. Rows: Move, Light attack, Heavy attack, Block, Dodge, Parry/pick-up, Pause. Key values are placeholders ("TBD") until Player Mechanics defines bindings (OQ-M1).
+- Body: two-column list (action, key) at 24 px minimum. Rows: Move, Light attack, Heavy attack, Block, Parry/pick-up, Rage special (L), Pause. Gamepad parry binding is TBD. Key values are placeholders ("TBD") until Player Mechanics defines bindings (OQ-M1).
 - Footer inside panel: "Esc / B close", bottom-right of panel.
 - Opens with a 100 ms fade, closes on Back or Confirm. Focus returns to the Controls strip.
 

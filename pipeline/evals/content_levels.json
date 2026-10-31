@@ -1,0 +1,17 @@
+{
+  "target": "content/levels",
+  "rounds": [
+    {
+      "round": 1,
+      "score": 7,
+      "reason": "Validator clean; gddGap enemy names stale in levels 2-5, Varr titled Overseer vs canon Commander, Holt boss wave count 5",
+      "at": "2026-10-25T19:01:04.838Z"
+    },
+    {
+      "round": 2,
+      "score": 9,
+      "reason": "Validator clean, canon/tone ok; one minor duplicated phrase in level-04 gddGap",
+      "at": "2026-10-25T19:02:20.964Z"
+    }
+  ]
+}

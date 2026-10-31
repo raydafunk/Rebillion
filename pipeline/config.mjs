@@ -37,7 +37,11 @@ export const CONTENT_TYPES = {
       'Fallen City districts theme lived-in murals food stalls community gardens basketball courts',
       'tone hopeful energetic personality stories palette',
       'Local Heroes mural Rust Notice curfew poster',
+      'weapon box baseball bat pipe pick up carry throw drop durability',
+      'Zed rage meter rage mode super special move',
     ],
+    // Primary docs shipped whole into the brief, so retrieval can never miss part of them.
+    fullDocs: ['The Rebellion.docx', 'The Rebellon gameplay System.docx', 'Zed Rage System Spec.docx'],
     summary: 'Districts, characters, factions, places and story beats.',
   },
   enemies: {
@@ -50,6 +54,7 @@ export const CONTENT_TYPES = {
       'enemy behaviours dynamic enemy waves difficulty',
       'Rust security force uniform visor cold hue boxy',
       'health damage hitbox values',
+      'Grunt enemy HP weapon hits baseball bat pipe knockback hitstun',
     ],
     summary: 'Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.',
   },
@@ -63,7 +68,10 @@ export const CONTENT_TYPES = {
       'win conditions lose conditions timer level won next level',
       'background themes corner shops murals open windows basketball courts',
       'camera lock world bounds arena',
+      'weapon box per level fixed placement bat or pipe chosen by level designer',
+      'campaign progression level district mini-boss main boss',
     ],
+    fullDocs: ['the story campaign .docx'],
     summary: 'District levels: arena theme, wave plans, time limits, intro/outro beats.',
   },
   dialogue: {
@@ -76,7 +84,9 @@ export const CONTENT_TYPES = {
       'Rust Notice curfew propaganda screens surveillance',
       'menu posters footer hint Local Heroes Benefit Keep the Lights On',
       'hopeful tone never grim never gory',
+      'weapon pickup carry throw drop break Zed bat pipe',
     ],
+    fullDocs: ['The Rebellion.docx'],
     summary: 'Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.',
   },
 };

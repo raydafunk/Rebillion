@@ -34,3 +34,30 @@ assert.ok(sp.finished);
 events.emit(EVENTS.ENTITY_DIED, { id: 'player', team: 'player' });
 assert.equal(out.filter((o) => o[0] === 'arena-cleared').length, 1);
 console.log('WaveSpawner tests passed');
+
+// Hold mode (side-scrolling levels): the spawner waits for advance() after each wave and never emits arena-cleared.
+{
+  const ev = fakeEmitter(); const log = []; const made = [];
+  for (const e of [EVENTS.WAVE_STARTED, EVENTS.WAVE_CLEARED, EVENTS.ARENA_CLEARED]) ev.on(e, (p) => log.push([e, p]));
+  const waves = [0, 800].map((lockX) => ({ enemy: 'grunt', count: 1, maxAlive: 1, spawnIntervalMs: 300, startDelayMs: 0, lockX, spawnPoints: [{ x: lockX + 60, y: 520 }] }));
+  const h = new WaveSpawner({ events: ev, waves, holdBetweenWaves: true, spawn: (s) => made.push(s) });
+  h.start();
+  h.update(100);
+  assert.equal(made.length, 1);
+  ev.emit(EVENTS.ENTITY_DIED, { id: made[0].id, team: 'rust' });
+  assert.ok(h.holding);
+  assert.equal(h.nextWave.lockX, 800);
+  h.update(5000);
+  assert.equal(made.length, 1, 'no spawning while holding');
+  assert.deepEqual(log.map((l) => l[0]), [EVENTS.WAVE_STARTED, EVENTS.WAVE_CLEARED]);
+  h.advance();
+  assert.deepEqual(log.at(-1), [EVENTS.WAVE_STARTED, { index: 1, total: 2 }]);
+  h.update(100);
+  ev.emit(EVENTS.ENTITY_DIED, { id: made[1].id, team: 'rust' });
+  assert.ok(h.finished && h.nextWave === null);
+  assert.ok(!log.some((l) => l[0] === EVENTS.ARENA_CLEARED), 'level end is signalled by the scene, not the spawner');
+  h.advance(); // no-op when not holding
+  h.restart();
+  assert.equal(h.waveIndex, 0);
+  console.log('WaveSpawner hold mode passed');
+}

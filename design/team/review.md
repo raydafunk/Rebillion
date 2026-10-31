@@ -17,7 +17,7 @@ Tier 0 is feasible and the code is well ahead of the plan. `src/` already has pl
 | 5 | HP and damage | Player 100, grunt 30, 400 ms invuln | Placeholders in `combatData.js` |
 | 6 | Lose edge cases | Failsafe teleports and never ends the round. Same-frame tie: first emission wins | Tie order depends on scene update order. Decide when `ArenaScene` is written |
 | 7 | "Next level" | Not in Tier 0. Win leads to Play Again and Main Menu | Mark it post-Tier 0 in the loop diagram |
-| 8 | Defence | Block takes 25% damage and knockback. Dodge and parry negate | Parry window, dodge i-frames and cooldown still unset |
+| 8 | Defence | Block takes 25% damage and knockback. Parry negates | Parry window and cooldown still unset |
 | 9 | Attacker cap | 2 | In code |
 | 10 | **Pick-up objects** | **Cut from Tier 0** (no default, code or owner) | Decision needed |
 | 11 | Pause and input bindings | Esc/P pauses | Proposed only |
@@ -44,14 +44,14 @@ Ordered by likelihood of hurting the build:
 6. **Enemies have 0 ms invulnerability and hit-stun resets on every hit**, so one grunt can be stun-locked forever.
 7. **Wave transitions have no breathing beat.** `wave-cleared` and `wave-started` fire in the same call and the camera lock unlocks and relocks in one tick.
 8. **After `round-lost` enemies keep updating** and attacking visibly. A lost-state freeze is unspecified.
-9. `seen` in `hitResolver.js` grows until retry (minor). `Zed._handleDamage` ignores the dodge/parry contract.
+9. `seen` in `hitResolver.js` grows until retry (minor). `Zed._handleDamage` ignores the parry contract.
 
 ## 4. Pillars vs what exists
 
 | Pillar | State |
 |---|---|
 | Impactful, fast combat | **Partial.** Move data, knockback, hit-stun and grunt telegraph exist. **No hit-stop, screen shake or sound anywhere in `src`**; `design/art/hit-feedback-spec.md` is spec only. |
-| Combos and defence | Combos tested (3-hit chain, cancel windows). Block, dodge and parry work in combat but parry has no reward. No juggle. |
+| Combos and defence | Combos tested (3-hit chain, cancel windows). Block and parry work in combat but parry has no reward. No juggle. |
 | Wave pressure | Mechanics exist, but pressure is weak: 12 grunts at about 3 s each is about 36 s of the 120 s, and roughly 11 HP/s undefended against 100 HP. The timer will rarely bite. Tune `config.js` (shorter timer or more enemies) after a first playtest. |
 
 ## 5. Missing tests
@@ -60,7 +60,7 @@ Ordered by likelihood of hurting the build:
 - Timeout and clear on the same tick resolve deterministically.
 - Retry mid-round and double `wave-started`.
 - Slot starvation, and failsafe removing a grunt on the 4th trigger.
-- Dodge/parry on the player path matches the combat contract.
+- Parry on the player path matches the combat contract.
 
 ## 6. Recommended build order and cuts
 

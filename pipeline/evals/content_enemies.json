@@ -1,0 +1,11 @@
+{
+  "target": "content/enemies",
+  "rounds": [
+    {
+      "round": 1,
+      "score": 10,
+      "reason": "validator ok (14 items, 0 errors); spelling, palette, tone and non-lethal framing all clean",
+      "at": "2026-10-25T19:01:27.960Z"
+    }
+  ]
+}

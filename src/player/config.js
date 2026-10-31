@@ -3,8 +3,8 @@ export const ZED_CONFIG = {
   spriteKey: 'player.zed.placeholder', // not in src/config/assetKeys.js yet; Zed generates a rectangle if missing
   bodySize: { w: 32, h: 72 },
   runSpeed: 220,
-  jumpVelocity: -520,
-  gravity: 1400,
+  jumpVelocity: -640,       // apex = v^2 / 2g ~ 136px: clears a grunt's hurtbox (80px) and attack box (feet-65 to feet-25)
+  gravity: 1500,            // ~0.85s of air time, ~0.6s of it above the grunt's strike zone, ~185px of reach at runSpeed
   jumpCutMultiplier: 0.5,   // release jump early -> shorter hop
   coyoteMs: 90,
   jumpBufferMs: 110,

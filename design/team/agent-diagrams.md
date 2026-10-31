@@ -112,7 +112,7 @@ sequenceDiagram
     C->>C: dedupe (attackId, target), mirror by facing
     alt target invulnerable/dead
         C--xP: ignored, no event
-    else dodge/parry
+    else parry
         C->>T: damage-applied (amount 0)
     else block or normal
         C->>T: damage-applied (scaled damage, knockback, hitstun)

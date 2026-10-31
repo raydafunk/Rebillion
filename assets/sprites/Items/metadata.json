@@ -1,0 +1,22 @@
+{
+  "group_id": "43b47fa5-5e96-43a6-aa4b-e35e332e9b5a",
+  "objects": [
+    {
+      "id": "8a97a437-62ad-4031-b8d9-fefb03546729",
+      "name": "base",
+      "prompt": "health pick up",
+      "size": {
+        "width": 48,
+        "height": 48
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/health_pick_up.png"
+      },
+      "animations": {}
+    }
+  ],
+  "export_version": "1.1",
+  "export_date": "2026-10-26T11:31:34.411878"
+}

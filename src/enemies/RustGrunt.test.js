@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { RustGrunt, GruntState as S } from './RustGrunt.js';
 import { AttackSlots } from './AttackSlots.js';
 import { GRUNT } from './gruntData.js';
+import { COMBAT_DEFAULTS, GRUNT_ATTACK_COMBAT } from '../shared/combatData.js';
 
 const run = (g, target, ms, step = 16) => { for (let t = 0; t < ms; t += step) g.update(step, target); };
 const target = { x: 300, y: 0 };
@@ -74,5 +75,42 @@ const target = { x: 300, y: 0 };
   }
   assert.equal(maxAtk, 2); assert.ok(attacks > 2);
   assert.ok(gs.every((g) => g.alive));
+}
+// gruntData numbers come from combatData.js (single source)
+{
+  const c = GRUNT_ATTACK_COMBAT.attack;
+  assert.equal(GRUNT.maxHp, COMBAT_DEFAULTS.GRUNT_MAX_HP);
+  assert.equal(GRUNT.attack.damage, c.damage);
+  assert.equal(GRUNT.attack.knockback, c.knockback);
+  assert.equal(GRUNT.attack.hitstun, c.hitstun);
+}
+// jab string: three hit-requests in order, distinct attackIds, spacing from the data table
+{
+  const hits = []; let t = 0, atkStart = null;
+  const g = new RustGrunt({ id: 'j', x: 280, y: 0, hooks: {
+    onHitRequest: (h) => hits.push({ ...h, t }),
+    onStateChange: (n) => { if (n === 'attack') atkStart = t; },
+  } });
+  for (; t < 3000 && hits.length < 3; t += 4) g.update(4, target);
+  assert.equal(GRUNT.jabString.length, 3);
+  assert.equal(hits.length, 3);
+  assert.deepEqual(hits.map((h) => h.attackId), ['j:1', 'j:2', 'j:3']);
+  assert.equal(new Set(hits.map((h) => h.attackId)).size, 3);
+  for (let i = 0; i < 3; i++) {
+    assert.equal(hits[i].damage, GRUNT_ATTACK_COMBAT.attack.damage);
+    assert.equal(hits[i].knockback, GRUNT_ATTACK_COMBAT.attack.knockback);
+    assert.equal(hits[i].hitstun, GRUNT_ATTACK_COMBAT.attack.hitstun);
+    const want = GRUNT.jabString[i].atMs;
+    assert.ok(hits[i].t - atkStart >= want && hits[i].t - atkStart < want + 12);
+  }
+  assert.ok(GRUNT.jabString[2].atMs < GRUNT.attackMs);
+}
+// hitstun mid-string cancels the remaining jabs
+{
+  let t = 0; const hits = [];
+  const g = new RustGrunt({ id: 'k', x: 280, y: 0, hooks: { onHitRequest: (h) => hits.push(h) } });
+  while (hits.length < 1) { g.update(4, target); t += 4; }
+  g.takeHit({ hitstun: 200 }); run(g, target, 400);
+  assert.equal(hits.length, 1);
 }
 console.log('RustGrunt tests passed');

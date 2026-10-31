@@ -14,7 +14,7 @@ Tell the player they won **and why**. The GDD win condition is: "Fight your way 
 |  [ frozen arena visible behind, dimmed 50% ]                             |
 |                                                                          |
 |                         LEVEL CLEARED          <- headline, y=130        |
-|            Rust has been driven out of the arena.  <- reason line, y=190 |
+|            The Rust have been pushed back.  <- reason line, y=190 |
 |                                                                          |
 |        +------------------------------------------------+                |
 |        |  WAVES CLEARED        4 / 4                    |  <- stats panel|

@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-10-12T21:22:13.071Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-10-30T07:45:28.075Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -28,7 +28,7 @@ Each item has these fields:
   "timeLimitSec": "integer 30-600",
   "intro": "string, <= 200 chars, shown on level start",
   "outro": "string, <= 200 chars, shown on level won",
-  "waves": "array of { enemy (enemy id; \"grunt\" is the built-in Tier 0 enemy), count, maxAlive, spawnIntervalMs, startDelayMs } - same fields as src/waves/waveData.js"
+  "waves": "array of { enemy (enemy id; \"grunt\" is the built-in Tier 0 enemy), count, maxAlive, spawnIntervalMs, startDelayMs } - same fields as src/waves/waveData.js. Pacing fields (all optional except restPickup and spawnPattern, see rules): spawnPattern = where enemies enter, one of alternate | flank | ambush | surge (REQUIRED on every wave: alternate = left/right in turn, flank = pairs from each side, ambush = from behind Zed with every third from the front, surge = a wall from the far side); restPickup { heal 1-100 } = health item dropped on the walk to the next wave, REQUIRED on every wave except the last; attackerCap integer >= 1 = enemies allowed to attack at once; hpMult 1-10 = health multiplier for every enemy of the wave (tough specials and bosses); elites + eliteHpMult (grunt waves only) = the last N spawns become 3x-health Breakers"
 }
 ```
 Example:
@@ -52,10 +52,24 @@ Example:
   "waves": [
     {
       "enemy": "grunt",
-      "count": 3,
-      "maxAlive": 3,
+      "count": 4,
+      "maxAlive": 2,
       "spawnIntervalMs": 900,
-      "startDelayMs": 800
+      "startDelayMs": 600,
+      "spawnPattern": "alternate",
+      "attackerCap": 2,
+      "restPickup": {
+        "heal": 15
+      }
+    },
+    {
+      "enemy": "grunt",
+      "count": 6,
+      "maxAlive": 3,
+      "spawnIntervalMs": 800,
+      "startDelayMs": 1000,
+      "spawnPattern": "flank",
+      "attackerCap": 2
     }
   ],
   "sources": [
@@ -70,14 +84,36 @@ Example:
 - `level-03-greenline-courts` Greenline Courts (content/levels/levels.json)
 - `level-04-stewpot-gardens` Stewpot Gardens (content/levels/levels.json)
 - `level-05-songwindow-heights` Songwindow Heights (content/levels/levels.json)
+- `level-06-iron-line-push` The Iron Line Push (content/levels/rust-gdd-levels.json)
+- `level-07-copper-fang-courts` Copper Fang at the Courts (content/levels/rust-gdd-levels.json)
+- `level-08-overseer-tower` The Overseer's Tower (content/levels/rust-gdd-levels.json)
+
+## Uncovered GDD names (write these FIRST)
+_none detected. Still add new items: pick open questions from design/lore/canon.md or the Focus line, mark them `proposed`._
 
 ### Upstream `enemies` content you may reference
+- `rust-brick-dugan` "Brick" Dugan
+- `rust-railgun-royce` "Railgun" Royce
+- `rust-crusher-kane` "Crusher" Kane
+- `rust-glitch` "Glitch"
+- `rust-raptor` "Raptor"
+- `rust-holts-experiment-subject-88` Dr. Holt's Experiment "Subject 88"
+- `rust-commander-atlas` Commander Atlas
+- `rust-sentinel-x9` Sentinel-X9
+- `rust-iron-line-cordon` Rust Iron Line Cordon
+- `rust-breaker` Rust Breaker
+- `rust-watcher` Rust Watcher
+- `rust-copper-fang` Rust Copper Fang
+- `rust-halden-varr` Overseer Halden Varr
+- `rust-overseer-voss` Overseer Kade Voss
+- `rust-overseer-calder` Overseer Rhea Calder
+- `rust-overseer-wren` Overseer Silas Wren
+- `rust-overseer-holt` Overseer Dr. Maren Holt
+- `rust-voss-drone` Rust Surveillance Drone
+- `rust-voss-megadrone` Rust MegaDrone
+- `rust-hologram-decoy` Rust Hologram Decoy
+- `rust-elite-drone` Rust Elite Drone
 - `rust-grunt` Rust Grunt
-- `rust-enforcer` Rust Enforcer
-- `rust-baton-scout` Rust Baton Scout
-- `rust-dart-marksman` Rust Dart Marksman
-- `rust-shield-sergeant` Rust Shield Sergeant
-- `rust-signal-warden` Rust Signal Warden
 
 ### Upstream `lore` content you may reference
 - `open-windows-music` Open Windows with Music
@@ -100,12 +136,53 @@ Example:
 - `the-neighbourhood` The Neighbourhood
 - `the-rust` The Rust
 - `rust-takeover` The Takeover
+- `iron-line-push` Iron Line Push
+- `copper-fang-courts` Copper Fang Courts
+- `overseer-tower` Overseer Tower
+- `brick-dugan` "Brick" Dugan
+- `railgun-royce` "Railgun" Royce
+- `crusher-kane` "Crusher" Kane
+- `glitch` "Glitch"
+- `raptor` "Raptor"
+- `holts-experiment-subject-88` Dr. Holt's Experiment "Subject 88"
+- `commander-atlas` Commander Atlas
+- `sentinel-x9` Sentinel-X9
 - `rust-notice-114` Rust Notice 114
 - `local-heroes-benefit` Local Heroes Benefit
 - `mustard-row` Mustard Row
 - `greenline-courts` Greenline Courts
 - `stewpot-gardens` Stewpot Gardens
 - `songwindow-heights` Songwindow Heights
+- `zeds-rage` Zed's Rage
+- `rage-meter` The Rage Meter
+- `rage-clean-streak` Staying Clean
+- `rage-ready` Rage Ready
+- `zeds-special-move` Zed Rage
+- `rage-ending` When the Rage Settles
+- `rage-is-for-the-neighbourhood` Not Hatred, Not a Grudge
+- `rage-grief-into-fire` Grief Turning to Fire
+- `rage-feeds-on-the-rust` Every Rust Enemy Counts
+- `rage-fades-like-held-breath` Held Like a Breath
+- `rage-waits-for-level-two` Why It Wakes in Level Two
+- `rust-origin` How the Rust Got Their Foot in the Door
+- `commander-halden-varr` Overseer Halden Varr, The Architect of Rust
+- `rust-takeover-timeline` Within Months: Curfews, Sealed Districts and Drones
+- `rust-doctrine` Order is Strength. Freedom is Weakness.
+- `rust-serial-numbers` Serial Numbers
+- `rust-grunts-iron-line` Rust Grunts: The Iron Line
+- `rust-bruisers-breakers` Rust Bruisers: The Breakers
+- `rust-rangers-watchers` Rust Rangers: The Watchers
+- `rust-copper-fangs` Rust Specialists: The Copper Fangs
+- `rust-overseers` Rust Overseers: The Architects of Control
+- `rust-rank-ladder` The Rust Ladder
+- `neighbourhood-answer-to-doctrine` The Wall Answers Back
+- `weapon-system` Street Weapons
+- `baseball-bat` Baseball Bat
+- `pipe` Pipe
+- `weapon-box` Weapon Box
+- `weapon-breakage-and-drops` Worn Out, Dropped, Picked Up Again
+- `thrown-weapon` The Throw
+- `weapons-from-the-corner-shops` Boxes Left Behind the Shops
 
 ## Engine / spec files to stay compatible with
 #### src/waves/waveData.js
@@ -161,14 +238,14 @@ export const WAVES = Object.freeze([
 ]);
 ```
 
-## Retrieved GDD passages (21)
+## Retrieved GDD passages (31)
 ### [the-rebellion#1] primary - GameDesignDocument/The Rebellion.docx
 The Rebellion
 Fists of the Fallen City
 A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force.
 Executives Sections
 The Pitch
-The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rust a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours. Take control of Zed and fight your way through Fallen to get it back.
+The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rust a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours. Take control of Zed and fight your way through Fallen to get it back. Take control of Zed and fight your way through Fallen City to get it back.
 The 3 Pillars of Game Play
 [table]
 Impactful, Fast-paced combat | Skill depth through combos and Defence | Wave-clearing under pressure
@@ -229,7 +306,7 @@ Basketball courts, food stalls, community gardens
 Characters feel connected — casual fits, expressive colours
 Colour palette: mustard yellow, brick red, forest green, warm browns
 Atmosphere: hopeful, energetic, full of personality and stories
-Character – the hero
+The Story
 
 ### [the-rebellion#9] primary - GameDesignDocument/The Rebellion.docx
 Skill depth through combos and defence — he learned to juggle, dodge, and parry from street tournaments and late-night sparring behind corner shops.
@@ -240,12 +317,6 @@ Zed’s goal is simple: Take Fallen City back, one district at a time.
 Every wave he clears, every arena he survives, every enemy he knocks down brings him closer to finding out what happened to his father — and to restoring the community that raised him.
 He fights so kids can play in the basketball courts again. He fights so music can drift from open windows again. He fights so murals can rise again, celebrating real heroes — not corporate tyrants.
 Tone & Personality
-
-### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
-Zed — The Boy from BrickRed Alley
-Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out” . His block was known for its mustardyellow storefronts, forestgreen basketball courts, and the brickred alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
-His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
-The Fall of Fallen City
 
 ### [the-rebellion#3] primary - GameDesignDocument/The Rebellion.docx
 [table]
@@ -259,6 +330,170 @@ Asset & Animation Lead | Sprite source, animation list, hit stop and feedback | 
 Health & Hitbox Agent | Owns health, damage values, and hitbox/hurt box data | Hits land, damage registers, the player can die
 Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy failsafe | Prevents the off-screen soft lock
 Menu & UI Agent | Builds and owns every screen and on-screen element the player sees outside the arena action |  | The player can start a game, read the state of the fight, and see why they won or lost
+
+### [the-rebellon-gameplay-system#2] primary - GameDesignDocument/The Rebellon gameplay System.docx
+Dropping: There is no drop button. Zed drops a carried weapon when he is hit more than 3 times while carrying it, which means the weapon drops on the 4th hit. A dropped weapon lies on the floor and Zed can pick it up again. It keeps its remaining durability. Picking the weapon back up does not reset the hit count.
+Attacks with a weapon: Weapons use the existing light and heavy attack buttons. There are no new inputs and no separate weapon move set. The light and heavy mentioned in the core mechanics refer to Zed's light and heavy attacks, not to light and heavy objects.
+Weapon types: Only the baseball bat and the pipe exist for now. There are no other weapons or upgraded versions.
+Weapon boxes: Each level from Level 2 has one weapon box in a fixed placement. The box holds one weapon, either a baseball bat or a pipe. Which weapon it holds is fixed for each level and is chosen by the level designer. It is not random. Boxes do not respawn.
+Enemy use: Weapons are for Zed only. Enemies cannot pick up or use weapons.
+
+### [the-rebellon-gameplay-system#1] primary - GameDesignDocument/The Rebellon gameplay System.docx
+The Rebellion
+Fists of the Fallen City
+Game Play Systems
+Weapon System
+Starting in Level 2, weapon boxes are introduced across the levels, giving players access to baseball bats and pipes for combating Grunt enemies
+How it works
+From Level 2 onwards, Zed can break weapon boxes, pick up baseball bats and pipes using the pickup animation, and carry them using the carrying animation before attacking enemies.
+Weapon Rules
+Damage: Bats and pipes hit harder than Zed's heavy attack.
+Speed and reach: The baseball bat has a quick swing. The pipe has a longer reach but a slower startup.
+Durability: Each weapon wears out after a set number of hits. Exact hit counts are listed under Weapon Balance Values.
+Breakage: When a weapon runs out of hits it breaks, a short break effect plays, and Zed goes back to using his fists.
+Throwing: Zed can throw a carried weapon. A thrown weapon spins through the air and damages the first enemy it hits. Throwing costs durability and the weapon can be picked up again if it survives, see Weapon Balance Values.
+
+### [the-rebellon-gameplay-system#4] primary - GameDesignDocument/The Rebellon gameplay System.docx
+Light and heavy buttons: The light button swings the weapon at the values above. The heavy button does the same swing with 25 percent more damage and 25 percent more knockback, and costs 2 durability instead of 1. The heavy swing deals 25 damage with the bat and 30 damage with the pipe. A heavy swing still goes through when the weapon has only 1 durability left, and the weapon breaks afterwards.
+Thrown weapon: Damage 15, knockback 300, hitstun 20 frames. It travels at 480 pixels per second for up to 320 pixels and hits the first enemy in its path. A throw costs 2 durability, the same as a heavy swing. If the weapon still has durability left after the throw, it lands on the floor where it hit an enemy or at the end of its flight, and Zed can pick it up and keep using it until its durability runs out. If the weapon has 2 durability or less when thrown, the throw still goes through and the weapon breaks when it lands, with the same break effect as a worn-out weapon.
+Weapon box: A weapon box breaks after 2 hits from Zed. The box break animation is added separately.
+
+### [the-rebellon-gameplay-system#3] primary - GameDesignDocument/The Rebellon gameplay System.docx
+HUD: While Zed carries a weapon, the HUD shows a small icon of that weapon with its remaining durability next to the health bar.
+Weapon Balance Values
+Reference: Starting values, tuned against Zed's current moves (light hits 6, 7 and 12 damage, heavy attack 18 damage with a 12 frame startup) and a Grunt's 30 HP. Frames are at 60 per second. These are first-pass numbers and can be retuned in playtesting.
+Baseball bat: Damage 20. Startup 7 frames, active 4, recovery 16. Reach is a hitbox 64 wide. Knockback 400. Hitstun 26 frames. Durability 10 hits. A Grunt goes down in 2 hits.
+Pipe: Damage 24. Startup 12 frames, active 4, recovery 20. Reach is a hitbox 84 wide, the longest in the game. Knockback 360. Hitstun 28 frames. Durability 8 hits. A Grunt goes down in 2 hits.
+
+### [the-story-campaign#1] primary - GameDesignDocument/the story campaign .docx
+Campaign Progression
+[table]
+Level | District | Mini-Boss | Main Boss
+1 | brick-red-alley | Brick Dugan | -
+2 | mustard-row | Railgun Royce | -
+3 | Greenline-courts | Crusher Kane | Rhea Calder
+4 | Stewpot-gardens | Glitch | Kade Voss
+5 | Songwindow-heights | Raptor | Silas Wren
+6 | Iron-line-push | Subject 88 | Dr. Maren Holt
+7 | Copper-fang-courts | Commander Atlas | Elite Rust Gauntlet
+8 | Overseer-tower | Sentinel-X9 | Halden Varr
+
+### [the-rebellion#15] primary - GameDesignDocument/The Rebellion.docx
+Fight Theme
+Brick should feel like:
+A human battering ram
+The player's first major skill check
+Slow but intimidating
+Easy to understand but hard to face head-on
+Level 2: Transit District
+Mini-Boss: "Railgun" Royce
+Former transit security officer.
+Appearance
+Electrified baton
+Armoured trench coat
+Scanner visor
+Move Set
+Baton Combo
+Charging Dash
+Shockwave Slam
+Rail Trap (electrified floor sections)
+Taser Burst
+Role
+Introduces stun mechanics.
+Level 3: Industrial Zone
+Mini-Boss: "Crusher" Kane
+Rhea Calder's chief enforcer.
+Appearance
+Hydraulic work suit
+Industrial hammer
+Move Set
+Hammer Slam
+Hook Chain Grab
+Furnace Kick
+Steam Vent Burst
+Crushing Uppercut
+Role
+Prepares players for Overseer Calder.
+Level 4: Neon Market
+Mini-Boss: "Glitch"
+A former hacker turned Rust cyber operative.
+Appearance
+Holographic mask
+Portable drone pack
+Move Set
+Drone Barrage
+Hologram Duplicate
+Shock Disk Throw
+Data Spike
+Emergency Teleport
+Role
+Introduces Voss's deception mechanics.
+Level 5: Skyline District
+Mini-Boss: "Raptor"
+Silas Wren's personal hunter.
+Appearance
+Grapple launcher
+Lightweight armour
+Move Set
+
+### [the-rebellion#16] primary - GameDesignDocument/The Rebellion.docx
+Dive Kick
+Wall Bounce Strike
+Grapple Pull
+Aerial Barrage
+Falcon Drop
+Role
+Trains players for vertical combat.
+Level 6: Undercity
+Mini-Boss: Dr. Holt's Experiment "Subject 88"
+A failed chemical test subject.
+Appearance
+Mutated physique
+Chemical tanks on back
+Glowing green veins
+Move Set
+Toxic Breath
+Acid Spit
+Frenzied Charge
+Corrosion Slam
+Chemical Explosion
+Role
+Introduces area denial hazards.
+Level 7: Rust Military Compound
+Mini-Boss: Commander Atlas
+Leader of the Copper Fangs.
+Appearance
+Elite black armour
+Tactical shield
+Twin electrified gauntlets
+Move Set
+Shield Bash
+Gauntlet Combo
+Grapple Hook Pull
+Electric Counter
+Fang Protocol (calls Specialists)
+Role
+The toughest non-boss enemy in the game.
+Level 8: Corporate Tower
+Mini-Boss: Sentinel-X9
+An experimental combat android protecting Varr.
+Appearance
+Corporate security robot
+Rust insignia
+Energy core chest
+Move Set
+Laser Sweep
+Rocket Punch
+Ground Pound
+Energy Shield
+Self-Repair Mode
+Phase 2
+Core overloads:
+Faster attacks
+Red laser barrage
+Explosive dash attacks
+Role
+Final challenge before Halden Varr.
 
 ### [win#2] derived - design/ux/win.md - Purpose
 Tell the player they won **and why**. The GDD win condition is: "Fight your way to the end of the level while beating Rust enemies" and "Defeat Wave / Clear Arena ... in time". The screen must show that the arena was cleared and that it was done in time, using real numbers from the run.
@@ -278,24 +513,41 @@ Lived-in, human, culturally rich. Corner shops, murals celebrating local heroes,
 | bg.arena.01 | assets/backgrounds/arena-01-placeholder.svg | 1920x720 | SVG now, PNG final | 1 | ART |
 1920 wide gives 640px of camera scroll over a 1280 viewport. Play lane y 440 to 680. Final should be split into far and near parallax layers (open question). Theme: corner shop, mural, basketball hoop, food stall, planters.
 
+### [level-01-brick-red-alley#9] derived - design/levels/level-01-brick-red-alley.md - Open questions
+- The theme mentions a mustard corner shop, mural panels and a music window; this direction does not. Add a shop or mural later as a separate sparse landmark?
+- Window-wall may need a tile-seam check in game, since the shadow wedge is tied to edges.
+
 ### [hud#5] derived - design/ux/hud.md - Layout table
 Health bar sits left because the player character commonly starts left and reads left-to-right. Timer sits right so that the two critical survival numbers frame the wave info in the middle. HUD is anchored to the viewport, not the world, and does not move with the camera.
 The HUD must not overlap the action zone. The arena camera and floor (Camera & Bounds Agent) should keep characters below y=120 where possible. Flagged in OQ-H4.
+
+### [flow#10] derived - design/ux/flow.md - Later (deferred, not Tier 0)
+- Next Level button, level select, and a campaign progress screen.
+- Options menu (volume, key rebinding, fullscreen), Controls/How-to-play screen.
+- Character progression screens (the pitch mentions "character progression").
+- Score, rank, combo counter and combo-meter HUD, defensive-state indicators (parry window, block).
+- Boss health bar, enemy health bars beyond the minimal one in `hud.md`, off-screen enemy indicators.
+- Multiple lives or continues, leaderboards, pause-menu settings, localisation, mobile touch controls.
 
 ### [narrative-critic#1] reference - gdd-review-kit-main/reviews/narrative-critic.md - 1. The story promise has no story behind it (BLOCKING)
 **Problem:** The document sets up a narrative premise (rebellion, fallen city, corrupt security force) but contains no story, protagonist, arc, or ending. The premise is a title, not a narrative.
 **Passage:** The subtitle "Fists of the Fallen City" and the tagline "fight back against Corrupt private security force" are the only narrative content. The Pitch adds "urban districts overtaken Rush a corrupt private Security Force." There is no section for story, characters, setting history, or endings. The mechanics list ends at "Defeat Wave / Clear Arena to win the level in time frame."
 **Why it matters:** "Rebellion" implies a movement, stakes, and escalation. The structure (clear arena, beat the timer, repeat) delivers only repetition. Nothing says why the player fights, what winning a level changes, or what the final victory looks like.
 
-### [feasibility-lead#5] reference - gdd-review-kit-main/reviews/feasibility-lead.md - Finding 5: Success criteria and the definition of "prototype" are vague, and the cost model has no cut plan
-- Problem: The budget is a single unit ("tokens") with no conversion to time or cost, and the 200-token figures are unfalsifiable. The document doesn't say what happens if estimates are exceeded. Levels are won by "Defeat Wave / Clear Arena ... in time frame", but there is no level count, no time-limit tuning approach, and no minimum viable slice.
-- Passage: "200 tokens" entries; "Defeat Wave / Clear Arena to win the level in time frame".
-- Severity: MINOR (compounds Finding 1)
-
 ### [adversarial-qa#1] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 1: Win condition and fail state are contradictory or undefined (BLOCKING)
 **Problem:** The document gives two different win conditions and no lose condition. "Defeat Wave / Clear Arena to win the level in time frame" is ambiguous. It could mean clearing every wave, clearing the arena, or surviving until the timer ends. Nothing says what happens if the timer expires with enemies still alive. Nothing says what happens if the player's health reaches zero. There is no lives, continue or retry rule.
 **Source:** Game Mechanics: "Defeat Wave / Clear Arena to win the level in time frame". Timer Agent: "Keep trick of the time the player has to beat the level". Game Loop Agent: "Control the level and win condition". No section mentions failure, death, game over or a health system.
 **Exploits and edge cases:** Does killing the last enemy at 0:00 count as a win? Can a player stall a wave so it never completes? What if an enemy is knocked off-screen or stuck (side-scroller with a "juggle" system) and cannot be reached? The arena can then never be "cleared" and the level soft-locks until the timer runs out.
+
+### [the-rebellion-frist-draft#1] reference - PDf/The Rebellion -Frist Draft.pdf
+The Rebellion
+Fists of the Fallen City
+A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections
+The Pitch The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-`me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.
+Game Mechanics -what the players does
+� Impactful Combat � punchy hits Players moves into a Areas were light and heavy pick-up objects
+� Combos and Juggle routes � Defensive tools(block dodge, parry) Enemies spawn to fight � Defeat Wave / Clear Arena to win the level in time frame
+AI Architecture Team
 
 ### [adversarial-qa#2] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 2: Enemy spawning has no rules, so the wave system can be broken or become unwinnable (MAJOR)
 **Problem:** "Enemies spawn to fight" is the entire spawn spec. Nothing defines spawn triggers, caps, rates, positions or whether spawns are timer-driven or clear-driven. If spawns are time-driven, a player who is slow (or one who hoards enemies with juggles) faces unbounded enemy accumulation. If spawns are clear-driven, a player can stand at an edge and exploit spawn positions. It is also unclear whether enemies spawn inside the player's attack range or behind the player.
@@ -325,5 +577,13 @@ Agent Development role Gameplay Effect Player Mechanics Movement, jump, The play
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
 Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
+### [narrative-critic#9] reference - gdd-review-kit-main/reviews/narrative-critic.md - 1. CONFLICTS
+**Systems Designer Finding 3 (timer versus defensive depth) versus my Finding 3.** I keep my earlier position with a refinement. Time bonuses, pauses, and time per kill are tuning knobs, and the Feasibility Lead correctly warns each adds shared state between the Timer and Game Loop agents. The narrative reason should be chosen first, because it may make the knob unnecessary (a flat, lenient clock, as the Feasibility Lead proposes, is consistent with a "raid" fiction).
+
+### [narrative-critic#5] reference - gdd-review-kit-main/reviews/narrative-critic.md - 5. The "Enemy Agent" and "Game Loop Agent" leave the narrative with no owner (MINOR)
+**Problem:** The AI team covers movement, combos, timer, enemies, and level control. No role owns story, dialogue, level themes, or progression beats, even though "character progression" is promised in the Pitch.
+**Passage:** The Pitch says "character progression, and dynamic enemy behaviours," but the Game Loop Agent only "Control the level and win condition." No item in the AI Architecture Team table covers progression or narrative.
+**Why it matters:** Progression is promised but has no narrative frame. Nothing links levels to districts or to the rebellion's advance, so "urban districts" are a setting label, not a journey.
+
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 359 chunks across 36 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 599 chunks across 57 documents.

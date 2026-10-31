@@ -1,30 +1,34 @@
-# Content pipeline
-
-content-director-agent
-description: Orchestrator for The Rebellion's content pipeline. Reads every doc in the project (GDD docx, PDFs, design specs), builds the retrieval corpus and per-type briefs, runs the writer agents (lore, enemies, levels, dialogue) in dependency order, gates on the validator, runs the critic, and reports what needs owner approval. Use when asked to generate or refresh game content from the GDD.
-
-1. Add main for the menu
-   after content-director-agent read the pipeline 
-   
-   <img width="940" height="607" alt="image" src="https://github.com/user-attachments/assets/5c155b38-60bf-435f-a943-cb8a2bd32314" />
-
-   it generated the menu based on my game document and this was the outcome  
-
-2.
- the content-director-agent read the and menu ui agent
-made the opitions menu
-<img width="400" height="383" alt="image" src="https://github.com/user-attachments/assets/2bde6eed-6979-4483-be17-6977e7f83f3f" />
-
-3.
- Content-director0agent  read the game menu document and added the update the controls on the controls panel that will move the player  
-<img width="560" height="537" alt="image" src="https://github.com/user-attachments/assets/86fc0bb6-234b-48b6-8828-70bcf80fdaaa" />
-
-told me bout  what is 
-the conflict Agent found these conflicts in the game design document 
-The docx binds Dodge to L/C and Block to I/V. The code binds Block to L/C and Dodge to ShiftLeft/V. I is unbound, and V does the opposite of what the docx says.
-The fix is in the KEY_MAP in input.js and the WATCHED list in Zed.js. i reviewed before the build and then had the pipeline regenerated the screen. 
 
 
+# GOAL-ORIENTED CODING AGENT
+
+set up the blackboard that runs the  Shared workspace for the goal-oriented agents. Agents never message each other. They read the board, claim a goal they own, post a fact, and mark the goal done.
 
 
+## Goal chain
 
+G1 read-gdd ----\
+                 >-- G3 find-gaps -- G4 prioritise -- G5 generate-code -- G6 review
+G2 scan-code ---/                                          ^                  |
+                                                           +---- fail --------+
+
+Goal | Agent | Reads | Publishes |
+|---|---|---|---|
+| G1 | `gdd-reader-agent` | `pipeline/corpus/`, GDD docs | `facts/gdd-requirements.json` |
+| G2 | `code-scanner-agent` | `src/`, tests, `assets/asset-keys.json` | `facts/code-inventory.json` |
+| G3 | `gap-analyst-agent` | G1 + G2 facts | `facts/gaps.json` |
+| G4 | `prioritiser-agent` | `facts/gaps.json` | `facts/priorities.json` |
+| G5 | `code-generator-agent` | `facts/priorities.json`, `design/team/contracts.md` | code in `src/`, `facts/generated.json` |
+| G6 | `reviewer-agent` | `facts/generated.json`, the diff, `npm test` | `facts/review.json` |
+
+FEATURE DOCUMENTATION
+
+Rank 2: GAP-009, menu parallax (menu-ui-agent) 
+
+ i ran the blackboard and the goal agent said i need to  build because the main menu lack animations to it 
+ i made changes to the speed and the movement of the backgrounds before accepting the change 
+
+ Rank 3 GAP-027: story intro card
+ it find my lore and added a story intro to the fight section from the lore documents i created 
+ which comes from the content/lore/ this feature was asked for me to review it then i have it approve then the agent build it 
+ the agent suggest it because there was not intro to the story 

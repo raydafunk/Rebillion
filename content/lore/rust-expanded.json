@@ -1,0 +1,278 @@
+[
+  {
+    "id": "rust-origin",
+    "status": "canon",
+    "kind": "event",
+    "name": "How the Rust Got Their Foot in the Door",
+    "summary": "The Rust began as a private security contractor hired to steady the Fallen City, then stayed and became a militarized occupation.",
+    "body": "After years of political decay and rising crime, the city hired a private security contractor to calm things down. Once the Rust were inside, they never left. The Rust transformed from a protective force into a militarized occupation, tightening their control over every district and crushing resistance with brutal efficiency.\n\nThe name comes from their oxidized metal armour, rough and weathered. The neighbourhood reads it as a reminder of what the Rust have done to the city, and Zed reads it as a challenge.",
+    "tags": [
+      "rust",
+      "origin",
+      "backstory"
+    ],
+    "sources": [
+      "the-rebellion#10"
+    ],
+    "relatedIds": [
+      "the-rust",
+      "rust-takeover"
+    ]
+  },
+  {
+    "id": "commander-halden-varr",
+    "status": "canon",
+    "kind": "character",
+    "name": "Overseer Halden Varr, The Architect of Rust",
+    "summary": "The former military strategist who founded the Rust and believes order only comes through fear.",
+    "body": "Varr saw the Fallen City's government collapse and saw his chance. He offered \"protection\" to the officials who were left, then quietly swapped them for Rust loyalists. From that day the Rust were the law.\n\nHe is the face of the Rust's cold, official voice. The Copper Fangs are his personal favourites, and the Overseers, his inner circle, run the districts in his name. He is an Overseer himself, \"The Architect of Rust\", and the main boss.",
+    "tags": [
+      "rust",
+      "leader",
+      "antagonist"
+    ],
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#14",
+      "the-rebellion#19",
+      "the-rebellion#20"
+    ],
+    "relatedIds": [
+      "the-rust",
+      "rust-copper-fangs",
+      "rust-overseers"
+    ]
+  },
+  {
+    "id": "rust-takeover-timeline",
+    "status": "canon",
+    "kind": "event",
+    "name": "Within Months: Curfews, Sealed Districts and Drones",
+    "summary": "Curfews became mandatory, districts were sealed, drones filled the sky and people who spoke up went missing.",
+    "body": "It took the Rust only months. Curfews became mandatory. Whole districts were sealed off. Surveillance drones filled the sky. Anyone who resisted disappeared. The Rust became the law, and then they became the city.\n\nThis is the wider picture behind what Zed saw on his own block: the shut courts, the fenced gardens and the torn-down murals.",
+    "tags": [
+      "rust",
+      "curfew",
+      "drones",
+      "timeline"
+    ],
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#8"
+    ],
+    "relatedIds": [
+      "rust-takeover",
+      "surveillance-towers",
+      "rust-notice-114"
+    ]
+  },
+  {
+    "id": "rust-doctrine",
+    "status": "canon",
+    "kind": "object",
+    "name": "Order is Strength. Freedom is Weakness.",
+    "summary": "The single doctrine the Rust live by: rebuild the Fallen City through force, suppress civilians and eliminate rebels.",
+    "body": "\"Order is strength. Freedom is weakness.\" That is the Rust's whole creed. They hold that the Fallen City can only be rebuilt by force, and that civilians are assets to be managed rather than neighbours to look after.\n\nThey are enforcers, hunters and executioners. Each unit is trained to suppress civilians, eliminate rebels and maintain absolute control, and to see rebels, Zed included, as threats to the \"greater good\". The neighbourhood's answer is on every wall that gets repainted: strength is looking out for each other.",
+    "tags": [
+      "rust",
+      "doctrine",
+      "philosophy"
+    ],
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#7"
+    ],
+    "relatedIds": [
+      "the-rust",
+      "zeds-mission"
+    ]
+  },
+  {
+    "id": "rust-serial-numbers",
+    "status": "canon",
+    "kind": "object",
+    "name": "Serial Numbers",
+    "summary": "The Rust take away recruits' names and give them serial numbers, so nobody stands out and everyone obeys.",
+    "body": "A new recruit hands over their name and gets a number. Helmets hide their faces on top of that. It wipes out who they were and keeps them in line.\n\nIt also means the person under the visor is somebody's neighbour, and nobody in the Fallen City can tell which one.",
+    "tags": [
+      "rust",
+      "identity",
+      "grunt"
+    ],
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#12"
+    ],
+    "relatedIds": [
+      "rust-grunts-iron-line",
+      "rust-grunt"
+    ]
+  },
+  {
+    "id": "rust-grunts-iron-line",
+    "status": "canon",
+    "kind": "faction",
+    "name": "Rust Grunts: The Iron Line",
+    "summary": "The backbone of the Rust: ordinary citizens pressed into service, in cheap rust-coated plating and anonymous helmets.",
+    "body": "The Iron Line were once ordinary citizens, coerced or talked into joining. Their plating is cheap and rust-coated, and their helmets hide who they are on purpose. Each carries a serial number instead of a name.\n\nThey are the crowd the Rust put in front: they keep the streets under watch, make a show of force and hold the front. Zed meets them in nearly every wave.",
+    "tags": [
+      "rust",
+      "enemy",
+      "grunt",
+      "unit"
+    ],
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#12"
+    ],
+    "relatedIds": [
+      "rust-grunt",
+      "rust-serial-numbers"
+    ]
+  },
+  {
+    "id": "rust-bruisers-breakers",
+    "status": "canon",
+    "kind": "faction",
+    "name": "Rust Bruisers: The Breakers",
+    "summary": "Hulking enforcers in heavy plating, boosted with illegal muscle stimulants that make them strong and unsteady.",
+    "body": "The Breakers are big, with reinforced plating that gives them a hulking outline. Many were once in trouble with the law and were promised their freedom in exchange for loyalty. The Rust boost them with stimulants, which makes them stronger and shaky.\n\nThe Rust use them as shock troops for area denial and for crushing resistance groups.",
+    "tags": [
+      "rust",
+      "enemy",
+      "bruiser",
+      "unit"
+    ],
+    "sources": [
+      "the-rebellion#12"
+    ],
+    "relatedIds": [
+      "the-rust"
+    ]
+  },
+  {
+    "id": "rust-rangers-watchers",
+    "status": "canon",
+    "kind": "faction",
+    "name": "Rust Rangers: The Watchers",
+    "summary": "Agile units with taser rifles, batons and tracking visors who chase rebels over alleys and rooftops.",
+    "body": "The Watchers are quick and quiet. They carry taser rifles and batons, and their tracking visors read heat, which makes hiding hard. They are trained to follow rebels through the alleys and across the rooftops.\n\nTheir job is to harass from a distance, give chase and report back. Brick-Red Alley knows its rooftops better than they do.",
+    "tags": [
+      "rust",
+      "enemy",
+      "ranger",
+      "unit",
+      "ranged"
+    ],
+    "sources": [
+      "the-rebellion#12"
+    ],
+    "relatedIds": [
+      "the-rust",
+      "brick-red-alley"
+    ]
+  },
+  {
+    "id": "rust-copper-fangs",
+    "status": "canon",
+    "kind": "faction",
+    "name": "Rust Specialists: The Copper Fangs",
+    "summary": "Elite Rust soldiers with electrified gauntlets, grappling hooks and tactical shields, and Varr's personal favourites.",
+    "body": "The Copper Fangs are picked from the most loyal Rust members and put through psychological conditioning to remove fear and hesitation. Their kit is the best the Rust have: electrified gauntlets, grappling hooks and tactical shields.\n\nThey are Overseer Varr's favourites and are sent on high-priority target elimination, which makes them mini-boss material in the arena.",
+    "tags": [
+      "rust",
+      "enemy",
+      "specialist",
+      "unit",
+      "elite"
+    ],
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#13"
+    ],
+    "relatedIds": [
+      "commander-halden-varr"
+    ]
+  },
+  {
+    "id": "rust-overseers",
+    "status": "canon",
+    "kind": "faction",
+    "name": "Rust Overseers: The Architects of Control",
+    "summary": "District bosses and strategic masterminds, Varr's inner circle, who hold their districts through surveillance, fear and psychological control.",
+    "body": "The Overseers are the Rust's district bosses, strategic masterminds and Varr's inner circle. Each holds a district through surveillance, fear and psychological domination, in a tactical, oppressive style with its own tricks. They are the end-of-level bosses, the district rulers and the faces of the story's antagonists.\n\nFour of them are named. Kade Voss, \"The Eye of the Market\", watches the Neon Market through screens, drones and holograms. Rhea Calder, \"The Iron Matron\", runs the factory floor with machinery and brute force. Silas Wren, \"The Whisper on the Rooftops\", keeps the skyline from above. Dr. Maren Holt, \"The Voice of Compliance\", works in the undercity lab with gas and fog. Above them stands Overseer Halden Varr, \"The Architect of Rust\", who also founded the Rust and fights as the main boss in the Corporate Tower command chamber.\n\nThe neighbourhood answers every screen they put up.",
+    "tags": [
+      "rust",
+      "enemy",
+      "overseer",
+      "unit",
+      "boss",
+      "surveillance"
+    ],
+    "sources": [
+      "the-rebellion#14",
+      "the-rebellion#15",
+      "the-rebellion#16",
+      "the-rebellion#17",
+      "the-rebellion#18",
+      "the-rebellion#19",
+      "the-rebellion#11"
+    ],
+    "relatedIds": [
+      "surveillance-towers",
+      "commander-halden-varr"
+    ]
+  },
+  {
+    "id": "rust-rank-ladder",
+    "status": "proposed",
+    "gddGap": "The GDD lists five unit types but not how they relate on the ground. This ties them into one ladder (Grunts, Rangers, Breakers, Copper Fangs, Overseers) so levels and enemy writers can pace waves; the owner should confirm it.",
+    "kind": "event",
+    "name": "The Rust Ladder",
+    "summary": "A way to read the five Rust units as a ladder: Iron Line up front, Watchers and Breakers in support, Fangs and Overseers at the top.",
+    "body": "Each district tends to open with the Iron Line, add Watchers on the rooftops and Breakers in the street, and finish with a Copper Fang or the district Overseer. The tougher the unit, the closer it sits to Overseer Varr.\n\nThe neighbourhood keeps score in its own way: every rung Zed knocks back is a corner, a court or a window that gets its music back.",
+    "tags": [
+      "rust",
+      "units",
+      "pacing",
+      "levels"
+    ],
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#12",
+      "the-rebellion#13"
+    ],
+    "relatedIds": [
+      "rust-grunts-iron-line",
+      "rust-bruisers-breakers",
+      "rust-rangers-watchers",
+      "rust-copper-fangs",
+      "rust-overseers"
+    ]
+  },
+  {
+    "id": "neighbourhood-answer-to-doctrine",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust's doctrine but no community reply. The tone rules say Rust copy is always answered or defaced by the neighbourhood, so this proposes a painted answer to the creed.",
+    "kind": "object",
+    "name": "The Wall Answers Back",
+    "summary": "Every time the Rust post their creed, someone paints over it with a line about looking out for each other.",
+    "body": "Under a Rust notice, kids chalk in \"Freedom is strength\" and an arrow pointing to the food stall. Murals go back up a patch at a time. It never lasts long, but it is always there by morning.\n\nIt matches Zed's own belief: strength is protecting the people who give your life meaning.",
+    "tags": [
+      "community",
+      "doctrine",
+      "murals",
+      "defaced"
+    ],
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#7",
+      "menu-concept#4"
+    ],
+    "relatedIds": [
+      "rust-doctrine",
+      "rust-notice-114",
+      "local-heroes-murals"
+    ]
+  }
+]

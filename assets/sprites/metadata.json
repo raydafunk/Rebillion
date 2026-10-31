@@ -1,0 +1,119 @@
+{
+  "group_id": "d38f1bdd-b4b2-4d81-909d-a3cc1823fed0",
+  "states": [
+    {
+      "character": {
+        "id": "d71451e3-e8c8-4b35-938f-2149c6e32500",
+        "name": "walking",
+        "prompt": "A scavenger in mismatched, rust-streaked iron plating, heavy chest armor with jagged edges, a featureless conical helmet obscuring the face, standing in a wide, defensive stance with boots planted firmly.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-22T07:16:08.032557+00:00"
+      },
+      "folder": "walking",
+      "frames": {
+        "rotations": {
+          "south": "walking/rotations/south.png",
+          "south-east": "walking/rotations/south-east.png",
+          "east": "walking/rotations/east.png",
+          "north-east": "walking/rotations/north-east.png",
+          "north": "walking/rotations/north.png",
+          "north-west": "walking/rotations/north-west.png",
+          "west": "walking/rotations/west.png",
+          "south-west": "walking/rotations/south-west.png"
+        },
+        "animations": {
+          "walking": {
+            "north": [
+              "walking/animations/walking/north/frame_000.png",
+              "walking/animations/walking/north/frame_001.png",
+              "walking/animations/walking/north/frame_002.png",
+              "walking/animations/walking/north/frame_003.png",
+              "walking/animations/walking/north/frame_004.png",
+              "walking/animations/walking/north/frame_005.png",
+              "walking/animations/walking/north/frame_006.png",
+              "walking/animations/walking/north/frame_007.png"
+            ],
+            "south-west": [
+              "walking/animations/walking/south-west/frame_000.png",
+              "walking/animations/walking/south-west/frame_001.png",
+              "walking/animations/walking/south-west/frame_002.png",
+              "walking/animations/walking/south-west/frame_003.png",
+              "walking/animations/walking/south-west/frame_004.png",
+              "walking/animations/walking/south-west/frame_005.png",
+              "walking/animations/walking/south-west/frame_006.png",
+              "walking/animations/walking/south-west/frame_007.png"
+            ],
+            "north-west": [
+              "walking/animations/walking/north-west/frame_000.png",
+              "walking/animations/walking/north-west/frame_001.png",
+              "walking/animations/walking/north-west/frame_002.png",
+              "walking/animations/walking/north-west/frame_003.png",
+              "walking/animations/walking/north-west/frame_004.png",
+              "walking/animations/walking/north-west/frame_005.png",
+              "walking/animations/walking/north-west/frame_006.png",
+              "walking/animations/walking/north-west/frame_007.png"
+            ],
+            "south-east": [
+              "walking/animations/walking/south-east/frame_000.png",
+              "walking/animations/walking/south-east/frame_001.png",
+              "walking/animations/walking/south-east/frame_002.png",
+              "walking/animations/walking/south-east/frame_003.png",
+              "walking/animations/walking/south-east/frame_004.png",
+              "walking/animations/walking/south-east/frame_005.png",
+              "walking/animations/walking/south-east/frame_006.png",
+              "walking/animations/walking/south-east/frame_007.png"
+            ],
+            "south": [
+              "walking/animations/walking/south/frame_000.png",
+              "walking/animations/walking/south/frame_001.png",
+              "walking/animations/walking/south/frame_002.png",
+              "walking/animations/walking/south/frame_003.png",
+              "walking/animations/walking/south/frame_004.png",
+              "walking/animations/walking/south/frame_005.png",
+              "walking/animations/walking/south/frame_006.png",
+              "walking/animations/walking/south/frame_007.png"
+            ],
+            "west": [
+              "walking/animations/walking/west/frame_000.png",
+              "walking/animations/walking/west/frame_001.png",
+              "walking/animations/walking/west/frame_002.png",
+              "walking/animations/walking/west/frame_003.png",
+              "walking/animations/walking/west/frame_004.png",
+              "walking/animations/walking/west/frame_005.png",
+              "walking/animations/walking/west/frame_006.png",
+              "walking/animations/walking/west/frame_007.png"
+            ],
+            "east": [
+              "walking/animations/walking/east/frame_000.png",
+              "walking/animations/walking/east/frame_001.png",
+              "walking/animations/walking/east/frame_002.png",
+              "walking/animations/walking/east/frame_003.png",
+              "walking/animations/walking/east/frame_004.png",
+              "walking/animations/walking/east/frame_005.png",
+              "walking/animations/walking/east/frame_006.png",
+              "walking/animations/walking/east/frame_007.png"
+            ],
+            "north-east": [
+              "walking/animations/walking/north-east/frame_000.png",
+              "walking/animations/walking/north-east/frame_001.png",
+              "walking/animations/walking/north-east/frame_002.png",
+              "walking/animations/walking/north-east/frame_003.png",
+              "walking/animations/walking/north-east/frame_004.png",
+              "walking/animations/walking/north-east/frame_005.png",
+              "walking/animations/walking/north-east/frame_006.png",
+              "walking/animations/walking/north-east/frame_007.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-10-22T09:36:07.063978"
+}

@@ -1,6 +1,6 @@
 import { EVENTS } from '../shared/events.js';
 import { COMBAT_DEFAULTS, PLAYER_ID } from '../shared/combatData.js';
-import { createHealth, applyDamage, resetHealth, isInvulnerable } from './health.js';
+import { createHealth, applyDamage, applyGlancingHit, applyHeal, resetHealth, isInvulnerable } from './health.js';
 
 export function worldRect(rect, origin, facing) {
   const x0 = origin.x + facing * rect.x;
@@ -40,16 +40,17 @@ export function createHitResolver(events, now = () => Date.now()) {
       const key = `${req.attackId}|${id}`;
       if (seen.has(key)) continue;
       const st = e.reg.getState();
+      if ((st.lift ?? 0) >= COMBAT_DEFAULTS.AIR_DODGE_LIFT) continue; // airborne: ground melee passes underneath
       if (!rectsOverlap(box, worldRect(e.reg.hurtbox, st, st.facing))) continue;
       const dir = st.x >= req.origin.x ? 1 : -1;
       const guard = st.guard ?? null;
-      if (guard === 'dodge' || guard === 'parry') {
+      if (guard === 'parry') {
         // Negated: no hp change, no invulnerability spent, but Zed still gets told.
         if (isInvulnerable(e.health, t)) continue;
         seen.add(key);
         events.emit(EVENTS.DAMAGE_APPLIED, {
           targetId: id, attackerId: req.attackerId, amount: 0,
-          hpAfter: e.health.hp, knockback: 0, hitstun: 0,
+          hpAfter: e.health.hp, knockback: 0, hitstun: 0, landed: false,
         });
         continue;
       }
@@ -57,12 +58,22 @@ export function createHitResolver(events, now = () => Date.now()) {
       const dmg = blocked ? Math.max(1, Math.round(req.damage * COMBAT_DEFAULTS.BLOCK_DAMAGE_MULT)) : req.damage;
       const kb = blocked ? req.knockback * COMBAT_DEFAULTS.BLOCK_KNOCKBACK_MULT : req.knockback;
       const stun = blocked ? 0 : req.hitstun;
-      const r = applyDamage(e.health, dmg, t, stun);
+      // Special / neverKills vs a boss: capped at bossDamageCap and never below 1 hp.
+      // If nothing is left to deal (boss already at 1 hp) the blow still lands (hitstun, knockback, event).
+      let r;
+      if (e.reg.boss && (req.special || req.neverKills)) {
+        let cap = dmg;
+        if (Number.isFinite(req.bossDamageCap)) cap = Math.min(cap, req.bossDamageCap);
+        if (req.neverKills) cap = Math.min(cap, e.health.hp - 1);
+        r = cap > 0 ? applyDamage(e.health, cap, t, stun) : applyGlancingHit(e.health, t, stun);
+      } else {
+        r = applyDamage(e.health, dmg, t, stun);
+      }
       if (!r.applied) continue;
       seen.add(key);
       events.emit(EVENTS.DAMAGE_APPLIED, {
         targetId: id, attackerId: req.attackerId, amount: r.amount,
-        hpAfter: r.hpAfter, knockback: dir * kb, hitstun: stun,
+        hpAfter: r.hpAfter, knockback: dir * kb, hitstun: stun, landed: true,
       });
       if (id === PLAYER_ID) emitPlayerHp(e.health);
       if (r.died) events.emit(EVENTS.ENTITY_DIED, { id, team: e.reg.team });
@@ -87,6 +98,14 @@ export function createHitResolver(events, now = () => Date.now()) {
 
   return {
     getHealth: (id) => entities.get(id)?.health,
+    /** Restore hp (health pickups). Returns hp actually gained; 0 at full health. */
+    heal(id, amount) {
+      const e = entities.get(id);
+      if (!e) return 0;
+      const gained = applyHeal(e.health, amount);
+      if (gained > 0 && id === PLAYER_ID) emitPlayerHp(e.health);
+      return gained;
+    },
     destroy() {
       events.off(EVENTS.ENTITY_REGISTERED, onRegister);
       events.off(EVENTS.ENTITY_UNREGISTERED, onUnregister);

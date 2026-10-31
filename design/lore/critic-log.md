@@ -93,3 +93,14 @@ Checked: all 10 items against `design/lore/canon.md` and `content/dialogue/optio
 - Consistency conflict: `options-menu.json` `options-bind-move` has `control: rebind` with hint "Press Enter, then the key you want.", but `options-controls.json` (`options-not-rebindable`, `options-bind-jump/crouch` notes) treats Move as read-only. Content owner must pick one; if read-only, Move line 3 should become "Fixed for now."
 - Terms "pad", "the wall", "the block" are not GDD terms; confirm as menu vocabulary.
 - `options-pickup-pause-collision` is copy for an unresolved default clash (P); drop when resolved.
+
+## Pass: content/ audit (lore, enemies, levels, dialogue)
+
+| File | Before | After | Rule | Owner |
+|---|---|---|---|---|
+| content/dialogue/extended.json (rust-taunt-shield-sergeant) | "Rust holds this street." | "Rust hold this street." | Rust takes plural verbs | content |
+| content/enemies/rust-roster.json (rust-grunt description) | "Rust strips recruits ... and gives them serial numbers" | "the Rust strip recruits ... and give them serial numbers" | Rust is a force of people, plural | content |
+| content/lore/rust-expanded.json (rust-origin body) | "Rust transformed ... tightening its control" | "The Rust transformed ... tightening their control" | Rust takes plural | content |
+| content/levels/rust-gdd-levels.json (level-06 outro) | "Zed's mother waves a ladle from the stall." | "A neighbour waves a ladle from the stall." | GDD does not say where Zed's mother is (stall seized) | content |
+
+All four mirrored in content/build/content.json. Proposed, not applied: title-wall-writing "Sector 7 ->" (clinical, GDD names no sectors; suggest a district name such as "Mustard Row ->"; text comes from the title-screen mock image, owner to decide).

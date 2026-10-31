@@ -1,0 +1,43 @@
+{
+  "id": "level-04-stewpot-gardens",
+  "status": "styled",
+  "background": {
+    "path": "assets/levels/level-04-stewpot-gardens/background.svg",
+    "overlay": {
+      "color": "#E3A92B",
+      "alpha": 0.1
+    }
+  },
+  "ambient": {
+    "period": 1920,
+    "windowY": 236,
+    "windowW": 34,
+    "windowH": 40,
+    "color": "#E3A92B",
+    "lit": [990, 1056, 1230, 1296],
+    "dark": [],
+    "dustPerBeam": 0,
+    "row": {
+      "shopPitch": 1,
+      "shopCount": 0,
+      "bulbX0": 60,
+      "bulbStep": 120,
+      "bulbCount": 16,
+      "bulbY": 48,
+      "bulbSag": 28,
+      "bulbSpan": 240,
+      "crazy": 0
+    },
+    "outdoor": {
+      "trees": [],
+      "suns": [[960, 230, 150]],
+      "shafts": [[800, 60], [1040, 50]],
+      "clouds": [[260, 110, 85], [640, 170, 60], [1180, 90, 100], [1640, 150, 70]],
+      "leaves": 6,
+      "birds": 3,
+      "motes": 10,
+      "leafColors": ["#3A7B4A", "#E3A92B", "#F2C04D", "#A8402E"]
+    }
+  },
+  "notes": "Golden hour market row: sand sky, brick skyline, string lights, three striped stalls (red, green, mustard). 1920 wide tileable, calm cobbled lane. Ambient (period 1920): chasing string-light glows on the swagged wire, breathing sun and shafts, drifting clouds, a few lit windows breathing, birds, leaves, warm motes, occasional balloons; all above y 440."
+}

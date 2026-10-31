@@ -1,0 +1,515 @@
+[
+  {
+    "id": "rust-notice-doctrine",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "notice",
+    "lines": [
+      "ORDER IS STRENGTH. FREEDOM IS WEAKNESS.",
+      "The creed is posted. Read it. Obey it, or be dealt with.",
+      "By order of Overseer Varr: order is strength.",
+      "Freedom is weakness. This notice is binding."
+    ]
+  },
+  {
+    "id": "rust-notice-serial-rollcall",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#12"
+    ],
+    "speaker": "rust",
+    "trigger": "notice",
+    "lines": [
+      "Roll call. Answer to your number only.",
+      "Names are retired. Serial numbers remain.",
+      "Unit 4471, report to the Iron Line.",
+      "Unit 0932, hold position. Do not speak.",
+      "Rebels have names. Citizens have numbers."
+    ]
+  },
+  {
+    "id": "rust-notice-sealed-district",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#8"
+    ],
+    "speaker": "rust",
+    "trigger": "notice",
+    "lines": [
+      "District sealed. Curfew is mandatory.",
+      "Lights out at nine. No exceptions.",
+      "Drones are overhead. Stay indoors.",
+      "Assembly is resistance. Resistance is eliminated."
+    ]
+  },
+  {
+    "id": "rust-overseer-announcement",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#13",
+      "the-rebellion#8"
+    ],
+    "speaker": "rust",
+    "trigger": "notice",
+    "lines": [
+      "Overseer notice: this district is under review.",
+      "All screens will carry today's message.",
+      "Surveillance keeps rebels from hiding.",
+      "Stay calm. The Rust have this district in hand.",
+      "Watch the towers. The towers watch you."
+    ]
+  },
+  {
+    "id": "rust-varr-order",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#13"
+    ],
+    "speaker": "rust",
+    "trigger": "notice",
+    "lines": [
+      "Varr to all Overseers: tighten the districts.",
+      "Order from Overseer Varr: hold every line.",
+      "Varr expects every rebel found by nightfall.",
+      "Fear keeps the peace. Crush what resists."
+    ]
+  },
+  {
+    "id": "neighbour-defaced-doctrine",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#7",
+      "menu-concept#4"
+    ],
+    "speaker": "poster",
+    "trigger": "poster",
+    "lines": [
+      "Strength is looking out for each other.",
+      "FREEDOM IS WEAKNESS? Not on this wall.",
+      "Painted over: we keep the music on.",
+      "Order? We prefer neighbours."
+    ]
+  },
+  {
+    "id": "neighbour-answers-serial",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#12"
+    ],
+    "speaker": "neighbour",
+    "trigger": "taunt",
+    "lines": [
+      "I know your name. Your mum would, too.",
+      "Numbers are for bus stops. Come say hello.",
+      "Somebody under that helmet has a name.",
+      "Come by the stall. Bring your name."
+    ]
+  },
+  {
+    "id": "neighbour-answers-curfew",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11",
+      "menu-concept#4"
+    ],
+    "speaker": "neighbour",
+    "trigger": "notice",
+    "lines": [
+      "Lights out? We lit a candle instead.",
+      "Curfew's crossed out. Music at the court.",
+      "Quiet streets? Not while Zed's around.",
+      "The sealed gate has a new mural on it."
+    ]
+  },
+  {
+    "id": "zed-answers-overseer",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#13",
+      "the-rebellion#10",
+      "the-rebellion#9"
+    ],
+    "speaker": "zed",
+    "trigger": "taunt",
+    "lines": [
+      "Nice speech. Watch me turn the screen off.",
+      "Your towers are loud. Our windows are louder.",
+      "Review this: the block is ours again.",
+      "Strength? It is the neighbours. Always was."
+    ]
+  },
+  {
+    "id": "zed-answers-varr",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#11",
+      "the-rebellion#10"
+    ],
+    "speaker": "zed",
+    "trigger": "taunt",
+    "lines": [
+      "Tell Varr: knock, knock. We are coming.",
+      "Fear is not a plan. Neighbours are.",
+      "Order is strength? Try a good stew.",
+      "Say hi to the Overseer. Say it loud."
+    ]
+  },
+  {
+    "id": "rust-iron-line-spawn",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "fight_start",
+    "lines": [
+      "Iron Line, hold the lane.",
+      "Unit 4471, advancing.",
+      "Form up. Suppress the civilians."
+    ],
+    "enemy": "rust-iron-line-cordon"
+  },
+  {
+    "id": "rust-iron-line-telegraph",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "hit-feedback-spec#4"
+    ],
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Push-bar sweep. Brace.",
+      "Hold... sweep!",
+      "Line, crush them!"
+    ],
+    "enemy": "rust-iron-line-cordon"
+  },
+  {
+    "id": "rust-iron-line-pushed-back",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "wave_clear",
+    "lines": [
+      "Unit 4471, falling back.",
+      "Line broken. Backing off.",
+      "I just... need a minute."
+    ],
+    "enemy": "rust-iron-line-cordon"
+  },
+  {
+    "id": "zed-answers-iron-line",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#10"
+    ],
+    "speaker": "zed",
+    "trigger": "combo",
+    "lines": [
+      "A bar? Let me duck under that.",
+      "Hi, Unit 4471. What is your name?",
+      "Shove me later. Music first."
+    ],
+    "enemy": "rust-iron-line-cordon"
+  },
+  {
+    "id": "rust-breaker-spawn",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "fight_start",
+    "lines": [
+      "Breaker on the block.",
+      "Smash. Break. Crush the resistance.",
+      "Stand aside or be broken."
+    ],
+    "enemy": "rust-breaker"
+  },
+  {
+    "id": "rust-breaker-telegraph",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "hit-feedback-spec#4"
+    ],
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Winding up. Big swing.",
+      "Here it comes. Ground shakes.",
+      "Slam incoming."
+    ],
+    "enemy": "rust-breaker"
+  },
+  {
+    "id": "rust-breaker-pushed-back",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "wave_clear",
+    "lines": [
+      "Too heavy... sitting down.",
+      "The stuff wore off. I am done.",
+      "Pushed back. Steady."
+    ],
+    "enemy": "rust-breaker"
+  },
+  {
+    "id": "zed-answers-breaker",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#10"
+    ],
+    "speaker": "zed",
+    "trigger": "combo",
+    "lines": [
+      "Big wind-up. I can dance around that.",
+      "Easy, big fella. Take a seat.",
+      "All that muscle, no footwork."
+    ],
+    "enemy": "rust-breaker"
+  },
+  {
+    "id": "rust-watcher-spawn",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "fight_start",
+    "lines": [
+      "Watcher on the rooftop.",
+      "Visor locked. I see you.",
+      "Rebel located. Hunting."
+    ],
+    "enemy": "rust-watcher"
+  },
+  {
+    "id": "rust-watcher-telegraph",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "hit-feedback-spec#4"
+    ],
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Taser charging. Stay still.",
+      "Visor flash, then the shot.",
+      "Rebel in the sights. Do not move."
+    ],
+    "enemy": "rust-watcher"
+  },
+  {
+    "id": "rust-watcher-pushed-back",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "wave_clear",
+    "lines": [
+      "Visor cracked. Pulling back.",
+      "Lost the trace. Retreating.",
+      "Off the roof. Regroup."
+    ],
+    "enemy": "rust-watcher"
+  },
+  {
+    "id": "zed-answers-watcher",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#12",
+      "the-rebellion#10"
+    ],
+    "speaker": "zed",
+    "trigger": "combo",
+    "lines": [
+      "Cute visor. Can it see me dodge?",
+      "Up on a roof? I know every ladder.",
+      "Tracking me? Keep up, then."
+    ],
+    "enemy": "rust-watcher"
+  },
+  {
+    "id": "rust-copper-fang-spawn",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#13",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "fight_start",
+    "lines": [
+      "Copper Fang, by order of Varr.",
+      "Fear removed. Duty remains.",
+      "Rebel marked. Target to be eliminated."
+    ],
+    "enemy": "rust-copper-fang"
+  },
+  {
+    "id": "rust-copper-fang-telegraph",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#13",
+      "hit-feedback-spec#4"
+    ],
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Hook out. Shield up.",
+      "Gauntlet crackling.",
+      "Closing on the target."
+    ],
+    "enemy": "rust-copper-fang"
+  },
+  {
+    "id": "rust-copper-fang-pushed-back",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#13",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "wave_clear",
+    "lines": [
+      "Fang withdrawing. Report to Varr.",
+      "Shield down. Falling back.",
+      "Not... in the plan."
+    ],
+    "enemy": "rust-copper-fang"
+  },
+  {
+    "id": "zed-answers-copper-fang",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#13",
+      "the-rebellion#10"
+    ],
+    "speaker": "zed",
+    "trigger": "combo",
+    "lines": [
+      "Shiny gloves. Mind the wires.",
+      "Varr sent his favourite? I am flattered.",
+      "Hooks and shields. Still just a person."
+    ],
+    "enemy": "rust-copper-fang"
+  },
+  {
+    "id": "rust-halden-varr-spawn",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#19",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "fight_start",
+    "lines": [
+      "Order is strength. Freedom is weakness.",
+      "Command units, deploy. All screens to my channel.",
+      "This tower holds the whole city. Stand down."
+    ],
+    "enemy": "rust-halden-varr"
+  },
+  {
+    "id": "rust-halden-varr-telegraph",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#19",
+      "hit-feedback-spec#4"
+    ],
+    "speaker": "rust",
+    "trigger": "taunt",
+    "lines": [
+      "Shield up. Units forward.",
+      "Override: drones released.",
+      "Stance adjusted. You are predictable."
+    ],
+    "enemy": "rust-halden-varr"
+  },
+  {
+    "id": "rust-halden-varr-pushed-back",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#19",
+      "the-rebellion#11"
+    ],
+    "speaker": "rust",
+    "trigger": "wave_clear",
+    "lines": [
+      "The screens... went dark.",
+      "Tower lost. Pulling back.",
+      "Overseer off the grid."
+    ],
+    "enemy": "rust-halden-varr"
+  },
+  {
+    "id": "zed-answers-halden-varr",
+    "status": "proposed",
+    "gddGap": "The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.",
+    "sources": [
+      "the-rebellion#19",
+      "the-rebellion#10"
+    ],
+    "speaker": "zed",
+    "trigger": "combo",
+    "lines": [
+      "Pull the plug on that screen, friends.",
+      "Big boss, small voice. Switch it off.",
+      "No more speeches. Windows open."
+    ],
+    "enemy": "rust-halden-varr"
+  }
+]

@@ -1,0 +1,102 @@
+{
+  "id": "level-07-copper-fang-courts",
+  "status": "styled",
+  "_comment": "Owned by the level style agent for this level. background.path: SVG/PNG path (1920x720) or null for the shared placeholder. overlay: tint drawn over the background.",
+  "background": {
+    "path": "assets/levels/level-07-copper-fang-courts/background.svg",
+    "overlay": {
+      "color": "#2F6B3F",
+      "alpha": 0.12
+    }
+  },
+  "notes": "Centre-court command post at golden hour: bent hoops left and right, cold slate Rust tent with cyan screen mid-ground, faint chalk drawings on a calm green court lane. Ambient (period 1920, all above y 440): a ghost ball game between the bent rims with swish rings and confetti, glitching Rust screen that flinches on every score, dish pings, chasing roof lights, sweeping searchlights, patrol drones with scan cones, throbbing banner diamonds, turning sun rays, birds, clouds, fireflies and falling leaves.",
+  "ambient": {
+    "period": 1920,
+    "court": {
+      "hoop": [
+        326,
+        218,
+        1594,
+        218
+      ],
+      "screen": [
+        896,
+        360,
+        128,
+        70
+      ],
+      "dish": [
+        960,
+        146
+      ],
+      "sun": [
+        1480,
+        300
+      ],
+      "roof": [
+        [
+          740,
+          458
+        ],
+        [
+          960,
+          246
+        ],
+        [
+          1180,
+          458
+        ]
+      ],
+      "banners": [
+        [
+          701,
+          352
+        ],
+        [
+          1219,
+          352
+        ]
+      ],
+      "lamps": [
+        [
+          610,
+          290
+        ],
+        [
+          1310,
+          290
+        ]
+      ],
+      "trees": [
+        [
+          40,
+          330
+        ],
+        [
+          470,
+          338
+        ],
+        [
+          690,
+          342
+        ],
+        [
+          1010,
+          336
+        ],
+        [
+          1330,
+          340
+        ],
+        [
+          1860,
+          334
+        ]
+      ],
+      "drones": 2,
+      "birds": 4,
+      "clouds": 4,
+      "fireflies": 8
+    }
+  }
+}

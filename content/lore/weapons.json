@@ -1,0 +1,58 @@
+[
+  {
+    "id": "weapon-system", "status": "canon",
+    "sources": ["the-rebellon-gameplay-system#1", "the-rebellon-gameplay-system#2", "the-rebellon-gameplay-system#3"],
+    "kind": "object", "name": "Street Weapons",
+    "summary": "From Level 2, Zed can crack open weapon boxes and pick up a baseball bat or a pipe to take on the Rust Grunts.",
+    "body": "Only two weapons exist for now, the baseball bat and the pipe. Zed breaks a box, picks the weapon up, carries it and swings with the same light and heavy buttons he already uses. Both hit harder than his heavy attack, but they wear out, so every swing counts.",
+    "tags": ["weapons", "level-2", "pickup", "zed"]
+  },
+  {
+    "id": "baseball-bat", "status": "canon",
+    "sources": ["the-rebellon-gameplay-system#1", "the-rebellon-gameplay-system#3", "the-rebellon-gameplay-system#4"],
+    "kind": "object", "name": "Baseball Bat",
+    "summary": "The quick weapon: a fast swing, short reach and ten hits of wear before it breaks.",
+    "body": "Damage 20, with a 7 frame startup, 4 active and 16 recovery. Its hitbox is 64 wide, knockback is 400 and hitstun 26 frames. It lasts 10 hits, and a Grunt goes down in 2.\n\nThe heavy swing does 25 damage and costs 2 durability instead of 1. A heavy swing still goes through with 1 durability left, and the bat breaks afterwards.",
+    "tags": ["weapons", "bat", "fast"]
+  },
+  {
+    "id": "pipe", "status": "canon",
+    "sources": ["the-rebellon-gameplay-system#1", "the-rebellon-gameplay-system#3", "the-rebellon-gameplay-system#4"],
+    "kind": "object", "name": "Pipe",
+    "summary": "The reach weapon: the longest hitbox in the game, a slower start and eight hits of wear.",
+    "body": "Damage 24, with a 12 frame startup, 4 active and 20 recovery. Its hitbox is 84 wide, the longest in the game. Knockback is 360 and hitstun 28 frames. It lasts 8 hits, and a Grunt goes down in 2.\n\nThe heavy swing does 30 damage and costs 2 durability. Zed has to commit to the slower startup to get the reach.",
+    "tags": ["weapons", "pipe", "reach"]
+  },
+  {
+    "id": "weapon-box", "status": "canon",
+    "sources": ["the-rebellon-gameplay-system#1", "the-rebellon-gameplay-system#2", "the-rebellon-gameplay-system#4"],
+    "kind": "object", "name": "Weapon Box",
+    "summary": "One fixed box per level from Level 2, holding a bat or a pipe, breaking after 2 hits from Zed.",
+    "body": "Each level from Level 2 has one weapon box in a fixed spot. What is inside is chosen by the level designer and is never random. Boxes do not respawn.\n\nThe box break animation is added separately.",
+    "tags": ["weapons", "box", "level-design"]
+  },
+  {
+    "id": "weapon-breakage-and-drops", "status": "canon",
+    "sources": ["the-rebellon-gameplay-system#1", "the-rebellon-gameplay-system#2", "the-rebellon-gameplay-system#3"],
+    "kind": "object", "name": "Worn Out, Dropped, Picked Up Again",
+    "summary": "Weapons break after a set number of hits, and Zed drops one if he is hit more than 3 times while carrying it.",
+    "body": "When a weapon runs out of hits it breaks, a short break effect plays and Zed goes back to his fists. There is no drop button: the weapon falls on the 4th hit he takes. It lies on the floor, keeps its remaining durability, and Zed can pick it up again. Picking it up does not reset the hit count.\n\nWhile Zed carries a weapon, the HUD shows its icon and remaining durability beside the health bar.",
+    "tags": ["weapons", "durability", "hud"]
+  },
+  {
+    "id": "thrown-weapon", "status": "canon",
+    "sources": ["the-rebellon-gameplay-system#1", "the-rebellon-gameplay-system#4"],
+    "kind": "object", "name": "The Throw",
+    "summary": "Zed can hurl a carried weapon; it spins through the air and hits the first Rust enemy in its path.",
+    "body": "A throw does 15 damage with knockback 300 and 20 frames of hitstun. It travels at 480 pixels per second for up to 320 pixels and costs 2 durability.\n\nIf the weapon survives, it lands where it hit or at the end of its flight and Zed can pick it up again. With 2 durability or less, the throw still goes through and the weapon breaks when it lands.",
+    "tags": ["weapons", "throw", "combat"]
+  },
+  {
+    "id": "weapons-from-the-corner-shops", "status": "canon",
+    "sources": ["the-rebellon-gameplay-system#1", "the-rebellion#6"],
+    "kind": "object", "name": "Boxes Left Behind the Shops",
+    "summary": "Where the weapon boxes come from: crates the neighbourhood tucked away behind the corner shops, for when the block needs them.",
+    "body": "Nobody says who packed them. A bat from somebody's old pickup game, a length of pipe from a shuttered stall. The neighbourhood keeps looking out for each other, even after the Rust came through.\n\nZed does not fight for glory, so he borrows these only while they last.",
+    "tags": ["weapons", "corner-shops", "community"]
+  }
+]

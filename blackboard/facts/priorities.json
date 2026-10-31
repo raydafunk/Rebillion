@@ -1,0 +1,577 @@
+{
+ "builtAt": "2026-10-19T13:22:24.449Z",
+ "note": "Round 2 rebuild from the 27-gap gaps.json. All Tier 0 requirements are met (no Tier 0 gaps open; gaps.json tier is null for all 27). The earlier owner approval (\"approve Rank2 GAP-005\") applied to previous-round gap IDs (combat-data single-source work, now met as R-019) and does not carry over to any item below. needsOwner true items must not start until the owner supplies the listed decisions.",
+ "queue": [
+  {
+   "rank": 1,
+   "gap": "GAP-004",
+   "score": 80,
+   "title": "Give Rust Grunt a 1-2-3 Rust Jab Combo",
+   "rationale": "No Tier 0 gaps remain open (all Tier 0 requirements are met), so rank by pillar and size. Smallest self-contained fix in the one shipped enemy; improves defence depth (parry/dodge have something to read). Reuses existing grunt damage from src/shared/combatData.js, so no new numbers: needsOwner false.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Grunt attack data defines a 3-hit jab string, each hit a distinct attackId",
+    "Per-hit damage/knockback/hitstun come from combatData.js or the grunt data table, none hard-coded elsewhere",
+    "Unit test: a grunt in range emits three hit-request events in order, with spacing inside the data-table timings",
+    "npm test green; existing grunt and wave tests unchanged"
+   ],
+   "dependsOn": [],
+   "status": "implemented",
+   "needsOwner": false
+  },
+  {
+   "rank": 2,
+   "gap": "GAP-026",
+   "score": 60,
+   "title": "Animate the 3 menu parallax layers",
+   "rationale": "Small, testable, no design decision; GDD states 3 layers but they are static. Polish, so below combat.",
+   "ownerAgent": "menu-ui-agent",
+   "allowedFiles": [
+    "src/ui/"
+   ],
+   "acceptance": [
+    "Sky, buildings and wall layers each have a distinct nonzero scroll/offset rate, defined in a data table",
+    "Unit test on the pure offset function: far layer moves less than near layer, wall layer most",
+    "npm test green"
+   ],
+   "dependsOn": [],
+   "status": "implemented",
+   "needsOwner": false,
+   "notes": "Built, then reworked by hand with the owner on 2026-10-19: the city (sky, buildings, road) now scrolls continuously right as tile sprites; the wall art stays fixed. See src/ui/parallaxData.js and MenuScene.js. Do not rebuild."
+  },
+  {
+   "rank": 3,
+   "gap": "GAP-027",
+   "score": 55,
+   "title": "Present the story intro in game",
+   "rationale": "Story (retake Fallen City, find missing father) is stated in the GDD (the-rebellion#8-9) but shown nowhere. Small UI text card. Wording should reuse existing pipeline/content dialogue, not invent new lore.",
+   "ownerAgent": "menu-ui-agent",
+   "allowedFiles": [
+    "src/ui/",
+    "src/scenes/ResultScene.js"
+   ],
+   "acceptance": [
+    "A story text card exists in src/ui/ mentioning Fallen City, Rust and the missing father",
+    "Text lives in a data module, tested for non-empty lines",
+    "npm test green"
+   ],
+   "dependsOn": [],
+   "status": "implemented",
+   "needsOwner": false
+  },
+  {
+   "rank": 4,
+   "gap": "GAP-006",
+   "score": 52,
+   "title": "Extend combat contract for launch, ground bounce, guard break and super armour",
+   "rationale": "Dependency for Bruiser smash/uppercut/body check, Specialist shield bash, juggle and bosses. Additive optional fields on hit-request/damage-applied; no numbers needed, existing behaviour must not change. Combat owns the contract.",
+   "ownerAgent": "combat-agent",
+   "allowedFiles": [
+    "src/combat/",
+    "src/state/",
+    "src/shared/",
+    "design/team/contracts.md"
+   ],
+   "acceptance": [
+    "hit-request accepts optional launch, guardBreak and superArmour fields, documented in contracts.md",
+    "Combat unit tests: guardBreak ignores the block multiplier; superArmour target takes damage but no hitstun; omitting the fields keeps old results",
+    "npm test green"
+   ],
+   "dependsOn": [],
+   "status": "todo",
+   "needsOwner": false,
+   "step": 1
+  },
+  {
+   "rank": 5,
+   "gap": "GAP-005",
+   "score": 50,
+   "title": "Add Grunt Helmet Headbutt (lunge + brief stun)",
+   "rationale": "Extra Grunt move for defence depth. Stun length and lunge distance are only \"short\"/\"brief\" in the GDD.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Headbutt attack in the grunt data table with windup, lunge and stun values",
+    "Unit test: grunt uses it when the player is within the too-close range",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-004"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Headbutt stun duration, lunge distance, windup ms. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 6,
+   "gap": "GAP-006",
+   "score": 48,
+   "title": "Add Rust Bruiser with downward smash (ground bounce, block break)",
+   "rationale": "New unit type. Needs HP, damage, startup numbers (GDD: \"medium startup\" only) and Bruiser tier is unassigned.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/",
+    "src/waves/"
+   ],
+   "acceptance": [
+    "Bruiser data table (hp, speed, smash attack) in src/enemies/",
+    "Smash emits hit-request with guardBreak and launch/ground bounce",
+    "Wave data can spawn a bruiser; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-006 step 1"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "step": 2,
+   "needsOwnerFor": "Bruiser hp, smash damage/startup, which wave it first appears in, tier. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 7,
+   "gap": "GAP-007",
+   "score": 44,
+   "title": "Add Bruiser Rust Uppercut launcher (anti-air)",
+   "rationale": "Needs Bruiser (GAP-006) and launch. Trigger rule for \"frequent jumping\" is undefined.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Uppercut in Bruiser data table with launch set",
+    "Unit test: used when the player is airborne in range",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-006"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Damage, startup, jump-frequency trigger. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 8,
+   "gap": "GAP-008",
+   "score": 43,
+   "title": "Add Bruiser Body Check (dash with super armour)",
+   "rationale": "Needs Bruiser and the superArmour contract field.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Body Check in Bruiser data table with superArmour true and dash speed/distance",
+    "Unit test: player hit during the dash does not interrupt it",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-006"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Dash distance/speed, damage, knockback. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 9,
+   "gap": "GAP-002",
+   "score": 42,
+   "title": "Add juggle/launch/air-hit state for player combos",
+   "rationale": "Combo/juggle is a stated pillar (R-015) but juggle rules are an ambiguity in the GDD (no routes, frames, or gravity values). Touches player and combat.",
+   "ownerAgent": "player-agent",
+   "allowedFiles": [
+    "src/player/"
+   ],
+   "acceptance": [
+    "Launched enemy enters an air-hit state in which further hits register",
+    "Combo route data table defines the juggle string",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-006 step 1"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Juggle rules: launch height, air-stun time, hit limit before fall, damage scaling. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 10,
+   "gap": "GAP-009",
+   "score": 38,
+   "title": "Add Rust Ranger with ranged Taser Shot",
+   "rationale": "New unit type plus projectile. All numbers undefined (\"light damage, brief stun\").",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/",
+    "src/waves/"
+   ],
+   "acceptance": [
+    "Ranger data table and projectile emitting hit-request while travelling",
+    "Projectile despawns on hit or leaving bounds; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Ranger hp, taser damage, stun, range, projectile speed. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 11,
+   "gap": "GAP-010",
+   "score": 36,
+   "title": "Add Ranger Baton Strike (very quick close attack)",
+   "rationale": "Needs Ranger.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Baton Strike in Ranger data table with startup below Grunt jab startup",
+    "Unit test: used at close range",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-009"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Baton startup ms and damage. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 12,
+   "gap": "GAP-011",
+   "score": 34,
+   "title": "Add Rust Specialist (Copper Fang) with Fang Jab, Copper Cross, Shield Bash",
+   "rationale": "New unit type with three moves. Copper Cross is a punish after dodge; Shield Bash needs guardBreak.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/",
+    "src/waves/"
+   ],
+   "acceptance": [
+    "Specialist data table with three attacks",
+    "Copper Cross selected after the player dodges; Shield Bash uses guardBreak; unit tests",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-006 step 1"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Specialist hp and all move numbers. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 13,
+   "gap": "GAP-024",
+   "score": 30,
+   "title": "Wire Music volume slider to audio playback",
+   "rationale": "Setting persists but nothing consumes it. There is no audio code or audio asset in src/assets.",
+   "ownerAgent": "menu-ui-agent",
+   "allowedFiles": [
+    "src/ui/"
+   ],
+   "acceptance": [
+    "Music volume value read by an audio helper that applies it to playing music",
+    "Unit test: helper maps musicVolume 0..1 to sound volume",
+    "npm test green"
+   ],
+   "dependsOn": [],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Music tracks/audio assets and file format. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 14,
+   "gap": "GAP-025",
+   "score": 29,
+   "title": "Wire SFX volume slider to hit/parry/dodge sound playback",
+   "rationale": "Needs audio assets; GDD also contradicts itself (SFX \"on or off\" vs slider). Sounds support punchy-hit feedback.",
+   "ownerAgent": "menu-ui-agent",
+   "allowedFiles": [
+    "src/ui/"
+   ],
+   "acceptance": [
+    "SFX helper plays on damage-applied (hit, parry, dodge) scaled by sfxVolume",
+    "Unit test: sfxVolume 0 plays nothing",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-024"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "SFX assets and slider vs on/off choice. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 15,
+   "gap": "GAP-023",
+   "score": 28,
+   "title": "Add next-level progression after a win",
+   "rationale": "Review.md marks next level post-Tier 0. Level count and order are undefined. Needs ArenaScene wiring, which is lead-owned.",
+   "ownerAgent": "lead",
+   "allowedFiles": [
+    "src/scenes/ArenaScene.js",
+    "src/state/",
+    "src/waves/"
+   ],
+   "acceptance": [
+    "Win leads to the next level config; final level leads to a game-complete result",
+    "Level config data table; unit test progression order",
+    "npm test green"
+   ],
+   "dependsOn": [],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Number of levels, order, wave data per level, lead approval for ArenaScene.js. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 16,
+   "gap": "GAP-003",
+   "score": 24,
+   "title": "Add pick-up objects and use in combat",
+   "rationale": "Review.md proposes cutting pick-up from Tier 0 and asks the owner to confirm. Object types, damage and durability undefined.",
+   "ownerAgent": "player-agent",
+   "allowedFiles": [
+    "src/player/",
+    "src/arena/"
+   ],
+   "acceptance": [
+    "Pickup entity spawns in the arena; the player can pick up and use it, damage from the data table",
+    "Unit test for pick-up and use",
+    "npm test green"
+   ],
+   "dependsOn": [],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Confirm in/out of scope; object list, damage, durability. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 17,
+   "gap": "GAP-001",
+   "score": 23,
+   "title": "Bind P/N pick-up key",
+   "rationale": "Only meaningful once pick-up exists.",
+   "ownerAgent": "player-agent",
+   "allowedFiles": [
+    "src/player/"
+   ],
+   "acceptance": [
+    "input.js maps P and N to a pickUp action",
+    "Unit test on key map",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-003"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Same scope decision as GAP-003."
+  },
+  {
+   "rank": 18,
+   "gap": "GAP-013",
+   "score": 20,
+   "title": "Build Overseer boss framework: boss entity, arena slot and phase hook",
+   "rationale": "Biggest item. Boss tier is unassigned, five distinct arenas needed. Split further once owner confirms scope. ArenaScene wiring needs lead.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/",
+    "src/arena/",
+    "src/waves/"
+   ],
+   "acceptance": [
+    "Boss data table supports phaseThresholds and per-phase attack lists",
+    "Phase change fires once when hp crosses the threshold; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-006 step 1"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Boss tier, boss hp, arena layouts, order. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 19,
+   "gap": "GAP-014",
+   "score": 16,
+   "title": "Add Voss phase 2 at 50% HP",
+   "rationale": "Threshold is stated in the GDD; phase 2 moves are not. Needs boss framework.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Voss phase 2 triggers when hp <= 50% of max, once; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Voss phase 2 move set and numbers. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 20,
+   "gap": "GAP-015",
+   "score": 15,
+   "title": "Add Calder phase 2 at 40% HP",
+   "rationale": "Threshold is stated in the GDD; phase 2 moves are not. Needs boss framework.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Calder phase 2 triggers when hp <= 40% of max, once; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Calder phase 2 move set and numbers. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 21,
+   "gap": "GAP-016",
+   "score": 14,
+   "title": "Add Wren phase 2 at 50% HP",
+   "rationale": "Threshold is stated in the GDD; phase 2 moves are not. Needs boss framework.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Wren phase 2 triggers when hp <= 50% of max, once; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Wren phase 2 move set and numbers. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 22,
+   "gap": "GAP-017",
+   "score": 13,
+   "title": "Add Holt phase 2 at 40% HP",
+   "rationale": "Threshold is stated in the GDD; phase 2 moves are not. Needs boss framework.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Holt phase 2 triggers when hp <= 40% of max, once; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Holt phase 2 move set and numbers. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 23,
+   "gap": "GAP-018",
+   "score": 12,
+   "title": "Add Varr phase 2 at 30% HP",
+   "rationale": "Threshold is stated in the GDD; phase 2 moves are not. Needs boss framework.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Varr phase 2 triggers when hp <= 30% of max, once; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Varr phase 2 move set and numbers. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 24,
+   "gap": "GAP-019",
+   "score": 10,
+   "title": "Add Voss Predictive Strike (red line, 1 s laser)",
+   "rationale": "1 s delay is stated; damage and line geometry undefined.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Telegraph lasts 1000 ms before the laser hit-request; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Laser damage and width. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 25,
+   "gap": "GAP-021",
+   "score": 9,
+   "title": "Add Voss Drone Swarm (3-5 orbiting destroyable drones)",
+   "rationale": "Drone hp and orbit rules undefined.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Spawns 3-5 drones that orbit and can be killed; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Drone hp, orbit, damage. Numbers/decision not in GDD; owner must supply before work starts."
+  },
+  {
+   "rank": 26,
+   "gap": "GAP-022",
+   "score": 8,
+   "title": "Add Calder Furnace Slam (cracks explode after 2 s)",
+   "rationale": "2 s stated; damage and crack area undefined.",
+   "ownerAgent": "encounter-agent",
+   "allowedFiles": [
+    "src/enemies/"
+   ],
+   "acceptance": [
+    "Cracks spawn and explode after 2000 ms via hit-request; unit test",
+    "npm test green"
+   ],
+   "dependsOn": [
+    "GAP-013"
+   ],
+   "status": "todo",
+   "needsOwner": true,
+   "needsOwnerFor": "Explosion damage and area. Numbers/decision not in GDD; owner must supply before work starts."
+  }
+ ],
+ "deferred": [
+  {
+   "gap": "GAP-012",
+   "reason": "Umbrella gap (five Rust unit types); tracked via GAP-006, 009, 011 and 013. Not independently buildable."
+  },
+  {
+   "gap": "GAP-020",
+   "reason": "Voss Predictive Lockdown needs a player special meter that the GDD references but never defines and no code has. Owner must define the special meter first (needsOwner)."
+  }
+ ]
+}

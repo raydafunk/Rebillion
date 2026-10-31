@@ -1,0 +1,162 @@
+{
+  "id": "level-08-overseer-tower",
+  "status": "styled",
+  "_comment": "Owned by the level style agent for this level. background.path: SVG/PNG path (1920x720) or null for the shared placeholder. overlay: tint drawn over the background.",
+  "background": {
+    "path": "assets/levels/level-08-overseer-tower/background.svg",
+    "overlay": {
+      "color": "#2C2838",
+      "alpha": 0.1
+    }
+  },
+  "notes": "Grey tower at dusk: cold slate Overseer's Tower right of centre with one cyan eye and a faint cyan light cone to a pool on the street, warm sun setting behind the Heights skyline on the left, plum arena floor with barricades and amber lamps. Ambient animation: src/levels/ambientTower.js (eye pulse and scan rings, cone shimmer, beacon blinks, embers, motes, cloud streaks).",
+  "ambient": {
+    "period": 1920,
+    "tower": {
+      "eye": [
+        940,
+        190
+      ],
+      "antenna": [
+        940,
+        12
+      ],
+      "cone": [
+        [
+          926,
+          210
+        ],
+        [
+          954,
+          210
+        ],
+        [
+          1062,
+          436
+        ],
+        [
+          818,
+          436
+        ]
+      ],
+      "beacons": [
+        [
+          740,
+          272
+        ],
+        [
+          1140,
+          272
+        ],
+        [
+          690,
+          152
+        ],
+        [
+          1190,
+          152
+        ]
+      ],
+      "skylineBeacons": [
+        [
+          1206,
+          270
+        ],
+        [
+          1391,
+          195
+        ],
+        [
+          1341,
+          298
+        ]
+      ],
+      "embers": 12,
+      "motes": 8,
+      "clouds": 3,
+      "sun": [
+        576,
+        379
+      ],
+      "slits": [
+        [
+          925,
+          240
+        ],
+        [
+          952,
+          262
+        ],
+        [
+          935,
+          285
+        ],
+        [
+          958,
+          225
+        ],
+        [
+          918,
+          205
+        ],
+        [
+          948,
+          300
+        ]
+      ],
+      "twinkles": [
+        [
+          60,
+          400
+        ],
+        [
+          140,
+          385
+        ],
+        [
+          250,
+          410
+        ],
+        [
+          330,
+          392
+        ],
+        [
+          420,
+          405
+        ],
+        [
+          1210,
+          395
+        ],
+        [
+          1300,
+          380
+        ],
+        [
+          1400,
+          410
+        ],
+        [
+          1500,
+          390
+        ],
+        [
+          1600,
+          402
+        ],
+        [
+          1760,
+          388
+        ],
+        [
+          1850,
+          405
+        ]
+      ],
+      "sweeps": 2,
+      "birds": 4,
+      "sparks": 3
+    }
+  }
+}

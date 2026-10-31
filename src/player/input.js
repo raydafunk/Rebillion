@@ -1,5 +1,5 @@
 // Pure input mapping: key codes -> abstract actions. No Phaser dependency.
-export const ACTIONS = ['left', 'right', 'jump', 'light', 'heavy', 'block', 'dodge'];
+export const ACTIONS = ['left', 'right', 'jump', 'light', 'heavy', 'block', 'parry', 'special'];
 
 // Keys are KeyboardEvent.code-style names; Zed.js converts Phaser keys to these.
 export const KEY_MAP = {
@@ -8,8 +8,9 @@ export const KEY_MAP = {
   jump: ['ArrowUp', 'KeyW', 'Space'],
   light: ['KeyJ', 'KeyZ'],
   heavy: ['KeyK', 'KeyX'],
-  block: ['KeyL', 'KeyC'],
-  dodge: ['ShiftLeft', 'KeyV'],
+  block: ['KeyI', 'KeyV'],
+  parry: ['KeyT', 'KeyM'],
+  special: ['KeyL'],         // Rage special; gamepad binding to be designed (add to PAD_MAP/padToKeys, no machine change)
 };
 
 const emptyActions = () => Object.fromEntries(ACTIONS.map((a) => [a, false]));
@@ -41,4 +42,22 @@ export class InputState {
     this.moveX = (now.right ? 1 : 0) - (now.left ? 1 : 0);
     return this;
   }
+}
+
+// Standard-mapping gamepad -> the same key codes, so InputState needs no second path.
+// A=jump, X=light, Y=heavy, LB/LT/RT=block, d-pad / left stick = move.
+export const PAD_MAP = { jump: [0], light: [2], heavy: [3], block: [4, 6, 7], left: [14], right: [15] };
+export function padToKeys(pad, deadzone = 0.35) {
+  const out = [];
+  if (!pad || !pad.buttons) return out;
+  const on = (i) => !!(pad.buttons[i] && pad.buttons[i].pressed);
+  const ax = pad.axes && pad.axes.length ? pad.axes[0] : 0;
+  const rep = { jump: 'Space', light: 'KeyJ', heavy: 'KeyK', block: 'KeyI' };
+  for (const [a, btns] of Object.entries(PAD_MAP)) {
+    if (a === 'left' || a === 'right') continue;
+    if (btns.some(on)) out.push(rep[a]);
+  }
+  if (on(PAD_MAP.left[0]) || ax < -deadzone) out.push('ArrowLeft');
+  if (on(PAD_MAP.right[0]) || ax > deadzone) out.push('ArrowRight');
+  return out;
 }
