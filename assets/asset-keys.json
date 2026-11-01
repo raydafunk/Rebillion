@@ -320,8 +320,7 @@
     "bg.arena.01": "assets/backgrounds/arena-01-placeholder.svg"
   },
   "fx": {
-    "fx.spark": "assets/fx/spark-placeholder.svg",
-    "fx.telegraph": "assets/fx/telegraph-icon-placeholder.svg"
+    "fx.spark": "assets/fx/spark-placeholder.svg"
   },
   "hitFeedbackSpec": "design/art/hit-feedback-spec.md",
   "menu": {

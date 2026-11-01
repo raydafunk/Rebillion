@@ -23,8 +23,8 @@ export class Arena {
     this.events = events; this.getTarget = getTarget;
     this.scrollX = 0;
     this.getScrollX = getScrollX;
-    this.enemies = new EnemyManager({ events });
     this.bounds = new ArenaBounds({ events, waves, world });
+    this.enemies = new EnemyManager({ events, getXRange: () => this.bounds.xRange });
     this.spawner = new WaveSpawner({ events, waves, holdBetweenWaves: hold, getPlayer, spawn: (spec) => this.enemies.spawn(spec) });
     // A wave may narrow the attacker cap (1 = one enemy swings at a time: the teaching wave).
     this._onWave = ({ index }) => { this.enemies.slots.cap = waves[index]?.attackerCap ?? ATTACKER_CAP; };
@@ -35,7 +35,7 @@ export class Arena {
     });
   }
 
-  start() { this.enemies.destroyAll(); this.spawner.start(); }
+  start(fromWave = 0) { this.enemies.destroyAll(); this.spawner.start(fromWave); }
 
   update(dtMs, frozen = null) {
     const target = this.getTarget();

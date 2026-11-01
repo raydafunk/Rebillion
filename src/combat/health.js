@@ -14,8 +14,9 @@ export const isInvulnerable = (h, now) => h.dead || now < h.invulnUntil;
 export const isStunned = (h, now) => now < h.hitstunUntil;
 
 // Returns { applied, amount, hpAfter, died }.
-export function applyDamage(h, amount, now, hitstunMs = 0) {
-  if (amount <= 0 || isInvulnerable(h, now)) {
+// opts.pierce: the blow ignores the post-hit invulnerability window (heavy finisher + follow-ups). A dead target is still immune.
+export function applyDamage(h, amount, now, hitstunMs = 0, { pierce = false } = {}) {
+  if (amount <= 0 || h.dead || (!pierce && isInvulnerable(h, now))) {
     return { applied: false, amount: 0, hpAfter: h.hp, died: false };
   }
   const dealt = Math.min(amount, h.hp);

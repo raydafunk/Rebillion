@@ -6,6 +6,8 @@
 // Depth always varies across the lane so enemies do not line up on one row.
 export const SPAWN_PATTERNS = Object.freeze(['alternate', 'flank', 'ambush', 'surge']);
 
+export const LEADER_ENTRANCES = Object.freeze(['far-side', 'near-side', 'front', 'behind']);
+
 export const VIEW_W = 1280;
 export const EDGE_INSET = 60;       // matches the fixed spawn points (lockX + 60 / lockX + VIEW_W - 60)
 export const MIN_SPAWN_GAP = 260;   // never appear closer than this to Zed horizontally
@@ -52,4 +54,20 @@ export function pickSpawn({ pattern, lockX, index, count, waveIndex = 0, player,
   const inward = Math.round(rng() * X_JITTER) * (side === 'left' ? 1 : -1);
   const y = LANE_YS[(index * 2 + waveIndex) % LANE_YS.length] + Math.round((rng() * 2 - 1) * Y_JITTER);
   return { x: edge(side) + inward, y, side };
+}
+
+/**
+ * Where a wave's leader (a mini-boss) walks in: one of LEADER_ENTRANCES, relative to Zed.
+ * far-side = the edge away from Zed, near-side = the edge on Zed's side, front/behind = the side Zed faces / turns his back to.
+ * Same edge rules as pickSpawn (never within MIN_SPAWN_GAP of Zed). The leader walks in mid-lane.
+ */
+export function pickLeaderSpawn({ entrance = 'far-side', lockX, player }) {
+  const mid = lockX + VIEW_W / 2;
+  const farSide = player.x < mid ? 'right' : 'left';
+  const other = (s) => (s === 'left' ? 'right' : 'left');
+  const behindSide = player.facing >= 0 ? 'left' : 'right';
+  let side = { 'far-side': farSide, 'near-side': other(farSide), front: other(behindSide), behind: behindSide }[entrance] || farSide;
+  const edge = (s) => (s === 'left' ? leftX(lockX) : rightX(lockX));
+  if (Math.abs(edge(side) - player.x) < MIN_SPAWN_GAP && Math.abs(edge(other(side)) - player.x) >= MIN_SPAWN_GAP) side = other(side);
+  return { x: edge(side), y: 580, side };
 }

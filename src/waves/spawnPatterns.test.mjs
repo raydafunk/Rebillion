@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { pickSpawn, SPAWN_PATTERNS, MIN_SPAWN_GAP, VIEW_W } from './spawnPatterns.js';
+import { pickSpawn, pickLeaderSpawn, LEADER_ENTRANCES, SPAWN_PATTERNS, MIN_SPAWN_GAP, VIEW_W } from './spawnPatterns.js';
 import { fakeEmitter } from '../shared/fakeEmitter.mjs';
 import { WaveSpawner } from './WaveSpawner.js';
 
@@ -69,3 +69,15 @@ assert.ok(seen.size >= 4, 'enemies enter on several different rows');
   assert.deepEqual(made.map((s) => s.x), [60, 1220, 60, 1220], 'no pattern: old fixed round-robin');
 }
 console.log('spawnPatterns ok');
+
+// Leader entrances (mini-boss walks in).
+{
+  const zed = { x: 800 + 400, facing: 1 };
+  assert.equal(pickLeaderSpawn({ entrance: 'far-side', lockX: 800, player: zed }).side, 'right');
+  assert.equal(pickLeaderSpawn({ entrance: 'near-side', lockX: 800, player: { x: 800 + 100, facing: 1 } }).side, 'right', 'too close to the near edge: use the far one');
+  assert.equal(pickLeaderSpawn({ entrance: 'behind', lockX: 800, player: zed }).side, 'left');
+  assert.equal(pickLeaderSpawn({ entrance: 'front', lockX: 800, player: zed }).side, 'right');
+  assert.equal(pickLeaderSpawn({ entrance: 'far-side', lockX: 800, player: zed }).x, 800 + VIEW_W - 60);
+  assert.deepEqual([...LEADER_ENTRANCES], ['far-side', 'near-side', 'front', 'behind']);
+  console.log('leader entrances ok');
+}

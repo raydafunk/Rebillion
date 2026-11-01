@@ -8,7 +8,7 @@ import { pathToFileURL } from 'node:url';
 import { PATHS, CONTENT_TYPES, ROOT } from './config.mjs';
 import { SCHEMAS, LORE_RULES, STATUS } from './schemas.mjs';
 import { loadCorpus } from './search.mjs';
-import { SPAWN_PATTERNS } from '../src/waves/spawnPatterns.js';
+import { SPAWN_PATTERNS, LEADER_ENTRANCES } from '../src/waves/spawnPatterns.js';
 
 const isStr = (v) => typeof v === 'string' && v.trim().length > 0;
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -93,12 +93,16 @@ const VALIDATORS = {
         if (w.enemy !== 'grunt') e('elites only apply to grunt waves (other waves use hpMult)');
         if (!Number.isInteger(w.elites) || w.elites < 0 || (isNum(w.count) && w.elites > w.count)) e('elites must be an integer 0..count');
       }
+      if (w.leader !== undefined) {
+        if (!w.leader || typeof w.leader !== 'object' || !ctx.enemies.has(w.leader.enemy)) e('leader.enemy must be an id in content/enemies');
+        else if (!LEADER_ENTRANCES.includes(w.leader.entrance)) e(`leader.entrance must be one of ${LEADER_ENTRANCES.join(' | ')}`);
+      }
       const last = i === it.waves.length - 1;
       if (last) { if (w.restPickup !== undefined) e('no restPickup on the last wave (the exit follows it)'); }
       else if (!w.restPickup || !isNum(w.restPickup.heal) || w.restPickup.heal < 1 || w.restPickup.heal > 100) e('restPickup { heal: 1-100 } required: every wave but the last needs a breather');
     });
     // Difficulty should climb: total enemies per wave must not shrink.
-    for (let i = 1; i < it.waves.length; i++) if (it.waves[i].count < it.waves[i - 1].count) err(`waves[${i}] has fewer enemies than waves[${i - 1}]`);
+    for (let i = 1; i < it.waves.length; i++) if (!it.waves[i].leader && it.waves[i].count < it.waves[i - 1].count) err(`waves[${i}] has fewer enemies than waves[${i - 1}]`);
   },
   dialogue(it, err) {
     if (!SCHEMAS.dialogue.speakers.includes(it.speaker)) err(`speaker must be ${SCHEMAS.dialogue.speakers.join('|')}`);

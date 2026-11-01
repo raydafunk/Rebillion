@@ -6,7 +6,8 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { MOVE_FEEDBACK, shakeScale } from '../shared/hitFeedback.js';
 import { loadSettings } from '../ui/optionsData.js';
-import { telegraphCue } from '../enemies/telegraphCueData.js';
+import { telegraphCue, TELEGRAPH_CUE, RING_CENTER_ABOVE_FEET } from '../enemies/telegraphCueData.js';
+import { loadingLine } from '../ui/loadingData.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { createScore } from '../state/score.js';
 import { Zed } from '../player/Zed.js';
@@ -19,9 +20,13 @@ import { PICKUP, pickupDrop, canCollect } from '../items/pickups.js';
 import showLevelCard from '../ui/LevelCard.js';
 import addAmbient from '../levels/ambient.js';
 import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys.js';
-import { GRUNT_SPRITE_KEY, TELEGRAPH_FX_KEY, GRUNT } from '../enemies/gruntData.js';
+import { GRUNT_SPRITE_KEY, GRUNT } from '../enemies/gruntData.js';
 import { EnemyHitFx } from '../enemies/EnemyHitFx.js';
 import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH, GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH, GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH, pickStepper } from '../enemies/gruntSound.js';
+import { DUGAN_ID } from '../enemies/duganData.js';
+import {
+  duganAssets, duganAnimDefs, duganPose, duganRotationKey, duganFitScale, DUGAN_SINK_PX, DUGAN_SINK_FROM_FRAME,
+} from '../enemies/duganSprites.js';
 import {
   BREAKER_SOURCE_ID, BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, BREAKER_FRAMES, BREAKER_WALK_FPS, BREAKER_DISPLAY_SIZE,
   DIRECTIONS as BREAKER_DIRS, breakerPose, breakerRotationKey, breakerFrameKey, breakerWalkAnimKey,
@@ -47,6 +52,14 @@ export default class ArenaScene extends Phaser.Scene {
     const want = data && Number.isInteger(data.levelIndex) ? data.levelIndex : Number.isInteger(q) && q >= 0 ? q : 0;
     this.levelIndex = Math.min(Math.max(0, want), this.levels.length - 1);
     this.level = this.levels[this.levelIndex];
+    // ?solo (testing only, with ?wave=N): waves that have a leader send in the leader alone, no grunts.
+    if (new URLSearchParams(globalThis.location?.search).has('solo')) {
+      const waves = this.level.waves.map((w) => (w.leader ? { ...w, count: 0, maxAlive: 1 } : w));
+      this.level = { ...this.level, waves, totalEnemies: waves.reduce((n, w) => n + w.count + (w.leader ? 1 : 0), 0) };
+    }
+    // ?wave=N (1-based) drops straight into wave N of the level, for testing one fight (e.g. /?level=1&wave=5 is the Dugan wave).
+    const wq = Number(new URLSearchParams(globalThis.location?.search).get('wave')) - 1;
+    this.startWave = Number.isInteger(wq) && wq > 0 ? Math.min(wq, this.level.waves.length - 1) : 0;
     this.bgKey = ASSET_KEYS.BG_ARENA;
   }
 
@@ -87,9 +100,30 @@ export default class ArenaScene extends Phaser.Scene {
     for (const d of Object.keys(BREAKER_DEATH_DIRS)) {
       for (let i = 0; i < BREAKER_DEATH_FRAMES; i++) this.load.image(breakerDeathFrameKey(d, i), breakerDeathFramePath(d, i));
     }
-    this.load.svg(TELEGRAPH_FX_KEY, 'assets/fx/telegraph-icon-placeholder.svg', { width: 48, height: 48 });
+    // Dugan's own art (BrickDugan folder), only for levels that send him in.
+    if (this._hasDugan()) for (const a of duganAssets()) this.load.image(a.key, a.path);
     this.load.svg('fx.spark', 'assets/fx/spark-placeholder.svg', { width: 48, height: 48 });
     this.load.image(PICKUP.spriteKey, PICKUP.spritePath);
+    this._showLoadingScreen();
+  }
+
+  // The first entry loads hundreds of sprite frames; without this the player sees a blank screen after FIGHT.
+  // Skipped when everything is already cached (later levels), so it never flashes for one frame.
+  _showLoadingScreen() {
+    if (this.load.list.size === 0) return;
+    const D = 9000, name = (this.level && this.level.name ? this.level.name : 'The Arena').toUpperCase();
+    const txt = (y, s, size, family, color) => this.add.text(640, y, s, { fontFamily: family, fontSize: `${size}px`, color, stroke: CSS.darkBrown, strokeThickness: size > 30 ? 6 : 3 }).setOrigin(0.5).setDepth(D + 1);
+    const status = txt(352, loadingLine(0), 22, FONTS.body, CSS.cream);
+    const bar = this.add.rectangle(400, 400, 480, 8, COLORS.mustard).setOrigin(0, 0.5).setScale(0, 1).setDepth(D + 2);
+    const ui = [
+      this.add.rectangle(640, 360, 1280, 720, COLORS.darkBrown).setDepth(D),
+      txt(290, `LEVEL ${this.levelIndex + 1}: ${name}`, 44, FONTS.button, CSS.mustard),
+      status,
+      this.add.rectangle(640, 400, 480, 8, 0x3a2418).setDepth(D + 1),
+      bar,
+    ];
+    this.load.on('progress', (v) => { bar.setScale(v, 1); status.setText(loadingLine(v)); });
+    this.load.once('complete', () => { this.load.off('progress'); ui.forEach((o) => o.destroy()); });
   }
 
   create() {
@@ -101,8 +135,9 @@ export default class ArenaScene extends Phaser.Scene {
     this._registerBreakerAnims();
     this._registerBreakerHitAnims();
     this._registerBreakerDeathAnims();
+    this._registerDuganAnims();
     this.dying = [];           // views of removed (already dead) enemies still playing their death anim
-    this.sprites = new Map();  // enemy id -> { body, shadow, tele }
+    this.sprites = new Map();  // enemy id -> { body, shadow, ring }
     this.pickups = [];         // health items lying in the breather between waves
     this.score = createScore(); // kills, parry streak + boost, flawless waves (HUD and result screen read it)
     this.hitStopLeft = 0;      // ms of hit-stop remaining; only the attacker and target freeze, the round timer keeps ticking
@@ -121,6 +156,7 @@ export default class ArenaScene extends Phaser.Scene {
     addAmbient(this, this.level.style, this.world.w);
     this.physics.world.setBounds(0, 0, this.world.w, GROUND_Y);
     this.cameras.main.setBounds(0, 0, this.world.w, this.world.h);
+    if (this.startWave) this.cameras.main.scrollX = this.level.waves[this.startWave].lockX; // testing one wave: start on its screen, no pan across the level
     this.levelDone = false;
     if (this.scrolling) this._buildExit();
     this.cameras.main.fadeIn(250, 0, 0, 0);
@@ -128,7 +164,7 @@ export default class ArenaScene extends Phaser.Scene {
     // Order matters: combat and state listen before anything emits.
     this.resolver = createHitResolver(ev, () => this.simNow);
     this.state = createRoundState(ev, { seconds: this.level.timeLimitSec });
-    this.zed = new Zed(this, 200, GROUND_Y - 36);
+    this.zed = new Zed(this, this.startWave ? this.level.waves[this.startWave].lockX + 360 : 200, GROUND_Y - 36);
     this.zed.setLevel(this.levelIndex + 1);            // Rage meter: hidden on level 1, active from level 2
     this.rageWaveHold = false;                         // Rage drain pauses between waves (wave-cleared -> wave-started)
     this.zed.sprite.setAlpha(0);                       // physics body only; the visual below is the art
@@ -141,7 +177,7 @@ export default class ArenaScene extends Phaser.Scene {
       world: this.world,
       hold: this.scrolling,
       getPlayer: () => ({ x: this.zed.x, facing: this.zed.facing }),   // spawn patterns react to where Zed is and faces
-      getTarget: () => ({ x: this.zed.x, y: this.zed.laneY }),   // enemies chase Zed's floor line (depth), so jumping still dodges
+      getTarget: () => ({ x: this.zed.x, y: this.zed.laneY, lift: Math.max(0, GROUND_Y - (this.zed.y + 36)) }),   // enemies chase Zed's floor line (depth), so jumping still dodges; lift = jump height (Dugan's Ground Stomp reads it)
       getScrollX: () => this.cameras.main.scrollX,
     });
     this.arena.enemies.onRemoved = (id) => this._removeEnemyView(id);
@@ -177,7 +213,7 @@ export default class ArenaScene extends Phaser.Scene {
     let hudReady = false, introDone = this.sandbox;
     const begin = () => {
       if (!hudReady || !introDone || this.sandbox) return;
-      this.roundStarted = true; this.arena.start(); this.state.start();
+      this.roundStarted = true; this.arena.start(this.startWave); this.state.start();
     };
     this.scene.get('HudScene').events.once('create', () => { hudReady = true; begin(); });
     if (!this.sandbox) {
@@ -242,6 +278,16 @@ export default class ArenaScene extends Phaser.Scene {
     }
   }
 
+  _hasDugan() { return this.level.waves.some((w) => w.leader && w.leader.enemy === DUGAN_ID); }
+
+  _registerDuganAnims() {
+    if (!this.textures.exists(duganRotationKey('east'))) return;
+    for (const d of duganAnimDefs()) {
+      if (this.anims.exists(d.key) || !this.textures.exists(d.frames[0])) continue;
+      this.anims.create({ key: d.key, frameRate: d.frameRate, repeat: d.repeat, frames: d.frames.map((key) => ({ key })) });
+    }
+  }
+
   _registerBreakerDeathAnims() {
     for (const d of Object.keys(BREAKER_DEATH_DIRS)) {
       const key = breakerDeathAnimKey(d);
@@ -264,7 +310,7 @@ export default class ArenaScene extends Phaser.Scene {
       d.t = 0;
       if (this.anims.exists(pose.anim)) {
         v.body.play(pose.anim);
-        v.body.anims.timeScale = breakerDeathTimeScale();
+        v.body.anims.timeScale = pose.deathTimeScale ?? breakerDeathTimeScale();
       } else v.body.setTexture(pose.rotation);
     }
     if (d.t === null) return false;   // bar still draining: keep showing whatever the enemy was doing
@@ -276,6 +322,12 @@ export default class ArenaScene extends Phaser.Scene {
       const cam = this.cameras.main, half = BREAKER_DEATH_HALF_WIDTH;
       const x = Phaser.Math.Clamp(v.body.x, cam.scrollX + half, cam.scrollX + cam.width - half);
       v.body.x = x; v.shadow.x = x;
+    }
+    // Dugan's fall is drawn on a 96px canvas whose lowest pixel rises as he goes down (standing 76, collapsed 61-65): keep re-seating the feet row
+    // of the frame on screen. After he leaves the enemy list nothing else does it, so he used to stay at his standing origin and float.
+    if (v.duganArt && d.t > 0) {
+      const flat = (v.body.anims.currentFrame?.index ?? 1) >= DUGAN_SINK_FROM_FRAME; // lying flat: sink the body onto its shadow
+      v.body.setOrigin(0.5, this._feetFrac(v.body.texture.key) - (flat ? DUGAN_SINK_PX / Math.max(1, v.body.displayHeight) : 0));
     }
     return ph.phase === 'done';
   }
@@ -456,24 +508,25 @@ export default class ArenaScene extends Phaser.Scene {
       let v = this.sprites.get(g.id);
       if (!v) {
         const breaker = true; // Rust Bruiser art replaces the rust placeholder for every enemy in levels 1-8
-        const hasArt = breaker && this.textures.exists(breakerRotationKey('east'));
+        const duganArt = !!g.isBoss && this.textures.exists(duganRotationKey('east'));
+        const hasArt = breaker && (duganArt || this.textures.exists(breakerRotationKey('east')));
         const body = !breaker
           ? this.add.image(0, 0, GRUNT_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(112, 112)
           : hasArt
-            ? this.add.sprite(0, 0, breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
+            ? this.add.sprite(0, 0, duganArt ? duganRotationKey('east') : breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
             : this.add.image(0, 0, BREAKER_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(144, 144);
         v = {
           shadow: this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25),
-          body, breakerArt: hasArt,
-          tele: this.add.image(0, 0, TELEGRAPH_FX_KEY).setVisible(false).setDepth(4000),
-          ring: this.add.ellipse(0, 0, 10, 10).setStrokeStyle(4, 0xff3b30).setVisible(false).setDepth(3999), // parry cue: closes as the attack starts
+          body, breakerArt: hasArt, duganArt,
+          ring: this.add.ellipse(0, 0, 10, 10).setStrokeStyle(TELEGRAPH_CUE.ringStrokePx, 0xffa41c).setVisible(false).setDepth(3999), // parry cue: closes as the attack starts
+          strip: g.isBoss ? this.add.rectangle(0, 0, 10, 70, 0xd23a2e, 0.28).setVisible(false).setDepth(LANE.minY) : null, // Dugan's charge lane: a red strip along the floor while he winds up
         };
         this.sprites.set(g.id, v);
       }
       if (v.breakerArt) {
         // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
-        const pose = breakerPose(g);
-        if (g.alive && pose.anim === breakerWalkAnimKey(pose.dir)) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
+        const pose = v.duganArt ? duganPose(g) : breakerPose(g);
+        if (g.alive && (pose.walk || pose.anim === breakerWalkAnimKey(pose.dir))) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
         v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(false);
         if (pose.death) { v.deathPose = pose; this._driveDeath(v, g.id, pose, dt); } // death view drives its own sprite state
         else if (pose.hit && this.anims.exists(pose.anim)) {
@@ -482,7 +535,14 @@ export default class ArenaScene extends Phaser.Scene {
             v.hitSeq = g.hitSeq;
             // play({ duration }) is ignored by this Phaser build, so scale the 30fps default (BREAKER_HIT_FRAMES/30 s) to the stun.
             v.body.play(pose.anim);
-            v.body.anims.timeScale = (BREAKER_HIT_FRAMES * 1000 / 30) / g.hitstunMs;
+            v.body.anims.timeScale = ((pose.frames ?? BREAKER_HIT_FRAMES) * 1000 / 30) / g.hitstunMs;
+          }
+        } else if (pose.move && this.anims.exists(pose.anim)) {
+          // Dugan's move clips: one run across wind-up + strike, restarted whenever a new move begins; the last frame holds.
+          if (v.moveSeq !== pose.seq || v.body.anims.currentAnim?.key !== pose.anim) {
+            v.moveSeq = pose.seq;
+            v.body.play(pose.anim);
+            v.body.anims.timeScale = duganFitScale(pose.clip, pose.totalMs);
           }
         } else if (pose.anim && this.anims.exists(pose.anim)) {
           v.body.anims.timeScale = 1;
@@ -490,16 +550,14 @@ export default class ArenaScene extends Phaser.Scene {
         } else { v.body.anims.timeScale = 1; v.body.anims.stop(); v.body.setTexture(pose.rotation); }
         // Frames come in different canvas sizes (48 rotations, 64-68 walk): fixed pixel scale + origin at the frame's real feet row.
         const key = v.body.texture.key;
-        v.body.setScale(BREAKER_DISPLAY_SIZE / 48).setOrigin(0.5, this._feetFrac(key));
+        v.body.setScale((BREAKER_DISPLAY_SIZE / 48) * (v.duganArt ? 1 : g.visualScale || 1)).setOrigin(0.5, this._feetFrac(key));
       } else v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(g.facing < 0);
       v.shadow.setPosition(g.x, g.y).setDepth(g.y - 1);
-      // Telegraph icon sits above the health bar once one exists (icon bottom = bar top - 4px).
-      const barBottom = this.hitFx.telegraphBottomY(g.id);
-      v.tele.setPosition(g.x, barBottom !== null ? barBottom - v.tele.displayHeight / 2 : g.y - 130).setVisible(g.telegraphing && g.alive);
-      // Parry timing cue: a single pop at the NOW beat, and a ring that closes on the enemy as the attack starts.
-      const cue = g.telegraphing && g.alive ? telegraphCue(g.telegraphProgress, { reduce: this._reduceFlash(), telegraphMs: GRUNT.telegraphMs }) : null;
-      v.tele.setScale(cue ? cue.iconScale : 1);
-      if (cue && cue.ring) v.ring.setPosition(g.x, g.y - 50).setSize(cue.ring.r * 2, cue.ring.r * 2).setAlpha(cue.ring.alpha).setVisible(true);
+      // Parry timing cue: a ring that closes on the enemy as the attack starts.
+      // The ring keeps running through the attack for variants whose key hit lands later (finisher); each grunt tells us its clock and mark.
+      const clock = g.alive ? g.cueClockMs : null;
+      const cue = clock !== null ? telegraphCue({ clockMs: clock, markMs: g.parryMarkMs, kind: g.variant.kind, reduce: this._reduceFlash(), telegraphMs: GRUNT.telegraphMs }) : null;
+      if (cue && cue.ring) v.ring.setPosition(g.x, g.y - RING_CENTER_ABOVE_FEET * (v.duganArt ? 1.3 : g.visualScale || 1)).setSize(cue.ring.r * 2, cue.ring.r * 2).setStrokeStyle(TELEGRAPH_CUE.ringStrokePx, cue.ring.color).setAlpha(cue.ring.alpha).setVisible(true);
       else v.ring.setVisible(false);
       // Single hit flash (spec 7.2): white for 66/83/100 ms, steel under reduce-flash; beats the telegraph tint.
       const sq = this.hitFx.staggerScale(g.id);
@@ -507,7 +565,8 @@ export default class ArenaScene extends Phaser.Scene {
       v.body.clearTint();
       const fl = this.hitFx.flashTint(g.id);
       if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
-      else if (cue && cue.fill) v.body.setTintFill(0xffffff); // the NOW pop; a landed hit's flash wins over it
+      else if (g.data.tint && !v.duganArt) v.body.setTint(g.data.tint); // Breaker art standing in for Dugan: gunmetal wash so he reads as a different unit
+      if (v.strip) this._drawChargeStrip(v, g);
       if (!g.alive && !v.breakerArt) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
     }
 
@@ -528,7 +587,7 @@ export default class ArenaScene extends Phaser.Scene {
     if (!v) return;
     this.hitFx.remove(id);
     this.sprites.delete(id);
-    v.tele.setVisible(false); v.ring.setVisible(false);
+    v.ring.setVisible(false);
     // A dead breaker keeps its view until the death anim finishes (gameplay has already dropped it from the list and wave counts).
     if (v.breakerArt && v.death) {
       this._driveDeath(v, id, v.deathPose, 0, true);
@@ -536,7 +595,15 @@ export default class ArenaScene extends Phaser.Scene {
     } else this._destroyView(v);
   }
 
-  _destroyView(v) { v.body.destroy(); v.shadow.destroy(); v.tele.destroy(); v.ring.destroy(); }
+  _destroyView(v) { v.body.destroy(); v.shadow.destroy(); v.ring.destroy(); if (v.strip) v.strip.destroy(); }
+
+  // Running Shoulder Charge: a red strip from Dugan to the screen edge he is facing while he winds up; a wall crash shakes the screen.
+  _drawChargeStrip(v, g) {
+    if (g.crashSeq !== (v.crashSeq ?? 0)) { v.crashSeq = g.crashSeq; this._shake(260, 0.006); }
+    if (!g.alive || !g.chargeWarning) { v.strip.setVisible(false); return; }
+    const cam = this.cameras.main, edge = g.telegraphDir >= 0 ? cam.scrollX + cam.width : cam.scrollX;
+    v.strip.setPosition((g.x + edge) / 2, g.y - 25).setSize(Math.abs(edge - g.x), 70).setAlpha(0.18 + 0.3 * g.telegraphProgress).setVisible(true);
+  }
 
   _destroyDying() { for (const dv of this.dying.splice(0)) this._destroyView(dv.v); }
 

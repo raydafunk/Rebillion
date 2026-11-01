@@ -1,6 +1,6 @@
 // Rust grunt AI: pure state machine, no Phaser or event dependencies.
 // States: idle -> approach -> telegraph -> attack -> recover -> approach; hitstun; dead.
-import { GRUNT, ATTACKER_CAP } from './gruntData.js';
+import { GRUNT, ATTACKER_CAP, PARRY_CUE_LEAD_MS } from './gruntData.js';
 import { AttackSlots } from './AttackSlots.js';
 
 export const GruntState = {
@@ -17,7 +17,10 @@ export class RustGrunt {
    * @param {object} [o.data] stats table (defaults to GRUNT)
    * @param {object} [o.hooks] { onHitRequest(info), onStateChange(next, prev), onDeath() }
    */
-  constructor({ id, x = 0, y = 0, slots, data = GRUNT, hooks = {}, maxHp = data.maxHp }) {
+  constructor({ id, x = 0, y = 0, slots, data = GRUNT, hooks = {}, maxHp = data.maxHp, pickVariant = null }) {
+    this.pickVariant = pickVariant; // (grunt) => attack variant; null = always the plain 1-2-3 string
+    this.variant = plainVariant(data); this.lastVariantId = null;
+    this.telegraphTotalMs = data.telegraphMs;
     this.id = id; this.x = x; this.y = y;
     this.data = data;
     this.slots = slots || new AttackSlots(ATTACKER_CAP);
@@ -39,11 +42,28 @@ export class RustGrunt {
   }
 
   get alive() { return this.state !== GruntState.DEAD; }
-  /** True while the telegraph wind-up is visible (renderer shows fx.telegraph). */
+  /** True while the telegraph wind-up is playing. */
   get telegraphing() { return this.state === GruntState.TELEGRAPH; }
   /** 0..1 progress through the telegraph, for tinting/flash. */
   get telegraphProgress() {
-    return this.telegraphing ? 1 - this.timer / this.data.telegraphMs : 0;
+    return this.telegraphing ? 1 - this.timer / this.telegraphTotalMs : 0;
+  }
+  /** ms since the wind-up began (runs on through the attack), or null when not winding up / attacking. Drives the parry cue. */
+  get cueClockMs() {
+    if (this.state === GruntState.TELEGRAPH) return this.telegraphTotalMs - this.timer;
+    if (this.state === GruntState.ATTACK) return this.telegraphTotalMs + (this.variant.attackMs - this.timer);
+    return null;
+  }
+  /** cueClockMs at which the cue ring closes: PARRY_CUE_LEAD_MS before the hit worth parrying. */
+  get parryMarkMs() {
+    return this.telegraphTotalMs + this.variant.hits[this.variant.markIndex].atMs - PARRY_CUE_LEAD_MS;
+  }
+  _beginTelegraph() {
+    const v = this.pickVariant ? this.pickVariant(this) : plainVariant(this.data);
+    this.variant = v; this.lastVariantId = v.id;
+    this.telegraphTotalMs = this.data.telegraphMs + (v.holdMs || 0);
+    this.timer = this.telegraphTotalMs;
+    this._set(GruntState.TELEGRAPH);
   }
 
   _set(next) {
@@ -96,20 +116,20 @@ export class RustGrunt {
         break;
       case GruntState.TELEGRAPH:
         this.timer -= dtMs;
-        if (this.timer <= 0) { this.timer = d.attackMs; this.hitFired = false; this.jabIndex = 0; this._set(GruntState.ATTACK); }
+        if (this.timer <= 0) { this.timer = this.variant.attackMs; this.hitFired = false; this.jabIndex = 0; this._set(GruntState.ATTACK); }
         break;
       case GruntState.ATTACK: {
         this.timer -= dtMs;
-        const elapsed = d.attackMs - this.timer;
-        while (!this.hitFired && this.jabIndex < d.jabString.length && elapsed >= d.jabString[this.jabIndex].atMs) {
-          const jab = d.jabString[this.jabIndex++];
-          if (this.jabIndex >= d.jabString.length) this.hitFired = true;
+        const hits = this.variant.hits, elapsed = this.variant.attackMs - this.timer;
+        while (!this.hitFired && this.jabIndex < hits.length && elapsed >= hits[this.jabIndex].atMs) {
+          const jab = hits[this.jabIndex++];
+          if (this.jabIndex >= hits.length) this.hitFired = true;
           if (this.hooks.onHitRequest) {
             this.attackCounter++;
             this.hooks.onHitRequest({
               attackerId: this.id, attackId: `${this.id}:${this.attackCounter}`, team: d.team,
               hitbox: { ...d.attack.hitbox }, origin: { x: this.x, y: this.y }, lane: this.y, facing: this.facing,
-              damage: jab.damage, knockback: jab.knockback, hitstun: jab.hitstun,
+              damage: jab.damage, knockback: jab.knockback, hitstun: jab.hitstun, pierceInvuln: !!jab.pierceInvuln,
             });
           }
         }
@@ -139,8 +159,7 @@ export class RustGrunt {
     if (dist <= d.attackRange) {
       if (this.slots.tryAcquire(this.id)) {
         this.circling = false;
-        this.timer = d.telegraphMs;
-        this._set(GruntState.TELEGRAPH);
+        this._beginTelegraph();
       } else {
         this.circling = true; // in range but cap full: back off
         this._move(-dx / dist, -dy / dist, d.circleSpeed, dt);
@@ -184,6 +203,11 @@ export class RustGrunt {
 
   /** Reposition (failsafe). */
   teleport(x, y) { this.x = x; this.y = y; this.kx = 0; }
+}
+
+/** The original single pattern, built from the data table (used when no variant picker is supplied). */
+function plainVariant(d) {
+  return { id: 'string', weight: 1, holdMs: 0, hits: d.jabString, markIndex: 0, kind: 'strike', attackMs: d.attackMs };
 }
 
 function hashId(id) {

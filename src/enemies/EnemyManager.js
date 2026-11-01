@@ -2,24 +2,31 @@
 // Rendering reads `manager.enemies` (id, x, y, facing, state, telegraphing...) each frame.
 import { EVENTS } from '../shared/events.js';
 import { RustGrunt } from './RustGrunt.js';
+import { BrickDugan } from './BrickDugan.js';
+import { DUGAN, DUGAN_ID } from './duganData.js';
 import { AttackSlots } from './AttackSlots.js';
-import { GRUNT, ATTACKER_CAP } from './gruntData.js';
+import { GRUNT, ATTACKER_CAP, pickAttackVariant } from './gruntData.js';
 
 export const DEATH_LINGER_MS = 600; // corpse stays this long, then entity-unregistered
 
 export class EnemyManager {
-  constructor({ events, data = GRUNT, attackerCap = ATTACKER_CAP, onRemoved = null }) {
+  constructor({ events, data = GRUNT, attackerCap = ATTACKER_CAP, onRemoved = null, mixUp = true, rng = Math.random, getXRange = null }) {
     this.events = events; this.data = data;
+    this.rng = rng; this.getXRange = getXRange; // getXRange: () => {min,max}, the fighting range (a Dugan charge crashes into its edge)
+    // Parry mix-up: each attack picks a pattern (never the same twice in a row). mixUp:false = always the plain 1-2-3.
+    this.pickVariant = mixUp && data.variants ? (g) => pickAttackVariant(rng, g.lastVariantId, data.variants) : null;
     this.slots = new AttackSlots(attackerCap);
     this.enemies = new Map(); // id -> { grunt, deathTimer }
     this.onRemoved = onRemoved; // (id) => void, lets the view destroy its sprite
     this._onDamage = (p) => {
       const e = this.enemies.get(p.targetId);
-      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback });
+      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback, hpAfter: p.hpAfter });
+      const a = this.enemies.get(p.attackerId);
+      if (a && a.grunt.onHitLanded && p.landed !== false && p.amount > 0) a.grunt.onHitLanded(); // a charge ends on contact
     };
     this._onParryStun = ({ attackerId, hitstun }) => {
       const e = this.enemies.get(attackerId);
-      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun, knockback: 0 });
+      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun, knockback: 0, parry: true });
     };
     this._onDied = (p) => {
       if (!p || p.team !== 'rust') return;
@@ -33,12 +40,14 @@ export class EnemyManager {
     events.on(EVENTS.RETRY, this._onRetry);
   }
 
-  /** spawn spec from WaveSpawner: {id, x, y}. */
-  spawn({ id, x, y, skin = null, hpMult = 1 }) {
+  /** spawn spec from WaveSpawner: {id, x, y, enemy?, skin?, hpMult?}. enemy 'rust-brick-dugan' spawns the Level 1 mini-boss. */
+  spawn({ id, x, y, enemy = null, skin = null, hpMult = 1 }) {
     if (this.enemies.has(id)) return this.enemies.get(id).grunt;
+    if (enemy === DUGAN_ID) return this._spawnDugan({ id, x, y, hpMult });
     const grunt = new RustGrunt({
       id, x, y, slots: this.slots, data: this.data, maxHp: Math.round(this.data.maxHp * hpMult),
       hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+      pickVariant: this.pickVariant,
     });
     grunt.skin = skin; // visual variant (e.g. 'rust-breaker'); gameplay is still the grunt's
     this.enemies.set(id, { grunt, deathTimer: 0 });
@@ -48,6 +57,21 @@ export class EnemyManager {
       getState: () => ({ x: grunt.x, y: grunt.y, lane: grunt.y, facing: grunt.facing }),
     });
     return grunt;
+  }
+
+  _spawnDugan({ id, x, y, hpMult }) {
+    const boss = new BrickDugan({
+      id, x, y, slots: this.slots, data: DUGAN, maxHp: Math.round(DUGAN.maxHp * hpMult),
+      getXRange: this.getXRange, rng: this.rng,
+      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+    });
+    this.enemies.set(id, { grunt: boss, deathTimer: 0 });
+    this.events.emit(EVENTS.ENTITY_REGISTERED, {
+      id, team: DUGAN.team, boss: true, maxHp: boss.maxHp,
+      hurtbox: { ...DUGAN.hurtbox },
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
+    });
+    return boss;
   }
 
   get(id) { return this.enemies.get(id)?.grunt; }

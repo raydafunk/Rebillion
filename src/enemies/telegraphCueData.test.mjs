@@ -1,38 +1,50 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { telegraphCue, TELEGRAPH_CUE } from './telegraphCueData.js';
+import { telegraphCue, TELEGRAPH_CUE, FINISHER_ORANGE, RING_CENTER_ABOVE_FEET } from './telegraphCueData.js';
 import { GRUNT } from './gruntData.js';
-import { PARRY } from '../player/moves.js';
 
-test('no ring or flash before the NOW beat', () => {
-  const c = telegraphCue(0);
-  assert.equal(c.ring, null); assert.equal(c.fill, false);
-  assert.equal(telegraphCue(TELEGRAPH_CUE.nowAt - 0.01).ring, null);
+const MARK = 350;
+const cue = (clockMs, o = {}) => telegraphCue({ clockMs, markMs: MARK, kind: 'finisher', ...o });
+const popAt = TELEGRAPH_CUE.nowAt * GRUNT.telegraphMs;
+
+test('no ring before the NOW beat; the ring opens wide at the beat', () => {
+  assert.equal(cue(0).ring, null);
+  assert.equal(cue(popAt - 1).ring, null);
+  assert.equal(cue(popAt).ring.r, TELEGRAPH_CUE.ringFrom);
+  assert.equal(cue(popAt).ring.alpha, 0, 'fades in from nothing');
+  assert.ok(cue(popAt + TELEGRAPH_CUE.ringFadeInMs).ring.alpha > 0.9);
+  assert.ok(popAt < 60, 'the ring appears within the first ~60 ms of the wind-up');
 });
 
-test('NOW beat pops white once, then only the ring remains', () => {
-  const at = telegraphCue(TELEGRAPH_CUE.nowAt);
-  assert.equal(at.fill, true);
-  assert.equal(at.ring.r, TELEGRAPH_CUE.ringFrom);
-  const later = telegraphCue(0.7);
-  assert.equal(later.fill, false); assert.ok(later.ring);
+test('the ring is the only cue: no flash or icon fields are returned', () => {
+  for (const kind of ['strike', 'finisher']) for (let t = 0; t <= 700; t += 10) {
+    const c = cue(t, { kind });
+    assert.deepEqual(Object.keys(c), ['ring']);
+  }
 });
 
-test('ring closes monotonically onto the enemy by the end of the wind-up', () => {
+test('ring closes monotonically and is fully closed at the mark, then disappears', () => {
   let prev = Infinity;
-  for (let p = TELEGRAPH_CUE.nowAt; p <= 1.0001; p += 0.05) { const r = telegraphCue(p).ring.r; assert.ok(r <= prev + 1e-9); prev = r; }
-  assert.equal(Math.round(telegraphCue(1).ring.r), TELEGRAPH_CUE.ringTo);
+  for (let t = popAt; t <= MARK; t += 10) { const r = cue(t).ring.r; assert.ok(r <= prev + 1e-9); prev = r; }
+  assert.equal(Math.round(cue(MARK).ring.r), TELEGRAPH_CUE.ringTo);
+  assert.ok(cue(MARK + TELEGRAPH_CUE.ringLingerMs).ring);
+  assert.equal(cue(MARK + TELEGRAPH_CUE.ringLingerMs + 1).ring, null);
 });
 
-test('reduce mode never uses the white pop and softens the ring', () => {
-  for (let p = 0; p <= 1; p += 0.05) assert.equal(telegraphCue(p, { reduce: true }).fill, false);
-  assert.ok(telegraphCue(0.5, { reduce: true }).ring.alpha < telegraphCue(0.5).ring.alpha);
+test('a later mark closes the ring more slowly (hold / finisher variants)', () => {
+  const t = popAt + 100;
+  assert.ok(telegraphCue({ clockMs: t, markMs: 800, kind: 'finisher' }).ring.r > telegraphCue({ clockMs: t, markMs: 350, kind: 'finisher' }).ring.r);
 });
 
-test('timing: a parry pressed when the ring closes covers every jab; a reaction to the NOW beat is still in time', () => {
-  const nowToHit1 = GRUNT.telegraphMs * (1 - TELEGRAPH_CUE.nowAt) + GRUNT.jabString[0].atMs;
-  assert.ok(nowToHit1 >= 200, 'enough time to react after the cue');
-  const windowMs = PARRY.window * 1000 / 60;
-  const lastJab = GRUNT.jabString[GRUNT.jabString.length - 1].atMs;
-  assert.ok(windowMs >= lastJab, 'pressing as the ring closes (attack start) covers the whole string');
+test('only finisher attacks get a ring (orange); plain strikes get nothing', () => {
+  assert.equal(cue(popAt + 50).ring.color, FINISHER_ORANGE);
+  for (let t = 0; t <= 600; t += 10) assert.equal(cue(t, { kind: 'strike' }).ring, null);
+});
+
+test('reduce mode softens the ring', () => {
+  assert.ok(cue(popAt + 50, { reduce: true }).ring.alpha < cue(popAt + 50).ring.alpha);
+});
+
+test('the ring sits above the head: its closed edge clears a bar that tops out ~120 px above the feet', () => {
+  assert.ok(RING_CENTER_ABOVE_FEET - TELEGRAPH_CUE.ringTo > 120);
 });

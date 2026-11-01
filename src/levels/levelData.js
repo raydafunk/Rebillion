@@ -3,7 +3,7 @@
 // exist every spawn is a grunt (STAND_IN) and the original id is kept in level.standIns for later.
 import { WAVES } from '../waves/waveData.js';
 import { ROUND_TIME_SECONDS } from '../state/config.js';
-import { SPAWN_PATTERNS } from '../waves/spawnPatterns.js';
+import { SPAWN_PATTERNS, LEADER_ENTRANCES } from '../waves/spawnPatterns.js';
 
 export const LEVEL_FILES = Object.freeze([
   'content/levels/levels.json',
@@ -54,6 +54,8 @@ export function buildWave(raw, i) {
     ...(raw.attackerCap ? { attackerCap: raw.attackerCap } : {}),
     ...(raw.elites ? { elites: Math.min(raw.elites, raw.count), eliteHpMult: raw.eliteHpMult || 3 } : {}),
     ...(raw.restPickup ? { restPickup: { heal: raw.restPickup.heal } } : {}),
+    // leader: a mini-boss that walks in first and fights alongside the wave's grunts (does not count against maxAlive, or toward `count`).
+    ...(raw.leader ? { leader: { enemy: raw.leader.enemy, entrance: raw.leader.entrance || 'far-side', gate: !!raw.leader.gate, ...(raw.leader.hpMult ? { hpMult: raw.leader.hpMult } : {}) } } : {}),
   };
 }
 
@@ -72,6 +74,7 @@ export function levelErrors(raw) {
     if (w.hpMult !== undefined && !(w.hpMult >= 1 && w.hpMult <= 10)) errs.push(`wave ${i + 1}: hpMult must be 1-10`);
     if (w.attackerCap !== undefined && !(Number.isInteger(w.attackerCap) && w.attackerCap >= 1)) errs.push(`wave ${i + 1}: attackerCap must be an integer >= 1`);
     if (w.elites !== undefined && !(Number.isInteger(w.elites) && w.elites >= 0 && w.elites <= w.count)) errs.push(`wave ${i + 1}: elites must be 0..count`);
+    if (w.leader !== undefined && !(w.leader && typeof w.leader.enemy === 'string' && (w.leader.entrance === undefined || LEADER_ENTRANCES.includes(w.leader.entrance)))) errs.push(`wave ${i + 1}: leader needs an enemy id and an entrance of ${LEADER_ENTRANCES.join('|')}`);
     if (w.restPickup !== undefined && !(w.restPickup && w.restPickup.heal > 0 && w.restPickup.heal <= 100)) errs.push(`wave ${i + 1}: restPickup.heal must be 1-100`);
   });
   return errs;
@@ -93,7 +96,7 @@ export function buildLevel(raw, style) {
     scrolling: true,
     worldWidth: worldWidthFor(waves.length),
     exitX: worldWidthFor(waves.length) - EXIT_INSET,
-    totalEnemies: waves.reduce((n, w) => n + w.count, 0),
+    totalEnemies: waves.reduce((n, w) => n + w.count + (w.leader ? 1 : 0), 0),
     standIns: [...new Set(waves.map((w) => w.sourceEnemy).filter((e) => e && e !== STAND_IN))],
     style: { ...DEFAULT_STYLE, ...style, background: { ...DEFAULT_STYLE.background, ...(style && style.background) } },
   });
@@ -113,12 +116,12 @@ export function buildLevels(rawLists, styles = {}, onSkip = () => {}) {
   return out.sort((a, b) => a.order - b.order);
 }
 
-/** The Tier 0 round (waveData.js + config.js) as a level; fallback when level files cannot be loaded. */
+/** The fallback round (Level 1 table in waveData.js + config.js) as a level; fallback when level files cannot be loaded. */
 export function legacyLevel() {
   return Object.freeze({
     id: 'level-00-tier0', name: 'The Arena', order: 0, district: '', theme: '', palette: [],
     timeLimitSec: ROUND_TIME_SECONDS, intro: '', outro: '',
-    waves: WAVES, scrolling: false, worldWidth: 1920, exitX: null, totalEnemies: WAVES.reduce((n, w) => n + w.count, 0), standIns: [],
+    waves: WAVES, scrolling: false, worldWidth: 1920, exitX: null, totalEnemies: WAVES.reduce((n, w) => n + w.count + (w.leader ? 1 : 0), 0), standIns: [],
     style: { ...DEFAULT_STYLE },
   });
 }

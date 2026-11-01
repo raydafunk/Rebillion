@@ -6,7 +6,7 @@ Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style
 - District: `brick-red-alley`
 - Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music.
 - Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F
-- Time limit: 120 s. Waves: 3. Enemies named: grunt.
+- Time limit: 210 s. Waves: 5 (grunt counts 4, 6, 7, 8, then the mini-boss beat). Enemies named: grunt; rust-breaker elites (3x HP) in the last spawns of waves 3 and 4 (1, then 2). Wave 5 is the mini-boss beat: rust-brick-dugan leads, walking in first from the far side, and 4 grunts flank in from both edges in the same wave. Not a hard gate.
 - Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe."
 - Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
 

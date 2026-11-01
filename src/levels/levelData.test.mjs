@@ -21,7 +21,7 @@ for (const l of levels) {
   assert.equal(l.worldWidth, worldWidthFor(l.waves.length));
   assert.ok(l.waves.at(-1).lockX + 1280 <= l.worldWidth, 'last locked screen fits in the world');
   assert.ok(l.exitX > l.waves.at(-1).lockX + 1280 - 200 && l.exitX < l.worldWidth, 'exit is past the last fight');
-  assert.equal(l.totalEnemies, l.waves.reduce((n, w) => n + w.count, 0));
+  assert.equal(l.totalEnemies, l.waves.reduce((n, w) => n + w.count + (w.leader ? 1 : 0), 0)); // a wave's leader (mini-boss) is one more enemy
 }
 // Every level gets a breather pickup after each wave except the last (pipeline/validate.mjs enforces the same rule).
 for (const l of levels) {
@@ -36,20 +36,31 @@ for (const l of levels) {
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, spawnPattern: 'diagonal' }] }).length, 'unknown spawnPattern rejected');
 assert.equal(levels[7].waves.at(-1).hpMult, 8, 'the final boss wave is tough');
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, hpMult: 0.5 }] }).length, 'hpMult must be >= 1');
-// Level 1 is paced as an arc: quick warm-up, rising pressure, Breakers from wave 3, a big finale; health pickups in the breathers.
+// Level 1 is paced as an arc: quick warm-up, rising pressure, Breakers from wave 3, then the mini-boss beat; health pickups in the breathers.
 {
   const w = levels[0].waves;
   assert.equal(w.length, 5);
   assert.ok(w[0].count >= 4 && w[0].startDelayMs <= 800, 'wave 1 starts fast and is not trivial');
-  assert.ok(w.every((x, i) => i === 0 || x.count >= w[i - 1].count), 'enemy counts never shrink');
-  assert.ok(w.every((x, i) => i === 0 || x.spawnIntervalMs <= w[i - 1].spawnIntervalMs), 'spawns only get faster');
+  assert.ok(w.slice(0, 4).every((x, i) => i === 0 || x.count >= w[i - 1].count), 'enemy counts never shrink before the boss beat');
+  assert.ok(w.slice(0, 4).every((x, i) => i === 0 || x.spawnIntervalMs <= w[i - 1].spawnIntervalMs), 'spawns only get faster');
   assert.ok(!w[0].elites && !w[1].elites, 'no Breaker before wave 3');
-  assert.ok(w[2].elites >= 1 && w[4].elites > w[2].elites, 'Breakers arrive in wave 3 and peak in the finale');
+  assert.ok(w[2].elites >= 1 && w[3].elites > w[2].elites, 'Breakers arrive in wave 3 and grow in wave 4');
   assert.ok([0, 1, 2, 3].every((i) => w[i].restPickup && w[i].restPickup.heal > 0), 'a breather pickup after waves 1-4');
   assert.ok(w.slice(1, 4).every((x, i) => x.restPickup.heal > w[i].restPickup.heal), 'heals grow with the danger ahead');
   assert.ok(!w[4].restPickup, 'no pickup after the finale');
   assert.ok(w.every((x) => x.startDelayMs <= 1000), 'short waits: the breather is the walk and the pickup');
+  // Wave 5 is the mini-boss beat (owner decision): Dugan leads, 4 grunts flank in around him, not a hard gate.
+  assert.equal(w[4].count, 4, 'wave 5 brings 4 grunts');
+  assert.equal(w[4].leader.enemy, 'rust-brick-dugan');
+  assert.equal(w[4].leader.entrance, 'far-side');
+  assert.equal(w[4].leader.gate, false);
+  assert.equal(w[4].spawnPattern, 'flank', 'grunts come in from both edges');
+  assert.equal(w[4].maxAlive, 4, 'all four grunts can be on screen with him');
+  assert.ok(!w[4].elites, 'no Breakers in the boss beat');
+  assert.equal(levels[0].totalEnemies, w.reduce((n, x) => n + x.count, 0) + 1, 'Dugan counts as one more enemy');
 }
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, leader: { enemy: 'rust-brick-dugan', entrance: 'sideways' } }] }).length, 'unknown leader entrance rejected');
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, leader: { entrance: 'far-side' } }] }).length, 'leader needs an enemy id');
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 2, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, elites: 3 }] }).length, 'elites cannot exceed count');
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 2, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, restPickup: { heal: 0 } }] }).length, 'pickup must heal');
 assert.ok(levels.some((l) => l.standIns.length), 'expansion enemies are recorded as stand-ins');
@@ -70,3 +81,11 @@ assert.equal(fallback.length, 1);
 assert.equal(fallback[0].waves.length, legacyLevel().waves.length);
 assert.equal(fallback[0].scrolling, false);
 console.log('levelData ok:', levels.length, 'levels');
+
+// The fallback level (used when the level files cannot load) mirrors Level 1 and counts Dugan.
+{
+  const f = legacyLevel();
+  assert.equal(f.waves.length, 5);
+  assert.equal(f.totalEnemies, 4 + 6 + 7 + 8 + 4 + 1, 'wave counts plus Dugan');
+  assert.equal(f.totalEnemies, levels[0].totalEnemies, 'same enemy total as Level 1');
+}

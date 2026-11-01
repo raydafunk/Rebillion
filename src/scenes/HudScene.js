@@ -88,7 +88,7 @@ export default class HudScene extends Phaser.Scene {
 
   _left() {
     const w = this.level.waves[this.waveIndex];
-    this.leftText.setText(w ? `ENEMIES LEFT: ${Math.max(0, w.count - this.killed)}` : '');
+    this.leftText.setText(w ? `ENEMIES LEFT: ${Math.max(0, w.count + (w.leader ? 1 : 0) - this.killed)}` : '');
   }
 
   _drawHp() {

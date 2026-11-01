@@ -1,0 +1,1195 @@
+{
+  "group_id": "9f550bfa-09dd-4372-8c4b-da8dbf5b1453",
+  "states": [
+    {
+      "character": {
+        "id": "1f1ab169-a4cb-49a8-a5b7-758a1b0a97a6",
+        "name": "Idle",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T17:48:46.360568+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "Idle": {
+            "north-east": [
+              "Idle/animations/Idle/north-east/frame_000.png",
+              "Idle/animations/Idle/north-east/frame_001.png",
+              "Idle/animations/Idle/north-east/frame_002.png",
+              "Idle/animations/Idle/north-east/frame_003.png",
+              "Idle/animations/Idle/north-east/frame_004.png",
+              "Idle/animations/Idle/north-east/frame_005.png",
+              "Idle/animations/Idle/north-east/frame_006.png",
+              "Idle/animations/Idle/north-east/frame_007.png"
+            ],
+            "north-west": [
+              "Idle/animations/Idle/north-west/frame_000.png",
+              "Idle/animations/Idle/north-west/frame_001.png",
+              "Idle/animations/Idle/north-west/frame_002.png",
+              "Idle/animations/Idle/north-west/frame_003.png",
+              "Idle/animations/Idle/north-west/frame_004.png",
+              "Idle/animations/Idle/north-west/frame_005.png",
+              "Idle/animations/Idle/north-west/frame_006.png",
+              "Idle/animations/Idle/north-west/frame_007.png"
+            ],
+            "south-west": [
+              "Idle/animations/Idle/south-west/frame_000.png",
+              "Idle/animations/Idle/south-west/frame_001.png",
+              "Idle/animations/Idle/south-west/frame_002.png",
+              "Idle/animations/Idle/south-west/frame_003.png",
+              "Idle/animations/Idle/south-west/frame_004.png",
+              "Idle/animations/Idle/south-west/frame_005.png",
+              "Idle/animations/Idle/south-west/frame_006.png",
+              "Idle/animations/Idle/south-west/frame_007.png"
+            ],
+            "north": [
+              "Idle/animations/Idle/north/frame_000.png",
+              "Idle/animations/Idle/north/frame_001.png",
+              "Idle/animations/Idle/north/frame_002.png",
+              "Idle/animations/Idle/north/frame_003.png",
+              "Idle/animations/Idle/north/frame_004.png",
+              "Idle/animations/Idle/north/frame_005.png",
+              "Idle/animations/Idle/north/frame_006.png",
+              "Idle/animations/Idle/north/frame_007.png"
+            ],
+            "south-east": [
+              "Idle/animations/Idle/south-east/frame_000.png",
+              "Idle/animations/Idle/south-east/frame_001.png",
+              "Idle/animations/Idle/south-east/frame_002.png",
+              "Idle/animations/Idle/south-east/frame_003.png",
+              "Idle/animations/Idle/south-east/frame_004.png",
+              "Idle/animations/Idle/south-east/frame_005.png",
+              "Idle/animations/Idle/south-east/frame_006.png",
+              "Idle/animations/Idle/south-east/frame_007.png"
+            ],
+            "west": [
+              "Idle/animations/Idle/west/frame_000.png",
+              "Idle/animations/Idle/west/frame_001.png",
+              "Idle/animations/Idle/west/frame_002.png",
+              "Idle/animations/Idle/west/frame_003.png",
+              "Idle/animations/Idle/west/frame_004.png",
+              "Idle/animations/Idle/west/frame_005.png",
+              "Idle/animations/Idle/west/frame_006.png",
+              "Idle/animations/Idle/west/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/Idle/south/frame_000.png",
+              "Idle/animations/Idle/south/frame_001.png",
+              "Idle/animations/Idle/south/frame_002.png",
+              "Idle/animations/Idle/south/frame_003.png",
+              "Idle/animations/Idle/south/frame_004.png",
+              "Idle/animations/Idle/south/frame_005.png",
+              "Idle/animations/Idle/south/frame_006.png",
+              "Idle/animations/Idle/south/frame_007.png"
+            ],
+            "east": [
+              "Idle/animations/Idle/east/frame_000.png",
+              "Idle/animations/Idle/east/frame_001.png",
+              "Idle/animations/Idle/east/frame_002.png",
+              "Idle/animations/Idle/east/frame_003.png",
+              "Idle/animations/Idle/east/frame_004.png",
+              "Idle/animations/Idle/east/frame_005.png",
+              "Idle/animations/Idle/east/frame_006.png",
+              "Idle/animations/Idle/east/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "46ecfed5-e678-49af-b417-0c64ac1bb11a",
+        "name": "Walking",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T18:03:35.295157+00:00"
+      },
+      "folder": "Walking",
+      "frames": {
+        "rotations": {
+          "south": "Walking/rotations/south.png",
+          "south-east": "Walking/rotations/south-east.png",
+          "east": "Walking/rotations/east.png",
+          "north-east": "Walking/rotations/north-east.png",
+          "north": "Walking/rotations/north.png",
+          "north-west": "Walking/rotations/north-west.png",
+          "west": "Walking/rotations/west.png",
+          "south-west": "Walking/rotations/south-west.png"
+        },
+        "animations": {
+          "Walk": {
+            "west": [
+              "Walking/animations/Walk/west/frame_000.png",
+              "Walking/animations/Walk/west/frame_001.png",
+              "Walking/animations/Walk/west/frame_002.png",
+              "Walking/animations/Walk/west/frame_003.png",
+              "Walking/animations/Walk/west/frame_004.png",
+              "Walking/animations/Walk/west/frame_005.png"
+            ],
+            "south": [
+              "Walking/animations/Walk/south/frame_000.png",
+              "Walking/animations/Walk/south/frame_001.png",
+              "Walking/animations/Walk/south/frame_002.png",
+              "Walking/animations/Walk/south/frame_003.png",
+              "Walking/animations/Walk/south/frame_004.png",
+              "Walking/animations/Walk/south/frame_005.png"
+            ],
+            "south-west": [
+              "Walking/animations/Walk/south-west/frame_000.png",
+              "Walking/animations/Walk/south-west/frame_001.png",
+              "Walking/animations/Walk/south-west/frame_002.png",
+              "Walking/animations/Walk/south-west/frame_003.png",
+              "Walking/animations/Walk/south-west/frame_004.png",
+              "Walking/animations/Walk/south-west/frame_005.png"
+            ],
+            "north": [
+              "Walking/animations/Walk/north/frame_000.png",
+              "Walking/animations/Walk/north/frame_001.png",
+              "Walking/animations/Walk/north/frame_002.png",
+              "Walking/animations/Walk/north/frame_003.png",
+              "Walking/animations/Walk/north/frame_004.png",
+              "Walking/animations/Walk/north/frame_005.png"
+            ],
+            "north-west": [
+              "Walking/animations/Walk/north-west/frame_000.png",
+              "Walking/animations/Walk/north-west/frame_001.png",
+              "Walking/animations/Walk/north-west/frame_002.png",
+              "Walking/animations/Walk/north-west/frame_003.png",
+              "Walking/animations/Walk/north-west/frame_004.png",
+              "Walking/animations/Walk/north-west/frame_005.png"
+            ],
+            "south-east": [
+              "Walking/animations/Walk/south-east/frame_000.png",
+              "Walking/animations/Walk/south-east/frame_001.png",
+              "Walking/animations/Walk/south-east/frame_002.png",
+              "Walking/animations/Walk/south-east/frame_003.png",
+              "Walking/animations/Walk/south-east/frame_004.png",
+              "Walking/animations/Walk/south-east/frame_005.png"
+            ],
+            "north-east": [
+              "Walking/animations/Walk/north-east/frame_000.png",
+              "Walking/animations/Walk/north-east/frame_001.png",
+              "Walking/animations/Walk/north-east/frame_002.png",
+              "Walking/animations/Walk/north-east/frame_003.png",
+              "Walking/animations/Walk/north-east/frame_004.png",
+              "Walking/animations/Walk/north-east/frame_005.png"
+            ],
+            "east": [
+              "Walking/animations/Walk/east/frame_000.png",
+              "Walking/animations/Walk/east/frame_001.png",
+              "Walking/animations/Walk/east/frame_002.png",
+              "Walking/animations/Walk/east/frame_003.png",
+              "Walking/animations/Walk/east/frame_004.png",
+              "Walking/animations/Walk/east/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "5893ae1d-ffdb-41de-9493-2b784eaf7400",
+        "name": "Fighting",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T18:28:37.713483+00:00"
+      },
+      "folder": "Fighting",
+      "frames": {
+        "rotations": {
+          "south": "Fighting/rotations/south.png",
+          "south-east": "Fighting/rotations/south-east.png",
+          "east": "Fighting/rotations/east.png",
+          "north-east": "Fighting/rotations/north-east.png",
+          "north": "Fighting/rotations/north.png",
+          "north-west": "Fighting/rotations/north-west.png",
+          "west": "Fighting/rotations/west.png",
+          "south-west": "Fighting/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_their_right_hand_back_to_the_w": {
+            "north-west": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-west/frame_008.png"
+            ],
+            "south-east": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-east/frame_008.png"
+            ],
+            "south-west": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south-west/frame_008.png"
+            ],
+            "west": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/west/frame_008.png"
+            ],
+            "east": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/east/frame_008.png"
+            ],
+            "north-east": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north-east/frame_008.png"
+            ],
+            "north": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/north/frame_008.png"
+            ],
+            "south": [
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_000.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_001.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_002.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_003.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_004.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_005.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_006.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_007.png",
+              "Fighting/animations/The_character_pulls_their_right_hand_back_to_the_w/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "9eb246a1-49f2-40f6-8128-d113e39e3e9a",
+        "name": "\u2022\tGround Stomp",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T19:06:13.120548+00:00"
+      },
+      "folder": "Ground_Stomp",
+      "frames": {
+        "rotations": {
+          "south": "Ground_Stomp/rotations/south.png",
+          "south-east": "Ground_Stomp/rotations/south-east.png",
+          "east": "Ground_Stomp/rotations/east.png",
+          "north-east": "Ground_Stomp/rotations/north-east.png",
+          "north": "Ground_Stomp/rotations/north.png",
+          "north-west": "Ground_Stomp/rotations/north-west.png",
+          "west": "Ground_Stomp/rotations/west.png",
+          "south-west": "Ground_Stomp/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_powerful_leap_pulling_the": {
+            "south-west": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-west/frame_008.png"
+            ],
+            "south": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south/frame_008.png"
+            ],
+            "north-east": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-east/frame_008.png"
+            ],
+            "north-west": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north-west/frame_008.png"
+            ],
+            "north": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/north/frame_008.png"
+            ],
+            "east": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/east/frame_008.png"
+            ],
+            "south-east": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/south-east/frame_008.png"
+            ],
+            "west": [
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_000.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_001.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_002.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_003.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_004.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_005.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_006.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_007.png",
+              "Ground_Stomp/animations/The_character_performs_a_powerful_leap_pulling_the/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "44c19254-4127-43d4-8a43-665d712110c8",
+        "name": "running then grab",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T20:13:36.875268+00:00"
+      },
+      "folder": "running_then_grab",
+      "frames": {
+        "rotations": {
+          "south": "running_then_grab/rotations/south.png",
+          "south-east": "running_then_grab/rotations/south-east.png",
+          "east": "running_then_grab/rotations/east.png",
+          "north-east": "running_then_grab/rotations/north-east.png",
+          "north": "running_then_grab/rotations/north.png",
+          "north-west": "running_then_grab/rotations/north-west.png",
+          "west": "running_then_grab/rotations/west.png",
+          "south-west": "running_then_grab/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_initiates_a_powerful_sprint_leaning": {
+            "north-east": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-east/frame_008.png"
+            ],
+            "north": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north/frame_008.png"
+            ],
+            "east": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/east/frame_008.png"
+            ],
+            "south-west": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-west/frame_008.png"
+            ],
+            "south": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south/frame_008.png"
+            ],
+            "west": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/west/frame_008.png"
+            ],
+            "north-west": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/north-west/frame_008.png"
+            ],
+            "south-east": [
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_000.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_001.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_002.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_003.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_004.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_005.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_006.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_007.png",
+              "running_then_grab/animations/The_character_initiates_a_powerful_sprint_leaning/south-east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "d9b6ca59-6459-4606-bd37-714d2ad24cf5",
+        "name": "when taking a punch",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T23:05:19.043876+00:00"
+      },
+      "folder": "when_taking_a_punch",
+      "frames": {
+        "rotations": {
+          "south": "when_taking_a_punch/rotations/south.png",
+          "south-east": "when_taking_a_punch/rotations/south-east.png",
+          "east": "when_taking_a_punch/rotations/east.png",
+          "north-east": "when_taking_a_punch/rotations/north-east.png",
+          "north": "when_taking_a_punch/rotations/north.png",
+          "north-west": "when_taking_a_punch/rotations/north-west.png",
+          "west": "when_taking_a_punch/rotations/west.png",
+          "south-west": "when_taking_a_punch/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "north-5c7a4258": [
+              "when_taking_a_punch/animations/Taking_Punch/north-5c7a4258/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-5c7a4258/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-5c7a4258/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-5c7a4258/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-5c7a4258/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-5c7a4258/frame_005.png"
+            ],
+            "north-613ceaad": [
+              "when_taking_a_punch/animations/Taking_Punch/north-613ceaad/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-613ceaad/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-613ceaad/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-613ceaad/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-613ceaad/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-613ceaad/frame_005.png"
+            ],
+            "south": [
+              "when_taking_a_punch/animations/Taking_Punch/south/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/south/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/south/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/south/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/south/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/south/frame_005.png"
+            ],
+            "north-a4b54a84": [
+              "when_taking_a_punch/animations/Taking_Punch/north-a4b54a84/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-a4b54a84/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-a4b54a84/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-a4b54a84/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-a4b54a84/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-a4b54a84/frame_005.png"
+            ],
+            "south-west": [
+              "when_taking_a_punch/animations/Taking_Punch/south-west/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-west/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-west/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-west/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-west/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-west/frame_005.png"
+            ],
+            "west": [
+              "when_taking_a_punch/animations/Taking_Punch/west/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/west/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/west/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/west/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/west/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/west/frame_005.png"
+            ],
+            "south-east": [
+              "when_taking_a_punch/animations/Taking_Punch/south-east/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-east/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-east/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-east/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-east/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/south-east/frame_005.png"
+            ],
+            "east": [
+              "when_taking_a_punch/animations/Taking_Punch/east/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/east/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/east/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/east/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/east/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/east/frame_005.png"
+            ],
+            "north-east": [
+              "when_taking_a_punch/animations/Taking_Punch/north-east/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-east/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-east/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-east/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-east/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-east/frame_005.png"
+            ],
+            "north-west": [
+              "when_taking_a_punch/animations/Taking_Punch/north-west/frame_000.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-west/frame_001.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-west/frame_002.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-west/frame_003.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-west/frame_004.png",
+              "when_taking_a_punch/animations/Taking_Punch/north-west/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "c5d2d5ff-6f7e-4a9f-a3ce-d5068a16736c",
+        "name": "Jumping slam",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T23:07:22.149098+00:00"
+      },
+      "folder": "Jumping_slam",
+      "frames": {
+        "rotations": {
+          "south": "Jumping_slam/rotations/south.png",
+          "south-east": "Jumping_slam/rotations/south-east.png",
+          "east": "Jumping_slam/rotations/east.png",
+          "north-east": "Jumping_slam/rotations/north-east.png",
+          "north": "Jumping_slam/rotations/north.png",
+          "north-west": "Jumping_slam/rotations/north-west.png",
+          "west": "Jumping_slam/rotations/west.png",
+          "south-west": "Jumping_slam/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_sudden_heavy_leaping_jump": {
+            "north-west": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-west/frame_008.png"
+            ],
+            "west": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/west/frame_008.png"
+            ],
+            "south-west": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-west/frame_008.png"
+            ],
+            "north-east": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-east/frame_008.png"
+            ],
+            "south": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south/frame_008.png"
+            ],
+            "south-east": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/south-east/frame_008.png"
+            ],
+            "east": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/east/frame_008.png"
+            ],
+            "north-d9add171": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-d9add171/frame_008.png"
+            ],
+            "north-f3de52f9": [
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_000.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_001.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_002.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_003.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_004.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_005.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_006.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_007.png",
+              "Jumping_slam/animations/The_character_performs_a_sudden_heavy_leaping_jump/north-f3de52f9/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "7ae65dea-0eb0-42ff-b3b8-1fa377919eef",
+        "name": "falling backwards de",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-26T23:09:09.771594+00:00"
+      },
+      "folder": "falling_backwards_de",
+      "frames": {
+        "rotations": {
+          "south": "falling_backwards_de/rotations/south.png",
+          "south-east": "falling_backwards_de/rotations/south-east.png",
+          "east": "falling_backwards_de/rotations/east.png",
+          "north-east": "falling_backwards_de/rotations/north-east.png",
+          "north": "falling_backwards_de/rotations/north.png",
+          "north-west": "falling_backwards_de/rotations/north-west.png",
+          "west": "falling_backwards_de/rotations/west.png",
+          "south-west": "falling_backwards_de/rotations/south-west.png"
+        },
+        "animations": {
+          "Falling_Back_Death": {
+            "north": [
+              "falling_backwards_de/animations/Falling_Back_Death/north/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north/frame_006.png"
+            ],
+            "east": [
+              "falling_backwards_de/animations/Falling_Back_Death/east/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/east/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/east/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/east/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/east/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/east/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/east/frame_006.png"
+            ],
+            "south-west": [
+              "falling_backwards_de/animations/Falling_Back_Death/south-west/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-west/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-west/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-west/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-west/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-west/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-west/frame_006.png"
+            ],
+            "south": [
+              "falling_backwards_de/animations/Falling_Back_Death/south/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south/frame_006.png"
+            ],
+            "west": [
+              "falling_backwards_de/animations/Falling_Back_Death/west/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/west/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/west/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/west/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/west/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/west/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/west/frame_006.png"
+            ],
+            "south-east": [
+              "falling_backwards_de/animations/Falling_Back_Death/south-east/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-east/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-east/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-east/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-east/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-east/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/south-east/frame_006.png"
+            ],
+            "north-east": [
+              "falling_backwards_de/animations/Falling_Back_Death/north-east/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-east/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-east/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-east/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-east/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-east/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-east/frame_006.png"
+            ],
+            "north-west": [
+              "falling_backwards_de/animations/Falling_Back_Death/north-west/frame_000.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-west/frame_001.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-west/frame_002.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-west/frame_003.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-west/frame_004.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-west/frame_005.png",
+              "falling_backwards_de/animations/Falling_Back_Death/north-west/frame_006.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "0ad40828-d85f-42ce-af50-fed892bb7f63",
+        "name": "Rage Punch",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-27T11:33:10.264604+00:00"
+      },
+      "folder": "Rage_Punch",
+      "frames": {
+        "rotations": {
+          "south": "Rage_Punch/rotations/south.png",
+          "south-east": "Rage_Punch/rotations/south-east.png",
+          "east": "Rage_Punch/rotations/east.png",
+          "north-east": "Rage_Punch/rotations/north-east.png",
+          "north": "Rage_Punch/rotations/north.png",
+          "north-west": "Rage_Punch/rotations/north-west.png",
+          "west": "Rage_Punch/rotations/west.png",
+          "south-west": "Rage_Punch/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_the_glowing_orange_fire-envelo": {
+            "south-east-09909598": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-09909598/frame_008.png"
+            ],
+            "south-west": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-west/frame_008.png"
+            ],
+            "north-21cadd70": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-21cadd70/frame_008.png"
+            ],
+            "north-2920e724": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-2920e724/frame_008.png"
+            ],
+            "north-west": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-west/frame_008.png"
+            ],
+            "east-3bfc5815": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-3bfc5815/frame_008.png"
+            ],
+            "south": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south/frame_008.png"
+            ],
+            "south-east-8515fff6": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/south-east-8515fff6/frame_008.png"
+            ],
+            "east-97b723ba": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/east-97b723ba/frame_008.png"
+            ],
+            "west": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/west/frame_008.png"
+            ],
+            "north-east": [
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_000.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_001.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_002.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_003.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_004.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_005.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_006.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_007.png",
+              "Rage_Punch/animations/The_character_pulls_the_glowing_orange_fire-envelo/north-east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "366310e8-d10a-4a97-8d1c-a3e284dc71f0",
+        "name": "jumping backwards in",
+        "prompt": "a big Heavy black security vest with the Rust insignia Riot-control shoulder pads Reinforced forearm guards Steel-toe security boots Utility belt carrying restraints and radio equipment Concrete-Reinforced Knuckle Guards",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-01T15:59:51.447614+00:00"
+      },
+      "folder": "jumping_backwards_in",
+      "frames": {
+        "rotations": {
+          "south": "jumping_backwards_in/rotations/south.png",
+          "south-east": "jumping_backwards_in/rotations/south-east.png",
+          "east": "jumping_backwards_in/rotations/east.png",
+          "north-east": "jumping_backwards_in/rotations/north-east.png",
+          "north": "jumping_backwards_in/rotations/north.png",
+          "north-west": "jumping_backwards_in/rotations/north-west.png",
+          "west": "jumping_backwards_in/rotations/west.png",
+          "south-west": "jumping_backwards_in/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_sharp_controlled_hop_tuck": {
+            "west": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/west/frame_008.png"
+            ],
+            "east": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/east/frame_008.png"
+            ],
+            "south-east": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-east/frame_008.png"
+            ],
+            "south-west": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south-west/frame_008.png"
+            ],
+            "north-east": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-east/frame_008.png"
+            ],
+            "north": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north/frame_008.png"
+            ],
+            "north-west": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/north-west/frame_008.png"
+            ],
+            "south": [
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_000.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_001.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_002.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_003.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_004.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_005.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_006.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_007.png",
+              "jumping_backwards_in/animations/The_character_performs_a_sharp_controlled_hop_tuck/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-01T16:18:03.207759"
+}

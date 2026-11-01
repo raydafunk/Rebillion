@@ -4,7 +4,10 @@
 // Emits wave-started / wave-cleared / arena-cleared; consumes entity-died (team 'rust') and retry.
 import { EVENTS } from '../shared/events.js';
 import { WAVES } from './waveData.js';
-import { pickSpawn } from './spawnPatterns.js';
+import { pickSpawn, pickLeaderSpawn } from './spawnPatterns.js';
+
+// A wave with a `leader` (a mini-boss, e.g. Level 1's Brick Dugan) sends it in first; the wave's own enemies follow this much later.
+export const LEADER_LEAD_MS = 1800;
 
 export class WaveSpawner {
   // holdBetweenWaves (side-scrolling levels): a cleared wave is followed by phase 'hold' until advance() is
@@ -30,6 +33,8 @@ export class WaveSpawner {
     this.spawned = 0;
     this.spawnPointCursor = 0;
     this.alive.clear();
+    this.leaderIds = new Set();   // ids of wave leaders: they do not count against maxAlive
+    this.leaderSpawned = false;
   }
 
   get aliveCount() { return this.alive.size; }
@@ -38,12 +43,13 @@ export class WaveSpawner {
   get nextWave() { return this.waves[this.waveIndex + 1] || null; }
   get currentWave() { return this.waves[this.waveIndex] || null; }
 
-  /** Begin wave 1. Call when the round starts. */
-  start() { this._reset(); this._beginWave(0); }
-  restart() { this.start(); }
+  /** Begin wave 1 (or wave `from`, 0-based, for testing a single wave). Call when the round starts. A retry restarts from the same wave. */
+  start(from = 0) { this._reset(); this.startIndex = Math.min(Math.max(0, from), this.waves.length - 1); this._beginWave(this.startIndex); }
+  restart() { this.start(this.startIndex || 0); }
 
   _beginWave(i) {
     this.waveIndex = i; this.spawned = 0; this.spawnPointCursor = 0; this.surgeSide = null;
+    this.leaderSpawned = false;
     this.phase = 'delay'; this.timer = this.waves[i].startDelayMs;
     this.events.emit(EVENTS.WAVE_STARTED, { index: i, total: this.waves.length });
   }
@@ -70,6 +76,18 @@ export class WaveSpawner {
       this.phase = 'delay'; // next wave starts after its own delay, announced via wave-started
       this._beginWave(i + 1);
     }
+  }
+
+  get regularAliveCount() { let n = 0; for (const id of this.alive) if (!this.leaderIds.has(id)) n++; return n; }
+
+  _spawnLeader() {
+    const w = this.currentWave, L = w.leader;
+    const player = this.getPlayer ? this.getPlayer() : null;
+    const pt = player ? pickLeaderSpawn({ entrance: L.entrance, lockX: w.lockX, player }) : w.spawnPoints[1 % w.spawnPoints.length];
+    const id = `${String(L.enemy).replace(/^rust-/, '')}-${++this.idCounter}`;
+    this.alive.add(id); this.leaderIds.add(id);
+    this.leaderSpawned = true;
+    this.spawnFn({ id, enemy: L.enemy, x: pt.x, y: pt.y, waveIndex: this.waveIndex, skin: L.skin || null, hpMult: L.hpMult || 1, leader: true });
   }
 
   _spawnOne() {
@@ -99,8 +117,9 @@ export class WaveSpawner {
       this.phase = 'spawning'; this.timer = 0;
     }
     if (this.phase === 'spawning') {
+      if (w.leader && !this.leaderSpawned) { this._spawnLeader(); this.timer = w.leader.leadMs ?? LEADER_LEAD_MS; }
       this.timer -= dtMs;
-      while (this.timer <= 0 && this.spawned < w.count && this.alive.size < w.maxAlive) {
+      while (this.timer <= 0 && this.spawned < w.count && this.regularAliveCount < w.maxAlive) {
         this._spawnOne();
         this.timer += w.spawnIntervalMs;
       }

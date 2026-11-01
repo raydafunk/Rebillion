@@ -30,18 +30,18 @@ Every Rust attack must be avoidable, blockable or parryable by a player who reac
 
 | Attack | Windup | Cues |
 |---|---|---|
-| Grunt basic strike | 400ms (24f) minimum; never below 300ms | 1) 3-frame anticipation pose (arm pulled back, body leaning away) 2) Telegraph icon (`fx.telegraph`, Telegraph Red) pops above head at windup start, 120ms scale-in, holds until strike 3) body tint pulses red 15 percent for the windup 4) 1px-wider outline |
-| Heavy or later enemies | 600ms | same cues, icon scaled 1.4, ground danger zone ellipse in red at 30 percent alpha |
+| Grunt basic strike | 400ms (24f) minimum; never below 300ms | 1) 3-frame anticipation pose (arm pulled back, body leaning away) 2) 1px-wider outline 3) finisher attacks only (the heavy third hit of a Rust string): an orange ring (Finisher Orange `#FFA41C`, runtime only) opens around the enemy about a third of the way into the windup and closes onto it 80ms before the heavy hit, so the player presses parry as it closes. No telegraph icon, no body tint, no flash. Missing the ring is punished: the heavy hit and a 2-hit flurry after it ignore the player's post-hit invulnerability (6 damage each, after the 16-damage finisher); a parry stuns the grunt and cancels the flurry, a block reduces all of it to chip damage. Plain-jab attacks have no ring and are read from the pose alone |
+| Heavy or later enemies | 600ms | same pose and outline cues, ground danger zone ellipse in red at 30 percent alpha |
 
 - Strike frame is the hitbox-on frame; active for 80ms, then recovery 300ms during which the enemy is vulnerable (gives the punish window).
-- Attacker cap: only the enemies currently attacking show the red cue; waiting enemies circle in neutral colours, so the cue means "this one is about to hit".
-- Telegraph colour is reserved (see style guide). Do not use it for any other effect.
+- Attacker cap: only the enemies currently attacking can show a cue; waiting enemies circle in neutral colours, so a ring means "this one is about to land its heavy hit".
+- Telegraph Red `#FF3B30` is reserved for attack warnings (ground danger zones) and must not be used for any other effect. The finisher ring uses Finisher Orange `#FFA41C`.
 - Do not interrupt a windup by hit-stop on other characters.
 
 ## 4. Priority and layering
 
-Draw order top to bottom: UI, sparks and chips, telegraph icons, characters (sorted by y), ground shadows, background.
-If effects overlap, white flash wins over red tint.
+Draw order top to bottom: UI, sparks and chips, finisher rings, characters (sorted by y), ground shadows, background.
+If effects overlap, a landed hit's white flash wins.
 
 ## 5. Config sketch
 
@@ -84,7 +84,7 @@ Status: decided by art direction, extends section 2 (section 2 values still appl
 | Visibility | Hidden at full health. Appears on first damage (alpha 0 to 1 in 80 ms). Stays at alpha 1 for 3000 ms after the last damage, then fades to alpha 0.35 (never hidden again while the enemy lives) so remaining health stays readable in a crowd. Re-brightens to 1 on next damage. Under 50 percent hp it never fades below 0.6 |
 | On KO | Drain bar empties, then bar fades out over 150 ms as the enemy starts its fall |
 | Depth | Above characters, below sparks and the Zed HUD. Never occluded by other enemies |
-| Telegraph interaction | The telegraph icon (`fx.telegraph`) sits ABOVE the bar: icon bottom = bar top - 4 px, so both stay readable |
+| Telegraph interaction | The finisher ring floats above the enemy's head (centred 150 px above its feet), clear of the bar, so both stay readable |
 | Text | No numbers on the bar |
 
 ### 7.2 Enemy sprite hit flash

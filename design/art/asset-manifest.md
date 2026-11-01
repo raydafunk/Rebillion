@@ -95,7 +95,6 @@ Not drawn (UI owns): title strip (near-black, live text), selected ">" marker, f
 | Key | Filename | Size | Frames | Owner |
 |---|---|---|---|---|
 | fx.spark | assets/fx/spark-placeholder.svg | 64x64 | 1 (final: 4-frame burst) | ART |
-| fx.telegraph | assets/fx/telegraph-icon-placeholder.svg | 32x48 | 1 | ART |
 
 Hit flash, screenshake and hit-stop need no art; see `design/art/hit-feedback-spec.md`.
 

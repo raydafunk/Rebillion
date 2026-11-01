@@ -47,7 +47,7 @@ export function createHitResolver(events, now = () => Date.now()) {
       const guard = st.guard ?? null;
       if (guard === 'parry') {
         // Negated: no hp change, no invulnerability spent, but Zed still gets told.
-        if (isInvulnerable(e.health, t)) continue;
+        if (req.pierceInvuln ? e.health.dead : isInvulnerable(e.health, t)) continue; // piercing hits can be parried even inside the invuln window
         seen.add(key);
         events.emit(EVENTS.DAMAGE_APPLIED, {
           targetId: id, attackerId: req.attackerId, amount: 0,
@@ -68,7 +68,7 @@ export function createHitResolver(events, now = () => Date.now()) {
         if (req.neverKills) cap = Math.min(cap, e.health.hp - 1);
         r = cap > 0 ? applyDamage(e.health, cap, t, stun) : applyGlancingHit(e.health, t, stun);
       } else {
-        r = applyDamage(e.health, dmg, t, stun);
+        r = applyDamage(e.health, dmg, t, stun, { pierce: !!req.pierceInvuln });
       }
       if (!r.applied) continue;
       seen.add(key);

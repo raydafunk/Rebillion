@@ -1,4 +1,4 @@
-// Node simulation: full 3-wave run with a fake emitter, the real hit resolver, and a bot player.
+// Node simulation: full run of the fallback table (Level 1: 5 waves, Dugan leading wave 5) with a fake emitter, the real hit resolver, and a bot player.
 // Run: node src/arena/arena.sim.test.mjs
 import assert from 'node:assert/strict';
 import { fakeEmitter } from '../shared/fakeEmitter.mjs';
@@ -13,6 +13,11 @@ import { WAVES } from '../waves/waveData.js';
 import { GRUNT } from '../enemies/gruntData.js';
 
 const STEP = 16;
+// The original Tier 0 table (3 waves of 3, 4, 5 grunts): the failsafe scenarios below only need some waves to clear.
+const TIER0_WAVES = Object.freeze([3, 4, 5].map((count, i) => Object.freeze({
+  enemy: 'grunt', count, maxAlive: Math.min(count, 4), spawnIntervalMs: 900 - i * 100, startDelayMs: 800, lockX: i * 320,
+  spawnPoints: [{ x: i * 320 + 60, y: 520 }, { x: i * 320 + 1220, y: 580 }, { x: i * 320 + 60, y: 640 }, { x: i * 320 + 1220, y: 500 }],
+})));
 
 function makeWorld() {
   const events = fakeEmitter();
@@ -50,7 +55,7 @@ function botStep(w, arena, bounds, dt, state) {
   }
 }
 
-// 1) Full 3-wave run through Arena facade
+// 1) Full 5-wave run through Arena facade (waves 1-4, then Dugan + 4 grunts)
 {
   const w = makeWorld();
   let scroll = 0;
@@ -61,23 +66,26 @@ function botStep(w, arena, bounds, dt, state) {
   w.events.on(EVENTS.WAVE_STARTED, ({ index }) => lockSeen.push([index, arena.bounds.locked, arena.bounds.lockX]));
   arena.start();
   let maxAtk = 0, t = 0;
-  for (; t < 120000 && !arena.finished; t += STEP) {
+  for (; t < 600000 && !arena.finished; t += STEP) {
     w.tick();
     botStep(w, arena, arena.bounds, STEP, bot);
     arena.update(STEP);
     arena.applyToCamera(cam, w.player.x); scroll = cam.scrollX;
     const atk = arena.enemies.list().filter((g) => g.state === 'telegraph' || g.state === 'attack').length;
     maxAtk = Math.max(maxAtk, atk);
-    assert.ok(atk <= 2, 'attacker cap');
-    assert.ok(arena.enemies.liveCount <= 4);
+    const cap = arena.spawner.currentWave?.attackerCap ?? 2;
+    assert.ok(atk <= cap, 'attacker cap');
+    assert.ok(arena.enemies.liveCount <= 5, 'at most 4 grunts plus the leader');
   }
-  assert.ok(arena.finished, 'arena cleared within 120s sim');
+  assert.ok(arena.finished, 'arena cleared within the 10 min sim');
   const names = w.log.map((l) => l.e).filter((e) => e.startsWith('wave') || e.startsWith('arena'));
-  assert.deepEqual(names, ['wave-started', 'wave-cleared', 'wave-started', 'wave-cleared', 'wave-started', 'wave-cleared', 'arena-cleared']);
-  const spawnedPerWave = WAVES.map((x) => x.count);
+  assert.deepEqual(names, [...WAVES.flatMap(() => ['wave-started', 'wave-cleared']), 'arena-cleared']);
+  const spawnedPerWave = WAVES.map((x) => x.count + (x.leader ? 1 : 0));
   const regs = w.log.filter((l) => l.e === EVENTS.ENTITY_REGISTERED && l.p.team === 'rust').length;
   assert.equal(regs, spawnedPerWave.reduce((a, b) => a + b, 0));
-  assert.deepEqual(lockSeen.map((x) => x[0]), [0, 1, 2]);
+  assert.deepEqual(lockSeen.map((x) => x[0]), WAVES.map((_, i) => i));
+  assert.ok(w.log.some((l) => l.e === EVENTS.ENTITY_REGISTERED && l.p.boss), 'Dugan registered as a boss');
+  assert.ok(w.log.some((l) => l.e === EVENTS.HIT_REQUEST && l.p.attackerId.startsWith('brick-dugan')), 'Dugan attacked');
   assert.ok(lockSeen.every((x) => x[1]));
   assert.ok(w.log.some((l) => l.e === EVENTS.HIT_REQUEST && l.p.team === 'rust'), 'grunts attacked');
   assert.equal(arena.bounds.locked, false, 'camera released');
@@ -97,9 +105,9 @@ function botStep(w, arena, bounds, dt, state) {
 function failsafeRig(dataOverride) {
   const w = makeWorld();
   const events = w.events;
-  const bounds = new ArenaBounds({ events });
+  const bounds = new ArenaBounds({ events, waves: TIER0_WAVES });
   const manager = new EnemyManager({ events, data: { ...GRUNT, ...dataOverride } });
-  const spawner = new WaveSpawner({ events, spawn: (s) => manager.spawn(s) });
+  const spawner = new WaveSpawner({ events, waves: TIER0_WAVES, spawn: (s) => manager.spawn(s) });
   let scroll = 0;
   const actions = [];
   const fs = new ArenaFailsafe({ bounds, manager, spawner, getScrollX: () => scroll, onAction: (a) => actions.push(a) });
