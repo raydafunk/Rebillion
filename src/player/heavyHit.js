@@ -14,6 +14,17 @@ export const SWING_SOUND_PATH = 'assets/sound/swing-woosh-loud.wav';
 export const RUN_SOUND_KEY = 'zed-run-loop';
 export const RUN_SOUND_PATH = 'assets/sound/433725__disagree__running-on-ground.flac';
 
+// Footstep loop tuning (the sample is one long continuous running recording, so per-step sync to the clip's foot
+// plants isn't possible; we shape it by direction instead). Any horizontal component = full side-run sound; depth-only
+// (straight toward/away from the camera) is softer and a touch slower, matching its lower speed (depthSpeed < runSpeed).
+export const RUN_STEP = { volume: 0.6, rate: 1, depthVolume: 0.36, depthRate: 0.88 };
+
+/** Pure: {volume, rate} for the footstep loop from the movement input. Diagonals count as side running. */
+export function runStepSound(moveX, moveY, tune = RUN_STEP) {
+  const depthOnly = !moveX && !!moveY;
+  return depthOnly ? { volume: tune.depthVolume, rate: tune.depthRate } : { volume: tune.volume, rate: tune.rate };
+}
+
 export const OWW_SOUND_KEY = 'zed-oww-hurt';
 export const OWW_SOUND_PATH = 'assets/sound/743351__qubodup__short-oww.wav';
 export const OWW_SOUND_VOLUME = 0.7;

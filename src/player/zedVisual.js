@@ -21,9 +21,11 @@ export const zedTextureKey = (state, dir) => `zed.${state.toLowerCase()}.${dir}`
 // Metadata folder/anim names are case-sensitive on disk: "Idle", "Running"/"running".
 export const ZED_ANIMS = [
   // Running plays for the machine's single locomotion state ('run' = fast movement).
+  // 8 directions: measured per-dir mean foot row 52.0-53.6 (N/S/diagonals within 1px of E/W 53.1), so one originY, no dirOriginY.
   // Frames are 64x64 canvases (not 48): lowest opaque row is 52-54 (avg ~53) vs idle's 45 on 48.
   // Feet anchor = (53.5 + 1 + 2px ground gap)/64, same gap idle has (45+1+2 = 48/48).
-  { state: 'run', folder: 'Running', anim: 'running', frames: 8, fps: 13, originY: 56.5 / 64, repeat: -1 },
+  { state: 'run', folder: 'Running', anim: 'running', frames: 8, fps: 13, originY: 56.5 / 64, repeat: -1, dirs: 'all',
+    dirOriginY: { south: 54 / 64, 'north-east': 53.5 / 64, north: 52.5 / 64, 'north-west': 52.25 / 64 } },
   // Cross punch plays once for every attack move (light/heavy) and holds its last frame until the move ends.
   // 80x80 canvas, character same pixel size as idle; lowest opaque row 61 -> (61 + 1 + 2px gap)/80.
   { state: 'attack', folder: 'fighting_pose', anim: 'Cross_Punch', frames: 6, fps: 24, originY: 64 / 80, repeat: 0 },
@@ -43,6 +45,15 @@ export const ZED_ANIMS = [
   { state: 'special', folder: 'Super_special_move', anim: 'The_character_pivots_sharply_right_hand_drawing_to', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
   // Death (Falling_Back_Death): 7 frames, 80x80 canvas, plays once and holds the last frame (lowest opaque row 62 -> (62 + 1 + 2px gap)/80).
   // 7 frames / 12 fps = 583 ms, inside ArenaScene's END_DELAY_MS (700) so the lose screen waits for the fall.
+  // dirOriginY (back/front views): feet sit on the shadow centre, not 2px above it. = (mean lowest opaque row + 1 + gap)/64 with
+  // gap -1 for north/north-east/north-west (1 src px sink so the planted foot is inside the shadow ellipse) and +1 for south;
+  // east/west and south-east/south-west keep originY.
+  // Carrying a weapon (8 directions, dirs: 'all'): idle when still, walk when moving (incl. depth/diagonals). 64x64 canvases,
+  // lowest opaque row measured 51-54 (idle 52-53, walk 51-54 bobbing) -> same 56.5/64 foot line as Running.
+  { state: 'carryidle', folder: 'Carrying_weapon_ideal', anim: 'Idle', frames: 8, fps: 10, originY: 56.5 / 64, repeat: -1, dirs: 'all',
+    dirOriginY: { south: 55 / 64, 'north-east': 53 / 64, north: 52 / 64, 'north-west': 53 / 64 } },
+  { state: 'carrywalk', folder: 'Carrying_weapon_stat_walking', anim: 'Walking', frames: 8, fps: 12, originY: 56.5 / 64, repeat: -1, dirs: 'all',
+    dirOriginY: { south: 55 / 64, 'north-east': 52.5 / 64, north: 52.75 / 64, 'north-west': 52.5 / 64 } },
   { state: 'dead', folder: 'knock_down_death', anim: 'Falling_Back_Death', frames: 7, fps: 12, originY: 65 / 80, repeat: 0,
     // The lying frame's body ends at row 51 in both directions (east also has a few stray pixels at rows 57-62 that
     // aren't the body, which is why measuring "lowest opaque row" left him floating), so it's pinned at (51 + 1 + 2)/80.
@@ -56,20 +67,53 @@ export const zedFrameKey = (state, dir, i) => `zed.${state}.${dir}.${i}`;
 export const zedAnimKey = (state, dir) => `zed.${state}.${dir}`;
 export const zedFramePath = (a, dir, i) => `${a.folder}/animations/${a.anim}/${dir}/frame_${String(i).padStart(3, '0')}.png`;
 const SIDE = Object.values(ZED_SPRITE.dir);
+/** Directions a clip is loaded/registered for: all 8 when `dirs: 'all'`, else east/west only. */
+export const clipDirs = (a) => (a.dirs === 'all' ? DIRS : SIDE);
+export const ZED_DIRS = DIRS;
+
+/** Origin Y for a clip frame. `dir` is the direction in the clip's own key (dir8 for dirs:'all' clips, east/west otherwise). */
+export function clipOriginY(clip, dir, frame, fallback = ZED_SPRITE.origin.y) {
+  return clip?.frameOriginY?.[dir]?.[frame] ?? clip?.dirOriginY?.[dir] ?? clip?.originY ?? fallback;
+}
+
+/**
+ * 8-way facing from movement input (moveY: -1 = up/north, +1 = down/south; opposite keys already cancel to 0).
+ * No input keeps `prev` (last direction). Pure.
+ */
+export function dir8FromInput(moveX, moveY, prev = 'east') {
+  const x = Math.sign(moveX || 0), y = Math.sign(moveY || 0);
+  if (!x && !y) return prev;
+  return (y < 0 ? 'north' : y > 0 ? 'south' : '') + (y && x ? '-' : '') + (x > 0 ? 'east' : x < 0 ? 'west' : '');
+}
+
+/** Carry clip state for the machine state, or null when the normal clips should play. */
+/** Clip keys to try, best first, for a live (non-dead) Zed: carry/run use the 8-way dir, then the east/west chain. */
+export function zedClipKeys({ state, stateKey, dir, dir8, carrying }) {
+  const carry = carryState(carrying, state);
+  return [...(carry ? [`zed.${carry}.${dir8}`] : state === 'run' ? [`zed.run.${dir8}`] : []),
+    `zed.${stateKey}.${dir}`, `zed.${state}.${dir}`, `zed.${stateKey}`, `zed.${state}`];
+}
+
+export function carryState(carrying, machineState) {
+  if (!carrying) return null;
+  if (machineState === 'idle') return 'carryidle';
+  if (machineState === 'run') return 'carrywalk'; // 'run' is the single locomotion state (depth moves count)
+  return null;
+}
 
 /** Queue rotation PNGs per state, plus east/west animation frames (call from scene.preload). */
 export function loadZedSprites(scene, states = ['Idle']) {
   for (const s of states) {
     for (const d of DIRS) scene.load.image(zedTextureKey(s, d), `${ZED_SPRITE.base}${s}/rotations/${d}.png`);
   }
-  for (const a of ZED_ANIMS) for (const d of SIDE) for (let i = 0; i < a.frames; i++) {
+  for (const a of ZED_ANIMS) for (const d of clipDirs(a)) for (let i = 0; i < a.frames; i++) {
     scene.load.image(zedFrameKey(a.state, d, i), ZED_SPRITE.base + zedFramePath(a, d, i));
   }
 }
 
-/** Register `zed.<state>.<dir>` anims (e.g. zed.run.east / zed.run.west). Idempotent; skips unloaded frames. */
+/** Register `zed.<state>.<dir>` anims (zed.run.east/west; all 8 dirs for `dirs: 'all'` clips). Idempotent; skips unloaded frames. */
 export function registerZedAnimations(scene) {
-  for (const a of ZED_ANIMS) for (const d of SIDE) {
+  for (const a of ZED_ANIMS) for (const d of clipDirs(a)) {
     const key = zedAnimKey(a.state, d);
     if (scene.anims.exists(key) || !scene.textures.exists(zedFrameKey(a.state, d, 0))) continue;
     for (let i = 0; i < a.frames; i++) scene.textures.get(zedFrameKey(a.state, d, i)).setFilter?.(1); // NEAREST
@@ -153,17 +197,25 @@ export class ZedVisual {
     const stateKey = m.state === 'attack' && m.moveId ? m.moveId : m.state;
     if (this._wasDead && !zed.dead) this._anim = null; // revived (retry): force the next clip to restart
     this._wasDead = !!zed.dead;
-    const animKey = (zed.dead ? [`zed.dead.${dir}`, 'zed.dead'] : [`zed.${stateKey}.${dir}`, `zed.${m.state}.${dir}`, `zed.${stateKey}`, `zed.${m.state}`]).find((k) => this.scene.anims.exists(k));
+    const carry = zed.dead ? null : carryState(zed.carrying, m.state);
+    const dir8 = zed.dir8 ?? dir;
+    const animKey = (zed.dead ? [`zed.dead.${dir}`, 'zed.dead'] : zedClipKeys({ state: m.state, stateKey, dir, dir8, carrying: zed.carrying })).find((k) => this.scene.anims.exists(k));
     const img = this.image;
     img.setPosition(feetX, feetY).setDepth(depth);
     if (animKey) { // real frames available: let them drive; keep tint/alpha only
       const animTag = `${animKey}|${zed.dead ? 'dead' : ''}|${m.state === 'attack' ? m.moveId : ''}`; // chained attacks restart the clip
       if (zed.dead && !grounded) { // killed in the air: hold the first death frame until he lands, then fall
         img.stop(); img.setTexture(zedFrameKey('dead', dir, 0)); this._anim = null;
-      } else if (this._anim !== animTag) { img.play(animKey); this._anim = animTag; }
+      } else if (this._anim !== animTag) {
+        // carry clips share a gait across directions: keep the frame index when only the direction changed
+        const keepFrame = carry && this._carryTag === carry ? Number(String(img.anims.currentFrame?.textureKey ?? '').split('.').pop()) || 0 : 0;
+        img.play(keepFrame ? { key: animKey, startFrame: keepFrame } : animKey); this._anim = animTag;
+      }
+      this._carryTag = carry;
       const clip = ZED_ANIMS.find((a) => animKey.startsWith(`zed.${a.state}.`));
       const fi = Number(String(img.anims.currentFrame?.textureKey ?? img.texture.key).split('.').pop());
-      img.setOrigin(ZED_SPRITE.origin.x, clip?.frameOriginY?.[dir]?.[fi] ?? clip?.dirOriginY?.[dir] ?? clip?.originY ?? ZED_SPRITE.origin.y);
+      const clipDir = clip?.dirs === 'all' ? animKey.slice(`zed.${clip.state}.`.length) || dir : dir; // key's own dir (dir8, or east/west on fallback)
+      img.setOrigin(ZED_SPRITE.origin.x, clipOriginY(clip, clipDir, fi));
       img.setScale(this.base.sx, this.base.sy).setPosition(feetX, feetY).setAngle(0);
       if (m.state === 'attack' && clip) { // stretch the punch/kick over the move: wind-up, snap on the active frames, ease out
         const mv = MOVES[m.moveId];

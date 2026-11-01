@@ -60,6 +60,7 @@ export const COMBAT_DEFAULTS = Object.freeze({
   BLOCK_DAMAGE_MULT: 0.25,    // fraction of damage taken while guard === 'block'
   BLOCK_KNOCKBACK_MULT: 0.25, // fraction of knockback while blocking
   INVULN_MS_AFTER_HIT: 400, // player only; enemies use hitstun
+  DEPTH_TOLERANCE: 36,      // px of floor-depth difference beyond which a melee hit misses (both must be lined up)
   AIR_DODGE_LIFT: 30,       // px a target's feet must be off the floor to be out of reach of ground melee (jump over grunts)
 });
 

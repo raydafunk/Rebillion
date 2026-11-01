@@ -40,7 +40,7 @@ const target = { x: 300, y: 0 };
 {
   const slots = new AttackSlots(2); let hit = 0;
   const g = new RustGrunt({ id: 'h', x: 280, y: 0, slots, hooks: { onHitRequest: () => hit++ } });
-  run(g, target, 800);
+  for (let i = 0; i < 200 && g.state !== S.TELEGRAPH; i++) g.update(16, target); // run until the wind-up starts
   assert.equal(g.state, S.TELEGRAPH);
   g.takeHit({ hitstun: 300, knockback: -100 });
   assert.equal(g.state, S.HITSTUN); assert.equal(slots.count, 0);

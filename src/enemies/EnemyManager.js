@@ -45,7 +45,7 @@ export class EnemyManager {
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
       id, team: this.data.team, maxHp: grunt.maxHp,
       hurtbox: { ...this.data.hurtbox },
-      getState: () => ({ x: grunt.x, y: grunt.y, facing: grunt.facing }),
+      getState: () => ({ x: grunt.x, y: grunt.y, lane: grunt.y, facing: grunt.facing }),
     });
     return grunt;
   }

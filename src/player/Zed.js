@@ -6,13 +6,18 @@ import { PlayerStateMachine } from './stateMachine.js';
 import { EVENTS } from '../shared/events.js';
 import { TEAMS, PLAYER_ID, COMBAT_DEFAULTS } from '../shared/combatData.js';
 import { GUARD, PARRY } from './moves.js';
+import { LANE } from '../arena/arenaData.js';
 import { RageMeter } from './rage.js';
+import { dir8FromInput } from './zedVisual.js';
 import { RAGE_EVENTS } from './rageConfig.js';
-import { HEAVY_HIT_SOUND_KEY, isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY, OWW_SOUND_KEY, OWW_SOUND_VOLUME, DEATH_SOUND_KEY, DEATH_SOUND_VOLUME } from './heavyHit.js';
+import { HEAVY_HIT_SOUND_KEY, isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY, runStepSound, RUN_STEP, OWW_SOUND_KEY, OWW_SOUND_VOLUME, DEATH_SOUND_KEY, DEATH_SOUND_VOLUME } from './heavyHit.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
-const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'KeyW', 'Space',
+const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'ArrowDown', 'KeyW', 'KeyS', 'Space',
   'KeyJ', 'KeyZ', 'KeyK', 'KeyX', 'KeyL', 'KeyC', 'KeyI', 'KeyV', 'KeyT', 'KeyM'];
+
+/** Emitted on game.events when `zed.carrying` changes: { carrying:boolean }. */
+export const PLAYER_CARRYING_CHANGED = 'player-carrying-changed';
 
 export class Zed {
   constructor(scene, x, y, cfg = ZED_CONFIG) {
@@ -27,7 +32,13 @@ export class Zed {
     this.sprite = scene.physics.add.sprite(x, y, cfg.spriteKey);
     this.sprite.setCollideWorldBounds(true);
     this.sprite.body.setGravityY(cfg.gravity);
+    // Depth: the physics body only handles jumping (its floor is the world bottom). laneY is where the feet stand on the floor band.
+    this.floorY = y + cfg.bodySize.h / 2;
+    this.laneY = this.floorY;
     this.facing = 1;
+    this.dir8 = 'east'; // 8-way facing from movement input (visual only; hitboxes/combat use `facing`)
+    this._carrying = false;
+    if (globalThis.location?.search?.includes('carry')) this._carrying = true; // manual check: index.html?sandbox&carry
     this.input = new InputState();
     this.jump = new JumpController(cfg);
     this.events = scene.game.events;
@@ -76,10 +87,12 @@ export class Zed {
     scene.events.on('resume', this._onSceneResume);
   }
 
-  _setRunSound(on) {
+  _setRunSound(on, moveX = 1, moveY = 0) {
     if (on) {
       if (!this.scene.cache.audio.exists(RUN_SOUND_KEY)) return;
-      if (!this._runSound) this._runSound = this.scene.sound.add(RUN_SOUND_KEY, { loop: true, volume: 0.6 });
+      if (!this._runSound) this._runSound = this.scene.sound.add(RUN_SOUND_KEY, { loop: true, volume: RUN_STEP.volume });
+      const { volume, rate } = runStepSound(moveX, moveY); // depth-only running is softer/slower than side running
+      this._runSound.setVolume?.(volume); this._runSound.setRate?.(rate);
       if (!this._runSound.isPlaying && !this._runSound.isPaused) this._runSound.play();
     } else if (this._runSound && (this._runSound.isPlaying || this._runSound.isPaused)) {
       this._runSound.stop();
@@ -94,9 +107,12 @@ export class Zed {
       maxHp: COMBAT_DEFAULTS.PLAYER_MAX_HP,
       hurtbox: { x: -w / 2, y: -h / 2, w, h },
       // guardType is an extra, optional field: 'parry' | 'block' | null
-      getState: () => ({ x: this.sprite.x, y: this.sprite.y, facing: this.facing, guard: this.machine.guardType, lift: this._lift() }),
+      getState: () => ({ x: this.sprite.x, y: this.sprite.y + this.depthOffset, lane: this.laneY, facing: this.facing, guard: this.machine.guardType, lift: this._lift() }),
     });
   }
+
+  /** Shift from the physics floor to the current floor line (px). Add to sprite.y for any world-space position. */
+  get depthOffset() { return this.laneY - this.floorY; }
 
   /** Feet height above the floor (px); 0 on the ground. */
   _lift() {
@@ -123,7 +139,7 @@ export class Zed {
       g.generateTexture('fx.wind-streak', 40, 3);
       g.destroy();
     }
-    const cx = this.sprite.x + f * (hb.x + hb.w / 2), cy = this.sprite.y + hb.y + hb.h / 2;
+    const cx = this.sprite.x + f * (hb.x + hb.w / 2), cy = this.sprite.y + this.depthOffset + hb.y + hb.h / 2;
     for (let i = 0; i < 7; i++) {
       const life = Phaser.Math.Between(150, 280);
       const p = s.add.image(cx - f * Phaser.Math.Between(10, 30), cy + Phaser.Math.Between(-18, 18), 'fx.wind-streak')
@@ -146,7 +162,8 @@ export class Zed {
       attackId: `${PLAYER_ID}:${swing}`, // same id on every active frame: one hit per target per swing
       team: TEAMS.PLAYER,
       hitbox: { ...m.hitbox },
-      origin: { x: this.sprite.x, y: this.sprite.y },
+      origin: { x: this.sprite.x, y: this.sprite.y + this.depthOffset },
+      lane: this.laneY,
       facing: this.facing,
       damage: m.damage,
       knockback: m.knockback,
@@ -158,7 +175,7 @@ export class Zed {
 
   // Big white screen flash plus an expanding shockwave ring at Zed. Visual only.
   _parryFlash() {
-    const s = this.scene, x = this.sprite.x, y = this.sprite.y - 20;
+    const s = this.scene, x = this.sprite.x, y = this.sprite.y + this.depthOffset - 20;
     s.cameras.main.flash(160, 255, 255, 255, true);
     const ring = s.add.graphics().setDepth(6000).setPosition(x, y);
     const o = { r: 20, a: 1 };
@@ -222,9 +239,19 @@ export class Zed {
   respawn(x, y) {
     this.dead = false;
     this.sprite.setPosition(x, y).setVelocity(0, 0).clearTint();
+    this.laneY = this.floorY;
     this.machine.endRage(); this.rage.reset(this.rage.level); // retry: meter back to 0, nothing carries over
     this.machine.hitstunLeft = 0; this.machine.moveId = null; this.machine._set('idle');
     this._register();
+  }
+
+  /** True while Zed holds a weapon: plays the 8-way carry idle/walk clips. No pickup in the game grants one yet. */
+  get carrying() { return this._carrying; }
+  set carrying(v) {
+    v = !!v;
+    if (v === this._carrying) return;
+    this._carrying = v;
+    this.events.emit(PLAYER_CARRYING_CHANGED, { carrying: v });
   }
 
   /** Play the crouch-and-grab clip and lock input briefly. Call when an item is collected. Ignored if airborne/busy/dead. */
@@ -253,6 +280,8 @@ export class Zed {
 
   get x() { return this.sprite.x; }
   get y() { return this.sprite.y; }
+  /** World y of Zed's feet right now: the floor line minus jump height. */
+  get feetY() { return this.laneY - this._lift(); }
   get state() { return this.machine.state; }
 
   /** Call from scene.update(time, delta). */
@@ -285,7 +314,7 @@ export class Zed {
     let pressed = this._pending;
     while (this._acc >= cfg.fixedStepMs) {
       this._acc -= cfg.fixedStepMs;
-      this.machine.step({ pressed, held: inp.held, moveX: inp.moveX }, { grounded });
+      this.machine.step({ pressed, held: inp.held, moveX: inp.moveX || (inp.moveY !== 0 ? 1 : 0) }, { grounded }); // walking up/down counts as running
       pressed = {};
       this._pending = {};
     }
@@ -300,8 +329,13 @@ export class Zed {
       if (inp.moveX !== 0 && s !== 'attack' && s !== 'block') this.facing = inp.moveX;
       body.setVelocityX(inp.moveX * cfg.runSpeed * f);
     }
+    // Depth movement: up/down the floor band, frozen while attacking, guarding, stunned or picking up.
+    if (!this.dead && !locked && inp.moveY !== 0) {
+      this.laneY = Math.min(LANE.maxY, Math.max(LANE.minY, this.laneY + inp.moveY * cfg.depthSpeed * delta / 1000));
+    }
+    if (!locked) this.dir8 = dir8FromInput(inp.moveX, inp.moveY, this.dir8);
     this.sprite.setFlipX(this.facing < 0);
-    this._setRunSound(s === 'run' && grounded);
+    this._setRunSound(s === 'run' && grounded, inp.moveX, inp.moveY);
   }
 
   destroy() {

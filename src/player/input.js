@@ -1,11 +1,13 @@
 // Pure input mapping: key codes -> abstract actions. No Phaser dependency.
-export const ACTIONS = ['left', 'right', 'jump', 'light', 'heavy', 'block', 'parry', 'special'];
+export const ACTIONS = ['left', 'right', 'up', 'down', 'jump', 'light', 'heavy', 'block', 'parry', 'special'];
 
 // Keys are KeyboardEvent.code-style names; Zed.js converts Phaser keys to these.
 export const KEY_MAP = {
   left: ['ArrowLeft', 'KeyA'],
   right: ['ArrowRight', 'KeyD'],
-  jump: ['ArrowUp', 'KeyW', 'Space'],
+  up: ['ArrowUp', 'KeyW'],       // walk into the screen (depth)
+  down: ['ArrowDown', 'KeyS'],   // walk out toward the camera (depth)
+  jump: ['Space'],
   light: ['KeyJ', 'KeyZ'],
   heavy: ['KeyK', 'KeyX'],
   block: ['KeyI', 'KeyV'],
@@ -40,13 +42,14 @@ export class InputState {
     this.held = now;
     // Opposite directions cancel; moveX in {-1,0,1}
     this.moveX = (now.right ? 1 : 0) - (now.left ? 1 : 0);
+    this.moveY = (now.down ? 1 : 0) - (now.up ? 1 : 0); // -1 = up the screen, +1 = down
     return this;
   }
 }
 
 // Standard-mapping gamepad -> the same key codes, so InputState needs no second path.
 // A=jump, X=light, Y=heavy, LB/LT/RT=block, d-pad / left stick = move.
-export const PAD_MAP = { jump: [0], light: [2], heavy: [3], block: [4, 6, 7], left: [14], right: [15] };
+export const PAD_MAP = { jump: [0], light: [2], heavy: [3], block: [4, 6, 7], up: [12], down: [13], left: [14], right: [15] };
 export function padToKeys(pad, deadzone = 0.35) {
   const out = [];
   if (!pad || !pad.buttons) return out;
@@ -54,10 +57,13 @@ export function padToKeys(pad, deadzone = 0.35) {
   const ax = pad.axes && pad.axes.length ? pad.axes[0] : 0;
   const rep = { jump: 'Space', light: 'KeyJ', heavy: 'KeyK', block: 'KeyI' };
   for (const [a, btns] of Object.entries(PAD_MAP)) {
-    if (a === 'left' || a === 'right') continue;
+    if (a === 'left' || a === 'right' || a === 'up' || a === 'down') continue;
     if (btns.some(on)) out.push(rep[a]);
   }
   if (on(PAD_MAP.left[0]) || ax < -deadzone) out.push('ArrowLeft');
   if (on(PAD_MAP.right[0]) || ax > deadzone) out.push('ArrowRight');
+  const ay = pad.axes && pad.axes.length > 1 ? pad.axes[1] : 0;
+  if (on(PAD_MAP.up[0]) || ay < -deadzone) out.push('ArrowUp');
+  if (on(PAD_MAP.down[0]) || ay > deadzone) out.push('ArrowDown');
   return out;
 }

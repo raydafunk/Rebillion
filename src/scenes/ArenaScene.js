@@ -6,6 +6,7 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { MOVE_FEEDBACK, shakeScale } from '../shared/hitFeedback.js';
 import { loadSettings } from '../ui/optionsData.js';
+import { telegraphCue } from '../enemies/telegraphCueData.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
 import { createScore } from '../state/score.js';
 import { Zed } from '../player/Zed.js';
@@ -140,7 +141,7 @@ export default class ArenaScene extends Phaser.Scene {
       world: this.world,
       hold: this.scrolling,
       getPlayer: () => ({ x: this.zed.x, facing: this.zed.facing }),   // spawn patterns react to where Zed is and faces
-      getTarget: () => ({ x: this.zed.x, y: GROUND_Y }),   // enemies chase the ground line, so jumping dodges
+      getTarget: () => ({ x: this.zed.x, y: this.zed.laneY }),   // enemies chase Zed's floor line (depth), so jumping still dodges
       getScrollX: () => this.cameras.main.scrollX,
     });
     this.arena.enemies.onRemoved = (id) => this._removeEnemyView(id);
@@ -365,7 +366,7 @@ export default class ArenaScene extends Phaser.Scene {
     if (!hp || hp.hp >= hp.maxHp) return; // full health: pickups wait on the ground
     const z = this.zed, airborne = Math.max(0, GROUND_Y - (z.y + 36));
     for (const p of [...this.pickups]) {
-      if (!canCollect(p, z.x, airborne)) continue;
+      if (!canCollect(p, z.x, airborne) || Math.abs(p.y - z.laneY) > 60) continue; // must also be on the same floor depth
       const gained = this.resolver.heal(PLAYER_ID, p.heal);
       if (gained <= 0) continue; // already at full health: leave it for later
       this.pickups.splice(this.pickups.indexOf(p), 1);
@@ -445,9 +446,9 @@ export default class ArenaScene extends Phaser.Scene {
   // ---- rendering ----
   _render(dt, zedFrozen = false) {
     const z = this.zed;
-    const feetY = GROUND_Y;
-    const airborne = Math.max(0, feetY - (z.y + 36));
-    this.zedVisual.update(z, zedFrozen ? 0 : dt, z.x, z.y + 36, z.y + 36);
+    const feetY = z.laneY;                                  // Zed's floor line (depth)
+    const airborne = Math.max(0, GROUND_Y - (z.y + 36));    // jump height comes from the physics body
+    this.zedVisual.update(z, zedFrozen ? 0 : dt, z.x, z.feetY, feetY);
     this.zedShadow.setPosition(z.x, feetY).setDepth(feetY - 1).setScale(1 - Math.min(0.4, airborne / 400));
 
     const walkers = [];
@@ -465,6 +466,7 @@ export default class ArenaScene extends Phaser.Scene {
           shadow: this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25),
           body, breakerArt: hasArt,
           tele: this.add.image(0, 0, TELEGRAPH_FX_KEY).setVisible(false).setDepth(4000),
+          ring: this.add.ellipse(0, 0, 10, 10).setStrokeStyle(4, 0xff3b30).setVisible(false).setDepth(3999), // parry cue: closes as the attack starts
         };
         this.sprites.set(g.id, v);
       }
@@ -494,12 +496,18 @@ export default class ArenaScene extends Phaser.Scene {
       // Telegraph icon sits above the health bar once one exists (icon bottom = bar top - 4px).
       const barBottom = this.hitFx.telegraphBottomY(g.id);
       v.tele.setPosition(g.x, barBottom !== null ? barBottom - v.tele.displayHeight / 2 : g.y - 130).setVisible(g.telegraphing && g.alive);
+      // Parry timing cue: a single pop at the NOW beat, and a ring that closes on the enemy as the attack starts.
+      const cue = g.telegraphing && g.alive ? telegraphCue(g.telegraphProgress, { reduce: this._reduceFlash(), telegraphMs: GRUNT.telegraphMs }) : null;
+      v.tele.setScale(cue ? cue.iconScale : 1);
+      if (cue && cue.ring) v.ring.setPosition(g.x, g.y - 50).setSize(cue.ring.r * 2, cue.ring.r * 2).setAlpha(cue.ring.alpha).setVisible(true);
+      else v.ring.setVisible(false);
       // Single hit flash (spec 7.2): white for 66/83/100 ms, steel under reduce-flash; beats the telegraph tint.
       const sq = this.hitFx.staggerScale(g.id);
       if (v.breakerArt) v.body.setScale(v.body.scaleX * sq.x, v.body.scaleY * sq.y); // scale is reset every frame on the art path
       v.body.clearTint();
       const fl = this.hitFx.flashTint(g.id);
       if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
+      else if (cue && cue.fill) v.body.setTintFill(0xffffff); // the NOW pop; a landed hit's flash wins over it
       if (!g.alive && !v.breakerArt) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
     }
 
@@ -520,7 +528,7 @@ export default class ArenaScene extends Phaser.Scene {
     if (!v) return;
     this.hitFx.remove(id);
     this.sprites.delete(id);
-    v.tele.setVisible(false);
+    v.tele.setVisible(false); v.ring.setVisible(false);
     // A dead breaker keeps its view until the death anim finishes (gameplay has already dropped it from the list and wave counts).
     if (v.breakerArt && v.death) {
       this._driveDeath(v, id, v.deathPose, 0, true);
@@ -528,9 +536,19 @@ export default class ArenaScene extends Phaser.Scene {
     } else this._destroyView(v);
   }
 
-  _destroyView(v) { v.body.destroy(); v.shadow.destroy(); v.tele.destroy(); }
+  _destroyView(v) { v.body.destroy(); v.shadow.destroy(); v.tele.destroy(); v.ring.destroy(); }
 
   _destroyDying() { for (const dv of this.dying.splice(0)) this._destroyView(dv.v); }
+
+  // Hit Flash "Low" or Reduced Motion: the parry cue drops its white pop and softens the ring (the red ramp stays; it is not a flash).
+  _reduceFlash() {
+    const now = this.time.now;
+    if (this._rfAt === undefined || now - this._rfAt > 500) { // cached: called per enemy per frame
+      this._rfAt = now;
+      try { const st = loadSettings(globalThis.localStorage); this._rf = st.hitFlash === 'Low' || st.reducedMotion === true; } catch (e) { this._rf = false; }
+    }
+    return this._rf;
+  }
 
   // ---- hit feedback (hit-feedback-spec.md) ----
   _shake(ms, intensity) { // honours the Options "Screen Shake" setting (Off/Light/Full)
@@ -548,7 +566,7 @@ export default class ArenaScene extends Phaser.Scene {
       this._startHitStop(type, [d.attackerId, d.targetId]);
     }
     let x, y;
-    if (d.targetId === PLAYER_ID) { x = this.zed.x; y = this.zed.y - 10; this._shake(100, 0.0023); }
+    if (d.targetId === PLAYER_ID) { x = this.zed.x; y = this.zed.y + this.zed.depthOffset - 10; this._shake(100, 0.0023); }
     else {
       const g = this.arena.enemies.get(d.targetId);
       if (!g) return;

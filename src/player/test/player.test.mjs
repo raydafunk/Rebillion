@@ -5,7 +5,7 @@ import { mapKeys, InputState } from '../input.js';
 import { JumpController } from '../jump.js';
 import { ZED_CONFIG } from '../config.js';
 import { PlayerStateMachine } from '../stateMachine.js';
-import { MOVES } from '../moves.js';
+import { MOVES, GUARD } from '../moves.js';
 
 const NONE = { pressed: {}, held: {}, moveX: 0 };
 const press = (k) => ({ pressed: { [k]: true }, held: { [k]: true }, moveX: 0 });
@@ -106,7 +106,7 @@ test('block starts as parry window then plain block', () => {
   const m = new PlayerStateMachine();
   const B = { pressed: {}, held: { block: true }, moveX: 0 };
   m.step(B); assert.equal(m.guardType, 'parry');
-  for (let i = 0; i < 10; i++) m.step(B);
+  for (let i = 0; i < GUARD.parryFrames + 1; i++) m.step(B);
   assert.equal(m.guardType, 'block');
   m.step(NONE);
   assert.equal(m.guardType, null);
@@ -178,10 +178,14 @@ test('jump: pose textures exist, keys and gamepad map to jump edge', () => {
   // no snap at the apex: the shape changes smoothly as vy crosses zero
   const a = zedPose({ state: 'jump', vy: -5, t: 0 }), b = zedPose({ state: 'jump', vy: 5, t: 0 });
   assert.ok(Math.abs(a.sy - b.sy) < 0.01 && Math.abs(a.sx - b.sx) < 0.01);
-  for (const k of ['Space', 'KeyW', 'ArrowUp']) {
+  for (const k of ['Space']) {
     const i = new InputState(); i.poll([]); assert.equal(i.poll([k]).pressed.jump, true);
     assert.equal(i.poll([k]).pressed.jump, false); // held, no re-trigger
   }
+  // W/S and Up/Down walk in depth, they no longer jump
+  for (const k of ['KeyW', 'ArrowUp']) { const i = new InputState().poll([k]); assert.equal(i.pressed.jump, false); assert.equal(i.moveY, -1); }
+  for (const k of ['KeyS', 'ArrowDown']) { const i = new InputState().poll([k]); assert.equal(i.pressed.jump, false); assert.equal(i.moveY, 1); }
+  assert.equal(new InputState().poll(['KeyW', 'KeyS']).moveY, 0, 'opposites cancel');
   assert.ok(KEY_MAP.jump.includes('Space'));
   const pad = { buttons: Array.from({ length: 16 }, () => ({ pressed: false })), axes: [0, 0] };
   pad.buttons[0].pressed = true;
@@ -442,4 +446,70 @@ test('ground light press still starts light1 (not the flying kick)', () => {
   const m = new PlayerStateMachine();
   m.step(press('light'));
   assert.equal(m.moveId, 'light1');
+});
+
+import { dir8FromInput, carryState, clipDirs, ZED_DIRS, zedClipKeys } from '../zedVisual.js';
+test('dir8FromInput maps all 8 inputs, keeps last dir on stop, opposite keys cancel', () => {
+  const cases = [[0, -1, 'north'], [1, -1, 'north-east'], [1, 0, 'east'], [1, 1, 'south-east'],
+    [0, 1, 'south'], [-1, 1, 'south-west'], [-1, 0, 'west'], [-1, -1, 'north-west']];
+  for (const [x, y, d] of cases) assert.equal(dir8FromInput(x, y, 'east'), d);
+  assert.equal(dir8FromInput(0, 0, 'north-west'), 'north-west');
+  assert.equal(dir8FromInput(0, 0), 'east');
+  const i = new InputState();
+  i.poll(['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']);
+  assert.equal(dir8FromInput(i.moveX, i.moveY, 'south'), 'south');
+  i.poll(['ArrowLeft', 'ArrowRight', 'ArrowUp']);
+  assert.equal(dir8FromInput(i.moveX, i.moveY, 'south'), 'north');
+});
+
+test('carry clips: registered for all 8 dirs, files exist, other clips stay east/west', () => {
+  for (const state of ['carryidle', 'carrywalk']) {
+    const a = ZED_ANIMS.find((x) => x.state === state);
+    assert.ok(a); assert.equal(a.frames, 8); assert.deepEqual(clipDirs(a), ZED_DIRS);
+    for (const d of ZED_DIRS) for (let i = 0; i < a.frames; i++) {
+      assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(a, d, i)}`, import.meta.url)), zedFramePath(a, d, i));
+    }
+    assert.equal(zedAnimKey(state, 'north-west'), `zed.${state}.north-west`);
+  }
+  for (const a of ZED_ANIMS.filter((x) => !x.dirs)) assert.deepEqual(clipDirs(a), ['east', 'west']);
+});
+
+test('carryState picks idle/walk only while carrying', () => {
+  assert.equal(carryState(true, 'idle'), 'carryidle');
+  assert.equal(carryState(true, 'run'), 'carrywalk');
+  assert.equal(carryState(true, 'attack'), null);
+  assert.equal(carryState(false, 'run'), null);
+});
+
+test('run clip: 8 dirs registered, files exist, key follows dir8, east/west fallback', () => {
+  const a = ZED_ANIMS.find((x) => x.state === 'run');
+  assert.deepEqual(clipDirs(a), ZED_DIRS);
+  for (const d of ZED_DIRS) for (let i = 0; i < a.frames; i++) {
+    assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(a, d, i)}`, import.meta.url)), zedFramePath(a, d, i));
+  }
+  const k = (o) => zedClipKeys({ state: 'run', stateKey: 'run', dir: 'east', dir8: 'north-west', carrying: false, ...o });
+  assert.equal(k({})[0], 'zed.run.north-west');
+  assert.ok(k({}).includes('zed.run.east'), 'falls back to east/west');
+  assert.equal(k({ carrying: true })[0], 'zed.carrywalk.north-west');
+  assert.equal(zedClipKeys({ state: 'attack', stateKey: 'light1', dir: 'west', dir8: 'north', carrying: false })[0], 'zed.light1.west');
+});
+
+import { runStepSound, RUN_STEP } from '../heavyHit.js';
+test('runStepSound: side and diagonal full, depth-only softer and slower', () => {
+  for (const [x, y] of [[1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]]) assert.deepEqual(runStepSound(x, y), { volume: RUN_STEP.volume, rate: RUN_STEP.rate });
+  for (const y of [-1, 1]) {
+    const d = runStepSound(0, y);
+    assert.ok(d.volume < RUN_STEP.volume && d.rate < RUN_STEP.rate && d.volume > 0);
+  }
+});
+
+import { clipOriginY } from '../zedVisual.js';
+test('dirOriginY applies per 8-way dir for dirs:all clips; east/west unchanged', () => {
+  for (const state of ['run', 'carryidle', 'carrywalk']) {
+    const a = ZED_ANIMS.find((x) => x.state === state);
+    for (const d of ['north', 'north-east', 'north-west', 'south']) assert.equal(clipOriginY(a, d, 0), a.dirOriginY[d]);
+    for (const d of ['north', 'north-east', 'north-west']) assert.ok(a.dirOriginY[d] < a.originY, `${state} ${d} sits lower than side view`);
+    for (const d of ['east', 'west']) assert.equal(clipOriginY(a, d, 3), a.originY);
+  }
+  assert.equal(clipOriginY(ZED_ANIMS.find((x) => x.state === 'run'), 'north', 2), 52.5 / 64);
 });

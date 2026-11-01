@@ -108,7 +108,7 @@ export class RustGrunt {
             this.attackCounter++;
             this.hooks.onHitRequest({
               attackerId: this.id, attackId: `${this.id}:${this.attackCounter}`, team: d.team,
-              hitbox: { ...d.attack.hitbox }, origin: { x: this.x, y: this.y }, facing: this.facing,
+              hitbox: { ...d.attack.hitbox }, origin: { x: this.x, y: this.y }, lane: this.y, facing: this.facing,
               damage: jab.damage, knockback: jab.knockback, hitstun: jab.hitstun,
             });
           }
