@@ -10,6 +10,8 @@ import { LANE } from '../arena/arenaData.js';
 import { RageMeter } from './rage.js';
 import { dir8FromInput } from './zedVisual.js';
 import { RAGE_EVENTS } from './rageConfig.js';
+import { GrabController } from './grab.js';
+import { GRAB_CONFIG } from './grabConfig.js';
 import { HEAVY_HIT_SOUND_KEY, isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_KEY, runStepSound, RUN_STEP, OWW_SOUND_KEY, OWW_SOUND_VOLUME, DEATH_SOUND_KEY, DEATH_SOUND_VOLUME } from './heavyHit.js';
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
@@ -58,6 +60,7 @@ export class Zed {
     this.tapped = new Set(); // keys pressed since the last poll, so a tap shorter than one frame still counts
     this._pending = {};      // press edges waiting for a fixed step (render frames without a step must not eat them)
     this._acc = 0;
+    this.getXRange = null; // set by ArenaScene: () => ({min, max}) of the walkable x span (locked screen or whole world)
 
     const kb = scene.input.keyboard;
     this._onDown = (e) => { this.down.add(e.code); this.tapped.add(e.code); };
@@ -68,12 +71,24 @@ export class Zed {
 
     this._onDamage = (d) => this._handleDamage(d);
     this._onDied = (d) => {
-      if (d.id !== PLAYER_ID) return;
+      if (d.id !== PLAYER_ID) { this.releaseGrab(d.id, 'died'); return; } // Dugan died while holding Zed
       if (!this.dead && this.scene.cache.audio.exists(DEATH_SOUND_KEY)) this.scene.sound.play(DEATH_SOUND_KEY, { volume: DEATH_SOUND_VOLUME });
       this.dead = true;
       this.rage.onKnockout(); // ends Rage (a knockdown does not)
     };
     this._onRetry = () => this.respawn(x, y);
+    // Grab and Wall Slam (Dugan's side is wired by the scene/enemy; see design/team/contracts.md).
+    this.grab = new GrabController(GRAB_CONFIG, (n, p) => this._onGrabEvent(n, p));
+    this._grabAnchor = null;
+    this._slamEmitting = false; // true only while the synthetic slam hit-request is being resolved
+    this._slamHit = null;
+    this._slamSeq = 0;
+    this._onGrab = (r) => { if (r && r.targetId === PLAYER_ID) this.startGrab(r); };
+    this._onGrabSlam = (r) => { if (this.grab.held && r.attackerId === this.grab.info.attackerId) this.grab.slam(); };
+    this._onGrabRelease = (r) => this.releaseGrab(r.attackerId, r.reason);
+    this.events.on(EVENTS.GRAB, this._onGrab);
+    this.events.on(EVENTS.GRAB_SLAM, this._onGrabSlam);
+    this.events.on(EVENTS.GRAB_RELEASE, this._onGrabRelease);
     this.events.on(EVENTS.DAMAGE_APPLIED, this._onDamage);
     this.events.on(EVENTS.ENTITY_DIED, this._onDied);
     this.events.on(EVENTS.RETRY, this._onRetry);
@@ -107,12 +122,19 @@ export class Zed {
       maxHp: COMBAT_DEFAULTS.PLAYER_MAX_HP,
       hurtbox: { x: -w / 2, y: -h / 2, w, h },
       // guardType is an extra, optional field: 'parry' | 'block' | null
-      getState: () => ({ x: this.sprite.x, y: this.sprite.y + this.depthOffset, lane: this.laneY, facing: this.facing, guard: this.machine.guardType, lift: this._lift() }),
+      getState: () => ({ x: this.sprite.x, y: this.sprite.y + this.depthOffset, lane: this.laneY, facing: this.facing, guard: this.machine.guardType, lift: this._hitLift() }),
     });
   }
 
   /** Shift from the physics floor to the current floor line (px). Add to sprite.y for any world-space position. */
   get depthOffset() { return this.laneY - this.floorY; }
+
+  /**
+   * Lift reported to combat. While the grab makes Zed untouchable (held, down, getting up, break window) it reads as
+   * "airborne", so the existing resolver skips every ordinary hit-request with no combat change. The slam request itself
+   * is resolved with the real lift.
+   */
+  _hitLift() { return this.grab.invulnerable && !this._slamEmitting ? COMBAT_DEFAULTS.AIR_DODGE_LIFT : this._lift(); }
 
   /** Feet height above the floor (px); 0 on the ground. */
   _lift() {
@@ -222,6 +244,13 @@ export class Zed {
     }
     if (d.attackerId === PLAYER_ID && d.targetId !== PLAYER_ID && (d.landed ?? d.amount > 0)) this.rage.onBlowLanded(); // any Rust enemy, boss included
     if (d.targetId !== PLAYER_ID || this.dead) return;
+    if (this._slamEmitting) { // the slam's own damage: no hitstun, the slammed state takes over
+      this._slamHit = d;
+      this.rage.onHitTaken();
+      if (d.hpAfter > 0 && this.scene.cache.audio.exists(OWW_SOUND_KEY)) this.scene.sound.play(OWW_SOUND_KEY, { volume: OWW_SOUND_VOLUME });
+      return;
+    }
+    if (this.grab.invulnerable) return; // held / down / getting up: nothing else touches Zed
     const guard = this.machine.guardType;
     if (guard === 'parry') { this._onParrySuccess(d.attackerId); return; } // punch landed in the parry window: negated + counter window
     if (guard === 'block') {
@@ -236,7 +265,114 @@ export class Zed {
     this.scene.time.delayedCall(d.hitstun, () => this.sprite.clearTint());
   }
 
+  /**
+   * Dugan's grab connected. req: { attackerId, holdMs, slamDamage, slamKnockback, slamDir, anchor }.
+   * anchor: () => ({ x, y, facing, lane? }) Dugan's world position, polled every frame (a plain object also works).
+   * Returns false (and emits GRAB_RESULT accepted:false) if Zed is dead, already held/down, or in a post-break/get-up
+   * invulnerability window. A jump does not avoid the grab; block and parry do not apply.
+   */
+  startGrab(req) {
+    const ok = !this.dead && !!req && this.grab.start(req);
+    if (ok) {
+      this._grabAnchor = req.anchor ?? null;
+      this._pinToAnchor();
+    }
+    this.events.emit(EVENTS.GRAB_RESULT, { attackerId: req?.attackerId, targetId: PLAYER_ID, accepted: ok });
+    return ok;
+  }
+
+  /** Let go of a held Zed (Dugan died / stunned). No-op unless held by attackerId. */
+  releaseGrab(attackerId, reason = 'stunned') {
+    if (!this.grab.held || this.grab.info.attackerId !== attackerId) return false;
+    return this.grab.release(reason);
+  }
+
+  _anchor() {
+    const a = typeof this._grabAnchor === 'function' ? this._grabAnchor() : this._grabAnchor;
+    return a && Number.isFinite(a.x) && Number.isFinite(a.y) ? a : null;
+  }
+
+  // Hang Zed at the hand offset in front of Dugan, facing him. Called every frame while held.
+  _pinToAnchor() {
+    const a = this._anchor();
+    const body = this.sprite.body;
+    body.setVelocity(0, 0);
+    if (!a) return;
+    const af = a.facing < 0 ? -1 : 1;
+    if (a.lane != null) this.laneY = Math.min(LANE.maxY, Math.max(LANE.minY, a.lane));
+    this.facing = -af;
+    const k = Math.min(1, this.grab.timer / Math.max(1, this.grab.info?.holdMs || 1)), lift = GRAB_CONFIG.liftPx * (k * k * (3 - 2 * k)); // smoothstep: carried up
+    this.sprite.setPosition(a.x + af * GRAB_CONFIG.handOffset.x, a.y + GRAB_CONFIG.handOffset.y - lift - this.depthOffset);
+  }
+
+  _onGrabEvent(name, p) {
+    const body = this.sprite.body;
+    if (name === 'held') {
+      this.machine.lock('held');
+      body.setAllowGravity(false);
+      body.setVelocity(0, 0);
+    } else if (name === 'broken') {
+      this.machine.lock('getup');
+      body.setAllowGravity(true);
+      const a = this._anchor();
+      if (a) this.sprite.setPosition(a.x + (a.facing < 0 ? -1 : 1) * GRAB_CONFIG.breakDropDx, this.sprite.y);
+      body.setVelocity(0, 0);
+      this.events.emit(EVENTS.GRAB_BROKEN, { attackerId: p.attackerId });
+    } else if (name === 'slam') {
+      this._slam(p);
+    } else if (name === 'getup') {
+      this.machine.lock('getup');
+    } else if (name === 'recovered' || name === 'released') {
+      this.machine.unlock();
+      body.setAllowGravity(true);
+    }
+  }
+
+  // The hold ended without a break: the slam goes through the normal pipeline as a synthetic hit-request from Dugan.
+  _slam(p) {
+    this.machine.lock('slammed');
+    this.sprite.body.setAllowGravity(true);
+    const dir = p.slamDir < 0 ? -1 : 1;
+    this.facing = -dir;   // he is thrown toward the wall, so he falls backwards: his back leads the way
+    this.sprite.setPosition(this.sprite.x, this.floorY - this.cfg.bodySize.h / 2); // slammed onto the floor (the hand pin is airborne)
+    const x = this.sprite.x, y = this.sprite.y + this.depthOffset;
+    this._slamHit = null;
+    this._slamEmitting = true;
+    try {
+      this.events.emit(EVENTS.HIT_REQUEST, {
+        attackerId: p.attackerId,
+        attackId: `${p.attackerId}:slam:${++this._slamSeq}`,
+        team: TEAMS.RUST,
+        hitbox: { ...GRAB_CONFIG.slamHitbox },
+        origin: { x: x - dir * 24, y }, // behind Zed relative to the wall, so combat's knockback sign points at the wall
+        lane: this.laneY,
+        facing: 1,
+        damage: p.slamDamage, knockback: p.slamKnockback, hitstun: 0,
+        pierceInvuln: true, unblockable: true, nonLethal: true, // the slam hurts a lot but never kills Zed
+      });
+    } finally { this._slamEmitting = false; }
+    this.sprite.body.setVelocityX(dir * p.slamKnockback);
+    this.events.emit(EVENTS.PLAYER_SLAMMED, { attackerId: p.attackerId, damage: this._slamHit ? this._slamHit.amount : 0, slamDir: dir, x, y });
+  }
+
+  // Per-frame while any grab state is active (replaces movement/attack handling).
+  _updateGrab(delta) {
+    const g = this.grab, body = this.sprite.body;
+    if (g.held) {
+      const taps = (this._pending.light ? 1 : 0) + (this._pending.heavy ? 1 : 0);   // only the light (J) and heavy (K) attacks break a hold; jump does nothing
+      if (taps) g.tap(taps);
+    }
+    if (g.held) this._pinToAnchor();
+    g.update(delta);
+    if (g.held) this._pinToAnchor();
+    else if (g.state === 'slammed' || g.state === 'getup' || g.state === 'broken') body.setVelocityX(body.velocity.x * Math.pow(GRAB_CONFIG.slamPopFactor, delta / (1000 / 60)));
+    else if (!g.active) body.setVelocityX(0);
+    this._setRunSound(false);
+    this.sprite.setFlipX(this.facing < 0);
+  }
+
   respawn(x, y) {
+    this.grab.reset(); this._grabAnchor = null; this.machine.locked = false; this.sprite.body.setAllowGravity(true);
     this.dead = false;
     this.sprite.setPosition(x, y).setVelocity(0, 0).clearTint();
     this.laneY = this.floorY;
@@ -263,6 +399,16 @@ export class Zed {
 
   /** Set the 1-based level number (call at level start). Resets the meter; hidden below level 2. */
   setLevel(levelNumber) { this.rage.reset(levelNumber); }
+
+  /** True when the held horizontal input points into a wall (world edge or camera-lock edge) Zed is already touching. */
+  _pushingIntoWall(moveX, body = this.sprite.body) {
+    if (!moveX) return false;
+    if (moveX < 0 && body.blocked.left) return true;
+    if (moveX > 0 && body.blocked.right) return true;
+    const r = this.getXRange && this.getXRange();
+    if (!r) return false;
+    return (moveX < 0 && this.sprite.x <= r.min + 1) || (moveX > 0 && this.sprite.x >= r.max - 1);
+  }
 
   _grounded() { const b = this.sprite.body; return b.blocked.down || b.touching.down; }
 
@@ -294,7 +440,10 @@ export class Zed {
     this.tapped.clear();
     for (const a of Object.keys(this.input.pressed)) if (this.input.pressed[a]) this._pending[a] = true;
     const inp = this.input;
+    if (this.dead && this.grab.active) { this.grab.reset(); this.machine.unlock(); body.setAllowGravity(true); }
     if (this.dead) { this._setRunSound(false); this.sprite.setFlipX(this.facing < 0); body.setVelocityX(0); return; }
+    if (!this.grab.active) this.grab.update(delta); // free-state invulnerability after a break / release
+    if (this.grab.active) { this._updateGrab(delta); this._pending = {}; return; } // held / slammed / getting up: controls locked
     const locked = this.machine.state === 'attack' || this.machine.state === 'hitstun' || this.machine.state === 'block' || this.machine.state === 'parry' || this.machine.state === 'pickup';
 
     // Jump (ground only, not during attack/hitstun/block)
@@ -309,12 +458,17 @@ export class Zed {
       if (this.rage.pressSpecial(this._canStartSpecial()) === 'started') this._startRage();
     }
 
+    // Pushing into an arena wall / screen lock edge: Zed isn't actually moving, so stop the run (idle pose, no footsteps)
+    // instead of running on the spot. Turning away from the wall (or any other input) frees him immediately.
+    const atWall = this._pushingIntoWall(inp.moveX, body);
+    const moveX = atWall ? 0 : inp.moveX;
+
     // Fixed-step state machine (pressed edges delivered on first step of the frame)
     this._acc += delta;
     let pressed = this._pending;
     while (this._acc >= cfg.fixedStepMs) {
       this._acc -= cfg.fixedStepMs;
-      this.machine.step({ pressed, held: inp.held, moveX: inp.moveX || (inp.moveY !== 0 ? 1 : 0) }, { grounded }); // walking up/down counts as running
+      this.machine.step({ pressed, held: inp.held, moveX: moveX || (inp.moveY !== 0 ? 1 : 0) }, { grounded }); // walking up/down counts as running
       pressed = {};
       this._pending = {};
     }
@@ -327,7 +481,7 @@ export class Zed {
     else {
       const f = s === 'attack' ? cfg.attackMoveFactor : s === 'block' ? cfg.blockMoveFactor : 1;
       if (inp.moveX !== 0 && s !== 'attack' && s !== 'block') this.facing = inp.moveX;
-      body.setVelocityX(inp.moveX * cfg.runSpeed * f);
+      body.setVelocityX(moveX * cfg.runSpeed * f);
     }
     // Depth movement: up/down the floor band, frozen while attacking, guarding, stunned or picking up.
     if (!this.dead && !locked && inp.moveY !== 0) {
@@ -335,7 +489,7 @@ export class Zed {
     }
     if (!locked) this.dir8 = dir8FromInput(inp.moveX, inp.moveY, this.dir8);
     this.sprite.setFlipX(this.facing < 0);
-    this._setRunSound(s === 'run' && grounded, inp.moveX, inp.moveY);
+    this._setRunSound(s === 'run' && grounded, moveX, inp.moveY);
   }
 
   destroy() {
@@ -345,6 +499,9 @@ export class Zed {
     this.events.off(EVENTS.DAMAGE_APPLIED, this._onDamage);
     this.events.off(EVENTS.ENTITY_DIED, this._onDied);
     this.events.off(EVENTS.RETRY, this._onRetry);
+    this.events.off(EVENTS.GRAB, this._onGrab);
+    this.events.off(EVENTS.GRAB_SLAM, this._onGrabSlam);
+    this.events.off(EVENTS.GRAB_RELEASE, this._onGrabRelease);
     this.events.emit(EVENTS.ENTITY_UNREGISTERED, { id: PLAYER_ID });
     this.scene.input.keyboard.off('keydown', this._onDown);
     this.scene.input.keyboard.off('keyup', this._onUp);

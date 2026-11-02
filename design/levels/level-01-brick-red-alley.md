@@ -61,3 +61,9 @@ Path convention: `assets/levels/level-01-brick-red-alley/` (SVG or PNG). The are
 ## Open questions
 - The theme mentions a mustard corner shop, mural panels and a music window; this direction does not. Add a shop or mural later as a separate sparse landmark?
 - Window-wall may need a tile-seam check in game, since the shadow wedge is tied to edges.
+
+## Playtest changes (2026-11-02, from the playtest agents)
+The agents showed the finale (Dugan + 4 grunts) KO'd any player who stood between enemies in about 6 s, and nothing earlier taught the fix.
+- **Wave 3 is the crowd-control lesson**: new `pincer` spawn pattern (one grunt from each edge in turn), `maxAlive` 4 -> 2, and a coaching line under the wave banner: "Caught in the middle? Step out so they're all in front of you."
+- **Wave 5**: `maxAlive` 4 -> 3 grunts on screen with Dugan.
+- **Wave 5**: the crew waits for Dugan's first move (`leader.crewAfter: "first-move"`, then `crewDelayMs` 900 ms; `crewMaxWaitMs` 9 s safety net so the wave can never stall).

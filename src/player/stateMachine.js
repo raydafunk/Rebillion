@@ -23,6 +23,7 @@ export class PlayerStateMachine {
     this.onActiveStart = onActiveStart || (() => {}); // (moveId, moveData) at first active frame
     this.onStateChange = onStateChange || (() => {});
     this.state = 'idle';
+    this.locked = false;
     this.moveId = null;
     this.frame = 0;          // frames since current move / hitstun began
     this.hitstunLeft = 0;
@@ -96,6 +97,16 @@ export class PlayerStateMachine {
     this.openers = this.baseOpeners;
   }
 
+  /** Zed.js grab handling: park the machine in an externally driven state ('held' | 'slammed' | 'getup'). step() does nothing until unlock(). */
+  lock(state) {
+    this.locked = true;
+    this.hitstunLeft = 0; this.blockFrames = 0; this.moveId = null;
+    this.buffered = null; this.bufferLeft = 0; this.parrySuccess = false;
+    this._set(state);
+  }
+
+  unlock() { this.locked = false; this._set('idle'); }
+
   /** Enter hit stun (interrupts everything). */
   hit(frames) {
     this.hitstunLeft = Math.max(1, frames | 0);
@@ -114,6 +125,7 @@ export class PlayerStateMachine {
     const pressed = input.pressed || {};
     const held = input.held || {};
     const moveX = input.moveX || 0;
+    if (this.locked) return this.state;
 
     if (this.state === 'hitstun') {
       if (--this.hitstunLeft <= 0) this._set('idle');

@@ -22,3 +22,17 @@ export function pickupDrop(wave, nextWave, groundY) {
 export function canCollect(pickup, zedX, airborne = 0) {
   return Math.abs(pickup.x - zedX) <= PICKUP.collectRadius && airborne <= PICKUP.maxAirborne;
 }
+
+/**
+ * Boss mercy drop: while a boss fight is on and Zed is low, the boss "drops" a health item so a hard fight stays winnable.
+ * Rate-limited: at most maxPerFight per fight, at least cooldownMs apart; the first needs Zed under belowFrac of his health.
+ */
+export const LOW_HEALTH_DROP = Object.freeze({ belowFrac: 0.35, heal: 30, cooldownMs: 12000, maxPerFight: 2 });
+export const createLowHealthDrop = () => ({ drops: 0, lastAt: -Infinity });
+/** Heal amount to drop now (and records it), or 0. nowMs is the scene clock. */
+export function lowHealthDrop(state, hp, maxHp, nowMs, bossAlive, cfg = LOW_HEALTH_DROP) {
+  if (!bossAlive || !(hp > 0) || hp / maxHp >= cfg.belowFrac) return 0;
+  if (state.drops >= cfg.maxPerFight || nowMs - state.lastAt < cfg.cooldownMs) return 0;
+  state.drops++; state.lastAt = nowMs;
+  return cfg.heal;
+}

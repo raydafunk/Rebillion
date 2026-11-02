@@ -51,16 +51,17 @@
       {
         "enemy": "grunt",
         "count": 7,
-        "maxAlive": 4,
+        "maxAlive": 2,
         "spawnIntervalMs": 700,
         "startDelayMs": 1000,
-        "spawnPattern": "ambush",
+        "spawnPattern": "pincer",
         "attackerCap": 2,
         "elites": 1,
         "eliteHpMult": 3,
         "restPickup": {
           "heal": 30
-        }
+        },
+        "hint": "Caught in the middle? Step out so they're all in front of you."
       },
       {
         "enemy": "grunt",
@@ -79,7 +80,7 @@
       {
         "enemy": "grunt",
         "count": 4,
-        "maxAlive": 4,
+        "maxAlive": 3,
         "spawnIntervalMs": 900,
         "startDelayMs": 1000,
         "spawnPattern": "flank",
@@ -88,7 +89,10 @@
           "enemy": "rust-brick-dugan",
           "entrance": "far-side",
           "spawnFirst": true,
-          "gate": false
+          "gate": false,
+          "crewAfter": "first-move",
+          "crewDelayMs": 900,
+          "crewMaxWaitMs": 9000
         }
       }
     ],
@@ -108,7 +112,7 @@
   {
     "id": "level-02-mustard-row",
     "status": "proposed",
-    "gddGap": "No level structure in the GDD. Introduces the Rust Watcher (rust-watcher) as the first new threat, mixed with grunts; wave sizes and 135 s limit are assumed.",
+    "gddGap": "No level structure in the GDD. Introduces the Rust Watcher (rust-watcher) as the first new threat, mixed with grunts, Type 2 Breakers from wave 3, and \"Railgun\" Royce as the wave 5 mini-boss; wave sizes are assumed; the 210 s limit and the 5-wave arc copy Level 1.",
     "sources": [
       "the-rebellion#6",
       "the-rebellion#7",
@@ -126,66 +130,122 @@
       "#A8402E",
       "#6B4423"
     ],
-    "timeLimitSec": 135,
+    "timeLimitSec": 210,
     "intro": "Shutters chained, signs faded. Zed's neighbours are watching from behind the glass. Clear the row and open a shop.",
     "outro": "Chains drop, shutters roll up, and the first hand-lettered sign goes back in the window. Mustard Row is open for business.",
     "waves": [
       {
         "enemy": "grunt",
-        "count": 4,
+        "count": 5,
         "maxAlive": 3,
         "spawnIntervalMs": 850,
         "startDelayMs": 600,
         "spawnPattern": "alternate",
         "attackerCap": 2,
-        "restPickup": {
-          "heal": 20
-        }
-      },
-      {
-        "enemy": "rust-watcher",
-        "count": 4,
-        "maxAlive": 2,
-        "spawnIntervalMs": 1100,
-        "startDelayMs": 1000,
-        "spawnPattern": "flank",
-        "attackerCap": 2,
-        "hpMult": 1.5,
+        "mix": [
+          "grunt",
+          "grunt",
+          "rust-watcher"
+        ],
+        "speedMult": 1.15,
         "restPickup": {
           "heal": 25
         }
       },
       {
+        "enemy": "rust-watcher",
+        "count": 7,
+        "maxAlive": 3,
+        "spawnIntervalMs": 950,
+        "startDelayMs": 1000,
+        "spawnPattern": "flank",
+        "attackerCap": 2,
+        "mix": [
+          "rust-watcher",
+          "grunt"
+        ],
+        "speedMult": 1.2,
+        "restPickup": {
+          "heal": 35
+        }
+      },
+      {
         "enemy": "grunt",
-        "count": 5,
+        "count": 8,
         "maxAlive": 4,
         "spawnIntervalMs": 700,
         "startDelayMs": 1000,
         "spawnPattern": "ambush",
         "attackerCap": 2,
+        "mix": [
+          "grunt",
+          "rust-watcher",
+          "grunt"
+        ],
+        "speedMult": 1.25,
+        "elites": 2,
+        "eliteHpMult": 3,
+        "eliteSkin": "rust-breaker-2",
+        "mixElites": true,
         "restPickup": {
-          "heal": 30
+          "heal": 45
+        }
+      },
+      {
+        "enemy": "grunt",
+        "count": 10,
+        "maxAlive": 5,
+        "spawnIntervalMs": 600,
+        "startDelayMs": 1000,
+        "spawnPattern": "surge",
+        "attackerCap": 3,
+        "mix": [
+          "grunt",
+          "rust-watcher",
+          "rust-watcher"
+        ],
+        "speedMult": 1.3,
+        "elites": 3,
+        "eliteHpMult": 3,
+        "eliteSkin": "rust-breaker-2",
+        "mixElites": true,
+        "restPickup": {
+          "heal": 55
         }
       },
       {
         "enemy": "rust-watcher",
-        "count": 5,
-        "maxAlive": 3,
+        "count": 8,
+        "maxAlive": 4,
         "spawnIntervalMs": 800,
         "startDelayMs": 1000,
-        "spawnPattern": "surge",
+        "spawnPattern": "flank",
         "attackerCap": 3,
-        "hpMult": 1.5
+        "mix": [
+          "rust-watcher",
+          "grunt",
+          "rust-watcher",
+          "grunt"
+        ],
+        "speedMult": 1.3,
+        "leader": {
+          "enemy": "rust-railgun-royce",
+          "entrance": "far-side",
+          "spawnFirst": true,
+          "gate": false,
+          "speedMult": 1.3
+        }
       }
     ],
     "miniBoss": "rust-railgun-royce",
     "mainBoss": null,
-    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). No main boss per the-story-campaign#1. Old title \"Transit District\" is flavour only. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level.",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). No main boss per the-story-campaign#1. Old title \"Transit District\" is flavour only. Owner decision: Level 2 matches Level 1 in length (5 waves, 210 s) and build-up, but is the harder level: bigger waves (5, 7, 8, 10), Watchers, Type 2 Breakers, bigger healing breathers (25-55 vs 15-35) and a bigger finale. Owner decision: waves interleave grunts, Watchers and Type 2 Breakers (wave.mix, mixElites) and every wave moves faster than Level 1 (speedMult 1.15-1.3). Wave 5 is the mini-boss beat: \"Railgun\" Royce walks in from the far side with 8 Watchers (Level 1 has 4 grunts); the wave is smaller than wave 4 by design (validator exempts leader waves from the no-shrink rule). No boss phase on this level.",
     "bossStructure": {
       "miniBoss": {
         "style": "mini-wave",
         "gate": false,
-        "note": "beatable pressure wave led by the mini-boss"
+        "note": "Royce plus 8 Watchers in wave 5",
+        "wave": 5
       },
       "mainBoss": null
     }

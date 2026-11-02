@@ -1,0 +1,291 @@
+{
+  "group_id": "2facaf3b-4bf6-43b1-af4e-2b400b2f17d6",
+  "states": [
+    {
+      "character": {
+        "id": "d4f346eb-d5f8-43e0-baa5-f80667b5b041",
+        "name": "Idle",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-20T07:00:41.543001+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    },
+    {
+      "character": {
+        "id": "205e5742-2a98-4c36-b655-9eee0c8aa11e",
+        "name": "Walking",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T13:28:01.326597+00:00"
+      },
+      "folder": "Walking",
+      "frames": {
+        "rotations": {
+          "south": "Walking/rotations/south.png",
+          "south-east": "Walking/rotations/south-east.png",
+          "east": "Walking/rotations/east.png",
+          "north-east": "Walking/rotations/north-east.png",
+          "north": "Walking/rotations/north.png",
+          "north-west": "Walking/rotations/north-west.png",
+          "west": "Walking/rotations/west.png",
+          "south-west": "Walking/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    },
+    {
+      "character": {
+        "id": "115fd006-fb23-4865-9596-68b4ea8e8735",
+        "name": "Taser Shot",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T13:30:48.327303+00:00"
+      },
+      "folder": "Taser_Shot",
+      "frames": {
+        "rotations": {
+          "south": "Taser_Shot/rotations/south.png",
+          "south-east": "Taser_Shot/rotations/south-east.png",
+          "east": "Taser_Shot/rotations/east.png",
+          "north-east": "Taser_Shot/rotations/north-east.png",
+          "north": "Taser_Shot/rotations/north.png",
+          "north-west": "Taser_Shot/rotations/north-west.png",
+          "west": "Taser_Shot/rotations/west.png",
+          "south-west": "Taser_Shot/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    },
+    {
+      "character": {
+        "id": "231b44a9-13d4-42df-9292-d00ba15c174f",
+        "name": "Baton Strike",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T13:32:16.220336+00:00"
+      },
+      "folder": "Baton_Strike",
+      "frames": {
+        "rotations": {
+          "south": "Baton_Strike/rotations/south.png",
+          "south-east": "Baton_Strike/rotations/south-east.png",
+          "east": "Baton_Strike/rotations/east.png",
+          "north-east": "Baton_Strike/rotations/north-east.png",
+          "north": "Baton_Strike/rotations/north.png",
+          "north-west": "Baton_Strike/rotations/north-west.png",
+          "west": "Baton_Strike/rotations/west.png",
+          "south-west": "Baton_Strike/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    },
+    {
+      "character": {
+        "id": "e41acbd3-bb7f-4da3-938f-dd6eb4df6732",
+        "name": "stun when getting hi",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T14:51:59.960447+00:00"
+      },
+      "folder": "stun_when_getting_hi",
+      "frames": {
+        "rotations": {
+          "south": "stun_when_getting_hi/rotations/south.png",
+          "south-east": "stun_when_getting_hi/rotations/south-east.png",
+          "east": "stun_when_getting_hi/rotations/east.png",
+          "north-east": "stun_when_getting_hi/rotations/north-east.png",
+          "north": "stun_when_getting_hi/rotations/north.png",
+          "north-west": "stun_when_getting_hi/rotations/north-west.png",
+          "west": "stun_when_getting_hi/rotations/west.png",
+          "south-west": "stun_when_getting_hi/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "south": [
+              "stun_when_getting_hi/animations/Taking_Punch/south/frame_000.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south/frame_001.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south/frame_002.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south/frame_003.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south/frame_004.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south/frame_005.png"
+            ],
+            "south-east": [
+              "stun_when_getting_hi/animations/Taking_Punch/south-east/frame_000.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south-east/frame_001.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south-east/frame_002.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south-east/frame_003.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south-east/frame_004.png",
+              "stun_when_getting_hi/animations/Taking_Punch/south-east/frame_005.png"
+            ],
+            "north-east": [
+              "stun_when_getting_hi/animations/Taking_Punch/north-east/frame_000.png",
+              "stun_when_getting_hi/animations/Taking_Punch/north-east/frame_001.png",
+              "stun_when_getting_hi/animations/Taking_Punch/north-east/frame_002.png",
+              "stun_when_getting_hi/animations/Taking_Punch/north-east/frame_003.png",
+              "stun_when_getting_hi/animations/Taking_Punch/north-east/frame_004.png",
+              "stun_when_getting_hi/animations/Taking_Punch/north-east/frame_005.png"
+            ],
+            "east": [
+              "stun_when_getting_hi/animations/Taking_Punch/east/frame_000.png",
+              "stun_when_getting_hi/animations/Taking_Punch/east/frame_001.png",
+              "stun_when_getting_hi/animations/Taking_Punch/east/frame_002.png",
+              "stun_when_getting_hi/animations/Taking_Punch/east/frame_003.png",
+              "stun_when_getting_hi/animations/Taking_Punch/east/frame_004.png",
+              "stun_when_getting_hi/animations/Taking_Punch/east/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "a2c8fc45-4730-434e-bfc7-ae591d124e5d",
+        "name": "death falling down",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T14:52:54.226810+00:00"
+      },
+      "folder": "death_falling_down",
+      "frames": {
+        "rotations": {
+          "south": "death_falling_down/rotations/south.png",
+          "south-east": "death_falling_down/rotations/south-east.png",
+          "east": "death_falling_down/rotations/east.png",
+          "north-east": "death_falling_down/rotations/north-east.png",
+          "north": "death_falling_down/rotations/north.png",
+          "north-west": "death_falling_down/rotations/north-west.png",
+          "west": "death_falling_down/rotations/west.png",
+          "south-west": "death_falling_down/rotations/south-west.png"
+        },
+        "animations": {
+          "Falling_Back_Death": {
+            "west": [
+              "death_falling_down/animations/Falling_Back_Death/west/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/west/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/west/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/west/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/west/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/west/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/west/frame_006.png"
+            ],
+            "south-west": [
+              "death_falling_down/animations/Falling_Back_Death/south-west/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/south-west/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/south-west/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/south-west/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/south-west/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/south-west/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/south-west/frame_006.png"
+            ],
+            "south-east": [
+              "death_falling_down/animations/Falling_Back_Death/south-east/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/south-east/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/south-east/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/south-east/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/south-east/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/south-east/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/south-east/frame_006.png"
+            ],
+            "north": [
+              "death_falling_down/animations/Falling_Back_Death/north/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/north/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/north/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/north/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/north/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/north/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/north/frame_006.png"
+            ],
+            "east": [
+              "death_falling_down/animations/Falling_Back_Death/east/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/east/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/east/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/east/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/east/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/east/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/east/frame_006.png"
+            ],
+            "north-west": [
+              "death_falling_down/animations/Falling_Back_Death/north-west/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/north-west/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/north-west/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/north-west/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/north-west/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/north-west/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/north-west/frame_006.png"
+            ],
+            "north-east": [
+              "death_falling_down/animations/Falling_Back_Death/north-east/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/north-east/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/north-east/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/north-east/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/north-east/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/north-east/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/north-east/frame_006.png"
+            ],
+            "south": [
+              "death_falling_down/animations/Falling_Back_Death/south/frame_000.png",
+              "death_falling_down/animations/Falling_Back_Death/south/frame_001.png",
+              "death_falling_down/animations/Falling_Back_Death/south/frame_002.png",
+              "death_falling_down/animations/Falling_Back_Death/south/frame_003.png",
+              "death_falling_down/animations/Falling_Back_Death/south/frame_004.png",
+              "death_falling_down/animations/Falling_Back_Death/south/frame_005.png",
+              "death_falling_down/animations/Falling_Back_Death/south/frame_006.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-02T14:03:27.890038"
+}

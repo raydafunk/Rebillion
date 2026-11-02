@@ -1,2 +1,6 @@
 pipeline/corpus/
 pipeline/briefs/
+
+# playtest agents: recorded videos and local caches (reports stay)
+qa/playtest-agents/runs/**/videos/
+qa/playtest-agents/.cache/

@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import { DUGAN_MOVES } from './duganData.js';
+import { SLAM_AT_MS, WAVE_SPEED, WAVE_REACH, MEGA_STOMP, waveRadius, frontAlpha, discAt, ghostPulseDistances, gateAlpha, shakeFrames } from './megaStompData.js';
+
+const st = DUGAN_MOVES.stomp;
+assert.equal(SLAM_AT_MS, 850); assert.equal(SLAM_AT_MS, st.telegraphMs + st.wave.startAt);
+assert.equal(WAVE_SPEED, st.wave.speed); assert.equal(WAVE_REACH, st.wave.reachPx);
+assert.equal(waveRadius(SLAM_AT_MS - 1), -1);
+assert.equal(waveRadius(SLAM_AT_MS), 0);
+assert.equal(waveRadius(SLAM_AT_MS + 500), 425);
+assert.equal(waveRadius(SLAM_AT_MS + 5000), WAVE_REACH, 'stops at the gameplay reach');
+assert.equal(frontAlpha(500), 1); assert.equal(frontAlpha(760), 0); assert.ok(frontAlpha(660) > 0.4 && frontAlpha(660) < 0.6);
+const d0 = discAt(0), d1 = discAt(SLAM_AT_MS - 1);
+assert.ok(d0.rx === 70 && d1.rx > 200 && d1.alpha > d0.alpha, 'disc grows and darkens');
+assert.equal(discAt(600).rimColor, MEGA_STOMP.telegraph.disc.rim.colors[1]);
+assert.equal(discAt(1400), null, 'disc gone');
+assert.deepEqual(ghostPulseDistances(100), []);
+assert.equal(ghostPulseDistances(250).length, 1); assert.equal(ghostPulseDistances(600).length, 1, "the first pulse has gone by the time the second starts"); assert.equal(ghostPulseDistances(600)[0], 85);
+assert.equal(gateAlpha(0), 0); assert.equal(gateAlpha(800), 0.4); assert.equal(gateAlpha(1800), 0);
+assert.deepEqual(shakeFrames(0), []); assert.equal(shakeFrames(1).length, 9);
+assert.equal(shakeFrames(0.5)[3].intensity, 0.009);
+const peak = Math.max(...shakeFrames(1).map((f) => f.intensity)); assert.equal(peak, 0.018);
+assert.equal(shakeFrames(1)[3].at, SLAM_AT_MS, 'peak shake lands on the slam');
+console.log('Mega Stomp data tests passed');

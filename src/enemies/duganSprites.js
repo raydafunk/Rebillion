@@ -8,8 +8,11 @@
 //   punch  : Fighting (right hand pulled back)               stomp  : Ground_Stomp (powerful leap)
 //   charge : running_then_grab (sprint leaning in)           grab   : Jumping_slam (leap and slam)
 //   rage   : Rage_Punch (glowing orange fist)                recoil : jumping_backwards_in (hop back; after a wall crash)
+//   block  : Blocking (arms pulled in; BLOCK state, then holds the last frame)
 //   hit    : when_taking_a_punch (parry stun only)           death  : falling_backwards_de
+//   lift   : one_hand_lift_state (the hold of Grab / Wall Slam / a charge catch, drawn as stills by hold progress)
 import { DIRECTIONS, directionFromVelocity } from './breakerData.js';
+import { DUGAN_BLOCK } from './duganData.js';
 
 export const DUGAN_DIR = 'assets/sprites/BrickDugan';
 export const DUGAN_TEX = 'rust.brick-dugan';
@@ -26,6 +29,10 @@ export const DUGAN_ANIMS = Object.freeze({
   grab:   { folder: 'Jumping_slam', anim: 'The_character_performs_a_sudden_heavy_leaping_jump', frames: 9, side: PLAIN },
   rage:   { folder: 'Rage_Punch', anim: 'The_character_pulls_the_glowing_orange_fire-envelo', frames: 9, side: { east: 'east-97b723ba', west: 'west' } },
   recoil: { folder: 'jumping_backwards_in', anim: 'The_character_performs_a_sharp_controlled_hop_tuck', frames: 9, side: PLAIN },
+  // The generated west clip hides the arm until its last frame, so west uses the east frames mirrored (made with PIL into west-mirrored/; the original west folder is untouched).
+  lift:   { folder: 'one_hand_lift_state', anim: 'The_character_initiates_a_sharp_controlled_movemen', frames: 9, side: { east: 'east', west: 'west-mirrored' } },
+  // Zed's swing -> arms pulled in to shield the body (BLOCK state). All four directions exist in the art; the east/west pair is used.
+  block:  { folder: 'Blocking', anim: 'The_character_pulls_both_arms_inward_to_shield_the', frames: 9, side: PLAIN },
   hit:    { folder: 'when_taking_a_punch', anim: 'Taking_Punch', frames: 6, side: PLAIN },
   // The art has 7 frames, but the last (frame_006) is a rebound with the legs kicked up and only the back touching the floor, which reads as
   // hovering. The clip stops on frame_005, the body lying flat.
@@ -80,7 +87,34 @@ export const duganFitScale = (name, ms) => (DUGAN_ANIMS[name].frames * 1000 / DU
 export const duganDeathTimeScale = () => duganFitScale('death', DUGAN_DEATH_MS);
 
 /** Length the move's clip is fitted to: wind-up + strike (the charge: wind-up + a stretch of running). */
-export const duganMoveMs = (move) => move.telegraphMs + (move.id === 'charge' ? CHARGE_CLIP_EXTRA_MS : move.attackMs);
+export const STOMP_CLIP_TAIL_MS = 250;      // the stomp clip ends shortly after the slam; Dugan holds the pose while the wave runs
+export function duganMoveMs(move) {
+  if (move.id === 'charge') return move.telegraphMs + CHARGE_CLIP_EXTRA_MS;
+  if (move.id === 'stomp' && move.wave) return move.telegraphMs + move.wave.startAt + STOMP_CLIP_TAIL_MS;
+  return move.telegraphMs + move.attackMs;
+}
+
+// Grab and Wall Slam (and a charge that catches Zed) is drawn from still frames, so Dugan looks like he has Zed in his hands:
+//   gather (Ground_Stomp 0-4 across the wind-up of the standing grab) -> reaching (running_then_grab, last frame, arms out)
+//   -> lift (one_hand_lift_state 3-7 across the first 80% of the hold, then the peak frame 7 until the slam; frame 8 is the arm dropping back)
+//   -> bend over and drive him down (Jumping_slam 5-8 across the slam).
+export const GRAB_FRAMES = Object.freeze({ gather: { clip: 'stomp', from: 0, to: 4 }, reach: { clip: 'charge', frame: 8 }, hold: { clip: 'lift', from: 3, to: 7, peakAt: 0.8 }, slam: { clip: 'grab', from: 5, to: 8 } });
+const lerpFrame = (f, p) => f.from + Math.min(f.to - f.from, Math.floor(Math.max(0, Math.min(0.999, p)) * (f.to - f.from + 1)));
+/** Texture key of the still frame to show for a grab, or null when the normal clips apply. */
+export function duganGrabStill(g, face) {
+  const m = g.move;
+  if (!m) return null;
+  if (g.state === 'telegraph' && m.id === 'grab') return duganFrameKey(GRAB_FRAMES.gather.clip, face, lerpFrame(GRAB_FRAMES.gather, g.telegraphProgress));
+  if (g.state !== 'attack') return null;
+  const gs = g.grab;
+  if (gs && gs.phase === 'slam') return duganFrameKey(GRAB_FRAMES.slam.clip, face, lerpFrame(GRAB_FRAMES.slam, 1 - gs.lingerLeft / Math.max(1, gs.params.slamLingerMs)));
+  if (gs && gs.phase === 'hold') {
+    const hp = 1 - gs.holdLeft / Math.max(1, gs.params.holdMs);
+    return duganFrameKey(GRAB_FRAMES.hold.clip, face, lerpFrame(GRAB_FRAMES.hold, hp / GRAB_FRAMES.hold.peakAt));
+  }
+  if (m.id === 'grab') return duganFrameKey(GRAB_FRAMES.reach.clip, face, GRAB_FRAMES.reach.frame);   // reaching out (and a whiff: arms stay out)
+  return null;
+}
 
 /**
  * What to show for a BrickDugan `g` ({ state, facing, vx, vy, move, moveSeq, crashed, crashSeq, hitstunMs }).
@@ -94,6 +128,9 @@ export function duganPose(g) {
   const rotation = duganRotationKey(face);
   if (g.state === 'dead') return { anim: duganAnimKey('death', face), dir: face, once: true, death: true, rotation, deathTimeScale: duganDeathTimeScale() };
   if (g.state === 'hitstun') return { anim: duganAnimKey('hit', face), dir: face, once: true, hit: true, frames: DUGAN_ANIMS.hit.frames, rotation };
+  if (g.state === 'block') return { anim: duganAnimKey('block', face), dir: face, once: true, move: true, seq: `block${g.blockSeq}`, totalMs: DUGAN_BLOCK.clipMs, clip: 'block', rotation };
+  const still = duganGrabStill(g, face);
+  if (still) return { anim: still, dir: face, still, rotation };
   if ((g.state === 'telegraph' || g.state === 'attack') && g.move) {
     return { anim: duganAnimKey(g.move.id, face), dir: face, once: true, move: true, seq: g.moveSeq, totalMs: duganMoveMs(g.move), clip: g.move.id, rotation };
   }

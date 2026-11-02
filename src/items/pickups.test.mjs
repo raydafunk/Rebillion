@@ -83,3 +83,30 @@ assert.equal(applyHeal(h, 50), 0, 'the dead stay dead');
 }
 
 console.log('pickups + elites ok');
+
+// boss mercy drop: only while the boss lives, only when Zed is low, rate limited
+{
+  const { LOW_HEALTH_DROP, createLowHealthDrop, lowHealthDrop } = await import('./pickups.js');
+  const s = createLowHealthDrop();
+  assert.equal(lowHealthDrop(s, 80, 100, 0, true), 0, 'healthy: no drop');
+  assert.equal(lowHealthDrop(s, 20, 100, 0, false), 0, 'boss gone: no drop');
+  assert.equal(lowHealthDrop(s, 0, 100, 0, true), 0, 'dead: no drop');
+  assert.equal(lowHealthDrop(s, 30, 100, 1000, true), LOW_HEALTH_DROP.heal, 'low: boss drops health');
+  assert.equal(lowHealthDrop(s, 10, 100, 2000, true), 0, 'cooldown');
+  assert.equal(lowHealthDrop(s, 10, 100, 1000 + LOW_HEALTH_DROP.cooldownMs, true), LOW_HEALTH_DROP.heal, 'second drop after the cooldown');
+  assert.equal(lowHealthDrop(s, 10, 100, 1e6, true), 0, 'capped per fight');
+}
+
+// a nonLethal hit (Dugan's slam) hurts but leaves the player at 1 hp
+{
+  const ev = fakeEmitter(); let t = 0;
+  createHitResolver(ev, () => t);
+  ev.emit(EVENTS.ENTITY_REGISTERED, { id: PLAYER_ID, team: 'zed', maxHp: 100, hurtbox: { x: -20, y: -80, w: 40, h: 80 }, getState: () => ({ x: 100, y: 500, lane: 500, facing: 1 }) });
+  const dmg = [];
+  ev.on(EVENTS.DAMAGE_APPLIED, (d) => dmg.push(d));
+  const req = (id, damage) => ({ attackerId: 'b', attackId: id, team: 'rust', hitbox: { x: -20, y: -80, w: 40, h: 80 }, origin: { x: 100, y: 500 }, lane: 500, facing: 1, damage, knockback: 0, hitstun: 0, pierceInvuln: true, unblockable: true, nonLethal: true });
+  ev.emit(EVENTS.HIT_REQUEST, req('a', 40));
+  assert.equal(dmg.at(-1).hpAfter, 60, 'full 40 when it will not kill');
+  t = 5000; ev.emit(EVENTS.HIT_REQUEST, req('b', 500));
+  assert.equal(dmg.at(-1).hpAfter, 1, 'a huge slam still leaves 1 hp');
+}

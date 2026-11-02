@@ -6,6 +6,7 @@
 
 import { MOVES, PARRY, PICKUP_POSE } from './moves.js';
 import { ZED_CONFIG } from './config.js';
+import { GRAB_CONFIG } from './grabConfig.js';
 
 export const ZED_SPRITE = {
   size: 48,                 // source px (metadata.json states[].character.size)
@@ -54,6 +55,14 @@ export const ZED_ANIMS = [
     dirOriginY: { south: 55 / 64, 'north-east': 53 / 64, north: 52 / 64, 'north-west': 53 / 64 } },
   { state: 'carrywalk', folder: 'Carrying_weapon_stat_walking', anim: 'Walking', frames: 8, fps: 12, originY: 56.5 / 64, repeat: -1, dirs: 'all',
     dirOriginY: { south: 55 / 64, 'north-east': 52.5 / 64, north: 52.75 / 64, 'north-west': 52.5 / 64 } },
+  // Grab and Wall Slam (Zed.js machine.lock states). held: "hangs limply" clip, 68x68 (lowest row 55 -> (55+1+2)/68), loops while pinned to Dugan's hand.
+  { state: 'held', folder: 'being_held_state', anim: 'The_character_hangs_limply_as_if_suspended_by_an_u', frames: 9, fps: 10, originY: 58 / 68, repeat: -1 },
+  // slammed: the death fall (Falling_Back_Death) stretched over GRAB_CONFIG.slamFallMs, then he lies on the last frame. getup: the same frames
+  // played in reverse over getupMs. Same canvas and foot lines as the dead clip.
+  { state: 'slammed', folder: 'knock_down_death', anim: 'Falling_Back_Death', frames: 7, fps: 12, originY: 65 / 80, repeat: 0,
+    dirOriginY: { west: 64 / 80 }, frameOriginY: { east: { 6: 54 / 80 }, west: { 6: 54 / 80 } } },
+  { state: 'getup', folder: 'knock_down_death', anim: 'Falling_Back_Death', frames: 7, fps: 12, originY: 65 / 80, repeat: 0, reverse: true,
+    dirOriginY: { west: 64 / 80 }, frameOriginY: { east: { 6: 54 / 80 }, west: { 6: 54 / 80 } } },
   { state: 'dead', folder: 'knock_down_death', anim: 'Falling_Back_Death', frames: 7, fps: 12, originY: 65 / 80, repeat: 0,
     // The lying frame's body ends at row 51 in both directions (east also has a few stray pixels at rows 57-62 that
     // aren't the body, which is why measuring "lowest opaque row" left him floating), so it's pinned at (51 + 1 + 2)/80.
@@ -117,7 +126,8 @@ export function registerZedAnimations(scene) {
     const key = zedAnimKey(a.state, d);
     if (scene.anims.exists(key) || !scene.textures.exists(zedFrameKey(a.state, d, 0))) continue;
     for (let i = 0; i < a.frames; i++) scene.textures.get(zedFrameKey(a.state, d, i)).setFilter?.(1); // NEAREST
-    scene.anims.create({ key, frames: Array.from({ length: a.frames }, (_, i) => ({ key: zedFrameKey(a.state, d, i) })), frameRate: a.fps, repeat: a.repeat ?? -1 });
+    const order = Array.from({ length: a.frames }, (_, i) => (a.reverse ? a.frames - 1 - i : i));
+    scene.anims.create({ key, frames: order.map((i) => ({ key: zedFrameKey(a.state, d, i) })), frameRate: a.fps, repeat: a.repeat ?? -1 });
   }
 }
 
@@ -165,6 +175,10 @@ export function zedPose(s) {
       break;
     }
     case 'hitstun': p.tintFill = 0xffffff; p.ox = -5 * f; p.angle = -10 * f; p.sx = 0.92; p.sy = 1.06; break;
+    // Grab and Wall Slam: no dedicated clips yet, so a tint + squash pose reads each phase.
+    case 'held': p.tint = 0xffc266; p.sx = 0.9; p.sy = 1.08; p.angle = Math.sin(t / 55) * 5; p.oy = -2 * Math.abs(Math.sin(t / 70)); break;
+    case 'slammed': p.tint = 0xff8866; p.angle = 80 * f; p.alpha = 0.85; break;   // pose used only when the clips are missing; the clip is drawn at full alpha, untinted
+    case 'getup': p.tint = 0xffe0a0; p.angle = 25 * f; p.alpha = 0.6 + 0.4 * Math.abs(Math.sin(t / 60)); break;
     case 'block': p.tint = 0x88aaff; p.sx = 1.05; p.sy = 0.94; p.ox = -2 * f; break;
     default: break;
   }
@@ -228,6 +242,10 @@ export class ZedVisual {
         if (this._hitTotal == null || m.hitstunLeft > this._hitLeft) this._hitTotal = m.hitstunLeft;
         this._hitLeft = m.hitstunLeft;
         img.anims.timeScale = (clip.frames / clip.fps) / (Math.max(1, this._hitTotal) / 60);
+      } else if (m.state === 'slammed' && clip) { // fall backwards over slamFallMs, then lie on the last frame
+        img.anims.timeScale = (clip.frames / clip.fps) / (GRAB_CONFIG.slamFallMs / 1000);
+      } else if (m.state === 'getup' && clip) { // rise over the get-up
+        img.anims.timeScale = (clip.frames / clip.fps) / (GRAB_CONFIG.getupMs / 1000);
       } else img.anims.timeScale = 1;
       if (m.state !== 'hitstun') this._hitTotal = null;
     } else {
@@ -244,8 +262,8 @@ export class ZedVisual {
       img.setScale(this.base.sx * p.sx, this.base.sy * p.sy);
       img.setPosition(feetX + p.ox, feetY + p.oy).setAngle(p.angle);
     } else if (m.state === 'attack' && m.moveId !== 'airkick') img.x = feetX + punchLunge(m, facing); // weight shift: lean back, step into the hit
-    img.setAlpha(animKey && zed.dead ? 1 : p.alpha); // the death clip is drawn at full alpha
-    if (animKey && m.state === 'hitstun') img.clearTint(); // the clip shows the hit; no solid-white flash over it
+    img.setAlpha(animKey && (zed.dead || m.state === 'slammed') ? 1 : p.alpha); // the death clip is drawn at full alpha
+    if (animKey && (m.state === 'hitstun' || m.state === 'slammed')) img.clearTint(); // the clip shows the hit; no solid-white flash over it
     else if (animKey && m.state === 'attack' && p.tintFill == null) img.clearTint();
     else if (p.tintFill != null) img.setTintFill(p.tintFill);
     else if (p.tint != null) img.setTint(p.tint);

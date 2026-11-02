@@ -89,6 +89,8 @@ const VALIDATORS = {
       if (!SPAWN_PATTERNS.includes(w.spawnPattern)) e(`spawnPattern must be one of ${SPAWN_PATTERNS.join(' | ')}`);
       if (w.attackerCap !== undefined && !(Number.isInteger(w.attackerCap) && w.attackerCap >= 1)) e('attackerCap must be an integer >= 1');
       if (w.hpMult !== undefined && !(isNum(w.hpMult) && w.hpMult >= 1 && w.hpMult <= 10)) e('hpMult must be 1-10');
+      if (w.mix !== undefined && !(Array.isArray(w.mix) && w.mix.length && w.mix.every((k) => k === 'grunt' || ctx.enemies.has(k)))) e('mix must be a non-empty list of "grunt" or ids in content/enemies');
+      if (w.speedMult !== undefined && !(isNum(w.speedMult) && w.speedMult >= 0.5 && w.speedMult <= 2)) e('speedMult must be 0.5-2');
       if (w.elites !== undefined) {
         if (w.enemy !== 'grunt') e('elites only apply to grunt waves (other waves use hpMult)');
         if (!Number.isInteger(w.elites) || w.elites < 0 || (isNum(w.count) && w.elites > w.count)) e('elites must be an integer 0..count');

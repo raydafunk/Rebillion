@@ -2,6 +2,8 @@
 import { EVENTS } from '../shared/events.js';
 import { COLORS, CSS, FONTS } from '../config/assetKeys.js';
 import RageMeterHud from '../ui/RageMeterHud.js';
+import BossBarHud from '../ui/BossBarHud.js';
+import { BAR as BOSS_BAR } from '../ui/bossBarData.js';
 
 const mmss = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 
@@ -27,6 +29,9 @@ export default class HudScene extends Phaser.Scene {
     this.boostBar = this.add.graphics();
     this.banner = this.add.text(640, 240, '', { fontFamily: FONTS.display, fontSize: '88px', color: CSS.mustard, stroke: CSS.darkBrown, strokeThickness: 10 })
       .setOrigin(0.5).setAlpha(0);
+    // Wave coaching line (wave.hint, e.g. Level 1's crowd-control lesson): under the banner, stays a few seconds.
+    this.coach = this.add.text(640, 320, '', { fontFamily: FONTS.button, fontSize: '30px', color: CSS.cream, stroke: CSS.darkBrown, strokeThickness: 7, align: 'center' })
+      .setOrigin(0.5).setAlpha(0);
     // Shown after a wave is cleared in a scrolling level: tells the player to keep moving right.
     this.go = this.add.text(1230, 360, '', { fontFamily: FONTS.button, fontSize: '56px', color: CSS.mustard, stroke: CSS.darkBrown, strokeThickness: 8, align: 'right' })
       .setOrigin(1, 0.5).setVisible(false);
@@ -37,6 +42,7 @@ export default class HudScene extends Phaser.Scene {
     this.hp = { hp: 100, maxHp: 100 };
     this.waveIndex = -1; this.killed = 0;
     this._drawHp();
+    this.bossBar = new BossBarHud(this); // end-of-level boss bar (design/art/boss-health-bar.md)
     this.rageHud = new RageMeterHud(this, this.levelNumber); // Rage meter: hidden on level 1, slides in on level 2
 
     const on = (n, f) => { ev.on(n, f); this.events.once('shutdown', () => ev.off(n, f)); };
@@ -54,19 +60,24 @@ export default class HudScene extends Phaser.Scene {
       this._banner(last ? 'AREA CLEAR' : 'WAVE CLEARED');
     });
     on(EVENTS.ARENA_CLEARED, goOff);
-    on(EVENTS.WAVE_STARTED, ({ index, total }) => {
+    on(EVENTS.WAVE_STARTED, ({ index, total, hint }) => {
       goOff();
+      this._coach(hint);
       this.waveIndex = index; this.killed = 0;
       this.waveText.setText(`WAVE ${index + 1} / ${total}`);
       this._left();
       this._banner(index === 0 ? 'FIGHT!' : `WAVE ${index + 1}`);
     });
-    on(EVENTS.ENTITY_DIED, ({ team }) => { if (team === 'rust') { this.killed++; this._left(); } });
-    on(EVENTS.RETRY, () => { this.killed = 0; this.shownScore = 0; this.scoreTarget = 0; this.scoreText.setText('SCORE 0'); goOff(); });
+    on(EVENTS.ENTITY_REGISTERED, (p) => { if (p.boss && this.bossBar.show(p)) this.banner.y = BOSS_BAR.bannerYWhileShown; });
+    on(EVENTS.DAMAGE_APPLIED, (d) => this.bossBar.onDamage(d.targetId, d.hpAfter, d.amount));
+    on(EVENTS.ENTITY_DIED, ({ id, team }) => { this.bossBar.die(id); if (team === 'rust') { this.killed++; this._left(); } });
+    on(EVENTS.RETRY, () => { this.bossBar.reset(); this.banner.y = BOSS_BAR.bannerYDefault; this.killed = 0; this.shownScore = 0; this.scoreTarget = 0; this.scoreText.setText('SCORE 0'); goOff(); });
   }
 
   update(time, delta) {
     this.rageHud?.update(time, delta);
+    this.bossBar?.update(time, delta);
+    if (this.bossBar && !this.bossBar.visible && this.banner.y !== BOSS_BAR.bannerYDefault) this.banner.y = BOSS_BAR.bannerYDefault;
     // score counts up to its target instead of jumping
     if (this.shownScore !== this.scoreTarget) {
       this.shownScore = Math.min(this.scoreTarget, this.shownScore + Math.max(10, Math.ceil((this.scoreTarget - this.shownScore) * Math.min(1, delta / 120))));
@@ -99,6 +110,13 @@ export default class HudScene extends Phaser.Scene {
       .fillStyle(0x4a3326, 1).fillRect(x, y, W, H)
       .fillStyle(pct > 0.3 ? COLORS.mustard : 0xd13b2c, 1).fillRect(x, y, W * pct, H);
     this.hpText.setText(`${Math.ceil(hp)}/${maxHp}`).setPosition(x + W + 12, y + 2);
+  }
+
+  _coach(s) {
+    this.tweens.killTweensOf(this.coach);
+    if (!s) { this.coach.setAlpha(0); return; }
+    this.coach.setText(s).setAlpha(1);
+    this.tweens.add({ targets: this.coach, alpha: 0, delay: 4200, duration: 500 });
   }
 
   _banner(s) {

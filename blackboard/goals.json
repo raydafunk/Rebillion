@@ -82,6 +82,28 @@
       "attempts": 3,
       "maxAttempts": 3,
       "note": "pass"
+    },
+    {
+      "id": "G7-playtest-levels",
+      "title": "Play every level with goal-oriented adversarial agents, on video",
+      "desired_state": "facts/playtest-levels.json lists every level run (persona, result, video) and every invariant finding with evidence",
+      "owner": "playtest-level-agent",
+      "needs": [],
+      "produces": "facts/playtest-levels.json",
+      "status": "open",
+      "attempts": 0,
+      "maxAttempts": 2
+    },
+    {
+      "id": "G8-playtest-bosses",
+      "title": "Fight every mini-boss and end-of-level boss with goal-oriented adversarial agents, on video",
+      "desired_state": "facts/playtest-bosses.json lists every boss fight with result, per-move hit/evade read-out, video and findings",
+      "owner": "playtest-boss-agent",
+      "needs": [],
+      "produces": "facts/playtest-bosses.json",
+      "status": "open",
+      "attempts": 0,
+      "maxAttempts": 2
     }
   ]
 }

@@ -45,7 +45,7 @@ export function createHitResolver(events, now = () => Date.now()) {
       if (!rectsOverlap(box, worldRect(e.reg.hurtbox, st, st.facing))) continue;
       const dir = st.x >= req.origin.x ? 1 : -1;
       const guard = st.guard ?? null;
-      if (guard === 'parry') {
+      if (guard === 'parry' && !req.unparryable) { // unparryable (Mega Stomp wave): a parry does nothing, the answer is to jump
         // Negated: no hp change, no invulnerability spent, but Zed still gets told.
         if (req.pierceInvuln ? e.health.dead : isInvulnerable(e.health, t)) continue; // piercing hits can be parried even inside the invuln window
         seen.add(key);
@@ -55,17 +55,17 @@ export function createHitResolver(events, now = () => Date.now()) {
         });
         continue;
       }
-      const blocked = guard === 'block';
+      const blocked = guard === 'block' && !req.unblockable; // unblockable (Dugan's Mega Stomp wave): a block does nothing, only a parry or a jump does
       const dmg = blocked ? Math.max(1, Math.round(req.damage * COMBAT_DEFAULTS.BLOCK_DAMAGE_MULT)) : req.damage;
       const kb = blocked ? req.knockback * COMBAT_DEFAULTS.BLOCK_KNOCKBACK_MULT : req.knockback;
       const stun = blocked ? 0 : req.hitstun;
       // Special / neverKills vs a boss: capped at bossDamageCap and never below 1 hp.
       // If nothing is left to deal (boss already at 1 hp) the blow still lands (hitstun, knockback, event).
       let r;
-      if (e.reg.boss && (req.special || req.neverKills)) {
+      if ((e.reg.boss && (req.special || req.neverKills)) || req.nonLethal) {
         let cap = dmg;
         if (Number.isFinite(req.bossDamageCap)) cap = Math.min(cap, req.bossDamageCap);
-        if (req.neverKills) cap = Math.min(cap, e.health.hp - 1);
+        if (req.neverKills || req.nonLethal) cap = Math.min(cap, e.health.hp - 1); // nonLethal: hurts but always leaves 1 hp (Dugan's slam)
         r = cap > 0 ? applyDamage(e.health, cap, t, stun) : applyGlancingHit(e.health, t, stun);
       } else {
         r = applyDamage(e.health, dmg, t, stun, { pierce: !!req.pierceInvuln });

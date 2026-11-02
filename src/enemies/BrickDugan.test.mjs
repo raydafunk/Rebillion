@@ -2,29 +2,33 @@ import assert from 'node:assert/strict';
 import { fakeEmitter } from '../shared/fakeEmitter.mjs';
 import { EVENTS } from '../shared/events.js';
 import { BrickDugan, DuganState } from './BrickDugan.js';
-import { DUGAN, DUGAN_MOVES, DUGAN_MAX_HP, pickDuganMove } from './duganData.js';
+import { DUGAN, DUGAN_MOVES, DUGAN_MAX_HP, DUGAN_ENRAGED, pickDuganMove } from './duganData.js';
 import { EnemyManager } from './EnemyManager.js';
 import { AttackSlots } from './AttackSlots.js';
 
 // ---- data matches the content file: telegraphs readable, five canon moves ----
 assert.equal(DUGAN.maxHp, DUGAN_MAX_HP);
-assert.equal(DUGAN_MAX_HP, 150);
+assert.equal(DUGAN_MAX_HP, 300);
 assert.deepEqual(Object.values(DUGAN_MOVES).map((m) => m.name).sort(),
   ['Brick Breaker Punch', 'Grab and Wall Slam', 'Ground Stomp', 'Rage Punch', 'Running Shoulder Charge']);
 assert.deepEqual(Object.values(DUGAN_MOVES).map((m) => m.telegraphMs), [650, 800, 700, 600, 900], 'telegraphs match mini-bosses.json');
 for (const m of Object.values(DUGAN_MOVES)) assert.ok(m.telegraphMs >= 300, `${m.id} telegraph is readable`);
 
 // ---- move choice ----
-const base = { dist: 60, dy: 0, lift: 0, meleeMs: 0, ragePending: false, chargeReady: false, lastId: null };
+const base = { dist: 60, dy: 0, lift: 0, meleeMs: 0, ragePending: false, chargeReady: false, stompReady: true, lastId: null };
 assert.equal(pickDuganMove(base, () => 0.9).id, 'punch', 'close range: Brick Breaker Punch');
 assert.equal(pickDuganMove({ ...base, lift: 40 }, () => 0.9).id, 'stomp', 'Zed airborne: Ground Stomp');
 assert.equal(pickDuganMove({ ...base, dist: 30 }, () => 0.9).id, 'stomp', 'crowding him: Ground Stomp');
+assert.equal(pickDuganMove({ ...base, lift: 40, stompReady: false }, () => 0.9).id, 'punch', 'stomp on cooldown: punch instead');
+assert.equal(pickDuganMove({ ...base, dist: 500 }, () => 0.9).id, 'stomp', 'the Mega Stomp can start from across the screen');
+assert.equal(pickDuganMove({ ...base, dist: 800 }, () => 0.9), null, 'but not from out of reach');
 assert.equal(pickDuganMove({ ...base, meleeMs: 2600 }, () => 0.9).id, 'grab', 'too long in melee: Grab and Wall Slam');
 assert.equal(pickDuganMove({ ...base, ragePending: true }, () => 0.9).id, 'rage', 'below 30 percent: Rage Punch');
 assert.equal(pickDuganMove({ ...base, dist: 400, chargeReady: true }, () => 0.9).id, 'charge', 'from range along his lane: charge');
-assert.equal(pickDuganMove({ ...base, dist: 400, dy: 90, chargeReady: true }, () => 0.9), null, 'no charge when Zed is off his lane');
-assert.equal(pickDuganMove({ ...base, dist: 400 }, () => 0.9), null, 'charge on cooldown: keep walking');
-assert.equal(pickDuganMove({ ...base, dist: 400, ragePending: true }, () => 0.9), null, 'rage waits until he is in reach');
+assert.equal(pickDuganMove({ ...base, dist: 400, dy: 90, chargeReady: true, stompReady: false }, () => 0.9), null, 'no charge when Zed is off his lane');
+assert.equal(pickDuganMove({ ...base, dist: 400, dy: 90, chargeReady: true }, () => 0.9).id, 'stomp', 'off his lane the stomp is the answer');
+assert.equal(pickDuganMove({ ...base, dist: 400, stompReady: false }, () => 0.9), null, 'charge and stomp on cooldown: keep walking');
+assert.equal(pickDuganMove({ ...base, dist: 400, ragePending: true, stompReady: false }, () => 0.9), null, 'rage waits until he is in reach');
 
 // ---- a single Dugan: telegraph, then the hit, with the shared attacker slot ----
 function make(opts = {}) {
@@ -84,12 +88,29 @@ function run(d, ms, target, step = 16) { for (let t = 0; t < ms; t += step) d.up
   const { d } = make();
   const zed = { x: 470, y: 580, lift: 0 };
   d.state = DuganState.APPROACH; d.cooldownMs = 0;
-  d.takeHit({ hpAfter: 40 });                              // 40/150 = 26.7 percent
+  d.takeHit({ hpAfter: 40 });                              // 40/300 = 13 percent
   d.update(16, zed);
   assert.equal(d.move.id, 'rage'); assert.equal(d.telegraphTotalMs, 900);
   assert.equal(d.ragePending, false);
   d.takeHit({ hpAfter: 10 }); d.state = DuganState.APPROACH; d.cooldownMs = 0; d.update(16, zed);
   assert.notEqual(d.move.id, 'rage', 'only one Rage Punch');
+}
+
+{ // Rage phase: he stays enraged (faster, shorter recovery, harder hits) and the Rage Punch returns on a timer
+  const { d } = make();
+  const zed = { x: 470, y: 580, lift: 0 };
+  assert.equal(d._k('moveSpeedMult'), 1, 'calm: no change');
+  d.state = DuganState.APPROACH; d.cooldownMs = 0;
+  d.takeHit({ hpAfter: 40 }); d.update(16, zed);
+  assert.equal(d.enraged, true);
+  assert.equal(d._k('moveSpeedMult'), DUGAN_ENRAGED.moveSpeedMult);
+  assert.equal(d.telegraphTotalMs, 900, 'telegraphs are not shortened');
+  d._endMove(1000);
+  assert.equal(d.timer, 1000 * DUGAN_ENRAGED.recoverMult, 'recovers sooner');
+  d._endMove(1800, true);
+  assert.equal(d.timer, 1800, 'the wall-crash punish window keeps its length');
+  d.update(DUGAN_ENRAGED.ragePunchEveryMs + 50, zed);
+  assert.equal(d.ragePending, true, 'the Rage Punch comes back');
 }
 
 { // Running Shoulder Charge: lane charge into the wall leaves a long recovery; a landed hit ends it early
@@ -102,22 +123,13 @@ function run(d, ms, target, step = 16) { for (let t = 0; t < ms; t += step) d.up
   run(d, 820, zed); assert.equal(d.state, DuganState.ATTACK);
   const x0 = d.x;
   run(d, 400, { x: 700, y: 700 }); assert.ok(d.x > x0 + 100, 'he runs along the lane');
-  assert.ok(hits.length >= 1 && hits[0].attackId === hits[hits.length - 1].attackId, 'one attackId per charge so it lands once');
+  assert.equal(hits.length, 0, 'the charge never sends an ordinary hit-request: it ends in a grab (see duganGrab.test.mjs)');
   for (let i = 0; i < 400 && d.state === DuganState.ATTACK; i++) d.update(16, { x: 700, y: 700 });
   assert.equal(d.state, DuganState.RECOVER); assert.equal(d.crashed, true, 'crashed into the wall');
   assert.ok(d.timer > 1700, 'long recovery: free punish');
   assert.ok(d.x <= 1240 && d.x >= 1100, 'stopped at the wall');
   assert.equal(d.crashSeq, 1);
 }
-{ // a charge that connects stops there (normal recovery)
-  const { d } = make();
-  d.x = 300; d.facing = 1; const zed = { x: 700, y: 580, lift: 0 };
-  d.cooldownMs = 0; d.chargeCdMs = 0; d.state = DuganState.APPROACH; d.update(16, zed);
-  run(d, 820, zed); assert.equal(d.state, DuganState.ATTACK);
-  run(d, 100, zed); d.onHitLanded(); d.update(16, zed);
-  assert.equal(d.state, DuganState.RECOVER); assert.ok(!d.crashed); assert.equal(d.timer <= DUGAN_MOVES.charge.recoverMs, true);
-}
-
 { // waiting for a slot: he holds his ground and is flagged circling (failsafe will not read him as stuck)
   const slots = new AttackSlots(1); slots.tryAcquire('someone-else');
   const { d } = make({ slots });
@@ -128,14 +140,33 @@ function run(d, ms, target, step = 16) { for (let t = 0; t < ms; t += step) d.up
   assert.equal(d.state, DuganState.TELEGRAPH);
 }
 
-{ // Ground Stomp hits a ring around his feet; death clears the slot
+{ // Mega Stomp: slam at +150 ms, then a shockwave front (both sides, whole lane, unblockable) every tick; it travels to its reach and ends
   const { d, hits, slots } = make();
   const zed = { x: 470, y: 580, lift: 50 };
-  d.cooldownMs = 0; d.state = DuganState.APPROACH; d.update(16, zed);
-  assert.equal(d.move.id, 'stomp');
-  run(d, 700 + 200, zed);
-  assert.ok(hits.length >= 1 && hits[0].hitbox.w === 190, 'wide ground ring');
+  d.stompCdMs = 0; d.cooldownMs = 0; d.state = DuganState.APPROACH; d.update(16, zed);
+  assert.equal(d.move.id, 'stomp'); assert.equal(d.stompCdMs, DUGAN.stompCooldownMs, 'set piece: on cooldown right after it starts');
+  run(d, 700, zed); assert.equal(hits.length, 0, 'nothing during the wind-up'); assert.equal(d.stompSeq, 0);
+  run(d, 200, zed);
+  assert.equal(d.stompSeq, 1, 'one slam');
+  assert.ok(hits.length >= 2 && hits[0].facing !== hits[1].facing, 'both directions');
+  assert.ok(hits.every((h) => h.unblockable === true && h.lane === null && h.hitbox.h >= 400), 'unblockable, ignores depth');
+  const early = hits.length; run(d, 300, zed);
+  const rs = hits.filter((h) => h.facing === 1).map((h) => h.hitbox.x + h.hitbox.w / 2);
+  assert.ok(hits.length > early && rs.every((r, i) => i === 0 || r > rs[i - 1]), 'the front moves outward');
+  assert.ok(new Set(hits.map((h) => h.attackId)).size === 1, 'one attackId: it can land once');
+  run(d, 1200, zed);
+  const last = Math.max(...hits.map((h) => h.hitbox.x + h.hitbox.w / 2));
+  assert.ok(last >= 700 && last <= 800, 'reaches about 760 px');
+  assert.equal(d.wave, null, 'wave over'); assert.equal(d.state === DuganState.RECOVER || d.state === DuganState.APPROACH, true);
   d.die(); assert.equal(d.alive, false); assert.equal(slots.count, 0);
+}
+{ // a parry during the stomp cancels the wave
+  const { d, hits } = make();
+  const zed = { x: 470, y: 580, lift: 0 };
+  d.stompCdMs = 0; d.cooldownMs = 0; d.state = DuganState.APPROACH; d.update(16, zed);
+  run(d, 900, zed); const n = hits.length;
+  d.takeHit({ hitstun: 700, parry: true });
+  run(d, 600, zed); assert.equal(hits.length, n, 'no more wave once he is stunned'); assert.equal(d.wave, null);
 }
 
 // ---- through the EnemyManager: registers as a boss, spawns Dugan, hp and parry routed ----
@@ -145,7 +176,7 @@ function run(d, ms, target, step = 16) { for (let t = 0; t < ms; t += step) d.up
   const m = new EnemyManager({ events: ev, getXRange: () => ({ min: 0, max: 1280 }) });
   const g = m.spawn({ id: 'brick-dugan-1', x: 900, y: 580, enemy: 'rust-brick-dugan', skin: 'rust-brick-dugan' });
   assert.ok(g instanceof BrickDugan);
-  assert.equal(reg[0].boss, true); assert.equal(reg[0].maxHp, 150); assert.equal(reg[0].team, 'rust');
+  assert.equal(reg[0].boss, true); assert.equal(reg[0].maxHp, 300); assert.equal(reg[0].team, 'rust');
   ev.emit(EVENTS.DAMAGE_APPLIED, { targetId: 'brick-dugan-1', attackerId: 'player', amount: 18, hpAfter: 132, knockback: 380, hitstun: 28, landed: true });
   assert.equal(g.hp, 132); assert.equal(g.state, DuganState.IDLE, 'no hitstun from an ordinary hit');
   ev.emit(EVENTS.PARRY_STUN, { attackerId: 'brick-dugan-1', hitstun: 700 });

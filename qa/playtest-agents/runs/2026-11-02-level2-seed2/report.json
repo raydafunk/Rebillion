@@ -1,0 +1,1052 @@
+{
+  "stamp": "2026-11-02T17-00-34",
+  "seed": 2,
+  "base": "playtest.html",
+  "results": [
+    {
+      "scenario": {
+        "id": "L2-brawler",
+        "agent": "playtest-level-agent",
+        "level": 2,
+        "persona": "brawler",
+        "stopOn": "round",
+        "maxSec": 330
+      },
+      "wallSec": 162,
+      "video": "videos/L2-brawler.mp4",
+      "persona": "brawler",
+      "kind": "competent",
+      "level": 2,
+      "levelName": "Mustard Row",
+      "outcome": {
+        "mode": "win",
+        "reason": "cleared",
+        "t": 127058,
+        "hp": 100,
+        "secondsLeft": 93,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 131733,
+      "stats": {
+        "hitsDealt": 190,
+        "hitsTaken": 5,
+        "damageDealt": 1825,
+        "damageTaken": 48,
+        "parryAttempts": 9,
+        "parries": 6,
+        "kills": 39,
+        "wavesCleared": 5,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 16,
+        "minFps": 35,
+        "hitches": 1,
+        "goalTime": {
+          "intro": 29,
+          "wait": 233,
+          "attack": 4051,
+          "reposition": 280,
+          "advance": 883,
+          "parry": 10,
+          "victory": 111,
+          "exit": 256,
+          "done": 44
+        },
+        "notes": {
+          "reposition": 280,
+          "rage-special": 16,
+          "heavy": 2,
+          "parry": 9
+        },
+        "repositions": 4,
+        "goalShare": {
+          "intro": 0,
+          "wait": 4,
+          "attack": 69,
+          "reposition": 5,
+          "advance": 15,
+          "parry": 0,
+          "victory": 2,
+          "exit": 4,
+          "done": 1
+        }
+      },
+      "bosses": [],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 6352,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 7025,
+          "type": "wave-started",
+          "index": 0
+        },
+        {
+          "t": 7071,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 7628,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 13441,
+          "type": "reposition",
+          "left": 2,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 13441,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 15243,
+          "type": "reposition-done"
+        },
+        {
+          "t": 15243,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16631,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 21452,
+          "type": "wave-cleared",
+          "index": 0
+        },
+        {
+          "t": 21547,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 25372,
+          "type": "wave-started",
+          "index": 1
+        },
+        {
+          "t": 25383,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 26374,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 38478,
+          "type": "reposition",
+          "left": 2,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 38478,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 40306,
+          "type": "reposition-done"
+        },
+        {
+          "t": 40306,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 43955,
+          "type": "wave-cleared",
+          "index": 1
+        },
+        {
+          "t": 43981,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 46765,
+          "type": "wave-started",
+          "index": 2
+        },
+        {
+          "t": 46794,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 47835,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 51664,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 51664,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-15",
+          "clock": 255,
+          "mark": 520
+        },
+        {
+          "t": 51676,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 51843,
+          "type": "parry-success"
+        },
+        {
+          "t": 57004,
+          "type": "reposition",
+          "left": 1,
+          "right": 1,
+          "to": "left"
+        },
+        {
+          "t": 57004,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 58251,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 58251,
+          "type": "parry-press",
+          "zed": "run",
+          "by": "grunt-20",
+          "clock": 317,
+          "mark": 350
+        },
+        {
+          "t": 58267,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 58385,
+          "type": "parry-success"
+        },
+        {
+          "t": 58805,
+          "type": "reposition-done"
+        },
+        {
+          "t": 58805,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 58864,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 58864,
+          "type": "parry-press",
+          "zed": "run",
+          "by": "grunt-19",
+          "clock": 418,
+          "mark": 520
+        },
+        {
+          "t": 58864,
+          "type": "parry-success"
+        },
+        {
+          "t": 58896,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 67499,
+          "type": "wave-cleared",
+          "index": 2
+        },
+        {
+          "t": 67518,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 72452,
+          "type": "wave-started",
+          "index": 3
+        },
+        {
+          "t": 72482,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 73465,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 78662,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 78662,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-27",
+          "clock": 253,
+          "mark": 350
+        },
+        {
+          "t": 78682,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 78844,
+          "type": "parry-success"
+        },
+        {
+          "t": 87333,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 87333,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-29",
+          "clock": 303,
+          "mark": 350
+        },
+        {
+          "t": 87347,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 87430,
+          "type": "parry-success"
+        },
+        {
+          "t": 87536,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 87536,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-28",
+          "clock": 575,
+          "mark": 610
+        },
+        {
+          "t": 87549,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 87574,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 87603,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-30",
+          "clock": 540,
+          "mark": 610
+        },
+        {
+          "t": 87630,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 87675,
+          "type": "hurt",
+          "by": "grunt-28",
+          "amount": 8
+        },
+        {
+          "t": 91246,
+          "type": "wave-cleared",
+          "index": 3
+        },
+        {
+          "t": 91264,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 96884,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 96905,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 97899,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 104379,
+          "type": "reposition",
+          "left": 1,
+          "right": 1,
+          "to": "left"
+        },
+        {
+          "t": 104379,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 104996,
+          "type": "reposition-done"
+        },
+        {
+          "t": 104996,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 105990,
+          "type": "hurt",
+          "by": "grunt-32",
+          "amount": 8
+        },
+        {
+          "t": 106964,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 106964,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-33",
+          "clock": 242,
+          "mark": 350
+        },
+        {
+          "t": 106985,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 107174,
+          "type": "parry-success"
+        },
+        {
+          "t": 107290,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 107290,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-32",
+          "clock": 325,
+          "mark": 350
+        },
+        {
+          "t": 107338,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 107383,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 109892,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 109907,
+          "type": "hurt",
+          "by": "grunt-34",
+          "amount": 8
+        },
+        {
+          "t": 110112,
+          "type": "hurt",
+          "by": "grunt-34",
+          "amount": 16
+        },
+        {
+          "t": 121920,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 121944,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 127058,
+          "type": "round-win",
+          "reason": "cleared"
+        },
+        {
+          "t": 127073,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "id": "L2-edge-exploiter",
+        "agent": "playtest-level-agent",
+        "level": 2,
+        "persona": "edge-exploiter",
+        "stopOn": "round",
+        "maxSec": 150
+      },
+      "wallSec": 132,
+      "video": "videos/L2-edge-exploiter.mp4",
+      "persona": "edge-exploiter",
+      "kind": "adversarial",
+      "level": 2,
+      "levelName": "Mustard Row",
+      "outcome": {
+        "mode": "lose",
+        "reason": "ko",
+        "t": 104460,
+        "hp": 0,
+        "secondsLeft": 113,
+        "wave": 4
+      },
+      "done": true,
+      "elapsedMs": 109620,
+      "stats": {
+        "hitsDealt": 92,
+        "hitsTaken": 22,
+        "damageDealt": 831,
+        "damageTaken": 205,
+        "parryAttempts": 0,
+        "parries": 0,
+        "kills": 20,
+        "wavesCleared": 3,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 16,
+        "minFps": 35,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 39,
+          "wait": 171,
+          "fuzz": 324,
+          "attack": 3455,
+          "heal": 605,
+          "advance": 151,
+          "done": 36
+        },
+        "notes": {
+          "fuzz": 20,
+          "jump-spam": 47,
+          "rage-special": 16,
+          "heavy": 1
+        },
+        "goalShare": {
+          "intro": 1,
+          "wait": 4,
+          "fuzz": 7,
+          "attack": 72,
+          "heal": 13,
+          "advance": 3,
+          "done": 1
+        }
+      },
+      "bosses": [],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 6162,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 7007,
+          "type": "wave-started",
+          "index": 0
+        },
+        {
+          "t": 7034,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 7503,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 7868,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 12419,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 12747,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 17505,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 17715,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 22689,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 8
+        },
+        {
+          "t": 23552,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 24043,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 24785,
+          "type": "wave-cleared",
+          "index": 0
+        },
+        {
+          "t": 24814,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 27898,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 28244,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 29395,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 30452,
+          "type": "wave-started",
+          "index": 1
+        },
+        {
+          "t": 30484,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 31484,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 33146,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 33468,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 33701,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 34065,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 34619,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 34920,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 37514,
+          "type": "hurt",
+          "by": "grunt-7",
+          "amount": 8
+        },
+        {
+          "t": 37761,
+          "type": "hurt",
+          "by": "grunt-7",
+          "amount": 16
+        },
+        {
+          "t": 39401,
+          "type": "hurt",
+          "by": "grunt-7",
+          "amount": 8
+        },
+        {
+          "t": 41199,
+          "type": "hurt",
+          "by": "grunt-9",
+          "amount": 8
+        },
+        {
+          "t": 41448,
+          "type": "hurt",
+          "by": "grunt-9",
+          "amount": 16
+        },
+        {
+          "t": 41963,
+          "type": "hurt",
+          "by": "grunt-7",
+          "amount": 8
+        },
+        {
+          "t": 42412,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 42655,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 43083,
+          "type": "hurt",
+          "by": "grunt-9",
+          "amount": 8
+        },
+        {
+          "t": 49585,
+          "type": "hurt",
+          "by": "grunt-10",
+          "amount": 8
+        },
+        {
+          "t": 52101,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 52384,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 53713,
+          "type": "wave-cleared",
+          "index": 1
+        },
+        {
+          "t": 53753,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 55238,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 55708,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 56272,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 57345,
+          "type": "wave-started",
+          "index": 2
+        },
+        {
+          "t": 57382,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 58374,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 61625,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 61801,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 62410,
+          "type": "hurt",
+          "by": "grunt-15",
+          "amount": 8
+        },
+        {
+          "t": 63834,
+          "type": "hurt",
+          "by": "grunt-15",
+          "amount": 8
+        },
+        {
+          "t": 66039,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 66236,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 66712,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 67100,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 68851,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 69328,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 69686,
+          "type": "hurt",
+          "by": "grunt-14",
+          "amount": 8
+        },
+        {
+          "t": 79292,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 79700,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 84504,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 84743,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 87121,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 87131,
+          "type": "wave-cleared",
+          "index": 2
+        },
+        {
+          "t": 87610,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 88604,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 88846,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 88857,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 89075,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 93710,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 94742,
+          "type": "wave-started",
+          "index": 3
+        },
+        {
+          "t": 94757,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 95799,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 101560,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 101837,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 102681,
+          "type": "hurt",
+          "by": "grunt-22",
+          "amount": 8
+        },
+        {
+          "t": 103129,
+          "type": "hurt",
+          "by": "grunt-21",
+          "amount": 16
+        },
+        {
+          "t": 103301,
+          "type": "hurt",
+          "by": "grunt-21",
+          "amount": 6
+        },
+        {
+          "t": 103462,
+          "type": "hurt",
+          "by": "grunt-21",
+          "amount": 6
+        },
+        {
+          "t": 103933,
+          "type": "hurt",
+          "by": "grunt-22",
+          "amount": 8
+        },
+        {
+          "t": 104149,
+          "type": "hurt",
+          "by": "grunt-22",
+          "amount": 16
+        },
+        {
+          "t": 104310,
+          "type": "hurt",
+          "by": "grunt-22",
+          "amount": 6
+        },
+        {
+          "t": 104460,
+          "type": "hurt",
+          "by": "grunt-22",
+          "amount": 3
+        },
+        {
+          "t": 104460,
+          "type": "zed-ko"
+        },
+        {
+          "t": 104460,
+          "type": "round-lose",
+          "reason": "ko"
+        },
+        {
+          "t": 104483,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    }
+  ]
+}

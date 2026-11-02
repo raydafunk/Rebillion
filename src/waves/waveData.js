@@ -17,8 +17,9 @@ const wave = (i, w) => Object.freeze({ enemy: 'grunt', sourceEnemy: 'grunt', loc
 export const WAVES = Object.freeze([
   wave(0, { count: 4, maxAlive: 2, spawnIntervalMs: 900, startDelayMs: 600,  spawnPattern: 'alternate', attackerCap: 2, restPickup: { heal: 15 } }),
   wave(1, { count: 6, maxAlive: 3, spawnIntervalMs: 800, startDelayMs: 1000, spawnPattern: 'flank',     attackerCap: 2, restPickup: { heal: 25 } }),
-  wave(2, { count: 7, maxAlive: 4, spawnIntervalMs: 700, startDelayMs: 1000, spawnPattern: 'ambush',    attackerCap: 2, elites: 1, eliteHpMult: 3, restPickup: { heal: 30 } }),
+  wave(2, { count: 7, maxAlive: 2, spawnIntervalMs: 700, startDelayMs: 1000, spawnPattern: 'pincer',    attackerCap: 2, elites: 1, eliteHpMult: 3, restPickup: { heal: 30 },
+    hint: "Caught in the middle? Step out so they're all in front of you." }),   // crowd-control lesson before the finale
   wave(3, { count: 8, maxAlive: 4, spawnIntervalMs: 650, startDelayMs: 1000, spawnPattern: 'surge',     attackerCap: 3, elites: 2, eliteHpMult: 3, restPickup: { heal: 35 } }),
-  wave(4, { count: 4, maxAlive: 4, spawnIntervalMs: 900, startDelayMs: 1000, spawnPattern: 'flank',     attackerCap: 3,
-    leader: Object.freeze({ enemy: 'rust-brick-dugan', entrance: 'far-side', gate: false }) }),
+  wave(4, { count: 4, maxAlive: 3, spawnIntervalMs: 900, startDelayMs: 1000, spawnPattern: 'flank',     attackerCap: 3,
+    leader: Object.freeze({ enemy: 'rust-brick-dugan', entrance: 'far-side', gate: false, crewAfter: 'first-move', crewDelayMs: 900, crewMaxWaitMs: 9000 }) }),
 ]);

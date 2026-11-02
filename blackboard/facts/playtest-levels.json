@@ -1,0 +1,117 @@
+{
+  "agent": "playtest-level-agent",
+  "run": "2026-11-02T12-01-59",
+  "reportDir": "qa/playtest-agents/runs/2026-11-02T12-01-59",
+  "runs": [
+    {
+      "id": "L1-brawler",
+      "persona": "brawler",
+      "level": 1,
+      "wave": null,
+      "result": "LOSE (ko)",
+      "video": "videos/L1-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L2-brawler",
+      "persona": "brawler",
+      "level": 2,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L2-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L3-brawler",
+      "persona": "brawler",
+      "level": 3,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L3-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L4-brawler",
+      "persona": "brawler",
+      "level": 4,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L4-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L5-brawler",
+      "persona": "brawler",
+      "level": 5,
+      "wave": null,
+      "result": "LOSE (timeout)",
+      "video": "videos/L5-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L6-brawler",
+      "persona": "brawler",
+      "level": 6,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L6-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L7-brawler",
+      "persona": "brawler",
+      "level": 7,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L7-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L8-brawler",
+      "persona": "brawler",
+      "level": 8,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L8-brawler.mp4",
+      "findings": []
+    },
+    {
+      "id": "L1-button-masher",
+      "persona": "button-masher",
+      "level": 1,
+      "wave": null,
+      "result": "LOSE (ko)",
+      "video": "videos/L1-button-masher.mp4",
+      "findings": []
+    },
+    {
+      "id": "L2-edge-exploiter",
+      "persona": "edge-exploiter",
+      "level": 2,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L2-edge-exploiter.mp4",
+      "findings": []
+    },
+    {
+      "id": "L3-turtle",
+      "persona": "turtle",
+      "level": 3,
+      "wave": null,
+      "result": "LOSE (ko)",
+      "video": "videos/L3-turtle.mp4",
+      "findings": []
+    },
+    {
+      "id": "L6-parry-master",
+      "persona": "parry-master",
+      "level": 6,
+      "wave": null,
+      "result": "WIN (cleared)",
+      "video": "videos/L6-parry-master.mp4",
+      "findings": []
+    }
+  ],
+  "findings": [],
+  "requests": []
+}

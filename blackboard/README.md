@@ -27,6 +27,8 @@ G2 scan-code ---/                                          ^                  |
 | G4 | `prioritiser-agent` | `facts/gaps.json` | `facts/priorities.json` |
 | G5 | `code-generator-agent` | `facts/priorities.json`, `design/team/contracts.md` | code in `src/`, `facts/generated.json` |
 | G6 | `reviewer-agent` | `facts/generated.json`, the diff, `npm test` | `facts/review.json` |
+| G7 | `playtest-level-agent` | `playtest.html`, `qa/playtest-agents/` (plays levels 1-8 on video) | `facts/playtest-levels.json` |
+| G8 | `playtest-boss-agent` | `playtest.html`, `qa/playtest-agents/` (plays mini-bosses + end bosses on video) | `facts/playtest-bosses.json` |
 
 G1 and G2 are independent, so run them in parallel. A failed review reopens G5, which resets G6 (`board.mjs reopen`). After `maxAttempts` the goal becomes `blocked` and the director reports it to the owner.
 
@@ -45,6 +47,15 @@ node blackboard/board.mjs reset
 ## Run it
 
 Ask Claude Code: **"use blackboard-director-agent to run the goal board"**. It loops: `ready`, spawn the owners (in parallel when several are ready), repeat, until nothing is open. To run another round on the next gap, `reset` then run again; G1/G2 will refresh the facts.
+
+## Playtest agents (G7, G8)
+
+Goal-oriented, adversarial AI players that press real keys, record video and check invariants every frame (soft-locks, bound leaks, frozen timer, stuck grabs, JS errors). They need nothing upstream, so run them any time, or after G6 to check a change in play. Details: `qa/playtest-agents/README.md`.
+
+```bash
+node qa/playtest-agents/run.mjs --suite levels    # G7
+node qa/playtest-agents/run.mjs --suite bosses    # G8
+```
 
 ## Rules every agent follows
 

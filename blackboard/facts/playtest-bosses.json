@@ -1,0 +1,99 @@
+{
+  "agent": "playtest-boss-agent",
+  "run": "2026-11-02T12-01-59",
+  "reportDir": "qa/playtest-agents/runs/2026-11-02T12-01-59",
+  "runs": [
+    {
+      "id": "MB-dugan-solo",
+      "persona": "boss-hunter",
+      "level": 1,
+      "wave": 5,
+      "result": "WIN (cleared)",
+      "video": "videos/MB-dugan-solo.mp4",
+      "findings": []
+    },
+    {
+      "id": "MB-L4-holt",
+      "persona": "boss-hunter",
+      "level": 4,
+      "wave": 2,
+      "result": "BOSS WAVE CLEARED",
+      "video": "videos/MB-L4-holt.mp4",
+      "findings": []
+    },
+    {
+      "id": "MB-L5-copper-fang",
+      "persona": "boss-hunter",
+      "level": 5,
+      "wave": 2,
+      "result": "BOSS WAVE CLEARED",
+      "video": "videos/MB-L5-copper-fang.mp4",
+      "findings": []
+    },
+    {
+      "id": "MB-L5-wren",
+      "persona": "boss-hunter",
+      "level": 5,
+      "wave": 5,
+      "result": "BOSS WAVE CLEARED",
+      "video": "videos/MB-L5-wren.mp4",
+      "findings": []
+    },
+    {
+      "id": "EB-L1-dugan-crew",
+      "persona": "boss-hunter",
+      "level": 1,
+      "wave": 5,
+      "result": "LOSE (ko)",
+      "video": "videos/EB-L1-dugan-crew.mp4",
+      "findings": []
+    },
+    {
+      "id": "EB-L5-copper-fang",
+      "persona": "boss-hunter",
+      "level": 5,
+      "wave": 7,
+      "result": "WIN (cleared)",
+      "video": "videos/EB-L5-copper-fang.mp4",
+      "findings": []
+    },
+    {
+      "id": "EB-L7-copper-fang",
+      "persona": "boss-hunter",
+      "level": 7,
+      "wave": 3,
+      "result": "WIN (cleared)",
+      "video": "videos/EB-L7-copper-fang.mp4",
+      "findings": []
+    },
+    {
+      "id": "EB-L8-halden-varr",
+      "persona": "boss-hunter",
+      "level": 8,
+      "wave": 4,
+      "result": "WIN (cleared)",
+      "video": "videos/EB-L8-halden-varr.mp4",
+      "findings": []
+    },
+    {
+      "id": "ADV-dugan-edge",
+      "persona": "edge-exploiter",
+      "level": 1,
+      "wave": 5,
+      "result": "LOSE (ko)",
+      "video": "videos/ADV-dugan-edge.mp4",
+      "findings": []
+    },
+    {
+      "id": "ADV-dugan-masher",
+      "persona": "button-masher",
+      "level": 1,
+      "wave": 5,
+      "result": "BOSS WAVE CLEARED",
+      "video": "videos/ADV-dugan-masher.mp4",
+      "findings": []
+    }
+  ],
+  "findings": [],
+  "requests": []
+}

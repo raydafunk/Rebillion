@@ -25,7 +25,9 @@ export class Arena {
     this.getScrollX = getScrollX;
     this.bounds = new ArenaBounds({ events, waves, world });
     this.enemies = new EnemyManager({ events, getXRange: () => this.bounds.xRange });
-    this.spawner = new WaveSpawner({ events, waves, holdBetweenWaves: hold, getPlayer, spawn: (spec) => this.enemies.spawn(spec) });
+    this.spawner = new WaveSpawner({ events, waves, holdBetweenWaves: hold, getPlayer, spawn: (spec) => this.enemies.spawn(spec),
+      // A leader has made his first move once his move counter moved and he is out of the wind-up/strike (or he is gone).
+      leaderEngaged: (id) => { const g = this.enemies.get(id); return !g || !g.alive || ((g.moveSeq ?? 1) > 0 && g.state !== 'telegraph' && g.state !== 'attack'); } });
     // A wave may narrow the attacker cap (1 = one enemy swings at a time: the teaching wave).
     this._onWave = ({ index }) => { this.enemies.slots.cap = waves[index]?.attackerCap ?? ATTACKER_CAP; };
     events.on(EVENTS.WAVE_STARTED, this._onWave);

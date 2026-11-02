@@ -106,7 +106,7 @@ console.log('WaveSpawner tests passed');
   console.log('WaveSpawner start-from passed');
 }
 
-// Leader alone (?solo testing): count 0 still spawns the leader, and the wave clears when he falls.
+// Leader alone: count 0 still spawns the leader, and the wave clears when he falls.
 {
   const ev = fakeEmitter(); const made = []; const log = [];
   ev.on(EVENTS.WAVE_CLEARED, (p) => log.push(p));
@@ -119,4 +119,70 @@ console.log('WaveSpawner tests passed');
   ev.emit(EVENTS.ENTITY_DIED, { id: made[0].id, team: 'rust' });
   assert.equal(log.length, 1, 'cleared when Dugan is down');
   console.log('WaveSpawner leader-only passed');
+}
+
+// crewAfter 'first-move' (Level 1 wave 5): Dugan fights alone until his first move is done, then the crew follows; a safety net always sends them.
+{
+  const lockX = 3200;
+  const mk = (leader) => [{ enemy: 'grunt', count: 3, maxAlive: 3, spawnIntervalMs: 300, startDelayMs: 0, lockX, spawnPattern: 'flank', leader,
+    spawnPoints: [{ x: lockX + 60, y: 520 }, { x: lockX + 1220, y: 580 }] }];
+  const run = (leader, engagedAtMs) => {
+    const ev = fakeEmitter(); const made = []; let t = 0;
+    const s = new WaveSpawner({ events: ev, waves: mk(leader), holdBetweenWaves: true, getPlayer: () => ({ x: lockX + 400, facing: 1 }),
+      spawn: (sp) => made.push({ ...sp, at: t }), rng: () => 0, leaderEngaged: () => engagedAtMs !== null && t >= engagedAtMs });
+    s.start();
+    for (; t < 20000; t += 100) s.update(100);
+    return made;
+  };
+  const L = { enemy: 'rust-brick-dugan', entrance: 'far-side', gate: false, crewAfter: 'first-move', crewDelayMs: 900, crewMaxWaitMs: 9000 };
+  let made = run(L, 5000);
+  assert.equal(made[0].enemy, 'rust-brick-dugan');
+  assert.ok(made.slice(1).every((m) => m.at >= 5000 + 900), 'no grunt before his first move is over (+ the beat)');
+  assert.equal(made.length, 4, 'then the whole crew comes');
+  made = run(L, null);
+  assert.ok(made.length === 4 && made[1].at >= 9000 && made[1].at < 11000, 'he never engages: the safety net still sends the crew');
+  made = run({ ...L, crewAfter: undefined }, null);
+  assert.ok(made[1].at < 3000, 'without crewAfter the crew follows on the normal lead time');
+  // hint rides on wave-started
+  const ev = fakeEmitter(); const got = [];
+  ev.on(EVENTS.WAVE_STARTED, (p) => got.push(p));
+  new WaveSpawner({ events: ev, waves: [{ ...mk(null)[0], leader: undefined, hint: 'Step out' }], spawn() {} }).start();
+  assert.equal(got[0].hint, 'Step out');
+  console.log('WaveSpawner crewAfter + hint passed');
+}
+
+// eliteSkin: the closing `elites` spawns of a wave take the wave's elite skin (default 'rust-breaker'; Level 2 sends 'rust-breaker-2').
+{
+  const run = (extra) => {
+    const ev = fakeEmitter(); const made = [];
+    const base = { enemy: 'grunt', sourceEnemy: 'grunt', count: 4, maxAlive: 4, spawnIntervalMs: 100, startDelayMs: 0, lockX: 0, spawnPoints: [{ x: 60, y: 520 }], elites: 2, eliteHpMult: 3 };
+    const s = new WaveSpawner({ events: ev, waves: [{ ...base, ...extra }], spawn: (m) => made.push(m) });
+    s.start(); for (let i = 0; i < 50; i++) s.update(100);
+    return made;
+  };
+  let made = run({ eliteSkin: 'rust-breaker-2' });
+  assert.deepEqual(made.map((m) => m.skin), ['grunt', 'grunt', 'rust-breaker-2', 'rust-breaker-2']);
+  assert.deepEqual(made.map((m) => m.hpMult), [1, 1, 3, 3]);
+  made = run({});
+  assert.deepEqual(made.map((m) => m.skin), ['grunt', 'grunt', 'rust-breaker', 'rust-breaker'], 'no eliteSkin keeps the original Breaker');
+  console.log('WaveSpawner eliteSkin passed');
+}
+
+// mix + speedMult + mixElites: kinds cycle in spawn order, elites scatter, the wave moves faster.
+{
+  const ev = fakeEmitter(); const made = [];
+  const w = { enemy: 'grunt', sourceEnemy: 'grunt', count: 8, maxAlive: 8, spawnIntervalMs: 100, startDelayMs: 0, lockX: 0, spawnPoints: [{ x: 60, y: 520 }],
+    mix: ['grunt', 'rust-watcher'], speedMult: 1.2, elites: 2, eliteHpMult: 3, eliteSkin: 'rust-breaker-2', mixElites: true };
+  const s = new WaveSpawner({ events: ev, waves: [w], spawn: (m) => made.push(m) });
+  s.start(); for (let i = 0; i < 80; i++) s.update(100);
+  assert.equal(made.length, 8);
+  const eliteIdx = made.map((m, i) => (m.skin === 'rust-breaker-2' ? i : -1)).filter((i) => i >= 0);
+  assert.equal(eliteIdx.length, 2);
+  assert.ok(eliteIdx[0] > 0 && eliteIdx[1] < 7 && eliteIdx[1] - eliteIdx[0] > 1, 'elites are scattered, not the last two');
+  const kinds = made.filter((m) => m.skin !== 'rust-breaker-2').map((m) => m.skin);
+  assert.ok(kinds.includes('grunt') && kinds.includes('rust-watcher'), 'both kinds appear');
+  assert.ok(made.filter((m) => m.skin === 'rust-watcher').every((m) => m.hpMult === 1.5 && Math.abs(m.speedMult - 1.2 * 1.1) < 1e-9), 'watchers: 1.5x health, wave speed x kind speed');
+  assert.ok(made.filter((m) => m.skin === 'grunt').every((m) => m.hpMult === 1 && m.speedMult === 1.2));
+  assert.ok(made.filter((m) => m.skin === 'rust-breaker-2').every((m) => m.hpMult === 3 && m.speedMult < 1.2), 'heavies are a touch slower than the crowd');
+  console.log('WaveSpawner mix + speed passed');
 }

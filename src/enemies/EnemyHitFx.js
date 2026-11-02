@@ -15,6 +15,8 @@ import {
 } from './hitFeedbackData.js';
 import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_VOLUME, isPlainGrunt, gruntSoundReady,
   GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_VOLUME, gruntVoiceFor } from './gruntSound.js';
+import { isDugan, duganSoundReady, duganVoiceFor, DUGAN_HIT_VOICE_KEY, DUGAN_HIT_VOICE_VOLUME, DUGAN_HIT_VOICE_RATE, DUGAN_HIT_VOICE_COOLDOWN_MS,
+  DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_VOLUME, DUGAN_DEATH_SOUND_RATE } from './duganSound.js';
 
 export const BAR_DEPTH = 5100;       // above characters (depth = y) and the swing overlay, below sparks (6000)
 export const SHAPE_DEPTH = P.layerDepth.shapes; // 5050: flash shapes above characters, BELOW the bar so they never cover it
@@ -51,6 +53,7 @@ export class EnemyHitFx {
 
   _playVoice(id, g, killed) {
     const sc = this.scene;
+    if (isDugan(g)) return this._playDuganVoice(id, killed);
     if (!isPlainGrunt(g)) return;
     const which = gruntVoiceFor(killed, this.diedVoiced.has(id));
     if (!which) return;
@@ -66,6 +69,22 @@ export class EnemyHitFx {
     sc.sound.play(GRUNT_HIT_SOUND_KEY, { volume: GRUNT_HIT_SOUND_VOLUME });
   }
 
+  _playDuganVoice(id, killed) {
+    const sc = this.scene;
+    const which = duganVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (sc.cache.audio.exists(DUGAN_DEATH_SOUND_KEY)) sc.sound.play(DUGAN_DEATH_SOUND_KEY, { volume: DUGAN_DEATH_SOUND_VOLUME, rate: DUGAN_DEATH_SOUND_RATE });
+      return;
+    }
+    if (!sc.cache.audio.exists(DUGAN_HIT_VOICE_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!duganSoundReady(this.voiceAt.get(id), now, DUGAN_HIT_VOICE_COOLDOWN_MS)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(DUGAN_HIT_VOICE_KEY, { volume: DUGAN_HIT_VOICE_VOLUME, rate: DUGAN_HIT_VOICE_RATE });
+  }
+
   onDamage(d) {
     if (d.targetId === PLAYER_ID || d.amount <= 0) return;
     const g = this.getEnemy(d.targetId);
@@ -75,8 +94,8 @@ export class EnemyHitFx {
     const cls = hitClass(d.amount, killed, this.heavyAt, this.finisherAt);
     const reduce = this.reduceFlash();
     let bar = this.bars.get(d.targetId);
-    if (!bar) { bar = { s: createBarState(g.maxHp ?? this.maxHp), topY: g.y - 100 }; this.bars.set(d.targetId, bar); }
-    barOnDamage(bar.s, d.hpAfter, { killed, reduceFlash: reduce });
+    if (!bar && !g.isBoss && !g.miniBoss) { bar = { s: createBarState(g.maxHp ?? this.maxHp), topY: g.y - 100 }; this.bars.set(d.targetId, bar); }
+    if (bar) barOnDamage(bar.s, d.hpAfter, { killed, reduceFlash: reduce }); // bosses have the big HUD bar instead
 
     const flashMs = ENEMY_FLASH_MS[cls === 'ko' ? 'heavy' : cls] ?? ENEMY_FLASH_MS.light;
     this.flash.set(d.targetId, { left: flashMs, tint: reduce ? REDUCE_FLASH_TINT : 0xffffff, fill: !reduce });

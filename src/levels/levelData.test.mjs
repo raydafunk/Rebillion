@@ -36,6 +36,36 @@ for (const l of levels) {
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, spawnPattern: 'diagonal' }] }).length, 'unknown spawnPattern rejected');
 assert.equal(levels[7].waves.at(-1).hpMult, 8, 'the final boss wave is tough');
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, hpMult: 0.5 }] }).length, 'hpMult must be >= 1');
+// Level 2 (Mustard Row): same length and arc as Level 1 (5 waves, 210 s, Breakers from wave 3, mini-boss wave 5) but harder:
+// bigger waves, Watchers, Type 2 Breakers (Rust-BreakerType2 art), bigger breathers, and a bigger finale around "Railgun" Royce.
+{
+  const L1 = levels[0], L2 = levels[1], w = L2.waves, w1 = L1.waves;
+  assert.equal(L2.timeLimitSec, L1.timeLimitSec, 'Level 2 has the same timer as Level 1');
+  assert.equal(w.length, w1.length, 'same number of waves');
+  assert.ok(!w[0].elites && !w[1].elites, 'Level 2: no elites in waves 1-2');
+  assert.ok(w[2].elites >= 1 && w[3].elites > w[2].elites, 'Level 2: Type 2 Breakers arrive in wave 3 and grow in wave 4');
+  assert.ok([2, 3].every((i) => w[i].eliteSkin === 'rust-breaker-2' && w[i].eliteHpMult >= 3), 'Level 2 elites use the Type 2 skin');
+  assert.ok(w1.every((x) => !x.eliteSkin), 'Level 1 keeps the original Breaker');
+  assert.ok([0, 1, 2, 3].every((i) => w[i].count > w1[i].count), 'Level 2 waves 1-4 are bigger than Level 1');
+  assert.ok(w.slice(0, 4).every((x, i) => i === 0 || x.count >= w[i - 1].count), 'enemy counts never shrink before the mini-boss beat');
+  assert.ok(w.slice(0, 4).every((x, i) => i === 0 || x.spawnIntervalMs <= w[i - 1].spawnIntervalMs || x.sourceEnemy !== w[i - 1].sourceEnemy), 'spawns speed up within a kind of enemy');
+  assert.ok(w.some((x) => x.sourceEnemy === 'rust-watcher') && w1.every((x) => x.sourceEnemy === 'grunt'), 'Level 2 brings in Watchers, Level 1 has none');
+  assert.ok([0, 1, 2, 3].every((i) => w[i].restPickup.heal > w1[i].restPickup.heal), 'Level 2 breathers heal more than Level 1');
+  assert.ok(w.slice(1, 4).every((x, i) => x.restPickup.heal > w[i].restPickup.heal), 'heals grow through the level');
+  assert.ok(!w[4].restPickup, 'no pickup after the finale');
+  assert.equal(w[4].leader.enemy, 'rust-railgun-royce', 'wave 5 is the Royce mini-boss beat');
+  assert.ok(w[4].count > w1[4].count, 'the finale spawns more than Level 1\'s Dugan wave');
+  assert.ok(!w[4].elites, 'no Breakers in the boss beat');
+  assert.ok(new Set(w.map((x) => x.spawnPattern)).size >= 4 && w.every((x, i) => i === 0 || x.spawnPattern !== w[i - 1].spawnPattern), 'varied patterns, never the same twice in a row');
+  assert.ok(w.every((x) => x.mix && new Set(x.mix).size > 1), 'every Level 2 wave mixes more than one kind');
+  assert.ok(w.every((x) => x.speedMult > 1) && w.every((x, i) => i === 0 || x.speedMult >= w[i - 1].speedMult), 'Level 2 enemies move faster than Level 1 and speed up');
+  assert.ok(w1.every((x) => !x.speedMult && !x.mix), 'Level 1 is unchanged');
+  assert.ok(w[2].mixElites && w[3].mixElites, 'Type 2 Breakers are scattered through waves 3 and 4');
+  assert.equal(L2.totalEnemies, w.reduce((n, x) => n + x.count + (x.leader ? 1 : 0), 0), 'elites are part of the wave count; the leader is one more');
+}
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 2, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, speedMult: 5 }] }).length, 'speedMult out of range rejected');
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 2, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, mix: [] }] }).length, 'empty mix rejected');
+assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 2, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, elites: 1, eliteSkin: '' }] }).length, 'eliteSkin must be a non-empty string');
 // Level 1 is paced as an arc: quick warm-up, rising pressure, Breakers from wave 3, then the mini-boss beat; health pickups in the breathers.
 {
   const w = levels[0].waves;
@@ -55,7 +85,13 @@ assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive:
   assert.equal(w[4].leader.entrance, 'far-side');
   assert.equal(w[4].leader.gate, false);
   assert.equal(w[4].spawnPattern, 'flank', 'grunts come in from both edges');
-  assert.equal(w[4].maxAlive, 4, 'all four grunts can be on screen with him');
+  assert.equal(w[4].maxAlive, 3, 'at most three grunts on screen with him (playtest: four overwhelmed agents that did not reposition)');
+  assert.equal(w[4].leader.crewAfter, 'first-move', 'the crew walks in after Dugan has made his first move');
+  assert.ok(w[4].leader.crewMaxWaitMs > 0 && w[4].leader.crewMaxWaitMs <= 20000, 'and always comes eventually');
+  // Wave 3 teaches crowd control before the finale: enemies from both edges, two at a time, with a coaching line.
+  assert.equal(w[2].spawnPattern, 'pincer');
+  assert.equal(w[2].maxAlive, 2, 'a gentle sandwich: one each side');
+  assert.ok(w[2].hint && w[2].hint.length <= 80, 'wave 3 shows the crowd-control hint');
   assert.ok(!w[4].elites, 'no Breakers in the boss beat');
   assert.equal(levels[0].totalEnemies, w.reduce((n, x) => n + x.count, 0) + 1, 'Dugan counts as one more enemy');
 }
@@ -88,4 +124,16 @@ console.log('levelData ok:', levels.length, 'levels');
   assert.equal(f.waves.length, 5);
   assert.equal(f.totalEnemies, 4 + 6 + 7 + 8 + 4 + 1, 'wave counts plus Dugan');
   assert.equal(f.totalEnemies, levels[0].totalEnemies, 'same enemy total as Level 1');
+}
+
+// Wave data validation for the new fields.
+{
+  const base = { id: 'x', timeLimitSec: 10 };
+  const wv = (o) => ({ ...base, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, ...o }] });
+  assert.ok(levelErrors(wv({ leader: { enemy: 'rust-brick-dugan', crewAfter: 'whenever' } })).length, 'unknown crewAfter rejected');
+  assert.equal(levelErrors(wv({ leader: { enemy: 'rust-brick-dugan', crewAfter: 'first-move', crewMaxWaitMs: 9000 } })).length, 0);
+  assert.ok(levelErrors(wv({ hint: '' })).length, 'empty hint rejected');
+  assert.ok(levelErrors(wv({ hint: 'x'.repeat(81) })).length, 'over-long hint rejected');
+  assert.ok(levelErrors(wv({ spawnPattern: 'pincer' })).length === 0, 'pincer is a known pattern');
+  console.log('levelData new wave fields passed');
 }

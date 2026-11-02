@@ -4,6 +4,8 @@
 import { WAVES } from '../waves/waveData.js';
 import { ROUND_TIME_SECONDS } from '../state/config.js';
 import { SPAWN_PATTERNS, LEADER_ENTRANCES } from '../waves/spawnPatterns.js';
+import { CREW_AFTER } from '../waves/WaveSpawner.js';
+import { SPEED_MULT_RANGE } from '../enemies/enemyKinds.js';
 
 export const LEVEL_FILES = Object.freeze([
   'content/levels/levels.json',
@@ -52,10 +54,18 @@ export function buildWave(raw, i) {
     ...(raw.hpMult ? { hpMult: raw.hpMult } : {}),
     ...(raw.spawnPattern ? { spawnPattern: raw.spawnPattern } : {}),
     ...(raw.attackerCap ? { attackerCap: raw.attackerCap } : {}),
-    ...(raw.elites ? { elites: Math.min(raw.elites, raw.count), eliteHpMult: raw.eliteHpMult || 3 } : {}),
+    ...(raw.elites ? { elites: Math.min(raw.elites, raw.count), eliteHpMult: raw.eliteHpMult || 3, ...(raw.eliteSkin ? { eliteSkin: raw.eliteSkin } : {}) } : {}),
+    // mix: kind ids cycled in spawn order (grunt, rust-watcher, ...); speedMult: how much faster the wave's enemies move; mixElites: scatter the elites instead of ending on them.
+    ...(raw.mix ? { mix: [...raw.mix] } : {}),
+    ...(raw.speedMult ? { speedMult: raw.speedMult } : {}),
+    ...(raw.mixElites ? { mixElites: true } : {}),
     ...(raw.restPickup ? { restPickup: { heal: raw.restPickup.heal } } : {}),
+    // hint: one line of coaching shown under the wave banner (the HUD reads it from wave-started).
+    ...(raw.hint ? { hint: String(raw.hint) } : {}),
     // leader: a mini-boss that walks in first and fights alongside the wave's grunts (does not count against maxAlive, or toward `count`).
-    ...(raw.leader ? { leader: { enemy: raw.leader.enemy, entrance: raw.leader.entrance || 'far-side', gate: !!raw.leader.gate, ...(raw.leader.hpMult ? { hpMult: raw.leader.hpMult } : {}) } } : {}),
+    // crewAfter 'first-move': the wave's grunts wait until the leader has made his first move (crewDelayMs after it, crewMaxWaitMs safety net).
+    ...(raw.leader ? { leader: { enemy: raw.leader.enemy, entrance: raw.leader.entrance || 'far-side', gate: !!raw.leader.gate, ...(raw.leader.hpMult ? { hpMult: raw.leader.hpMult } : {}), ...(raw.leader.speedMult ? { speedMult: raw.leader.speedMult } : {}),
+      ...(raw.leader.crewAfter ? { crewAfter: raw.leader.crewAfter } : {}), ...(raw.leader.crewDelayMs !== undefined ? { crewDelayMs: raw.leader.crewDelayMs } : {}), ...(raw.leader.crewMaxWaitMs !== undefined ? { crewMaxWaitMs: raw.leader.crewMaxWaitMs } : {}) } } : {}),
   };
 }
 
@@ -74,7 +84,14 @@ export function levelErrors(raw) {
     if (w.hpMult !== undefined && !(w.hpMult >= 1 && w.hpMult <= 10)) errs.push(`wave ${i + 1}: hpMult must be 1-10`);
     if (w.attackerCap !== undefined && !(Number.isInteger(w.attackerCap) && w.attackerCap >= 1)) errs.push(`wave ${i + 1}: attackerCap must be an integer >= 1`);
     if (w.elites !== undefined && !(Number.isInteger(w.elites) && w.elites >= 0 && w.elites <= w.count)) errs.push(`wave ${i + 1}: elites must be 0..count`);
+    if (w.mix !== undefined && !(Array.isArray(w.mix) && w.mix.length > 0 && w.mix.every((k) => typeof k === 'string' && k))) errs.push(`wave ${i + 1}: mix must be a non-empty list of enemy ids`);
+    if (w.speedMult !== undefined && !(w.speedMult >= SPEED_MULT_RANGE[0] && w.speedMult <= SPEED_MULT_RANGE[1])) errs.push(`wave ${i + 1}: speedMult must be ${SPEED_MULT_RANGE[0]}-${SPEED_MULT_RANGE[1]}`);
+    if (w.leader && w.leader.speedMult !== undefined && !(w.leader.speedMult >= SPEED_MULT_RANGE[0] && w.leader.speedMult <= SPEED_MULT_RANGE[1])) errs.push(`wave ${i + 1}: leader.speedMult must be ${SPEED_MULT_RANGE[0]}-${SPEED_MULT_RANGE[1]}`);
+    if (w.eliteSkin !== undefined && !(typeof w.eliteSkin === 'string' && w.eliteSkin.length > 0)) errs.push(`wave ${i + 1}: eliteSkin must be a non-empty string`);
     if (w.leader !== undefined && !(w.leader && typeof w.leader.enemy === 'string' && (w.leader.entrance === undefined || LEADER_ENTRANCES.includes(w.leader.entrance)))) errs.push(`wave ${i + 1}: leader needs an enemy id and an entrance of ${LEADER_ENTRANCES.join('|')}`);
+    if (w.leader && w.leader.crewAfter !== undefined && !CREW_AFTER.includes(w.leader.crewAfter)) errs.push(`wave ${i + 1}: leader.crewAfter must be one of ${CREW_AFTER.join('|')}`);
+    if (w.leader && w.leader.crewMaxWaitMs !== undefined && !(w.leader.crewMaxWaitMs > 0 && w.leader.crewMaxWaitMs <= 20000)) errs.push(`wave ${i + 1}: leader.crewMaxWaitMs must be 1-20000`);
+    if (w.hint !== undefined && !(typeof w.hint === 'string' && w.hint.length > 0 && w.hint.length <= 80)) errs.push(`wave ${i + 1}: hint must be 1-80 characters`);
     if (w.restPickup !== undefined && !(w.restPickup && w.restPickup.heal > 0 && w.restPickup.heal <= 100)) errs.push(`wave ${i + 1}: restPickup.heal must be 1-100`);
   });
   return errs;

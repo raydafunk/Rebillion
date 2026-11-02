@@ -1,0 +1,791 @@
+{
+  "group_id": "3d3bbb25-fd01-4492-83cf-d4e98822241e",
+  "states": [
+    {
+      "character": {
+        "id": "d6632b59-6e47-4e43-8fd6-bb607f8c98b3",
+        "name": "Idle",
+        "prompt": "Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-28T14:39:51.807788+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "idle_breathing": {
+            "east": [
+              "Idle/animations/idle_breathing/east/frame_000.png",
+              "Idle/animations/idle_breathing/east/frame_001.png",
+              "Idle/animations/idle_breathing/east/frame_002.png",
+              "Idle/animations/idle_breathing/east/frame_003.png",
+              "Idle/animations/idle_breathing/east/frame_004.png",
+              "Idle/animations/idle_breathing/east/frame_005.png",
+              "Idle/animations/idle_breathing/east/frame_006.png",
+              "Idle/animations/idle_breathing/east/frame_007.png"
+            ],
+            "north-west": [
+              "Idle/animations/idle_breathing/north-west/frame_000.png",
+              "Idle/animations/idle_breathing/north-west/frame_001.png",
+              "Idle/animations/idle_breathing/north-west/frame_002.png",
+              "Idle/animations/idle_breathing/north-west/frame_003.png",
+              "Idle/animations/idle_breathing/north-west/frame_004.png",
+              "Idle/animations/idle_breathing/north-west/frame_005.png",
+              "Idle/animations/idle_breathing/north-west/frame_006.png",
+              "Idle/animations/idle_breathing/north-west/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/idle_breathing/south/frame_000.png",
+              "Idle/animations/idle_breathing/south/frame_001.png",
+              "Idle/animations/idle_breathing/south/frame_002.png",
+              "Idle/animations/idle_breathing/south/frame_003.png",
+              "Idle/animations/idle_breathing/south/frame_004.png",
+              "Idle/animations/idle_breathing/south/frame_005.png",
+              "Idle/animations/idle_breathing/south/frame_006.png",
+              "Idle/animations/idle_breathing/south/frame_007.png"
+            ],
+            "south-east": [
+              "Idle/animations/idle_breathing/south-east/frame_000.png",
+              "Idle/animations/idle_breathing/south-east/frame_001.png",
+              "Idle/animations/idle_breathing/south-east/frame_002.png",
+              "Idle/animations/idle_breathing/south-east/frame_003.png",
+              "Idle/animations/idle_breathing/south-east/frame_004.png",
+              "Idle/animations/idle_breathing/south-east/frame_005.png",
+              "Idle/animations/idle_breathing/south-east/frame_006.png",
+              "Idle/animations/idle_breathing/south-east/frame_007.png"
+            ],
+            "north-east": [
+              "Idle/animations/idle_breathing/north-east/frame_000.png",
+              "Idle/animations/idle_breathing/north-east/frame_001.png",
+              "Idle/animations/idle_breathing/north-east/frame_002.png",
+              "Idle/animations/idle_breathing/north-east/frame_003.png",
+              "Idle/animations/idle_breathing/north-east/frame_004.png",
+              "Idle/animations/idle_breathing/north-east/frame_005.png",
+              "Idle/animations/idle_breathing/north-east/frame_006.png",
+              "Idle/animations/idle_breathing/north-east/frame_007.png"
+            ],
+            "north": [
+              "Idle/animations/idle_breathing/north/frame_000.png",
+              "Idle/animations/idle_breathing/north/frame_001.png",
+              "Idle/animations/idle_breathing/north/frame_002.png",
+              "Idle/animations/idle_breathing/north/frame_003.png",
+              "Idle/animations/idle_breathing/north/frame_004.png",
+              "Idle/animations/idle_breathing/north/frame_005.png",
+              "Idle/animations/idle_breathing/north/frame_006.png",
+              "Idle/animations/idle_breathing/north/frame_007.png"
+            ],
+            "south-west": [
+              "Idle/animations/idle_breathing/south-west/frame_000.png",
+              "Idle/animations/idle_breathing/south-west/frame_001.png",
+              "Idle/animations/idle_breathing/south-west/frame_002.png",
+              "Idle/animations/idle_breathing/south-west/frame_003.png",
+              "Idle/animations/idle_breathing/south-west/frame_004.png",
+              "Idle/animations/idle_breathing/south-west/frame_005.png",
+              "Idle/animations/idle_breathing/south-west/frame_006.png",
+              "Idle/animations/idle_breathing/south-west/frame_007.png"
+            ],
+            "west": [
+              "Idle/animations/idle_breathing/west/frame_000.png",
+              "Idle/animations/idle_breathing/west/frame_001.png",
+              "Idle/animations/idle_breathing/west/frame_002.png",
+              "Idle/animations/idle_breathing/west/frame_003.png",
+              "Idle/animations/idle_breathing/west/frame_004.png",
+              "Idle/animations/idle_breathing/west/frame_005.png",
+              "Idle/animations/idle_breathing/west/frame_006.png",
+              "Idle/animations/idle_breathing/west/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "9de51ee5-f0ea-44fc-b9a2-8b4863610de2",
+        "name": "Walking",
+        "prompt": "Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-28T14:43:47.025892+00:00"
+      },
+      "folder": "Walking",
+      "frames": {
+        "rotations": {
+          "south": "Walking/rotations/south.png",
+          "south-east": "Walking/rotations/south-east.png",
+          "east": "Walking/rotations/east.png",
+          "north-east": "Walking/rotations/north-east.png",
+          "north": "Walking/rotations/north.png",
+          "north-west": "Walking/rotations/north-west.png",
+          "west": "Walking/rotations/west.png",
+          "south-west": "Walking/rotations/south-west.png"
+        },
+        "animations": {
+          "walking": {
+            "south-east": [
+              "Walking/animations/walking/south-east/frame_000.png",
+              "Walking/animations/walking/south-east/frame_001.png",
+              "Walking/animations/walking/south-east/frame_002.png",
+              "Walking/animations/walking/south-east/frame_003.png",
+              "Walking/animations/walking/south-east/frame_004.png",
+              "Walking/animations/walking/south-east/frame_005.png",
+              "Walking/animations/walking/south-east/frame_006.png",
+              "Walking/animations/walking/south-east/frame_007.png"
+            ],
+            "west": [
+              "Walking/animations/walking/west/frame_000.png",
+              "Walking/animations/walking/west/frame_001.png",
+              "Walking/animations/walking/west/frame_002.png",
+              "Walking/animations/walking/west/frame_003.png",
+              "Walking/animations/walking/west/frame_004.png",
+              "Walking/animations/walking/west/frame_005.png",
+              "Walking/animations/walking/west/frame_006.png",
+              "Walking/animations/walking/west/frame_007.png"
+            ],
+            "north": [
+              "Walking/animations/walking/north/frame_000.png",
+              "Walking/animations/walking/north/frame_001.png",
+              "Walking/animations/walking/north/frame_002.png",
+              "Walking/animations/walking/north/frame_003.png",
+              "Walking/animations/walking/north/frame_004.png",
+              "Walking/animations/walking/north/frame_005.png",
+              "Walking/animations/walking/north/frame_006.png",
+              "Walking/animations/walking/north/frame_007.png"
+            ],
+            "north-east": [
+              "Walking/animations/walking/north-east/frame_000.png",
+              "Walking/animations/walking/north-east/frame_001.png",
+              "Walking/animations/walking/north-east/frame_002.png",
+              "Walking/animations/walking/north-east/frame_003.png",
+              "Walking/animations/walking/north-east/frame_004.png",
+              "Walking/animations/walking/north-east/frame_005.png",
+              "Walking/animations/walking/north-east/frame_006.png",
+              "Walking/animations/walking/north-east/frame_007.png"
+            ],
+            "south": [
+              "Walking/animations/walking/south/frame_000.png",
+              "Walking/animations/walking/south/frame_001.png",
+              "Walking/animations/walking/south/frame_002.png",
+              "Walking/animations/walking/south/frame_003.png",
+              "Walking/animations/walking/south/frame_004.png",
+              "Walking/animations/walking/south/frame_005.png",
+              "Walking/animations/walking/south/frame_006.png",
+              "Walking/animations/walking/south/frame_007.png"
+            ],
+            "north-west": [
+              "Walking/animations/walking/north-west/frame_000.png",
+              "Walking/animations/walking/north-west/frame_001.png",
+              "Walking/animations/walking/north-west/frame_002.png",
+              "Walking/animations/walking/north-west/frame_003.png",
+              "Walking/animations/walking/north-west/frame_004.png",
+              "Walking/animations/walking/north-west/frame_005.png",
+              "Walking/animations/walking/north-west/frame_006.png",
+              "Walking/animations/walking/north-west/frame_007.png"
+            ],
+            "south-west": [
+              "Walking/animations/walking/south-west/frame_000.png",
+              "Walking/animations/walking/south-west/frame_001.png",
+              "Walking/animations/walking/south-west/frame_002.png",
+              "Walking/animations/walking/south-west/frame_003.png",
+              "Walking/animations/walking/south-west/frame_004.png",
+              "Walking/animations/walking/south-west/frame_005.png",
+              "Walking/animations/walking/south-west/frame_006.png",
+              "Walking/animations/walking/south-west/frame_007.png"
+            ],
+            "east": [
+              "Walking/animations/walking/east/frame_000.png",
+              "Walking/animations/walking/east/frame_001.png",
+              "Walking/animations/walking/east/frame_002.png",
+              "Walking/animations/walking/east/frame_003.png",
+              "Walking/animations/walking/east/frame_004.png",
+              "Walking/animations/walking/east/frame_005.png",
+              "Walking/animations/walking/east/frame_006.png",
+              "Walking/animations/walking/east/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "88d7d295-2f49-4cdc-b8da-e3a54370ed3e",
+        "name": "A downward smash wit",
+        "prompt": "Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-28T14:43:57.885365+00:00"
+      },
+      "folder": "A_downward_smash_wit",
+      "frames": {
+        "rotations": {
+          "south": "A_downward_smash_wit/rotations/south.png",
+          "south-east": "A_downward_smash_wit/rotations/south-east.png",
+          "east": "A_downward_smash_wit/rotations/east.png",
+          "north-east": "A_downward_smash_wit/rotations/north-east.png",
+          "north": "A_downward_smash_wit/rotations/north.png",
+          "north-west": "A_downward_smash_wit/rotations/north-west.png",
+          "west": "A_downward_smash_wit/rotations/west.png",
+          "south-west": "A_downward_smash_wit/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_winds_up_by_pulling_the_massive_righ": {
+            "north-west": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-west/frame_008.png"
+            ],
+            "south-west": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-west/frame_008.png"
+            ],
+            "south-east": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south-east/frame_008.png"
+            ],
+            "south": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/south/frame_008.png"
+            ],
+            "east": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/east/frame_008.png"
+            ],
+            "west": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/west/frame_008.png"
+            ],
+            "north": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north/frame_008.png"
+            ],
+            "north-east": [
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_000.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_001.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_002.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_003.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_004.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_005.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_006.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_007.png",
+              "A_downward_smash_wit/animations/The_character_winds_up_by_pulling_the_massive_righ/north-east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "cb7d8bdc-1b46-4b18-8d95-89c0940f3086",
+        "name": "Rust Uppercut",
+        "prompt": "Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-28T14:44:52.988929+00:00"
+      },
+      "folder": "Rust_Uppercut",
+      "frames": {
+        "rotations": {
+          "south": "Rust_Uppercut/rotations/south.png",
+          "south-east": "Rust_Uppercut/rotations/south-east.png",
+          "east": "Rust_Uppercut/rotations/east.png",
+          "north-east": "Rust_Uppercut/rotations/north-east.png",
+          "north": "Rust_Uppercut/rotations/north.png",
+          "north-west": "Rust_Uppercut/rotations/north-west.png",
+          "west": "Rust_Uppercut/rotations/west.png",
+          "south-west": "Rust_Uppercut/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_their_right_fist_down_toward_t": {
+            "north": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north/frame_008.png"
+            ],
+            "north-west": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-west/frame_008.png"
+            ],
+            "south-west": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-west/frame_008.png"
+            ],
+            "south-east": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south-east/frame_008.png"
+            ],
+            "south": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/south/frame_008.png"
+            ],
+            "east": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/east/frame_008.png"
+            ],
+            "north-east": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/north-east/frame_008.png"
+            ],
+            "west": [
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_000.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_001.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_002.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_003.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_004.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_005.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_006.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_007.png",
+              "Rust_Uppercut/animations/The_character_pulls_their_right_fist_down_toward_t/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "e836d555-1d36-47e4-a737-56525865a6a4",
+        "name": "running  Body Check",
+        "prompt": "Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-28T14:45:37.133122+00:00"
+      },
+      "folder": "running_Body_Check",
+      "frames": {
+        "rotations": {
+          "south": "running_Body_Check/rotations/south.png",
+          "south-east": "running_Body_Check/rotations/south-east.png",
+          "east": "running_Body_Check/rotations/east.png",
+          "north-east": "running_Body_Check/rotations/north-east.png",
+          "north": "running_Body_Check/rotations/north.png",
+          "north-west": "running_Body_Check/rotations/north-west.png",
+          "west": "running_Body_Check/rotations/west.png",
+          "south-west": "running_Body_Check/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_rhythmic_running_cycle_wi": {
+            "south-west": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-west/frame_008.png"
+            ],
+            "north-west": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-west/frame_008.png"
+            ],
+            "east": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/east/frame_008.png"
+            ],
+            "north": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north/frame_008.png"
+            ],
+            "west": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/west/frame_008.png"
+            ],
+            "north-east": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/north-east/frame_008.png"
+            ],
+            "south": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south/frame_008.png"
+            ],
+            "south-east": [
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_000.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_001.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_002.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_003.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_004.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_005.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_006.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_007.png",
+              "running_Body_Check/animations/The_character_performs_a_rhythmic_running_cycle_wi/south-east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "1f6d1379-03e7-4c1e-a477-dd1011c6cf94",
+        "name": "taking a punch",
+        "prompt": "Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-28T18:49:57.190800+00:00"
+      },
+      "folder": "taking_a_punch",
+      "frames": {
+        "rotations": {
+          "south": "taking_a_punch/rotations/south.png",
+          "south-east": "taking_a_punch/rotations/south-east.png",
+          "east": "taking_a_punch/rotations/east.png",
+          "north-east": "taking_a_punch/rotations/north-east.png",
+          "north": "taking_a_punch/rotations/north.png",
+          "north-west": "taking_a_punch/rotations/north-west.png",
+          "west": "taking_a_punch/rotations/west.png",
+          "south-west": "taking_a_punch/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "south": [
+              "taking_a_punch/animations/Taking_Punch/south/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_005.png"
+            ],
+            "west": [
+              "taking_a_punch/animations/Taking_Punch/west/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_005.png"
+            ],
+            "north": [
+              "taking_a_punch/animations/Taking_Punch/north/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_005.png"
+            ],
+            "south-east": [
+              "taking_a_punch/animations/Taking_Punch/south-east/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/south-east/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/south-east/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/south-east/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/south-east/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/south-east/frame_005.png"
+            ],
+            "south-west": [
+              "taking_a_punch/animations/Taking_Punch/south-west/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/south-west/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/south-west/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/south-west/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/south-west/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/south-west/frame_005.png"
+            ],
+            "north-west": [
+              "taking_a_punch/animations/Taking_Punch/north-west/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/north-west/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/north-west/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/north-west/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/north-west/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/north-west/frame_005.png"
+            ],
+            "east": [
+              "taking_a_punch/animations/Taking_Punch/east/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_005.png"
+            ],
+            "north-east": [
+              "taking_a_punch/animations/Taking_Punch/north-east/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/north-east/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/north-east/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/north-east/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/north-east/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/north-east/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "41375dfe-3393-44bd-a2d6-d7ff3792c874",
+        "name": "death fall",
+        "prompt": "Massive enforcers enhanced with illegal muscle stimulants. Their Armor is reinforced with heavy plating, giving them a hulking silhouette",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-28T18:53:14.408238+00:00"
+      },
+      "folder": "death_fall",
+      "frames": {
+        "rotations": {
+          "south": "death_fall/rotations/south.png",
+          "south-east": "death_fall/rotations/south-east.png",
+          "east": "death_fall/rotations/east.png",
+          "north-east": "death_fall/rotations/north-east.png",
+          "north": "death_fall/rotations/north.png",
+          "north-west": "death_fall/rotations/north-west.png",
+          "west": "death_fall/rotations/west.png",
+          "south-west": "death_fall/rotations/south-west.png"
+        },
+        "animations": {
+          "Falling_Back_Death": {
+            "north": [
+              "death_fall/animations/Falling_Back_Death/north/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_006.png"
+            ],
+            "west": [
+              "death_fall/animations/Falling_Back_Death/west/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_006.png"
+            ],
+            "east": [
+              "death_fall/animations/Falling_Back_Death/east/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_006.png"
+            ],
+            "north-east": [
+              "death_fall/animations/Falling_Back_Death/north-east/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/north-east/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/north-east/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/north-east/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/north-east/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/north-east/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/north-east/frame_006.png"
+            ],
+            "south-east": [
+              "death_fall/animations/Falling_Back_Death/south-east/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/south-east/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/south-east/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/south-east/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/south-east/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/south-east/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/south-east/frame_006.png"
+            ],
+            "south": [
+              "death_fall/animations/Falling_Back_Death/south/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/south/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/south/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/south/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/south/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/south/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/south/frame_006.png"
+            ],
+            "south-west": [
+              "death_fall/animations/Falling_Back_Death/south-west/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/south-west/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/south-west/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/south-west/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/south-west/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/south-west/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/south-west/frame_006.png"
+            ],
+            "north-west": [
+              "death_fall/animations/Falling_Back_Death/north-west/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/north-west/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/north-west/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/north-west/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/north-west/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/north-west/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/north-west/frame_006.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-02T14:03:36.539453"
+}

@@ -24,6 +24,7 @@ export const TEAMS = Object.freeze({ PLAYER: 'player', RUST: 'rust' });
  * @property {boolean} [special]      Rage Special: with `boss` targets, damage is capped
  * @property {number} [bossDamageCap] max damage per hit vs a boss (only when special/neverKills)
  * @property {boolean} [neverKills]   vs a boss, never reduce below 1 hp
+ * @property {boolean} [unblockable]  a block does nothing (full damage); a parry still negates it (Dugan's Mega Stomp wave)
  */
 
 /**

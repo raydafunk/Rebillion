@@ -1,0 +1,2650 @@
+{
+  "stamp": "2026-11-02T13-46-40",
+  "seed": 1,
+  "base": "playtest.html",
+  "results": [
+    {
+      "scenario": {
+        "id": "L1-brawler",
+        "agent": "playtest-level-agent",
+        "level": 1,
+        "persona": "brawler",
+        "stopOn": "round",
+        "maxSec": 330
+      },
+      "wallSec": 188,
+      "video": "videos/L1-brawler.mp4",
+      "persona": "brawler",
+      "kind": "competent",
+      "level": 1,
+      "levelName": "Brick-Red Alley",
+      "outcome": {
+        "mode": "win",
+        "reason": "cleared",
+        "t": 146866,
+        "hp": 85,
+        "secondsLeft": 75,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 151682,
+      "stats": {
+        "hitsDealt": 200,
+        "hitsTaken": 8,
+        "damageDealt": 1350,
+        "damageTaken": 109,
+        "parryAttempts": 5,
+        "parries": 2,
+        "kills": 30,
+        "wavesCleared": 5,
+        "grabs": 2,
+        "grabsBroken": 2,
+        "grabMashes": 15,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 0,
+        "minFps": 28,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 17,
+          "wait": 182,
+          "attack": 2865,
+          "advance": 639,
+          "reposition": 95,
+          "parry": 7,
+          "sidestep-charge": 146,
+          "evade-stomp": 5,
+          "avoid-grab": 49,
+          "break-free": 15,
+          "heal": 576,
+          "victory": 92,
+          "exit": 829,
+          "done": 34
+        },
+        "notes": {
+          "reposition": 95,
+          "heavy": 1,
+          "parry": 5,
+          "charge-sidestep": 146,
+          "guard-break": 2,
+          "stomp-jump": 5,
+          "grab-backstep": 49
+        },
+        "repositions": 2,
+        "goalShare": {
+          "intro": 0,
+          "wait": 3,
+          "attack": 52,
+          "advance": 12,
+          "reposition": 2,
+          "parry": 0,
+          "sidestep-charge": 3,
+          "evade-stomp": 0,
+          "avoid-grab": 1,
+          "break-free": 0,
+          "heal": 10,
+          "victory": 2,
+          "exit": 15,
+          "done": 1
+        }
+      },
+      "bosses": [
+        {
+          "id": "brick-dugan-26",
+          "seenT": 88402,
+          "diedT": 114939,
+          "maxHp": 300,
+          "moves": {
+            "charge": {
+              "seen": 2,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 2
+            },
+            "stomp": {
+              "seen": 1,
+              "hitZed": 1,
+              "damage": 14,
+              "evaded": 0
+            },
+            "grab": {
+              "seen": 2,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 2
+            },
+            "rage": {
+              "seen": 1,
+              "hitZed": 1,
+              "damage": 35,
+              "evaded": 0
+            }
+          },
+          "minHp": 0,
+          "hpEnd": 0
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 8532,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 9005,
+          "type": "wave-started",
+          "index": 0
+        },
+        {
+          "t": 9061,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 9674,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 20638,
+          "type": "wave-cleared",
+          "index": 0
+        },
+        {
+          "t": 20677,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 25219,
+          "type": "wave-started",
+          "index": 1
+        },
+        {
+          "t": 25237,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 26240,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 38736,
+          "type": "wave-cleared",
+          "index": 1
+        },
+        {
+          "t": 38759,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 42533,
+          "type": "wave-started",
+          "index": 2
+        },
+        {
+          "t": 42568,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 43611,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 52962,
+          "type": "reposition",
+          "left": 1,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 52962,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 54838,
+          "type": "reposition-done"
+        },
+        {
+          "t": 54838,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 60477,
+          "type": "wave-cleared",
+          "index": 2
+        },
+        {
+          "t": 60503,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 63342,
+          "type": "wave-started",
+          "index": 3
+        },
+        {
+          "t": 63412,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 64393,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 71895,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 71895,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-22",
+          "clock": 360,
+          "mark": 350
+        },
+        {
+          "t": 71932,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 71932,
+          "type": "parry-success"
+        },
+        {
+          "t": 75952,
+          "type": "hurt",
+          "by": "grunt-25",
+          "amount": 8
+        },
+        {
+          "t": 76069,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 76069,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-24",
+          "clock": 408,
+          "mark": 350
+        },
+        {
+          "t": 76132,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-25",
+          "clock": 508,
+          "mark": 520
+        },
+        {
+          "t": 76150,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 76189,
+          "type": "hurt",
+          "by": "grunt-25",
+          "amount": 16
+        },
+        {
+          "t": 78663,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 78663,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-25",
+          "clock": 305,
+          "mark": 610
+        },
+        {
+          "t": 78695,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 78775,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 78775,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-24",
+          "clock": 408,
+          "mark": 350
+        },
+        {
+          "t": 78775,
+          "type": "parry-success"
+        },
+        {
+          "t": 78837,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 82551,
+          "type": "wave-cleared",
+          "index": 3
+        },
+        {
+          "t": 82592,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 87414,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 87437,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 88402,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 89909,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90406,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90422,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90439,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90456,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90469,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90488,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90504,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90523,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90541,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90557,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90576,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90589,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90613,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90637,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90677,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90704,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90729,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90747,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90773,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90807,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90830,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90861,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90884,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90913,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 90943,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 90969,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91010,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91027,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91045,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91077,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91092,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91110,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91137,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91156,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91174,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91198,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91241,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91291,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91300,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91324,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91365,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91386,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91404,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91429,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91451,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91493,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91517,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91541,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91566,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91603,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91621,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91646,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91669,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91691,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91726,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91746,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91765,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91790,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91829,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91860,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91877,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91916,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 91933,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91997,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92049,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92089,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92108,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92150,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92170,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92200,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92213,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92246,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92267,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92302,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92325,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92357,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92381,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92405,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92434,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92443,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92480,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92489,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92517,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92534,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92556,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92577,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92599,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92632,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92664,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92689,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92707,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92730,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92753,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92775,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92807,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92830,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92866,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92884,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92907,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92938,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 92965,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92977,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 93000,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 93045,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 93055,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 95865,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96326,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96367,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96398,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96419,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96454,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96467,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96497,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96529,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96573,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96613,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96628,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96648,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96687,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96721,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96743,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96780,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96805,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96825,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96874,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96897,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96925,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 96940,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 96985,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 97012,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 97037,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 97065,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 97104,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 97137,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 97162,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 97189,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 97237,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 97237,
+          "type": "hurt",
+          "by": "grunt-27",
+          "amount": 8
+        },
+        {
+          "t": 97265,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 97453,
+          "type": "hurt",
+          "by": "grunt-27",
+          "amount": 16
+        },
+        {
+          "t": 97603,
+          "type": "hurt",
+          "by": "grunt-27",
+          "amount": 6
+        },
+        {
+          "t": 97738,
+          "type": "hurt",
+          "by": "grunt-27",
+          "amount": 6
+        },
+        {
+          "t": 98108,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 98125,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98159,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 98186,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98203,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 98230,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98253,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 98293,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98310,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 98337,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98354,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 98375,
+          "type": "reposition",
+          "left": 3,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 98375,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98399,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 98421,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98449,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 98471,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98505,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 98521,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98561,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 98598,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98638,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 98673,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98697,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 98727,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 98745,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 99475,
+          "type": "reposition-done"
+        },
+        {
+          "t": 99475,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 103396,
+          "type": "hurt",
+          "by": "brick-dugan-26",
+          "amount": 14,
+          "move": "stomp"
+        },
+        {
+          "t": 103444,
+          "type": "goal",
+          "id": "evade-stomp"
+        },
+        {
+          "t": 103689,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 106698,
+          "type": "goal",
+          "id": "avoid-grab"
+        },
+        {
+          "t": 107377,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 107586,
+          "type": "grabbed"
+        },
+        {
+          "t": 107629,
+          "type": "goal",
+          "id": "break-free"
+        },
+        {
+          "t": 107898,
+          "type": "grab-broken"
+        },
+        {
+          "t": 107922,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 111321,
+          "type": "hurt",
+          "by": "brick-dugan-26",
+          "amount": 35,
+          "move": "rage"
+        },
+        {
+          "t": 113593,
+          "type": "goal",
+          "id": "avoid-grab"
+        },
+        {
+          "t": 114260,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 114369,
+          "type": "grabbed"
+        },
+        {
+          "t": 114406,
+          "type": "goal",
+          "id": "break-free"
+        },
+        {
+          "t": 114629,
+          "type": "grab-broken"
+        },
+        {
+          "t": 114648,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 114939,
+          "type": "boss-down",
+          "id": "brick-dugan-26"
+        },
+        {
+          "t": 114939,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 114965,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 116374,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 118849,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 129816,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 146866,
+          "type": "round-win",
+          "reason": "cleared"
+        },
+        {
+          "t": 146883,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "boss-hunter",
+        "stopOn": "round",
+        "maxSec": 180,
+        "id": "EB-L1-dugan-crew",
+        "tier": "end-boss",
+        "boss": "\"Brick\" Dugan + crew (Level 1 finale)",
+        "level": 1,
+        "wave": 5,
+        "bespoke": true
+      },
+      "wallSec": 67,
+      "video": "videos/EB-L1-dugan-crew.mp4",
+      "persona": "boss-hunter",
+      "kind": "competent",
+      "level": 1,
+      "levelName": "Brick-Red Alley",
+      "outcome": {
+        "mode": "win",
+        "reason": "cleared",
+        "t": 49053,
+        "hp": 70,
+        "secondsLeft": 175,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 54130,
+      "stats": {
+        "hitsDealt": 54,
+        "hitsTaken": 10,
+        "damageDealt": 420,
+        "damageTaken": 90,
+        "parryAttempts": 15,
+        "parries": 8,
+        "kills": 5,
+        "wavesCleared": 1,
+        "grabs": 5,
+        "grabsBroken": 5,
+        "grabMashes": 36,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 0,
+        "minFps": 22,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 20,
+          "wait": 40,
+          "attack": 799,
+          "sidestep-charge": 83,
+          "parry": 18,
+          "reposition": 58,
+          "avoid-grab": 98,
+          "break-free": 36,
+          "heal": 21,
+          "exit": 35,
+          "victory": 80,
+          "done": 27
+        },
+        "notes": {
+          "charge-sidestep": 83,
+          "parry": 15,
+          "heavy": 9,
+          "reposition": 58,
+          "guard-break": 5,
+          "grab-backstep": 98
+        },
+        "repositions": 2,
+        "goalShare": {
+          "intro": 2,
+          "wait": 3,
+          "attack": 61,
+          "sidestep-charge": 6,
+          "parry": 1,
+          "reposition": 4,
+          "avoid-grab": 7,
+          "break-free": 3,
+          "heal": 2,
+          "exit": 3,
+          "victory": 6,
+          "done": 2
+        }
+      },
+      "bosses": [
+        {
+          "id": "brick-dugan-1",
+          "seenT": 12030,
+          "diedT": 45024,
+          "maxHp": 300,
+          "moves": {
+            "charge": {
+              "seen": 2,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 2
+            },
+            "grab": {
+              "seen": 5,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 5
+            },
+            "rage": {
+              "seen": 1,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 1
+            }
+          },
+          "minHp": 0,
+          "hpEnd": 0
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 10446,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 11024,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 11053,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 12030,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 13576,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14053,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14077,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14124,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14148,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14160,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14188,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14207,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14226,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14250,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14293,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14322,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14351,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14374,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14394,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14454,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14486,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14514,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14550,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14570,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14588,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14623,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14650,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14668,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14702,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14729,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14752,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14788,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14826,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14870,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14918,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 14958,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 14988,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15023,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15054,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15075,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15114,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15146,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15166,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15192,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15227,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15244,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15281,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15323,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15346,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15363,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15394,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15420,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15450,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15477,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15509,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15534,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15592,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15621,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15670,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15690,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15714,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15729,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15755,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15797,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15814,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15851,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15874,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15908,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15929,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 15958,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 15987,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16014,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16049,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16070,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16098,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16127,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16162,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16189,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16210,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16244,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16274,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16301,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16330,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16350,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16375,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16397,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16437,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16470,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16487,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 16522,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 17801,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 17801,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-4",
+          "clock": 235,
+          "mark": 350
+        },
+        {
+          "t": 17817,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 17971,
+          "type": "parry-success"
+        },
+        {
+          "t": 18275,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 18275,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-5",
+          "clock": 277,
+          "mark": 350
+        },
+        {
+          "t": 18298,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 18389,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 8
+        },
+        {
+          "t": 18786,
+          "type": "reposition",
+          "left": 1,
+          "right": 2,
+          "to": "left"
+        },
+        {
+          "t": 18786,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 18930,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19281,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19301,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19357,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19402,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19442,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19482,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19522,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19562,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19613,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19637,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19686,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19715,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19762,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19782,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19809,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19835,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19859,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19881,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19914,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19937,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 19960,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 19985,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 20010,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 20034,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 20054,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 20054,
+          "type": "parry-press",
+          "zed": "run",
+          "by": "grunt-2",
+          "clock": 410,
+          "mark": 520
+        },
+        {
+          "t": 20054,
+          "type": "parry-success"
+        },
+        {
+          "t": 20085,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 20596,
+          "type": "reposition-done"
+        },
+        {
+          "t": 20596,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 20663,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 20663,
+          "type": "parry-press",
+          "zed": "run",
+          "by": "grunt-5",
+          "clock": 522,
+          "mark": 610
+        },
+        {
+          "t": 20685,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 20856,
+          "type": "parry-success"
+        },
+        {
+          "t": 20920,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 20920,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-3",
+          "clock": 245,
+          "mark": 350
+        },
+        {
+          "t": 20948,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 21091,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 21499,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 21565,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 21584,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 21622,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 21655,
+          "type": "goal",
+          "id": "sidestep-charge"
+        },
+        {
+          "t": 21686,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 21785,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 21785,
+          "type": "parry-press",
+          "zed": "run",
+          "by": "grunt-2",
+          "clock": 252,
+          "mark": 350
+        },
+        {
+          "t": 21821,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 21897,
+          "type": "parry-success"
+        },
+        {
+          "t": 22604,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 8
+        },
+        {
+          "t": 23050,
+          "type": "reposition",
+          "left": 4,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 23050,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 23717,
+          "type": "reposition-done"
+        },
+        {
+          "t": 23717,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 25265,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 25396,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 25396,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-3",
+          "clock": 463,
+          "mark": 520
+        },
+        {
+          "t": 25415,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 25454,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 25494,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-4",
+          "clock": 575,
+          "mark": 610
+        },
+        {
+          "t": 25535,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 25584,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-2",
+          "clock": 488,
+          "mark": 520
+        },
+        {
+          "t": 25627,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 25686,
+          "type": "hurt",
+          "by": "grunt-2",
+          "amount": 16
+        },
+        {
+          "t": 25714,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 25844,
+          "type": "hurt",
+          "by": "grunt-2",
+          "amount": 6
+        },
+        {
+          "t": 25844,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 26174,
+          "type": "goal",
+          "id": "avoid-grab"
+        },
+        {
+          "t": 26777,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 26875,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 26875,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-4",
+          "clock": 427,
+          "mark": 520
+        },
+        {
+          "t": 26875,
+          "type": "parry-success"
+        },
+        {
+          "t": 26910,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27042,
+          "type": "grabbed"
+        },
+        {
+          "t": 27085,
+          "type": "goal",
+          "id": "break-free"
+        },
+        {
+          "t": 27347,
+          "type": "grab-broken"
+        },
+        {
+          "t": 27373,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27634,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 27634,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 488,
+          "mark": 610
+        },
+        {
+          "t": 27662,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27697,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 27697,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-4",
+          "clock": 245,
+          "mark": 350
+        },
+        {
+          "t": 27736,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27822,
+          "type": "parry-success"
+        },
+        {
+          "t": 27933,
+          "type": "parry-success"
+        },
+        {
+          "t": 28059,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 28059,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-3",
+          "clock": 530,
+          "mark": 610
+        },
+        {
+          "t": 28091,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 28955,
+          "type": "goal",
+          "id": "avoid-grab"
+        },
+        {
+          "t": 29578,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 29578,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 8
+        },
+        {
+          "t": 29633,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 29633,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-3",
+          "clock": 280,
+          "mark": 350
+        },
+        {
+          "t": 29662,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 29734,
+          "type": "grabbed"
+        },
+        {
+          "t": 29781,
+          "type": "goal",
+          "id": "break-free"
+        },
+        {
+          "t": 29950,
+          "type": "grab-broken"
+        },
+        {
+          "t": 29965,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 31759,
+          "type": "goal",
+          "id": "avoid-grab"
+        },
+        {
+          "t": 32321,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 32554,
+          "type": "grabbed"
+        },
+        {
+          "t": 32593,
+          "type": "goal",
+          "id": "break-free"
+        },
+        {
+          "t": 32804,
+          "type": "grab-broken"
+        },
+        {
+          "t": 32837,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 34595,
+          "type": "goal",
+          "id": "avoid-grab"
+        },
+        {
+          "t": 35166,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 35400,
+          "type": "grabbed"
+        },
+        {
+          "t": 35427,
+          "type": "goal",
+          "id": "break-free"
+        },
+        {
+          "t": 35602,
+          "type": "grab-broken"
+        },
+        {
+          "t": 35650,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 39134,
+          "type": "goal",
+          "id": "avoid-grab"
+        },
+        {
+          "t": 39761,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 39955,
+          "type": "grabbed"
+        },
+        {
+          "t": 39996,
+          "type": "goal",
+          "id": "break-free"
+        },
+        {
+          "t": 40177,
+          "type": "grab-broken"
+        },
+        {
+          "t": 40198,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 43275,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 43275,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "brick-dugan-1",
+          "clock": 927,
+          "mark": 1020
+        },
+        {
+          "t": 43326,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 43481,
+          "type": "parry-success"
+        },
+        {
+          "t": 45024,
+          "type": "boss-down",
+          "id": "brick-dugan-1"
+        },
+        {
+          "t": 45024,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 45048,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 45598,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 46497,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 48967,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 49053,
+          "type": "round-win",
+          "reason": "cleared"
+        },
+        {
+          "t": 49100,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    }
+  ]
+}

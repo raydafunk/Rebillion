@@ -81,3 +81,21 @@ console.log('spawnPatterns ok');
   assert.deepEqual([...LEADER_ENTRANCES], ['far-side', 'near-side', 'front', 'behind']);
   console.log('leader entrances ok');
 }
+
+// pincer (Level 1 wave 3, crowd-control lesson): alternates far edge, near edge, so Zed always has one on each side.
+{
+  const lockX = 0, player = { x: 640, facing: 1 };
+  const sides = [0, 1, 2, 3].map((index) => pickSpawn({ pattern: 'pincer', lockX, index, count: 4, player, rng: () => 0 }).side);
+  assert.deepEqual(sides, ['left', 'right', 'left', 'right'].map((s, i) => sides[0] === 'left' ? s : (s === 'left' ? 'right' : 'left')));
+  assert.notEqual(sides[0], sides[1], 'each pair comes from both edges');
+  console.log('spawnPatterns pincer passed');
+}
+
+// pincer keeps its sides even when Zed crosses the middle between spawns (anchored at the first spawn, like surge).
+{
+  const lockX = 0;
+  const first = pickSpawn({ pattern: 'pincer', lockX, index: 0, count: 4, player: { x: 400, facing: 1 }, rng: () => 0 });
+  const second = pickSpawn({ pattern: 'pincer', lockX, index: 1, count: 4, player: { x: 880, facing: 1 }, anchorSide: first.side, rng: () => 0 });
+  assert.notEqual(first.side, second.side, 'Zed walked across the middle: the pair is still split across both edges');
+  console.log('spawnPatterns pincer anchor passed');
+}

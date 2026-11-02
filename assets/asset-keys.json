@@ -11,7 +11,8 @@
     "ui.button.disabled": "assets/ui/button-disabled.svg",
     "ui.panel": "assets/ui/panel.svg",
     "ui.icon.heart": "assets/ui/icon-heart.svg",
-    "ui.icon.clock": "assets/ui/icon-clock.svg"
+    "ui.icon.clock": "assets/ui/icon-clock.svg",
+    "ui.card.victory": "assets/ui/victory-card-frame.svg"
   },
   "sprites": {
     "zed": "assets/sprites/zed-placeholder.svg",

@@ -1,0 +1,606 @@
+{
+  "group_id": "cda6c30b-5333-4995-85d3-f1cded8316ef",
+  "states": [
+    {
+      "character": {
+        "id": "44356388-167a-43d9-b5b3-27ac0d8de3c7",
+        "name": "Idle",
+        "prompt": "An elite soldier in tactical combat gear, wearing a reinforced visor and sleek plating, equipped with glowing electrified gauntlets, a mounted grappling hook on the forearm, and a rectangular tactical shield held at the side, standing in a ready combat stance.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-20T07:02:28.519412+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "idle_breathing": {
+            "south-east": [
+              "Idle/animations/idle_breathing/south-east/frame_000.png",
+              "Idle/animations/idle_breathing/south-east/frame_001.png",
+              "Idle/animations/idle_breathing/south-east/frame_002.png",
+              "Idle/animations/idle_breathing/south-east/frame_003.png",
+              "Idle/animations/idle_breathing/south-east/frame_004.png",
+              "Idle/animations/idle_breathing/south-east/frame_005.png",
+              "Idle/animations/idle_breathing/south-east/frame_006.png",
+              "Idle/animations/idle_breathing/south-east/frame_007.png"
+            ],
+            "north-east": [
+              "Idle/animations/idle_breathing/north-east/frame_000.png",
+              "Idle/animations/idle_breathing/north-east/frame_001.png",
+              "Idle/animations/idle_breathing/north-east/frame_002.png",
+              "Idle/animations/idle_breathing/north-east/frame_003.png",
+              "Idle/animations/idle_breathing/north-east/frame_004.png",
+              "Idle/animations/idle_breathing/north-east/frame_005.png",
+              "Idle/animations/idle_breathing/north-east/frame_006.png",
+              "Idle/animations/idle_breathing/north-east/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/idle_breathing/south/frame_000.png",
+              "Idle/animations/idle_breathing/south/frame_001.png",
+              "Idle/animations/idle_breathing/south/frame_002.png",
+              "Idle/animations/idle_breathing/south/frame_003.png",
+              "Idle/animations/idle_breathing/south/frame_004.png",
+              "Idle/animations/idle_breathing/south/frame_005.png",
+              "Idle/animations/idle_breathing/south/frame_006.png",
+              "Idle/animations/idle_breathing/south/frame_007.png"
+            ],
+            "north": [
+              "Idle/animations/idle_breathing/north/frame_000.png",
+              "Idle/animations/idle_breathing/north/frame_001.png",
+              "Idle/animations/idle_breathing/north/frame_002.png",
+              "Idle/animations/idle_breathing/north/frame_003.png",
+              "Idle/animations/idle_breathing/north/frame_004.png",
+              "Idle/animations/idle_breathing/north/frame_005.png",
+              "Idle/animations/idle_breathing/north/frame_006.png",
+              "Idle/animations/idle_breathing/north/frame_007.png"
+            ],
+            "north-west": [
+              "Idle/animations/idle_breathing/north-west/frame_000.png",
+              "Idle/animations/idle_breathing/north-west/frame_001.png",
+              "Idle/animations/idle_breathing/north-west/frame_002.png",
+              "Idle/animations/idle_breathing/north-west/frame_003.png",
+              "Idle/animations/idle_breathing/north-west/frame_004.png",
+              "Idle/animations/idle_breathing/north-west/frame_005.png",
+              "Idle/animations/idle_breathing/north-west/frame_006.png",
+              "Idle/animations/idle_breathing/north-west/frame_007.png"
+            ],
+            "south-west": [
+              "Idle/animations/idle_breathing/south-west/frame_000.png",
+              "Idle/animations/idle_breathing/south-west/frame_001.png",
+              "Idle/animations/idle_breathing/south-west/frame_002.png",
+              "Idle/animations/idle_breathing/south-west/frame_003.png",
+              "Idle/animations/idle_breathing/south-west/frame_004.png",
+              "Idle/animations/idle_breathing/south-west/frame_005.png",
+              "Idle/animations/idle_breathing/south-west/frame_006.png",
+              "Idle/animations/idle_breathing/south-west/frame_007.png"
+            ],
+            "east": [
+              "Idle/animations/idle_breathing/east/frame_000.png",
+              "Idle/animations/idle_breathing/east/frame_001.png",
+              "Idle/animations/idle_breathing/east/frame_002.png",
+              "Idle/animations/idle_breathing/east/frame_003.png",
+              "Idle/animations/idle_breathing/east/frame_004.png",
+              "Idle/animations/idle_breathing/east/frame_005.png",
+              "Idle/animations/idle_breathing/east/frame_006.png",
+              "Idle/animations/idle_breathing/east/frame_007.png"
+            ],
+            "west": [
+              "Idle/animations/idle_breathing/west/frame_000.png",
+              "Idle/animations/idle_breathing/west/frame_001.png",
+              "Idle/animations/idle_breathing/west/frame_002.png",
+              "Idle/animations/idle_breathing/west/frame_003.png",
+              "Idle/animations/idle_breathing/west/frame_004.png",
+              "Idle/animations/idle_breathing/west/frame_005.png",
+              "Idle/animations/idle_breathing/west/frame_006.png",
+              "Idle/animations/idle_breathing/west/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "5b58d02e-9bab-4b9d-8a94-bdd080cf8ff8",
+        "name": "walking",
+        "prompt": "An elite soldier in tactical combat gear, wearing a reinforced visor and sleek plating, equipped with glowing electrified gauntlets, a mounted grappling hook on the forearm, and a rectangular tactical shield held at the side, standing in a ready combat stance.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T13:16:50.309732+00:00"
+      },
+      "folder": "walking",
+      "frames": {
+        "rotations": {
+          "south": "walking/rotations/south.png",
+          "south-east": "walking/rotations/south-east.png",
+          "east": "walking/rotations/east.png",
+          "north-east": "walking/rotations/north-east.png",
+          "north": "walking/rotations/north.png",
+          "north-west": "walking/rotations/north-west.png",
+          "west": "walking/rotations/west.png",
+          "south-west": "walking/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    },
+    {
+      "character": {
+        "id": "f085d8d4-7f4d-4879-9c3f-32cbef7bf431",
+        "name": "falling backward aft",
+        "prompt": "An elite soldier in tactical combat gear, wearing a reinforced visor and sleek plating, equipped with glowing electrified gauntlets, a mounted grappling hook on the forearm, and a rectangular tactical shield held at the side, standing in a ready combat stance.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T13:23:23.476312+00:00"
+      },
+      "folder": "falling_backward_aft",
+      "frames": {
+        "rotations": {
+          "south": "falling_backward_aft/rotations/south.png",
+          "south-east": "falling_backward_aft/rotations/south-east.png",
+          "east": "falling_backward_aft/rotations/east.png",
+          "north-east": "falling_backward_aft/rotations/north-east.png",
+          "north": "falling_backward_aft/rotations/north.png",
+          "north-west": "falling_backward_aft/rotations/north-west.png",
+          "west": "falling_backward_aft/rotations/west.png",
+          "south-west": "falling_backward_aft/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_recoils_violently_backward_as_if_str": {
+            "south": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south/frame_008.png"
+            ],
+            "north-east": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-east/frame_008.png"
+            ],
+            "east": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/east/frame_008.png"
+            ],
+            "south-west": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-west/frame_008.png"
+            ],
+            "south-east": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/south-east/frame_008.png"
+            ],
+            "north": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north/frame_008.png"
+            ],
+            "west": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/west/frame_008.png"
+            ],
+            "north-west": [
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_000.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_001.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_002.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_003.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_004.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_005.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_006.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_007.png",
+              "falling_backward_aft/animations/The_character_recoils_violently_backward_as_if_str/north-west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "5c1cb327-a047-48cc-87c8-e351bce16519",
+        "name": "Taser Shot",
+        "prompt": "An elite soldier in tactical combat gear, wearing a reinforced visor and sleek plating, equipped with glowing electrified gauntlets, a mounted grappling hook on the forearm, and a rectangular tactical shield held at the side, standing in a ready combat stance.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T14:46:16.209532+00:00"
+      },
+      "folder": "Taser_Shot",
+      "frames": {
+        "rotations": {
+          "south": "Taser_Shot/rotations/south.png",
+          "south-east": "Taser_Shot/rotations/south-east.png",
+          "east": "Taser_Shot/rotations/east.png",
+          "north-east": "Taser_Shot/rotations/north-east.png",
+          "north": "Taser_Shot/rotations/north.png",
+          "north-west": "Taser_Shot/rotations/north-west.png",
+          "west": "Taser_Shot/rotations/west.png",
+          "south-west": "Taser_Shot/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_stands_firm_as_the_right_hand_draws": {
+            "south-east": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_002.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-east/frame_008.png"
+            ],
+            "west": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_002.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/west/frame_008.png"
+            ],
+            "south-west": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_002.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south-west/frame_008.png"
+            ],
+            "south": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_002.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/south/frame_008.png"
+            ],
+            "north-east": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_008.png"
+            ],
+            "east": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_002.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/east/frame_008.png"
+            ],
+            "north-west": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_002.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-west/frame_008.png"
+            ],
+            "north": [
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_000.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_001.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_002.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_003.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_004.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_005.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_006.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_007.png",
+              "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north/frame_008.png"
+            ]
+          }
+        },
+        "missing_frames": [
+          "Taser_Shot/animations/The_character_stands_firm_as_the_right_hand_draws/north-east/frame_002.png"
+        ]
+      }
+    },
+    {
+      "character": {
+        "id": "5851a348-ef91-4308-86ee-e50937de8760",
+        "name": ". Shield Strike",
+        "prompt": "An elite soldier in tactical combat gear, wearing a reinforced visor and sleek plating, equipped with glowing electrified gauntlets, a mounted grappling hook on the forearm, and a rectangular tactical shield held at the side, standing in a ready combat stance.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T14:49:20.365213+00:00"
+      },
+      "folder": "Shield_Strike",
+      "frames": {
+        "rotations": {
+          "south": "Shield_Strike/rotations/south.png",
+          "south-east": "Shield_Strike/rotations/south-east.png",
+          "east": "Shield_Strike/rotations/east.png",
+          "north-east": "Shield_Strike/rotations/north-east.png",
+          "north": "Shield_Strike/rotations/north.png",
+          "north-west": "Shield_Strike/rotations/north-west.png",
+          "west": "Shield_Strike/rotations/west.png",
+          "south-west": "Shield_Strike/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_the_shield_arm_back_tightly_ag": {
+            "east": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/east/frame_008.png"
+            ],
+            "south-west": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-west/frame_008.png"
+            ],
+            "south-east": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south-east/frame_008.png"
+            ],
+            "north": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north/frame_008.png"
+            ],
+            "west": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/west/frame_008.png"
+            ],
+            "south": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/south/frame_008.png"
+            ],
+            "north-east": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-east/frame_008.png"
+            ],
+            "north-west": [
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_000.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_001.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_002.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_003.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_004.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_005.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_006.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_007.png",
+              "Shield_Strike/animations/The_character_pulls_the_shield_arm_back_tightly_ag/north-west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "6cab772d-488e-42a6-8698-b108c4c65b64",
+        "name": "stun taking a hit",
+        "prompt": "An elite soldier in tactical combat gear, wearing a reinforced visor and sleek plating, equipped with glowing electrified gauntlets, a mounted grappling hook on the forearm, and a rectangular tactical shield held at the side, standing in a ready combat stance.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T15:44:15.104496+00:00"
+      },
+      "folder": "stun_taking_a_hit",
+      "frames": {
+        "rotations": {
+          "south": "stun_taking_a_hit/rotations/south.png",
+          "south-east": "stun_taking_a_hit/rotations/south-east.png",
+          "east": "stun_taking_a_hit/rotations/east.png",
+          "north-east": "stun_taking_a_hit/rotations/north-east.png",
+          "north": "stun_taking_a_hit/rotations/north.png",
+          "north-west": "stun_taking_a_hit/rotations/north-west.png",
+          "west": "stun_taking_a_hit/rotations/west.png",
+          "south-west": "stun_taking_a_hit/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "east": [
+              "stun_taking_a_hit/animations/Taking_Punch/east/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/east/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/east/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/east/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/east/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/east/frame_005.png"
+            ],
+            "west": [
+              "stun_taking_a_hit/animations/Taking_Punch/west/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/west/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/west/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/west/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/west/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/west/frame_005.png"
+            ],
+            "south-east": [
+              "stun_taking_a_hit/animations/Taking_Punch/south-east/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-east/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-east/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-east/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-east/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-east/frame_005.png"
+            ],
+            "north-east": [
+              "stun_taking_a_hit/animations/Taking_Punch/north-east/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-east/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-east/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-east/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-east/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-east/frame_005.png"
+            ],
+            "north": [
+              "stun_taking_a_hit/animations/Taking_Punch/north/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north/frame_005.png"
+            ],
+            "south-west": [
+              "stun_taking_a_hit/animations/Taking_Punch/south-west/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-west/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-west/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-west/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-west/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south-west/frame_005.png"
+            ],
+            "north-west": [
+              "stun_taking_a_hit/animations/Taking_Punch/north-west/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-west/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-west/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-west/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-west/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/north-west/frame_005.png"
+            ],
+            "south": [
+              "stun_taking_a_hit/animations/Taking_Punch/south/frame_000.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south/frame_001.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south/frame_002.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south/frame_003.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south/frame_004.png",
+              "stun_taking_a_hit/animations/Taking_Punch/south/frame_005.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-02T13:48:25.394156"
+}

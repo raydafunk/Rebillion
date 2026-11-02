@@ -4,8 +4,10 @@ import { EVENTS } from '../shared/events.js';
 import { RustGrunt } from './RustGrunt.js';
 import { BrickDugan } from './BrickDugan.js';
 import { DUGAN, DUGAN_ID } from './duganData.js';
+import { ROYCE, ROYCE_ID } from './royceData.js';
 import { AttackSlots } from './AttackSlots.js';
 import { GRUNT, ATTACKER_CAP, pickAttackVariant } from './gruntData.js';
+import { KINDS } from './enemyKinds.js';
 
 export const DEATH_LINGER_MS = 600; // corpse stays this long, then entity-unregistered
 
@@ -33,19 +35,30 @@ export class EnemyManager {
       const e = this.enemies.get(p.id);
       if (e && e.grunt.alive) { e.grunt.die(); e.deathTimer = DEATH_LINGER_MS; }
     };
+    this._onHitRequest = (req) => {   // Zed starts a swing: a Dugan may raise a block (see BrickDugan.onPlayerAttack)
+      if (!req || req.team === 'rust') return;
+      for (const e of this.enemies.values()) if (e.grunt.onPlayerAttack) e.grunt.onPlayerAttack(req);
+    };
     this._onRetry = () => this.destroyAll();
     events.on(EVENTS.DAMAGE_APPLIED, this._onDamage);
     events.on(EVENTS.PARRY_STUN, this._onParryStun);
     events.on(EVENTS.ENTITY_DIED, this._onDied);
+    this._onGrabBroken = ({ attackerId }) => { const e = this.enemies.get(attackerId); if (e && e.grunt.grabBroken) e.grunt.grabBroken(); };
+    events.on(EVENTS.GRAB_BROKEN, this._onGrabBroken);
     events.on(EVENTS.RETRY, this._onRetry);
+    events.on(EVENTS.HIT_REQUEST, this._onHitRequest);
   }
 
   /** spawn spec from WaveSpawner: {id, x, y, enemy?, skin?, hpMult?}. enemy 'rust-brick-dugan' spawns the Level 1 mini-boss. */
-  spawn({ id, x, y, enemy = null, skin = null, hpMult = 1 }) {
+  spawn({ id, x, y, enemy = null, skin = null, hpMult = 1, speedMult = 1 }) {
     if (this.enemies.has(id)) return this.enemies.get(id).grunt;
     if (enemy === DUGAN_ID) return this._spawnDugan({ id, x, y, hpMult });
+    if (enemy === ROYCE_ID) return this._spawnRoyce({ id, x, y, hpMult, speedMult });
+    const tint = KINDS[skin]?.tint;
+    const data = speedMult === 1 && !tint ? this.data
+      : { ...this.data, moveSpeed: Math.round(this.data.moveSpeed * speedMult), circleSpeed: Math.round(this.data.circleSpeed * speedMult), ...(tint ? { tint } : {}) }; // wave speed boost / kind tint
     const grunt = new RustGrunt({
-      id, x, y, slots: this.slots, data: this.data, maxHp: Math.round(this.data.maxHp * hpMult),
+      id, x, y, slots: this.slots, data, maxHp: Math.round(this.data.maxHp * hpMult),
       hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
       pickVariant: this.pickVariant,
     });
@@ -59,19 +72,52 @@ export class EnemyManager {
     return grunt;
   }
 
+  /** Level 2 mini-boss: grunt AI with the Royce stat block, registered as a boss so the health bar and victory card pick him up. */
+  _spawnRoyce({ id, x, y, hpMult, speedMult = 1 }) {
+    const data = speedMult === 1 ? ROYCE : { ...ROYCE, moveSpeed: Math.round(ROYCE.moveSpeed * speedMult), circleSpeed: Math.round(ROYCE.circleSpeed * speedMult) };
+    const boss = new RustGrunt({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(ROYCE.maxHp * hpMult),
+      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+      pickVariant: this.pickVariant,
+    });
+    boss.skin = ROYCE_ID; boss.miniBoss = true; boss.visualScale = ROYCE.visualScale;
+    this.enemies.set(id, { grunt: boss, deathTimer: 0 });
+    this.events.emit(EVENTS.ENTITY_REGISTERED, {
+      id, team: ROYCE.team, boss: true, bossProfile: ROYCE_ID, maxHp: boss.maxHp,
+      hurtbox: { ...ROYCE.hurtbox },
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
+    });
+    return boss;
+  }
+
   _spawnDugan({ id, x, y, hpMult }) {
     const boss = new BrickDugan({
       id, x, y, slots: this.slots, data: DUGAN, maxHp: Math.round(DUGAN.maxHp * hpMult),
       getXRange: this.getXRange, rng: this.rng,
-      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+      hooks: {
+        onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req),
+        onGrab: (req) => this._grab(req),
+        onGrabSlam: (p) => this.events.emit(EVENTS.GRAB_SLAM, p),
+        onGrabRelease: (p) => this.events.emit(EVENTS.GRAB_RELEASE, p),
+      },
     });
     this.enemies.set(id, { grunt: boss, deathTimer: 0 });
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
-      id, team: DUGAN.team, boss: true, maxHp: boss.maxHp,
+      id, team: DUGAN.team, boss: true, bossProfile: DUGAN_ID, maxHp: boss.maxHp,
       hurtbox: { ...DUGAN.hurtbox },
-      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing, guard: boss.guard }),
     });
     return boss;
+  }
+
+  /** Zed answers GRAB synchronously with GRAB_RESULT; false (a whiff) if nobody answers or he cannot be grabbed now. */
+  _grab(req) {
+    let accepted = false;
+    const on = (r) => { if (r && r.attackerId === req.attackerId) accepted = !!r.accepted; };
+    this.events.on(EVENTS.GRAB_RESULT, on);
+    this.events.emit(EVENTS.GRAB, req);
+    this.events.off(EVENTS.GRAB_RESULT, on);
+    return accepted;
   }
 
   get(id) { return this.enemies.get(id)?.grunt; }
@@ -106,7 +152,9 @@ export class EnemyManager {
     this.events.off(EVENTS.DAMAGE_APPLIED, this._onDamage);
     this.events.off(EVENTS.PARRY_STUN, this._onParryStun);
     this.events.off(EVENTS.ENTITY_DIED, this._onDied);
+    this.events.off(EVENTS.GRAB_BROKEN, this._onGrabBroken);
     this.events.off(EVENTS.RETRY, this._onRetry);
+    this.events.off(EVENTS.HIT_REQUEST, this._onHitRequest);
     this.destroyAll();
   }
 }

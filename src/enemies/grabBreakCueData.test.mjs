@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { CUE, keyLabel, attackLabel, padLabel, ringColor, handAngle, grabBreakCue, clampBubble } from './grabBreakCueData.js';
+import { GRAB_CONFIG } from '../player/grabConfig.js';
+import { DUGAN_MOVES } from './duganData.js';
+
+assert.equal(keyLabel('KeyJ'), 'J'); assert.equal(keyLabel('Space'), 'SPACE'); assert.equal(keyLabel('ArrowLeft'), '<');
+assert.equal(attackLabel(), 'J / K', 'both attack buttons'); assert.equal(attackLabel({ light: ['KeyZ'], heavy: ['KeyX'] }), 'Z / X', 'follows a rebind');
+assert.equal(padLabel(2, 'Xbox 360 Controller'), 'X'); assert.equal(padLabel(2, 'DualSense Wireless Controller (054c)'), 'SQUARE'); assert.equal(padLabel(2, 'Pro Controller (057e)'), 'Y');
+assert.equal(CUE.pips.count, GRAB_CONFIG.breakTaps, 'one pip per break tap'); assert.equal(GRAB_CONFIG.breakTaps, 7);
+assert.equal(ringColor(800), CUE.ringColors.calm); assert.equal(ringColor(450), CUE.ringColors.warn); assert.equal(ringColor(0), CUE.ringColors.warn, 'time left is never red: red is the time that has gone');
+assert.notEqual(CUE.ringColors.elapsed, CUE.pips.filled, 'the clock is red, the pips are green');
+assert.equal(handAngle(1), 0); assert.ok(Math.abs(handAngle(0.5) - Math.PI) < 1e-9); assert.ok(Math.abs(handAngle(0) - Math.PI * 2) < 1e-9, 'the hand closes the ring on the slam');
+
+const HOLD = DUGAN_MOVES.grab.grab.holdMs;
+let f = grabBreakCue({ timerMs: 0, holdMs: HOLD, progress: 0 });
+assert.equal(f.ringFrac, 1); assert.equal(f.urgent, false); assert.ok(f.scale < 1, 'pops in from small');
+f = grabBreakCue({ timerMs: 100, holdMs: HOLD, progress: 0 }); assert.ok(Math.abs(f.scale - 1) < 0.2 && f.scale > 0.9, 'popped in by 100 ms');
+f = grabBreakCue({ timerMs: HOLD / 2, holdMs: HOLD, progress: 0 }); assert.equal(Math.round(f.ringFrac * 100), 50);
+f = grabBreakCue({ timerMs: HOLD, holdMs: HOLD, progress: 0 }); assert.equal(f.ringFrac, 0, 'ring is empty on the slam frame'); assert.equal(f.urgent, true);
+f = grabBreakCue({ timerMs: HOLD - 200, holdMs: HOLD, progress: 0 }); assert.equal(f.urgent, true); assert.equal(f.width, CUE.bubble.ring.urgentWidthPx);
+f = grabBreakCue({ timerMs: 300, holdMs: HOLD, progress: 3 / CUE.pips.count }); assert.equal(f.pips.filled, 3); assert.equal(f.pips.next, 3); assert.equal(f.pips.aboutToBreak, false);
+f = grabBreakCue({ timerMs: 300, holdMs: HOLD, progress: (CUE.pips.count - 1) / CUE.pips.count }); assert.equal(f.pips.filled, CUE.pips.count - 1); assert.equal(f.pips.aboutToBreak, true);
+f = grabBreakCue({ timerMs: 300, holdMs: HOLD, progress: 1 }); assert.equal(f.pips.filled, CUE.pips.count); assert.equal(f.pips.next, null);
+assert.equal(grabBreakCue({ timerMs: 300, holdMs: HOLD, progress: 0, sinceTapMs: 10 }).capDown, 1, 'cap presses on a tap');
+assert.equal(grabBreakCue({ timerMs: 300, holdMs: HOLD, progress: 0, sinceTapMs: 10, reduced: true }).capDown, 0, 'Reduced Motion: no rhythm');
+f = grabBreakCue({ timerMs: 0, holdMs: HOLD, progress: 0, reduced: true }); assert.equal(f.scale, 1, 'Reduced Motion: no pop-in');
+const c = clampBubble(-500, -500); assert.ok(c.x >= CUE.view.marginPx + CUE.bubble.outlineRadius && c.y >= CUE.view.hudBandPx, 'stays inside the view and under the HUD');
+const c2 = clampBubble(5000, 5000); assert.ok(c2.x <= CUE.view.w - CUE.view.marginPx - CUE.bubble.outlineRadius && c2.y <= CUE.view.h - CUE.view.marginPx);
+assert.ok(clampBubble(600, 0, true).y > clampBubble(600, 0, false).y, 'room for the hint pill');
+console.log('Grab Break cue tests passed');
