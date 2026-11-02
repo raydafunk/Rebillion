@@ -2,8 +2,10 @@
 // Copy: content/dialogue/title-screen.json (loaded as TITLE_COPY, with built-in fallbacks).
 // Flow: any key / click / gamepad button -> short loading bar -> MenuScene.
 import { MENU_COLORS as C, MENU_CSS as CC, MENU_FONTS as MF, FONTS, TITLE_COPY, TITLE_TIMING } from '../config/assetKeys.js';
+import { loadSettings } from './optionsData.js';
 
 const W = 1280, H = 720;
+const TITLE_MUSIC = { key: 'title.music', path: 'assets/sound/Fightsong.m4a', fadeOutMs: 400 }; // Fightsong (owner's track), loops on the title screen
 const DEG = Math.PI / 180;
 const INK = '#120a07', BROWN = '#3a2418', RED = '#a8402e', CREAM = '#f4e6c8';
 const PILL = { x: 267, y: 640, w: 746, h: 58 };
@@ -22,6 +24,7 @@ export default class TitleScene extends Phaser.Scene {
   preload() {
     this.load.on('loaderror', (f) => console.warn('[TitleScene] copy failed, using fallback:', f.key));
     this.load.json(TITLE_COPY.key, TITLE_COPY.path);
+    this.load.audio(TITLE_MUSIC.key, TITLE_MUSIC.path);
   }
 
   create() {
@@ -38,6 +41,29 @@ export default class TitleScene extends Phaser.Scene {
     this.buildTape();
     this.buildPrompt();
     this.bindInput();
+    this.startMusic();
+  }
+
+  // Looping Fightsong. Phaser holds playback until the first key/click if the browser has audio locked.
+  startMusic() {
+    if (!this.cache.audio.exists(TITLE_MUSIC.key)) return;
+    this.music = this.sound.add(TITLE_MUSIC.key, { loop: true, volume: this.musicVolume() });
+    this.music.play();
+    this.events.once('shutdown', () => this.stopMusic());
+  }
+
+  // Same MUSIC slider the menu uses (default 70).
+  musicVolume() {
+    let v; try { v = loadSettings(globalThis.localStorage).musicVolume; } catch (e) { /* no storage: default */ }
+    return (v ?? 70) / 100;
+  }
+
+  stopMusic() {
+    if (!this.music) return;
+    this.tweens.killTweensOf(this.music);
+    this.music.stop();
+    this.music.destroy();
+    this.music = null;
   }
 
   readCopy() {
@@ -275,6 +301,7 @@ export default class TitleScene extends Phaser.Scene {
       },
       onComplete: () => this.cameras.main.fadeOut(200, 0, 0, 0),
     });
+    if (this.music) this.tweens.add({ targets: this.music, volume: 0, delay: Math.max(0, TITLE_TIMING.loadMs - TITLE_MUSIC.fadeOutMs), duration: TITLE_MUSIC.fadeOutMs });
     this.cameras.main.once('camerafadeoutcomplete', () => this.scene.start('MenuScene'));
   }
 }

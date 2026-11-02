@@ -16,6 +16,12 @@ export const BREAKER2_ATTACK_MS = 570;
 export const BREAKER2_HIT_FRAMES = 6;
 // Hit art exists for east, south and south-east only; a west-facing hit plays the east frames mirrored (see breaker2Pose: flipX).
 export const BREAKER2_HIT_DIRS = Object.freeze(['east', 'south', 'south-east']);
+// Action/Front_Flip (6 frames, 80px, 8 directions): the entrance. A Type 2 Breaker flips into the arena for BREAKER2_FLIP_MS after it
+// spawns, then walks as normal. Visual only: AI, hit boxes and timings are the grunt's from the first frame.
+export const BREAKER2_FLIP_FRAMES = 6;
+export const BREAKER2_FLIP_FPS = 10;
+export const BREAKER2_FLIP_MS = BREAKER2_FLIP_FRAMES * 1000 / BREAKER2_FLIP_FPS;
+export const BREAKER2_FLIP_FOLDER = 'Action/animations/Front_Flip';
 export const BREAKER2_DEATH_FRAMES = 9;
 export const BREAKER2_DEATH_DEFAULT_FPS = 30;
 export const BREAKER2_DEATH_MS = 700;
@@ -34,6 +40,9 @@ export const breaker2AttackFrameKey = (dir, i) => `${BREAKER2_SPRITE_KEY}.attack
 export const breaker2AttackAnimKey = (dir) => `${BREAKER2_SPRITE_KEY}.attack.${dir}`;
 export const breaker2HitFrameKey = (dir, i) => `${BREAKER2_SPRITE_KEY}.hit.${dir}.${i}`;
 export const breaker2HitAnimKey = (dir) => `${BREAKER2_SPRITE_KEY}.hit.${dir}`;
+export const breaker2FlipFrameKey = (dir, i) => `${BREAKER2_SPRITE_KEY}.flip.${dir}.${i}`;
+export const breaker2FlipAnimKey = (dir) => `${BREAKER2_SPRITE_KEY}.flip.${dir}`;
+export const breaker2FlipFramePath = (dir, i) => `${BREAKER2_DIR}/${BREAKER2_FLIP_FOLDER}/${dir}/frame_${pad(i)}.png`;
 export const breaker2DeathFrameKey = (dir, i) => `${BREAKER2_SPRITE_KEY}.death.${dir}.${i}`;
 export const breaker2DeathAnimKey = (dir) => `${BREAKER2_SPRITE_KEY}.death.${dir}`;
 
@@ -43,6 +52,16 @@ export const breaker2AttackFramePath = (dir, i) => `${BREAKER2_DIR}/${BREAKER2_A
 export const breaker2HitFramePath = (dir, i) => `${BREAKER2_DIR}/${BREAKER2_HIT_FOLDER}/${dir}/frame_${pad(i)}.png`;
 export const breaker2DeathFramePath = (dir, i) => `${BREAKER2_DIR}/${BREAKER2_DEATH_FOLDER}/${dir}/frame_${pad(i)}.png`;
 export const breaker2DeathTimeScale = () => (BREAKER2_DEATH_FRAMES * 1000 / BREAKER2_DEATH_DEFAULT_FPS) / BREAKER2_DEATH_MS;
+
+/**
+ * The entrance flip: a pose while the enemy is alive, in its first BREAKER2_FLIP_MS, and not yet fighting (hit, attacking or dead keep their own pose).
+ * ageMs = time since the view was created. Flips in the direction of travel, else the way it faces. Returns null when there is no flip to show.
+ */
+export function breaker2FlipPose(e, ageMs) {
+  if (!(ageMs >= 0 && ageMs < BREAKER2_FLIP_MS) || ['attack', 'hitstun', 'dead', 'telegraph'].includes(e.state)) return null;
+  const dir = directionFromVelocity(e.vx || 0, e.vy || 0) || (e.facing < 0 ? 'west' : 'east');
+  return { anim: breaker2FlipAnimKey(dir), dir, once: true, flip: true };
+}
 
 /** Same contract as breakerPose (breakerData.js), with Type 2 keys. Strikes, hits and falls are horizontal: east or west by facing. */
 export function breaker2Pose(e) {

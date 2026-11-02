@@ -6,6 +6,7 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { MOVE_FEEDBACK, shakeScale } from '../shared/hitFeedback.js';
 import { loadSettings } from '../ui/optionsData.js';
+import { levelMusicFor, levelMusicVolume, bossMusicFor, isBossWave, BOSS_FADE_MS } from '../levels/levelMusic.js';
 import { telegraphCue, TELEGRAPH_CUE, RING_CENTER_ABOVE_FEET } from '../enemies/telegraphCueData.js';
 import { loadingLine } from '../ui/loadingData.js';
 import { createRoundState, RoundStatus } from '../state/roundState.js';
@@ -48,6 +49,7 @@ import {
   BREAKER2_DEATH_FRAMES, BREAKER2_DEATH_DEFAULT_FPS, BREAKER2_SKIN, isBreaker2, breaker2Pose, breaker2RotationKey, breaker2RotationPath,
   breaker2WalkFrameKey, breaker2WalkAnimKey, breaker2WalkFramePath, breaker2AttackFrameKey, breaker2AttackAnimKey, breaker2AttackFramePath,
   breaker2HitFrameKey, breaker2HitAnimKey, breaker2HitFramePath, breaker2DeathFrameKey, breaker2DeathAnimKey, breaker2DeathFramePath,
+  BREAKER2_FLIP_FRAMES, BREAKER2_FLIP_FPS, breaker2FlipFrameKey, breaker2FlipAnimKey, breaker2FlipFramePath, breaker2FlipPose,
 } from '../enemies/breakerType2Data.js';
 
 const GROUND_Y = LANE.maxY - 40;      // Zed's feet line (physics floor)
@@ -98,6 +100,10 @@ export default class ArenaScene extends Phaser.Scene {
       this.load.audio(DUGAN_IMPACT_SOUND_KEY, DUGAN_IMPACT_SOUND_PATH);
     }
     this.load.svg(VICTORY.frameKey, 'assets/ui/victory-card-frame.svg', { width: VICTORY.frameW, height: VICTORY.frameH }); // boss victory card frame (text is live)
+    const lm = levelMusicFor(this.level.id);
+    const bm = bossMusicFor(this.level.id);
+    this.load.audio(bm.key, bm.path); // end boss music (last wave)
+    if (lm) this.load.audio(lm.key, lm.path); // level BGM; a missing file just means no music (loaderror is swallowed above)
     this.load.audio('result.sting', 'assets/sound/level-complete-sting.mp3'); // "Level Complete Splash" by GreyFrogGames, CC0
     this.load.audio('result.music', 'assets/sound/results-funky-house.mp3'); // "Funky House" by Of Far Different Nature, CC0
     this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
@@ -121,6 +127,7 @@ export default class ArenaScene extends Phaser.Scene {
         for (let i = 0; i < BREAKER2_WALK_FRAMES; i++) this.load.image(breaker2WalkFrameKey(d, i), breaker2WalkFramePath(d, i));
         for (let i = 0; i < BREAKER2_ATTACK_FRAMES; i++) this.load.image(breaker2AttackFrameKey(d, i), breaker2AttackFramePath(d, i));
         for (let i = 0; i < BREAKER2_DEATH_FRAMES; i++) this.load.image(breaker2DeathFrameKey(d, i), breaker2DeathFramePath(d, i));
+        for (let i = 0; i < BREAKER2_FLIP_FRAMES; i++) this.load.image(breaker2FlipFrameKey(d, i), breaker2FlipFramePath(d, i));
       }
       for (const d of BREAKER2_HIT_DIRS) for (let i = 0; i < BREAKER2_HIT_FRAMES; i++) this.load.image(breaker2HitFrameKey(d, i), breaker2HitFramePath(d, i));
     }
@@ -260,7 +267,57 @@ export default class ArenaScene extends Phaser.Scene {
     this._onBlur = () => { if (!this.ended && this.scene.isActive()) this._pause(); };
     this.game.events.on('blur', this._onBlur);
     this.padStartPrev = false;
+    this._startLevelMusic();
     this.events.once('shutdown', () => { this.game.events.off('blur', this._onBlur); this._teardown(); });
+  }
+
+  // Looping level BGM. Pauses with the scene, stops when the round ends (the results music takes over).
+  // The last wave is the end boss wave: the level track fades out and the boss track fades in.
+  _musicVol() { return levelMusicVolume(this.registry.get('options')?.musicVolume ?? loadSettings(globalThis.localStorage)?.musicVolume ?? 70); }
+
+  _startLevelMusic() {
+    const lm = levelMusicFor(this.level.id);
+    const bm = bossMusicFor(this.level.id);
+    const total = this.level.waves.length;
+    // The track a round starts on: a test start at the boss wave (?wave=N) begins on the boss track.
+    const startTrack = () => (isBossWave(this.startWave || 0, total) ? bm : lm);
+    this._playBgm(startTrack());
+    this._listen(EVENTS.WAVE_STARTED, ({ index }) => { if (isBossWave(index, total)) this._crossfadeTo(bm); });
+    // Retry: the spawner restarts first (and may announce the boss wave), then this resets the music for the new round.
+    this._listen(EVENTS.RETRY, () => this._playBgm(startTrack()));
+    const onPause = () => this.bgm?.pause();
+    const onResume = () => { if (this.bgm && !this.ended) this.bgm.resume(); };
+    this.events.on('pause', onPause);
+    this.events.on('resume', onResume);
+    this.events.once('shutdown', () => { this.events.off('pause', onPause); this.events.off('resume', onResume); this._dropBgm(); });
+  }
+
+  _dropBgm() {
+    if (this._fadingOld) { this._fadingOld.stop(); this._fadingOld.destroy(); this._fadingOld = null; }
+    if (this.bgm) { this.bgm.stop(); this.bgm.destroy(); this.bgm = null; }
+    this._bgmKey = null;
+  }
+
+  _playBgm(track) {
+    this._dropBgm();
+    if (!track || !this.cache.audio.exists(track.key)) return;
+    this.bgm = this.sound.add(track.key, { loop: true, volume: this._musicVol() });
+    this._bgmKey = track.key;
+    this.bgm.play();
+  }
+
+  _crossfadeTo(track) {
+    if (!track || this._bgmKey === track.key || !this.cache.audio.exists(track.key)) return;
+    const old = this.bgm, vol = this._musicVol();
+    this.bgm = this.sound.add(track.key, { loop: true, volume: 0 });
+    this._bgmKey = track.key;
+    this.bgm.play();
+    const next = this.bgm;
+    this.tweens.add({ targets: next, volume: vol, duration: BOSS_FADE_MS });
+    if (old) {
+      this._fadingOld = old;
+      this.tweens.add({ targets: old, volume: 0, duration: BOSS_FADE_MS, onComplete: () => { old.stop(); old.destroy(); if (this._fadingOld === old) this._fadingOld = null; } });
+    }
   }
 
   /** Fraction of the texture height where the lowest opaque pixel sits (cached); keeps feet on the shadow for any frame size. */
@@ -323,6 +380,7 @@ export default class ArenaScene extends Phaser.Scene {
     for (const d of BREAKER2_DIRS) {
       mk(breaker2WalkAnimKey(d), BREAKER2_WALK_FRAMES, (i) => breaker2WalkFrameKey(d, i), { frameRate: BREAKER2_WALK_FPS, repeat: -1 });
       mk(breaker2AttackAnimKey(d), BREAKER2_ATTACK_FRAMES, (i) => breaker2AttackFrameKey(d, i), { repeat: 0, duration: BREAKER2_ATTACK_MS });
+      mk(breaker2FlipAnimKey(d), BREAKER2_FLIP_FRAMES, (i) => breaker2FlipFrameKey(d, i), { repeat: 0, frameRate: BREAKER2_FLIP_FPS });
       mk(breaker2DeathAnimKey(d), BREAKER2_DEATH_FRAMES, (i) => breaker2DeathFrameKey(d, i), { repeat: 0, frameRate: BREAKER2_DEATH_DEFAULT_FPS });
     }
     // One hit anim (east frames); a west-facing hit mirrors it (pose.flipX). Frame rate is a default; each play fits the stun via timeScale.
@@ -541,6 +599,7 @@ export default class ArenaScene extends Phaser.Scene {
   _endRound(mode, reason) {
     if (this.ended) return;
     this.ended = true;
+    this.bgm?.stop();
     // round-won fires inside the final entity-died dispatch, before our own counters update.
     const total = this.level.totalEnemies, waves = this.level.waves;
     if (mode === 'win') { this.stats.defeated = total; this.stats.wavesCleared = waves.length; }
@@ -618,7 +677,7 @@ export default class ArenaScene extends Phaser.Scene {
             : this.add.image(0, 0, BREAKER_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(144, 144);
         v = {
           shadow: this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25),
-          body, breakerArt: hasArt, duganArt, type2,
+          body, breakerArt: hasArt, duganArt, type2, bornAt: this.simNow,
           ring: this.add.ellipse(0, 0, 10, 10).setStrokeStyle(TELEGRAPH_CUE.ringStrokePx, 0xffa41c).setVisible(false).setDepth(3999), // parry cue: closes as the attack starts
           strip: g.isBoss ? this.add.rectangle(0, 0, 10, 70, 0xd23a2e, 0.28).setVisible(false).setDepth(LANE.minY) : null, // Dugan's charge lane: a red strip along the floor while he winds up
         };
@@ -626,7 +685,8 @@ export default class ArenaScene extends Phaser.Scene {
       }
       if (v.breakerArt) {
         // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
-        const pose = v.duganArt ? duganPose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
+        let pose = v.duganArt ? duganPose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
+        if (v.type2 && g.alive) pose = breaker2FlipPose(g, this.simNow - v.bornAt) || pose; // Type 2 entrance: a front flip, then the normal walk
         if (g.alive && (pose.walk || pose.anim === (v.type2 ? breaker2WalkAnimKey(pose.dir) : breakerWalkAnimKey(pose.dir)))) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
         v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(!!pose.flipX); // real west frames exist, except Type 2's hit (east mirrored)
         if (pose.death) { v.deathPose = pose; this._driveDeath(v, g.id, pose, dt); } // death view drives its own sprite state

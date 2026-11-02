@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import {
   BREAKER2_SKIN, BREAKER2_DIRS, BREAKER2_WALK_FRAMES, BREAKER2_ATTACK_FRAMES, BREAKER2_HIT_FRAMES, BREAKER2_HIT_DIRS, BREAKER2_DEATH_FRAMES,
   isBreaker2, breaker2Pose, breaker2RotationKey, breaker2WalkAnimKey, breaker2AttackAnimKey, breaker2HitAnimKey, breaker2DeathAnimKey,
+  BREAKER2_FLIP_FRAMES, BREAKER2_FLIP_MS, breaker2FlipPose, breaker2FlipAnimKey, breaker2FlipFramePath,
   breaker2RotationPath, breaker2WalkFramePath, breaker2AttackFramePath, breaker2HitFramePath, breaker2DeathFramePath, breaker2DeathTimeScale,
 } from './breakerType2Data.js';
 
@@ -27,4 +28,11 @@ for (const d of BREAKER2_DIRS) {
   for (let i = 0; i < BREAKER2_DEATH_FRAMES; i++) assert.ok(fs.existsSync(breaker2DeathFramePath(d, i)), breaker2DeathFramePath(d, i));
 }
 for (const d of BREAKER2_HIT_DIRS) for (let i = 0; i < BREAKER2_HIT_FRAMES; i++) assert.ok(fs.existsSync(breaker2HitFramePath(d, i)), breaker2HitFramePath(d, i));
+// entrance flip: first 600 ms only, never over a fight pose
+assert.equal(BREAKER2_FLIP_MS, 600);
+assert.equal(breaker2FlipPose({ vx: 60, vy: 0, facing: 1, state: 'approach' }, 100).anim, breaker2FlipAnimKey('east'));
+assert.equal(breaker2FlipPose({ vx: 0, vy: 0, facing: -1, state: 'idle' }, 0).anim, breaker2FlipAnimKey('west'));
+assert.equal(breaker2FlipPose({ vx: 60, vy: 0, facing: 1, state: 'approach' }, BREAKER2_FLIP_MS), null, 'flip is over after 600 ms');
+for (const st of ['attack', 'hitstun', 'dead', 'telegraph']) assert.equal(breaker2FlipPose({ vx: 0, vy: 0, facing: 1, state: st }, 50), null, `${st} keeps its own pose`);
+for (const d of BREAKER2_DIRS) for (let i = 0; i < BREAKER2_FLIP_FRAMES; i++) assert.ok(fs.existsSync(breaker2FlipFramePath(d, i)), breaker2FlipFramePath(d, i));
 console.log('breakerType2Data ok');

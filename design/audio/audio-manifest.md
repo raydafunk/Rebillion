@@ -83,3 +83,25 @@ Page licence links read directly on each OpenGameArt page; all show CC0 1.0 (no 
 ## In game (2026-10-30)
 - `result.sting` -> assets/sound/level-complete-sting.mp3 ("Level Complete Splash", GreyFrogGames, CC0), plays on level clear (ResultScene win)
 - `result.music` -> assets/sound/results-funky-house.mp3 ("Funky House", Of Far Different Nature, CC0), loops after the sting until the player leaves the screen
+
+## Level music, 8 levels (added 2026-11-02)
+All CC0, licence read on each OpenGameArt page 2026-11-02. Not listened to. Wired in `src/levels/levelMusic.js` (keyed by level id), loaded and looped by `ArenaScene`; a missing file means silence, not a crash. Download each file from its page and save it in `assets/sound/` under the filename shown.
+
+| Level | Save as | Track / creator | Source file | Page |
+|---|---|---|---|---|
+| 1 Brick-Red Alley | level-01-funky-disco-beats.ogg | Funky Disco Beats to Boogie/Woogie to | funkydiscobeatstoboogieslashwoogieto_0.ogg | https://opengameart.org/content/funky-disco-beats-to-boogiewoogie-to |
+| 2 Mustard Row | level-02-rhythm-garden-loop.ogg | Rythm garden & second cruise (congusbongus remix) | rhythm_gardenloop4_0.ogg | https://opengameart.org/content/rythm-garden-second-cruise-congusbongus-remixed |
+| 3 Greenline Courts | level-03-action-music-loop.mp3 | Action Music Loop, AppPro | action loop.wav (convert to mp3) | https://opengameart.org/content/action-music-loop |
+| 4 Stewpot Gardens | level-04-black-diamond.mp3 | Black Diamond | Black Diamond.mp3 | https://opengameart.org/content/black-diamond |
+| 5 Songwindow Heights | level-05-cynic-battle-loop.ogg | Cynic Battle Loop, Ferk (from cynicmusic) | cynicbattleloop_0.ogg | https://opengameart.org/content/cynic-battle-loop |
+| 6 Iron Line Push | level-06-final-hour.ogg | Final Hour, isaiah658 | Final-Hour-isaiah658.ogg | https://opengameart.org/content/final-hour |
+| 7 Copper Fang Courts | level-07-fast-fight-looped.mp3 | Fast fight / battle music (looped), Xythe, loop by XCVG | fight_looped.wav (convert to mp3) | https://opengameart.org/content/fast-fight-battle-music-looped |
+| 8 Overseer's Tower | level-08-boss-battle-theme.mp3 | Boss Battle Theme, CleytonKauffman | CleytonRX - Battle RPG Theme_1.mp3 | https://opengameart.org/content/boss-battle-theme |
+
+## End-boss music (added 2026-11-02)
+Both CC0, licence read on the OpenGameArt page. Not listened to. The last wave of every level is the end boss wave: the level track fades out (700 ms) and the boss track fades in and loops until the round ends. Retry restarts the level track. Wired in `src/levels/levelMusic.js` and `ArenaScene`.
+
+| Used for | File in assets/sound | Track / creator | Page |
+|---|---|---|---|
+| Levels 1-7 end boss | boss-end-level-omg-big-bad.ogg (1:11) | OMG the big bad has awakened, Fupi | https://opengameart.org/content/omg-the-big-bad-has-awakened |
+| Level 8 final boss (Varr) | boss-final-dark-forces.mp3 (2:03) | Dark Forces (Loop), Pro Sensory | https://opengameart.org/content/dark-forcesloop |
