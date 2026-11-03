@@ -20,7 +20,7 @@ x=0                         x=640                                    x=1280
 | |POSTER|   > FIGHT        |  strip centre y=270                           |
 | |  A   |     CONTROLS     |  y=352                                        |
 | |      |     OPTIONS      |  y=434                                        |
-| +------+     QUIT         |  y=516                                        |
+| +------+     CREDITS      |  y=516                                        |
 | +------+                  |                                               |
 | |POSTER|                  |                                               |
 | |  B   |                  |                                               |
@@ -48,7 +48,7 @@ Parallax is optional polish. Tier 0 default: static. If enabled, the mouse offse
 | Fight strip | centre 396,270 | 360x64 | -2 deg | Default selected |
 | Controls strip | centre 396,352 | 360x64 | +1.5 deg | |
 | Options strip | centre 396,434 | 360x64 | -1 deg | |
-| Quit strip | centre 396,516 | 360x64 | +2 deg | |
+| Credits strip | centre 396,516 | 360x64 | +2 deg | |
 | Poster A "Local Heroes Benefit: Keep the Lights On" | centre 112,300 | 160x220 | -3 deg | Cream, forest-green text. Non-interactive |
 | Poster B "Rust Notice 114" with "CURFEW" struck through | centre 112,540 | 160x200 | +2 deg | Brick red. Non-interactive |
 | Footer hint "W/S select / Enter confirm" | right edge x=1248, baseline y=688 | auto, 20 px mono | 0 | Right-aligned, low emphasis, on the dark street |
@@ -57,7 +57,7 @@ Strip pitch is 82 px (18 px gap before tilt). Strip text is 32 px or more, left-
 
 ## Strip colours (placeholder, tint reused torn-edge shapes)
 
-| State | Fight | Controls | Options | Quit |
+| State | Fight | Controls | Options | Credits |
 |---|---|---|---|---|
 | Idle | mustard (dimmed) | cream | forest green, cream text | warm brown, cream text |
 | Selected | brightest variant of its own colour, "> " marker shown | same rule | same rule | same rule |
@@ -96,9 +96,9 @@ Per the concept, Fight is mustard when selected. Any strip, when selected, swaps
 | Fight | 0.3 s fade to black, start level scene, start HUD scene alongside | Emits `start-game` (no payload) |
 | Controls | Opens bindings panel (below) | None |
 | Options | Shows a notice "Options: not in Tier 0" | None. Strip stays selected |
-| Quit | Shows a notice "Can't quit a browser game. Close the tab." | None. Does not close the window |
+| Credits | Opens the credits panel (below) | None |
 
-Notice: small toast, 480x56, centre 396,596 (just under Quit, clear of the footer), 24 px text, auto-dismiss after 2 s or on any input, one at a time. Options and Quit strips look identical to the others (not greyed), so the menu feels complete; the notice carries the explanation.
+Notice: small toast, 480x56, centre 396,596 (just under the Credits strip, clear of the footer), 24 px text, auto-dismiss after 2 s or on any input, one at a time. The Options strip looks identical to the others (not greyed), so the menu feels complete; the notice carries the explanation.
 
 ### Controls panel
 
@@ -106,6 +106,12 @@ Notice: small toast, 480x56, centre 396,596 (just under Quit, clear of the foote
 - Body: two-column list (action, key) at 24 px minimum. Rows: Move, Light attack, Heavy attack, Block, Parry/pick-up, Rage special (L), Pause. Gamepad parry binding is TBD. Key values are placeholders ("TBD") until Player Mechanics defines bindings (OQ-M1).
 - Footer inside panel: "Esc / B close", bottom-right of panel.
 - Opens with a 100 ms fade, closes on Back or Confirm. Focus returns to the Controls strip.
+
+### Credits panel
+
+- Modal overlay, same look as the Controls panel: dim layer over the full screen (60% near-black), panel 720x420 centred at 640,360, title "CREDITS" 40 px at the panel top.
+- Body: centred heading and line pairs (heading 18 px brown, line 22 px bold near-black). Current entries: Game (The Rebellion: Fists of the Fallen City), Music ("Funked Up" by Joth, CC0), Engine (Phaser 3). The list is the `CREDITS` array in `MenuScene.js`; extend it as the team and CC-BY assets are confirmed (`design/audio/CREDITS.md`).
+- "Esc: close" at the top-right of the panel. Opens with a 100 ms fade; closes on Esc, Backspace, Confirm, gamepad B, or a click outside the panel. While open, strips ignore input. Focus stays on the Credits strip.
 
 ## Data needs
 
@@ -120,15 +126,16 @@ Events emitted: `start-game`. Events consumed: none.
 
 ## Later
 
-- Real Options (volume, rebinding, fullscreen), Level Select, Continue, Credits.
-- Quit (only in a desktop wrapper).
+- Real Options (volume, rebinding, fullscreen), Level Select, Continue.
+- Quit (only in a desktop wrapper). The Quit strip was replaced by Credits; a Quit item could return as a fifth strip in a wrapper build.
+- Full credits content: team names and any CC-BY assets that ship.
 - Parallax animation, animated lamp or flickering windows, character art for Zed.
 - Best time/result display on the wall (a third poster).
 
 ## Open questions
 
 - OQ-M1. Controls panel needs real bindings; none are defined in the GDD or `flow.md` (OQ-F5). Panel is built with "TBD" values until then. The Controls item is a second menu item and `flow.md` called it optional; this brief makes it required.
-- OQ-M2. Options and Quit are shown but inert in Tier 0 with a notice. Alternative: omit them (brief lists 4 strips, so kept). Confirm.
+- OQ-M2. Options is shown but inert in Tier 0 with a notice (Quit was replaced by Credits). Alternative: omit it (brief lists 4 strips, so kept). Confirm.
 - OQ-M3. Is audio in Tier 0? If yes, a "press any key" gate is needed for the browser autoplay rule (the tick and any music wait for first input).
 - OQ-M4. Title is live text or a logo image? Depends on `art-direction-agent`. Spec uses a 440x84 strip either way.
 - OQ-M5. Footer wording is keyboard-only per brief. Is a gamepad variant wanted?

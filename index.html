@@ -22,6 +22,8 @@
     import HudScene from './src/scenes/HudScene.js';
     import ResultScene from './src/scenes/ResultScene.js';
     import { waitForFonts } from './src/config/assetKeys.js';
+    import { installAudio } from './src/ui/audioSettings.js';
+    import { installDisplay } from './src/ui/displaySettings.js';
     // Wait for web fonts (2.5s cap) so the first canvas frame is not in a fallback font.
     await waitForFonts();
     const game = new Phaser.Game({
@@ -37,6 +39,8 @@
     });
     game.events.on('start-game', () => console.log('start-game event received'));
     window.__game = game;
+    installAudio(game);   // saved volume / mute apply from the title screen on
+    installDisplay(game); // saved text size / high contrast apply from the title screen on
   </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 // Options sub-screen, drawn as an overlay owned by MenuScene (same pattern as the Controls panel).
 // Logic/data lives in optionsData.js. Scene feeds it actions: up/down/left/right/confirm/back. No key rebinding (Controls is a separate panel).
+// Mouse: hover focuses a row, click cycles toggles/selects (click the < > ends to step back/forward), click or drag a slider track,
+// wheel scrolls the list, buttons and dialog buttons are clickable. Keyboard/pad still work the same.
 // Items are proposed placeholders pending owner approval (content/dialogue/options-menu.json).
 import { MENU_COLORS as C, MENU_CSS as CC, MENU_FONTS as MF } from '../config/assetKeys.js';
 import {
@@ -7,6 +9,7 @@ import {
 } from './optionsData.js';
 
 const VISIBLE = 10, ROW_H = 40, ROW_Y = 156, PX = 120, PW = 1040, LABEL_X = 190, VALUE_X = 1090;
+const TX = 700, TW = 260; // slider track: left x and width
 const BUTTONS = [
   { id: 'apply', label: 'APPLY', x: 330, w: 290 },
   { id: 'reset', label: 'RESET TO DEFAULTS', x: 640, w: 290 },
@@ -24,7 +27,7 @@ export default class OptionsPanel {
 
   open() {
     this.pending = clone(this.h.applied);
-    this.focus = 0; this.top = 0; this.dialog = null;
+    this.focus = 0; this.top = 0; this.dialog = null; this.dragIdx = null; this.valBounds = [];
     this.isOpen = true;
     this.build();
     this.render();
@@ -32,6 +35,7 @@ export default class OptionsPanel {
 
   close() {
     this.isOpen = false;
+    this.unbindMouse();
     if (this.root) { this.root.destroy(); this.root = null; }
     this.h.onClose();
   }
@@ -54,6 +58,85 @@ export default class OptionsPanel {
     this.body = s.add.container(0, 0);
     this.dlg = s.add.container(0, 0).setDepth(12);
     root.add([this.body, this.dlg]);
+    this.buildMouse(root);
+  }
+
+  // ---------- mouse (persistent zones, so a slider drag survives the per-change redraw) ----------
+  buildMouse(root) {
+    const s = this.scene, mk = (x, y, w, h) => s.add.zone(x, y, w, h).setInteractive({ useHandCursor: true });
+    this.rowZones = [];
+    for (let i = 0; i < VISIBLE; i++) {
+      const z = mk(PX + 40 + (PW - 120) / 2, ROW_Y + i * ROW_H - 2 + (ROW_H - 4) / 2, PW - 120, ROW_H - 4);
+      z.on('pointerover', () => this.hoverRow(i));
+      z.on('pointerdown', (p) => this.clickRow(i, p));
+      root.add(z); this.rowZones.push(z);
+    }
+    this.btnZones = BUTTONS.map((btn, k) => {
+      const z = mk(btn.x, 624, btn.w, 44);
+      z.on('pointerover', () => { if (this.dialog || this.dragIdx != null) return; this.focus = this.rowCount + k; this.render(); });
+      z.on('pointerdown', () => { if (this.dialog) return; this.focus = this.rowCount + k; this.confirm(); });
+      root.add(z); return z;
+    });
+    this.dlgZones = [0, 1, 2].map((i) => {
+      const z = mk(0, 390, 290, 48);
+      z.on('pointerover', () => { if (this.dialog && this.dialog.idx !== i) { this.dialog.idx = i; this.render(); } });
+      z.on('pointerdown', () => { if (!this.dialog) return; this.dialog.idx = i; this.actDialog('confirm'); });
+      root.add(z); return z;
+    });
+    this.onMove = (p) => { if (this.dragIdx != null && p.isDown) this.setSliderFromX(p.x); };
+    this.onUp = () => { this.dragIdx = null; };
+    this.onWheel = (p, over, dx, dy) => this.wheel(dy);
+    s.input.on('pointermove', this.onMove);
+    s.input.on('pointerup', this.onUp);
+    s.input.on('pointerupoutside', this.onUp);
+    s.input.on('wheel', this.onWheel);
+  }
+
+  unbindMouse() {
+    const i = this.scene && this.scene.input;
+    if (!i || !this.onMove) return;
+    i.off('pointermove', this.onMove); i.off('pointerup', this.onUp);
+    i.off('pointerupoutside', this.onUp); i.off('wheel', this.onWheel);
+    this.onMove = null;
+  }
+
+  hoverRow(i) {
+    if (this.dialog || this.dragIdx != null) return;
+    const idx = this.top + i;
+    if (!SETTINGS[idx] || this.focus === idx) return;
+    this.focus = idx; this.render();
+  }
+
+  clickRow(i, p) {
+    if (this.dialog) return;
+    const idx = this.top + i, def = SETTINGS[idx];
+    if (!def) return;
+    this.focus = idx;
+    if (def.control === 'slider') {
+      if (p.x >= TX - 16 && p.x <= TX + TW + 16) { this.dragIdx = idx; return this.setSliderFromX(p.x, true); }
+      const vb = this.valBounds[i];
+      if (vb && p.x >= vb.left && p.x <= vb.left + 28) return this.horizontal(-1);
+      if (vb && p.x >= vb.right - 28) return this.horizontal(1);
+      return this.render();
+    }
+    const vb = this.valBounds[i];
+    this.horizontal(vb && p.x >= vb.left && p.x <= vb.left + 28 ? -1 : 1); // < steps back, anywhere else steps forward
+  }
+
+  setSliderFromX(x, force) {
+    const def = SETTINGS[this.dragIdx];
+    if (!def) return;
+    const f = Math.min(1, Math.max(0, (x - TX) / TW));
+    const v = def.min + Math.round(((def.max - def.min) * f) / def.step) * def.step;
+    if (v !== this.pending[def.id] || force) { this.pending[def.id] = v; this.render(); }
+  }
+
+  wheel(dy) {
+    if (!this.isOpen || this.dialog || !dy) return;
+    const max = Math.max(0, this.rowCount - VISIBLE);
+    this.top = Math.min(max, Math.max(0, this.top + (dy > 0 ? 1 : -1)));
+    if (!this.inButtons) this.focus = Math.min(this.top + VISIBLE - 1, Math.max(this.top, this.focus));
+    this.render();
   }
 
   // ---------- drawing (rebuilt on every change; ~25 small objects) ----------
@@ -78,14 +161,26 @@ export default class OptionsPanel {
       const col = CC.nearBlack;
       if (sel) b.add(s.add.text(LABEL_X - 30, y + 2, '>', { fontFamily: MF.display, fontSize: '26px', color: CC.nearBlack }));
       b.add(s.add.text(LABEL_X + (sel ? 10 : 0), y + 4, def.label, { fontFamily: MF.mono, fontStyle: '700', fontSize: '24px', color: col }));
-      b.add(s.add.text(VALUE_X, y + 4, this.valueText(def, sel), { fontFamily: MF.mono, fontSize: '24px', color: sel ? CC.nearBlack : CC.brick }).setOrigin(1, 0));
+      const vt = s.add.text(VALUE_X, y + 4, this.valueText(def, sel), { fontFamily: MF.mono, fontSize: '24px', color: sel ? CC.nearBlack : CC.brick }).setOrigin(1, 0);
+      b.add(vt);
+      this.valBounds[i] = { left: VALUE_X - vt.width, right: VALUE_X };
+      if (def.control === 'slider') {
+        const f = (this.pending[def.id] - def.min) / (def.max - def.min);
+        b.add(s.add.rectangle(TX + TW / 2, y + 17, TW, 8, C.nearBlack, 0.25));
+        b.add(s.add.rectangle(TX, y + 17, TW * f, 8, C.forest).setOrigin(0, 0.5));
+        b.add(s.add.rectangle(TX + TW * f, y + 17, 12, 26, sel ? C.nearBlack : C.forest));
+      }
     }
 
     BUTTONS.forEach((btn, k) => {
       const sel = this.inButtons && this.focus - this.rowCount === k && !this.dialog;
       b.add(s.add.rectangle(btn.x, 624, btn.w, 44, sel ? C.mustard : C.forest));
-      b.add(s.add.text(btn.x, 624, (sel ? '> ' : '') + btn.label, { fontFamily: MF.display, fontSize: '26px', color: sel ? CC.nearBlack : CC.cream }).setOrigin(0.5));
+      const lt = s.add.text(btn.x, 624, (sel ? '> ' : '') + btn.label, { fontFamily: MF.display, fontSize: '26px', color: sel ? CC.nearBlack : CC.cream }).setOrigin(0.5);
+      if (lt.width > btn.w - 16) lt.setScale((btn.w - 16) / lt.width); // bigger Text size: keep the label inside its button
+      b.add(lt);
     });
+    this.rowZones.forEach((z, i) => { z.input.enabled = !this.dialog && !!SETTINGS[this.top + i]; });
+    this.btnZones.forEach((z) => { z.input.enabled = !this.dialog; });
     this.renderDialog();
   }
 
@@ -97,6 +192,8 @@ export default class OptionsPanel {
   renderDialog() {
     const s = this.scene, d = this.dlg;
     d.removeAll(true);
+    const dn = this.dialog ? this.dialog.buttons.length : 0, dxs = dn === 2 ? [480, 800] : [330, 640, 950];
+    this.dlgZones.forEach((z, i) => { z.input.enabled = i < dn; if (i < dn) z.setPosition(dxs[i], 390); });
     if (!this.dialog) return;
     const dg = this.dialog;
     d.add(s.add.rectangle(0, 0, 1280, 720, C.nearBlack, 0.6).setOrigin(0).setInteractive());

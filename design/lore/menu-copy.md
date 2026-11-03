@@ -11,7 +11,7 @@ Approved by the Critic against `design/lore/canon.md`. Wording only. Layout, col
 | menu.opt.fight | FIGHT |
 | menu.opt.controls | CONTROLS |
 | menu.opt.options | OPTIONS |
-| menu.opt.quit | QUIT |
+| menu.opt.credits | CREDITS |
 | menu.footer | W/S to choose  /  Enter to go |
 
 ## Background posters

@@ -23,7 +23,7 @@ export default class HudScene extends Phaser.Scene {
     this.hpText = txt(400, 52, '', 20, 0, FONTS.body);
     this.waveText = txt(640, 20, '', 32, 0.5);
     this.leftText = txt(640, 60, '', 22, 0.5, FONTS.body);
-    this.timerText = txt(1248, 20, mmss(this.level.timeLimitSec), 40, 1);
+    this.timerText = txt(1248, 20, mmss(this.level.timeLimitSec), 40, 1).setVisible(this.registry.get('options')?.timerVisibility !== 'Hidden'); // Options > TIMER (hiding does not stop the clock)
     this.scoreText = txt(1248, 68, 'SCORE 0', 26, 1);
     this.boostText = txt(1248, 100, '', 22, 1, FONTS.body).setVisible(false);   // rhythm: parry streak + x2 boost
     this.boostBar = this.add.graphics();

@@ -1,6 +1,7 @@
 // ResultScene: win / lose / pause overlay over the frozen ArenaScene. Copy follows design/lore/canon.md
 // (encouraging, never gloating). Reasons use contract names: 'cleared' | 'ko' | 'timeout'.
 import { COLORS, CSS, FONTS } from '../config/assetKeys.js';
+import { createMuteButton } from '../ui/muteButton.js';
 
 const mmss = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 
@@ -45,7 +46,7 @@ export default class ResultScene extends Phaser.Scene {
         this.add.text(300, 330 + i * 44, k, { fontFamily: FONTS.body, fontSize: '24px', color: CSS.cream }).setOrigin(0, 0.5);
         this.add.text(980, 330 + i * 44, v, { fontFamily: FONTS.button, fontSize: '28px', color: CSS.mustard }).setOrigin(1, 0.5);
       });
-      if (!win) T(640, 596, d.reason === 'timeout' ? 'Press the attack, clear faster.' : 'Try blocking or parrying when the wave swarms.', 22, FONTS.body, CSS.sand);
+      if (!win) T(640, 588, d.reason === 'timeout' ? 'Press the attack, clear faster.' : 'Try blocking or parrying when the wave swarms.', 22, FONTS.body, CSS.sand);
       const first = win ? (last ? ['PLAY AGAIN', () => this._goToLevel(0)] : ['NEXT LEVEL', () => this._goToLevel(d.nextLevelIndex)])
         : ['TRY AGAIN', () => this._restart()];
       items = [first, ['MAIN MENU', () => this._menu()]];
@@ -66,6 +67,7 @@ export default class ResultScene extends Phaser.Scene {
     pk(['LEFT', 'A'], () => step(-1)); pk(['RIGHT', 'D'], () => step(1));
     pk(['ENTER', 'SPACE'], () => this._activate(this.focus));
     if (mode === 'pause') pk(['ESC', 'P', 'BACKSPACE'], () => this._back());
+    if (mode === 'pause') { this.mute = createMuteButton(this, { canToggle: () => !this.confirming, depth: 20 }); pk(['Q'], () => this.mute.toggle()); } // pause screen only
     this.events.once('shutdown', () => kb.removeAllListeners());
     this.padPrev = {}; this.padCool = 0;
   }
@@ -91,6 +93,7 @@ export default class ResultScene extends Phaser.Scene {
       const x = horiz ? 640 - (items.length - 1) * gap / 2 + i * gap : 640, y = y0 + i * dy;
       const bg = this.add.rectangle(x, y, w, 60, COLORS.mustard).setStrokeStyle(4, COLORS.darkBrown).setInteractive({ useHandCursor: true });
       const t = this.add.text(x, y, label, { fontFamily: FONTS.button, fontSize: '30px', color: CSS.darkBrown }).setOrigin(0.5);
+      if (t.width > w - 16) t.setScale((w - 16) / t.width); // bigger Text size: keep the label inside its button
       bg.on('pointerover', () => this._focus(i)); bg.on('pointerdown', () => { this._focus(i); this._activate(i); });
       this.btnObjs.push(bg, t);
       return { bg, t, fn };

@@ -7,6 +7,9 @@ import showStoryCard from './StoryCard.js';
 import { NOTICE_MS, loadSettings } from './optionsData.js';
 import { scrollOffset } from './parallaxData.js';
 import { loadLevelContent } from '../levels/levelData.js';
+import { installAudio, musicLevel } from './audioSettings.js';
+import { installDisplay } from './displaySettings.js';
+import { createMuteButton } from './muteButton.js';
 
 const W = 1280, H = 720;
 const STRIP_W = 360, STRIP_H = 64, STRIP_CX = 396, SEL_DX = 10, TWEEN_MS = 100;
@@ -20,14 +23,21 @@ const ITEMS = [
   { id: 'fight', label: 'FIGHT', y: 270, tilt: -2, art: 'menu.strip.a', idle: 0xb98a22, sel: 0xf5c640, text: CC.nearBlack },
   { id: 'controls', label: 'CONTROLS', y: 352, tilt: 1.5, art: 'menu.strip.b', idle: 0xbdb292, sel: 0xf6eed8, text: CC.nearBlack },
   { id: 'options', label: 'OPTIONS', y: 434, tilt: -1, art: 'menu.strip.c', idle: C.forest, sel: 0x4b8f5c, text: CC.cream },
-  { id: 'quit', label: 'QUIT', y: 516, tilt: 2, art: 'menu.strip.b', idle: C.brown, sel: 0x95683f, text: CC.cream },
+  { id: 'credits', label: 'CREDITS', y: 516, tilt: 2, art: 'menu.strip.b', idle: C.brown, sel: 0x95683f, text: CC.cream },
 ];
 
 // Key table from GameDesignDocument/Rebellion menu desgin.docx ("Controls Menu elements"): [action, primary, alternate].
 const BINDINGS = [
-  ['Move', 'A / D', 'Left / Right'], ['Jump', 'W / Space', 'Up'], ['Crouch', 'S', 'Down'],
+  ['Move', 'A / D', 'Left / Right'], ['Jump', 'W / Space', 'Up'],
   ['Light attack', 'J', 'Z'], ['Heavy attack', 'K', 'X'], ['Rage special', 'L', '-'],
-  ['Pick up', 'P', 'N'], ['Parry', 'T', 'M'], ['Block', 'I', 'V'],
+  ['Parry', 'T', 'M'], ['Block', 'I', 'V'],
+];
+
+// Credits screen lines: [heading, text]. Add names here as the team and asset list grows (design/audio/CREDITS.md).
+const CREDITS = [
+  ['GAME', 'The Rebellion: Fists of the Fallen City'],
+  ['MUSIC', '"Funked Up" by Joth (CC0)'],
+  ['ENGINE', 'Phaser 3'],
 ];
 
 export default class MenuScene extends Phaser.Scene {
@@ -42,6 +52,7 @@ export default class MenuScene extends Phaser.Scene {
   create() {
     this.started = false;
     this.panelOpen = false;
+    this.creditsOpen = false;
     this.toast = null;
     this.focus = 0;
     this.padCool = 0;
@@ -56,7 +67,9 @@ export default class MenuScene extends Phaser.Scene {
     this.applyFocus(true);
     this.buildFooter();
     this.buildPanel();
+    this.buildCredits();
     this.buildOptions();
+    this.buildMuteButton();
     this.bindInput();
     this.startMusic();
   }
@@ -69,7 +82,12 @@ export default class MenuScene extends Phaser.Scene {
     this.events.once('shutdown', () => { this.music.stop(); this.music.destroy(); this.music = null; });
   }
 
-  musicVolume() { return (this.settings?.musicVolume ?? 70) / 100; }
+  musicVolume() { return musicLevel(this.settings); }
+
+  // ---------- mute button (shared with the pause screen: muteButton.js) ----------
+  buildMuteButton() { this.mute = createMuteButton(this, { canToggle: () => !this.started }); }
+
+  toggleMute() { if (this.mute) this.mute.toggle(); }
 
   has(key) { return this.textures.exists(key); }
 
@@ -117,7 +135,7 @@ export default class MenuScene extends Phaser.Scene {
       const g = this.add.graphics();
       c.add(g);
       const R = (rx, ry, rw, rh, col) => g.fillStyle(col, 1).fillRect(rx - 150, ry - 210, rw, rh);
-      const T = (tx, ty, str, style) => c.add(this.add.text(tx - 150, ty - 210, str, style).setOrigin(0.5));
+      const T = (tx, ty, str, style) => { const t = this.add.text(tx - 150, ty - 210, str, style).setOrigin(0.5); t._basePx = null; /* poster art: fixed size, not affected by Text size */ return c.add(t); };
       draw(R, T, g);
       return c;
     };
@@ -270,6 +288,40 @@ export default class MenuScene extends Phaser.Scene {
     this.tweens.add({ targets: this.panel, alpha: 0, duration: 100, onComplete: () => this.panel.setVisible(false) });
   }
 
+  // ---------- credits screen ----------
+  buildCredits() {
+    const p = this.credits = this.add.container(0, 0).setDepth(10).setVisible(false).setAlpha(0);
+    const dim = this.add.rectangle(0, 0, W, H, C.nearBlack, 0.6).setOrigin(0).setInteractive();
+    dim.on('pointerdown', () => this.closeCredits());
+    const bg = this.has('menu.strip.a')
+      ? this.add.image(640, 360, 'menu.strip.a').setDisplaySize(720, 420).setTint(C.cream)
+      : this.add.rectangle(640, 360, 720, 420, C.cream);
+    const blocker = this.add.zone(640, 360, 720, 420).setInteractive(); // clicks inside the panel do not close it
+    p.add([dim, bg, blocker]);
+    p.add(this.add.text(640, 190, 'CREDITS', { fontFamily: MF.display, fontSize: '40px', color: CC.nearBlack }).setOrigin(0.5, 0));
+    const head = { fontFamily: MF.mono, fontSize: '18px', color: CC.brown };
+    CREDITS.forEach(([h, line], i) => {
+      const y = 262 + i * 64;
+      p.add(this.add.text(640, y, h, head).setOrigin(0.5, 0));
+      const t = this.add.text(640, y + 24, line, { fontFamily: MF.mono, fontStyle: '700', fontSize: '22px', color: CC.nearBlack }).setOrigin(0.5, 0);
+      if (t.width > 640) t.setScale(640 / t.width);
+      p.add(t);
+    });
+    p.add(this.add.text(960, 244, 'Esc: close', head).setOrigin(1, 0));
+  }
+
+  openCredits() {
+    this.creditsOpen = true;
+    this.credits.setVisible(true);
+    this.tweens.add({ targets: this.credits, alpha: 1, duration: 100 });
+  }
+
+  closeCredits() {
+    if (!this.creditsOpen) return;
+    this.creditsOpen = false;
+    this.tweens.add({ targets: this.credits, alpha: 0, duration: 100, onComplete: () => this.credits.setVisible(false) });
+  }
+
   // ---------- options ----------
   buildOptions() {
     let storage = null;
@@ -277,12 +329,16 @@ export default class MenuScene extends Phaser.Scene {
     const mq = (q) => { try { return window.matchMedia(q).matches; } catch (e) { return false; } };
     const env = { reducedMotion: mq('(prefers-reduced-motion: reduce)'), highContrast: mq('(prefers-contrast: more)') };
     this.settings = loadSettings(storage, env);
-    this.registry.set('options', this.settings); // other scenes may read; nothing consumes it yet
+    this.registry.set('options', this.settings); // read by ResultScene (music) and audioSettings
+    installDisplay(this.game, this.settings); // text size + high contrast, for every scene
+    installAudio(this.game, this.settings); // master / SFX volume, mute-when-away and the saved mute flag, for every scene
     this.options = new OptionsPanel({
       scene: this, applied: this.settings, env, storage,
       toast: (m) => this.showToast(m, 640, 686),
       onApplied: (v) => {
         this.settings = v; this.registry.set('options', v);
+        installDisplay(this.game, v); // restyles text on screen now
+        installAudio(this.game, v); // re-applies master volume, SFX scaling, mute-when-away
         if (this.music) this.music.setVolume(this.musicVolume());
         try { if (this.scale.isFullscreen !== v.fullscreen) (v.fullscreen ? this.scale.startFullscreen() : this.scale.stopFullscreen()); } catch (e) { /* needs user gesture */ }
       },
@@ -291,7 +347,7 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   // ---------- input ----------
-  blocked() { return this.started || this.panelOpen || this.options.isOpen; }
+  blocked() { return this.started || this.panelOpen || this.creditsOpen || this.options.isOpen; }
 
   bindInput() {
     const kb = this.input.keyboard;
@@ -304,12 +360,13 @@ export default class MenuScene extends Phaser.Scene {
     on(['RIGHT', 'D'], () => this.options.act('right'));
     on(['ENTER', 'SPACE'], () => this.confirm());
     on(['ESC', 'BACKSPACE'], () => this.back());
+    on(['Q'], () => this.toggleMute()); // Q = quiet: not bound to any gameplay key
     this.events.once('shutdown', () => kb.removeAllListeners());
   }
 
   dir(name, d) { if (this.options.isOpen) this.options.act(name); else this.move(d); }
 
-  back() { if (this.options.isOpen) this.options.act('back'); else this.closePanel(); }
+  back() { if (this.options.isOpen) this.options.act('back'); else { this.closePanel(); this.closeCredits(); } }
 
   update(time) {
     const still = !!(this.settings && this.settings.reducedMotion);
@@ -337,12 +394,13 @@ export default class MenuScene extends Phaser.Scene {
     if (this.started) return;
     if (this.options.isOpen) return this.options.act('confirm');
     if (this.panelOpen) { this.closePanel(); return; } // Confirm also closes the panel
+    if (this.creditsOpen) { this.closeCredits(); return; }
     this.hideToast();
     switch (ITEMS[this.focus].id) {
       case 'fight': return this.startGame();
       case 'controls': return this.openPanel();
       case 'options': return this.options.open();
-      case 'quit': return this.showToast("Can't quit a browser game. Close the tab.");
+      case 'credits': return this.openCredits();
     }
   }
 

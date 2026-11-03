@@ -53,6 +53,8 @@ export const MENU_ASSETS = {
   'menu.strip.c': { path: 'assets/menu/strip-torn-c.svg', w: 480, h: 96 },
   'menu.poster.heroes': { path: 'assets/menu/poster-local-heroes.svg', w: 300, h: 420 },
   'menu.poster.curfew': { path: 'assets/menu/poster-curfew.svg', w: 300, h: 420 },
+  'menu.icon.sound-on': { path: 'assets/ui/icon-sound-on.svg', w: 64, h: 64 },
+  'menu.icon.sound-off': { path: 'assets/ui/icon-sound-off.svg', w: 64, h: 64 },
 };
 export const MENU_COLORS = {
   brick: 0x9c3b2e, brickDark: 0x7a2f25, mustard: 0xe1a92b, forest: 0x2f5d3a,
