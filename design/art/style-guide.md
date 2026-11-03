@@ -59,7 +59,7 @@ Combat signal colours (reserved, never used for decoration):
 |---|---|---|
 | Telegraph Red | #FF3B30 | Enemy attack warning only |
 | Overload Violet | #8E5BFF | Enemy phase-2 power glow (Calder, Voss drones, MegaDrone, Varr cracks); owner approved, replaces the GDD's red glow |
-| Overload Ice | #BFF4FF | Phase-2 core glow (Holt, Varr Rust Collapse charge) |
+| Overload Ice | #BFF4FF | Phase-2 core glow (Varr Rust Collapse charge) |
 | Hit White | #FFFFFF | Hit flash |
 | Spark Cream | #FFF6D6 | Spark core |
 | Low Health | #D9822B then #FF3B30 | Bar at 50 percent and 25 percent |

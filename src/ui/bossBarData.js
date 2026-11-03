@@ -13,6 +13,8 @@ export const BOSS_PROFILES = {
   'rust-brick-dugan': { name: 'BRICK DUGAN', epithet: 'THE HUMAN BATTERING RAM', maxHpFallback: 300, rageThreshold: 0.30, readout: 'hp' },
   // Level 2 mini-boss. No enrage phase yet (his moves are stand-ins), so the threshold is 0.
   'rust-railgun-royce': { name: '"RAILGUN" ROYCE', epithet: 'THE TRANSIT ENFORCER', maxHpFallback: 160, rageThreshold: 0, readout: 'hp' },
+  // Level 3 mini-boss (stand-in body for now, no enrage phase).
+  'rust-crusher-kane': { name: '"CRUSHER" KANE', epithet: 'THE HAMMER OF THE FACTORY', maxHpFallback: 220, rageThreshold: 0, readout: 'hp' },
 };
 
 export const BAR = {

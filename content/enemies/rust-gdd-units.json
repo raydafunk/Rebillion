@@ -233,8 +233,8 @@
     "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Halden Varr, \"The Architect of Rust\", as the Main Boss (Corporate Tower command chamber, theme: authority, mastery, hybrid combat) with two phases and named moves, but no stats, numbers or timings. The moves and the 30 percent HP phase trigger are canon; every stat and wind-up below is proposed. GDD wording clashes with the tone rules in places (Rust described as executioners, \"brutal\"); this entry keeps Varr cold and official, and knocks Zed down rather than harming him lethally. Also: the GDD stance name \"Antirush\" is probably a typo and is recorded here as the anti-rush-down stance. FINAL BALANCE (tuned against the combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 320 HP is about 18 finishers and the top of the curve (grunt 30, Breaker 90, Fang 140, Architect 160); 18 damage on the fast Authority Strike keeps Zed alive for at least 5 hits; 400 ms is the shortest boss wind-up, justified by the GDD \"fast startup\", and stays above the 300 ms floor. Phase 2 (30 percent HP): moveSpeed x1.15, recoverMs x0.8, damage unchanged, so \"relentless\" comes from tempo and drones, not one-shots. Numbers final.",
     "sources": [
       "the-rebellion#11",
-      "the-rebellion#19",
-      "the-rebellion#20",
+      "the-rebellion#16",
+      "the-rebellion#17",
       "hit-feedback-spec#4"
     ],
     "name": "Overseer Halden Varr",
@@ -479,7 +479,7 @@
     "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Silas Wren, \"The Whisper on the Rooftops\" (theme: mobility, stealth, vertical control; arena: rooftop platforms, zip lines and breakable ledges). Phase 1 \"Silent Hunter\": GrappleDash Barrage, Skyline Snare, Silent Step, Rooftop Execution. Phase 2 \"Ghost of the Skyline\" at 50 percent HP: Grapple Clone, Shadow Pulse, Vanish Storm (super). Combat contract support needed: platform and vertical movement with attacks from above or behind, restraint traps, a semi-invisible state, a guaranteed-critical flag (no critical hit exists in the contract), afterimages that perform fake attacks, and multiple silhouettes. Tone note: the GDD move name \"Rooftop Execution\" is kept as canon but should be shown as a dive attack that knocks Zed down, never a lethal blow; the owner may prefer to rename it. All Overseers are district bosses, strategic masterminds and Varr's inner circle, with a tactical, oppressive combat style and unique mechanics (GDD role line). Moves, phases, phase trigger and arena are canon; all numbers and timings are proposed. Zed is knocked down and pushed back, never put down for good. FINAL BALANCE (same method as Varr and the other tier 3 items; combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms as the anchor; every telegraph at least 300 ms; below Varr at 320 HP): 180 HP (the most fragile, the fastest at 120 move speed), 14 damage, 400 ms wind-up for the \"very fast\" grapple dash, kept above the 300 ms floor; the dive uses 600 ms so grounded players can read it. Numbers final.",
     "sources": [
       "the-rebellion#17",
-      "the-rebellion#18",
+      "the-story-campaign#1",
       "hit-feedback-spec#4"
     ],
     "name": "Overseer Silas Wren",
@@ -544,85 +544,6 @@
         "canon": true,
         "source": "the-rebellion#18",
         "gdd": "Super: disappears, multiple silhouettes attack from all sides, real Silas finishes with a heavy strike."
-      }
-    ],
-    "proposedFields": [
-      "stats",
-      "telegraph timings",
-      "look"
-    ]
-  },
-  {
-    "id": "rust-overseer-holt",
-    "status": "canon",
-    "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). The GDD names Overseer Dr. Maren Holt, \"The Voice of Compliance\" (theme: chemicals, toxins, psychological control; arena: undercity lab with gas vents, toxin pools and fog zones). Phase 1 \"Chemical Control\": Fear Gas, Obedience Mist, Toxin Burst, Sedative Shot. Phase 2 \"Doctor's Orders\" at 40 percent HP: NeuroFog, Corrosive Wave, Compliance Protocol (super). Combat contract support needed: control distortion and reversal on Zed, screen blur and reduced vision, movement slow and reduced dodge distance, lingering and spreading area damage zones, an attack-speed debuff, stealth attacks, damage over time, and damage that also hits Holt herself. Tone note: these are comic-book gas effects (blur, slow, reversed controls), not graphic harm; keep them clearly non-lethal. All Overseers are district bosses, strategic masterminds and Varr's inner circle, with a tactical, oppressive combat style and unique mechanics (GDD role line). Moves, phases, phase trigger and arena are canon; all numbers and timings are proposed. Zed is knocked down and pushed back, never put down for good. FINAL BALANCE (same method as Varr and the other tier 3 items; combat contract: Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms as the anchor; every telegraph at least 300 ms; below Varr at 320 HP): 190 HP, 9 damage (the lowest, since her pressure is debuffs and zones), 600 ms wind-up for the vial throw. Numbers final.",
-    "sources": [
-      "the-rebellion#18",
-      "the-rebellion#19",
-      "hit-feedback-spec#4"
-    ],
-    "name": "Overseer Dr. Maren Holt",
-    "role": "boss",
-    "tier": 3,
-    "description": "A Rust Overseer of the undercity lab in a slate lab coat over light plating, a rebreather and a cyan visor, a belt of chemical vials and a dart launcher on one forearm. Cold, symmetrical and official; her suit glows with pressure in the second phase. Purple and green fog marks her gas.",
-    "behaviour": "Phase 1, \"Chemical Control\": Fear Gas (releases purple fog that distorts Zed's controls and blurs the screen, forcing careful movement); Obedience Mist (green fog that slows movement, reduces dodge distance and makes combos harder); Toxin Burst (throws chemical vials that create lingering area damage zones, controlling space); Sedative Shot (fires a dart that reduces Zed's attack speed, used to punish aggressive players). Phase 2, \"Doctor's Orders\", at 40 percent HP (suit glows with chemical pressure): NeuroFog (the whole arena fills with fog, Zed's vision is reduced, Holt becomes harder to track and uses stealth attacks); Corrosive Wave (throws a large vial that explodes into spreading acid that damages both Zed and Holt, forcing repositioning); Compliance Protocol super move (releases a massive chemical cloud, Zed's controls reverse, damage over time, and Holt becomes extremely aggressive). Effects ease off when Zed clears the fog; Zed is knocked down and pushed back, never put down for good.",
-    "telegraph": "Fear Gas: 700 ms vent hiss and purple puff. Obedience Mist: 700 ms green puff. Toxin Burst: 600 ms, red ground circle where the vial lands. Sedative Shot: 450 ms, a thin line to Zed. NeuroFog: 900 ms, vents glow before the fog rolls in. Corrosive Wave: 700 ms, a red spreading-radius preview. Compliance Protocol: 1500 ms charge, a huge cloud outline and a \"controls reversed\" icon on the HUD before it reaches Zed. All keep the red telegraph icon scaled 1.4 times.",
-    "weakness": "Stay out of the lingering zones and clear the fog by moving upwind of the vents. Do not over-commit while slowed or sedated; block or dodge the dart. Use Corrosive Wave against Holt by herding her into the acid, and learn the reversed controls during Compliance Protocol.",
-    "spriteKey": "rust.overseer-holt",
-    "stats": {
-      "maxHp": 190,
-      "moveSpeed": 65,
-      "attackRange": 260,
-      "telegraphMs": 600,
-      "attackMs": 260,
-      "recoverMs": 1000,
-      "damage": 9,
-      "knockback": 150,
-      "hitstun": 200
-    },
-    "look": "Slate lab coat over light plating, rebreather and cyan visor, belt of chemical vials, dart launcher on one forearm; purple and green fog marks her gas.",
-    "moves": [
-      {
-        "name": "Fear Gas",
-        "canon": true,
-        "source": "the-rebellion#18",
-        "gdd": "Purple fog distorts controls and blurs the screen."
-      },
-      {
-        "name": "Obedience Mist",
-        "canon": true,
-        "source": "the-rebellion#18",
-        "gdd": "Green fog slows movement, reduces dodge distance, makes combos harder."
-      },
-      {
-        "name": "Toxin Burst",
-        "canon": true,
-        "source": "the-rebellion#18",
-        "gdd": "Chemical vials create lingering AoE damage zones."
-      },
-      {
-        "name": "Sedative Shot",
-        "canon": true,
-        "source": "the-rebellion#18",
-        "gdd": "Dart reduces player attack speed, punishes aggressive players."
-      },
-      {
-        "name": "NeuroFog",
-        "canon": true,
-        "source": "the-rebellion#19",
-        "gdd": "Phase 2 (40 percent HP; suit glows): whole arena fogs, vision reduced, Holt harder to track, stealth attacks."
-      },
-      {
-        "name": "Corrosive Wave",
-        "canon": true,
-        "source": "the-rebellion#19",
-        "gdd": "Large vial explodes into spreading acid that damages both player and Holt."
-      },
-      {
-        "name": "Compliance Protocol",
-        "canon": true,
-        "source": "the-rebellion#19",
-        "gdd": "Super: massive chemical cloud, controls reverse, damage over time, Holt extremely aggressive."
       }
     ],
     "proposedFields": [
@@ -764,7 +685,7 @@
     "status": "canon",
     "gddGap": "CANON/PROPOSED SPLIT: unit name, role line, lore, arena, phase triggers and named moves are canon (see moves[].canon and the cited chunks). Stats, all telegraph timings, tier placement and the visual look are proposed because the GDD gives no numbers or visuals (see proposedFields). Existence and laser bullet-hell patterns are canon (#20).",
     "sources": [
-      "the-rebellion#20"
+      "the-rebellion#17"
     ],
     "name": "Rust Elite Drone",
     "role": "support",
@@ -799,6 +720,113 @@
       "telegraph timings",
       "look",
       "tier 3"
+    ]
+  },
+  {
+    "id": "rust-specialist",
+    "status": "proposed",
+    "gddGap": "The GDD defines Rust Specialists, \"The Copper Fangs\": elite soldiers with electrified gauntlets, grappling hooks and tactical shields, conditioned to remove fear and hesitation (the-rebellion#13). The only stat block so far is rust-copper-fang, a tier-3 mini-boss. This is the rank-and-file Specialist that fills Level 4 waves: the same copper gauntlets and strapped shield without the hook, so waves can field Copper Fangs without a boss-sized fight. Stats, timings and look are proposed. Tuned against the combat contract (Zed light 6-7, heavy 12, finisher 18 damage; grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 40 HP is about 6 light hits, 10 damage, 550 ms wind-up. Engine note: plays as a grunt on a copper-tinted skin (see src/enemies/enemyKinds.js).",
+    "sources": [
+      "the-rebellion#13",
+      "the-rebellion#14",
+      "hit-feedback-spec#4"
+    ],
+    "name": "Rust Specialist - The Copper Fangs",
+    "role": "elite",
+    "tier": 2,
+    "description": "A Rust Specialist of the Copper Fangs in a sharp slate uniform with copper-toned gauntlets and a tactical shield strapped to one forearm. Cold, symmetrical and boxy, with a narrow cyan visor. Conditioned to hold the line without hesitation, but a rank below the Copper Fang commander.",
+    "behaviour": "Advances at a steady pace behind the shield and closes the lane gap first. Throws Fang Jab (a very fast electrified gauntlet jab) to interrupt combos, and answers a dodge with Copper Cross. Takes an attacker slot before every move. Uses Shield Bash to shove Zed back when he gets too close.",
+    "telegraph": "550 ms wind-up: the gauntlet crackles copper, the red telegraph icon pops above the head and the outline thickens. Shield Bash shows a short red ground bar in front of the shield. Then a quick 240 ms strike and a 800 ms recovery.",
+    "weakness": "Decent health but a slow recovery. Dodge the jab, wait for the shield to drop after the bash, then punish with a full combo. Heavy attacks and grabs get around the shield.",
+    "spriteKey": "rust.specialist",
+    "stats": {
+      "maxHp": 40,
+      "moveSpeed": 95,
+      "attackRange": 75,
+      "telegraphMs": 550,
+      "attackMs": 240,
+      "recoverMs": 800,
+      "damage": 10,
+      "knockback": 240,
+      "hitstun": 240
+    },
+    "look": "Sharp slate uniform, copper-toned gauntlets and a strapped tactical shield, narrow cyan visor; boxy and symmetrical.",
+    "moves": [
+      {
+        "name": "Fang Jab",
+        "canon": true,
+        "source": "the-rebellion#13",
+        "gdd": "Lightning-quick electrified gauntlet jab, very fast startup, brief stun, interrupts combos."
+      },
+      {
+        "name": "Copper Cross",
+        "canon": true,
+        "source": "the-rebellion#13",
+        "gdd": "Cross-punch with crackling electricity, medium damage, stagger, used after dodging."
+      },
+      {
+        "name": "Shield Bash",
+        "canon": true,
+        "source": "the-rebellion#13",
+        "gdd": "Forward shove with the tactical shield; pushes Zed back and breaks guard."
+      }
+    ],
+    "proposedFields": [
+      "stats",
+      "telegraph timings",
+      "look",
+      "tier 2",
+      "role elite"
+    ]
+  },
+  {
+    "id": "rust-ranger",
+    "status": "proposed",
+    "gddGap": "The GDD names Rust Rangers as the ranged harassers. The canon Rust Watcher already fills the lean taser-rifle ranged slot, so this is the rank-and-file Ranger that Level 4 fields in groups: lighter and quicker than the Watcher, a fast harassing bolt with a short taser rifle, less health. Stats, timings and look are proposed. Tuned against the combat contract (grunt 30 HP / 8 damage / 450 ms telegraph as the Tier 0 anchor; every telegraph at least 300 ms): 26 HP, 6 damage, 600 ms wind-up. Engine note: plays as a grunt on a Ranger skin (see src/enemies/enemyKinds.js).",
+    "sources": [
+      "the-rebellion#13",
+      "hit-feedback-spec#4"
+    ],
+    "name": "Rust Ranger",
+    "role": "ranged",
+    "tier": 1,
+    "description": "A lean Rust Ranger in a slate uniform with a short gunmetal taser rifle and a wide cyan tracking visor. Symmetrical and boxy, but the lightest of the Rust units, built to harass at range and fall back.",
+    "behaviour": "Stays at range, circling along the far side of the arena and following Zed with its visor. Fires a quick taser bolt along the lane when it holds an attacker slot, then relocates. Backs off when Zed closes in and only swings the rifle butt when cornered. Appears in groups to keep pressure on the lane.",
+    "telegraph": "600 ms wind-up: rifle raised, a thin cyan line draws along the floor toward Zed and the red telegraph icon pops above the head. The bolt is slow enough to sidestep.",
+    "weakness": "Very low health. Sidestep out of the lane to dodge the bolt, then close the gap; a single combo takes one down. Worst in groups, so clear them while they are still arriving.",
+    "spriteKey": "rust.ranger",
+    "stats": {
+      "maxHp": 26,
+      "moveSpeed": 115,
+      "attackRange": 280,
+      "telegraphMs": 600,
+      "attackMs": 220,
+      "recoverMs": 1100,
+      "damage": 6,
+      "knockback": 160,
+      "hitstun": 220
+    },
+    "look": "Lean slate uniform, short gunmetal taser rifle, wide cyan tracking visor; the lightest boxy build in the Rust.",
+    "moves": [
+      {
+        "name": "Taser Bolt",
+        "canon": false,
+        "source": "the-rebellion#13",
+        "gdd": "Proposed quick electric bolt in the Ranger role."
+      },
+      {
+        "name": "Rifle Butt",
+        "canon": false,
+        "source": "the-rebellion#13",
+        "gdd": "Proposed close-range swing when cornered."
+      }
+    ],
+    "proposedFields": [
+      "stats",
+      "telegraph timings",
+      "look",
+      "tier 1",
+      "moves"
     ]
   }
 ]

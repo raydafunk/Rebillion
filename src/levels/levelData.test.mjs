@@ -34,7 +34,9 @@ for (const l of levels) {
   });
 }
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, spawnPattern: 'diagonal' }] }).length, 'unknown spawnPattern rejected');
-assert.equal(levels[7].waves.at(-1).hpMult, 8, 'the final boss wave is tough');
+assert.equal(levels[7].waves.length, 6, 'Level 8 has 6 waves');
+assert.equal(levels[7].waves.at(-1).leader.hpMult, 8, 'the final boss (Varr, leader of wave 6) is tough');
+assert.equal(levels[7].waves[4].mix.filter((k) => k.startsWith('rust-overseer-')).length, 3, 'wave 5 fields all three Overseers (Voss, Calder, Wren; Holt was cut)');
 assert.ok(levelErrors({ id: 'x', timeLimitSec: 10, waves: [{ count: 1, maxAlive: 1, spawnIntervalMs: 500, startDelayMs: 0, hpMult: 0.5 }] }).length, 'hpMult must be >= 1');
 // Level 2 (Mustard Row): same length and arc as Level 1 (5 waves, 210 s, Breakers from wave 3, mini-boss wave 5) but harder:
 // bigger waves, Watchers, Type 2 Breakers (Rust-BreakerType2 art), bigger breathers, and a bigger finale around "Railgun" Royce.

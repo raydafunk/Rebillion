@@ -1,5 +1,5 @@
 # Content brief: enemies
-_Generated 2026-10-28T13:10:40.053Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
+_Generated 2026-11-03T15:17:48.969Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
 
 **Writer agent:** enemy-designer-agent  |  **Output dir:** `content/enemies/`  |  **Produces:** Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.
 
@@ -79,11 +79,12 @@ Example:
 - `rust-overseer-voss` Overseer Kade Voss (content/enemies/rust-gdd-units.json)
 - `rust-overseer-calder` Overseer Rhea Calder (content/enemies/rust-gdd-units.json)
 - `rust-overseer-wren` Overseer Silas Wren (content/enemies/rust-gdd-units.json)
-- `rust-overseer-holt` Overseer Dr. Maren Holt (content/enemies/rust-gdd-units.json)
 - `rust-voss-drone` Rust Surveillance Drone (content/enemies/rust-gdd-units.json)
 - `rust-voss-megadrone` Rust MegaDrone (content/enemies/rust-gdd-units.json)
 - `rust-hologram-decoy` Rust Hologram Decoy (content/enemies/rust-gdd-units.json)
 - `rust-elite-drone` Rust Elite Drone (content/enemies/rust-gdd-units.json)
+- `rust-specialist` Rust Specialist - The Copper Fangs (content/enemies/rust-gdd-units.json)
+- `rust-ranger` Rust Ranger (content/enemies/rust-gdd-units.json)
 - `rust-grunt` Rust Grunt (content/enemies/rust-roster.json)
 
 ## Uncovered GDD names (write these FIRST)
@@ -113,27 +114,70 @@ export const GRUNT_ANIMS = {
 
 // Rust Jab 1-2-3. atMs = when each hit-request is emitted, measured from the start of the attack state.
 // Per-hit numbers are the shared grunt attack numbers from combatData.js.
-const JAB_STRING = Object.freeze([100, 260, 420].map((atMs) => Object.freeze({
+const JAB_STRING = Object.freeze([70, 150, 240].map((atMs) => Object.freeze({
   atMs,
   damage: GRUNT_ATTACK_COMBAT.attack.damage,
   knockback: GRUNT_ATTACK_COMBAT.attack.knockback,
   hitstun: GRUNT_ATTACK_COMBAT.attack.hitstun,
 })));
 
+// Attack variants (parry mix-up). One is picked per attack, before the wind-up, so the cue can show which it is.
+//   holdMs   : extra wind-up before the swing (the pose is held; the closing ring simply takes longer)
+//   hits     : hit-requests, atMs from the start of the attack state (same animation, same total length as the plain string)
+//   markIndex: the hit the cue ring is aimed at (the one worth parrying); kind 'finisher' draws it orange
+// The ring always closes PARRY_CUE_LEAD_MS before its hit, so "press parry when the ring closes" is right for every variant.
+export const PARRY_CUE_LEAD_MS = 80;
+const LIGHT_HITS = JAB_STRING;
+// Missing the ring is punished: the heavy finisher and the flurry after it PIERCE the player's 400 ms post-hit invulnerability
+// (otherwise a landed first jab would swallow them), so an unparried finisher is a real combo. A parry stuns the grunt and
+// cancels every hit still to come, so the flurry only happens when the finisher was not parried (blocked = chip damage only).
+export const FLURRY = Object.freeze({ damage: 6, knockback: 150, hitstun: 250, count: 2, gapMs: 90 });
+const FINISHER_AT = JAB_STRING[2].atMs;
+const FINISHER_HITS = Object.freeze([
+  JAB_STRING[0], JAB_STRING[1],
+  Object.freeze({ atMs: FINISHER_AT, pierceInvuln: true,
+    damage: GRUNT_ATTACK_COMBAT.attack.damage * 2,
+    knockback: Math.round(GRUNT_ATTACK_COMBAT.attack.knockback * 1.6),
+    hitstun: Math.round(GRUNT_ATTACK_COMBAT.attack.hitstun * 1.5) }),
+  ...Array.from({ length: FLURRY.count }, (_, i) => Object.freeze({
+    atMs: FINISHER_AT + FLURRY.gapMs * (i + 1), pierceInvuln: true,
+    damage: FLURRY.damage, knockback: FLURRY.knockback, hitstun: FLURRY.hitstun })),
+]);
+const ATTACK_TAIL_MS = 150;
+const variant = (id, weight, holdMs, hits, markIndex, kind) => Object.freeze({
+  id, weight, holdMs, hits, markIndex, kind, attackMs: hits[hits.length - 1].atMs + ATTACK_TAIL_MS,
+});
+export const ATTACK_VARIANTS = Object.freeze([
+  variant('string', 3, 0, LIGHT_HITS, 0, 'strike'),
+  variant('hold', 2, 260, LIGHT_HITS, 0, 'strike'),
+  variant('finisher', 3, 0, FINISHER_HITS, 2, 'finisher'),
+  variant('hold-finisher', 1, 260, FINISHER_HITS, 2, 'finisher'),
+]);
+
+/** Weighted pick that never repeats lastId back to back. rng: () => [0,1). */
+export function pickAttackVariant(rng = Math.random, lastId = null, variants = ATTACK_VARIANTS) {
+  const pool = variants.filter((v) => v.id !== lastId);
+  const total = pool.reduce((n, v) => n + v.weight, 0);
+  let r = rng() * total;
+  for (const v of pool) { r -= v.weight; if (r < 0) return v; }
+  return pool[pool.length - 1];
+}
+
 export const GRUNT = {
   team: 'rust',
   spriteKey: GRUNT_SPRITE_KEY,
   maxHp: COMBAT_DEFAULTS.GRUNT_MAX_HP,
-  moveSpeed: 90,
-  circleSpeed: 55,
+  moveSpeed: 135,
+  circleSpeed: 85,
   laneTolerance: 22,    // max vertical (depth) offset at which an attack may start; otherwise close the gap in y first
   attackRange: 70,      // distance to target at which an attack may start
   circleRadius: 180,    // hold at this distance when no attacker slot is free
-  spawnIdleMs: 400,     // idle after spawn before chasing
-  telegraphMs: 450,     // visible wind-up before the hit (keep >= 300 for readability)
+  spawnIdleMs: 250,     // idle after spawn before chasing
+  telegraphMs: 360,     // visible wind-up before the hit (keep >= 300 for readability)
   attackMs: JAB_STRING[JAB_STRING.length - 1].atMs + 150, // total attack state length: last jab + follow-through
   jabString: JAB_STRING, // 1-2-3 Rust Jab: one hit-request per entry, each with its own attackId
-  recoverMs: 700,
+  variants: ATTACK_VARIANTS, // parry mix-up patterns; RustGrunt uses plain jabString unless it is given a pickVariant
+  recoverMs: 200,
   hitstunMinMs: 300,
   knockbackDecay: 600,  // px/s^2
   hurtbox: { x: -20, y: -80, w: 40, h: 80 },
@@ -164,7 +208,8 @@ export const ATTACKER_CAP = 2;
     "ui.button.disabled": "assets/ui/button-disabled.svg",
     "ui.panel": "assets/ui/panel.svg",
     "ui.icon.heart": "assets/ui/icon-heart.svg",
-    "ui.icon.clock": "assets/ui/icon-clock.svg"
+    "ui.icon.clock": "assets/ui/icon-clock.svg",
+    "ui.card.victory": "assets/ui/victory-card-frame.svg"
   },
   "sprites": {
     "zed": "assets/sprites/zed-placeholder.svg",
@@ -177,7 +222,6 @@ export const ATTACKER_CAP = 2;
     "rust.overseer-voss": "assets/sprites/rust-overseer-voss-placeholder.svg",
     "rust.overseer-calder": "assets/sprites/rust-overseer-calder-placeholder.svg",
     "rust.overseer-wren": "assets/sprites/rust-overseer-wren-placeholder.svg",
-    "rust.overseer-holt": "assets/sprites/rust-overseer-holt-placeholder.svg",
     "rust.drone": "assets/sprites/rust-drone-placeholder.svg",
     "rust.megadrone": "assets/sprites/rust-megadrone-placeholder.svg",
     "rust.hologram": "assets/sprites/rust-hologram-placeholder.svg",
@@ -404,33 +448,6 @@ export const ATTACKER_CAP = 2;
       "rust.overseer-wren.p2.idle.cloak",
       "rust.overseer-wren.p2.walk.cloak"
     ],
-    "rust.overseer-holt": [
-      "rust.overseer-holt.idle",
-      "rust.overseer-holt.walk",
-      "rust.overseer-holt.hit",
-      "rust.overseer-holt.ko",
-      "rust.overseer-holt.telegraph.gas-release",
-      "rust.overseer-holt.attack.gas-release",
-      "rust.overseer-holt.telegraph.toxin-burst",
-      "rust.overseer-holt.attack.toxin-burst",
-      "rust.overseer-holt.telegraph.sedative-shot",
-      "rust.overseer-holt.attack.sedative-shot",
-      "rust.overseer-holt.transition.phase2",
-      "rust.overseer-holt.p2.telegraph.corrosive-wave",
-      "rust.overseer-holt.p2.attack.corrosive-wave",
-      "rust.overseer-holt.p2.telegraph.compliance-protocol",
-      "rust.overseer-holt.p2.attack.compliance-protocol",
-      "rust.overseer-holt.p2.idle",
-      "rust.overseer-holt.p2.walk",
-      "rust.overseer-holt.p2.hit",
-      "rust.overseer-holt.p2.ko",
-      "rust.overseer-holt.p2.telegraph.gas-release",
-      "rust.overseer-holt.p2.attack.gas-release",
-      "rust.overseer-holt.p2.telegraph.toxin-burst",
-      "rust.overseer-holt.p2.attack.toxin-burst",
-      "rust.overseer-holt.p2.telegraph.sedative-shot",
-      "rust.overseer-holt.p2.attack.sedative-shot"
-    ],
     "rust.drone": [
       "rust.drone.idle",
       "rust.drone.telegraph",
@@ -473,7 +490,8 @@ export const ATTACKER_CAP = 2;
     "bg.arena.01": "assets/backgrounds/arena-01-placeholder.svg"
   },
   "fx": {
-    "fx.spark": "assets/fx/spark-placeholder.svg"
+    "fx.spark": "assets/fx/spark-placeholder.svg",
+    "fx.rage.entry.lines.spec": "design/art/rage-entry-flash.md"
   },
   "hitFeedbackSpec": "design/art/hit-feedback-spec.md",
   "menu": {
@@ -568,7 +586,7 @@ Combat signal colours (reserved, never used for decoration):
 |---|---|---|
 | Telegraph Red | #FF3B30 | Enemy attack warning only |
 | Overload Violet | #8E5BFF | Enemy phase-2 power glow (Calder, Voss drones, MegaDrone, Varr cracks); owner approved, replaces the GDD's red glow |
-| Overload Ice | #BFF4FF | Phase-2 core glow (Holt, Varr Rust Collapse charge) |
+| Overload Ice | #BFF4FF | Phase-2 core glow (Varr Rust Collapse charge) |
 | Hit White | #FFFFFF | Hit flash |
 | Spark Cream | #FFF6D6 | Spark core |
 | Low Health | #D9822B then #FF3B30 | Bar at 50 percent and 25 percent |
@@ -732,37 +750,6 @@ Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy
 Menu & UI Agent | HUD (health, timer), win/lose screens, menus | Game State, Health & Hitbox | Medium Token use as well
 Team Lead agent | Builds the Agent Orchestration |  | 
 
-### [the-rebellion#6] primary - GameDesignDocument/The Rebellion.docx
-Game Engine
-Phaser
-Why Phaser is use for the game building for now.
-2D side-scrolling: Phaser is built for 2D and has Arcade physics, sprite animation, and input handling.
-Prototype goal: the GDD says Phaser is for "creating a playable prototype". It runs in the browser with no install, so playtesting and sharing a build are easy.
-AI-assisted build: the Technical Strategy budgets in tokens, which suggests AI agents write the code. Phaser uses JavaScript or TypeScript, which AI agents oversee well, and it has plenty of documentation and examples.
-Small scope: Tier 0 is one character, one enemy type, waves, and a timer. Phaser manages that without much setup.
-Theme of the game
-Background Themes
-Takeaway: Livedin, human, culturally rich.
-Corner shops, murals celebrating local heroes, open windows with music drifting out
-Basketball courts, food stalls, community gardens
-Characters feel connected — casual fits, expressive colours
-Colour palette: mustard yellow, brick red, forest green, warm browns
-Atmosphere: hopeful, energetic, full of personality and stories
-The Story
-
-### [the-rebellion#3] primary - GameDesignDocument/The Rebellion.docx
-[table]
-Agent | Development role | Gameplay Effect
-Player Mechanics agent | Movement, jump, input handling | The player moves and feels responsive
-Player combos Agent | One state machine for attacks, combos, cancel windows, hit stun | Light and heavy attacks chain into combos
-Enemy Agent | Control the A.I Enemies | This will control the Enemies in the game
-Game State Agent | Win check, lose state, time-out result, retry | Clear the arena to win; fail and retry have rules
-Wave Spawner | Win check, lose state, time-out result, retry | Difficulty comes from how waves arrive
-Asset & Animation Lead | Sprite source, animation list, hit stop and feedback | Punchy hits" and readable telegraphs
-Health & Hitbox Agent | Owns health, damage values, and hitbox/hurt box data | Hits land, damage registers, the player can die
-Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy failsafe | Prevents the off-screen soft lock
-Menu & UI Agent | Builds and owns every screen and on-screen element the player sees outside the arena action |  | The player can start a game, read the state of the fight, and see why they won or lost
-
 ### [the-rebellion#1] primary - GameDesignDocument/The Rebellion.docx
 The Rebellion
 Fists of the Fallen City
@@ -803,6 +790,19 @@ Reference: Starting values, tuned against Zed's current moves (light hits 6, 7 a
 Baseball bat: Damage 20. Startup 7 frames, active 4, recovery 16. Reach is a hitbox 64 wide. Knockback 400. Hitstun 26 frames. Durability 10 hits. A Grunt goes down in 2 hits.
 Pipe: Damage 24. Startup 12 frames, active 4, recovery 20. Reach is a hitbox 84 wide, the longest in the game. Knockback 360. Hitstun 28 frames. Durability 8 hits. A Grunt goes down in 2 hits.
 
+### [the-rebellion#3] primary - GameDesignDocument/The Rebellion.docx
+[table]
+Agent | Development role | Gameplay Effect
+Player Mechanics agent | Movement, jump, input handling | The player moves and feels responsive
+Player combos Agent | One state machine for attacks, combos, cancel windows, hit stun | Light and heavy attacks chain into combos
+Enemy Agent | Control the A.I Enemies | This will control the Enemies in the game
+Game State Agent | Win check, lose state, time-out result, retry | Clear the arena to win; fail and retry have rules
+Wave Spawner | Win check, lose state, time-out result, retry | Difficulty comes from how waves arrive
+Asset & Animation Lead | Sprite source, animation list, hit stop and feedback | Punchy hits" and readable telegraphs
+Health & Hitbox Agent | Owns health, damage values, and hitbox/hurt box data | Hits land, damage registers, the player can die
+Camera & Bounds Agent (new) | Arena camera lock, world bounds, unreachable-enemy failsafe | Prevents the off-screen soft lock
+Menu & UI Agent | Builds and owns every screen and on-screen element the player sees outside the arena action |  | The player can start a game, read the state of the fight, and see why they won or lost
+
 ### [the-rebellon-gameplay-system#1] primary - GameDesignDocument/The Rebellon gameplay System.docx
 The Rebellion
 Fists of the Fallen City
@@ -830,22 +830,24 @@ Light and heavy buttons: The light button swings the weapon at the values above.
 Thrown weapon: Damage 15, knockback 300, hitstun 20 frames. It travels at 480 pixels per second for up to 320 pixels and hits the first enemy in its path. A throw costs 2 durability, the same as a heavy swing. If the weapon still has durability left after the throw, it lands on the floor where it hit an enemy or at the end of its flight, and Zed can pick it up and keep using it until its durability runs out. If the weapon has 2 durability or less when thrown, the throw still goes through and the weapon breaks when it lands, with the same break effect as a worn-out weapon.
 Weapon box: A weapon box breaks after 2 hits from Zed. The box break animation is added separately.
 
+### [hit-feedback-spec#5] derived - design/art/hit-feedback-spec.md - 3. Enemy telegraphs (readable at a glance)
+- Strike frame is the hitbox-on frame; active for 80ms, then recovery 300ms during which the enemy is vulnerable (gives the punish window).
+- Attacker cap: only the enemies currently attacking can show a cue; waiting enemies circle in neutral colours, so a ring means "this one is about to land its heavy hit".
+- Telegraph Red `#FF3B30` is reserved for attack warnings (ground danger zones) and must not be used for any other effect. The finisher ring uses Finisher Orange `#FFA41C`.
+- Do not interrupt a windup by hit-stop on other characters.
+
 ### [hit-feedback-spec#4] derived - design/art/hit-feedback-spec.md - 3. Enemy telegraphs (readable at a glance)
 Every Rust attack must be avoidable, blockable or parryable by a player who reacts to the cue.
 | Attack | Windup | Cues |
 |---|---|---|
 | Grunt basic strike | 400ms (24f) minimum; never below 300ms | 1) 3-frame anticipation pose (arm pulled back, body leaning away) 2) 1px-wider outline 3) finisher attacks only (the heavy third hit of a Rust string): an orange ring (Finisher Orange `#FFA41C`, runtime only) opens around the enemy about a third of the way into the windup and closes onto it 80ms before the heavy hit, so the player presses parry as it closes. No telegraph icon, no body tint, no flash. Missing the ring is punished: the heavy hit and a 2-hit flurry after it ignore the player's post-hit invulnerability (6 damage each, after the 16-damage finisher); a parry stuns the grunt and cancels the flurry, a block reduces all of it to chip damage. Plain-jab attacks have no ring and are read from the pose alone |
 | Heavy or later enemies | 600ms | same pose and outline cues, ground danger zone ellipse in red at 30 percent alpha |
-- Strike frame is the hitbox-on frame; active for 80ms, then recovery 300ms during which the enemy is vulnerable (gives the punish window).
-- Attacker cap: only the enemies currently attacking can show a cue; waiting enemies circle in neutral colours, so a ring means "this one is about to land its heavy hit".
-- Telegraph Red `#FF3B30` is reserved for attack warnings (ground danger zones) and must not be used for any other effect. The finisher ring uses Finisher Orange `#FFA41C`.
-- Do not interrupt a windup by hit-stop on other characters.
 
-### [enemy-sprite-specs#26] derived - design/art/enemy-sprite-specs.md - 5. Unit specs
+### [enemy-sprite-specs#25] derived - design/art/enemy-sprite-specs.md - 5. Unit specs
 Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from the unit JSON. "Key pose" = what the silhouette must show at the peak of the wind-up.
 
 ### [enemy-sprite-specs#9] derived - design/art/enemy-sprite-specs.md - 1.4 Folders, files, keys (mirrors Zed's layout)
-- Unit folder: sprite key with dots replaced by dashes: `assets/sprites/rust-grunt/`, `assets/sprites/rust-iron-line-cordon/`, `rust-breaker`, `rust-watcher`, `rust-copper-fang`, `rust-halden-varr`, `rust-overseer-voss`, `rust-overseer-calder`, `rust-overseer-wren`, `rust-overseer-holt`, `rust-drone`, `rust-megadrone`, `rust-hologram`, `rust-elite-drone`.
+- Unit folder: sprite key with dots replaced by dashes: `assets/sprites/rust-grunt/`, `assets/sprites/rust-iron-line-cordon/`, `rust-breaker`, `rust-watcher`, `rust-copper-fang`, `rust-halden-varr`, `rust-overseer-voss`, `rust-overseer-calder`, `rust-overseer-wren`, `rust-drone`, `rust-megadrone`, `rust-hologram`, `rust-elite-drone`.
 - State folder (PascalCase, underscore separates state and move): `Idle`, `Walk`, `Hit`, `Ko`, `Telegraph`, `Attack`, `Telegraph_GauntletSmash`, `Attack_GauntletSmash`, `Hold_SteamBurst`, `Transition_Phase2`, and so on. Phase-2 variants carry a `P2_` prefix: `P2_Idle`, `P2_Telegraph_RustCollapse`.
 - Key pose (one static image per state, used for the Phaser texture before animations register, and as a fallback): `assets/sprites/<unit>/<State>/rotations/east.png` and `west.png`. For Telegraph states the key pose is the peak wind-up frame; for Attack states it is the strike frame; for other states it is frame 000.
 - Animation frames: `assets/sprites/<unit>/<State>/animations/<state-lowercase>/<dir>/frame_000.png`, `frame_001.png`, ... (3-digit, zero based, same as `zedFramePath`).
@@ -854,7 +856,7 @@ Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from t
 - The grunt's existing default clips keep their keys (`rust.grunt.telegraph`, `rust.grunt.attack`); later grunt moves add `.headbutt`, `.jab-combo`.
 - `assets/asset-keys.json` lists every animation key per unit (generated from the same table as this spec). The enemy-owner's data table (like `gruntData.js`) maps its states to these keys.
 
-### [enemy-sprite-specs#27] derived - design/art/enemy-sprite-specs.md - 5.1 rust.grunt (established)
+### [enemy-sprite-specs#26] derived - design/art/enemy-sprite-specs.md - 5.1 rust.grunt (established)
 - Frame 128x128, figure 52x96 (scale 1.00, 0.87 of Zed). Folder `assets/sprites/rust-grunt/`.
 - Look: slate uniform, steel helmet, cyan visor, cheap oxidised plating kept to cold slate; boxy, symmetrical, no personal marks. Silhouette: square helmet on a square torso, arms straight to the sides.
 - Palette: Slate, Slate Light, Gunmetal (boots, gloves), Steel (helmet), Visor Cyan, Rust Ink.
@@ -897,7 +899,7 @@ Delivered once with `round-won` or in a `round-stats` event (proposed), so the s
 - All damage and health numbers live in `src/combat/`, `src/shared/combatData.js`, or move/enemy data tables. Nobody hard-codes them elsewhere. Round constants: `src/state/config.js`.
 
 ### [the-rebellion-final-gdd#4] reference - PDf/The Rebellion- Final Gdd.pdf
-Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that Health & Enemy Agent every agent Hitbox, It is large as it reads Asset & will run the Game State Chase and Animation enemy note Agent attack Asset & Wave Spawner behaviour, Animation Medium cost of Asset & attacker cap, Health & token Animation Lead one enemy type Hitbox first Agent Large as it runs Win check, lose Enemy the Animation state, time-out Agent result, retry Spawn triggers, None rate, cap, and positions Sprite source, animation list, hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- Game State, Medium Token Menu & UI enemy failsafe Agent HUD (health, Health & use as well timer), win/lose screens, menus Hitbox
+Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that every agent reads Enemy Agent Chase and Health & It is large as it attack Hitbox, will run the behaviour, Asset & enemy note attacker cap, Animation one enemy type Asset & first Animation Game State Win check, lose Health & Medium cost of Agent state, time-out Hitbox token result, retry Agent Wave Spawner Spawn triggers, Enemy rate, cap, and Agent positions Asset & Sprite source, None Large as it runs Animation Lead animation list, the Animation hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- enemy failsafe Menu & UI HUD (health, Game State, Medium Token Agent timer), win/lose Health & use as well screens, menus Hitbox
 
 ### [adversarial-qa#10] reference - gdd-review-kit-main/reviews/adversarial-qa.md - 2. CONNECTIONS
 **My Finding 2 (unbounded spawns, infinite juggles) plus the Player Psychologist's Finding 4 (no cap on simultaneous attackers, no telegraphs).** Together they describe a specific unfair-death loop. Spawns with no caps and no rules for how many enemies may attack at once, combined with parry and dodge that need telegraphs the document never mentions, produce crowd deaths the player cannot read. The Psychologist sees this as churn. I add that the same missing cap is an exploit vector in the other direction: a player who juggles one enemy indefinitely can hold the rest of the wave in a passive state, if the AI waits its turn. The absent attacker cap therefore produces a cheap loss for new players and a stall win for experienced ones.
@@ -921,13 +923,13 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 **Source:** "Enemies spawn to fight"; "Enemy Agent: This will control the Enemies in the game"; the "Impactful Combat – punchy hits" bullet. Nothing about health, lives, difficulty, or telegraphing.
 **Severity:** MAJOR
 
-### [adversarial-qa#2] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 2: Enemy spawning has no rules, so the wave system can be broken or become unwinnable (MAJOR)
-**Problem:** "Enemies spawn to fight" is the entire spawn spec. Nothing defines spawn triggers, caps, rates, positions or whether spawns are timer-driven or clear-driven. If spawns are time-driven, a player who is slow (or one who hoards enemies with juggles) faces unbounded enemy accumulation. If spawns are clear-driven, a player can stand at an edge and exploit spawn positions. It is also unclear whether enemies spawn inside the player's attack range or behind the player.
-**Source:** "Enemies spawn to fight", "Enemy Agent: Control the A.I Enemies" (no behavior described), and the Pitch's claim of "dynamic enemy behaviours" with no definition.
-**Exploits and edge cases:** Juggle routes are advertised ("Combos and Juggle routes"). There are no rules on infinite combos, enemy hit-stun decay, or boss and heavy-enemy immunity. This is the classic brawler exploit and the document does not address it.
+### [business-analyst#2] reference - gdd-review-kit-main/reviews/business-analyst.md - Finding 2: Pitch promises a full-featured brawler, but the scoped systems cover only movement, combos, a timer, and a win check
+- **Problem:** The pitch claims "character progression" and "dynamic enemy behaviours". It also claims "urban districts", pick-up objects, and a "modern combo system". None of the progression is specified, and the district and level structure is not specified either. The Agent table lists only five agents: movement, combos, timer, enemy, and game loop. Progression, pick-ups, districts, and levels have no owner, no budget, and no content plan. The listed scope is a tech demo, but the pitch sells a shippable game. Those are two different products with two different costs.
+- **Source:** The Pitch ("character progression, and dynamic enemy behaviours"; "urban districts"). Game Mechanics ("pick-up objects"). AI Architecture Team table (five agents, none covering progression or content).
+- **Severity:** MAJOR
 
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
-Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
+Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game State Agent Win check, lose Clear the arena to state, time-out win; fail and retry result, retry have rules Wave Spawner Win check, lose Difficulty comes state, time-out from how waves result, retry arrive Asset & Animation Sprite source, Punchy hits" and Lead animation list, hit readable telegraphs stop and feedback Health & Hitbox Owns health, Hits land, damage Agent damage values, and registers, the player hitbox/hurt box data can die Camera & Bounds Arena camera lock, Prevents the off- Agent (new) world bounds, screen soft lock unreachable-enemy failsafe Menu & UI Agent Builds and owns The player can every screen and on- start a game, read screen element the the state of the player sees outside fight, and see why the arena action they won or lost Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 599 chunks across 57 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.

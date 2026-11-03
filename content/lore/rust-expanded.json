@@ -34,8 +34,8 @@
     "sources": [
       "the-rebellion#11",
       "the-rebellion#14",
-      "the-rebellion#19",
-      "the-rebellion#20"
+      "the-rebellion#16",
+      "the-rebellion#17"
     ],
     "relatedIds": [
       "the-rust",
@@ -200,7 +200,7 @@
     "kind": "faction",
     "name": "Rust Overseers: The Architects of Control",
     "summary": "District bosses and strategic masterminds, Varr's inner circle, who hold their districts through surveillance, fear and psychological control.",
-    "body": "The Overseers are the Rust's district bosses, strategic masterminds and Varr's inner circle. Each holds a district through surveillance, fear and psychological domination, in a tactical, oppressive style with its own tricks. They are the end-of-level bosses, the district rulers and the faces of the story's antagonists.\n\nFour of them are named. Kade Voss, \"The Eye of the Market\", watches the Neon Market through screens, drones and holograms. Rhea Calder, \"The Iron Matron\", runs the factory floor with machinery and brute force. Silas Wren, \"The Whisper on the Rooftops\", keeps the skyline from above. Dr. Maren Holt, \"The Voice of Compliance\", works in the undercity lab with gas and fog. Above them stands Overseer Halden Varr, \"The Architect of Rust\", who also founded the Rust and fights as the main boss in the Corporate Tower command chamber.\n\nThe neighbourhood answers every screen they put up.",
+    "body": "The Overseers are the Rust's district bosses, strategic masterminds and Varr's inner circle. Each holds a district through surveillance, fear and psychological domination, in a tactical, oppressive style with its own tricks. They are the end-of-level bosses, the district rulers and the faces of the story's antagonists.\n\nFour of them are named. Kade Voss, \"The Eye of the Market\", watches the Neon Market through screens, drones and holograms. Rhea Calder, \"The Iron Matron\", runs the factory floor with machinery and brute force. Silas Wren, \"The Whisper on the Rooftops\", keeps the skyline from above. Above them stands Overseer Halden Varr, \"The Architect of Rust\", who also founded the Rust and fights as the main boss in the Corporate Tower command chamber.\n\nThe neighbourhood answers every screen they put up.",
     "tags": [
       "rust",
       "enemy",
@@ -214,8 +214,6 @@
       "the-rebellion#15",
       "the-rebellion#16",
       "the-rebellion#17",
-      "the-rebellion#18",
-      "the-rebellion#19",
       "the-rebellion#11"
     ],
     "relatedIds": [

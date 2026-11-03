@@ -35,7 +35,6 @@ Sources of truth, read in full: `content/enemies/rust-roster.json` (grunt), `con
 | Voss | rust.overseer-voss | 160x160 | 66x108 | 1.13 | 0.98 |
 | Calder | rust.overseer-calder | 256x256 | 140x190 | 1.98 | 1.73 |
 | Wren | rust.overseer-wren | 160x160 | 48x100 | 1.04 | 0.91 |
-| Holt | rust.overseer-holt | 160x160 | 60x108 | 1.13 | 0.98 |
 | Voss Drone | rust.drone | 64x64 | 40x36 (body) | 0.38 | n/a (hovers at head height) |
 | MegaDrone | rust.megadrone | 192x128 | 150x80 (body) | 0.83 | n/a |
 | Hologram Decoy | rust.hologram | 160x160 | 66x108 (same as Voss) | 1.13 | 0.98 |
@@ -61,7 +60,7 @@ Zed layout, for reference: `assets/sprites/zed/<State>/rotations/<dir>.png` and 
 
 Enemy layout:
 
-- Unit folder: sprite key with dots replaced by dashes: `assets/sprites/rust-grunt/`, `assets/sprites/rust-iron-line-cordon/`, `rust-breaker`, `rust-watcher`, `rust-copper-fang`, `rust-halden-varr`, `rust-overseer-voss`, `rust-overseer-calder`, `rust-overseer-wren`, `rust-overseer-holt`, `rust-drone`, `rust-megadrone`, `rust-hologram`, `rust-elite-drone`.
+- Unit folder: sprite key with dots replaced by dashes: `assets/sprites/rust-grunt/`, `assets/sprites/rust-iron-line-cordon/`, `rust-breaker`, `rust-watcher`, `rust-copper-fang`, `rust-halden-varr`, `rust-overseer-voss`, `rust-overseer-calder`, `rust-overseer-wren`, `rust-drone`, `rust-megadrone`, `rust-hologram`, `rust-elite-drone`.
 - State folder (PascalCase, underscore separates state and move): `Idle`, `Walk`, `Hit`, `Ko`, `Telegraph`, `Attack`, `Telegraph_GauntletSmash`, `Attack_GauntletSmash`, `Hold_SteamBurst`, `Transition_Phase2`, and so on. Phase-2 variants carry a `P2_` prefix: `P2_Idle`, `P2_Telegraph_RustCollapse`.
 - Key pose (one static image per state, used for the Phaser texture before animations register, and as a fallback): `assets/sprites/<unit>/<State>/rotations/east.png` and `west.png`. For Telegraph states the key pose is the peak wind-up frame; for Attack states it is the strike frame; for other states it is frame 000.
 - Animation frames: `assets/sprites/<unit>/<State>/animations/<state-lowercase>/<dir>/frame_000.png`, `frame_001.png`, ... (3-digit, zero based, same as `zedFramePath`).
@@ -91,7 +90,7 @@ See section 3.2. Short form: KO is a knockdown. Held last frame is the lying pos
 
 Flag `d` in the counts below = a script or palette swap of already-drawn frames:
 
-- `P2_` palette-swap exports for bosses whose phase 2 is a recolour/glow (Voss, Calder, Wren, Holt, Drone).
+- `P2_` palette-swap exports for bosses whose phase 2 is a recolour/glow (Voss, Calder, Wren, Drone).
 - `Idle_Cloak` and `Walk_Cloak` (Wren): outline-only variant of Idle/Walk, fill removed, 2 px outline `#4FB3D9`.
 - Hologram `Idle` and `Walk`: Voss Idle and Walk re-exported flat Visor Cyan at 45 percent alpha with horizontal scanlines.
 
@@ -109,7 +108,7 @@ Existing (style-guide section 2): Slate `#3C4650`, Gunmetal `#2A3138`, Steel `#7
 | Steel Light | #A9B6C1 | Helmet and shoulder highlights |
 | Bronze Muted | #9A8466 | Copper Fang gauntlets only (hue about 37 degrees, saturation about 20 percent, so it never reads as red-orange) |
 | Overload Violet | #8E5BFF | Phase-2 power state glow (seams, vents, drone rims, cracks), max 15 percent of the sprite area |
-| Overload Ice | #BFF4FF | Core of the glow, super-armour outline, Holt's phase-2 glow |
+| Overload Ice | #BFF4FF | Core of the glow, super-armour outline |
 | Lens Bright | #7FE3F5 | Elite Drone lens and Varr command accents |
 | Hologram Cyan | #4FB3D9 at 45 percent alpha | Hologram Decoy body |
 
@@ -134,7 +133,6 @@ Decision (owner approved violet): phase-2 power state is Overload Violet `#8E5BF
 - Voss P2: drones (Drone P2_ clips) get violet lens rims and a violet ring under the body; MegaDrone is authored violet-lit by default (it only exists in phase 2). Voss's coat gets thin violet seam lights. Arena lights dim is a background FX.
 - Varr P2: armour cracks glow violet; Rust Collapse charge brightens them to Overload Ice. The red ground danger zone is a runtime FX, not part of the sprite.
 - Wren P2: no glow; "faster and quieter" is darker slate and thinner outline.
-- Holt P2: "glows with chemical pressure": use Overload Ice (not violet) so the glow cannot be confused with her purple Fear Gas fog. Her phase-2 visor and vial belt glow ice-white/cyan.
 
 Why violet: not in Zed's palette, not near red or red-orange in hue, high enough luminance against slate, and still reads as "electrical overload" next to the cyan base. Colour is never the only cue: the P2 state also carries shape changes (glowing seams outline the body, drones add a ring) and the Transition clip. If the owner insists on red, the alternative is to move Telegraph Red to another hue for the whole game; I do not recommend it. Flagged for owner and for the FX owner (the red GDD cues Voss visor scan line, Predictive Strike line, Calder shockwave lane and crack preview are all runtime FX in Telegraph Red and are fine).
 
@@ -169,7 +167,6 @@ Frames are per facing. PNG files = 2 facings x (frames + one key-pose per state 
 | rust.halden-varr | 31 | 73 | 50 | 0 | 123 | 308 | 7 |
 | rust.overseer-calder | 31 | 48 | 32 | 52 | 80 | 326 | 8 |
 | rust.overseer-wren | 39 | 23 | 50 | 66 | 73 | 356 | 9 |
-| rust.overseer-holt | 25 | 28 | 34 | 37 | 62 | 248 | 10 |
 | Total | 247 | 429 | 300 | 225 | 729 | 2402 | |
 
 The grunt row is the established Tier 0 sheet (24 core frames, exactly `asset-manifest.md`: idle 4, walk 6, telegraph 3, attack 4, hit 2, ko 5); Headbutt and Jab Combo are later-tier extras.
@@ -183,7 +180,7 @@ The grunt row is the established Tier 0 sheet (24 core frames, exactly `asset-ma
 5. Copper Fang (core 51): first boss-tier unit; teaches shielded and phase states.
 6. Voss kit: Voss, Hologram Decoy, MegaDrone (Hologram idle and walk derive from Voss, so Voss goes first).
 7. Halden Varr: main boss, the largest kit (123 drawn); do the phase-1 core and the Phase 2 transition early, Hybrid Assault moves last.
-8. Calder, 9. Wren, 10. Holt: order is a guess because the GDD does not fix arena order (open question 5). Move up whichever arena ships first.
+8. Calder, 9. Wren: order is a guess because the GDD does not fix arena order (open question 5). Move up whichever arena ships first.
 
 Inside every unit: pass 1 = core clips; pass 2 = extra moves (extras sorted by how often the move appears); pass 3 = derived exports. Re-export the placeholders only as final art lands (replace the file at the same path or update the path in `asset-keys.json`; keys never change).
 
@@ -284,16 +281,6 @@ Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from t
 - Total drawn 73, exports 139.
 - Telegraph key poses: GrappleDash = arm aimed, body low; Rooftop = crouched coil before leaving the ground; SkylineSnare = wire arm swung back.
 
-### 5.10 rust.overseer-holt (The Voice of Compliance)
-
-- Frame 160x160, figure 60x108, scale 1.00 (1.13 x grunt). Folder `assets/sprites/rust-overseer-holt/`.
-- Look: slate lab coat (long, square hem) over light plating, rebreather with a cyan visor, belt of chemical vials, dart launcher on one forearm. The vials are small accents (Violet-tinted `#7A5CC0` and Pale Green `#8FD16A`, a few px each, never more than 4 percent of the sprite) to tie to the fog colours without matching the Health Green `#4C9A55`. Phase 2: coat and visor glow Overload Ice (section 3.1).
-- Core (28): Idle 4, Walk 6 (measured steps), Hit 2, Ko 5 (sinks to a seat against the floor, coat spread), Tel_GasRelease 4 (700 ms, vents on the belt open, arms out) / Atk_GasRelease 3 (puff release, hit-active frame 2). The same clip is used for Fear Gas, Obedience Mist and NeuroFog; fog colour and size are FX. Transition_Phase2 4 (coat vents glow ice-white).
-- Extra (34): Tel_ToxinBurst 4 (600 ms, vial raised) / Atk_ToxinBurst 3 (throw); Tel_SedativeShot 3 (450 ms, arm aimed) / Atk_SedativeShot 3; P2_Tel_CorrosiveWave 4 (700 ms, big vial lifted over head) / P2_Atk_CorrosiveWave 4 (overhand throw); P2_Tel_ComplianceProtocol 8 (1500 ms charge, arms spread, belt flaring) / P2_Atk_ComplianceProtocol 5.
-- Derived (37): P2_ exports of the 10 phase-1 clips. Stealth in the fog (NeuroFog) is a runtime alpha, not art.
-- Total drawn 62, exports 99.
-- Telegraph key poses: Gas = both arms out, palms down; Toxin = vial held high; Sedative = dart arm extended.
-
 ### 5.11 rust.drone (Voss surveillance drone)
 
 - Frame 64x64, body 40x36, scale 1.00 (0.38 x grunt height), hovers at head height (engine offset; the 20 px gap above the baseline is baked). Folder `assets/sprites/rust-drone/`.
@@ -340,7 +327,7 @@ Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from t
 2. Phase-2 colour: DECIDED, Overload Violet and Ice (section 3.1).
 3. Wren's "Rooftop Execution" name and Varr's "executioners" wording: art shows knockdowns only; the owner may rename the move.
 4. Boss defeat beat: knockdown only (current) or a story beat (kneel, retreat, surrender)?
-5. Arena order, to settle the Calder, Wren, Holt priority.
+5. Arena order, to settle the Calder, Wren priority.
 6. FX owner: the super-armour outline, the real-Voss flicker, the real-Wren outline, the Calder pulse, scan lines and ground zones all rely on runtime effects; confirm they will be built.
 7. Copper Fang gauntlets: Bronze Muted or a deeper copper.
 8. Zed's measured figure height, to confirm the grunt's 96 px vs Zed's about 110 px (section 0, item 5).

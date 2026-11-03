@@ -119,13 +119,41 @@ function makeGoals(a) {
       act: (b) => { a.keys.hold([]); if (!b.zed.airborne && a._stompFront < 120) { a.keys.tap(K.jump, 4); a.note('stomp-jump'); } } },
 
     { id: 'sidestep-charge', label: 'Sidestep the shoulder charge', score: (b) => {
-        const d = b.enemies.find((e) => e.alive && (e.chargeWarning || (e.moveId === 'charge' && e.state === 'attack')));
+        const d = b.enemies.find((e) => e.alive && (e.chargeWarning || ((e.moveId === 'charge' || e.moveId === 'dash') && e.state === 'attack')));
         return d && Math.abs(b.zed.laneY - d.y) < 80 ? W.sidestepCharge : 0;
       },
       act: (b) => {
-        const d = b.enemies.find((e) => e.alive && (e.chargeWarning || e.moveId === 'charge'));
+        const d = b.enemies.find((e) => e.alive && (e.chargeWarning || e.moveId === 'charge' || e.moveId === 'dash'));
         const goUp = d.y > (LANE.minY + LANE.maxY) / 2;                // go to the far side of the lane band from him
         a.keys.hold([goUp ? K.up : K.down]); a.note('charge-sidestep');
+      } },
+
+    // Railgun Royce (Level 2): Shockwave Slam (back out of the red circle), Taser Burst (leave his line), live Rail Trap strips (get off / jump them).
+    { id: 'evade-slam', label: 'Back out of the Shockwave Slam circle', score: (b) => {
+        const d = b.enemies.find((e) => e.alive && e.moveId === 'slam' && (e.state === 'telegraph' || (e.state === 'attack' && e.cueClockMs !== null)));
+        return d && Math.abs(b.zed.x - d.x) < 170 && Math.abs(b.zed.laneY - d.y) < 70 && !b.zed.airborne ? (W.evadeSlam ?? 94) : 0;
+      },
+      act: (b) => {
+        const d = b.enemies.find((e) => e.alive && e.moveId === 'slam');
+        const r = b.lockRange || { min: b.cam.x + 40, max: b.cam.x + VIEW.w - 40 };
+        const away = b.zed.x < d.x ? -1 : 1, cornered = (away < 0 && b.zed.x - r.min < 40) || (away > 0 && r.max - b.zed.x < 40);
+        if (cornered || Math.abs(b.zed.x - d.x) > 100) { a.keys.hold([]); if (d.state === 'attack' || d.cueClockMs > 500) a.keys.tap(K.jump, 4); a.note('slam-jump'); }   // no room: jump the ring as it lands
+        else { a.keys.hold([away < 0 ? K.left : K.right]); a.note('slam-backstep'); }
+      } },
+
+    { id: 'dodge-taser', label: 'Step out of the Taser line', score: (b) => {
+        const d = b.enemies.find((e) => e.alive && e.moveId === 'taser' && (e.state === 'telegraph' || e.state === 'attack'));
+        return d && Math.abs(b.zed.laneY - d.y) < 45 && Math.abs(b.zed.x - d.x) < 400 ? (W.dodgeTaser ?? 93) : 0;
+      },
+      act: (b) => { const d = b.enemies.find((e) => e.alive && e.moveId === 'taser'); a.keys.hold([d.y > (LANE.minY + LANE.maxY) / 2 ? K.up : K.down]); a.note('taser-sidestep'); } },
+
+    { id: 'leave-trap', label: 'Get off the Rail Trap strips', score: (b) => {
+        const t = (b.traps || []).find((tr) => tr.state === 'live' && Math.abs(b.zed.x - tr.x) < tr.w / 2 + 12);
+        return t && !b.zed.airborne ? (W.leaveTrap ?? 91) : 0;
+      },
+      act: (b) => {
+        const t = b.traps.find((tr) => tr.state === 'live' && Math.abs(b.zed.x - tr.x) < tr.w / 2 + 12);
+        a.keys.hold([b.zed.x < t.x ? K.left : K.right]); a.note('trap-step-off');
       } },
 
     { id: 'avoid-grab', label: 'Back-step the grab reach', score: (b) => {
@@ -219,7 +247,7 @@ export class PlaytestAgent {
     if (!s || !s.zed || !s.arena || !s.sys.settings.active) return null;
     const z = s.zed, cam = s.cameras.main, sp = s.arena.spawner || {};
     const enemies = s.arena.enemies.list().map((g) => ({
-      id: g.id, x: g.x, y: g.y, alive: g.alive, hp: g.hp, maxHp: g.maxHp, isBoss: !!g.isBoss, state: g.state, facing: g.facing,
+      id: g.id, x: g.x, y: g.y, alive: g.alive, hp: g.hp, maxHp: g.maxHp, isBoss: !!(g.isBoss || g.miniBoss), state: g.state, facing: g.facing,
       cueClockMs: g.alive ? g.cueClockMs : null, parryMarkMs: g.alive && g.cueClockMs !== null ? g.parryMarkMs : null,
       kind: g.variant?.kind, moveId: g.move?.id ?? null, moveSeq: g.moveSeq ?? 0, attackCounter: g.attackCounter ?? 0,
       chargeWarning: !!g.chargeWarning, wave: g.wave ? { ox: g.wave.ox, r: g.wave.r } : null, guard: g.guard ?? null,
@@ -231,6 +259,7 @@ export class PlaytestAgent {
       resultUp: this.game.scene.isActive('ResultScene'),
       zed: { x: z.x, y: z.y, laneY: z.laneY, facing: z.facing, state: z.state, airborne: lift > 4, grabHeld: !!z.grab?.held, grabActive: !!z.grab?.active,
         dead: !!z.dead, rageReady: !!z.rage?.isReady, rageActive: !!z.rage?.isActive },
+      traps: s.arena.enemies.list().flatMap((g) => (g.traps || []).map((t) => ({ x: t.x, w: t.w, state: t.state, lifeLeft: t.lifeLeft }))),
       hp, enemies, pickups: (s.pickups || []).map((p) => ({ x: p.x, y: p.y })),
       holding: !!s.arena.holding, finished: !!s.arena.finished, nextLockX: s.arena.nextLockX, exitX: s.level.exitX,
       lockRange: s.arena.bounds?.xRange, secondsLeft: s.state?.secondsLeft, waveIdx: sp.index ?? sp.waveIndex ?? this._waveIdxFromLog(),
@@ -244,7 +273,7 @@ export class PlaytestAgent {
     const P = this.persona;
     for (const e of b.enemies) {
       if (!e.alive || e.cueClockMs === null || e.parryMarkMs === null) continue;
-      if (e.moveId && !['punch', 'rage'].includes(e.moveId)) continue;             // charge/grab can't be parried; stomp is jumped
+      if (e.moveId && !['punch', 'rage', 'combo'].includes(e.moveId)) continue;             // charge/dash/grab/slam/taser/trap: sidestepped or jumped, not parried (Royce's Baton Combo finisher is)
       if (Math.abs(e.x - b.zed.x) > 150 || Math.abs(e.y - b.zed.laneY) > 40) continue;
       const w = (this._windups ||= new Map()), prev = w.get(e.id) || { st: null, n: 0 };
       if (e.state === 'telegraph' && prev.st !== 'telegraph') prev.n++;              // one key per wind-up (the hit counter moves mid-string)

@@ -1,15 +1,15 @@
 {
-  "builtAt": "2026-10-28T13:10:39.977Z",
+  "builtAt": "2026-11-03T15:17:48.704Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
       "authority": "primary",
-      "bytes": 172098,
-      "sha1": "43b2fe82d099",
+      "bytes": 367706,
+      "sha1": "5082a09ac4c9",
       "status": "ingested",
       "docId": "rebellion-menu-desgin",
       "chunks": 4,
-      "chars": 3601,
+      "chars": 3600,
       "warnings": [
         "contains embedded images (pixels not read)"
       ]
@@ -17,12 +17,12 @@
     {
       "file": "GameDesignDocument/The Rebellion.docx",
       "authority": "primary",
-      "bytes": 71302,
-      "sha1": "238ccf1ea224",
+      "bytes": 64898,
+      "sha1": "3f5bee11d7d9",
       "status": "ingested",
       "docId": "the-rebellion",
-      "chunks": 22,
-      "chars": 21891,
+      "chunks": 17,
+      "chars": 16105,
       "warnings": [
         "contains embedded images (pixels not read)"
       ]
@@ -96,6 +96,17 @@
       "warnings": []
     },
     {
+      "file": "PIPELINE-README.md",
+      "authority": "reference",
+      "bytes": 18323,
+      "sha1": "690cc0e6597c",
+      "status": "ingested",
+      "docId": "pipeline-readme",
+      "chunks": 23,
+      "chars": 17299,
+      "warnings": []
+    },
+    {
       "file": "README.md",
       "authority": "reference",
       "bytes": 1750,
@@ -109,67 +120,144 @@
     {
       "file": "blackboard/README.md",
       "authority": "reference",
-      "bytes": 2692,
-      "sha1": "5aeba0cdad5a",
+      "bytes": 3423,
+      "sha1": "048024b71938",
       "status": "ingested",
       "docId": "readme-2",
-      "chunks": 5,
-      "chars": 2424,
+      "chunks": 7,
+      "chars": 3116,
       "warnings": []
     },
     {
       "file": "blackboard/log.md",
       "authority": "reference",
-      "bytes": 7770,
-      "sha1": "3e33e737dcbf",
+      "bytes": 8406,
+      "sha1": "5601a12ffd41",
       "status": "ingested",
       "docId": "log",
       "chunks": 1,
-      "chars": 7751,
+      "chars": 8387,
       "warnings": []
     },
     {
       "file": "design/art/asset-manifest.md",
       "authority": "derived",
-      "bytes": 11446,
-      "sha1": "7a2336a9a290",
+      "bytes": 12411,
+      "sha1": "62801e942595",
       "status": "ingested",
       "docId": "asset-manifest",
+      "chunks": 18,
+      "chars": 11862,
+      "warnings": []
+    },
+    {
+      "file": "design/art/boss-health-bar.md",
+      "authority": "derived",
+      "bytes": 38511,
+      "sha1": "13fc116d1ac5",
+      "status": "ingested",
+      "docId": "boss-health-bar",
+      "chunks": 42,
+      "chars": 36655,
+      "warnings": []
+    },
+    {
+      "file": "design/art/dugan-grab-break-cue.md",
+      "authority": "derived",
+      "bytes": 23288,
+      "sha1": "46d5672337a6",
+      "status": "ingested",
+      "docId": "dugan-grab-break-cue",
+      "chunks": 24,
+      "chars": 22321,
+      "warnings": []
+    },
+    {
+      "file": "design/art/dugan-mega-stomp.md",
+      "authority": "derived",
+      "bytes": 13838,
+      "sha1": "eddca1af8908",
+      "status": "ingested",
+      "docId": "dugan-mega-stomp",
+      "chunks": 10,
+      "chars": 13373,
+      "warnings": []
+    },
+    {
+      "file": "design/art/dugan-wall-slam.md",
+      "authority": "derived",
+      "bytes": 17415,
+      "sha1": "e53082e20650",
+      "status": "ingested",
+      "docId": "dugan-wall-slam",
       "chunks": 16,
-      "chars": 11066,
+      "chars": 16628,
       "warnings": []
     },
     {
       "file": "design/art/enemy-sprite-specs.md",
       "authority": "derived",
-      "bytes": 42012,
-      "sha1": "0b9f1d4ca563",
+      "bytes": 39996,
+      "sha1": "a46065f17107",
       "status": "ingested",
       "docId": "enemy-sprite-specs",
-      "chunks": 42,
-      "chars": 40637,
+      "chunks": 40,
+      "chars": 38679,
       "warnings": []
     },
     {
       "file": "design/art/hit-feedback-spec.md",
       "authority": "derived",
-      "bytes": 25585,
-      "sha1": "0e6e1395baf9",
+      "bytes": 26164,
+      "sha1": "1fb1d573c169",
       "status": "ingested",
       "docId": "hit-feedback-spec",
-      "chunks": 30,
-      "chars": 23582,
+      "chunks": 31,
+      "chars": 24160,
+      "warnings": []
+    },
+    {
+      "file": "design/art/mute-button.md",
+      "authority": "derived",
+      "bytes": 1745,
+      "sha1": "a381ee570f2c",
+      "status": "ingested",
+      "docId": "mute-button",
+      "chunks": 7,
+      "chars": 1582,
+      "warnings": []
+    },
+    {
+      "file": "design/art/rage-entry-flash.md",
+      "authority": "derived",
+      "bytes": 8497,
+      "sha1": "fdbad43c3167",
+      "status": "ingested",
+      "docId": "rage-entry-flash",
+      "chunks": 14,
+      "chars": 8034,
       "warnings": []
     },
     {
       "file": "design/art/style-guide.md",
       "authority": "derived",
-      "bytes": 15867,
-      "sha1": "49360240ce5f",
+      "bytes": 15653,
+      "sha1": "f9ae0b80e49c",
       "status": "ingested",
       "docId": "style-guide",
       "chunks": 22,
-      "chars": 15043,
+      "chars": 14948,
+      "warnings": []
+    },
+    {
+      "file": "design/art/victory-card.md",
+      "authority": "derived",
+      "bytes": 4293,
+      "sha1": "cf91df8b13e3",
+      "status": "ingested",
+      "docId": "victory-card",
+      "chunks": 8,
+      "chars": 4049,
       "warnings": []
     },
     {
@@ -186,23 +274,23 @@
     {
       "file": "design/audio/CREDITS.md",
       "authority": "derived",
-      "bytes": 403,
-      "sha1": "30675361210c",
+      "bytes": 727,
+      "sha1": "e91ebddcca7f",
       "status": "ingested",
       "docId": "credits",
-      "chunks": 3,
-      "chars": 346,
+      "chunks": 4,
+      "chars": 615,
       "warnings": []
     },
     {
       "file": "design/audio/audio-manifest.md",
       "authority": "derived",
-      "bytes": 1970,
-      "sha1": "592a879ef0e4",
+      "bytes": 8468,
+      "sha1": "c0ec1abd2f86",
       "status": "ingested",
       "docId": "audio-manifest",
-      "chunks": 5,
-      "chars": 1766,
+      "chunks": 15,
+      "chars": 7848,
       "warnings": []
     },
     {
@@ -219,12 +307,12 @@
     {
       "file": "design/levels/level-01-brick-red-alley.md",
       "authority": "derived",
-      "bytes": 4551,
-      "sha1": "b8999fc61c89",
+      "bytes": 5510,
+      "sha1": "ef2b8e01d999",
       "status": "ingested",
       "docId": "level-01-brick-red-alley",
-      "chunks": 9,
-      "chars": 4274,
+      "chunks": 10,
+      "chars": 5172,
       "warnings": []
     },
     {
@@ -252,12 +340,12 @@
     {
       "file": "design/levels/level-04-stewpot-gardens.md",
       "authority": "derived",
-      "bytes": 6973,
-      "sha1": "91ab946c948f",
+      "bytes": 6948,
+      "sha1": "4ff3fc1843cf",
       "status": "ingested",
       "docId": "level-04-stewpot-gardens",
       "chunks": 12,
-      "chars": 6607,
+      "chars": 6618,
       "warnings": []
     },
     {
@@ -296,12 +384,12 @@
     {
       "file": "design/levels/level-08-overseer-tower.md",
       "authority": "derived",
-      "bytes": 6076,
-      "sha1": "29c57429d98a",
+      "bytes": 6384,
+      "sha1": "00bb0f45cd92",
       "status": "ingested",
       "docId": "level-08-overseer-tower",
       "chunks": 9,
-      "chars": 5796,
+      "chars": 6104,
       "warnings": []
     },
     {
@@ -329,12 +417,12 @@
     {
       "file": "design/lore/menu-copy.md",
       "authority": "derived",
-      "bytes": 1590,
-      "sha1": "fef199e145b8",
+      "bytes": 1596,
+      "sha1": "8c9b6be21f54",
       "status": "ingested",
       "docId": "menu-copy",
       "chunks": 4,
-      "chars": 1445,
+      "chars": 1451,
       "warnings": []
     },
     {
@@ -373,12 +461,12 @@
     {
       "file": "design/team/contracts.md",
       "authority": "derived",
-      "bytes": 3268,
-      "sha1": "5636d2b40132",
+      "bytes": 6473,
+      "sha1": "e0510c4c811e",
       "status": "ingested",
       "docId": "contracts",
-      "chunks": 4,
-      "chars": 3156,
+      "chunks": 8,
+      "chars": 6314,
       "warnings": []
     },
     {
@@ -428,12 +516,12 @@
     {
       "file": "design/ux/main-menu.md",
       "authority": "derived",
-      "bytes": 9550,
-      "sha1": "1bc34fe67904",
+      "bytes": 10441,
+      "sha1": "fdc8ebc3680b",
       "status": "ingested",
       "docId": "main-menu",
-      "chunks": 14,
-      "chars": 8478,
+      "chunks": 15,
+      "chars": 9351,
       "warnings": []
     },
     {
@@ -498,8 +586,8 @@
       "sha1": "954cdab2fd70",
       "status": "ingested",
       "docId": "pipeline-connection",
-      "chunks": 5,
-      "chars": 3766,
+      "chunks": 4,
+      "chars": 3767,
       "warnings": []
     },
     {
@@ -632,6 +720,237 @@
       "docId": "viz-spec",
       "chunks": 22,
       "chars": 16061,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/README.md",
+      "authority": "reference",
+      "bytes": 2351,
+      "sha1": "1f2be7638a58",
+      "status": "ingested",
+      "docId": "readme-2-2-2-2",
+      "chunks": 5,
+      "chars": 2197,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/agents/playtest-boss-agent.md",
+      "authority": "reference",
+      "bytes": 2957,
+      "sha1": "2dd7c2f6cd61",
+      "status": "ingested",
+      "docId": "playtest-boss-agent",
+      "chunks": 5,
+      "chars": 2842,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/agents/playtest-level-agent.md",
+      "authority": "reference",
+      "bytes": 3282,
+      "sha1": "2328880a9be3",
+      "status": "ingested",
+      "docId": "playtest-level-agent",
+      "chunks": 4,
+      "chars": 3239,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-crowd-control/SUMMARY.md",
+      "authority": "reference",
+      "bytes": 1340,
+      "sha1": "8e89d6348831",
+      "status": "ingested",
+      "docId": "summary",
+      "chunks": 2,
+      "chars": 1277,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-crowd-control/regress/REPORT.md",
+      "authority": "reference",
+      "bytes": 1429,
+      "sha1": "3843e3a49fed",
+      "status": "ingested",
+      "docId": "report",
+      "chunks": 5,
+      "chars": 1251,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-crowd-control/seed1/REPORT.md",
+      "authority": "reference",
+      "bytes": 1516,
+      "sha1": "3fae2c12e9d6",
+      "status": "ingested",
+      "docId": "report-2",
+      "chunks": 5,
+      "chars": 1338,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-crowd-control/seed2/REPORT.md",
+      "authority": "reference",
+      "bytes": 1653,
+      "sha1": "495593451fda",
+      "status": "ingested",
+      "docId": "report-2-2",
+      "chunks": 5,
+      "chars": 1475,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-crowd-control/seed3/REPORT.md",
+      "authority": "reference",
+      "bytes": 1656,
+      "sha1": "01b74378aa6d",
+      "status": "ingested",
+      "docId": "report-2-2-2",
+      "chunks": 5,
+      "chars": 1478,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-level1-rebalance/REPORT.md",
+      "authority": "reference",
+      "bytes": 2085,
+      "sha1": "f3a4fb21c521",
+      "status": "ingested",
+      "docId": "report-2-2-2-2",
+      "chunks": 5,
+      "chars": 1907,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-level1-rebalance/SUMMARY.md",
+      "authority": "reference",
+      "bytes": 2554,
+      "sha1": "b9e401438708",
+      "status": "ingested",
+      "docId": "summary-2",
+      "chunks": 3,
+      "chars": 2393,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-level2-flip/REPORT.md",
+      "authority": "reference",
+      "bytes": 534,
+      "sha1": "5a135f214ec0",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2",
+      "chunks": 3,
+      "chars": 434,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-level2-mix-speed/REPORT.md",
+      "authority": "reference",
+      "bytes": 675,
+      "sha1": "db7e0c4f6d4e",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2",
+      "chunks": 3,
+      "chars": 575,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-level2-royce/REPORT.md",
+      "authority": "reference",
+      "bytes": 678,
+      "sha1": "0fa08d3c6897",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2",
+      "chunks": 3,
+      "chars": 578,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-level2-seed2/REPORT.md",
+      "authority": "reference",
+      "bytes": 677,
+      "sha1": "b6f84e8ee5ef",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2",
+      "chunks": 3,
+      "chars": 577,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02-wall-run-fix/REPORT.md",
+      "authority": "reference",
+      "bytes": 943,
+      "sha1": "156daf0761e2",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2",
+      "chunks": 4,
+      "chars": 800,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02T12-01-59/REPORT.md",
+      "authority": "reference",
+      "bytes": 7150,
+      "sha1": "3b631f56190e",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 7,
+      "chars": 6904,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-02T15-52-01/REPORT.md",
+      "authority": "reference",
+      "bytes": 533,
+      "sha1": "e58304f6da56",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 3,
+      "chars": 433,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-03T10-28-18/REPORT.md",
+      "authority": "reference",
+      "bytes": 535,
+      "sha1": "2fb2bb692f70",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 3,
+      "chars": 435,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md",
+      "authority": "reference",
+      "bytes": 535,
+      "sha1": "7fdad9205b18",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 3,
+      "chars": 435,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+      "authority": "reference",
+      "bytes": 873,
+      "sha1": "92d824f0a0be",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 4,
+      "chars": 731,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-03T12-44-13/REPORT.md",
+      "authority": "reference",
+      "bytes": 1219,
+      "sha1": "0f22ea368f40",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 4,
+      "chars": 1077,
       "warnings": []
     }
   ]

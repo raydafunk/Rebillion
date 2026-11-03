@@ -6,6 +6,8 @@ import { createHitResolver } from '../combat/hitResolver.js';
 import { hitStopMs, mergeHitStop } from '../combat/hitStop.js';
 import { MOVE_FEEDBACK, shakeScale } from '../shared/hitFeedback.js';
 import { loadSettings } from '../ui/optionsData.js';
+import RageEntryFlash from '../ui/RageEntryFlash.js';
+import { RAGE_EVENTS } from '../player/rageConfig.js';
 import { levelMusicFor, levelMusicVolume, bossMusicFor, isBossWave, BOSS_FADE_MS } from '../levels/levelMusic.js';
 import { telegraphCue, TELEGRAPH_CUE, RING_CENTER_ABOVE_FEET } from '../enemies/telegraphCueData.js';
 import { loadingLine } from '../ui/loadingData.js';
@@ -19,6 +21,8 @@ import { WORLD, LANE, VIEW } from '../arena/arenaData.js';
 import { legacyLevel, nextLevelIndex } from '../levels/levelData.js';
 import { PICKUP, pickupDrop, canCollect, createLowHealthDrop, lowHealthDrop } from '../items/pickups.js';
 import showLevelCard from '../ui/LevelCard.js';
+import showRageIntroCard from '../ui/RageIntroCard.js';
+import { RAGE_INTRO_ASSET, shouldShowRageIntro } from '../ui/rageIntroData.js';
 import showVictoryCard from '../ui/VictoryCard.js';
 import { VICTORY, victoryFor } from '../ui/victoryData.js';
 import addAmbient from '../levels/ambient.js';
@@ -26,10 +30,13 @@ import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys
 import { GRUNT_SPRITE_KEY, GRUNT } from '../enemies/gruntData.js';
 import { EnemyHitFx } from '../enemies/EnemyHitFx.js';
 import { MegaStompFx } from '../enemies/MegaStompFx.js';
+import { RoyceFx } from '../enemies/RoyceFx.js';
 import { WallSlamFx } from '../enemies/WallSlamFx.js';
 import { GrabBreakCueFx } from '../enemies/GrabBreakCueFx.js';
 import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH, GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH, GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH, pickStepper } from '../enemies/gruntSound.js';
 import { DUGAN_ID } from '../enemies/duganData.js';
+import { ROYCE_ID } from '../enemies/royceData.js';
+import { royceAssets, royceAnimDefs, roycePose, royceRotationKey, royceFitScale } from '../enemies/royceSprites.js';
 import { isDugan, duganSoundReady, duganImpactVolume, DUGAN_HIT_VOICE_KEY, DUGAN_HIT_VOICE_PATH, DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_PATH,
   DUGAN_IMPACT_SOUND_KEY, DUGAN_IMPACT_SOUND_PATH, DUGAN_IMPACT_COOLDOWN_MS } from '../enemies/duganSound.js';
 import {
@@ -99,6 +106,7 @@ export default class ArenaScene extends Phaser.Scene {
       this.load.audio(DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_PATH);
       this.load.audio(DUGAN_IMPACT_SOUND_KEY, DUGAN_IMPACT_SOUND_PATH);
     }
+    this.load.svg(RAGE_INTRO_ASSET.key, RAGE_INTRO_ASSET.path, { width: RAGE_INTRO_ASSET.w, height: RAGE_INTRO_ASSET.h }); // Level 2 Rage explainer card frame (text is live)
     this.load.svg(VICTORY.frameKey, 'assets/ui/victory-card-frame.svg', { width: VICTORY.frameW, height: VICTORY.frameH }); // boss victory card frame (text is live)
     const lm = levelMusicFor(this.level.id);
     const bm = bossMusicFor(this.level.id);
@@ -133,6 +141,8 @@ export default class ArenaScene extends Phaser.Scene {
     }
     // Dugan's own art (BrickDugan folder), only for levels that send him in.
     if (this._hasDugan()) for (const a of duganAssets()) this.load.image(a.key, a.path);
+    // Railgun Royce's own art (Railgun Royce folder), only for levels whose waves send him in (Level 2 wave 5).
+    if (this._hasRoyce()) for (const a of royceAssets()) this.load.image(a.key, a.path);
     this.load.svg('fx.spark', 'assets/fx/spark-placeholder.svg', { width: 48, height: 48 });
     this.load.image(PICKUP.spriteKey, PICKUP.spritePath);
     this._showLoadingScreen();
@@ -169,6 +179,7 @@ export default class ArenaScene extends Phaser.Scene {
     this._registerBreakerDeathAnims();
     this._registerBreaker2Anims();
     this._registerDuganAnims();
+    this._registerRoyceAnims();
     this.dying = [];           // views of removed (already dead) enemies still playing their death anim
     this.sprites = new Map();  // enemy id -> { body, shadow, ring }
     this._lowDrop = createLowHealthDrop(); // boss mercy-drop limiter
@@ -217,6 +228,15 @@ export default class ArenaScene extends Phaser.Scene {
     });
     this.arena.enemies.onRemoved = (id) => this._removeEnemyView(id);
     this.hitFx = new EnemyHitFx(this, ev, { getEnemy: (id) => this.arena.enemies.get(id), maxHp: GRUNT.maxHp, hurtbox: GRUNT.hurtbox, heavyAt: FINISHER_DAMAGE, finisherAt: HIT_FX_FINISHER_DAMAGE });
+    // Rage entry: whole-world freeze on activation (spec: design/art/rage-entry-flash.md). The overlay animates on real time.
+    this.rageFx = new RageEntryFlash(this, {
+      getAnchor: () => { const cam = this.cameras.main; return { x: (this.zed.x - cam.worldView.x) * cam.zoom, y: (this.zed.y + this.zed.depthOffset - cam.worldView.y) * cam.zoom }; },
+      reduceFlash: () => this._reduceFlash(),
+      shake: (ms, intensity) => this._shake(ms, intensity),
+      onFreeze: () => { this._clearHitStop(); this.zed._setRunSound(false); this.anims.pauseAll(); this.physics.world.pause(); },
+      onThaw: () => { this.anims.resumeAll(); this.physics.world.resume(); },
+    });
+    this.royceFx = new RoyceFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.miniBoss && g.traps), onSlam: () => this._shake(220, 0.006), reduceFlash: () => this._reduceFlash() }); // Royce: slam circle, rail-trap strips, taser bolt
     this.megaStompFx = new MegaStompFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.isBoss), onSlam: (g) => this._startHitStop('megaStomp', [g.id]), reduceFlash: () => this._reduceFlash() });
     this.wallSlamFx = new WallSlamFx(this, { events: ev, getZed: () => ({ x: this.zed.x, feetY: this.zed.laneY, vx: this.zed.sprite.body.velocity.x }), getXRange: () => this.arena.bounds.xRange, reduceFlash: () => this._reduceFlash() });
     this.grabCue = new GrabBreakCueFx(this, { events: ev, getZed: () => this.zed, getHeadTop: () => this.zedVisual.image.getBounds().top, reduceFlash: () => this._reduceFlash() });
@@ -240,11 +260,12 @@ export default class ArenaScene extends Phaser.Scene {
       this._award(this.score.onWaveCleared(this.simNow), null);
     });
     this._listen(EVENTS.PLAYER_SLAMMED, (p) => { this._startHitStop('gripSlam', [p.attackerId]); }); // the camera shake and impact picture come from WallSlamFx // Dugan's Wall Slam lands on Zed
+    this._listen(RAGE_EVENTS.ACTIVATED, () => { if (!this.ended && !this.victoryHold) this.rageFx.start(); }); // start() ignores a second call mid-freeze
     this._listen(EVENTS.WAVE_CLEARED, () => { this.rageWaveHold = true; });
     this._listen(EVENTS.WAVE_STARTED, () => { this.rageWaveHold = false; });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this.rageWaveHold = false; this._hideExit(); this.stats = this._freshStats(); this._clearHitStop(); this.megaStompFx.reset(); this.wallSlamFx.reset(); this.grabCue.reset(); this._destroyDying(); this._clearPickups(); this._lowDrop = createLowHealthDrop(); this.score.reset(); this._resetVictory(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this.rageWaveHold = false; this._hideExit(); this.stats = this._freshStats(); this.rageFx.cancel(); this._clearHitStop(); this.megaStompFx.reset(); this.royceFx.reset(); this.wallSlamFx.reset(); this.grabCue.reset(); this._destroyDying(); this._clearPickups(); this._lowDrop = createLowHealthDrop(); this.score.reset(); this._resetVictory(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
@@ -259,7 +280,11 @@ export default class ArenaScene extends Phaser.Scene {
     this.scene.get('HudScene').events.once('create', () => { hudReady = true; begin(); });
     if (!this.sandbox) {
       showLevelCard(this, { number: this.levelIndex + 1, total: this.levels.length, name: this.level.name, text: this.level.intro },
-        () => { introDone = true; begin(); });
+        () => {
+          // Level 2 only: the Rage explainer card follows the level card, before the first wave.
+          if (shouldShowRageIntro(this.levelIndex + 1)) showRageIntroCard(this, () => { introDone = true; begin(); });
+          else { introDone = true; begin(); }
+        });
     }
 
     this.keys = this.input.keyboard.addKeys({ esc: 'ESC', p: 'P' });
@@ -389,6 +414,16 @@ export default class ArenaScene extends Phaser.Scene {
 
   _hasDugan() { return this.level.waves.some((w) => w.leader && w.leader.enemy === DUGAN_ID); }
 
+  _hasRoyce() { return this.level.waves.some((w) => w.leader && w.leader.enemy === ROYCE_ID); }
+
+  _registerRoyceAnims() {
+    if (!this.textures.exists(royceRotationKey('east'))) return;
+    for (const d of royceAnimDefs()) {
+      if (this.anims.exists(d.key) || !this.textures.exists(d.frames[0])) continue;
+      this.anims.create({ key: d.key, frameRate: d.frameRate, repeat: d.repeat, frames: d.frames.map((key) => ({ key })) });
+    }
+  }
+
   _registerDuganAnims() {
     if (!this.textures.exists(duganRotationKey('east'))) return;
     for (const d of duganAnimDefs()) {
@@ -451,37 +486,42 @@ export default class ArenaScene extends Phaser.Scene {
   _teardown() {
     for (const [n, f] of this._listeners || []) this.ev.off(n, f);
     this._listeners = [];
-    this.megaStompFx.destroy(); this.wallSlamFx.destroy(); this.grabCue.destroy(); this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
+    this.rageFx.destroy(); this.megaStompFx.destroy(); this.royceFx.destroy(); this.wallSlamFx.destroy(); this.grabCue.destroy(); this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
     this.sprites.clear(); this.dying.length = 0;
     this.scene.stop('HudScene'); this.scene.stop('ResultScene');
   }
 
   update(_t, dt) {
-    if (Phaser.Input.Keyboard.JustDown(this.keys.esc) || Phaser.Input.Keyboard.JustDown(this.keys.p)) {
+    // Rage entry freeze: real-time countdown first. Knockout / round end cancels it at once.
+    if (this.rageFx.frozen) { if (this.ended || this.zed.dead) this.rageFx.cancel(); else this.rageFx.tick(dt); }
+    const rageFrozen = this.rageFx.frozen;
+    const escHit = Phaser.Input.Keyboard.JustDown(this.keys.esc) || Phaser.Input.Keyboard.JustDown(this.keys.p); // always consumed, so a press during the freeze does not pause afterwards
+    if (escHit && !rageFrozen) {
       if (!this.ended && !this.victoryHold) return this._pause();
     }
     const pad = this.input.gamepad && this.input.gamepad.total ? this.input.gamepad.getPad(0) : null;
     const start = !!(pad && pad.buttons[9] && pad.buttons[9].pressed);
-    if (start && !this.padStartPrev && !this.ended && !this.victoryHold) { this.padStartPrev = true; return this._pause(); }
+    if (start && !this.padStartPrev && !this.ended && !this.victoryHold && !rageFrozen) { this.padStartPrev = true; return this._pause(); }
     this.padStartPrev = start;
-    this.simNow += dt;
-    this._tickHitStop(dt);
-    const zedFrozen = this.hitStopIds.has(PLAYER_ID) || this.victoryHold;
+    if (!rageFrozen) { this.simNow += dt; this._tickHitStop(dt); } // sim clock stops during the freeze
+    const zedFrozen = this.hitStopIds.has(PLAYER_ID) || this.victoryHold || rageFrozen;
     if (!zedFrozen && (this.roundStarted || this.sandbox)) this.zed.update(this.simNow, dt);
     else if (!this.roundStarted || this.victoryHold) this.zed._setRunSound(false);
     // Rage clocks: frozen by intro card/cutscene (round not started), wave transitions and round end. The pause menu stops this update entirely.
-    this.zed.tickRage(dt, !(this.roundStarted || this.sandbox) || this.ended || this.rageWaveHold || this.victoryHold);
+    // Rage activating this very frame (inside zed.update) also holds, so the 9 s starts after the freeze.
+    this.zed.tickRage(dt, !(this.roundStarted || this.sandbox) || this.ended || this.rageWaveHold || this.victoryHold || this.rageFx.frozen);
+    const simFrozen = this.rageFx.frozen;
     const c = this.arena.bounds.clamp({ x: this.zed.x, y: GROUND_Y });
     if (c.x !== this.zed.x) { this.zed.sprite.x = c.x; this.zed.sprite.body.setVelocityX(0); }
 
-    if (!this.ended && !this.sandbox && this.roundStarted && !this.victoryHold) {
+    if (!this.ended && !this.sandbox && this.roundStarted && !this.victoryHold && !simFrozen) {
       this.arena.update(dt, this.hitStopIds);
       this.state.tick(dt);
     }
-    if (this.scrolling && this.roundStarted && !this.ended && !this.victoryHold) this._scrollProgress();
-    if (this.roundStarted && !this.ended && !this.victoryHold) { this._collectPickups(); } // pickups work on non-scrolling levels too
+    if (this.scrolling && this.roundStarted && !this.ended && !this.victoryHold && !simFrozen) this._scrollProgress();
+    if (this.roundStarted && !this.ended && !this.victoryHold && !simFrozen) { this._collectPickups(); } // pickups work on non-scrolling levels too
     this.arena.applyToCamera(this.cameras.main, this.zed.x);
-    this._render(dt, zedFrozen);
+    this._render(simFrozen ? 0 : dt, zedFrozen || simFrozen);
   }
 
   // ---- side-scroller progress: clear a wave, walk right, next wave locks the screen; after the last, reach the exit ----
@@ -668,24 +708,25 @@ export default class ArenaScene extends Phaser.Scene {
       if (!v) {
         const breaker = true; // Rust Bruiser art replaces the rust placeholder for every enemy in levels 1-8
         const duganArt = !!g.isBoss && this.textures.exists(duganRotationKey('east'));
-        const type2 = !duganArt && isBreaker2(g.skin) && this.textures.exists(breaker2RotationKey('east')); // Level 2 elites
-        const hasArt = breaker && (duganArt || type2 || this.textures.exists(breakerRotationKey('east')));
+        const royceArt = !duganArt && g.skin === ROYCE_ID && this.textures.exists(royceRotationKey('east')); // Level 2 mini-boss
+        const type2 = !duganArt && !royceArt && isBreaker2(g.skin) && this.textures.exists(breaker2RotationKey('east')); // Level 2 elites
+        const hasArt = breaker && (duganArt || royceArt || type2 || this.textures.exists(breakerRotationKey('east')));
         const body = !breaker
           ? this.add.image(0, 0, GRUNT_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(112, 112)
           : hasArt
-            ? this.add.sprite(0, 0, duganArt ? duganRotationKey('east') : type2 ? breaker2RotationKey('east') : breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
+            ? this.add.sprite(0, 0, duganArt ? duganRotationKey('east') : royceArt ? royceRotationKey('east') : type2 ? breaker2RotationKey('east') : breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
             : this.add.image(0, 0, BREAKER_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(144, 144);
         v = {
           shadow: this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25),
-          body, breakerArt: hasArt, duganArt, type2, bornAt: this.simNow,
+          body, breakerArt: hasArt, duganArt, royceArt, type2, bornAt: this.simNow,
           ring: this.add.ellipse(0, 0, 10, 10).setStrokeStyle(TELEGRAPH_CUE.ringStrokePx, 0xffa41c).setVisible(false).setDepth(3999), // parry cue: closes as the attack starts
-          strip: g.isBoss ? this.add.rectangle(0, 0, 10, 70, 0xd23a2e, 0.28).setVisible(false).setDepth(LANE.minY) : null, // Dugan's charge lane: a red strip along the floor while he winds up
+          strip: (g.isBoss || g.chargeWarning !== undefined) ? this.add.rectangle(0, 0, 10, 70, 0xd23a2e, 0.28).setVisible(false).setDepth(LANE.minY) : null, // Dugan's charge lane: a red strip along the floor while he winds up
         };
         this.sprites.set(g.id, v);
       }
       if (v.breakerArt) {
         // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
-        let pose = v.duganArt ? duganPose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
+        let pose = v.duganArt ? duganPose(g) : v.royceArt ? roycePose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
         if (v.type2 && g.alive) pose = breaker2FlipPose(g, this.simNow - v.bornAt) || pose; // Type 2 entrance: a front flip, then the normal walk
         if (g.alive && (pose.walk || pose.anim === (v.type2 ? breaker2WalkAnimKey(pose.dir) : breakerWalkAnimKey(pose.dir)))) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
         v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(!!pose.flipX); // real west frames exist, except Type 2's hit (east mirrored)
@@ -705,7 +746,7 @@ export default class ArenaScene extends Phaser.Scene {
           if (v.moveSeq !== pose.seq || v.body.anims.currentAnim?.key !== pose.anim) {
             v.moveSeq = pose.seq;
             v.body.play(pose.anim);
-            v.body.anims.timeScale = duganFitScale(pose.clip, pose.totalMs);
+            v.body.anims.timeScale = v.royceArt ? royceFitScale(pose.clip, pose.totalMs) : duganFitScale(pose.clip, pose.totalMs);
           }
         } else if (pose.anim && this.anims.exists(pose.anim)) {
           v.body.anims.timeScale = 1;
@@ -728,7 +769,7 @@ export default class ArenaScene extends Phaser.Scene {
       v.body.clearTint();
       const fl = this.hitFx.flashTint(g.id);
       if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
-      else if (g.data.tint && !v.duganArt) v.body.setTint(g.data.tint); // Breaker art standing in for Dugan: gunmetal wash so he reads as a different unit
+      else if (g.data.tint && !v.duganArt && !v.royceArt) v.body.setTint(g.data.tint); // Breaker art standing in for Dugan: gunmetal wash so he reads as a different unit
       if (v.strip) this._drawChargeStrip(v, g);
       if (!g.alive && !v.breakerArt) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
     }
@@ -744,6 +785,7 @@ export default class ArenaScene extends Phaser.Scene {
 
     this.hitFx.update(dt, this.sprites);
     this.megaStompFx.update(dt);
+    this.royceFx.update(dt);
     this.wallSlamFx.update(dt);
     this.grabCue.update(dt);
   }

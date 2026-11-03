@@ -4,7 +4,9 @@ import { EVENTS } from '../shared/events.js';
 import { RustGrunt } from './RustGrunt.js';
 import { BrickDugan } from './BrickDugan.js';
 import { DUGAN, DUGAN_ID } from './duganData.js';
+import { RoyceBoss } from './RoyceBoss.js';
 import { ROYCE, ROYCE_ID } from './royceData.js';
+import { KANE, KANE_ID, KANE_SKIN } from './kaneData.js';
 import { AttackSlots } from './AttackSlots.js';
 import { GRUNT, ATTACKER_CAP, pickAttackVariant } from './gruntData.js';
 import { KINDS } from './enemyKinds.js';
@@ -54,6 +56,7 @@ export class EnemyManager {
     if (this.enemies.has(id)) return this.enemies.get(id).grunt;
     if (enemy === DUGAN_ID) return this._spawnDugan({ id, x, y, hpMult });
     if (enemy === ROYCE_ID) return this._spawnRoyce({ id, x, y, hpMult, speedMult });
+    if (enemy === KANE_ID) return this._spawnKane({ id, x, y, hpMult, speedMult });
     const tint = KINDS[skin]?.tint;
     const data = speedMult === 1 && !tint ? this.data
       : { ...this.data, moveSpeed: Math.round(this.data.moveSpeed * speedMult), circleSpeed: Math.round(this.data.circleSpeed * speedMult), ...(tint ? { tint } : {}) }; // wave speed boost / kind tint
@@ -72,19 +75,35 @@ export class EnemyManager {
     return grunt;
   }
 
-  /** Level 2 mini-boss: grunt AI with the Royce stat block, registered as a boss so the health bar and victory card pick him up. */
+  /** Level 2 mini-boss: RoyceBoss (five canon moves + block), registered as a boss so the health bar and victory card pick him up. */
   _spawnRoyce({ id, x, y, hpMult, speedMult = 1 }) {
     const data = speedMult === 1 ? ROYCE : { ...ROYCE, moveSpeed: Math.round(ROYCE.moveSpeed * speedMult), circleSpeed: Math.round(ROYCE.circleSpeed * speedMult) };
-    const boss = new RustGrunt({
-      id, x, y, slots: this.slots, data, maxHp: Math.round(ROYCE.maxHp * hpMult),
+    const boss = new RoyceBoss({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(ROYCE.maxHp * hpMult), getXRange: this.getXRange, rng: this.rng,
       hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
-      pickVariant: this.pickVariant,
     });
-    boss.skin = ROYCE_ID; boss.miniBoss = true; boss.visualScale = ROYCE.visualScale;
     this.enemies.set(id, { grunt: boss, deathTimer: 0 });
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
       id, team: ROYCE.team, boss: true, bossProfile: ROYCE_ID, maxHp: boss.maxHp,
       hurtbox: { ...ROYCE.hurtbox },
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing, guard: boss.guard }),
+    });
+    return boss;
+  }
+
+  /** Level 3 mini-boss "Crusher" Kane: STAND-IN (a heavy grunt on the Breaker skin, one slow swing) registered as a boss so the bar, victory card and mercy drop work. */
+  _spawnKane({ id, x, y, hpMult, speedMult = 1 }) {
+    const data = speedMult === 1 ? KANE : { ...KANE, moveSpeed: Math.round(KANE.moveSpeed * speedMult), circleSpeed: Math.round(KANE.circleSpeed * speedMult) };
+    const boss = new RustGrunt({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(KANE.maxHp * hpMult),
+      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+      pickVariant: null,
+    });
+    boss.skin = KANE_SKIN; boss.miniBoss = true;
+    this.enemies.set(id, { grunt: boss, deathTimer: 0 });
+    this.events.emit(EVENTS.ENTITY_REGISTERED, {
+      id, team: KANE.team, boss: true, bossProfile: KANE_ID, maxHp: boss.maxHp,
+      hurtbox: { ...KANE.hurtbox },
       getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
     });
     return boss;

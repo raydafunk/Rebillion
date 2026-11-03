@@ -1,0 +1,5 @@
+# Bugs (design/qa/bugs.md)
+
+| ID | Title | Sev | Repro / evidence | Expected vs actual | Suspected owner | Status |
+|---|---|---|---|---|---|---|
+| RAGE-001 | Level 2 Rage intro card: decorative meter strip overlaps last text line | S3 | `node qa/playtest-agents/run.mjs --only L2-brawler --renderer canvas --seed 1`; video `L2-brawler.mp4` ~8.6 s (run 2026-11-03-level2-rage-intro); screenshot `rage-intro-card-L2-brawler-8.6s.png`. Fallback font (Rubik not loaded in headless canvas) wraps lines 1, 2, 3 and 4 to two rows each. | Expected: four paragraphs end above the meter strip (y 378) with the prompt below. Actual: line 4 ("...it, a knockout will.") is drawn under the meter blocks, which strike through it. This is the risk flagged in `design/art/rage-intro-card.md` (Fit check, open question 5). Suggested fix from the doc: `lineSize` 24 -> 22 in `src/ui/rageIntroData.js`; or move the strip/prompt down, or drop the strip. Re-verify with Rubik actually loaded, since wrapping may differ. | menu-ui-agent (`src/ui/RageIntroCard.js`, `rageIntroData.js`) | open (suspected only for the real-font case; confirmed with fallback font) |

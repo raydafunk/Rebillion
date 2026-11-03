@@ -83,3 +83,10 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-10-19T16:12:22.917Z | code-generator-agent | G5-generate-code | done | GAP-027 implemented
 2026-10-19T16:12:40.294Z | reviewer-agent | G6-review | claimed | attempt 3
 2026-10-19T16:13:41.654Z | reviewer-agent | G6-review | done | pass
+2026-11-03T10:22:43.360Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 1
+2026-11-03T10:24:49.172Z | playtest-level-agent | G7-playtest-levels | blocked | L2 playtest not run: local VM has no Chromium and cdn.playwright.dev is blocked by network allowlist (403)
+2026-11-03T12:39:31.093Z | playtest-boss-agent | G8-playtest-bosses | claimed | attempt 1
+2026-11-03T12:46:10.619Z | playtest-boss-agent | G8-playtest-bosses | done | L2 Royce: 3 runs recorded (1 clear, 1 mutual KO with crew, 1 loss with Royce at 19/160); S1:0 S2:0 S3:2 (Royce dies in 10-14s; dash/trap/taser never fired because the hunter stays in melee)
+2026-11-03T16:32:31.369Z | director | G7-playtest-levels | reopened | User asked to run playtest for levels 2-8; chromium available in cloud container
+2026-11-03T16:32:31.434Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 2
+2026-11-03T17:10:42.040Z | playtest-level-agent | G7-playtest-levels | done | 5/7 won (L2,L4,L6,L7,L8), L3 and L5 lost to KO; S1:0 S2:0; levels 2-8 Brawler only, cloud canvas render

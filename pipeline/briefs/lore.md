@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-10-28T13:10:40.043Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-11-03T15:17:48.897Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -224,7 +224,7 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 7. Is a Quit option meaningful in a browser build? (Also flagged in `design/ux/main-menu.md` Later list.)
 ```
 
-## Retrieved GDD passages (61)
+## Retrieved GDD passages (57)
 ### [the-rebellion#7] primary - GameDesignDocument/The Rebellion.docx
 Character – the hero
 Zed — The Boy from BrickRed Alley
@@ -342,29 +342,6 @@ Reference: Starting values, tuned against Zed's current moves (light hits 6, 7 a
 Baseball bat: Damage 20. Startup 7 frames, active 4, recovery 16. Reach is a hitbox 64 wide. Knockback 400. Hitstun 26 frames. Durability 10 hits. A Grunt goes down in 2 hits.
 Pipe: Damage 24. Startup 12 frames, active 4, recovery 20. Reach is a hitbox 84 wide, the longest in the game. Knockback 360. Hitstun 28 frames. Durability 8 hits. A Grunt goes down in 2 hits.
 
-### [rebellion-menu-desgin#2] primary - GameDesignDocument/Rebellion menu desgin.docx
-[table]
-Element | Description
-Title | THE REBELLION" in heavy condensed type, cream on a black strip, tilted about 2 degrees. The subtitle "Fists of the Fallen City" sits beneath in mustard monospace.
-Fight (selected) | Mustard torn-paper strip, leading ">" marker, straightens and slides right. Starts the game.
-Controls | Cream paper strip
-Options | Forest-green strip with cream text.
-Quit | Warm-brown strip with cream text.
-Footer hint | W/S select / Enter confirm", bottom right.
-Each option is a separate torn-edge paper strip, tilted slightly. The selected option straightens, moves right and takes the brightest colour. Hover gives the same feedback.
-Controls Menu elements(keyboard)q
-[table]
-Action | Primary | Alternate
-Move Left/right | A/D | Left or Right arrows keys
-Jump | W or Space | Up arrow key board
-Light attack | J | Z
-Heavy attack | K | X
-Special Move | L | C
-Pick up | P | N
-Parry | T | M
-Block | I | V
-Options Menu ( elements)
-
 ### [zed-rage-system-spec#14] primary - GameDesignDocument/Zed Rage System Spec.docx - Asset list
 Rage meter frame and fill, in 3 visual states (building, READY, active)
 READY flare and L button prompt icon
@@ -397,12 +374,6 @@ Extra | Rage ends if Zed is knocked out. All Rust enemies, including bosses, fil
 
 ### [zed-rage-system-spec#2] primary - GameDesignDocument/Zed Rage System Spec.docx - 1. Design Intent
 Level 1 is the pace level. The player learns movement, the light and heavy chain, jump kick and block with no extra pressure. From Level 2 onward, a Rage meter rewards aggressive, clean play and builds toward a short, powerful state in which Zed unleashes his Special move.
-
-### [zed-rage-system-spec#15] primary - GameDesignDocument/Zed Rage System Spec.docx - 9. Implementation Notes
-Treat special as a named input action, bound to L on keyboard, so the gamepad binding can be added later without changing the state machine.
-Keep all tuning numbers (gain, bonus, streak length, drain, READY window, Rage duration) in one config.
-Rage needs a state in the player state machine that swaps the attack set for the single Special move and disables dodge.
-The meter system listens for blows landed, hits taken, knockout, level start, retry, pause and wave transition.
 
 ### [the-rebellion#2] primary - GameDesignDocument/The Rebellion.docx
 [table]
@@ -650,218 +621,7 @@ Corrosion Slam
 Chemical Explosion
 Role
 Introduces area denial hazards.
-Level 7: Rust Military Compound
-Mini-Boss: Commander Atlas
-Leader of the Copper Fangs.
-Appearance
-Elite black armour
-Tactical shield
-Twin electrified gauntlets
-Move Set
-Shield Bash
-Gauntlet Combo
-Grapple Hook Pull
-Electric Counter
-Fang Protocol (calls Specialists)
-Role
-The toughest non-boss enemy in the game.
-Level 8: Corporate Tower
-Mini-Boss: Sentinel-X9
-An experimental combat android protecting Varr.
-Appearance
-Corporate security robot
-Rust insignia
-Energy core chest
-Move Set
-Laser Sweep
-Rocket Punch
-Ground Pound
-Energy Shield
-Self-Repair Mode
-Phase 2
-Core overloads:
-Faster attacks
-Red laser barrage
-Explosive dash attacks
-Role
-Final challenge before Halden Varr.
-
-### [the-rebellion#17] primary - GameDesignDocument/The Rebellion.docx
-5. Rust Overseers — “The Architects of Control” end of level boss
-Role: District bosses, strategic masterminds, Varr’s inner circle Theme: Control through surveillance, fear, and psychological domination Combat Style: Tactical, oppressive, each with unique mechanics
-🧠 1. Overseer Kade Voss — “The Eye of the Market”
-Boss Theme: Surveillance, prediction, drones, holograms
-Arena: Neon Market control hub with screens, drones, hologram emitters
-Phase 1 — “Data Acquisition”
-📡 Predictive Strike
-Voss’s visor scans Zed, projecting a red line showing where he thinks Zed will move.
-After 1s, a laser shot fires along that line
-Forces players to break patterns
-🛸 Drone Swarm
-Summons 3–5 drones that orbit him.
-Drones shoot small taser bolts
-Destroyable
-Creates bullethell pressure
-🔍 Hologram Decoy
-Creates 2 hologram copies.
-Copies mimic movement but don’t attack
-Real Voss flickers slightly
-Forces target identification
-📊 Data Spike
-Voss slams his hand into a console.
-Electric pillars erupt from the ground
-Pattern changes each use
-Punishes stationary players
-Phase 2 — “System Override”
-
-### [the-rebellion#18] primary - GameDesignDocument/The Rebellion.docx
-Triggered at 50% HP. Arena lights dim; drones turn red.
-🧠 Predictive Lockdown
-Voss’s visor locks onto Zed.
-Zed’s special meter is disabled for 10 seconds
-Voss becomes more aggressive
-Forces reliance on fundamentals
-🛸 Drone Fusion
-Remaining drones merge into a MegaDrone.
-Fires sweeping laser beams
-Moves slowly
-Adds a second bosslike threat
-💥 Hologram Assault
-Now holograms can attack.
-Each hologram performs a weak punch or shot
-Real Voss attacks simultaneously
-Creates chaotic multiangle pressure
-⚡ System Crash (Super Move)
-Voss overloads the arena grid.
-Entire floor becomes electrified except safe zones
-Safe zones shift every second
-Forces constant movement
-🔥 2. Overseer Rhea Calder — “The Iron Matron”
-Boss Theme: Industrial power, machinery, brute force
-Arena: Factory floor with conveyors, crushers, steam vents
-Phase 1 — “Discipline Through Strength”
-🔨 Forge Hammer Smash
-Massive overhead hammer strike.
-Shockwave travels across floor
-Can break player guard
-Slow but devastating
-💢 Hydraulic Grab
-Exosuit arms extend to grab Zed.
-Long reach
-Leads into a slam or throw
-
-### [the-rebellion#19] primary - GameDesignDocument/The Rebellion.docx
-Super Armor during startup
-🔥 Steam Burst Armor
-Calder vents steam from her suit.
-Grants temporary invulnerability
-Pushes player back
-Used to reset pressure
-📦 Conveyor Trap
-Activates conveyor belts.
-Moves player toward crushers or hazards
-Forces repositioning
-Adds environmental danger
-Phase 2 — “Factory Protocol”
-Triggered at 40% HP. Calder’s exosuit glows red.
-🔧 Overclock Mode
-Her attack speed increases.
-Hammer swings faster
-Grab startup reduced
-Steam bursts more frequent
-🛠 Industrial Barrage
-Summons robotic arms from the background.
-Arms punch or grab from offscreen
-Telegraphs with flashing lights
-Adds multidirectional threats
-💥 Furnace Slam (Super Move)
-Calder leaps and slams her hammer into the ground.
-Creates molten cracks across the floor
-Cracks explode after 2 seconds
-High damage, large AoE
-🌫 3. Overseer Silas Wren — “The Whisper on the Rooftops”
-Boss Theme: Mobility, stealth, vertical control
-Arena: Rooftop platforms, zip lines, breakable ledges
-Phase 1 — “Silent Hunter”
-🪝 GrappleDash Barrage
-Silas zips between platforms.
-Attacks from above or behind
-Very fast
-
-### [the-rebellion#20] primary - GameDesignDocument/The Rebellion.docx
-Hard to punish without prediction
-⚔️ Skyline Snare
-Throws electrified wire traps.
-Traps restrict movement
-Can immobilize briefly
-Forces careful navigation
-👣 Silent Step
-Turns semiinvisible.
-Only faint outline visible
-Next attack is guaranteed critical
-Used unpredictably
-⬇️ Rooftop Execution
-Dive attack from above.
-High damage
-Creates shockwave
-Punishes players who stay grounded
-Phase 2 — “Ghost of the Skyline”
-Triggered at 50% HP. Silas becomes faster and quieter.
-🪝 Grapple Clone
-Creates afterimages when grappling.
-Afterimages perform fake attacks
-Real Silas attacks from unexpected angle
-⚡ Shadow Pulse
-Silas releases a burst of energy.
-Knocks player back
-Resets spacing
-Used after combos
-🌫 Vanish Storm (Super Move)
-Silas disappears completely.
-Multiple silhouettes attack from all sides
-Real Silas finishes with a heavy strike
-Requires reading patterns
-☣ 4. Overseer Dr. Maren Holt — “The Voice of Compliance”
-Boss Theme: Chemicals, toxins, psychological control
-Arena: Undercity lab with gas vents, toxin pools, fog zones
-Phase 1 — “Chemical Control”
-💨 Fear Gas
-Releases purple fog.
-
-### [the-rebellion#21] primary - GameDesignDocument/The Rebellion.docx
-Distorts player controls
-Causes screen blur
-Forces careful movement
-🧪 Obedience Mist
-Green fog that slows movement.
-Reduces dodge distance
-Makes combos harder
-☣ Toxin Burst
-Throws chemical vials.
-Creates AoE damage zones
-Zones linger
-Controls space
-💉 Sedative Shot
-Fires a dart.
-Reduces player attack speed
-Used to punish aggressive players
-Phase 2 — “Doctor’s Orders”
-Triggered at 40% HP. Holt’s suit glows with chemical pressure.
-🧬 NeuroFog
-Entire arena fills with fog.
-Player vision reduced
-Holt becomes harder to track
-She uses stealth attacks
-🧪 Corrosive Wave
-Throws a large vial that explodes.
-Creates spreading acid
-Damages both player and Holt
-Forces repositioning
-☣ Compliance Protocol (Super Move)
-Holt releases a massive chemical cloud.
-Player controls reverse
-Damage over time
-Holt becomes extremely aggressive
+5. Rust Overseers — “The Architects of Control” end of final level boss
 ⚡ 5. Overseer Halden Varr — “The Architect of Rust”
 Boss Theme: Authority, mastery, hybrid combat
 Arena: Corporate Tower command chamber
@@ -872,8 +632,6 @@ High damage
 Causes knockback
 Fast startup
 🛡 Command Shield
-
-### [the-rebellion#22] primary - GameDesignDocument/The Rebellion.docx
 Deploys energy shield.
 Blocks all frontal attacks
 Must be flanked or broken
@@ -888,6 +646,8 @@ Antirush stance
 Anticombo stance
 Forces adaptation
 Phase 2 — “Rust Protocol”
+
+### [the-rebellion#17] primary - GameDesignDocument/The Rebellion.docx
 Triggered at 30% HP. Varr dons full armor.
 ⚙ Hybrid Assault
 Uses moves from all Rust unit types:
@@ -973,6 +733,12 @@ Zed: a subtle aura while building, and a stronger glow on his eyes and fists for
 Feedback: spark or number pops at the meter on each blow, a flash and impact beat on activation, and a distinct effect when Rage ends.
 Accessibility: do not rely on colour alone. Use pulse speed and icon changes as well.
 
+### [zed-rage-system-spec#15] primary - GameDesignDocument/Zed Rage System Spec.docx - 9. Implementation Notes
+Treat special as a named input action, bound to L on keyboard, so the gamepad binding can be added later without changing the state machine.
+Keep all tuning numbers (gain, bonus, streak length, drain, READY window, Rage duration) in one config.
+Rage needs a state in the player state machine that swaps the attack set for the single Special move and disables dodge.
+The meter system listens for blows landed, hits taken, knockout, level start, retry, pause and wave transition.
+
 ### [zed-rage-system-spec#16] primary - GameDesignDocument/Zed Rage System Spec.docx - 10. Open Items
 [table]
 Item | Status
@@ -989,6 +755,10 @@ A hit cancels a buffered L press.
 The meter resets on a retry as well as at level start.
 Lore wording has not yet been checked against the existing GDD and content/lore files.
 
+### [canon#8] derived - design/lore/canon.md - Zed — The Boy from Brick‑Red Alley
+Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out”. His block was known for its mustard‑yellow storefronts, forest‑green basketball courts, and the brick‑red alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
+His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
+
 ### [level-01-brick-red-alley#1] derived - design/levels/level-01-brick-red-alley.md - Level 1: Brick-Red Alley (style guide)
 Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style set**.
 
@@ -996,13 +766,9 @@ Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style
 - District: `brick-red-alley`
 - Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music.
 - Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F
-- Time limit: 120 s. Waves: 3. Enemies named: grunt.
+- Time limit: 210 s. Waves: 5 (grunt counts 4, 6, 7, 8, then the mini-boss beat). Enemies named: grunt; rust-breaker elites (3x HP) in the last spawns of waves 3 and 4 (1, then 2). Wave 5 is the mini-boss beat: rust-brick-dugan leads, walking in first from the far side, and 4 grunts flank in from both edges in the same wave. Not a hard gate.
 - Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe."
 - Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
-
-### [canon#8] derived - design/lore/canon.md - Zed — The Boy from Brick‑Red Alley
-Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out”. His block was known for its mustard‑yellow storefronts, forest‑green basketball courts, and the brick‑red alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
-His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
 
 ### [canon#9] derived - design/lore/canon.md - The Fall of Fallen City
 Everything changed when RUST, the private security force, swept through the districts. The document describes the city as “overtaken Rust a corrupt private Security Force” — and Zed saw it firsthand.
@@ -1056,13 +822,17 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 - Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
 - Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
 
+### [asset-manifest#18] derived - design/art/asset-manifest.md - Zed Rage locomotion clips (added by player-agent / code-generator-agent)
+Used only while Zed is in Rage (`zed.rage.isActive`) and the machine state is idle/run; rage clips win over the carry clips (carry clips apply only when not raging). Not to be confused with `Super_special_move/` (the L-key Rage Special).
+| Key | File | Size | Frames | Owner | Notes |
+|---|---|---|---|---|---|
+| zed.rageidle.<dir> | assets/sprites/zed/Super_special_move_ideal/animations/idle_breathing/<dir>/frame_000..007.png | 68x68 | 8 per direction | ANIM | east/west/north/south only, loop, 10 fps; foot row 55 (S 57), originY 58/68 |
+| zed.ragerun.<dir> | assets/sprites/zed/Super_special_move_running/animations/Running/<dir>/frame_000..007.png | 68x68 | 8 per direction | ANIM | east/west/north/south only, loop, 13 fps; mean foot row E 54.5, W 53.9, N 54.0, S 57.9; diagonals use east/west |
+
 ### [level-01-brick-red-alley-2#1] reference - exports/level-01-brick-red-alley.pdf
-Level 1: Brick-Red Alley (style guide)
-Owner agent: level-style-01-brick-red-alley-agent . Status: 2026-10-20, style set.
-Known from the level data (do not contradict)
-District: brick-red-alley Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music. Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F Time limit: 120 s. Waves: 3. Enemies named: grunt. Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe." Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
-House rules that apply to every level
-Source: design/art/style-guide.md .
+Level 1: Brick-Red Alley (style guide) Owner agent: level-style-01-brick-red-alley-agent . Status: 2026-10-20, style set.
+Known from the level data (do not contradict) District: brick-red-alley Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music. Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F Time limit: 120 s. Waves: 3. Enemies named: grunt. Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe." Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
+House rules that apply to every level Source: design/art/style-guide.md .
 
 ### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
 **Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
@@ -1076,5 +846,8 @@ Poster "Local Heroes Benefit: Keep the Lights On": hopeful, community voice, mat
 Poster "Rust Notice 114 / CURFEW struck through": Rust is named as a force that issues orders, not a place, and the cross-out shows the community answering it. Tone is right. Caveat: the curfew and numbered notices are not in the GDD; logged as open question 1, treated as flavour.
 Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GDD Pitch (item 2).
 
+### [pipeline-readme#10] reference - PIPELINE-README.md - Gameplay systems (all covered by `npm test`, 163 passing)
+Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
+
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 599 chunks across 57 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.

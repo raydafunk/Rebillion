@@ -448,7 +448,7 @@ test('ground light press still starts light1 (not the flying kick)', () => {
   assert.equal(m.moveId, 'light1');
 });
 
-import { dir8FromInput, carryState, clipDirs, ZED_DIRS, zedClipKeys } from '../zedVisual.js';
+import { dir8FromInput, carryState, clipDirs, ZED_DIRS, zedClipKeys, rageState, cardinalDir } from '../zedVisual.js';
 test('dir8FromInput maps all 8 inputs, keeps last dir on stop, opposite keys cancel', () => {
   const cases = [[0, -1, 'north'], [1, -1, 'north-east'], [1, 0, 'east'], [1, 1, 'south-east'],
     [0, 1, 'south'], [-1, 1, 'south-west'], [-1, 0, 'west'], [-1, -1, 'north-west']];
@@ -512,4 +512,41 @@ test('dirOriginY applies per 8-way dir for dirs:all clips; east/west unchanged',
     for (const d of ['east', 'west']) assert.equal(clipOriginY(a, d, 3), a.originY);
   }
   assert.equal(clipOriginY(ZED_ANIMS.find((x) => x.state === 'run'), 'north', 2), 52.5 / 64);
+});
+
+test('rage clips: chosen only while raging in idle/run, rage beats carry, diagonals fall back to east/west', () => {
+  const k = (o) => zedClipKeys({ state: 'idle', stateKey: 'idle', dir: 'east', dir8: 'east', carrying: false, raging: true, ...o });
+  assert.equal(k({})[0], 'zed.rageidle.east');
+  assert.equal(k({ state: 'run', stateKey: 'run' })[0], 'zed.ragerun.east');
+  assert.equal(k({ dir8: 'north' })[0], 'zed.rageidle.north');
+  assert.equal(k({ state: 'run', stateKey: 'run', dir8: 'south' })[0], 'zed.ragerun.south');
+  for (const [d8, side] of [['north-east', 'east'], ['south-east', 'east'], ['north-west', 'west'], ['south-west', 'west']]) {
+    assert.equal(cardinalDir(d8), side);
+    assert.equal(k({ dir8: d8, dir: side })[0], `zed.rageidle.${side}`);
+  }
+  assert.equal(k({ raging: false })[0], 'zed.idle.east');
+  assert.equal(k({ state: 'run', stateKey: 'run', raging: false, dir8: 'north-west' })[0], 'zed.run.north-west');
+  // raging + carrying: rage clips win, no carry clip is offered
+  assert.equal(k({ state: 'run', stateKey: 'run', carrying: true, dir8: 'north' })[0], 'zed.ragerun.north');
+  assert.equal(k({ carrying: true })[0], 'zed.rageidle.east');
+  assert.ok(!k({ carrying: true }).some((x) => x.includes('carry')));
+  // not raging + carrying: carry clips apply
+  assert.equal(k({ raging: false, state: 'run', stateKey: 'run', carrying: true, dir8: 'north' })[0], 'zed.carrywalk.north');
+  assert.equal(k({ raging: false, carrying: true })[0], 'zed.carryidle.east');
+  for (const st of ['attack', 'jump', 'parry', 'hitstun', 'held', 'special', 'block']) {
+    assert.equal(rageState(st), null);
+    assert.ok(!k({ state: st, stateKey: st }).some((x) => x.includes('rage')), st);
+  }
+});
+
+test('rage clips: 4 dirs, all frame files exist with declared counts', () => {
+  for (const [state, folder, anim] of [['rageidle', 'Super_special_move_ideal', 'idle_breathing'], ['ragerun', 'Super_special_move_running', 'Running']]) {
+    const a = ZED_ANIMS.find((x) => x.state === state);
+    assert.equal(a.folder, folder); assert.equal(a.anim, anim); assert.equal(a.frames, 8); assert.equal(a.repeat, -1);
+    assert.deepEqual([...clipDirs(a)].sort(), ['east', 'north', 'south', 'west']);
+    for (const d of clipDirs(a)) {
+      for (let i = 0; i < a.frames; i++) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(a, d, i)}`, import.meta.url)), zedFramePath(a, d, i));
+      assert.ok(!existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(a, d, a.frames)}`, import.meta.url)), `${d}: more frames than declared`);
+    }
+  }
 });

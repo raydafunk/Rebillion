@@ -1,0 +1,627 @@
+{
+  "stamp": "2026-11-03T12-44-13",
+  "seed": 2,
+  "base": "playtest.html",
+  "results": [
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "boss-hunter",
+        "stopOn": "wave",
+        "maxSec": 180,
+        "id": "MB-L2-royce-solo",
+        "tier": "mini-boss",
+        "boss": "\"Railgun\" Royce (solo)",
+        "level": 2,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 55,
+      "video": "videos/MB-L2-royce-solo.mp4",
+      "persona": "boss-hunter",
+      "kind": "competent",
+      "level": 2,
+      "levelName": "Mustard Row",
+      "outcome": null,
+      "done": false,
+      "elapsedMs": 42913,
+      "stats": {
+        "hitsDealt": 41,
+        "hitsTaken": 1,
+        "damageDealt": 460,
+        "damageTaken": 7,
+        "parryAttempts": 1,
+        "parries": 1,
+        "kills": 9,
+        "wavesCleared": 1,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 4,
+        "minFps": 30,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 21,
+          "wait": 45,
+          "attack": 604,
+          "parry": 1,
+          "evade-slam": 20,
+          "reposition": 34,
+          "victory": 88,
+          "exit": 232
+        },
+        "notes": {
+          "parry": 1,
+          "heavy": 3,
+          "slam-backstep": 13,
+          "slam-jump": 7,
+          "reposition": 34,
+          "rage-special": 4
+        },
+        "repositions": 1,
+        "goalShare": {
+          "intro": 2,
+          "wait": 4,
+          "attack": 58,
+          "parry": 0,
+          "evade-slam": 2,
+          "reposition": 3,
+          "victory": 8,
+          "exit": 22
+        }
+      },
+      "bosses": [
+        {
+          "id": "railgun-royce-1",
+          "seenT": 15030,
+          "diedT": 25083,
+          "maxHp": 160,
+          "moves": {
+            "combo": {
+              "seen": 1,
+              "hitZed": 1,
+              "damage": 7,
+              "evaded": 0
+            },
+            "slam": {
+              "seen": 1,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 1
+            }
+          },
+          "minHp": 0,
+          "hpEnd": 0
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 13449,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 14010,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 14028,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 15030,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 17744,
+          "type": "hurt",
+          "by": "railgun-royce-1",
+          "amount": 7,
+          "move": "combo"
+        },
+        {
+          "t": 18179,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 18179,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "railgun-royce-1",
+          "clock": 918,
+          "mark": 1020
+        },
+        {
+          "t": 18179,
+          "type": "parry-success"
+        },
+        {
+          "t": 18230,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 20749,
+          "type": "goal",
+          "id": "evade-slam"
+        },
+        {
+          "t": 20818,
+          "type": "reposition",
+          "left": 1,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 21409,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 22136,
+          "type": "reposition-done"
+        },
+        {
+          "t": 22136,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 25083,
+          "type": "boss-down",
+          "id": "railgun-royce-1"
+        },
+        {
+          "t": 26582,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 29042,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 37144,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 37184,
+          "type": "goal",
+          "id": "exit"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "boss-hunter",
+        "stopOn": "round",
+        "maxSec": 180,
+        "id": "EB-L2-royce-crew",
+        "tier": "end-boss",
+        "boss": "\"Railgun\" Royce + crew (Level 2 finale)",
+        "level": 2,
+        "wave": 5,
+        "bespoke": true
+      },
+      "wallSec": 40,
+      "video": "videos/EB-L2-royce-crew.mp4",
+      "persona": "boss-hunter",
+      "kind": "competent",
+      "level": 2,
+      "levelName": "Mustard Row",
+      "outcome": {
+        "mode": "lose",
+        "reason": "ko",
+        "t": 27729,
+        "hp": 0,
+        "secondsLeft": 196,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 32700,
+      "stats": {
+        "hitsDealt": 21,
+        "hitsTaken": 11,
+        "damageDealt": 191,
+        "damageTaken": 100,
+        "parryAttempts": 9,
+        "parries": 4,
+        "kills": 0,
+        "wavesCleared": 0,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 0,
+        "minFps": 27,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 13,
+          "wait": 38,
+          "attack": 378,
+          "parry": 9,
+          "evade-slam": 47,
+          "reposition": 30,
+          "done": 29
+        },
+        "notes": {
+          "parry": 9,
+          "heavy": 3,
+          "slam-backstep": 12,
+          "slam-jump": 35,
+          "reposition": 30,
+          "guard-break": 1
+        },
+        "repositions": 1,
+        "goalShare": {
+          "intro": 2,
+          "wait": 7,
+          "attack": 69,
+          "parry": 2,
+          "evade-slam": 9,
+          "reposition": 6,
+          "done": 5
+        }
+      },
+      "bosses": [
+        {
+          "id": "railgun-royce-1",
+          "seenT": 14001,
+          "diedT": null,
+          "maxHp": 160,
+          "moves": {
+            "combo": {
+              "seen": 2,
+              "hitZed": 1,
+              "damage": 7,
+              "evaded": 1
+            },
+            "slam": {
+              "seen": 2,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 1
+            }
+          },
+          "minHp": 19,
+          "hpEnd": 19
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 12590,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 13021,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 13043,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 14001,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 16709,
+          "type": "hurt",
+          "by": "railgun-royce-1",
+          "amount": 7,
+          "move": "combo"
+        },
+        {
+          "t": 17108,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 17108,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "railgun-royce-1",
+          "clock": 915,
+          "mark": 1020
+        },
+        {
+          "t": 17108,
+          "type": "parry-success"
+        },
+        {
+          "t": 17152,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 19660,
+          "type": "goal",
+          "id": "evade-slam"
+        },
+        {
+          "t": 19760,
+          "type": "reposition",
+          "left": 1,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 20182,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 21061,
+          "type": "reposition-done"
+        },
+        {
+          "t": 21061,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 24144,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 24144,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 235,
+          "mark": 520
+        },
+        {
+          "t": 24178,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 24213,
+          "type": "parry-success"
+        },
+        {
+          "t": 24360,
+          "type": "parry-success"
+        },
+        {
+          "t": 24663,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 24663,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-4",
+          "clock": 543,
+          "mark": 610
+        },
+        {
+          "t": 24689,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 24779,
+          "type": "hurt",
+          "by": "grunt-4",
+          "amount": 8
+        },
+        {
+          "t": 25174,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 25174,
+          "type": "parry-press",
+          "zed": "run",
+          "by": "grunt-3",
+          "clock": 290,
+          "mark": 350
+        },
+        {
+          "t": 25199,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 25341,
+          "type": "parry-success"
+        },
+        {
+          "t": 25561,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 8
+        },
+        {
+          "t": 25585,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 25585,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-5",
+          "clock": 433,
+          "mark": 520
+        },
+        {
+          "t": 25609,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 25729,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 25729,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-4",
+          "clock": 292,
+          "mark": 350
+        },
+        {
+          "t": 25766,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 25869,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 16
+        },
+        {
+          "t": 26007,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 6
+        },
+        {
+          "t": 26141,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 26141,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-2",
+          "clock": 503,
+          "mark": 610
+        },
+        {
+          "t": 26141,
+          "type": "hurt",
+          "by": "grunt-5",
+          "amount": 6
+        },
+        {
+          "t": 26179,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 26260,
+          "type": "goal",
+          "id": "evade-slam"
+        },
+        {
+          "t": 26760,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27179,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 27179,
+          "type": "parry-press",
+          "zed": "jump",
+          "by": "grunt-4",
+          "clock": 432,
+          "mark": 520
+        },
+        {
+          "t": 27199,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27281,
+          "type": "goal",
+          "id": "evade-slam"
+        },
+        {
+          "t": 27302,
+          "type": "hurt",
+          "by": "grunt-4",
+          "amount": 16
+        },
+        {
+          "t": 27529,
+          "type": "hurt",
+          "by": "grunt-4",
+          "amount": 6
+        },
+        {
+          "t": 27551,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 27551,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-3",
+          "clock": 552,
+          "mark": 520
+        },
+        {
+          "t": 27580,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27580,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 27729,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 27729,
+          "type": "hurt",
+          "by": "grunt-4",
+          "amount": 5
+        },
+        {
+          "t": 27729,
+          "type": "zed-ko"
+        },
+        {
+          "t": 27729,
+          "type": "round-lose",
+          "reason": "ko"
+        },
+        {
+          "t": 27759,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    }
+  ]
+}

@@ -104,7 +104,8 @@ const VALIDATORS = {
       else if (!w.restPickup || !isNum(w.restPickup.heal) || w.restPickup.heal < 1 || w.restPickup.heal > 100) e('restPickup { heal: 1-100 } required: every wave but the last needs a breather');
     });
     // Difficulty should climb: total enemies per wave must not shrink.
-    for (let i = 1; i < it.waves.length; i++) if (!it.waves[i].leader && it.waves[i].count < it.waves[i - 1].count) err(`waves[${i}] has fewer enemies than waves[${i - 1}]`);
+    // Exempt: a wave with a leader, and a wave of heavies (boss, bruiser or elite roles: fewer, tougher enemies may follow a bigger crowd of small ones).
+    for (let i = 1; i < it.waves.length; i++) if (!it.waves[i].leader && !ctx.heavies.has(it.waves[i].enemy) && it.waves[i].count < it.waves[i - 1].count) err(`waves[${i}] has fewer enemies than waves[${i - 1}]`);
   },
   dialogue(it, err) {
     if (!SCHEMAS.dialogue.speakers.includes(it.speaker)) err(`speaker must be ${SCHEMAS.dialogue.speakers.join('|')}`);
@@ -124,7 +125,7 @@ export function validate(types = Object.keys(CONTENT_TYPES)) {
   const chunkIds = new Set(corpus.chunks.map((c) => c.id));
   const primaryIds = new Set(corpus.chunks.filter((c) => c.authority === 'primary').map((c) => c.id));
   const all = Object.fromEntries(Object.keys(CONTENT_TYPES).map((t) => [t, loadItems(t)]));
-  const ctx = { lore: new Set(all.lore.items.map((i) => i.id)), enemies: new Set(all.enemies.items.map((i) => i.id)) };
+  const ctx = { lore: new Set(all.lore.items.map((i) => i.id)), enemies: new Set(all.enemies.items.map((i) => i.id)), heavies: new Set(all.enemies.items.filter((i) => ['boss', 'bruiser', 'elite'].includes(i.role)).map((i) => i.id)) };
   const result = {};
   for (const t of types) {
     const { items, errors } = all[t];

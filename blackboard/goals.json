@@ -90,9 +90,10 @@
       "owner": "playtest-level-agent",
       "needs": [],
       "produces": "facts/playtest-levels.json",
-      "status": "open",
-      "attempts": 0,
-      "maxAttempts": 2
+      "status": "done",
+      "attempts": 2,
+      "maxAttempts": 2,
+      "note": "5/7 won (L2,L4,L6,L7,L8), L3 and L5 lost to KO; S1:0 S2:0; levels 2-8 Brawler only, cloud canvas render"
     },
     {
       "id": "G8-playtest-bosses",
@@ -101,9 +102,10 @@
       "owner": "playtest-boss-agent",
       "needs": [],
       "produces": "facts/playtest-bosses.json",
-      "status": "open",
-      "attempts": 0,
-      "maxAttempts": 2
+      "status": "done",
+      "attempts": 1,
+      "maxAttempts": 2,
+      "note": "L2 Royce: 3 runs recorded (1 clear, 1 mutual KO with crew, 1 loss with Royce at 19/160); S1:0 S2:0 S3:2 (Royce dies in 10-14s; dash/trap/taser never fired because the hunter stays in melee)"
     }
   ]
 }

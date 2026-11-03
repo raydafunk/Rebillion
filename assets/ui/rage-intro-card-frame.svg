@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PLACEHOLDER: Rage intro card frame (no text). Owner: art-direction-agent. Text is live in the game (Anton / Rubik), never baked in. The "L" on the keycap is drawn live by RageIntroCard.js. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="460" viewBox="0 0 960 460">
+  <defs><clipPath id="card"><rect x="6" y="6" width="938" height="438" rx="16"/></clipPath></defs>
+  <rect x="16" y="16" width="938" height="438" rx="16" fill="#2E1F16" opacity="0.35"/>
+  <rect x="6" y="6" width="938" height="438" rx="16" fill="#3A2218"/>
+  <g clip-path="url(#card)">
+    <rect x="6" y="6" width="938" height="92" fill="#7A2E1A"/>
+    <rect x="6" y="98" width="938" height="10" fill="#D62A1E"/>
+    <rect x="6" y="98" width="938" height="4" fill="#2E1F16"/>
+    <rect x="6" y="104" width="938" height="4" fill="#2E1F16"/>
+    <g fill="#F58A2A" opacity="0.55"><polygon points="40,86 62,30 84,86"/><polygon points="96,86 112,50 128,86"/><polygon points="816,86 832,50 848,86"/><polygon points="866,86 888,30 910,86"/></g>
+  </g>
+  <rect x="14" y="14" width="922" height="422" rx="12" fill="none" stroke="#D62A1E" stroke-width="3" opacity="0.7"/>
+  <rect x="6" y="6" width="938" height="438" rx="16" fill="none" stroke="#2E1F16" stroke-width="6"/>
+  <!-- emblem: ember burst, flame, blank L keycap -->
+  <g>
+<polygon points="289.8,278.4 316.0,299.8 282.6,305.2" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="266.3,333.6 278.2,365.2 246.6,353.3" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="218.2,369.6 212.8,403.0 191.4,376.8" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="158.6,376.8 137.2,403.0 131.8,369.6" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="103.4,353.3 71.8,365.2 83.7,333.6" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="67.4,305.2 34.0,299.8 60.2,278.4" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="60.2,245.6 34.0,224.2 67.4,218.8" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="83.7,190.4 71.8,158.8 103.4,170.7" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="131.8,154.4 137.2,121.0 158.6,147.2" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="191.4,147.2 212.8,121.0 218.2,154.4" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="246.6,170.7 278.2,158.8 266.3,190.4" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="282.6,218.8 316.0,224.2 289.8,245.6" fill="#F58A2A" stroke="#2E1F16" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="175" cy="262" r="112" fill="#7A2E1A" stroke="#2E1F16" stroke-width="5"/>
+    <circle cx="175" cy="262" r="96" fill="none" stroke="#F58A2A" stroke-width="5"/>
+    <path d="M175,160 C190,190 225,205 222,245 C220,275 198,292 175,292 C150,292 130,275 130,248 C130,225 145,214 152,195 C160,205 163,212 168,214 C168,190 170,175 175,160 Z" fill="#D62A1E" stroke="#2E1F16" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M175,160 C190,190 225,205 222,245 C220,275 198,292 175,292 C150,292 130,275 130,248 C130,225 145,214 152,195 C160,205 163,212 168,214 C168,190 170,175 175,160 Z" fill="#F58A2A" transform="translate(175 292) scale(0.66) translate(-175 -292)"/>
+    <path d="M175,160 C190,190 225,205 222,245 C220,275 198,292 175,292 C150,292 130,275 130,248 C130,225 145,214 152,195 C160,205 163,212 168,214 C168,190 170,175 175,160 Z" fill="#FFE3D6" transform="translate(175 292) scale(0.36) translate(-175 -292)"/>
+    <rect x="143" y="304" width="64" height="52" rx="10" fill="#F4E6C8" stroke="#2E1F16" stroke-width="5"/>
+    <rect x="149" y="310" width="52" height="8" rx="3" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+  <!-- meter-fill strip: ember to orange to red to red-white -->
+  <g stroke="#2E1F16" stroke-width="3" stroke-linejoin="round"><rect x="340" y="378" width="56" height="14" rx="3" fill="#7A2E1A"/><rect x="406" y="378" width="56" height="14" rx="3" fill="#7A2E1A"/><rect x="472" y="378" width="56" height="14" rx="3" fill="#F58A2A"/><rect x="538" y="378" width="56" height="14" rx="3" fill="#F58A2A"/><rect x="604" y="378" width="56" height="14" rx="3" fill="#D62A1E"/><rect x="670" y="378" width="56" height="14" rx="3" fill="#D62A1E"/><rect x="736" y="378" width="56" height="14" rx="3" fill="#FFE3D6"/><rect x="802" y="378" width="56" height="14" rx="3" fill="#FFE3D6"/></g>
+</svg>

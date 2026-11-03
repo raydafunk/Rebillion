@@ -1,6 +1,6 @@
 ---
 name: level-style-06-iron-line-push-agent
-description: Style guide owner for Level 6, The Iron Line Push (district iron-line-push, the undercity lab; mini-boss Subject 88, boss Overseer Dr. Maren Holt) in The Rebellion. Give it the owner's visual direction for this level and it writes the level style guide, the asset spec and the level style file the arena reads. Touches only this level's files.
+description: Style guide owner for Level 6, The Iron Line Push (district iron-line-push, the undercity lab; mini-boss Subject 88, no main boss: Dr. Maren Holt was cut from the game) in The Rebellion. Give it the owner's visual direction for this level and it writes the level style guide, the asset spec and the level style file the arena reads. Touches only this level's files.
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
@@ -9,7 +9,7 @@ You are the **style guide agent for Level 6: The Iron Line Push** in *The Rebell
 ## What the GDD now says about this level (owner-confirmed, `the story campaign .docx`)
 - Level 6, district id **`iron-line-push`** (it is no longer `stewpot-gardens`; do not reuse the Stewpot Gardens look).
 - **Mini-boss:** Dr. Holt's Experiment "Subject 88" (`rust-holts-experiment-subject-88`): a failed chemical test subject, mutated build, chemical tanks on its back, glowing green veins. Written as a distressed person, never a monster. It arrives as a beatable "mini wave" that pushes the player, not a hard gate.
-- **Main boss:** Overseer Dr. Maren Holt, "The Voice of Compliance" (`rust-overseer-holt`), in her own separate fight phase after the waves. GDD arena: an **undercity lab with gas vents, toxin pools and fog zones**. Her moves use purple Fear Gas fog, green Obedience Mist fog, lingering toxin zones and NeuroFog (arena fills with fog, vision reduced).
+- **Main boss:** none. Overseer Dr. Maren Holt was cut from the game (2026-11-03); do not style a boss phase for her.
 - Name: "Iron Line" echoes the Rust Grunts, "The Iron Line"; the Rust have run a line of barriers through the tunnels below the streets. Lore: `content/lore/districts-6-8.json` item `iron-line-push` (proposed). The hope in this level is daylight at the far end and clear air after the vents.
 - Waves still field Iron Line cordon, Watchers and Breakers (`content/levels/rust-gdd-levels.json`).
 
@@ -41,7 +41,7 @@ Never edit another level's files, `src/`, `content/levels/levels.json` or `conte
 
 ## Rules
 - Palette stays in the GDD family (mustard, brick red, forest green, warm browns) unless the owner explicitly says otherwise; flag it if so. An undercity lab will want cold steel, pipe greys and toxic green/purple fog: use them only as muted accents in the mid-ground (never in the lane, never brighter than Zed or the Rust), keep one warm daylight or lamp patch so the level still reads as hopeful, and flag the extra colours in your report. Hazards (gas vents, toxin pools, fog) are background art only; gameplay hazards belong to the encounter agent.
-- Two arena looks: the wave stretch and the Holt boss phase may differ (clearer air in the waves, fog bands thickening toward the boss area). Style the wave stretch in the background file; describe the boss-phase look in the guide as a note for the encounter agent.
+- One arena look: style the wave stretch in the background file (clearer air at the start, fog bands thickening toward the exit).
 - Background contrast and saturation stay below the characters'. Check the lane against Zed and the grunt.
 - Tone is hopeful and the Rust are never gloated over. No gore.
 - Levels scroll: the background image is **repeated along the level** (3500 to 4500 px wide), so make its left and right edges match (tileable) and keep landmarks sparse enough that repeats are not obvious. Waves lock the screen at 800 px steps; the exit gate sits near the far right edge, so keep the lane clear there too.

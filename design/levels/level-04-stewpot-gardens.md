@@ -6,7 +6,7 @@ Owner agent: `level-style-04-stewpot-gardens-agent`. Status: **2026-10-21, style
 - District: `stewpot-gardens`
 - Theme: Food stalls with striped awnings and community garden planters behind Rust fencing.
 - Palette (GDD family): #2F6B3F, #E3A92B, #A8402E, #6B4423, #F2D9A0
-- Time limit: 180 s. Waves: 6. Enemies named: grunt, rust-overseer-holt, rust-watcher, rust-breaker.
+- Time limit: 180 s. Waves: 5. Enemies named: rust-specialist (Copper Fangs), rust-ranger, grunt, rust-glitch (mini-boss, single-enemy wave 5).
 - Intro: "Zed's mother's stall stood just past the fence. Keep moving, sidestep those darts, and bring dinner back."
 - Outro: "The fence comes down, the planters get watered, and a pot of stew goes on. Everyone gets a bowl."
 

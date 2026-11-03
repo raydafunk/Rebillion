@@ -15,7 +15,7 @@ assert.ok(reg.boss && reg.bossProfile === ROYCE_ID && reg.team === 'rust', 'regi
 assert.equal(r.maxHp, ROYCE.maxHp);
 assert.equal(r.maxHp, 160, 'content/enemies/mini-bosses.json maxHp');
 assert.ok(r.miniBoss && !r.isBoss, 'miniBoss flag, never isBoss (that flag means Dugan art and voice)');
-assert.equal(r.data.tint, ROYCE.tint);
+assert.equal(r.data.tint, ROYCE.tint); assert.equal(r.constructor.name, "RoyceBoss", "his own AI, not the grunt");
 assert.equal(m.spawn({ id: 'g1', x: 0, y: 500 }).maxHp, 30, 'plain grunts are untouched');
 assert.equal(m.spawn({ id: 'railgun-royce-2', x: 0, y: 500, enemy: ROYCE_ID, hpMult: 2 }).maxHp, 320, 'hpMult scales him');
 assert.ok(BOSS_PROFILES[ROYCE_ID] && BOSS_PROFILES[ROYCE_ID].maxHpFallback === 160, 'boss bar profile exists');

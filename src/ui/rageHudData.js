@@ -2,7 +2,7 @@
 import { RAGE_COPY } from './rageHudCopy.js';
 
 // Sits under Zed's health bar (HudScene: x 32, y 52, 360 wide, 28 high).
-export const RAGE_LAYOUT = { x: 32, y: 96, w: 300, h: 22, skew: 10, iconX: 14, hiddenOffsetX: -420, slideMs: 600, introMs: 6500 };
+export const RAGE_LAYOUT = { x: 32, y: 96, w: 300, h: 22, skew: 10, iconX: 14, hiddenOffsetX: -420, slideMs: 600 };
 
 export const RAGE_PALETTE = { ember: 0x7a2410, orange: 0xf07a1c, redWhite: 0xffe3d6, frame: 0x2e1f16, ready: 0xffd34a, active: 0xff4a2e, back: 0x3a2218 };
 
@@ -54,5 +54,3 @@ export function barPoints(x, y, w, h, skew, frac = 1) {
   return [{ x: x + skew, y }, { x: x + skew + fw, y }, { x: x + fw, y: y + h }, { x, y: y + h }];
 }
 
-/** Show the one-time intro only when the meter is enabled this level and it has not been seen. */
-export function shouldShowIntro(levelNumber, seen, enabledFromLevel = 2) { return levelNumber >= enabledFromLevel && !seen; }

@@ -1,0 +1,750 @@
+{
+  "group_id": "5d67d95e-7ebd-400b-abc4-963a7de530b6",
+  "states": [
+    {
+      "character": {
+        "id": "a2bd6e2e-ea9c-45c4-a9bb-555792903d10",
+        "name": "Idle",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T14:04:36.416534+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "Idle": {
+            "south": [
+              "Idle/animations/Idle/south/frame_000.png",
+              "Idle/animations/Idle/south/frame_001.png",
+              "Idle/animations/Idle/south/frame_002.png",
+              "Idle/animations/Idle/south/frame_003.png",
+              "Idle/animations/Idle/south/frame_004.png",
+              "Idle/animations/Idle/south/frame_005.png",
+              "Idle/animations/Idle/south/frame_006.png",
+              "Idle/animations/Idle/south/frame_007.png"
+            ],
+            "west": [
+              "Idle/animations/Idle/west/frame_000.png",
+              "Idle/animations/Idle/west/frame_001.png",
+              "Idle/animations/Idle/west/frame_002.png",
+              "Idle/animations/Idle/west/frame_003.png",
+              "Idle/animations/Idle/west/frame_004.png",
+              "Idle/animations/Idle/west/frame_005.png",
+              "Idle/animations/Idle/west/frame_006.png",
+              "Idle/animations/Idle/west/frame_007.png"
+            ],
+            "north": [
+              "Idle/animations/Idle/north/frame_000.png",
+              "Idle/animations/Idle/north/frame_001.png",
+              "Idle/animations/Idle/north/frame_002.png",
+              "Idle/animations/Idle/north/frame_003.png",
+              "Idle/animations/Idle/north/frame_004.png",
+              "Idle/animations/Idle/north/frame_005.png",
+              "Idle/animations/Idle/north/frame_006.png",
+              "Idle/animations/Idle/north/frame_007.png"
+            ],
+            "east": [
+              "Idle/animations/Idle/east/frame_000.png",
+              "Idle/animations/Idle/east/frame_001.png",
+              "Idle/animations/Idle/east/frame_002.png",
+              "Idle/animations/Idle/east/frame_003.png",
+              "Idle/animations/Idle/east/frame_004.png",
+              "Idle/animations/Idle/east/frame_005.png",
+              "Idle/animations/Idle/east/frame_006.png",
+              "Idle/animations/Idle/east/frame_007.png"
+            ],
+            "south-east": [
+              "Idle/animations/Idle/south-east/frame_000.png",
+              "Idle/animations/Idle/south-east/frame_001.png",
+              "Idle/animations/Idle/south-east/frame_002.png",
+              "Idle/animations/Idle/south-east/frame_003.png",
+              "Idle/animations/Idle/south-east/frame_004.png",
+              "Idle/animations/Idle/south-east/frame_005.png",
+              "Idle/animations/Idle/south-east/frame_006.png",
+              "Idle/animations/Idle/south-east/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "82cd8466-76e0-462d-8606-3dd2e4a1d461",
+        "name": "Walking",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T17:40:44.481088+00:00"
+      },
+      "folder": "Walking",
+      "frames": {
+        "rotations": {
+          "south": "Walking/rotations/south.png",
+          "south-east": "Walking/rotations/south-east.png",
+          "east": "Walking/rotations/east.png",
+          "north-east": "Walking/rotations/north-east.png",
+          "north": "Walking/rotations/north.png",
+          "north-west": "Walking/rotations/north-west.png",
+          "west": "Walking/rotations/west.png",
+          "south-west": "Walking/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_brisk_energetic_walk_with": {
+            "north-east": [
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_000.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_001.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_002.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_003.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_004.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_005.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_006.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_007.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north-east/frame_008.png"
+            ],
+            "south-east": [
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_000.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_001.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_002.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_003.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_004.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_005.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_006.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_007.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south-east/frame_008.png"
+            ],
+            "west": [
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_000.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_001.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_002.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_003.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_004.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_005.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_006.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_007.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/west/frame_008.png"
+            ],
+            "east": [
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_000.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_001.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_002.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_003.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_004.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_005.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_006.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_007.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/east/frame_008.png"
+            ],
+            "north": [
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_000.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_001.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_002.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_003.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_004.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_005.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_006.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_007.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/north/frame_008.png"
+            ],
+            "south": [
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_000.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_001.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_002.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_003.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_004.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_005.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_006.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_007.png",
+              "Walking/animations/The_character_performs_a_brisk_energetic_walk_with/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "aac934d0-219f-43a9-bf49-8f53c532fd51",
+        "name": "\u2022\tBaton Combo state",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T18:26:27.692597+00:00"
+      },
+      "folder": "Baton_Combo_state",
+      "frames": {
+        "rotations": {
+          "south": "Baton_Combo_state/rotations/south.png",
+          "south-east": "Baton_Combo_state/rotations/south-east.png",
+          "east": "Baton_Combo_state/rotations/east.png",
+          "north-east": "Baton_Combo_state/rotations/north-east.png",
+          "north": "Baton_Combo_state/rotations/north.png",
+          "north-west": "Baton_Combo_state/rotations/north-west.png",
+          "west": "Baton_Combo_state/rotations/west.png",
+          "south-west": "Baton_Combo_state/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_executes_a_four-hit_baton_combo_begi": {
+            "east": [
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/east/frame_000.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/east/frame_001.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/east/frame_002.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/east/frame_003.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/east/frame_004.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/east/frame_005.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/east/frame_006.png"
+            ],
+            "west": [
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/west/frame_000.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/west/frame_001.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/west/frame_002.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/west/frame_003.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/west/frame_004.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/west/frame_005.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/west/frame_006.png"
+            ],
+            "south": [
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/south/frame_000.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/south/frame_001.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/south/frame_002.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/south/frame_003.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/south/frame_004.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/south/frame_005.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/south/frame_006.png"
+            ],
+            "north": [
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/north/frame_000.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/north/frame_001.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/north/frame_002.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/north/frame_003.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/north/frame_004.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/north/frame_005.png",
+              "Baton_Combo_state/animations/The_character_executes_a_four-hit_baton_combo_begi/north/frame_006.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "ceaa880b-e764-41c8-b87a-95301e6c3045",
+        "name": "\u2022\tCharging Dash stat",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T18:29:26.709802+00:00"
+      },
+      "folder": "Charging_Dash_stat",
+      "frames": {
+        "rotations": {
+          "south": "Charging_Dash_stat/rotations/south.png",
+          "south-east": "Charging_Dash_stat/rotations/south-east.png",
+          "east": "Charging_Dash_stat/rotations/east.png",
+          "north-east": "Charging_Dash_stat/rotations/north-east.png",
+          "north": "Charging_Dash_stat/rotations/north.png",
+          "north-west": "Charging_Dash_stat/rotations/north-west.png",
+          "west": "Charging_Dash_stat/rotations/west.png",
+          "south-west": "Charging_Dash_stat/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_assumes_a_low_aggressive_stance_righ": {
+            "east": [
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_000.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_001.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_002.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_003.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_004.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_005.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_006.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_007.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/east/frame_008.png"
+            ],
+            "north": [
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_000.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_001.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_002.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_003.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_004.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_005.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_006.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_007.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/north/frame_008.png"
+            ],
+            "west": [
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_000.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_001.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_002.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_003.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_004.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_005.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_006.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_007.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/west/frame_008.png"
+            ],
+            "south": [
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_000.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_001.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_002.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_003.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_004.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_005.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_006.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_007.png",
+              "Charging_Dash_stat/animations/The_character_assumes_a_low_aggressive_stance_righ/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "9145e3e8-77ea-42f3-b44a-7c465863176d",
+        "name": "taking a punch",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T19:57:18.149643+00:00"
+      },
+      "folder": "taking_a_punch",
+      "frames": {
+        "rotations": {
+          "south": "taking_a_punch/rotations/south.png",
+          "south-east": "taking_a_punch/rotations/south-east.png",
+          "east": "taking_a_punch/rotations/east.png",
+          "north-east": "taking_a_punch/rotations/north-east.png",
+          "north": "taking_a_punch/rotations/north.png",
+          "north-west": "taking_a_punch/rotations/north-west.png",
+          "west": "taking_a_punch/rotations/west.png",
+          "south-west": "taking_a_punch/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "west": [
+              "taking_a_punch/animations/Taking_Punch/west/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_005.png"
+            ],
+            "east": [
+              "taking_a_punch/animations/Taking_Punch/east/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_005.png"
+            ],
+            "south": [
+              "taking_a_punch/animations/Taking_Punch/south/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_005.png"
+            ],
+            "north": [
+              "taking_a_punch/animations/Taking_Punch/north/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "37a2e6ec-5fa0-4612-972f-09b407c1e5d8",
+        "name": "\u2022\tShockwave Slam",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T19:58:41.157061+00:00"
+      },
+      "folder": "Shockwave_Slam",
+      "frames": {
+        "rotations": {
+          "south": "Shockwave_Slam/rotations/south.png",
+          "south-east": "Shockwave_Slam/rotations/south-east.png",
+          "east": "Shockwave_Slam/rotations/east.png",
+          "north-east": "Shockwave_Slam/rotations/north-east.png",
+          "north": "Shockwave_Slam/rotations/north.png",
+          "north-west": "Shockwave_Slam/rotations/north-west.png",
+          "west": "Shockwave_Slam/rotations/west.png",
+          "south-west": "Shockwave_Slam/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_raises_both_hands_high_above_the_hea": {
+            "east": [
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_000.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_001.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_002.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_003.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_004.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_005.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_006.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_007.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/east/frame_008.png"
+            ],
+            "west": [
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_000.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_001.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_002.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_003.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_004.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_005.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_006.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_007.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/west/frame_008.png"
+            ],
+            "north": [
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_000.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_001.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_002.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_003.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_004.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_005.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_006.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_007.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/north/frame_008.png"
+            ],
+            "south": [
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_000.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_001.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_002.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_003.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_004.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_005.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_006.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_007.png",
+              "Shockwave_Slam/animations/The_character_raises_both_hands_high_above_the_hea/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "a79ddb7f-4885-453a-8063-8aace730af6b",
+        "name": "Rail Trap (electrifi",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T20:02:14.793293+00:00"
+      },
+      "folder": "Rail_Trap_electrifi",
+      "frames": {
+        "rotations": {
+          "south": "Rail_Trap_electrifi/rotations/south.png",
+          "south-east": "Rail_Trap_electrifi/rotations/south-east.png",
+          "east": "Rail_Trap_electrifi/rotations/east.png",
+          "north-east": "Rail_Trap_electrifi/rotations/north-east.png",
+          "north": "Rail_Trap_electrifi/rotations/north.png",
+          "north-west": "Rail_Trap_electrifi/rotations/north-west.png",
+          "west": "Rail_Trap_electrifi/rotations/west.png",
+          "south-west": "Rail_Trap_electrifi/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_stands_firm_as_vibrant_cyan_electric": {
+            "east": [
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_000.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_001.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_002.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_003.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_004.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_005.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_006.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_007.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/east/frame_008.png"
+            ],
+            "west": [
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_000.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_001.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_002.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_003.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_004.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_005.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_006.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_007.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/west/frame_008.png"
+            ],
+            "south": [
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_000.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_001.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_002.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_003.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_004.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_005.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_006.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_007.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/south/frame_008.png"
+            ],
+            "north": [
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_000.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_001.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_002.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_003.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_004.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_005.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_006.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_007.png",
+              "Rail_Trap_electrifi/animations/The_character_stands_firm_as_vibrant_cyan_electric/north/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "50d260e0-25cb-4ab7-bdfb-46c97c72cfca",
+        "name": "Taser Burst",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T20:02:44.419103+00:00"
+      },
+      "folder": "Taser_Burst",
+      "frames": {
+        "rotations": {
+          "south": "Taser_Burst/rotations/south.png",
+          "south-east": "Taser_Burst/rotations/south-east.png",
+          "east": "Taser_Burst/rotations/east.png",
+          "north-east": "Taser_Burst/rotations/north-east.png",
+          "north": "Taser_Burst/rotations/north.png",
+          "north-west": "Taser_Burst/rotations/north-west.png",
+          "west": "Taser_Burst/rotations/west.png",
+          "south-west": "Taser_Burst/rotations/south-west.png"
+        },
+        "animations": {
+          "The_right_hand_draws_back_to_the_hip_then_thrusts": {
+            "north": [
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_000.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_001.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_002.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_003.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_004.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_005.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_006.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_007.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/north/frame_008.png"
+            ],
+            "east": [
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_000.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_001.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_002.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_003.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_004.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_005.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_006.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_007.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/east/frame_008.png"
+            ],
+            "west": [
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_000.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_001.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_002.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_003.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_004.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_005.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_006.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_007.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/west/frame_008.png"
+            ],
+            "south": [
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_000.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_001.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_002.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_003.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_004.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_005.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_006.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_007.png",
+              "Taser_Burst/animations/The_right_hand_draws_back_to_the_hip_then_thrusts/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "96d34005-c7c2-443b-9df9-d0e732e47729",
+        "name": "block",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T21:55:44.757914+00:00"
+      },
+      "folder": "block",
+      "frames": {
+        "rotations": {
+          "south": "block/rotations/south.png",
+          "south-east": "block/rotations/south-east.png",
+          "east": "block/rotations/east.png",
+          "north-east": "block/rotations/north-east.png",
+          "north": "block/rotations/north.png",
+          "north-west": "block/rotations/north-west.png",
+          "west": "block/rotations/west.png",
+          "south-west": "block/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_both_arms_inward_to_cover_the": {
+            "west": [
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/west/frame_000.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/west/frame_001.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/west/frame_002.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/west/frame_003.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/west/frame_004.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/west/frame_005.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/west/frame_006.png"
+            ],
+            "south": [
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/south/frame_000.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/south/frame_001.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/south/frame_002.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/south/frame_003.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/south/frame_004.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/south/frame_005.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/south/frame_006.png"
+            ],
+            "east": [
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/east/frame_000.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/east/frame_001.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/east/frame_002.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/east/frame_003.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/east/frame_004.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/east/frame_005.png",
+              "block/animations/The_character_pulls_both_arms_inward_to_cover_the/east/frame_006.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "92262fd9-255d-485c-a8d1-61f3d8614162",
+        "name": "falling backwords",
+        "prompt": "Railgun\" Royce\nFormer transit security officer.\nAppearance\n\u2022\tElectrified baton\n\u2022\tArmoured trench coat\n\u2022\tScanner visor\n",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-02T22:13:42.679509+00:00"
+      },
+      "folder": "falling_backwords",
+      "frames": {
+        "rotations": {
+          "south": "falling_backwords/rotations/south.png",
+          "south-east": "falling_backwords/rotations/south-east.png",
+          "east": "falling_backwords/rotations/east.png",
+          "north-east": "falling_backwords/rotations/north-east.png",
+          "north": "falling_backwords/rotations/north.png",
+          "north-west": "falling_backwords/rotations/north-west.png",
+          "west": "falling_backwords/rotations/west.png",
+          "south-west": "falling_backwords/rotations/south-west.png"
+        },
+        "animations": {
+          "Falling_Back_Death": {
+            "west": [
+              "falling_backwords/animations/Falling_Back_Death/west/frame_000.png",
+              "falling_backwords/animations/Falling_Back_Death/west/frame_001.png",
+              "falling_backwords/animations/Falling_Back_Death/west/frame_002.png",
+              "falling_backwords/animations/Falling_Back_Death/west/frame_003.png",
+              "falling_backwords/animations/Falling_Back_Death/west/frame_004.png",
+              "falling_backwords/animations/Falling_Back_Death/west/frame_005.png",
+              "falling_backwords/animations/Falling_Back_Death/west/frame_006.png"
+            ],
+            "south": [
+              "falling_backwords/animations/Falling_Back_Death/south/frame_000.png",
+              "falling_backwords/animations/Falling_Back_Death/south/frame_001.png",
+              "falling_backwords/animations/Falling_Back_Death/south/frame_002.png",
+              "falling_backwords/animations/Falling_Back_Death/south/frame_003.png",
+              "falling_backwords/animations/Falling_Back_Death/south/frame_004.png",
+              "falling_backwords/animations/Falling_Back_Death/south/frame_005.png",
+              "falling_backwords/animations/Falling_Back_Death/south/frame_006.png"
+            ],
+            "north": [
+              "falling_backwords/animations/Falling_Back_Death/north/frame_000.png",
+              "falling_backwords/animations/Falling_Back_Death/north/frame_001.png",
+              "falling_backwords/animations/Falling_Back_Death/north/frame_002.png",
+              "falling_backwords/animations/Falling_Back_Death/north/frame_003.png",
+              "falling_backwords/animations/Falling_Back_Death/north/frame_004.png",
+              "falling_backwords/animations/Falling_Back_Death/north/frame_005.png",
+              "falling_backwords/animations/Falling_Back_Death/north/frame_006.png"
+            ],
+            "east": [
+              "falling_backwords/animations/Falling_Back_Death/east/frame_000.png",
+              "falling_backwords/animations/Falling_Back_Death/east/frame_001.png",
+              "falling_backwords/animations/Falling_Back_Death/east/frame_002.png",
+              "falling_backwords/animations/Falling_Back_Death/east/frame_003.png",
+              "falling_backwords/animations/Falling_Back_Death/east/frame_004.png",
+              "falling_backwords/animations/Falling_Back_Death/east/frame_005.png",
+              "falling_backwords/animations/Falling_Back_Death/east/frame_006.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-03T11:53:09.815893"
+}

@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-10-30T07:45:28.075Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-11-03T15:17:49.082Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -89,7 +89,8 @@ Example:
 - `level-08-overseer-tower` The Overseer's Tower (content/levels/rust-gdd-levels.json)
 
 ## Uncovered GDD names (write these FIRST)
-_none detected. Still add new items: pick open questions from design/lore/canon.md or the Focus line, mark them `proposed`._
+The GDD names these but no `levels` item mentions them yet. Each needs an item (cite the chunk id shown). "Already exists" is not a reason to write nothing: you must add at least one new item per run.
+- Undercity (level, see [the-rebellion#16])
 
 ### Upstream `enemies` content you may reference
 - `rust-brick-dugan` "Brick" Dugan
@@ -108,11 +109,12 @@ _none detected. Still add new items: pick open questions from design/lore/canon.
 - `rust-overseer-voss` Overseer Kade Voss
 - `rust-overseer-calder` Overseer Rhea Calder
 - `rust-overseer-wren` Overseer Silas Wren
-- `rust-overseer-holt` Overseer Dr. Maren Holt
 - `rust-voss-drone` Rust Surveillance Drone
 - `rust-voss-megadrone` Rust MegaDrone
 - `rust-hologram-decoy` Rust Hologram Decoy
 - `rust-elite-drone` Rust Elite Drone
+- `rust-specialist` Rust Specialist - The Copper Fangs
+- `rust-ranger` Rust Ranger
 - `rust-grunt` Rust Grunt
 
 ### Upstream `lore` content you may reference
@@ -187,22 +189,30 @@ _none detected. Still add new items: pick open questions from design/lore/canon.
 ## Engine / spec files to stay compatible with
 #### src/waves/waveData.js
 ```
-// Wave table (Tier 0): 3 waves of 3, 4, 5 grunts (placeholder counts, see contracts.md).
-// lockX = camera scrollX held while the wave is active. spawnPoints are world coordinates,
-// just inside the locked view edges, alternated round-robin.
-// All times in ms.
+// Fallback wave table: Level 1 (Brick-Red Alley) as a fixed arena, used when the level files cannot be loaded (legacyLevel in levelData.js).
+// It mirrors content/levels/levels.json, level-01-brick-red-alley; waveData.test.mjs fails if the two drift apart.
+//   waves 1-4: grunt waves of 4, 6, 7, 8 with Breaker elites from wave 3 (the last N spawns of the wave, 3x health)
+//   wave 5:    the mini-boss beat. "Brick" Dugan leads and walks in first, 4 grunts flank in around him in the same wave
+// lockX = camera scrollX held while the wave is active. This arena is one world wide (1920), so the locks step 160 px, not the 800 px of the scrolling levels.
+// spawnPoints are world coordinates, just inside the locked view edges, used when no spawnPattern/getPlayer is available. All times in ms.
 const VIEW_W = 1280;
+const LOCK_STEP = 160;
 const sides = (lockX) => [
   { x: lockX + 60, y: 520 },
   { x: lockX + VIEW_W - 60, y: 580 },
   { x: lockX + 60, y: 640 },
   { x: lockX + VIEW_W - 60, y: 500 },
 ];
+const wave = (i, w) => Object.freeze({ enemy: 'grunt', sourceEnemy: 'grunt', lockX: i * LOCK_STEP, spawnPoints: sides(i * LOCK_STEP), ...w });
 
 export const WAVES = Object.freeze([
-  { enemy: 'grunt', count: 3, maxAlive: 3, spawnIntervalMs: 900, startDelayMs: 800, lockX: 0,   spawnPoints: sides(0) },
-  { enemy: 'grunt', count: 4, maxAlive: 3, spawnIntervalMs: 800, startDelayMs: 1500, lockX: 320, spawnPoints: sides(320) },
-  { enemy: 'grunt', count: 5, maxAlive: 4, spawnIntervalMs: 700, startDelayMs: 1500, lockX: 640, spawnPoints: sides(640) },
+  wave(0, { count: 4, maxAlive: 2, spawnIntervalMs: 900, startDelayMs: 600,  spawnPattern: 'alternate', attackerCap: 2, restPickup: { heal: 15 } }),
+  wave(1, { count: 6, maxAlive: 3, spawnIntervalMs: 800, startDelayMs: 1000, spawnPattern: 'flank',     attackerCap: 2, restPickup: { heal: 25 } }),
+  wave(2, { count: 7, maxAlive: 2, spawnIntervalMs: 700, startDelayMs: 1000, spawnPattern: 'pincer',    attackerCap: 2, elites: 1, eliteHpMult: 3, restPickup: { heal: 30 },
+    hint: "Caught in the middle? Step out so they're all in front of you." }),   // crowd-control lesson before the finale
+  wave(3, { count: 8, maxAlive: 4, spawnIntervalMs: 650, startDelayMs: 1000, spawnPattern: 'surge',     attackerCap: 3, elites: 2, eliteHpMult: 3, restPickup: { heal: 35 } }),
+  wave(4, { count: 4, maxAlive: 3, spawnIntervalMs: 900, startDelayMs: 1000, spawnPattern: 'flank',     attackerCap: 3,
+    leader: Object.freeze({ enemy: 'rust-brick-dugan', entrance: 'far-side', gate: false, crewAfter: 'first-move', crewDelayMs: 900, crewMaxWaitMs: 9000 }) }),
 ]);
 ```
 
@@ -238,7 +248,7 @@ export const WAVES = Object.freeze([
 ]);
 ```
 
-## Retrieved GDD passages (31)
+## Retrieved GDD passages (32)
 ### [the-rebellion#1] primary - GameDesignDocument/The Rebellion.docx
 The Rebellion
 Fists of the Fallen City
@@ -436,65 +446,6 @@ Grapple launcher
 Lightweight armour
 Move Set
 
-### [the-rebellion#16] primary - GameDesignDocument/The Rebellion.docx
-Dive Kick
-Wall Bounce Strike
-Grapple Pull
-Aerial Barrage
-Falcon Drop
-Role
-Trains players for vertical combat.
-Level 6: Undercity
-Mini-Boss: Dr. Holt's Experiment "Subject 88"
-A failed chemical test subject.
-Appearance
-Mutated physique
-Chemical tanks on back
-Glowing green veins
-Move Set
-Toxic Breath
-Acid Spit
-Frenzied Charge
-Corrosion Slam
-Chemical Explosion
-Role
-Introduces area denial hazards.
-Level 7: Rust Military Compound
-Mini-Boss: Commander Atlas
-Leader of the Copper Fangs.
-Appearance
-Elite black armour
-Tactical shield
-Twin electrified gauntlets
-Move Set
-Shield Bash
-Gauntlet Combo
-Grapple Hook Pull
-Electric Counter
-Fang Protocol (calls Specialists)
-Role
-The toughest non-boss enemy in the game.
-Level 8: Corporate Tower
-Mini-Boss: Sentinel-X9
-An experimental combat android protecting Varr.
-Appearance
-Corporate security robot
-Rust insignia
-Energy core chest
-Move Set
-Laser Sweep
-Rocket Punch
-Ground Pound
-Energy Shield
-Self-Repair Mode
-Phase 2
-Core overloads:
-Faster attacks
-Red laser barrage
-Explosive dash attacks
-Role
-Final challenge before Halden Varr.
-
 ### [win#2] derived - design/ux/win.md - Purpose
 Tell the player they won **and why**. The GDD win condition is: "Fight your way to the end of the level while beating Rust enemies" and "Defeat Wave / Clear Arena ... in time". The screen must show that the arena was cleared and that it was done in time, using real numbers from the run.
 
@@ -534,19 +485,17 @@ The HUD must not overlap the action zone. The arena camera and floor (Camera & B
 **Passage:** The subtitle "Fists of the Fallen City" and the tagline "fight back against Corrupt private security force" are the only narrative content. The Pitch adds "urban districts overtaken Rush a corrupt private Security Force." There is no section for story, characters, setting history, or endings. The mechanics list ends at "Defeat Wave / Clear Arena to win the level in time frame."
 **Why it matters:** "Rebellion" implies a movement, stakes, and escalation. The structure (clear arena, beat the timer, repeat) delivers only repetition. Nothing says why the player fights, what winning a level changes, or what the final victory looks like.
 
-### [adversarial-qa#1] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 1: Win condition and fail state are contradictory or undefined (BLOCKING)
-**Problem:** The document gives two different win conditions and no lose condition. "Defeat Wave / Clear Arena to win the level in time frame" is ambiguous. It could mean clearing every wave, clearing the arena, or surviving until the timer ends. Nothing says what happens if the timer expires with enemies still alive. Nothing says what happens if the player's health reaches zero. There is no lives, continue or retry rule.
-**Source:** Game Mechanics: "Defeat Wave / Clear Arena to win the level in time frame". Timer Agent: "Keep trick of the time the player has to beat the level". Game Loop Agent: "Control the level and win condition". No section mentions failure, death, game over or a health system.
-**Exploits and edge cases:** Does killing the last enemy at 0:00 count as a win? Can a player stall a wave so it never completes? What if an enemy is knocked off-screen or stuck (side-scroller with a "juggle" system) and cannot be reached? The arena can then never be "cleared" and the level soft-locks until the timer runs out.
+### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
+**Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
+**Source:** Pitch: "fight through urban districts overtaken Rush a corrupt private Security Force"; the only level structure given is "Defeat Wave / Clear Arena".
+**Severity:** MINOR
 
 ### [the-rebellion-frist-draft#1] reference - PDf/The Rebellion -Frist Draft.pdf
-The Rebellion
-Fists of the Fallen City
-A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections
-The Pitch The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-`me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.
-Game Mechanics -what the players does
-� Impactful Combat � punchy hits Players moves into a Areas were light and heavy pick-up objects
-� Combos and Juggle routes � Defensive tools(block dodge, parry) Enemies spawn to fight � Defeat Wave / Clear Arena to win the level in time frame
+The Rebellion Fists of the Fallen City A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections
+The Pitch
+The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.
+Game Mechanics -what the players does • Impactful Combat – punchy hits Players moves into a Areas were light and heavy pick-up objects • Combos and Juggle routes • Defensive tools(block dodge, parry) Enemies spawn to fight
+• Defeat Wave / Clear Arena to win the level in time frame
 AI Architecture Team
 
 ### [adversarial-qa#2] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 2: Enemy spawning has no rules, so the wave system can be broken or become unwinnable (MAJOR)
@@ -555,7 +504,7 @@ AI Architecture Team
 **Exploits and edge cases:** Juggle routes are advertised ("Combos and Juggle routes"). There are no rules on infinite combos, enemy hit-stun decay, or boss and heavy-enemy immunity. This is the classic brawler exploit and the document does not address it.
 
 ### [the-rebellion-final-gdd#4] reference - PDf/The Rebellion- Final Gdd.pdf
-Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that Health & Enemy Agent every agent Hitbox, It is large as it reads Asset & will run the Game State Chase and Animation enemy note Agent attack Asset & Wave Spawner behaviour, Animation Medium cost of Asset & attacker cap, Health & token Animation Lead one enemy type Hitbox first Agent Large as it runs Win check, lose Enemy the Animation state, time-out Agent result, retry Spawn triggers, None rate, cap, and positions Sprite source, animation list, hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- Game State, Medium Token Menu & UI enemy failsafe Agent HUD (health, Health & use as well timer), win/lose screens, menus Hitbox
+Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that every agent reads Enemy Agent Chase and Health & It is large as it attack Hitbox, will run the behaviour, Asset & enemy note attacker cap, Animation one enemy type Asset & first Animation Game State Win check, lose Health & Medium cost of Agent state, time-out Hitbox token result, retry Agent Wave Spawner Spawn triggers, Enemy rate, cap, and Agent positions Asset & Sprite source, None Large as it runs Animation Lead animation list, the Animation hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- enemy failsafe Menu & UI HUD (health, Game State, Medium Token Agent timer), win/lose Health & use as well screens, menus Hitbox
 
 ### [systems-designer#8] reference - gdd-review-kit-main/reviews/systems-designer.md - 2. CONNECTIONS
 **QA F2 (spawn rules) + my F4 (no numbers) = the difficulty curve has no control variable.** QA shows that time-driven versus clear-driven spawning produces opposite failure modes (unbounded accumulation versus edge exploits). I flagged missing spawn rate and caps. Combined, the point is that spawn logic is the only lever this design has for difficulty, because there are no enemy types and no progression. Since the Enemy Agent owns behavior and the Game Loop Agent owns the win condition, and neither is budgeted (QA F5), the one lever that sets difficulty has no owner and no cost. Neither of us saw that alone.
@@ -567,23 +516,34 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 ### [the-rebellion-final-gdd#2] reference - PDf/The Rebellion- Final Gdd.pdf
 Win conditions Lose conditions Fight you way to the end of the Get knocked out by health bar level while beating Rust or if time runs out Enemies Core Loop of the game.
 Enter City Level Enemies Fight Wave Cleared begins Spawn Combat tools
-Lose State Level Won Reach the end. Next Level begins Game a loop. game Game Mechanics -what the players does.
-� Impactful Combat � punchy hits Players moves into an Areas were light and heavy pick-up objects.
-� Combos and Juggle routes � Defensive tools(block dodge, parry)
+Level Won Lose State Reach the end.
+Next Level begins
+Game a loop.
+game Game Mechanics -what the players does. • Impactful Combat – punchy hits Players moves into an Areas were light and heavy pick-up objects. • Combos and Juggle routes • Defensive tools(block dodge, parry)
 Enemies spawn to fight.
-� Defeat Wave / Clear Arena to win the level in time. AI Architecture Team
+• Defeat Wave / Clear Arena to win the level in time. AI Architecture Team
 Agent Development role Gameplay Effect Player Mechanics Movement, jump, The player moves agent input handling and feels responsive Player combos Agent One state machine Light and heavy for attacks, combos, attacks chain into cancel windows, hit combos stun
 
-### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
-Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
+### [adversarial-qa#1] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 1: Win condition and fail state are contradictory or undefined (BLOCKING)
+**Problem:** The document gives two different win conditions and no lose condition. "Defeat Wave / Clear Arena to win the level in time frame" is ambiguous. It could mean clearing every wave, clearing the arena, or surviving until the timer ends. Nothing says what happens if the timer expires with enemies still alive. Nothing says what happens if the player's health reaches zero. There is no lives, continue or retry rule.
+**Source:** Game Mechanics: "Defeat Wave / Clear Arena to win the level in time frame". Timer Agent: "Keep trick of the time the player has to beat the level". Game Loop Agent: "Control the level and win condition". No section mentions failure, death, game over or a health system.
+**Exploits and edge cases:** Does killing the last enemy at 0:00 count as a win? Can a player stall a wave so it never completes? What if an enemy is knocked off-screen or stuck (side-scroller with a "juggle" system) and cannot be reached? The arena can then never be "cleared" and the level soft-locks until the timer runs out.
 
-### [narrative-critic#9] reference - gdd-review-kit-main/reviews/narrative-critic.md - 1. CONFLICTS
-**Systems Designer Finding 3 (timer versus defensive depth) versus my Finding 3.** I keep my earlier position with a refinement. Time bonuses, pauses, and time per kill are tuning knobs, and the Feasibility Lead correctly warns each adds shared state between the Timer and Game Loop agents. The narrative reason should be chosen first, because it may make the knob unnecessary (a flat, lenient clock, as the Feasibility Lead proposes, is consistent with a "raid" fiction).
+### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
+Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game State Agent Win check, lose Clear the arena to state, time-out win; fail and retry result, retry have rules Wave Spawner Win check, lose Difficulty comes state, time-out from how waves result, retry arrive Asset & Animation Sprite source, Punchy hits" and Lead animation list, hit readable telegraphs stop and feedback Health & Hitbox Owns health, Hits land, damage Agent damage values, and registers, the player hitbox/hurt box data can die Camera & Bounds Arena camera lock, Prevents the off- Agent (new) world bounds, screen soft lock unreachable-enemy failsafe Menu & UI Agent Builds and owns The player can every screen and on- start a game, read screen element the the state of the player sees outside fight, and see why the arena action they won or lost Technical Strategy
+
+### [pipeline-readme#10] reference - PIPELINE-README.md - Gameplay systems (all covered by `npm test`, 163 passing)
+Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
 
 ### [narrative-critic#5] reference - gdd-review-kit-main/reviews/narrative-critic.md - 5. The "Enemy Agent" and "Game Loop Agent" leave the narrative with no owner (MINOR)
 **Problem:** The AI team covers movement, combos, timer, enemies, and level control. No role owns story, dialogue, level themes, or progression beats, even though "character progression" is promised in the Pitch.
 **Passage:** The Pitch says "character progression, and dynamic enemy behaviours," but the Game Loop Agent only "Control the level and win condition." No item in the AI Architecture Team table covers progression or narrative.
 **Why it matters:** Progression is promised but has no narrative frame. Nothing links levels to districts or to the rebellion's advance, so "urban districts" are a setting label, not a journey.
 
+### [business-analyst#2] reference - gdd-review-kit-main/reviews/business-analyst.md - Finding 2: Pitch promises a full-featured brawler, but the scoped systems cover only movement, combos, a timer, and a win check
+- **Problem:** The pitch claims "character progression" and "dynamic enemy behaviours". It also claims "urban districts", pick-up objects, and a "modern combo system". None of the progression is specified, and the district and level structure is not specified either. The Agent table lists only five agents: movement, combos, timer, enemy, and game loop. Progression, pick-ups, districts, and levels have no owner, no budget, and no content plan. The listed scope is a tech demo, but the pitch sells a shippable game. Those are two different products with two different costs.
+- **Source:** The Pitch ("character progression, and dynamic enemy behaviours"; "urban districts"). Game Mechanics ("pick-up objects"). AI Architecture Team table (five agents, none covering progression or content).
+- **Severity:** MAJOR
+
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 599 chunks across 57 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.

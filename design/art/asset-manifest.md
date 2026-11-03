@@ -133,3 +133,14 @@ Gain numbers, "READY" and the seconds countdown are rendered text (Anton, Cream)
 Pick-up objects, block/parry effects, additional enemies, audio, title logo, extra levels. Pick-ups and block/parry are in the GDD pillars; flagged as a gap.
 
 Note: the dodge mechanic is cut. The Zed dodge animation folder `assets/sprites/zed/Zed_a_young_street_dodge/` is retired and unused; do not load or reference it.
+
+## Rage entry flash (added by art-direction-agent; spec: design/art/rage-entry-flash.md)
+| Key | File | Size | Frames | Owner | Notes |
+|---|---|---|---|---|---|
+
+## Zed Rage locomotion clips (added by player-agent / code-generator-agent)
+Used only while Zed is in Rage (`zed.rage.isActive`) and the machine state is idle/run; rage clips win over the carry clips (carry clips apply only when not raging). Not to be confused with `Super_special_move/` (the L-key Rage Special).
+| Key | File | Size | Frames | Owner | Notes |
+|---|---|---|---|---|---|
+| zed.rageidle.<dir> | assets/sprites/zed/Super_special_move_ideal/animations/idle_breathing/<dir>/frame_000..007.png | 68x68 | 8 per direction | ANIM | east/west/north/south only, loop, 10 fps; foot row 55 (S 57), originY 58/68 |
+| zed.ragerun.<dir> | assets/sprites/zed/Super_special_move_running/animations/Running/<dir>/frame_000..007.png | 68x68 | 8 per direction | ANIM | east/west/north/south only, loop, 13 fps; mean foot row E 54.5, W 53.9, N 54.0, S 57.9; diagonals use east/west |

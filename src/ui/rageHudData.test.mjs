@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { fillColor, pulseHz, rageVisual, slideOffset, barPoints, shouldShowIntro, RAGE_LAYOUT, RAGE_PALETTE } from './rageHudData.js';
+import { fillColor, pulseHz, rageVisual, slideOffset, barPoints, RAGE_LAYOUT, RAGE_PALETTE } from './rageHudData.js';
 
 assert.equal(fillColor(0), RAGE_PALETTE.ember);
 assert.equal(fillColor(1), RAGE_PALETTE.redWhite);
@@ -22,5 +22,4 @@ assert.equal(new Set([b.label, r.label, a.label]).size, 3);
 assert.equal(slideOffset(0), RAGE_LAYOUT.hiddenOffsetX); assert.equal(slideOffset(1), 0); assert.ok(slideOffset(0.5) > slideOffset(0));
 const p = barPoints(0, 0, 100, 20, 10, 0.5);
 assert.equal(p.length, 4); assert.equal(p[1].x, 60);
-assert.equal(shouldShowIntro(1, false), false); assert.equal(shouldShowIntro(2, false), true); assert.equal(shouldShowIntro(2, true), false);
 console.log('rageHudData ok');

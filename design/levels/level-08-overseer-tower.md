@@ -6,7 +6,8 @@ Owner agent: `level-style-08-overseer-tower-agent`. Status: **2026-10-21, style 
 - District: `songwindow-heights`
 - Theme: Songwindow Heights, where a surveillance tower and propaganda screens loom over the windows that used to play music; murals half-painted over in grey.
 - Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F
-- Time limit: 180 s. Waves: 4. Enemies named: rust-iron-line-cordon, rust-watcher, rust-breaker, rust-halden-varr.
+- Time limit: 420 s. Waves: 6 (updated 2026-11-03). Enemies named: rust-iron-line-cordon, rust-watcher, rust-breaker, rust-overseer-voss, rust-overseer-calder, rust-overseer-wren, rust-elite-drone, rust-halden-varr.
+- Wave plan: 1 cordon, 2 watcher, 3 breaker, 4 random mix (max 2 alive), 5 all four Overseers among random fillers (max 3 alive), 6 Halden Varr two-phase final (phase 2 at 30 percent HP) with a random crew.
 - Intro: "Varr runs the whole city from this tower, with squads, drones and shields at his call. Fight through, reach the command chamber and break the order. Let the music back in."
 - Outro: "The screens flicker out and Varr gives up the tower. A window opens, then another, and music drifts down over the Heights. The first mural stroke goes back up."
 

@@ -4,6 +4,7 @@
 // A boss with no entry here gets no card.
 import { DUGAN_ID } from '../enemies/duganData.js';
 import { ROYCE_ID } from '../enemies/royceData.js';
+import { KANE_ID } from '../enemies/kaneData.js';
 
 export const VICTORY = {
   header: 'VICTORY',
@@ -21,6 +22,8 @@ export const VICTORY_LINES = {
   [DUGAN_ID]: { lines: ['The mighty Dugen has fallen.', 'The path forward is clear.'] },
   // PLACEHOLDER lines mirroring Dugan's card: the owner supplies Royce's real lines.
   [ROYCE_ID]: { lines: ['"Railgun" Royce has fallen.', 'Mustard Row is open.'] },
+  // PLACEHOLDER lines for Level 3: the owner supplies Kane's real lines.
+  [KANE_ID]: { lines: ['"Crusher" Kane has fallen.', 'The courts are open.'] },
   // 'rust-copper-fang': { lines: ['...', '...'] },
 };
 

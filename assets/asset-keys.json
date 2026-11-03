@@ -12,7 +12,8 @@
     "ui.panel": "assets/ui/panel.svg",
     "ui.icon.heart": "assets/ui/icon-heart.svg",
     "ui.icon.clock": "assets/ui/icon-clock.svg",
-    "ui.card.victory": "assets/ui/victory-card-frame.svg"
+    "ui.card.victory": "assets/ui/victory-card-frame.svg",
+    "ui.card.rage-intro": "assets/ui/rage-intro-card-frame.svg"
   },
   "sprites": {
     "zed": "assets/sprites/zed-placeholder.svg",
@@ -25,7 +26,6 @@
     "rust.overseer-voss": "assets/sprites/rust-overseer-voss-placeholder.svg",
     "rust.overseer-calder": "assets/sprites/rust-overseer-calder-placeholder.svg",
     "rust.overseer-wren": "assets/sprites/rust-overseer-wren-placeholder.svg",
-    "rust.overseer-holt": "assets/sprites/rust-overseer-holt-placeholder.svg",
     "rust.drone": "assets/sprites/rust-drone-placeholder.svg",
     "rust.megadrone": "assets/sprites/rust-megadrone-placeholder.svg",
     "rust.hologram": "assets/sprites/rust-hologram-placeholder.svg",
@@ -252,33 +252,6 @@
       "rust.overseer-wren.p2.idle.cloak",
       "rust.overseer-wren.p2.walk.cloak"
     ],
-    "rust.overseer-holt": [
-      "rust.overseer-holt.idle",
-      "rust.overseer-holt.walk",
-      "rust.overseer-holt.hit",
-      "rust.overseer-holt.ko",
-      "rust.overseer-holt.telegraph.gas-release",
-      "rust.overseer-holt.attack.gas-release",
-      "rust.overseer-holt.telegraph.toxin-burst",
-      "rust.overseer-holt.attack.toxin-burst",
-      "rust.overseer-holt.telegraph.sedative-shot",
-      "rust.overseer-holt.attack.sedative-shot",
-      "rust.overseer-holt.transition.phase2",
-      "rust.overseer-holt.p2.telegraph.corrosive-wave",
-      "rust.overseer-holt.p2.attack.corrosive-wave",
-      "rust.overseer-holt.p2.telegraph.compliance-protocol",
-      "rust.overseer-holt.p2.attack.compliance-protocol",
-      "rust.overseer-holt.p2.idle",
-      "rust.overseer-holt.p2.walk",
-      "rust.overseer-holt.p2.hit",
-      "rust.overseer-holt.p2.ko",
-      "rust.overseer-holt.p2.telegraph.gas-release",
-      "rust.overseer-holt.p2.attack.gas-release",
-      "rust.overseer-holt.p2.telegraph.toxin-burst",
-      "rust.overseer-holt.p2.attack.toxin-burst",
-      "rust.overseer-holt.p2.telegraph.sedative-shot",
-      "rust.overseer-holt.p2.attack.sedative-shot"
-    ],
     "rust.drone": [
       "rust.drone.idle",
       "rust.drone.telegraph",
@@ -321,7 +294,8 @@
     "bg.arena.01": "assets/backgrounds/arena-01-placeholder.svg"
   },
   "fx": {
-    "fx.spark": "assets/fx/spark-placeholder.svg"
+    "fx.spark": "assets/fx/spark-placeholder.svg",
+    "fx.rage.entry.lines.spec": "design/art/rage-entry-flash.md"
   },
   "hitFeedbackSpec": "design/art/hit-feedback-spec.md",
   "menu": {

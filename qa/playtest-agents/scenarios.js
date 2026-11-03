@@ -21,6 +21,9 @@ export const LEVEL_SCENARIOS = [
 const boss = (o) => ({ agent: 'playtest-boss-agent', persona: 'boss-hunter', stopOn: 'wave', maxSec: 180, ...o });
 export const BOSS_SCENARIOS = [
   boss({ id: 'MB-dugan-solo', tier: 'mini-boss', boss: '"Brick" Dugan (solo)', level: 1, wave: 5, solo: true, bespoke: true }),
+  // Level 2: "Railgun" Royce, bespoke AI since the Royce build (RoyceBoss.js): Baton Combo, Charging Dash, Shockwave Slam, Rail Trap, Taser Burst, block.
+  boss({ id: 'MB-L2-royce-solo', tier: 'mini-boss', boss: '"Railgun" Royce (solo)', level: 2, wave: 5, solo: true, bespoke: true }),
+  boss({ id: 'EB-L2-royce-crew', tier: 'end-boss', boss: '"Railgun" Royce + crew (Level 2 finale)', level: 2, wave: 5, bespoke: true, stopOn: 'round' }),
   boss({ id: 'MB-L4-holt', tier: 'mini-boss', boss: 'Overseer Dr. Maren Holt wave', level: 4, wave: 2 }),
   boss({ id: 'MB-L5-copper-fang', tier: 'mini-boss', boss: 'Rust Copper Fang wave', level: 5, wave: 2 }),
   boss({ id: 'MB-L5-wren', tier: 'mini-boss', boss: 'Overseer Silas Wren wave', level: 5, wave: 5 }),

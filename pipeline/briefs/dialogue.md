@@ -1,5 +1,5 @@
 # Content brief: dialogue
-_Generated 2026-10-28T13:10:40.076Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
+_Generated 2026-11-03T15:17:49.215Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
 
 **Writer agent:** dialogue-agent  |  **Output dir:** `content/dialogue/`  |  **Produces:** Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.
 
@@ -158,13 +158,7 @@ The GDD names these but no `dialogue` item mentions them yet. Each needs an item
 - Industrial Zone (level, see [the-rebellion#15])
 - Neon Market (level, see [the-rebellion#15])
 - Holt's Experiment Subject 88 (mini-boss, see [the-rebellion#16])
-- Atlas (mini-boss, see [the-rebellion#16])
-- Sentinel-X9 (mini-boss, see [the-rebellion#16])
 - Undercity (level, see [the-rebellion#16])
-- Rust Military Compound (level, see [the-rebellion#16])
-- Kade Voss (overseer, see [the-rebellion#17])
-- Rhea Calder (overseer, see [the-rebellion#18])
-- Silas Wren (overseer, see [the-rebellion#19])
 
 ### Upstream `lore` content you may reference
 - `open-windows-music` Open Windows with Music
@@ -252,11 +246,12 @@ The GDD names these but no `dialogue` item mentions them yet. Each needs an item
 - `rust-overseer-voss` Overseer Kade Voss
 - `rust-overseer-calder` Overseer Rhea Calder
 - `rust-overseer-wren` Overseer Silas Wren
-- `rust-overseer-holt` Overseer Dr. Maren Holt
 - `rust-voss-drone` Rust Surveillance Drone
 - `rust-voss-megadrone` Rust MegaDrone
 - `rust-hologram-decoy` Rust Hologram Decoy
 - `rust-elite-drone` Rust Elite Drone
+- `rust-specialist` Rust Specialist - The Copper Fangs
+- `rust-ranger` Rust Ranger
 - `rust-grunt` Rust Grunt
 
 ## Engine / spec files to stay compatible with
@@ -379,7 +374,7 @@ Approved by the Critic against `design/lore/canon.md`. Wording only. Layout, col
 | menu.opt.fight | FIGHT |
 | menu.opt.controls | CONTROLS |
 | menu.opt.options | OPTIONS |
-| menu.opt.quit | QUIT |
+| menu.opt.credits | CREDITS |
 | menu.footer | W/S to choose  /  Enter to go |
 
 ## Background posters
@@ -406,7 +401,7 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 Rules for small print: monospace, short, no named characters or places (the GDD names none), no gore, nothing that makes the Rust a place.
 ```
 
-## Retrieved GDD passages (44)
+## Retrieved GDD passages (39)
 ### [the-rebellion#10] primary - GameDesignDocument/The Rebellion.docx
 Zed embodies the game’s theme: “hopeful, energetic, full of personality and stories.” He’s expressive, stubborn, and fiercely loyal. He cracks jokes mid-fight. He refuses to back down. He carries the city’s colours in his outfit — mustard yellow, brick red, forest green — as a reminder of what he’s fighting for.
 Character – the Enemy
@@ -770,218 +765,7 @@ Corrosion Slam
 Chemical Explosion
 Role
 Introduces area denial hazards.
-Level 7: Rust Military Compound
-Mini-Boss: Commander Atlas
-Leader of the Copper Fangs.
-Appearance
-Elite black armour
-Tactical shield
-Twin electrified gauntlets
-Move Set
-Shield Bash
-Gauntlet Combo
-Grapple Hook Pull
-Electric Counter
-Fang Protocol (calls Specialists)
-Role
-The toughest non-boss enemy in the game.
-Level 8: Corporate Tower
-Mini-Boss: Sentinel-X9
-An experimental combat android protecting Varr.
-Appearance
-Corporate security robot
-Rust insignia
-Energy core chest
-Move Set
-Laser Sweep
-Rocket Punch
-Ground Pound
-Energy Shield
-Self-Repair Mode
-Phase 2
-Core overloads:
-Faster attacks
-Red laser barrage
-Explosive dash attacks
-Role
-Final challenge before Halden Varr.
-
-### [the-rebellion#17] primary - GameDesignDocument/The Rebellion.docx
-5. Rust Overseers — “The Architects of Control” end of level boss
-Role: District bosses, strategic masterminds, Varr’s inner circle Theme: Control through surveillance, fear, and psychological domination Combat Style: Tactical, oppressive, each with unique mechanics
-🧠 1. Overseer Kade Voss — “The Eye of the Market”
-Boss Theme: Surveillance, prediction, drones, holograms
-Arena: Neon Market control hub with screens, drones, hologram emitters
-Phase 1 — “Data Acquisition”
-📡 Predictive Strike
-Voss’s visor scans Zed, projecting a red line showing where he thinks Zed will move.
-After 1s, a laser shot fires along that line
-Forces players to break patterns
-🛸 Drone Swarm
-Summons 3–5 drones that orbit him.
-Drones shoot small taser bolts
-Destroyable
-Creates bullethell pressure
-🔍 Hologram Decoy
-Creates 2 hologram copies.
-Copies mimic movement but don’t attack
-Real Voss flickers slightly
-Forces target identification
-📊 Data Spike
-Voss slams his hand into a console.
-Electric pillars erupt from the ground
-Pattern changes each use
-Punishes stationary players
-Phase 2 — “System Override”
-
-### [the-rebellion#18] primary - GameDesignDocument/The Rebellion.docx
-Triggered at 50% HP. Arena lights dim; drones turn red.
-🧠 Predictive Lockdown
-Voss’s visor locks onto Zed.
-Zed’s special meter is disabled for 10 seconds
-Voss becomes more aggressive
-Forces reliance on fundamentals
-🛸 Drone Fusion
-Remaining drones merge into a MegaDrone.
-Fires sweeping laser beams
-Moves slowly
-Adds a second bosslike threat
-💥 Hologram Assault
-Now holograms can attack.
-Each hologram performs a weak punch or shot
-Real Voss attacks simultaneously
-Creates chaotic multiangle pressure
-⚡ System Crash (Super Move)
-Voss overloads the arena grid.
-Entire floor becomes electrified except safe zones
-Safe zones shift every second
-Forces constant movement
-🔥 2. Overseer Rhea Calder — “The Iron Matron”
-Boss Theme: Industrial power, machinery, brute force
-Arena: Factory floor with conveyors, crushers, steam vents
-Phase 1 — “Discipline Through Strength”
-🔨 Forge Hammer Smash
-Massive overhead hammer strike.
-Shockwave travels across floor
-Can break player guard
-Slow but devastating
-💢 Hydraulic Grab
-Exosuit arms extend to grab Zed.
-Long reach
-Leads into a slam or throw
-
-### [the-rebellion#19] primary - GameDesignDocument/The Rebellion.docx
-Super Armor during startup
-🔥 Steam Burst Armor
-Calder vents steam from her suit.
-Grants temporary invulnerability
-Pushes player back
-Used to reset pressure
-📦 Conveyor Trap
-Activates conveyor belts.
-Moves player toward crushers or hazards
-Forces repositioning
-Adds environmental danger
-Phase 2 — “Factory Protocol”
-Triggered at 40% HP. Calder’s exosuit glows red.
-🔧 Overclock Mode
-Her attack speed increases.
-Hammer swings faster
-Grab startup reduced
-Steam bursts more frequent
-🛠 Industrial Barrage
-Summons robotic arms from the background.
-Arms punch or grab from offscreen
-Telegraphs with flashing lights
-Adds multidirectional threats
-💥 Furnace Slam (Super Move)
-Calder leaps and slams her hammer into the ground.
-Creates molten cracks across the floor
-Cracks explode after 2 seconds
-High damage, large AoE
-🌫 3. Overseer Silas Wren — “The Whisper on the Rooftops”
-Boss Theme: Mobility, stealth, vertical control
-Arena: Rooftop platforms, zip lines, breakable ledges
-Phase 1 — “Silent Hunter”
-🪝 GrappleDash Barrage
-Silas zips between platforms.
-Attacks from above or behind
-Very fast
-
-### [the-rebellion#20] primary - GameDesignDocument/The Rebellion.docx
-Hard to punish without prediction
-⚔️ Skyline Snare
-Throws electrified wire traps.
-Traps restrict movement
-Can immobilize briefly
-Forces careful navigation
-👣 Silent Step
-Turns semiinvisible.
-Only faint outline visible
-Next attack is guaranteed critical
-Used unpredictably
-⬇️ Rooftop Execution
-Dive attack from above.
-High damage
-Creates shockwave
-Punishes players who stay grounded
-Phase 2 — “Ghost of the Skyline”
-Triggered at 50% HP. Silas becomes faster and quieter.
-🪝 Grapple Clone
-Creates afterimages when grappling.
-Afterimages perform fake attacks
-Real Silas attacks from unexpected angle
-⚡ Shadow Pulse
-Silas releases a burst of energy.
-Knocks player back
-Resets spacing
-Used after combos
-🌫 Vanish Storm (Super Move)
-Silas disappears completely.
-Multiple silhouettes attack from all sides
-Real Silas finishes with a heavy strike
-Requires reading patterns
-☣ 4. Overseer Dr. Maren Holt — “The Voice of Compliance”
-Boss Theme: Chemicals, toxins, psychological control
-Arena: Undercity lab with gas vents, toxin pools, fog zones
-Phase 1 — “Chemical Control”
-💨 Fear Gas
-Releases purple fog.
-
-### [the-rebellion#21] primary - GameDesignDocument/The Rebellion.docx
-Distorts player controls
-Causes screen blur
-Forces careful movement
-🧪 Obedience Mist
-Green fog that slows movement.
-Reduces dodge distance
-Makes combos harder
-☣ Toxin Burst
-Throws chemical vials.
-Creates AoE damage zones
-Zones linger
-Controls space
-💉 Sedative Shot
-Fires a dart.
-Reduces player attack speed
-Used to punish aggressive players
-Phase 2 — “Doctor’s Orders”
-Triggered at 40% HP. Holt’s suit glows with chemical pressure.
-🧬 NeuroFog
-Entire arena fills with fog.
-Player vision reduced
-Holt becomes harder to track
-She uses stealth attacks
-🧪 Corrosive Wave
-Throws a large vial that explodes.
-Creates spreading acid
-Damages both player and Holt
-Forces repositioning
-☣ Compliance Protocol (Super Move)
-Holt releases a massive chemical cloud.
-Player controls reverse
-Damage over time
-Holt becomes extremely aggressive
+5. Rust Overseers — “The Architects of Control” end of final level boss
 ⚡ 5. Overseer Halden Varr — “The Architect of Rust”
 Boss Theme: Authority, mastery, hybrid combat
 Arena: Corporate Tower command chamber
@@ -992,8 +776,6 @@ High damage
 Causes knockback
 Fast startup
 🛡 Command Shield
-
-### [the-rebellion#22] primary - GameDesignDocument/The Rebellion.docx
 Deploys energy shield.
 Blocks all frontal attacks
 Must be flanked or broken
@@ -1008,6 +790,8 @@ Antirush stance
 Anticombo stance
 Forces adaptation
 Phase 2 — “Rust Protocol”
+
+### [the-rebellion#17] primary - GameDesignDocument/The Rebellion.docx
 Triggered at 30% HP. Varr dons full armor.
 ⚙ Hybrid Assault
 Uses moves from all Rust unit types:
@@ -1037,10 +821,18 @@ Zed embodies the game’s theme: “hopeful, energetic, full of personality and 
 - Zed's side copy is warm and plain-spoken, in a neighbourhood voice. No military or clinical phrasing.
 - Rust copy is cold, official and threatening (notices, orders, barks): "suppress", "crush", "eliminate rebels" are in character for the Rust. It is still shown as something the community answers or defaces.
 
-### [style-guide#9] derived - design/art/style-guide.md - 5. Characters and world
-- Zed (pixel art): 128x128 frame, ~96px tall figure, mustard jacket, warm brown trousers, expressive casual fit. Facing right by default; flip for left. Pixel rules in section 1.
-- Rust enemies: same frame size, uniform and symmetrical, visor, no personality colour. Contrast through cold hue and straight geometry versus Zed's rounded forms.
-- Background: warm, busy mid-ground (corner shop, mural, court hoops, food stall, garden planters), calmer play lane. Background saturation and contrast lower than characters so fighters always pop. Play lane y 440 to 680 stays free of high-contrast detail.
+### [dugan-wall-slam#3] derived - design/art/dugan-wall-slam.md - 2. Timeline (ms from impact)
+| Time | Player sees | Camera |
+|---|---|---|
+| 0 | Dent snaps in under Zed. Core flash (cream, 70 ms). Ring bursts out. Star cracks appear at 15 percent length and run out. 14 chunks, 10 sparks, 12 dust puffs launch. Pebbles and ring dust start moving with the ring. Edge vignette snaps to peak | Shake peak 0.015. Punch-in to 1.03 in 60 ms |
+| 0 to 140 | Long cracks and the slide crack grow to full length (Expo.easeOut, the slide crack is the fastest). Spark at the slide crack's growing tip | shake 0.015 then 0.011 |
+| 70 | Core flash gone. Ripple 1 starts | |
+| 120 | Ripple 2 starts. Zed slides at about 640 px/s: skid groove and slide dust begin | shake 0.0075 |
+| 240 | Main ring gone. Ring dust and pebbles still travelling | shake 0.0045 from 200 |
+| 300 | Zoom back to 1.0 (260 ms Sine.easeInOut, from 60 to 320). Vignette gone at 400 | shake 0.0022 from 290, ends 380 |
+| 350 | Dent holds until here, then fades | none |
+| 900 | Dent gone. Slide dust and chunks done by about 1000 | |
+| 1200 | Cracks gone (Zed stands up about 700 ms after the slide). Nothing left on screen | |
 
 ### [agent-diagrams#5] derived - design/team/agent-diagrams.md - 4. Round lifecycle (game state)
 ```mermaid
@@ -1099,7 +891,7 @@ The poster is one line in the concept doc ("Local Heroes Benefit: Keep the Light
 | Fight strip | centre 396,270 | 360x64 | -2 deg | Default selected |
 | Controls strip | centre 396,352 | 360x64 | +1.5 deg | |
 | Options strip | centre 396,434 | 360x64 | -1 deg | |
-| Quit strip | centre 396,516 | 360x64 | +2 deg | |
+| Credits strip | centre 396,516 | 360x64 | +2 deg | |
 | Poster A "Local Heroes Benefit: Keep the Lights On" | centre 112,300 | 160x220 | -3 deg | Cream, forest-green text. Non-interactive |
 | Poster B "Rust Notice 114" with "CURFEW" struck through | centre 112,540 | 160x200 | +2 deg | Brick red. Non-interactive |
 | Footer hint "W/S select / Enter confirm" | right edge x=1248, baseline y=688 | auto, 20 px mono | 0 | Right-aligned, low emphasis, on the dark street |
@@ -1136,12 +928,10 @@ Source: `design/art/style-guide.md`.
 - No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over.
 
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
-Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
+Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game State Agent Win check, lose Clear the arena to state, time-out win; fail and retry result, retry have rules Wave Spawner Win check, lose Difficulty comes state, time-out from how waves result, retry arrive Asset & Animation Sprite source, Punchy hits" and Lead animation list, hit readable telegraphs stop and feedback Health & Hitbox Owns health, Hits land, damage Agent damage values, and registers, the player hitbox/hurt box data can die Camera & Bounds Arena camera lock, Prevents the off- Agent (new) world bounds, screen soft lock unreachable-enemy failsafe Menu & UI Agent Builds and owns The player can every screen and on- start a game, read screen element the the state of the player sees outside fight, and see why the arena action they won or lost Technical Strategy
 
-### [adversarial-qa#4] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 4: The pickup and item mechanic is garbled and its rules are unstated (MAJOR)
-**Problem:** The line "Players moves into a Areas were light and heavy pick-up objects" appears to describe light and heavy attacks and pick-up objects, but it can be read as items being light or heavy. Either way there are no rules for pickups. Missing rules: whether pickups are consumable, whether they are limited or respawn, whether enemies can use them, and what happens to a thrown object when there is no valid target. Weapon or health pickups that respawn in an arena with a timer would allow farming, while pickups that don't could leave a player unable to win.
-**Source:** Game Mechanics bullet 1: "Impactful Combat – punchy hits Players moves into a Areas were light and heavy pick-up objects".
-**Note:** Because this is the only line covering both attack types and objects, it is impossible to tell which moves exist. The Pitch also promises "character progression", and no progression mechanic appears anywhere else in the document. Between levels, does progression carry over? If it does, the hardest levels can be trivialised by grinding early ones. This is unspecified.
+### [pipeline-readme#10] reference - PIPELINE-README.md - Gameplay systems (all covered by `npm test`, 163 passing)
+Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 599 chunks across 57 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.

@@ -21,7 +21,7 @@
       "#A8402E",
       "#6B4423"
     ],
-    "timeLimitSec": 150,
+    "timeLimitSec": 210,
     "intro": "The Iron Line is holding the garden gate. Faceless helmets, cheap plating. Zed's neighbours are watching from the stalls. Push the line back, then the Watchers and Breakers behind it.",
     "outro": "The line gives way and the stew pots are steaming again. A neighbour waves a ladle from the stall. The garden is the neighbourhood's once more.",
     "waves": [
@@ -72,29 +72,67 @@
         "startDelayMs": 1000,
         "spawnPattern": "surge",
         "attackerCap": 3,
-        "hpMult": 3
+        "hpMult": 3,
+        "restPickup": {
+          "heal": 50
+        }
+      },
+      {
+        "enemy": "rust-iron-line-cordon",
+        "count": 10,
+        "maxAlive": 4,
+        "spawnIntervalMs": 750,
+        "startDelayMs": 1000,
+        "spawnPattern": "flank",
+        "attackerCap": 3,
+        "mix": [
+          "rust-iron-line-cordon",
+          "rust-watcher",
+          "rust-breaker",
+          "grunt"
+        ],
+        "mixElites": true,
+        "speedMult": 1.1,
+        "restPickup": {
+          "heal": 55
+        }
+      },
+      {
+        "enemy": "rust-watcher",
+        "count": 6,
+        "maxAlive": 3,
+        "spawnIntervalMs": 900,
+        "startDelayMs": 1000,
+        "spawnPattern": "ambush",
+        "attackerCap": 3,
+        "mix": [
+          "rust-iron-line-cordon",
+          "rust-watcher"
+        ],
+        "leader": {
+          "enemy": "rust-holts-experiment-subject-88",
+          "entrance": "far-side",
+          "gate": false,
+          "crewAfter": "first-move",
+          "crewDelayMs": 900,
+          "crewMaxWaitMs": 9000
+        }
       }
     ],
     "miniBoss": "rust-holts-experiment-subject-88",
-    "mainBoss": "rust-overseer-holt",
-    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Holt arena flavour: lab with gas vents (old \"Undercity\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Main boss cut: Overseer Dr. Maren Holt was removed from the game (2026-11-03), so this level has no main boss. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD). Owner decision (2026-11-03): two waves added. Wave 5 is a mixed wave of four different enemy types (Iron Line Cordon, Watcher, Breaker, grunt) with elites scattered. Wave 6 is the mini-boss beat: Subject 88 walks in first and a crew of two different enemies (Iron Line Cordon and Watcher) joins after his first move. It is smaller than wave 5 by design (validator exempts leader waves). Holt keeps her separate phase after the waves.",
     "bossStructure": {
       "miniBoss": {
         "style": "mini-wave",
         "gate": false,
         "note": "beatable pressure wave led by the mini-boss"
-      },
-      "mainBoss": {
-        "style": "separate-phase",
-        "after": "waves",
-        "phases": "per GDD"
       }
     }
   },
   {
     "id": "level-07-copper-fang-courts",
     "status": "proposed",
-    "gddGap": "The GDD says Copper Fangs serve boss-tier encounters but gives no level list, tiers or boss placement. This proposes a mini-boss level (order 7): a ladder of single units rising Watcher, Breaker, Copper Fang. Each wave has count 1 because the validator requires wave counts not to shrink, so a lone boss wave must follow count-1 waves; mixed-escort boss waves need a schema extension (one enemy per wave today).",
+    "gddGap": "Owner request (2026-11-03): Level 7 grows from 3 solo waves to 5 mixed waves with no boss. Waves 1-4 mix Grunts, Watchers, Breakers and Copper Fangs, with a big health pickup after every wave; wave 5 is a surge of all four types (12 enemies, maxAlive 6, no boss). Commander Atlas (canon Level 7 mini-boss) is deliberately not placed in this level by owner decision; his data in mini-bosses.json is unchanged. The GDD gives no wave list. Only one restPickup per wave is supported, and none after the last wave, so the finale relies on the heal from wave 4.",
     "sources": [
       "the-rebellion#1",
       "the-rebellion#3",
@@ -113,67 +151,111 @@
       "#A8402E",
       "#6B4423"
     ],
-    "timeLimitSec": 150,
+    "timeLimitSec": 180,
     "intro": "Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, dodge, parry. Give the kids their court back.",
     "outro": "The shield cracks and the Fang is pushed back off the court. Somewhere a ball bounces, then another. Zed breathes out. Game on.",
     "waves": [
       {
         "enemy": "rust-watcher",
-        "count": 1,
-        "maxAlive": 1,
+        "count": 4,
+        "maxAlive": 2,
         "spawnIntervalMs": 900,
         "startDelayMs": 600,
         "spawnPattern": "alternate",
         "attackerCap": 3,
-        "hpMult": 1.5,
-        "restPickup": {
-          "heal": 45
-        }
-      },
-      {
-        "enemy": "rust-breaker",
-        "count": 1,
-        "maxAlive": 1,
-        "spawnIntervalMs": 900,
-        "startDelayMs": 1000,
-        "spawnPattern": "flank",
-        "attackerCap": 3,
-        "hpMult": 3,
+        "mix": [
+          "grunt",
+          "rust-watcher"
+        ],
         "restPickup": {
           "heal": 50
         }
       },
       {
-        "enemy": "rust-copper-fang",
-        "count": 1,
-        "maxAlive": 1,
-        "spawnIntervalMs": 900,
+        "enemy": "rust-watcher",
+        "count": 5,
+        "maxAlive": 3,
+        "spawnIntervalMs": 850,
+        "startDelayMs": 1000,
+        "spawnPattern": "flank",
+        "attackerCap": 3,
+        "mix": [
+          "grunt",
+          "rust-watcher",
+          "rust-breaker"
+        ],
+        "restPickup": {
+          "heal": 60
+        }
+      },
+      {
+        "enemy": "rust-breaker",
+        "count": 6,
+        "maxAlive": 3,
+        "spawnIntervalMs": 800,
         "startDelayMs": 1000,
         "spawnPattern": "ambush",
         "attackerCap": 3,
-        "hpMult": 4
+        "mix": [
+          "rust-breaker",
+          "rust-watcher",
+          "grunt"
+        ],
+        "restPickup": {
+          "heal": 70
+        }
+      },
+      {
+        "enemy": "rust-copper-fang",
+        "count": 8,
+        "maxAlive": 3,
+        "spawnIntervalMs": 750,
+        "startDelayMs": 1000,
+        "spawnPattern": "pincer",
+        "attackerCap": 3,
+        "mix": [
+          "rust-copper-fang",
+          "grunt",
+          "rust-watcher",
+          "rust-breaker"
+        ],
+        "restPickup": {
+          "heal": 80
+        }
+      },
+      {
+        "enemy": "rust-watcher",
+        "count": 12,
+        "maxAlive": 6,
+        "spawnIntervalMs": 600,
+        "startDelayMs": 1000,
+        "spawnPattern": "surge",
+        "attackerCap": 3,
+        "mix": [
+          "grunt",
+          "rust-watcher",
+          "rust-breaker",
+          "rust-copper-fang"
+        ],
+        "speedMult": 1.1
       }
     ],
-    "miniBoss": "rust-commander-atlas",
+    "miniBoss": null,
     "mainBoss": null,
-    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Campaign main boss is \"Elite Rust Gauntlet\", which has no enemy item: open question, not invented. Old \"Rust Military Compound\" title is flavour only. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. No boss phase on this level. Main boss 'Elite Rust Gauntlet' to be defined by the owner in the GDD; not invented here.",
+    "notes": "Owner request 2026-11-03: 5 waves, mixed enemies, final wave is a surge of 4 types (grunt, rust-watcher, rust-breaker, rust-copper-fang), no boss, large health drops (50/60/70/80). Atlas is not placed here by owner decision. Open for src owner: enemyKinds.js only knows grunt and rust-watcher, so breaker and copper-fang mix entries fall back to plain grunt stats/skin until KINDS is extended.",
     "bossStructure": {
-      "miniBoss": {
-        "style": "mini-wave",
-        "gate": false,
-        "note": "beatable pressure wave led by the mini-boss"
-      },
+      "miniBoss": null,
       "mainBoss": null
     }
   },
   {
     "id": "level-08-overseer-tower",
     "status": "proposed",
-    "gddGap": "The GDD gives Overseer Halden Varr, \"The Architect of Rust\" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet.",
+    "gddGap": "The GDD gives Overseer Halden Varr, \"The Architect of Rust\" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet. Owner decision (2026-11-03): two waves added, so the level now has 6 waves. Wave 4 is a randomised mixed wave (cordon, watcher, breaker, grunt, at most 2 alive). Wave 5 is the four-Overseer wave: Voss, Calder, Wren and Holt each appear once among random cordon, watcher, breaker and grunt fillers, at most 3 alive. Wave 6 is the final: Halden Varr's two-phase fight (phase 2 at 30 percent HP, per the GDD) with random crew joining after his first move. Time limit raised from 180 s to 420 s.",
     "sources": [
       "the-rebellion#11",
-      "the-rebellion#19",
-      "the-rebellion#20",
+      "the-rebellion#16",
+      "the-rebellion#17",
       "the-rebellion#2",
       "the-story-campaign#1"
     ],
@@ -187,7 +269,7 @@
       "#6B4423",
       "#2F6B3F"
     ],
-    "timeLimitSec": 180,
+    "timeLimitSec": 420,
     "intro": "Varr runs the whole city from this tower, with squads, drones and shields at his call. Fight through, reach the command chamber and break the order. Let the music back in.",
     "outro": "The screens flicker out and Varr gives up the tower. A window opens, then another, and music drifts down over the Heights. The first mural stroke goes back up.",
     "waves": [
@@ -231,19 +313,89 @@
         }
       },
       {
-        "enemy": "rust-halden-varr",
-        "count": 1,
-        "maxAlive": 1,
+        "enemy": "rust-iron-line-cordon",
+        "count": 6,
+        "maxAlive": 2,
         "spawnIntervalMs": 900,
+        "startDelayMs": 1000,
+        "spawnPattern": "flank",
+        "attackerCap": 3,
+        "mix": [
+          "rust-iron-line-cordon",
+          "rust-watcher",
+          "rust-breaker",
+          "grunt"
+        ],
+        "mixElites": true,
+        "speedMult": 1.1,
+        "restPickup": {
+          "heal": 50
+        }
+      },
+      {
+        "enemy": "rust-overseer-voss",
+        "count": 8,
+        "maxAlive": 3,
+        "spawnIntervalMs": 1500,
+        "startDelayMs": 1000,
+        "spawnPattern": "ambush",
+        "attackerCap": 3,
+        "hpMult": 1.5,
+        "mix": [
+          "rust-overseer-voss",
+          "rust-iron-line-cordon",
+          "rust-overseer-calder",
+          "rust-watcher",
+          "rust-overseer-wren",
+          "rust-breaker",
+          "grunt"
+        ],
+        "restPickup": {
+          "heal": 60
+        }
+      },
+      {
+        "enemy": "rust-iron-line-cordon",
+        "count": 8,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1200,
         "startDelayMs": 1000,
         "spawnPattern": "surge",
         "attackerCap": 3,
-        "hpMult": 8
+        "mix": [
+          "rust-iron-line-cordon",
+          "rust-watcher",
+          "rust-breaker",
+          "grunt",
+          "rust-elite-drone"
+        ],
+        "leader": {
+          "enemy": "rust-halden-varr",
+          "entrance": "far-side",
+          "gate": true,
+          "hpMult": 8,
+          "crewAfter": "first-move",
+          "crewDelayMs": 900,
+          "crewMaxWaitMs": 9000,
+          "phases": [
+            {
+              "name": "Authority",
+              "hpFrom": 1.0,
+              "hpTo": 0.3
+            },
+            {
+              "name": "Rust Protocol",
+              "hpFrom": 0.3,
+              "hpTo": 0,
+              "note": "canon trigger: 30 percent HP (the-rebellion#17)"
+            }
+          ]
+        }
       }
     ],
     "miniBoss": "rust-sentinel-x9",
     "mainBoss": "rust-halden-varr",
-    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Varr arena flavour: command chamber (old \"Corporate Tower\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD).",
+    "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Varr arena flavour: command chamber (old \"Corporate Tower\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD). Owner decision (2026-11-03): waves 4 and 5 added, Varr moved to the final wave 6 and is now a leader (hpMult 8, same 2560 effective HP as before) instead of a solo wave. His two phases are in leader.phases (data only: Authority above 30 percent HP, Rust Protocol below; src/ does not read this yet). Mix lists are cycled in spawn order by the spawner, not shuffled; true random order needs a src change (not done: pipeline never edits src/). Mini-boss Sentinel-X9 is still not in the waves.",
     "bossStructure": {
       "miniBoss": {
         "style": "mini-wave",
@@ -251,9 +403,21 @@
         "note": "beatable pressure wave led by the mini-boss"
       },
       "mainBoss": {
-        "style": "separate-phase",
+        "style": "final-wave-two-phase",
         "after": "waves",
-        "phases": "per GDD"
+        "gate": true,
+        "phases": 2,
+        "phase2At": 0.3,
+        "note": "Halden Varr leads the final wave with random crew; phase 2 Rust Protocol at 30 percent HP"
+      },
+      "overseerWave": {
+        "wave": 5,
+        "bosses": [
+          "rust-overseer-voss",
+          "rust-overseer-calder",
+          "rust-overseer-wren"
+        ],
+        "fillers": "random"
       }
     }
   }

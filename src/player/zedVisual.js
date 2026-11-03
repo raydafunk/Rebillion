@@ -53,6 +53,13 @@ export const ZED_ANIMS = [
   // lowest opaque row measured 51-54 (idle 52-53, walk 51-54 bobbing) -> same 56.5/64 foot line as Running.
   { state: 'carryidle', folder: 'Carrying_weapon_ideal', anim: 'Idle', frames: 8, fps: 10, originY: 56.5 / 64, repeat: -1, dirs: 'all',
     dirOriginY: { south: 55 / 64, 'north-east': 53 / 64, north: 52 / 64, 'north-west': 53 / 64 } },
+  // RAGE locomotion (only while zed.rage.isActive, see zedClipKeys). 4 directions (east/west/north/south, no diagonals), 68x68 canvases.
+  // Foot rows measured with PIL (lowest opaque row per frame, mean): idle E/W/N 55, S 57 (constant across frames); run E 54.5, W 53.9, N 54.0, S 57.9
+  // (S bobs 54-62). Same ground gap as the other 68px clips (row + 1 + 2 = 58/68 for E/W); N sinks 1px, S sits 1px lower like the 64px clips.
+  { state: 'rageidle', folder: 'Super_special_move_ideal', anim: 'idle_breathing', frames: 8, fps: 10, originY: 58 / 68, repeat: -1, dirs: 'cardinal',
+    dirOriginY: { north: 55 / 68, south: 59 / 68 } },
+  { state: 'ragerun', folder: 'Super_special_move_running', anim: 'Running', frames: 8, fps: 13, originY: 57.5 / 68, repeat: -1, dirs: 'cardinal',
+    dirOriginY: { west: 57 / 68, north: 54 / 68, south: 60 / 68 } },
   { state: 'carrywalk', folder: 'Carrying_weapon_stat_walking', anim: 'Walking', frames: 8, fps: 12, originY: 56.5 / 64, repeat: -1, dirs: 'all',
     dirOriginY: { south: 55 / 64, 'north-east': 52.5 / 64, north: 52.75 / 64, 'north-west': 52.5 / 64 } },
   // Grab and Wall Slam (Zed.js machine.lock states). held: "hangs limply" clip, 68x68 (lowest row 55 -> (55+1+2)/68), loops while pinned to Dugan's hand.
@@ -76,8 +83,11 @@ export const zedFrameKey = (state, dir, i) => `zed.${state}.${dir}.${i}`;
 export const zedAnimKey = (state, dir) => `zed.${state}.${dir}`;
 export const zedFramePath = (a, dir, i) => `${a.folder}/animations/${a.anim}/${dir}/frame_${String(i).padStart(3, '0')}.png`;
 const SIDE = Object.values(ZED_SPRITE.dir);
-/** Directions a clip is loaded/registered for: all 8 when `dirs: 'all'`, else east/west only. */
-export const clipDirs = (a) => (a.dirs === 'all' ? DIRS : SIDE);
+const CARDINAL = ['east', 'west', 'north', 'south'];
+/** Directions a clip is loaded/registered for: all 8 when `dirs: 'all'`, east/west/north/south for `dirs: 'cardinal'`, else east/west only. */
+export const clipDirs = (a) => (a.dirs === 'all' ? DIRS : a.dirs === 'cardinal' ? CARDINAL : SIDE);
+/** dir8 -> a cardinal direction: diagonals take their horizontal part (north-east -> east, south-west -> west). */
+export const cardinalDir = (d8) => (d8 === 'north' || d8 === 'south' ? d8 : String(d8).endsWith('west') ? 'west' : 'east');
 export const ZED_DIRS = DIRS;
 
 /** Origin Y for a clip frame. `dir` is the direction in the clip's own key (dir8 for dirs:'all' clips, east/west otherwise). */
@@ -97,10 +107,18 @@ export function dir8FromInput(moveX, moveY, prev = 'east') {
 
 /** Carry clip state for the machine state, or null when the normal clips should play. */
 /** Clip keys to try, best first, for a live (non-dead) Zed: carry/run use the 8-way dir, then the east/west chain. */
-export function zedClipKeys({ state, stateKey, dir, dir8, carrying }) {
-  const carry = carryState(carrying, state);
-  return [...(carry ? [`zed.${carry}.${dir8}`] : state === 'run' ? [`zed.run.${dir8}`] : []),
+export function zedClipKeys({ state, stateKey, dir, dir8, carrying, raging = false }) {
+  // Rage locomotion clips (4 dirs) win over the carry clips: while raging Zed never shows the carrying-a-weapon look.
+  // Carry clips apply only when NOT raging. Only idle/run; every other state is unchanged.
+  const rage = raging ? rageState(state) : null;
+  const carry = raging ? null : carryState(carrying, state);
+  return [...(carry ? [`zed.${carry}.${dir8}`] : rage ? [`zed.${rage}.${cardinalDir(dir8 ?? dir)}`, `zed.${rage}.${dir}`] : state === 'run' ? [`zed.run.${dir8}`] : []),
     `zed.${stateKey}.${dir}`, `zed.${state}.${dir}`, `zed.${stateKey}`, `zed.${state}`];
+}
+
+/** Rage clip state for the machine state, or null (attack, jump, parry, hitstun, grab... keep their own clips). */
+export function rageState(machineState) {
+  return machineState === 'idle' ? 'rageidle' : machineState === 'run' ? 'ragerun' : null;
 }
 
 export function carryState(carrying, machineState) {
@@ -211,9 +229,9 @@ export class ZedVisual {
     const stateKey = m.state === 'attack' && m.moveId ? m.moveId : m.state;
     if (this._wasDead && !zed.dead) this._anim = null; // revived (retry): force the next clip to restart
     this._wasDead = !!zed.dead;
-    const carry = zed.dead ? null : carryState(zed.carrying, m.state);
+    const carry = zed.dead || zed.rage?.isActive ? null : carryState(zed.carrying, m.state); // rage hides the carry look (zed.carrying itself is untouched)
     const dir8 = zed.dir8 ?? dir;
-    const animKey = (zed.dead ? [`zed.dead.${dir}`, 'zed.dead'] : zedClipKeys({ state: m.state, stateKey, dir, dir8, carrying: zed.carrying })).find((k) => this.scene.anims.exists(k));
+    const animKey = (zed.dead ? [`zed.dead.${dir}`, 'zed.dead'] : zedClipKeys({ state: m.state, stateKey, dir, dir8, carrying: zed.carrying, raging: !!zed.rage?.isActive })).find((k) => this.scene.anims.exists(k));
     const img = this.image;
     img.setPosition(feetX, feetY).setDepth(depth);
     if (animKey) { // real frames available: let them drive; keep tint/alpha only
@@ -228,7 +246,7 @@ export class ZedVisual {
       this._carryTag = carry;
       const clip = ZED_ANIMS.find((a) => animKey.startsWith(`zed.${a.state}.`));
       const fi = Number(String(img.anims.currentFrame?.textureKey ?? img.texture.key).split('.').pop());
-      const clipDir = clip?.dirs === 'all' ? animKey.slice(`zed.${clip.state}.`.length) || dir : dir; // key's own dir (dir8, or east/west on fallback)
+      const clipDir = clip?.dirs ? animKey.slice(`zed.${clip.state}.`.length) || dir : dir; // key's own dir (dir8, or east/west on fallback)
       img.setOrigin(ZED_SPRITE.origin.x, clipOriginY(clip, clipDir, fi));
       img.setScale(this.base.sx, this.base.sy).setPosition(feetX, feetY).setAngle(0);
       if (m.state === 'attack' && clip) { // stretch the punch/kick over the move: wind-up, snap on the active frames, ease out
