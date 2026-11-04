@@ -1,6 +1,6 @@
 # Rust Enemy Sprite Specs (all 14 units)
 
-Owner: art-direction-agent. Status: DRAFT for owner approval. Nothing in this file is final art. Every sprite in `assets/sprites/rust-*-placeholder.svg` is a generated PLACEHOLDER box (slate body, steel helmet, cyan visor) so other agents can wire keys now.
+Owner: art-direction-agent. Status: DRAFT for owner approval. Nothing in this file is final art. The generated `assets/sprites/rust-*-placeholder.svg` boxes have been deleted. Delivered PNG art now exists for Bruisers, Rangers (Watchers), Specialists (Copper Fangs) and Breaker Type 2; units with no delivered art are `null` in `assets/asset-keys.json`.
 
 Sources of truth, read in full: `content/enemies/rust-roster.json` (grunt), `content/enemies/rust-gdd-units.json` (the other 13), `design/art/style-guide.md`, `design/art/hit-feedback-spec.md`, `design/art/asset-manifest.md`, `assets/asset-keys.json`, `src/player/zedVisual.js` and `assets/sprites/zed/` (Zed's loading convention). Telegraph and attack timings below are copied from the unit JSON; where a move has no timing in the JSON the cell says "not set" and the enemy owner must set it (rule: never below 300 ms).
 
@@ -12,7 +12,7 @@ Sources of truth, read in full: `content/enemies/rust-roster.json` (grunt), `con
 4. Copper Fang's "copper" gauntlets cannot be copper-orange (red-orange ban). Recommended muted Bronze `#9A8466`. Section 2.3.
 5. Grunt display height (96 px figure) is shorter than Zed (frame 120 px on screen, figure unmeasured here, roughly 100 to 110 px). Confirm in-engine that the grunt does not read as a child next to Zed. Sizes below keep the grunt as the base (1.00).
 6. Unit assumptions marked "ASSUMPTION" in the unit sections (Copper Fang phase-2 shield, Hologram attack is a punch only, Cordon has no Jab Combo, Varr stance colours, Wren Rooftop Execution shown as a knockdown dive).
-7. The placeholder `assets/sprites/rust-grunt-placeholder.svg` has a baked ground-shadow ellipse. That breaks the style-guide rule (the game draws the shadow). I did not edit it. New placeholders do not bake a shadow.
+7. (Resolved) The grunt placeholder SVG, which had a baked ground-shadow ellipse, has been deleted.
 
 ## 1. Global rules
 
@@ -317,9 +317,9 @@ Conventions in the unit tables: Tel = Telegraph, Atk = Attack. Wind-up ms from t
 
 ## 6. Placeholders and keys
 
-- Placeholder files: `assets/sprites/rust-<unit>-placeholder.svg` for each new unit, a boxy slate body with a steel head and cyan visor at the frame size above, feet baseline marked in a comment, no baked shadow, header comment saying PLACEHOLDER. The hologram placeholder is a dashed cyan box. These are generated shapes, not art.
+- (Retired) Placeholder files `assets/sprites/rust-<unit>-placeholder.svg` for each new unit, a boxy slate body with a steel head and cyan visor at the frame size above, feet baseline marked in a comment, no baked shadow, header comment saying PLACEHOLDER. The hologram placeholder is a dashed cyan box. These are generated shapes, not art.
 - Keys: `assets/asset-keys.json` now lists `sprites["rust.<unit>"]` for every unit and `animations["rust.<unit>"]` with every animation key from section 5. No existing key or path was changed; `rust.grunt` only gained the four later-tier keys (headbutt, jab-combo). A top-level `enemySpriteSpec` entry points to this file.
-- Swap rule: replace the placeholder by overwriting its path or changing the path value; do not rename keys. When real per-state PNGs land, add a `spriteSheets` or folder path alongside (the loader owner decides the shape; Zed's `loadZedSprites` is the model).
+- Swap rule (placeholders are gone; set the unit's `sprites` entry in asset-keys.json when art lands): replace the placeholder by overwriting its path or changing the path value; do not rename keys. When real per-state PNGs land, add a `spriteSheets` or folder path alongside (the loader owner decides the shape; Zed's `loadZedSprites` is the model).
 
 ## 7. Open questions
 

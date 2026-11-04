@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-03T15:17:48.704Z",
+  "builtAt": "2026-11-04T16:43:34.275Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
@@ -131,23 +131,23 @@
     {
       "file": "blackboard/log.md",
       "authority": "reference",
-      "bytes": 8406,
-      "sha1": "5601a12ffd41",
+      "bytes": 8830,
+      "sha1": "222553f8f953",
       "status": "ingested",
       "docId": "log",
       "chunks": 1,
-      "chars": 8387,
+      "chars": 8811,
       "warnings": []
     },
     {
       "file": "design/art/asset-manifest.md",
       "authority": "derived",
-      "bytes": 12411,
-      "sha1": "62801e942595",
+      "bytes": 12573,
+      "sha1": "46eca374ad1d",
       "status": "ingested",
       "docId": "asset-manifest",
       "chunks": 18,
-      "chars": 11862,
+      "chars": 12024,
       "warnings": []
     },
     {
@@ -197,12 +197,12 @@
     {
       "file": "design/art/enemy-sprite-specs.md",
       "authority": "derived",
-      "bytes": 39996,
-      "sha1": "a46065f17107",
+      "bytes": 40073,
+      "sha1": "e9b7d872db72",
       "status": "ingested",
       "docId": "enemy-sprite-specs",
       "chunks": 40,
-      "chars": 38679,
+      "chars": 38756,
       "warnings": []
     },
     {
@@ -236,6 +236,17 @@
       "docId": "rage-entry-flash",
       "chunks": 14,
       "chars": 8034,
+      "warnings": []
+    },
+    {
+      "file": "design/art/rage-intro-card.md",
+      "authority": "derived",
+      "bytes": 5517,
+      "sha1": "07b0c1b5479e",
+      "status": "ingested",
+      "docId": "rage-intro-card",
+      "chunks": 9,
+      "chars": 5270,
       "warnings": []
     },
     {
@@ -329,12 +340,12 @@
     {
       "file": "design/levels/level-03-greenline-courts.md",
       "authority": "derived",
-      "bytes": 5557,
-      "sha1": "d6acf8896408",
+      "bytes": 5629,
+      "sha1": "1ea004940b15",
       "status": "ingested",
       "docId": "level-03-greenline-courts",
       "chunks": 10,
-      "chars": 5231,
+      "chars": 5303,
       "warnings": []
     },
     {
@@ -434,6 +445,17 @@
       "docId": "refiner-log",
       "chunks": 1,
       "chars": 536,
+      "warnings": []
+    },
+    {
+      "file": "design/qa/bugs.md",
+      "authority": "derived",
+      "bytes": 1142,
+      "sha1": "527cfd38fc0d",
+      "status": "ingested",
+      "docId": "bugs",
+      "chunks": 1,
+      "chars": 1113,
       "warnings": []
     },
     {
@@ -910,12 +932,23 @@
       "warnings": []
     },
     {
+      "file": "qa/playtest-agents/runs/2026-11-03-level2-rage-intro/REPORT.md",
+      "authority": "reference",
+      "bytes": 1786,
+      "sha1": "44486e0f160e",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 5,
+      "chars": 1579,
+      "warnings": []
+    },
+    {
       "file": "qa/playtest-agents/runs/2026-11-03T10-28-18/REPORT.md",
       "authority": "reference",
       "bytes": 535,
       "sha1": "2fb2bb692f70",
       "status": "ingested",
-      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
       "chunks": 3,
       "chars": 435,
       "warnings": []
@@ -926,7 +959,7 @@
       "bytes": 535,
       "sha1": "7fdad9205b18",
       "status": "ingested",
-      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
       "chunks": 3,
       "chars": 435,
       "warnings": []
@@ -937,7 +970,7 @@
       "bytes": 873,
       "sha1": "92d824f0a0be",
       "status": "ingested",
-      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
       "chunks": 4,
       "chars": 731,
       "warnings": []
@@ -948,9 +981,20 @@
       "bytes": 1219,
       "sha1": "0f22ea368f40",
       "status": "ingested",
-      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
       "chunks": 4,
       "chars": 1077,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/2026-11-03T16-50-58/REPORT.md",
+      "authority": "reference",
+      "bytes": 1529,
+      "sha1": "fd01e12a9644",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 4,
+      "chars": 1386,
       "warnings": []
     }
   ]

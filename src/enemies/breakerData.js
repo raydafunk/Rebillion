@@ -3,7 +3,6 @@
 // Until the Breaker has its own AI, Breaker spawns are grunts whose spawn spec carries skin 'rust-breaker'.
 export const BREAKER_SOURCE_ID = 'rust-breaker';
 export const BREAKER_SPRITE_KEY = 'rust.breaker';
-export const BREAKER_PLACEHOLDER_PATH = 'assets/sprites/rust-breaker-placeholder.svg';
 export const BREAKER_DIR = 'assets/sprites/Rust Bruisers walking';
 export const BREAKER_FRAMES = 8;
 export const BREAKER_WALK_FPS = 10;

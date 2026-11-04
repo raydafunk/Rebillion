@@ -1,0 +1,590 @@
+{
+  "group_id": "36678efd-2654-42b2-a383-9820f07a13b0",
+  "states": [
+    {
+      "character": {
+        "id": "896c5559-24d4-4924-8fac-dc952b77acf5",
+        "name": "Idle",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T17:09:36.275779+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "idle_breathing": {
+            "east": [
+              "Idle/animations/idle_breathing/east/frame_000.png",
+              "Idle/animations/idle_breathing/east/frame_001.png",
+              "Idle/animations/idle_breathing/east/frame_002.png",
+              "Idle/animations/idle_breathing/east/frame_003.png",
+              "Idle/animations/idle_breathing/east/frame_004.png",
+              "Idle/animations/idle_breathing/east/frame_005.png",
+              "Idle/animations/idle_breathing/east/frame_006.png",
+              "Idle/animations/idle_breathing/east/frame_007.png"
+            ],
+            "west": [
+              "Idle/animations/idle_breathing/west/frame_000.png",
+              "Idle/animations/idle_breathing/west/frame_001.png",
+              "Idle/animations/idle_breathing/west/frame_002.png",
+              "Idle/animations/idle_breathing/west/frame_003.png",
+              "Idle/animations/idle_breathing/west/frame_004.png",
+              "Idle/animations/idle_breathing/west/frame_005.png",
+              "Idle/animations/idle_breathing/west/frame_006.png",
+              "Idle/animations/idle_breathing/west/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/idle_breathing/south/frame_000.png",
+              "Idle/animations/idle_breathing/south/frame_001.png",
+              "Idle/animations/idle_breathing/south/frame_002.png",
+              "Idle/animations/idle_breathing/south/frame_003.png",
+              "Idle/animations/idle_breathing/south/frame_004.png",
+              "Idle/animations/idle_breathing/south/frame_005.png",
+              "Idle/animations/idle_breathing/south/frame_006.png",
+              "Idle/animations/idle_breathing/south/frame_007.png"
+            ],
+            "north": [
+              "Idle/animations/idle_breathing/north/frame_000.png",
+              "Idle/animations/idle_breathing/north/frame_001.png",
+              "Idle/animations/idle_breathing/north/frame_002.png",
+              "Idle/animations/idle_breathing/north/frame_003.png",
+              "Idle/animations/idle_breathing/north/frame_004.png",
+              "Idle/animations/idle_breathing/north/frame_005.png",
+              "Idle/animations/idle_breathing/north/frame_006.png",
+              "Idle/animations/idle_breathing/north/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "cdf71294-dc79-4ebf-9ef2-a51917427359",
+        "name": "walking Fast",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T17:19:50.262294+00:00"
+      },
+      "folder": "walking_Fast",
+      "frames": {
+        "rotations": {
+          "south": "walking_Fast/rotations/south.png",
+          "south-east": "walking_Fast/rotations/south-east.png",
+          "east": "walking_Fast/rotations/east.png",
+          "north-east": "walking_Fast/rotations/north-east.png",
+          "north": "walking_Fast/rotations/north.png",
+          "north-west": "walking_Fast/rotations/north-west.png",
+          "west": "walking_Fast/rotations/west.png",
+          "south-west": "walking_Fast/rotations/south-west.png"
+        },
+        "animations": {
+          "Walking": {
+            "east": [
+              "walking_Fast/animations/Walking/east/frame_000.png",
+              "walking_Fast/animations/Walking/east/frame_001.png",
+              "walking_Fast/animations/Walking/east/frame_002.png",
+              "walking_Fast/animations/Walking/east/frame_003.png",
+              "walking_Fast/animations/Walking/east/frame_004.png",
+              "walking_Fast/animations/Walking/east/frame_005.png"
+            ],
+            "north": [
+              "walking_Fast/animations/Walking/north/frame_000.png",
+              "walking_Fast/animations/Walking/north/frame_001.png",
+              "walking_Fast/animations/Walking/north/frame_002.png",
+              "walking_Fast/animations/Walking/north/frame_003.png",
+              "walking_Fast/animations/Walking/north/frame_004.png",
+              "walking_Fast/animations/Walking/north/frame_005.png"
+            ],
+            "west": [
+              "walking_Fast/animations/Walking/west/frame_000.png",
+              "walking_Fast/animations/Walking/west/frame_001.png",
+              "walking_Fast/animations/Walking/west/frame_002.png",
+              "walking_Fast/animations/Walking/west/frame_003.png",
+              "walking_Fast/animations/Walking/west/frame_004.png",
+              "walking_Fast/animations/Walking/west/frame_005.png"
+            ],
+            "south": [
+              "walking_Fast/animations/Walking/south/frame_000.png",
+              "walking_Fast/animations/Walking/south/frame_001.png",
+              "walking_Fast/animations/Walking/south/frame_002.png",
+              "walking_Fast/animations/Walking/south/frame_003.png",
+              "walking_Fast/animations/Walking/south/frame_004.png",
+              "walking_Fast/animations/Walking/south/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "f45e7a18-6265-403a-a66d-69dc8e797fb8",
+        "name": "\u2022\tHammer Slam",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:04:40.132191+00:00"
+      },
+      "folder": "Hammer_Slam",
+      "frames": {
+        "rotations": {
+          "south": "Hammer_Slam/rotations/south.png",
+          "south-east": "Hammer_Slam/rotations/south-east.png",
+          "east": "Hammer_Slam/rotations/east.png",
+          "north-east": "Hammer_Slam/rotations/north-east.png",
+          "north": "Hammer_Slam/rotations/north.png",
+          "north-west": "Hammer_Slam/rotations/north-west.png",
+          "west": "Hammer_Slam/rotations/west.png",
+          "south-west": "Hammer_Slam/rotations/south-west.png"
+        },
+        "animations": {
+          "The_heavy_hammer_is_raised_high_over_the_shoulder": {
+            "south-east": [
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_000.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_001.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_002.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_003.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_004.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_005.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_006.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_007.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south-east/frame_008.png"
+            ],
+            "north": [
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_000.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_001.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_002.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_003.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_004.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_005.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_006.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_007.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/north/frame_008.png"
+            ],
+            "south": [
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_000.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_001.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_002.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_003.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_004.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_005.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_006.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_007.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/south/frame_008.png"
+            ],
+            "east": [
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_000.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_001.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_002.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_003.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_004.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_005.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_006.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_007.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/east/frame_008.png"
+            ],
+            "west": [
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_000.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_001.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_002.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_003.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_004.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_005.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_006.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_007.png",
+              "Hammer_Slam/animations/The_heavy_hammer_is_raised_high_over_the_shoulder/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "e8555e70-12a1-4706-a7b8-63e98eb3a705",
+        "name": "\u2022\tHook Chain Grab st",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:05:03.824126+00:00"
+      },
+      "folder": "Hook_Chain_Grab_st",
+      "frames": {
+        "rotations": {
+          "south": "Hook_Chain_Grab_st/rotations/south.png",
+          "south-east": "Hook_Chain_Grab_st/rotations/south-east.png",
+          "east": "Hook_Chain_Grab_st/rotations/east.png",
+          "north-east": "Hook_Chain_Grab_st/rotations/north-east.png",
+          "north": "Hook_Chain_Grab_st/rotations/north.png",
+          "north-west": "Hook_Chain_Grab_st/rotations/north-west.png",
+          "west": "Hook_Chain_Grab_st/rotations/west.png",
+          "south-west": "Hook_Chain_Grab_st/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_their_right_hand_back_to_the_h": {
+            "south": [
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_000.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_001.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_002.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_003.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_004.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_005.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_006.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_007.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_008.png"
+            ],
+            "east": [
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_000.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_001.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_002.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_003.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_004.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_005.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_006.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_007.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_008.png"
+            ],
+            "north": [
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_000.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_001.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_002.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_003.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_004.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_005.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_006.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_007.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_008.png"
+            ],
+            "west": [
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_000.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_001.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_002.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_003.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_004.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_005.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_006.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_007.png",
+              "Hook_Chain_Grab_st/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "aacb2db2-b85f-4ea6-8e8c-19334e11cc68",
+        "name": "\u2022\tFurnace Kick state",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:05:16.945270+00:00"
+      },
+      "folder": "Furnace_Kick_state",
+      "frames": {
+        "rotations": {
+          "south": "Furnace_Kick_state/rotations/south.png",
+          "south-east": "Furnace_Kick_state/rotations/south-east.png",
+          "east": "Furnace_Kick_state/rotations/east.png",
+          "north-east": "Furnace_Kick_state/rotations/north-east.png",
+          "north": "Furnace_Kick_state/rotations/north.png",
+          "north-west": "Furnace_Kick_state/rotations/north-west.png",
+          "west": "Furnace_Kick_state/rotations/west.png",
+          "south-west": "Furnace_Kick_state/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_forceful_furnace_kick._Th": {
+            "north": [
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_000.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_001.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_002.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_003.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_004.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_005.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_006.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_007.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/north/frame_008.png"
+            ],
+            "east": [
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_000.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_001.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_002.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_003.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_004.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_005.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_006.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_007.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/east/frame_008.png"
+            ],
+            "west": [
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_000.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_001.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_002.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_003.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_004.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_005.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_006.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_007.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/west/frame_008.png"
+            ],
+            "south": [
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_000.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_001.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_002.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_003.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_004.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_005.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_006.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_007.png",
+              "Furnace_Kick_state/animations/The_character_performs_a_forceful_furnace_kick._Th/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "ba47f502-b06b-4bfb-ad2b-5defdd06e585",
+        "name": "Steam Vent Burst",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:08:04.620810+00:00"
+      },
+      "folder": "Steam_Vent_Burst",
+      "frames": {
+        "rotations": {
+          "south": "Steam_Vent_Burst/rotations/south.png",
+          "south-east": "Steam_Vent_Burst/rotations/south-east.png",
+          "east": "Steam_Vent_Burst/rotations/east.png",
+          "north-east": "Steam_Vent_Burst/rotations/north-east.png",
+          "north": "Steam_Vent_Burst/rotations/north.png",
+          "north-west": "Steam_Vent_Burst/rotations/north-west.png",
+          "west": "Steam_Vent_Burst/rotations/west.png",
+          "south-west": "Steam_Vent_Burst/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_plants_their_feet_firmly_while_chann": {
+            "north": [
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_000.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_001.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_002.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_003.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_004.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_005.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_006.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_007.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/north/frame_008.png"
+            ],
+            "south": [
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_000.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_001.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_002.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_003.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_004.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_005.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_006.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_007.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/south/frame_008.png"
+            ],
+            "west": [
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_000.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_001.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_002.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_003.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_004.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_005.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_006.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_007.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/west/frame_008.png"
+            ],
+            "east": [
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_000.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_001.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_002.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_003.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_004.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_005.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_006.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_007.png",
+              "Steam_Vent_Burst/animations/The_character_plants_their_feet_firmly_while_chann/east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "e6624231-e13f-4ea4-af83-98b4badb57de",
+        "name": "taking a punch",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:09:00.121331+00:00"
+      },
+      "folder": "taking_a_punch",
+      "frames": {
+        "rotations": {
+          "south": "taking_a_punch/rotations/south.png",
+          "south-east": "taking_a_punch/rotations/south-east.png",
+          "east": "taking_a_punch/rotations/east.png",
+          "north-east": "taking_a_punch/rotations/north-east.png",
+          "north": "taking_a_punch/rotations/north.png",
+          "north-west": "taking_a_punch/rotations/north-west.png",
+          "west": "taking_a_punch/rotations/west.png",
+          "south-west": "taking_a_punch/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "south": [
+              "taking_a_punch/animations/Taking_Punch/south/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/south/frame_005.png"
+            ],
+            "west": [
+              "taking_a_punch/animations/Taking_Punch/west/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/west/frame_005.png"
+            ],
+            "north": [
+              "taking_a_punch/animations/Taking_Punch/north/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/north/frame_005.png"
+            ],
+            "east": [
+              "taking_a_punch/animations/Taking_Punch/east/frame_000.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_001.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_002.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_003.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_004.png",
+              "taking_a_punch/animations/Taking_Punch/east/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "8a9e4dd1-0eef-4c7f-8186-e7930e5992e8",
+        "name": "falling to death sta",
+        "prompt": "A worker in a bulky, reinforced hydraulic exoskeleton suit, holding a heavy industrial hammer, side-profile stance, sturdy boots, mechanical joints, crisp black outlines.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:09:17.662001+00:00"
+      },
+      "folder": "falling_to_death_sta",
+      "frames": {
+        "rotations": {
+          "south": "falling_to_death_sta/rotations/south.png",
+          "south-east": "falling_to_death_sta/rotations/south-east.png",
+          "east": "falling_to_death_sta/rotations/east.png",
+          "north-east": "falling_to_death_sta/rotations/north-east.png",
+          "north": "falling_to_death_sta/rotations/north.png",
+          "north-west": "falling_to_death_sta/rotations/north-west.png",
+          "west": "falling_to_death_sta/rotations/west.png",
+          "south-west": "falling_to_death_sta/rotations/south-west.png"
+        },
+        "animations": {
+          "Falling_Back_Death": {
+            "north": [
+              "falling_to_death_sta/animations/Falling_Back_Death/north/frame_000.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/north/frame_001.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/north/frame_002.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/north/frame_003.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/north/frame_004.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/north/frame_005.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/north/frame_006.png"
+            ],
+            "east": [
+              "falling_to_death_sta/animations/Falling_Back_Death/east/frame_000.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/east/frame_001.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/east/frame_002.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/east/frame_003.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/east/frame_004.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/east/frame_005.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/east/frame_006.png"
+            ],
+            "south": [
+              "falling_to_death_sta/animations/Falling_Back_Death/south/frame_000.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/south/frame_001.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/south/frame_002.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/south/frame_003.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/south/frame_004.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/south/frame_005.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/south/frame_006.png"
+            ],
+            "west": [
+              "falling_to_death_sta/animations/Falling_Back_Death/west/frame_000.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/west/frame_001.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/west/frame_002.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/west/frame_003.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/west/frame_004.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/west/frame_005.png",
+              "falling_to_death_sta/animations/Falling_Back_Death/west/frame_006.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-04T15:11:17.966425"
+}

@@ -6,7 +6,7 @@ Owner agent: `level-style-03-greenline-courts-agent`. Status: **2026-10-21, styl
 - District: `greenline-courts`
 - Theme: Forest-green basketball courts: chain-link, faded lines, a hoop with no net.
 - Palette (GDD family): #2F6B3F, #E3A92B, #6B4423, #A8402E, #F4E6C8
-- Time limit: 150 s. Waves: 5. Enemies named: grunt, rust-breaker, rust-watcher.
+- Time limit: 210 s (raised from 150 s on 2026-11-04 after the L3 playtest ran out of time). Waves: 5. Enemies named: grunt, rust-breaker, rust-watcher.
 - Intro: "Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court."
 - Outro: "Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again."
 

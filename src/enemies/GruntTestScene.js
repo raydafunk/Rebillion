@@ -4,13 +4,14 @@
 import { EVENTS } from '../shared/events.js';
 import { EnemyManager } from './EnemyManager.js';
 import { GRUNT_SPRITE_KEY } from './gruntData.js';
+import { breakerRotationPath } from './breakerData.js';
 
 export default class GruntTestScene extends Phaser.Scene {
   constructor() { super('GruntTestScene'); }
 
   preload() {
     this.load.on('loaderror', () => {});
-    this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg');
+    this.load.image(GRUNT_SPRITE_KEY, breakerRotationPath('east'));
   }
 
   create() {

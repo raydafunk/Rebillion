@@ -26,24 +26,29 @@ import { RAGE_INTRO_ASSET, shouldShowRageIntro } from '../ui/rageIntroData.js';
 import showVictoryCard from '../ui/VictoryCard.js';
 import { VICTORY, victoryFor } from '../ui/victoryData.js';
 import addAmbient from '../levels/ambient.js';
-import { ASSET_KEYS, ASSET_PATHS, COLORS, CSS, FONTS } from '../config/assetKeys.js';
+import { COLORS, CSS, FONTS } from '../config/assetKeys.js';
+
+const SPARK_KEY = 'fx.spark';
 import { GRUNT_SPRITE_KEY, GRUNT } from '../enemies/gruntData.js';
 import { EnemyHitFx } from '../enemies/EnemyHitFx.js';
 import { MegaStompFx } from '../enemies/MegaStompFx.js';
 import { RoyceFx } from '../enemies/RoyceFx.js';
+import { KaneFx } from '../enemies/KaneFx.js';
 import { WallSlamFx } from '../enemies/WallSlamFx.js';
 import { GrabBreakCueFx } from '../enemies/GrabBreakCueFx.js';
 import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH, GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH, GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH, pickStepper } from '../enemies/gruntSound.js';
 import { DUGAN_ID } from '../enemies/duganData.js';
 import { ROYCE_ID } from '../enemies/royceData.js';
 import { royceAssets, royceAnimDefs, roycePose, royceRotationKey, royceFitScale } from '../enemies/royceSprites.js';
+import { KANE_ID } from '../enemies/kaneData.js';
+import { kaneAssets, kaneAnimDefs, kanePose, kaneRotationKey, kaneFitScale } from '../enemies/kaneSprites.js';
 import { isDugan, duganSoundReady, duganImpactVolume, DUGAN_HIT_VOICE_KEY, DUGAN_HIT_VOICE_PATH, DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_PATH,
   DUGAN_IMPACT_SOUND_KEY, DUGAN_IMPACT_SOUND_PATH, DUGAN_IMPACT_COOLDOWN_MS } from '../enemies/duganSound.js';
 import {
   duganAssets, duganAnimDefs, duganPose, duganRotationKey, duganFitScale, DUGAN_SINK_PX, DUGAN_SINK_FROM_FRAME,
 } from '../enemies/duganSprites.js';
 import {
-  BREAKER_SOURCE_ID, BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, BREAKER_FRAMES, BREAKER_WALK_FPS, BREAKER_DISPLAY_SIZE,
+  BREAKER_SOURCE_ID, BREAKER_SPRITE_KEY, BREAKER_FRAMES, BREAKER_WALK_FPS, BREAKER_DISPLAY_SIZE,
   DIRECTIONS as BREAKER_DIRS, breakerPose, breakerRotationKey, breakerFrameKey, breakerWalkAnimKey,
   breakerRotationPath, breakerFramePath,
   BREAKER_ATTACK_FRAMES, BREAKER_ATTACK_MS, breakerAttackFrameKey, breakerAttackAnimKey, breakerAttackFramePath,
@@ -58,6 +63,12 @@ import {
   breaker2HitFrameKey, breaker2HitAnimKey, breaker2HitFramePath, breaker2DeathFrameKey, breaker2DeathAnimKey, breaker2DeathFramePath,
   BREAKER2_FLIP_FRAMES, BREAKER2_FLIP_FPS, breaker2FlipFrameKey, breaker2FlipAnimKey, breaker2FlipFramePath, breaker2FlipPose,
 } from '../enemies/breakerType2Data.js';
+import {
+  RANGER_DIRS, RANGER_WALK_DIRS, RANGER_WALK_FRAMES, RANGER_WALK_FPS, RANGER_ATTACK_FRAMES, RANGER_ATTACK_MS, RANGER_HIT_FRAMES, RANGER_DEATH_FRAMES, RANGER_DEATH_DEFAULT_FPS,
+  RANGER_ART_SKINS, isRanger, rangerPose, rangerRotationKey, rangerRotationPath, rangerWalkFrameKey, rangerWalkAnimKey, rangerWalkFramePath,
+  rangerAttackFrameKey, rangerAttackAnimKey, rangerAttackFramePath, rangerHitFrameKey, rangerHitAnimKey, rangerHitFramePath,
+  rangerDeathFrameKey, rangerDeathAnimKey, rangerDeathFramePath, rangerFallState, RANGER_FRAME_PX,
+} from '../enemies/rangerData.js';
 
 const GROUND_Y = LANE.maxY - 40;      // Zed's feet line (physics floor)
 const END_DELAY_MS = 700;             // let the KO / final hit play before the result screen
@@ -77,13 +88,12 @@ export default class ArenaScene extends Phaser.Scene {
     // ?wave=N (1-based) drops straight into wave N of the level, for testing one fight (e.g. /?level=1&wave=5 is the Dugan wave).
     const wq = Number(new URLSearchParams(globalThis.location?.search).get('wave')) - 1;
     this.startWave = Number.isInteger(wq) && wq > 0 ? Math.min(wq, this.level.waves.length - 1) : 0;
-    this.bgKey = ASSET_KEYS.BG_ARENA;
+    this.bgKey = null; // set in preload from the level's own background art
   }
 
   preload() {
     this.load.on('loaderror', () => {});
-    this.load.svg(ASSET_KEYS.BG_ARENA, ASSET_PATHS[ASSET_KEYS.BG_ARENA], { width: WORLD.w, height: WORLD.h });
-    // Per-level background from content/levels/styles/<id>.json; the shared placeholder is the fallback.
+    // Per-level background from content/levels/styles/<id>.json.
     const bgPath = this.level.style.background.path;
     if (bgPath) {
       this.bgKey = `bg.${this.level.id}`;
@@ -114,9 +124,7 @@ export default class ArenaScene extends Phaser.Scene {
     if (lm) this.load.audio(lm.key, lm.path); // level BGM; a missing file just means no music (loaderror is swallowed above)
     this.load.audio('result.sting', 'assets/sound/level-complete-sting.mp3'); // "Level Complete Splash" by GreyFrogGames, CC0
     this.load.audio('result.music', 'assets/sound/results-funky-house.mp3'); // "Funky House" by Of Far Different Nature, CC0
-    this.load.svg(GRUNT_SPRITE_KEY, 'assets/sprites/rust-grunt-placeholder.svg', { width: 128, height: 128 });
-    // Breaker: placeholder SVG is the fallback; Rust Bruisers PNGs (8 directions) replace it when they load.
-    this.load.svg(BREAKER_SPRITE_KEY, BREAKER_PLACEHOLDER_PATH, { width: 192, height: 192 });
+    // Rust Bruisers PNGs (8 directions) are the art for every grunt/breaker.
     for (const d of BREAKER_DIRS) {
       this.load.image(breakerRotationKey(d), breakerRotationPath(d));
       for (let i = 0; i < BREAKER_FRAMES; i++) this.load.image(breakerFrameKey(d, i), breakerFramePath(d, i));
@@ -127,6 +135,16 @@ export default class ArenaScene extends Phaser.Scene {
     }
     for (const d of Object.keys(BREAKER_DEATH_DIRS)) {
       for (let i = 0; i < BREAKER_DEATH_FRAMES; i++) this.load.image(breakerDeathFrameKey(d, i), breakerDeathFramePath(d, i));
+    }
+    // Rust Ranger art ('Rust Rangers — The Watchers' folder), only for levels whose waves send Rangers.
+    if (this._hasRanger()) {
+      for (const d of RANGER_DIRS) {
+        this.load.image(rangerRotationKey(d), rangerRotationPath(d));
+        for (let i = 0; i < RANGER_ATTACK_FRAMES; i++) this.load.image(rangerAttackFrameKey(d, i), rangerAttackFramePath(d, i));
+        for (let i = 0; i < RANGER_DEATH_FRAMES; i++) this.load.image(rangerDeathFrameKey(d, i), rangerDeathFramePath(d, i));
+      }
+      for (const d of RANGER_WALK_DIRS) for (let i = 0; i < RANGER_WALK_FRAMES; i++) this.load.image(rangerWalkFrameKey(d, i), rangerWalkFramePath(d, i));
+      for (const d of ['east', 'west']) for (let i = 0; i < RANGER_HIT_FRAMES; i++) this.load.image(rangerHitFrameKey(d, i), rangerHitFramePath(d, i));
     }
     // Breaker Type 2 art (Rust-BreakerType2 folder), only for levels whose waves send it in (Level 2 elites).
     if (this._hasBreaker2()) {
@@ -143,9 +161,22 @@ export default class ArenaScene extends Phaser.Scene {
     if (this._hasDugan()) for (const a of duganAssets()) this.load.image(a.key, a.path);
     // Railgun Royce's own art (Railgun Royce folder), only for levels whose waves send him in (Level 2 wave 5).
     if (this._hasRoyce()) for (const a of royceAssets()) this.load.image(a.key, a.path);
-    this.load.svg('fx.spark', 'assets/fx/spark-placeholder.svg', { width: 48, height: 48 });
+    // Crusher Kane's own art (Crusher Kane folder), only for levels whose waves send him in (Level 3 wave 5).
+    if (this._hasKane()) for (const a of kaneAssets()) this.load.image(a.key, a.path);
     this.load.image(PICKUP.spriteKey, PICKUP.spritePath);
     this._showLoadingScreen();
+  }
+
+  // Hit spark drawn in code (4-point star, cream with mustard rim); no image file needed.
+  _ensureSparkTexture() {
+    if (this.textures.exists(SPARK_KEY)) return;
+    const g = this.make.graphics({ x: 0, y: 0, add: false });
+    const pts = [24, 1, 30, 18, 47, 24, 30, 30, 24, 47, 18, 30, 1, 24, 18, 18];
+    g.fillStyle(0xfff6d6, 1).lineStyle(3, COLORS.mustard, 1);
+    g.beginPath(); g.moveTo(pts[0], pts[1]);
+    for (let i = 2; i < pts.length; i += 2) g.lineTo(pts[i], pts[i + 1]);
+    g.closePath(); g.fillPath(); g.strokePath();
+    g.generateTexture(SPARK_KEY, 48, 48); g.destroy();
   }
 
   // The first entry loads hundreds of sprite frames; without this the player sees a blank screen after FIGHT.
@@ -178,8 +209,10 @@ export default class ArenaScene extends Phaser.Scene {
     this._registerBreakerHitAnims();
     this._registerBreakerDeathAnims();
     this._registerBreaker2Anims();
+    this._registerRangerAnims();
     this._registerDuganAnims();
     this._registerRoyceAnims();
+    this._registerKaneAnims();
     this.dying = [];           // views of removed (already dead) enemies still playing their death anim
     this.sprites = new Map();  // enemy id -> { body, shadow, ring }
     this._lowDrop = createLowHealthDrop(); // boss mercy-drop limiter
@@ -189,11 +222,13 @@ export default class ArenaScene extends Phaser.Scene {
     this.hitStopIds = new Set();
 
     this.roundStarted = false;
-    const bgKey = this.textures.exists(this.bgKey) ? this.bgKey : ASSET_KEYS.BG_ARENA;
+    const bgKey = this.bgKey && this.textures.exists(this.bgKey) ? this.bgKey : null;
     // The level is wider than one screen: the background art (1920x720, or a wider multiple) repeats along it.
     this.world = { w: this.level.worldWidth, h: WORLD.h };
     this.scrolling = !!this.level.scrolling;
-    this.add.tileSprite(0, 0, this.world.w, this.world.h, bgKey).setOrigin(0, 0).setDepth(-1000);
+    if (bgKey) this.add.tileSprite(0, 0, this.world.w, this.world.h, bgKey).setOrigin(0, 0).setDepth(-1000);
+    else this.add.rectangle(0, 0, this.world.w, this.world.h, COLORS.darkBrown).setOrigin(0, 0).setDepth(-1000); // level art failed to load
+    this._ensureSparkTexture();
     const ov = this.level.style.background.overlay;
     if (ov && ov.alpha > 0) {
       this.add.rectangle(0, 0, this.world.w, this.world.h, Phaser.Display.Color.HexStringToColor(ov.color).color, ov.alpha).setOrigin(0, 0).setDepth(-999);
@@ -237,6 +272,7 @@ export default class ArenaScene extends Phaser.Scene {
       onThaw: () => { this.anims.resumeAll(); this.physics.world.resume(); },
     });
     this.royceFx = new RoyceFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.miniBoss && g.traps), onSlam: () => this._shake(220, 0.006), reduceFlash: () => this._reduceFlash() }); // Royce: slam circle, rail-trap strips, taser bolt
+    this.kaneFx = new KaneFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.miniBoss && g.patches), onHammer: () => this._shake(240, 0.007), reduceFlash: () => this._reduceFlash() }); // Kane: hammer circle, hook chain, steam cone and patches
     this.megaStompFx = new MegaStompFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.isBoss), onSlam: (g) => this._startHitStop('megaStomp', [g.id]), reduceFlash: () => this._reduceFlash() });
     this.wallSlamFx = new WallSlamFx(this, { events: ev, getZed: () => ({ x: this.zed.x, feetY: this.zed.laneY, vx: this.zed.sprite.body.velocity.x }), getXRange: () => this.arena.bounds.xRange, reduceFlash: () => this._reduceFlash() });
     this.grabCue = new GrabBreakCueFx(this, { events: ev, getZed: () => this.zed, getHeadTop: () => this.zedVisual.image.getBounds().top, reduceFlash: () => this._reduceFlash() });
@@ -265,7 +301,7 @@ export default class ArenaScene extends Phaser.Scene {
     this._listen(EVENTS.WAVE_STARTED, () => { this.rageWaveHold = false; });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this.rageWaveHold = false; this._hideExit(); this.stats = this._freshStats(); this.rageFx.cancel(); this._clearHitStop(); this.megaStompFx.reset(); this.royceFx.reset(); this.wallSlamFx.reset(); this.grabCue.reset(); this._destroyDying(); this._clearPickups(); this._lowDrop = createLowHealthDrop(); this.score.reset(); this._resetVictory(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this.rageWaveHold = false; this._hideExit(); this.stats = this._freshStats(); this.rageFx.cancel(); this._clearHitStop(); this.megaStompFx.reset(); this.royceFx.reset(); this.kaneFx.reset(); this.wallSlamFx.reset(); this.grabCue.reset(); this._destroyDying(); this._clearPickups(); this._lowDrop = createLowHealthDrop(); this.score.reset(); this._resetVictory(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
@@ -394,6 +430,22 @@ export default class ArenaScene extends Phaser.Scene {
     }
   }
 
+  _hasRanger() { return this.level.waves.some((w) => RANGER_ART_SKINS.includes(w.enemy) || (w.mix || []).some((k) => RANGER_ART_SKINS.includes(k))); }
+
+  _registerRangerAnims() {
+    if (!this.textures.exists(rangerRotationKey('east'))) return;
+    const mk = (key, n, frameKey, cfg) => {
+      if (this.anims.exists(key) || !this.textures.exists(frameKey(0))) return;
+      this.anims.create({ key, ...cfg, frames: Array.from({ length: n }, (_, i) => ({ key: frameKey(i) })) });
+    };
+    for (const d of RANGER_DIRS) {
+      mk(rangerAttackAnimKey(d), RANGER_ATTACK_FRAMES, (i) => rangerAttackFrameKey(d, i), { repeat: 0, duration: RANGER_ATTACK_MS });
+      mk(rangerDeathAnimKey(d), RANGER_DEATH_FRAMES, (i) => rangerDeathFrameKey(d, i), { repeat: 0, frameRate: RANGER_DEATH_DEFAULT_FPS });
+    }
+    for (const d of RANGER_WALK_DIRS) mk(rangerWalkAnimKey(d), RANGER_WALK_FRAMES, (i) => rangerWalkFrameKey(d, i), { frameRate: RANGER_WALK_FPS, repeat: -1 });
+    for (const d of ['east', 'west']) mk(rangerHitAnimKey(d), RANGER_HIT_FRAMES, (i) => rangerHitFrameKey(d, i), { repeat: 0, frameRate: 30 });
+  }
+
   _hasBreaker2() { return this.level.waves.some((w) => w.eliteSkin === BREAKER2_SKIN); }
 
   _registerBreaker2Anims() {
@@ -415,6 +467,16 @@ export default class ArenaScene extends Phaser.Scene {
   _hasDugan() { return this.level.waves.some((w) => w.leader && w.leader.enemy === DUGAN_ID); }
 
   _hasRoyce() { return this.level.waves.some((w) => w.leader && w.leader.enemy === ROYCE_ID); }
+
+  _hasKane() { return this.level.waves.some((w) => w.leader && w.leader.enemy === KANE_ID); }
+
+  _registerKaneAnims() {
+    if (!this.textures.exists(kaneRotationKey('east'))) return;
+    for (const d of kaneAnimDefs()) {
+      if (this.anims.exists(d.key) || !this.textures.exists(d.frames[0])) continue;
+      this.anims.create({ key: d.key, frameRate: d.frameRate, repeat: d.repeat, frames: d.frames.map((key) => ({ key })) });
+    }
+  }
 
   _registerRoyceAnims() {
     if (!this.textures.exists(royceRotationKey('east'))) return;
@@ -452,13 +514,20 @@ export default class ArenaScene extends Phaser.Scene {
     const d = (v.death ||= { t: null });
     if (d.t === null && (force || this.hitFx.barEmptied(id))) {
       d.t = 0;
-      if (this.anims.exists(pose.anim)) {
+      d.gy = v.body.y; // floor line the Ranger falls onto
+      if (pose.rangerFall) v.body.anims.stop();
+      else if (this.anims.exists(pose.anim)) {
         v.body.play(pose.anim);
         v.body.anims.timeScale = pose.deathTimeScale ?? breakerDeathTimeScale();
       } else v.body.setTexture(pose.rotation);
     }
     if (d.t === null) return false;   // bar still draining: keep showing whatever the enemy was doing
     d.t += dt;
+    if (pose.rangerFall) { // the Ranger's clip never lands: step through its knock-back frames and seat the lowest pixel on the floor
+      const f = rangerFallState(d.t, pose.dir);
+      v.body.setTexture(rangerDeathFrameKey('east', f.frame)).setFlipX(f.flipX).setOrigin(0.5, f.bottom / RANGER_FRAME_PX);
+      v.body.y = d.gy - f.lift * v.body.scaleY;
+    }
     const ph = deathViewPhase(d.t);
     v.body.setAlpha(ph.alpha); v.shadow.setAlpha(ph.alpha);
     // The collapsed pile is ~140px wide and centred on the enemy: nudge it inside the visible screen so it is not cropped at the edge.
@@ -486,7 +555,7 @@ export default class ArenaScene extends Phaser.Scene {
   _teardown() {
     for (const [n, f] of this._listeners || []) this.ev.off(n, f);
     this._listeners = [];
-    this.rageFx.destroy(); this.megaStompFx.destroy(); this.royceFx.destroy(); this.wallSlamFx.destroy(); this.grabCue.destroy(); this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
+    this.rageFx.destroy(); this.megaStompFx.destroy(); this.royceFx.destroy(); this.kaneFx.destroy(); this.wallSlamFx.destroy(); this.grabCue.destroy(); this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
     this.sprites.clear(); this.dying.length = 0;
     this.scene.stop('HudScene'); this.scene.stop('ResultScene');
   }
@@ -706,19 +775,21 @@ export default class ArenaScene extends Phaser.Scene {
     for (const g of this.arena.enemies.list()) {
       let v = this.sprites.get(g.id);
       if (!v) {
-        const breaker = true; // Rust Bruiser art replaces the rust placeholder for every enemy in levels 1-8
+        const breaker = true; // Rust Bruiser art is used for every enemy in levels 1-8
         const duganArt = !!g.isBoss && this.textures.exists(duganRotationKey('east'));
         const royceArt = !duganArt && g.skin === ROYCE_ID && this.textures.exists(royceRotationKey('east')); // Level 2 mini-boss
-        const type2 = !duganArt && !royceArt && isBreaker2(g.skin) && this.textures.exists(breaker2RotationKey('east')); // Level 2 elites
-        const hasArt = breaker && (duganArt || royceArt || type2 || this.textures.exists(breakerRotationKey('east')));
+        const kaneArt = !duganArt && !royceArt && g.skin === KANE_ID && this.textures.exists(kaneRotationKey('east')); // Level 3 mini-boss
+        const type2 = !duganArt && !royceArt && !kaneArt && isBreaker2(g.skin) && this.textures.exists(breaker2RotationKey('east')); // Level 2 elites
+        const ranger = !duganArt && !royceArt && !kaneArt && !type2 && isRanger(g.skin) && this.textures.exists(rangerRotationKey('east')); // Rust Rangers (Level 3 wave 2, Level 4)
+        const hasArt = breaker && (duganArt || royceArt || kaneArt || type2 || ranger || this.textures.exists(breakerRotationKey('east')));
         const body = !breaker
-          ? this.add.image(0, 0, GRUNT_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(112, 112)
+          ? this.add.sprite(0, 0, breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(112, 112)
           : hasArt
-            ? this.add.sprite(0, 0, duganArt ? duganRotationKey('east') : royceArt ? royceRotationKey('east') : type2 ? breaker2RotationKey('east') : breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
-            : this.add.image(0, 0, BREAKER_SPRITE_KEY).setOrigin(0.5, 0.94).setDisplaySize(144, 144);
+            ? this.add.sprite(0, 0, duganArt ? duganRotationKey('east') : royceArt ? royceRotationKey('east') : kaneArt ? kaneRotationKey('east') : ranger ? rangerRotationKey('east') : type2 ? breaker2RotationKey('east') : breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
+            : this.add.image(0, 0, breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(144, 144);
         v = {
           shadow: this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25),
-          body, breakerArt: hasArt, duganArt, royceArt, type2, bornAt: this.simNow,
+          body, breakerArt: hasArt, duganArt, royceArt, kaneArt, type2, ranger, bornAt: this.simNow,
           ring: this.add.ellipse(0, 0, 10, 10).setStrokeStyle(TELEGRAPH_CUE.ringStrokePx, 0xffa41c).setVisible(false).setDepth(3999), // parry cue: closes as the attack starts
           strip: (g.isBoss || g.chargeWarning !== undefined) ? this.add.rectangle(0, 0, 10, 70, 0xd23a2e, 0.28).setVisible(false).setDepth(LANE.minY) : null, // Dugan's charge lane: a red strip along the floor while he winds up
         };
@@ -726,9 +797,9 @@ export default class ArenaScene extends Phaser.Scene {
       }
       if (v.breakerArt) {
         // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
-        let pose = v.duganArt ? duganPose(g) : v.royceArt ? roycePose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
+        let pose = v.duganArt ? duganPose(g) : v.royceArt ? roycePose(g) : v.kaneArt ? kanePose(g) : v.ranger ? rangerPose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
         if (v.type2 && g.alive) pose = breaker2FlipPose(g, this.simNow - v.bornAt) || pose; // Type 2 entrance: a front flip, then the normal walk
-        if (g.alive && (pose.walk || pose.anim === (v.type2 ? breaker2WalkAnimKey(pose.dir) : breakerWalkAnimKey(pose.dir)))) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
+        if (g.alive && (pose.walk || pose.anim === (v.ranger ? rangerWalkAnimKey(pose.dir) : v.type2 ? breaker2WalkAnimKey(pose.dir) : breakerWalkAnimKey(pose.dir)))) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
         v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(!!pose.flipX); // real west frames exist, except Type 2's hit (east mirrored)
         if (pose.death) { v.deathPose = pose; this._driveDeath(v, g.id, pose, dt); } // death view drives its own sprite state
         else if (pose.hit && this.anims.exists(pose.anim)) {
@@ -746,7 +817,7 @@ export default class ArenaScene extends Phaser.Scene {
           if (v.moveSeq !== pose.seq || v.body.anims.currentAnim?.key !== pose.anim) {
             v.moveSeq = pose.seq;
             v.body.play(pose.anim);
-            v.body.anims.timeScale = v.royceArt ? royceFitScale(pose.clip, pose.totalMs) : duganFitScale(pose.clip, pose.totalMs);
+            v.body.anims.timeScale = v.royceArt ? royceFitScale(pose.clip, pose.totalMs) : v.kaneArt ? kaneFitScale(pose.clip, pose.totalMs) : duganFitScale(pose.clip, pose.totalMs);
           }
         } else if (pose.anim && this.anims.exists(pose.anim)) {
           v.body.anims.timeScale = 1;
@@ -754,7 +825,8 @@ export default class ArenaScene extends Phaser.Scene {
         } else { v.body.anims.timeScale = 1; v.body.anims.stop(); v.body.setTexture(pose.rotation); }
         // Frames come in different canvas sizes (48 rotations, 64-68 walk): fixed pixel scale + origin at the frame's real feet row.
         const key = v.body.texture.key;
-        v.body.setScale((BREAKER_DISPLAY_SIZE / 48) * (v.duganArt ? 1 : g.visualScale || 1)).setOrigin(0.5, this._feetFrac(key));
+        v.body.setScale((BREAKER_DISPLAY_SIZE / 48) * (v.duganArt ? 1 : g.visualScale || 1));
+        if (!(pose.rangerFall && v.death?.t != null)) v.body.setOrigin(0.5, this._feetFrac(key)); // a falling Ranger seats its own foot line in _driveDeath
       } else v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(g.facing < 0);
       v.shadow.setPosition(g.x, g.y).setDepth(g.y - 1);
       // Parry timing cue: a ring that closes on the enemy as the attack starts.
@@ -769,7 +841,7 @@ export default class ArenaScene extends Phaser.Scene {
       v.body.clearTint();
       const fl = this.hitFx.flashTint(g.id);
       if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
-      else if (g.data.tint && !v.duganArt && !v.royceArt) v.body.setTint(g.data.tint); // Breaker art standing in for Dugan: gunmetal wash so he reads as a different unit
+      else if (g.data.tint && !v.duganArt && !v.royceArt && !v.kaneArt && !v.ranger) v.body.setTint(g.data.tint); // Breaker art standing in for Dugan: gunmetal wash so he reads as a different unit
       if (v.strip) this._drawChargeStrip(v, g);
       if (!g.alive && !v.breakerArt) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
     }
@@ -786,6 +858,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.hitFx.update(dt, this.sprites);
     this.megaStompFx.update(dt);
     this.royceFx.update(dt);
+    this.kaneFx.update(dt);
     this.wallSlamFx.update(dt);
     this.grabCue.update(dt);
   }
@@ -867,7 +940,7 @@ export default class ArenaScene extends Phaser.Scene {
     }
     if (d.targetId !== PLAYER_ID) return; // enemy hits use EnemyHitFx (burst, chips, sparks)
     const heavy = d.amount >= FINISHER_DAMAGE;
-    const s = this.add.image(x, y, 'fx.spark').setDepth(6000).setScale(heavy ? 1 : 0.6).setAngle(Phaser.Math.Between(0, 90));
+    const s = this.add.image(x, y, SPARK_KEY).setDepth(6000).setScale(heavy ? 1 : 0.6).setAngle(Phaser.Math.Between(0, 90));
     this.tweens.add({ targets: s, alpha: 0, scale: s.scale * 1.5, duration: heavy ? 180 : 120, onComplete: () => s.destroy() });
   }
 }

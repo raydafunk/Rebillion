@@ -6,7 +6,8 @@ import { BrickDugan } from './BrickDugan.js';
 import { DUGAN, DUGAN_ID } from './duganData.js';
 import { RoyceBoss } from './RoyceBoss.js';
 import { ROYCE, ROYCE_ID } from './royceData.js';
-import { KANE, KANE_ID, KANE_SKIN } from './kaneData.js';
+import { KaneBoss } from './KaneBoss.js';
+import { KANE, KANE_ID } from './kaneData.js';
 import { AttackSlots } from './AttackSlots.js';
 import { GRUNT, ATTACKER_CAP, pickAttackVariant } from './gruntData.js';
 import { KINDS } from './enemyKinds.js';
@@ -91,15 +92,13 @@ export class EnemyManager {
     return boss;
   }
 
-  /** Level 3 mini-boss "Crusher" Kane: STAND-IN (a heavy grunt on the Breaker skin, one slow swing) registered as a boss so the bar, victory card and mercy drop work. */
+  /** Level 3 mini-boss "Crusher" Kane: KaneBoss (five canon moves), registered as a boss so the health bar, victory card and mercy drop pick him up. */
   _spawnKane({ id, x, y, hpMult, speedMult = 1 }) {
     const data = speedMult === 1 ? KANE : { ...KANE, moveSpeed: Math.round(KANE.moveSpeed * speedMult), circleSpeed: Math.round(KANE.circleSpeed * speedMult) };
-    const boss = new RustGrunt({
-      id, x, y, slots: this.slots, data, maxHp: Math.round(KANE.maxHp * hpMult),
+    const boss = new KaneBoss({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(KANE.maxHp * hpMult), getXRange: this.getXRange, rng: this.rng,
       hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
-      pickVariant: null,
     });
-    boss.skin = KANE_SKIN; boss.miniBoss = true;
     this.enemies.set(id, { grunt: boss, deathTimer: 0 });
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
       id, team: KANE.team, boss: true, bossProfile: KANE_ID, maxHp: boss.maxHp,

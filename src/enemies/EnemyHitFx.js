@@ -18,6 +18,13 @@ import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_VOLUME, isPlainGrunt, gruntSoundRe
 import { isDugan, duganSoundReady, duganVoiceFor, DUGAN_HIT_VOICE_KEY, DUGAN_HIT_VOICE_VOLUME, DUGAN_HIT_VOICE_RATE, DUGAN_HIT_VOICE_COOLDOWN_MS,
   DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_VOLUME, DUGAN_DEATH_SOUND_RATE } from './duganSound.js';
 
+import { isBreaker2Enemy, breaker2SoundReady, breaker2VoiceFor, BREAKER2_HIT_SOUND_KEY, BREAKER2_HIT_SOUND_VOLUME, BREAKER2_HIT_SOUND_RATE,
+  BREAKER2_DEATH_SOUND_KEY, BREAKER2_DEATH_SOUND_VOLUME, BREAKER2_DEATH_SOUND_RATE } from './breaker2Sound.js';
+import { isRangerEnemy, rangerSoundReady, rangerVoiceFor, RANGER_HIT_SOUND_KEY, RANGER_HIT_SOUND_VOLUME, RANGER_HIT_SOUND_RATE,
+  RANGER_DEATH_SOUND_KEY, RANGER_DEATH_SOUND_VOLUME, RANGER_DEATH_SOUND_RATE } from './rangerSound.js';
+import { isWatcherEnemy, watcherSoundReady, watcherVoiceFor, WATCHER_HIT_SOUND_KEY, WATCHER_HIT_SOUND_VOLUME, WATCHER_HIT_SOUND_RATE,
+  WATCHER_DEATH_SOUND_KEY, WATCHER_DEATH_SOUND_VOLUME, WATCHER_DEATH_SOUND_RATE } from './watcherSound.js';
+
 export const BAR_DEPTH = 5100;       // above characters (depth = y) and the swing overlay, below sparks (6000)
 export const SHAPE_DEPTH = P.layerDepth.shapes; // 5050: flash shapes above characters, BELOW the bar so they never cover it
 export const PARTICLE_DEPTH = P.layerDepth.debris; // 5800: debris above the bar
@@ -54,6 +61,9 @@ export class EnemyHitFx {
   _playVoice(id, g, killed) {
     const sc = this.scene;
     if (isDugan(g)) return this._playDuganVoice(id, killed);
+    if (isBreaker2Enemy(g)) return this._playBreaker2Voice(id, killed);
+    if (isRangerEnemy(g)) return this._playRangerVoice(id, killed);
+    if (isWatcherEnemy(g)) return this._playWatcherVoice(id, killed);
     if (!isPlainGrunt(g)) return;
     const which = gruntVoiceFor(killed, this.diedVoiced.has(id));
     if (!which) return;
@@ -67,6 +77,54 @@ export class EnemyHitFx {
     if (!gruntSoundReady(this.voiceAt.get(id), now)) return;
     this.voiceAt.set(id, now);
     sc.sound.play(GRUNT_HIT_SOUND_KEY, { volume: GRUNT_HIT_SOUND_VOLUME });
+  }
+
+  _playBreaker2Voice(id, killed) {
+    const sc = this.scene;
+    const which = breaker2VoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (sc.cache.audio.exists(BREAKER2_DEATH_SOUND_KEY)) sc.sound.play(BREAKER2_DEATH_SOUND_KEY, { volume: BREAKER2_DEATH_SOUND_VOLUME, rate: BREAKER2_DEATH_SOUND_RATE });
+      return;
+    }
+    if (!sc.cache.audio.exists(BREAKER2_HIT_SOUND_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!breaker2SoundReady(this.voiceAt.get(id), now)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(BREAKER2_HIT_SOUND_KEY, { volume: BREAKER2_HIT_SOUND_VOLUME, rate: BREAKER2_HIT_SOUND_RATE });
+  }
+
+  _playRangerVoice(id, killed) {
+    const sc = this.scene;
+    const which = rangerVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (sc.cache.audio.exists(RANGER_DEATH_SOUND_KEY)) sc.sound.play(RANGER_DEATH_SOUND_KEY, { volume: RANGER_DEATH_SOUND_VOLUME, rate: RANGER_DEATH_SOUND_RATE });
+      return;
+    }
+    if (!sc.cache.audio.exists(RANGER_HIT_SOUND_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!rangerSoundReady(this.voiceAt.get(id), now)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(RANGER_HIT_SOUND_KEY, { volume: RANGER_HIT_SOUND_VOLUME, rate: RANGER_HIT_SOUND_RATE });
+  }
+
+  _playWatcherVoice(id, killed) {
+    const sc = this.scene;
+    const which = watcherVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (sc.cache.audio.exists(WATCHER_DEATH_SOUND_KEY)) sc.sound.play(WATCHER_DEATH_SOUND_KEY, { volume: WATCHER_DEATH_SOUND_VOLUME, rate: WATCHER_DEATH_SOUND_RATE });
+      return;
+    }
+    if (!sc.cache.audio.exists(WATCHER_HIT_SOUND_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!watcherSoundReady(this.voiceAt.get(id), now)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(WATCHER_HIT_SOUND_KEY, { volume: WATCHER_HIT_SOUND_VOLUME, rate: WATCHER_HIT_SOUND_RATE });
   }
 
   _playDuganVoice(id, killed) {

@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-11-03T15:17:48.591Z",
+ "builtAt": "2026-11-04T16:43:34.155Z",
  "chunks": [
   {
    "id": "rebellion-menu-desgin#1",
@@ -687,7 +687,7 @@
    "file": "blackboard/log.md",
    "authority": "reference",
    "heading": "Blackboard log",
-   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying\n2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps\n2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner\n2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass\n2026-10-19T14:18:35.865Z | director | G5-generate-code | reopened | Owner request: build GAP-026 (rank 2 todo, menu parallax, menu-ui-agent, src/ui/ only). Use placeholder scroll factors increasing back to front (sky<buildings<wall) in a data table; flag in notes as needing playtest. GAP-004 already implemented.\n2026-10-19T14:19:04.386Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T14:20:16.132Z | code-generator-agent | G5-generate-code | done | GAP-026 implemented\n2026-10-19T14:20:32.542Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T14:21:09.473Z | reviewer-agent | G6-review | done | pass\n2026-10-19T16:10:41.106Z | director | G5-generate-code | reopened | Owner approved GAP-027 story intro card; GAP-026 implemented. Build GAP-027 only.\n2026-10-19T16:10:52.373Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T16:12:22.917Z | code-generator-agent | G5-generate-code | done | GAP-027 implemented\n2026-10-19T16:12:40.294Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T16:13:41.654Z | reviewer-agent | G6-review | done | pass\n2026-11-03T10:22:43.360Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 1\n2026-11-03T10:24:49.172Z | playtest-level-agent | G7-playtest-levels | blocked | L2 playtest not run: local VM has no Chromium and cdn.playwright.dev is blocked by network allowlist (403)\n2026-11-03T12:39:31.093Z | playtest-boss-agent | G8-playtest-bosses | claimed | attempt 1\n2026-11-03T12:46:10.619Z | playtest-boss-agent | G8-playtest-bosses | done | L2 Royce: 3 runs recorded (1 clear, 1 mutual KO with crew, 1 loss with Royce at 19/160); S1:0 S2:0 S3:2 (Royce dies in 10-14s; dash/trap/taser never fired because the hunter stays in melee)"
+   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying\n2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps\n2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner\n2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass\n2026-10-19T14:18:35.865Z | director | G5-generate-code | reopened | Owner request: build GAP-026 (rank 2 todo, menu parallax, menu-ui-agent, src/ui/ only). Use placeholder scroll factors increasing back to front (sky<buildings<wall) in a data table; flag in notes as needing playtest. GAP-004 already implemented.\n2026-10-19T14:19:04.386Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T14:20:16.132Z | code-generator-agent | G5-generate-code | done | GAP-026 implemented\n2026-10-19T14:20:32.542Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T14:21:09.473Z | reviewer-agent | G6-review | done | pass\n2026-10-19T16:10:41.106Z | director | G5-generate-code | reopened | Owner approved GAP-027 story intro card; GAP-026 implemented. Build GAP-027 only.\n2026-10-19T16:10:52.373Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T16:12:22.917Z | code-generator-agent | G5-generate-code | done | GAP-027 implemented\n2026-10-19T16:12:40.294Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T16:13:41.654Z | reviewer-agent | G6-review | done | pass\n2026-11-03T10:22:43.360Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 1\n2026-11-03T10:24:49.172Z | playtest-level-agent | G7-playtest-levels | blocked | L2 playtest not run: local VM has no Chromium and cdn.playwright.dev is blocked by network allowlist (403)\n2026-11-03T12:39:31.093Z | playtest-boss-agent | G8-playtest-bosses | claimed | attempt 1\n2026-11-03T12:46:10.619Z | playtest-boss-agent | G8-playtest-bosses | done | L2 Royce: 3 runs recorded (1 clear, 1 mutual KO with crew, 1 loss with Royce at 19/160); S1:0 S2:0 S3:2 (Royce dies in 10-14s; dash/trap/taser never fired because the hunter stays in melee)\n2026-11-03T16:32:31.369Z | director | G7-playtest-levels | reopened | User asked to run playtest for levels 2-8; chromium available in cloud container\n2026-11-03T16:32:31.434Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 2\n2026-11-03T17:10:42.040Z | playtest-level-agent | G7-playtest-levels | done | 5/7 won (L2,L4,L6,L7,L8), L3 and L5 lost to KO; S1:0 S2:0; levels 2-8 Brawler only, cloud canvas render"
   },
   {
    "id": "asset-manifest#1",
@@ -719,7 +719,7 @@
    "file": "design/art/asset-manifest.md",
    "authority": "derived",
    "heading": "Zed (player), frame 128x128, facing right, origin (0.5, 1.0) at feet",
-   "text": "Art style: PIXEL ART (hand-authored, e.g. Pixel Lab plus Aseprite cleanup), unlike the flat-vector rest of the game. Render with nearest-neighbour filtering and integer scale only; no smoothing. No baked shadow in the frames (the game draws it). Spec, prompts and sheet layout: `design/art/zed-pixellab-prompt.md`; rules in style-guide.md section 1.\nFinal sheet: `assets/sprites/zed.png`, 1024x640 (8 columns x 5 rows of 128x128), transparent PNG, no padding or spacing. `assets/sprites/zed-placeholder.svg` (vector placeholder) remains in use until `zed.png` exists, then is retired."
+   "text": "Art style: PIXEL ART (hand-authored, e.g. Pixel Lab plus Aseprite cleanup), unlike the flat-vector rest of the game. Render with nearest-neighbour filtering and integer scale only; no smoothing. No baked shadow in the frames (the game draws it). Spec, prompts and sheet layout: `design/art/zed-pixellab-prompt.md`; rules in style-guide.md section 1.\nFinal sheet: `assets/sprites/zed.png`, 1024x640 (8 columns x 5 rows of 128x128), transparent PNG, no padding or spacing. The vector placeholder `zed-placeholder.svg` has been retired; Zed now uses the delivered per-state PNGs under `assets/sprites/zed/`."
   },
   {
    "id": "asset-manifest#5",
@@ -727,7 +727,7 @@
    "file": "design/art/asset-manifest.md",
    "authority": "derived",
    "heading": "Zed (player), frame 128x128, facing right, origin (0.5, 1.0) at feet",
-   "text": "| Key | Animation | Frames | FPS | Loop | Owner | Notes |\n|---|---|---|---|---|---|---|\n| zed (sprite) | static placeholder (vector SVG, not pixel art) | 1 | n/a | n/a | ANIM | assets/sprites/zed-placeholder.svg; kept until zed.png exists |\n| zed.idle | idle | 6 | 8 | yes | ANIM | breathing bob |\n| zed.walk | walk | 8 | 12 | yes | ANIM | |\n| zed.jump | jump | 4 (rise, apex, fall, land) | 10 | no | ANIM | land frame 80ms |\n| zed.light | light attack | 4 (windup 1, strike 1, active 1, recover 1) | 24 | no | ANIM | ~170ms total, strike frame is hitbox-on; hit-active = frame 2 |\n| zed.heavy | heavy attack | 6 (windup 2, strike 1, active 1, recover 2) | 20 | no | ANIM | ~300ms, bigger smear; hit-active = frame 3 |\n| zed.hit | hit reaction | 2 | 12 | no | ANIM | |\n| zed.ko | knockout | 6 | 10 | no | ANIM | ends lying down, holds last frame |\nTotals: 36 frames. Sheet `assets/sprites/zed.png` 1024x640, 8 columns x 5 rows, 128x128 cells, frames numbered left to right, top to bottom (1-based per animation below). Frame order (from zed-pixellab-prompt.md section 4):"
+   "text": "| Key | Animation | Frames | FPS | Loop | Owner | Notes |\n|---|---|---|---|---|---|---|\n| zed (sprite) | delivered pixel art, per-state PNGs | 8-direction rotations plus animations | n/a | n/a | ANIM | assets/sprites/zed/ (Idle east rotation is the key's default) |\n| zed.idle | idle | 6 | 8 | yes | ANIM | breathing bob |\n| zed.walk | walk | 8 | 12 | yes | ANIM | |\n| zed.jump | jump | 4 (rise, apex, fall, land) | 10 | no | ANIM | land frame 80ms |\n| zed.light | light attack | 4 (windup 1, strike 1, active 1, recover 1) | 24 | no | ANIM | ~170ms total, strike frame is hitbox-on; hit-active = frame 2 |\n| zed.heavy | heavy attack | 6 (windup 2, strike 1, active 1, recover 2) | 20 | no | ANIM | ~300ms, bigger smear; hit-active = frame 3 |\n| zed.hit | hit reaction | 2 | 12 | no | ANIM | |\n| zed.ko | knockout | 6 | 10 | no | ANIM | ends lying down, holds last frame |\nTotals: 36 frames. Sheet `assets/sprites/zed.png` 1024x640, 8 columns x 5 rows, 128x128 cells, frames numbered left to right, top to bottom (1-based per animation below). Frame order (from zed-pixellab-prompt.md section 4):"
   },
   {
    "id": "asset-manifest#6",
@@ -743,7 +743,7 @@
    "file": "design/art/asset-manifest.md",
    "authority": "derived",
    "heading": "Rust Grunt (one enemy type), frame 128x128",
-   "text": "| Key | Animation | Frames | FPS | Loop | Owner |\n|---|---|---|---|---|---|\n| rust.grunt (sprite) | static placeholder | 1 | n/a | n/a | ANIM |\n| rust.grunt.idle | idle | 4 | 6 | yes | ANIM |\n| rust.grunt.walk | walk | 6 | 10 | yes | ANIM |\n| rust.grunt.telegraph | attack windup | 3 | 8 (about 400ms) | no | ANIM |\n| rust.grunt.attack | strike and recover | 4 | 20 | no | ANIM |\n| rust.grunt.hit | hit reaction | 2 | 12 | no | ANIM |\n| rust.grunt.ko | knockout | 5 | 10 | no | ANIM |\nTotal: 24 frames. Placeholder: assets/sprites/rust-grunt-placeholder.svg."
+   "text": "| Key | Animation | Frames | FPS | Loop | Owner |\n|---|---|---|---|---|---|\n| rust.grunt (sprite) | delivered Rust Bruiser PNGs | rotations plus walk/attack/hit/death | n/a | n/a | ANIM |\n| rust.grunt.idle | idle | 4 | 6 | yes | ANIM |\n| rust.grunt.walk | walk | 6 | 10 | yes | ANIM |\n| rust.grunt.telegraph | attack windup | 3 | 8 (about 400ms) | no | ANIM |\n| rust.grunt.attack | strike and recover | 4 | 20 | no | ANIM |\n| rust.grunt.hit | hit reaction | 2 | 12 | no | ANIM |\n| rust.grunt.ko | knockout | 5 | 10 | no | ANIM |\nTotal: 24 frames. The SVG placeholder has been retired; art is in assets/sprites/Rust Bruisers walking/."
   },
   {
    "id": "asset-manifest#8",
@@ -751,7 +751,7 @@
    "file": "design/art/asset-manifest.md",
    "authority": "derived",
    "heading": "Arena background",
-   "text": "| Key | Filename | Size | Format | Frames | Owner |\n|---|---|---|---|---|---|\n| bg.arena.01 | assets/backgrounds/arena-01-placeholder.svg | 1920x720 | SVG now, PNG final | 1 | ART |\n1920 wide gives 640px of camera scroll over a 1280 viewport. Play lane y 440 to 680. Final should be split into far and near parallax layers (open question). Theme: corner shop, mural, basketball hoop, food stall, planters."
+   "text": "| Key | Filename | Size | Format | Frames | Owner |\n|---|---|---|---|---|---|\n| bg.arena.01 | RETIRED: each level uses its own assets/levels/<id>/background.svg | 1920x720 | SVG now, PNG final | 1 | ART |\n1920 wide gives 640px of camera scroll over a 1280 viewport. Play lane y 440 to 680. Final should be split into far and near parallax layers (open question). Theme: corner shop, mural, basketball hoop, food stall, planters."
   },
   {
    "id": "asset-manifest#9",
@@ -783,7 +783,7 @@
    "file": "design/art/asset-manifest.md",
    "authority": "derived",
    "heading": "FX",
-   "text": "| Key | Filename | Size | Frames | Owner |\n|---|---|---|---|---|\n| fx.spark | assets/fx/spark-placeholder.svg | 64x64 | 1 (final: 4-frame burst) | ART |\nHit flash, screenshake and hit-stop need no art; see `design/art/hit-feedback-spec.md`."
+   "text": "| Key | Filename | Size | Frames | Owner |\n|---|---|---|---|---|\n| fx.spark | generated in code (ArenaScene._ensureSparkTexture) | 48x48 | 1 (final: 4-frame burst) | ART |\nHit flash, screenshake and hit-stop need no art; see `design/art/hit-feedback-spec.md`."
   },
   {
    "id": "asset-manifest#13",
@@ -1575,7 +1575,7 @@
    "file": "design/art/enemy-sprite-specs.md",
    "authority": "derived",
    "heading": "Rust Enemy Sprite Specs (all 14 units)",
-   "text": "Owner: art-direction-agent. Status: DRAFT for owner approval. Nothing in this file is final art. Every sprite in `assets/sprites/rust-*-placeholder.svg` is a generated PLACEHOLDER box (slate body, steel helmet, cyan visor) so other agents can wire keys now.\nSources of truth, read in full: `content/enemies/rust-roster.json` (grunt), `content/enemies/rust-gdd-units.json` (the other 13), `design/art/style-guide.md`, `design/art/hit-feedback-spec.md`, `design/art/asset-manifest.md`, `assets/asset-keys.json`, `src/player/zedVisual.js` and `assets/sprites/zed/` (Zed's loading convention). Telegraph and attack timings below are copied from the unit JSON; where a move has no timing in the JSON the cell says \"not set\" and the enemy owner must set it (rule: never below 300 ms)."
+   "text": "Owner: art-direction-agent. Status: DRAFT for owner approval. Nothing in this file is final art. The generated `assets/sprites/rust-*-placeholder.svg` boxes have been deleted. Delivered PNG art now exists for Bruisers, Rangers (Watchers), Specialists (Copper Fangs) and Breaker Type 2; units with no delivered art are `null` in `assets/asset-keys.json`.\nSources of truth, read in full: `content/enemies/rust-roster.json` (grunt), `content/enemies/rust-gdd-units.json` (the other 13), `design/art/style-guide.md`, `design/art/hit-feedback-spec.md`, `design/art/asset-manifest.md`, `assets/asset-keys.json`, `src/player/zedVisual.js` and `assets/sprites/zed/` (Zed's loading convention). Telegraph and attack timings below are copied from the unit JSON; where a move has no timing in the JSON the cell says \"not set\" and the enemy owner must set it (rule: never below 300 ms)."
   },
   {
    "id": "enemy-sprite-specs#2",
@@ -1583,7 +1583,7 @@
    "file": "design/art/enemy-sprite-specs.md",
    "authority": "derived",
    "heading": "0. Decisions that need owner approval (summary)",
-   "text": "1. Phase-2 \"red\" glows (Calder suit, Voss drones) break the no-red-on-enemies rule. APPROVED by the owner: Overload Violet `#8E5BFF` with Overload Ice `#BFF4FF` core. See section 3.1.\n2. KO is a knockdown, never a kill. Spec in section 3.2. The boss defeat beat (what the player sees when a boss reaches 0 HP) is a narrative question for the owner.\n3. Art style for Rust. The style guide says Rust stays flat vector next to pixel Zed, but Open Question 1 is still open. This spec is written for flat vector delivered as PNG. If the owner picks pixel art, see section 1.2 note.\n4. Copper Fang's \"copper\" gauntlets cannot be copper-orange (red-orange ban). Recommended muted Bronze `#9A8466`. Section 2.3.\n5. Grunt display height (96 px figure) is shorter than Zed (frame 120 px on screen, figure unmeasured here, roughly 100 to 110 px). Confirm in-engine that the grunt does not read as a child next to Zed. Sizes below keep the grunt as the base (1.00).\n6. Unit assumptions marked \"ASSUMPTION\" in the unit sections (Copper Fang phase-2 shield, Hologram attack is a punch only, Cordon has no Jab Combo, Varr stance colours, Wren Rooftop Execution shown as a knockdown dive).\n7. The placeholder `assets/sprites/rust-grunt-placeholder.svg` has a baked ground-shadow ellipse. That breaks the style-guide rule (the game draws the shadow). I did not edit it. New placeholders do not bake a shadow."
+   "text": "1. Phase-2 \"red\" glows (Calder suit, Voss drones) break the no-red-on-enemies rule. APPROVED by the owner: Overload Violet `#8E5BFF` with Overload Ice `#BFF4FF` core. See section 3.1.\n2. KO is a knockdown, never a kill. Spec in section 3.2. The boss defeat beat (what the player sees when a boss reaches 0 HP) is a narrative question for the owner.\n3. Art style for Rust. The style guide says Rust stays flat vector next to pixel Zed, but Open Question 1 is still open. This spec is written for flat vector delivered as PNG. If the owner picks pixel art, see section 1.2 note.\n4. Copper Fang's \"copper\" gauntlets cannot be copper-orange (red-orange ban). Recommended muted Bronze `#9A8466`. Section 2.3.\n5. Grunt display height (96 px figure) is shorter than Zed (frame 120 px on screen, figure unmeasured here, roughly 100 to 110 px). Confirm in-engine that the grunt does not read as a child next to Zed. Sizes below keep the grunt as the base (1.00).\n6. Unit assumptions marked \"ASSUMPTION\" in the unit sections (Copper Fang phase-2 shield, Hologram attack is a punch only, Cordon has no Jab Combo, Varr stance colours, Wren Rooftop Execution shown as a knockdown dive).\n7. (Resolved) The grunt placeholder SVG, which had a baked ground-shadow ellipse, has been deleted."
   },
   {
    "id": "enemy-sprite-specs#3",
@@ -1879,7 +1879,7 @@
    "file": "design/art/enemy-sprite-specs.md",
    "authority": "derived",
    "heading": "6. Placeholders and keys",
-   "text": "- Placeholder files: `assets/sprites/rust-<unit>-placeholder.svg` for each new unit, a boxy slate body with a steel head and cyan visor at the frame size above, feet baseline marked in a comment, no baked shadow, header comment saying PLACEHOLDER. The hologram placeholder is a dashed cyan box. These are generated shapes, not art.\n- Keys: `assets/asset-keys.json` now lists `sprites[\"rust.<unit>\"]` for every unit and `animations[\"rust.<unit>\"]` with every animation key from section 5. No existing key or path was changed; `rust.grunt` only gained the four later-tier keys (headbutt, jab-combo). A top-level `enemySpriteSpec` entry points to this file.\n- Swap rule: replace the placeholder by overwriting its path or changing the path value; do not rename keys. When real per-state PNGs land, add a `spriteSheets` or folder path alongside (the loader owner decides the shape; Zed's `loadZedSprites` is the model)."
+   "text": "- (Retired) Placeholder files `assets/sprites/rust-<unit>-placeholder.svg` for each new unit, a boxy slate body with a steel head and cyan visor at the frame size above, feet baseline marked in a comment, no baked shadow, header comment saying PLACEHOLDER. The hologram placeholder is a dashed cyan box. These are generated shapes, not art.\n- Keys: `assets/asset-keys.json` now lists `sprites[\"rust.<unit>\"]` for every unit and `animations[\"rust.<unit>\"]` with every animation key from section 5. No existing key or path was changed; `rust.grunt` only gained the four later-tier keys (headbutt, jab-combo). A top-level `enemySpriteSpec` entry points to this file.\n- Swap rule (placeholders are gone; set the unit's `sprites` entry in asset-keys.json when art lands): replace the placeholder by overwriting its path or changing the path value; do not rename keys. When real per-state PNGs land, add a `spriteSheets` or folder path alongside (the loader owner decides the shape; Zed's `loadZedSprites` is the model)."
   },
   {
    "id": "enemy-sprite-specs#40",
@@ -2304,6 +2304,78 @@
    "authority": "derived",
    "heading": "12. Open questions",
    "text": "1. Final line style: radial burst (placeholder) or diagonal manga speed lines? Hand-drawn vector or generated in code? Owner approval needed.\n2. Anchor point: screen centre or Zed's screen position (better framing, needs camera to world conversion)?\n3. Remove the existing `cameras.main.flash(180, 255,120,40)` and HUD `flash` in `RageMeterHud` ACTIVATED handler to avoid double flash? (Code owner call.)\n4. Should the round timer pause during the freeze (proposed yes) or keep running like hit-stop?\n5. Freeze length: 450 ms proposed; playtest range 350 to 550. A shorter one on repeat activations?\n6. Show \"RAGE\" title or \"ZED RAGE\"? Needs copy owner (`rageHudCopy.js`), and a localisation decision.\n7. Gamepad rumble during the freeze (not in GDD)?\n8. Does the old design value (100 ms hit-stop, 2 frames) get formally retired in `hit-feedback-spec.md` 8.7? (Not edited by this agent: file left as is.)\n9. Audio sting: unowned."
+  },
+  {
+   "id": "rage-intro-card#1",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Rage Intro Card (Level 2 only)",
+   "text": "Owner: art-direction-agent. Status: DRAFT, placeholder art, pending owner approval.\nStyle: flat vector, Hope palette (style-guide section 2) with the Rage palette (section 10.1) as accent. Resolution 1280x720."
+  },
+  {
+   "id": "rage-intro-card#2",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "What it is",
+   "text": "A **card**, not a screen: a centred 960x460 panel over the arena with a 60 percent Dark Brown dim, same family as `LevelCard`, `StoryCard` and `VictoryCard`. It explains the Rage meter once, at the start of **Level 2 only** (the first level with a meter; Level 1 hides it). It replaces the old hint box under the Rage bar. No scene change, no buttons, no backstory (the father is never mentioned).\nGate: `shouldShowRageIntro(levelNumber)` is true only for 2. Shown after the Level 2 intro card and before the first wave; the Rage clocks are already frozen until the round starts, so nothing drains while it is up. Shown again on a retry of Level 2 only if the lead wants it (open question 2)."
+  },
+  {
+   "id": "rage-intro-card#3",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Copy (live text, never baked into the SVG)",
+   "text": "| Element | Text | Font | Size | Colour |\n|---|---|---|---|---|\n| Header | RAGE | Anton | 64px, 4px letter spacing | Rage Red-White #FFE3D6, 4px Dark Brown stroke |\n| Line 1 | Land blows on Rust enemies to fill the meter. Clean streaks fill it faster. | Rubik 500 | 24px | Cream #F4E6C8 |\n| Line 2 | It starts empty each level. At full it is READY for 4 seconds. | Rubik 500 | 24px | Cream #F4E6C8 |\n| Line 3 | Press L to unleash Zed Rage for 9 seconds. Your attacks become the Rage move. | Rubik 700 | 24px | Rage Gold #FFD24A |\n| Line 4 | You can still move, jump and block. A hit will not end it, a knockout will. | Rubik 500 | 24px | Cream #F4E6C8 |\n| Keycap letter | L | Anton | 40px | Dark Brown #2E1F16 on Cream keycap |\n| Prompt | Enter / click to fight on | Rubik 500 | 20px | Cream #F4E6C8 |"
+  },
+  {
+   "id": "rage-intro-card#4",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Copy (live text, never baked into the SVG)",
+   "text": "Numbers 4 and 9 are built from `RAGE_CONFIG.readyWindowSec` and `rageDurationSec`; a test pins them. Title and prompt live in `rageIntroData.js` (the old under-bar hint box and its `RAGE_COPY.intro*` strings were removed). Bosses count as Rust enemies, so line 1 covers them; every blow counts the same, so no per-attack detail is shown.\nContrast (card body #3A2218): Cream ~11:1, Rage Gold ~9:1, Red-White on Rage Ember header #7A2E1A ~9:1, Dark Brown on Cream keycap ~11:1. All pass 4.5:1."
+  },
+  {
+   "id": "rage-intro-card#5",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Layout (card at x=160, y=130, 960x460)",
+   "text": "| Element | Position inside card | Notes |\n|---|---|---|\n| Header strip | y 6 to 98, Rage Ember | Four faint Rage Orange flame spikes at the corners (55 percent) |\n| Band | y 98 to 108, Rage Red | Dark Brown hairlines top and bottom |\n| Emblem | centre (175, 262) | Ember burst with Orange spikes, flame in Rage Red / Orange / Red-White, blank Cream L keycap below it (live \"L\" at 175, 330) |\n| Text column | left 340, top 122, width 570 | Four paragraphs, 10px apart; line 3 is the only highlighted one |\n| Meter strip | y 378 to 392, x 340 to 850 | Eight blocks ember, orange, red, red-white: a miniature of the filling meter. Decorative |\n| Prompt | left 340, top 414 | |\nFit check: worst case each line wraps to two rows at 24px (about 4 x 2 x 33px plus gaps, roughly 290px from y 122), ending near y 410, which touches the meter strip at 378. If a fallback font wraps wider, drop `lineSize` to 22 (one number in `rageIntroData.js`). Verify in the running game."
+  },
+  {
+   "id": "rage-intro-card#6",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Look rules followed",
+   "text": "- Panel recipe from the style guide, inverted for night/ember mood: dark body, Dark Brown 6px outline, 16px radius, flat 35 percent drop edge, inner 3px Rage Red keyline.\n- 2 to 3 tones per colour, no gradients, no glow, no blur, no textures.\n- Rage colours only from section 10.1. No Telegraph Red #FF3B30, no Overload Violet, no Visor Cyan (those belong to the enemy side).\n- Every colour is backed by shape or text: the flame, the L keycap and the words carry the meaning, not colour alone.\n- Nothing rotated. Reads in greyscale: header dark, emblem mid, text light."
+  },
+  {
+   "id": "rage-intro-card#7",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Motion (for the implementer)",
+   "text": "1. Dim fades in 0.2s; card drops 40px with a 0.25s ease-out (plain 0.15s fade when reduced motion is on; `reduceMotion` option on the function).\n2. No sound, no flash, no shake: the real Rage entry flash is reserved for activation (`rage-entry-flash.md`), so this card must not pre-empt it.\n3. Dismiss on Enter, Space or click; input ignored for the first 1.5s so it is not skipped unread. Auto-closes after 45s as a safety net (the other cards use 8s; this one is meant to be read).\n4. Depth 7000, scrollFactor 0, keys and objects cleaned up on dismiss, cancel or scene shutdown; `onDone` fires once."
+  },
+  {
+   "id": "rage-intro-card#8",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Assets",
+   "text": "| Key | File | Size | Notes |\n|---|---|---|---|\n| `ui.card.rage-intro` | `assets/ui/rage-intro-card-frame.svg` | 960x460 | PLACEHOLDER, text-free frame. Swap by overwriting the file. Preload with `RAGE_INTRO_ASSET` from `src/ui/rageIntroData.js` |\nWithout the asset the card falls back to a plain dark panel."
+  },
+  {
+   "id": "rage-intro-card#9",
+   "doc": "rage-intro-card",
+   "file": "design/art/rage-intro-card.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "1. Is a dark card right, or should it match the Cream Hope panels of the other cards? Dark was chosen so Rage reads as its own system.\n2. Retry of Level 2: show the card again, or only the first time per session? Default here is whatever the scene decides; the data module only gates on level.\n3. Final emblem: keep the flat flame and keycap, or use Zed with the fist glow once Rage frames are final?\n4. Wording of line 4 (\"a hit will not end it, a knockout will\") is plain on purpose; the content pipeline may replace it with a dialogue id later.\n5. Fonts were not rendered in a browser here; check line wrapping in the running game."
   },
   {
    "id": "style-guide#1",
@@ -2975,7 +3047,7 @@
    "file": "design/levels/level-03-greenline-courts.md",
    "authority": "derived",
    "heading": "Known from the level data (do not contradict)",
-   "text": "- District: `greenline-courts`\n- Theme: Forest-green basketball courts: chain-link, faded lines, a hoop with no net.\n- Palette (GDD family): #2F6B3F, #E3A92B, #6B4423, #A8402E, #F4E6C8\n- Time limit: 150 s. Waves: 5. Enemies named: grunt, rust-breaker, rust-watcher.\n- Intro: \"Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.\"\n- Outro: \"Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.\""
+   "text": "- District: `greenline-courts`\n- Theme: Forest-green basketball courts: chain-link, faded lines, a hoop with no net.\n- Palette (GDD family): #2F6B3F, #E3A92B, #6B4423, #A8402E, #F4E6C8\n- Time limit: 210 s (raised from 150 s on 2026-11-04 after the L3 playtest ran out of time). Waves: 5. Enemies named: grunt, rust-breaker, rust-watcher.\n- Intro: \"Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.\"\n- Outro: \"Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.\""
   },
   {
    "id": "level-03-greenline-courts#3",
@@ -3704,6 +3776,14 @@
    "authority": "derived",
    "heading": "content/levels refiner pass",
    "text": "- levels.json level-02..05 gddGap: stale proposed enemy names (Baton Scout, Enforcer, Dart Marksman, Shield Sergeant) replaced with rust-watcher / rust-breaker / rust-copper-fang as used by waves. Rule: gddGap must match waves.\n- rust-gdd-levels.json level-08 gddGap: \"Overseer Halden Varr, The Architect of Rust\" -> \"Commander Halden Varr\" (GDD wording noted, title to confirm). Rule: canon.md name.\n- levels.json level-04/05 gddGap: Holt/Wren count workaround made explicit. Count not changed: validator forbids shrinking wave counts."
+  },
+  {
+   "id": "bugs#1",
+   "doc": "bugs",
+   "file": "design/qa/bugs.md",
+   "authority": "derived",
+   "heading": "Bugs (design/qa/bugs.md)",
+   "text": "| ID | Title | Sev | Repro / evidence | Expected vs actual | Suspected owner | Status |\n|---|---|---|---|---|---|---|\n| RAGE-001 | Level 2 Rage intro card: decorative meter strip overlaps last text line | S3 | `node qa/playtest-agents/run.mjs --only L2-brawler --renderer canvas --seed 1`; video `L2-brawler.mp4` ~8.6 s (run 2026-11-03-level2-rage-intro); screenshot `rage-intro-card-L2-brawler-8.6s.png`. Fallback font (Rubik not loaded in headless canvas) wraps lines 1, 2, 3 and 4 to two rows each. | Expected: four paragraphs end above the meter strip (y 378) with the prompt below. Actual: line 4 (\"...it, a knockout will.\") is drawn under the meter blocks, which strike through it. This is the risk flagged in `design/art/rage-intro-card.md` (Fit check, open question 5). Suggested fix from the doc: `lineSize` 24 -> 22 in `src/ui/rageIntroData.js`; or move the strip/prompt down, or drop the strip. Re-verify with Rubik actually loaded, since wrapping may differ. | menu-ui-agent (`src/ui/RageIntroCard.js`, `rageIntroData.js`) | open (suspected only for the real-font case; confirmed with fallback font) |"
   },
   {
    "id": "agent-diagrams#1",
@@ -6620,47 +6700,63 @@
   {
    "id": "report-2-2-2-2-2-2-2-2-2-2-2-2#1",
    "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03-level2-rage-intro/REPORT.md",
+   "authority": "reference",
+   "heading": "Playtest agents report (2026-11-03T18-19-26)",
+   "text": "Seed 1. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2#2",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03-level2-rage-intro/REPORT.md",
+   "authority": "reference",
+   "heading": "Levels (playtest-level-agent)",
+   "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| L2-brawler | brawler | L2 | LOSE (ko) | 106.6s | 0 | 160/11 | 3/6 | none | [L2-brawler](videos/L2-brawler.mp4) |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2#3",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03-level2-rage-intro/REPORT.md",
+   "authority": "reference",
+   "heading": "Boss move read-out (bespoke boss AI)",
+   "text": "| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Damage to Zed |\n|---|---|---|---|---|---|---|---|\n| L2-brawler | railgun-royce-31 | alive (23/160) | combo | 2 | 4 | 0 | 28 |\n| L2-brawler | railgun-royce-31 | alive (23/160) | slam | 1 | 0 | 1 | 0 |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2#4",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03-level2-rage-intro/REPORT.md",
+   "authority": "reference",
+   "heading": "Findings",
+   "text": "None. Every invariant held in every run."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2#5",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03-level2-rage-intro/REPORT.md",
+   "authority": "reference",
+   "heading": "Rage intro card check (Level 2) - playtest-level-agent",
+   "text": "Run `L2-brawler`, seed 1, canvas renderer, `--no-blackboard` (G7 was already `done`, 2/2 attempts, so the board was left untouched). `npm test`: 171/171 pass.\n| Check | Result |\n|---|---|\n| Card appears on Level 2 after the level intro card, before wave 1 | PASS (video ~8.5 s) |\n| Header, 4 copy lines, L keycap, flame emblem, \"Enter / click to fight on\" prompt present | PASS |\n| Copy numbers match config (READY 4 s, Rage 9 s) | PASS |\n| Rage clocks frozen while card is up (meter empty, round not started) | PASS |\n| Dismissed by Enter; \"FIGHT!\" follows, no stuck state | PASS |\n| Text fits inside the card without collision | **FAIL (S3)**: see RAGE-001 |\nScreenshot: `rage-intro-card-L2-brawler-8.6s.png`. Evidence: `videos/L2-brawler.mp4` ~8.6 s.\nNote: this seed lost to KO (Royce 23/160 alive); the earlier 16:50 run won. Balance data, not a bug. No invariant findings (S1:0 S2:0)."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2#1",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
    "file": "qa/playtest-agents/runs/2026-11-03T10-28-18/REPORT.md",
    "authority": "reference",
    "heading": "Playtest agents report (2026-11-03T10-28-18)",
    "text": "Seed 1. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
   },
   {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2#2",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2",
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
    "file": "qa/playtest-agents/runs/2026-11-03T10-28-18/REPORT.md",
    "authority": "reference",
    "heading": "Levels (playtest-level-agent)",
    "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| L2-brawler | brawler | L2 | WIN (cleared) | 127.4s | 100 | 187/4 | 6/8 | none | [L2-brawler](videos/L2-brawler.mp4) |"
   },
   {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2#3",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T10-28-18/REPORT.md",
-   "authority": "reference",
-   "heading": "Findings",
-   "text": "None. Every invariant held in every run."
-  },
-  {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2#1",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md",
-   "authority": "reference",
-   "heading": "Playtest agents report (2026-11-03T11-37-51)",
-   "text": "Seed 1. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
-  },
-  {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md",
-   "authority": "reference",
-   "heading": "Levels (playtest-level-agent)",
-   "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| L2-brawler | brawler | L2 | WIN (cleared) | 133.2s | 93 | 192/11 | 7/8 | none | [L2-brawler](videos/L2-brawler.mp4) |"
-  },
-  {
    "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2#3",
    "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md",
+   "file": "qa/playtest-agents/runs/2026-11-03T10-28-18/REPORT.md",
    "authority": "reference",
    "heading": "Findings",
    "text": "None. Every invariant held in every run."
@@ -6668,31 +6764,23 @@
   {
    "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2#1",
    "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+   "file": "qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md",
    "authority": "reference",
-   "heading": "Playtest agents report (2026-11-03T12-43-19)",
+   "heading": "Playtest agents report (2026-11-03T11-37-51)",
    "text": "Seed 1. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
   },
   {
    "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
    "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+   "file": "qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md",
    "authority": "reference",
-   "heading": "Bosses (playtest-boss-agent)",
-   "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| MB-L2-royce-solo<br>\"Railgun\" Royce (solo) | boss-hunter | L2 W5 | LOSE (ko) | 27.3s | 0 | 25/11 | 2/9 | none | [MB-L2-royce-solo](videos/MB-L2-royce-solo.mp4) |"
+   "heading": "Levels (playtest-level-agent)",
+   "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| L2-brawler | brawler | L2 | WIN (cleared) | 133.2s | 93 | 192/11 | 7/8 | none | [L2-brawler](videos/L2-brawler.mp4) |"
   },
   {
    "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2#3",
    "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
-   "authority": "reference",
-   "heading": "Boss move read-out (bespoke boss AI)",
-   "text": "| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Damage to Zed |\n|---|---|---|---|---|---|---|---|\n| MB-L2-royce-solo | railgun-royce-1 | 14.2s | combo | 2 | 3 | 0 | 21 |\n| MB-L2-royce-solo | railgun-royce-1 | 14.2s | slam | 2 | 0 | 2 | 0 |"
-  },
-  {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2#4",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
-   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+   "file": "qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md",
    "authority": "reference",
    "heading": "Findings",
    "text": "None. Every invariant held in every run."
@@ -6700,31 +6788,95 @@
   {
    "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#1",
    "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+   "authority": "reference",
+   "heading": "Playtest agents report (2026-11-03T12-43-19)",
+   "text": "Seed 1. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+   "authority": "reference",
+   "heading": "Bosses (playtest-boss-agent)",
+   "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| MB-L2-royce-solo<br>\"Railgun\" Royce (solo) | boss-hunter | L2 W5 | LOSE (ko) | 27.3s | 0 | 25/11 | 2/9 | none | [MB-L2-royce-solo](videos/MB-L2-royce-solo.mp4) |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#3",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+   "authority": "reference",
+   "heading": "Boss move read-out (bespoke boss AI)",
+   "text": "| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Damage to Zed |\n|---|---|---|---|---|---|---|---|\n| MB-L2-royce-solo | railgun-royce-1 | 14.2s | combo | 2 | 3 | 0 | 21 |\n| MB-L2-royce-solo | railgun-royce-1 | 14.2s | slam | 2 | 0 | 2 | 0 |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#4",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md",
+   "authority": "reference",
+   "heading": "Findings",
+   "text": "None. Every invariant held in every run."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#1",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
    "file": "qa/playtest-agents/runs/2026-11-03T12-44-13/REPORT.md",
    "authority": "reference",
    "heading": "Playtest agents report (2026-11-03T12-44-13)",
    "text": "Seed 2. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
   },
   {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
    "file": "qa/playtest-agents/runs/2026-11-03T12-44-13/REPORT.md",
    "authority": "reference",
    "heading": "Bosses (playtest-boss-agent)",
    "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| MB-L2-royce-solo<br>\"Railgun\" Royce (solo) | boss-hunter | L2 W5 | BOSS WAVE CLEARED | 42.9s | - | 41/1 | 1/1 | none | [MB-L2-royce-solo](videos/MB-L2-royce-solo.mp4) |\n| EB-L2-royce-crew<br>\"Railgun\" Royce + crew (Level 2 finale) | boss-hunter | L2 W5 | LOSE (ko) | 27.7s | 0 | 21/11 | 4/9 | none | [EB-L2-royce-crew](videos/EB-L2-royce-crew.mp4) |"
   },
   {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#3",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#3",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
    "file": "qa/playtest-agents/runs/2026-11-03T12-44-13/REPORT.md",
    "authority": "reference",
    "heading": "Boss move read-out (bespoke boss AI)",
    "text": "| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Damage to Zed |\n|---|---|---|---|---|---|---|---|\n| MB-L2-royce-solo | railgun-royce-1 | 10.1s | combo | 1 | 1 | 0 | 7 |\n| MB-L2-royce-solo | railgun-royce-1 | 10.1s | slam | 1 | 0 | 1 | 0 |\n| EB-L2-royce-crew | railgun-royce-1 | alive (19/160) | combo | 2 | 1 | 1 | 7 |\n| EB-L2-royce-crew | railgun-royce-1 | alive (19/160) | slam | 2 | 0 | 1 | 0 |"
   },
   {
-   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#4",
-   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#4",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
    "file": "qa/playtest-agents/runs/2026-11-03T12-44-13/REPORT.md",
+   "authority": "reference",
+   "heading": "Findings",
+   "text": "None. Every invariant held in every run."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#1",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T16-50-58/REPORT.md",
+   "authority": "reference",
+   "heading": "Playtest agents report (2026-11-03T16-50-58)",
+   "text": "Seed 1. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T16-50-58/REPORT.md",
+   "authority": "reference",
+   "heading": "Levels (playtest-level-agent)",
+   "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| L2-brawler | brawler | L2 | WIN (cleared) | 136.8s | 100 | 184/8 | 5/6 | none | [L2-brawler](videos/L2-brawler.mp4) |\n| L3-brawler | brawler | L3 | LOSE (ko) | 147.1s | 0 | 178/14 | 6/12 | none | [L3-brawler](videos/L3-brawler.mp4) |\n| L4-brawler | brawler | L4 | WIN (cleared) | 110.4s | 100 | 106/0 | 0/0 | none | [L4-brawler](videos/L4-brawler.mp4) |\n| L5-brawler | brawler | L5 | LOSE (ko) | 70.0s | 0 | 87/10 | 4/7 | none | [L5-brawler](videos/L5-brawler.mp4) |\n| L6-brawler | brawler | L6 | WIN (cleared) | 139.7s | 100 | 176/4 | 1/4 | none | [L6-brawler](videos/L6-brawler.mp4) |\n| L7-brawler | brawler | L7 | WIN (cleared) | 106.4s | 100 | 140/0 | 4/4 | none | [L7-brawler](videos/L7-brawler.mp4) |\n| L8-brawler | brawler | L8 | WIN (cleared) | 124.7s | 92 | 138/4 | 2/3 | none | [L8-brawler](videos/L8-brawler.mp4) |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#3",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T16-50-58/REPORT.md",
+   "authority": "reference",
+   "heading": "Boss move read-out (bespoke boss AI)",
+   "text": "| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Damage to Zed |\n|---|---|---|---|---|---|---|---|\n| L2-brawler | railgun-royce-31 | 22.9s | combo | 3 | 5 | 0 | 35 |\n| L2-brawler | railgun-royce-31 | 22.9s | slam | 3 | 1 | 2 | 15 |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#4",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/2026-11-03T16-50-58/REPORT.md",
    "authority": "reference",
    "heading": "Findings",
    "text": "None. Every invariant held in every run."

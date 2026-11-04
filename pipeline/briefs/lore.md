@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-11-03T15:17:48.897Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-11-04T16:43:34.485Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -850,4 +850,4 @@ Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GD
 Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 860 chunks across 90 documents.

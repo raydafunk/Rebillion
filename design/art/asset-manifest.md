@@ -24,11 +24,11 @@ Text screens (title, win, lose) use the panel, buttons and fonts; UI agent assem
 ## Zed (player), frame 128x128, facing right, origin (0.5, 1.0) at feet
 
 Art style: PIXEL ART (hand-authored, e.g. Pixel Lab plus Aseprite cleanup), unlike the flat-vector rest of the game. Render with nearest-neighbour filtering and integer scale only; no smoothing. No baked shadow in the frames (the game draws it). Spec, prompts and sheet layout: `design/art/zed-pixellab-prompt.md`; rules in style-guide.md section 1.
-Final sheet: `assets/sprites/zed.png`, 1024x640 (8 columns x 5 rows of 128x128), transparent PNG, no padding or spacing. `assets/sprites/zed-placeholder.svg` (vector placeholder) remains in use until `zed.png` exists, then is retired.
+Final sheet: `assets/sprites/zed.png`, 1024x640 (8 columns x 5 rows of 128x128), transparent PNG, no padding or spacing. The vector placeholder `zed-placeholder.svg` has been retired; Zed now uses the delivered per-state PNGs under `assets/sprites/zed/`.
 
 | Key | Animation | Frames | FPS | Loop | Owner | Notes |
 |---|---|---|---|---|---|---|
-| zed (sprite) | static placeholder (vector SVG, not pixel art) | 1 | n/a | n/a | ANIM | assets/sprites/zed-placeholder.svg; kept until zed.png exists |
+| zed (sprite) | delivered pixel art, per-state PNGs | 8-direction rotations plus animations | n/a | n/a | ANIM | assets/sprites/zed/ (Idle east rotation is the key's default) |
 | zed.idle | idle | 6 | 8 | yes | ANIM | breathing bob |
 | zed.walk | walk | 8 | 12 | yes | ANIM | |
 | zed.jump | jump | 4 (rise, apex, fall, land) | 10 | no | ANIM | land frame 80ms |
@@ -53,7 +53,7 @@ Phaser animation keys exactly as in the table. Hit-active frames: `zed.light` = 
 
 | Key | Animation | Frames | FPS | Loop | Owner |
 |---|---|---|---|---|---|
-| rust.grunt (sprite) | static placeholder | 1 | n/a | n/a | ANIM |
+| rust.grunt (sprite) | delivered Rust Bruiser PNGs | rotations plus walk/attack/hit/death | n/a | n/a | ANIM |
 | rust.grunt.idle | idle | 4 | 6 | yes | ANIM |
 | rust.grunt.walk | walk | 6 | 10 | yes | ANIM |
 | rust.grunt.telegraph | attack windup | 3 | 8 (about 400ms) | no | ANIM |
@@ -61,13 +61,13 @@ Phaser animation keys exactly as in the table. Hit-active frames: `zed.light` = 
 | rust.grunt.hit | hit reaction | 2 | 12 | no | ANIM |
 | rust.grunt.ko | knockout | 5 | 10 | no | ANIM |
 
-Total: 24 frames. Placeholder: assets/sprites/rust-grunt-placeholder.svg.
+Total: 24 frames. The SVG placeholder has been retired; art is in assets/sprites/Rust Bruisers walking/.
 
 ## Arena background
 
 | Key | Filename | Size | Format | Frames | Owner |
 |---|---|---|---|---|---|
-| bg.arena.01 | assets/backgrounds/arena-01-placeholder.svg | 1920x720 | SVG now, PNG final | 1 | ART |
+| bg.arena.01 | RETIRED: each level uses its own assets/levels/<id>/background.svg | 1920x720 | SVG now, PNG final | 1 | ART |
 
 1920 wide gives 640px of camera scroll over a 1280 viewport. Play lane y 440 to 680. Final should be split into far and near parallax layers (open question). Theme: corner shop, mural, basketball hoop, food stall, planters.
 
@@ -94,7 +94,7 @@ Not drawn (UI owns): title strip (near-black, live text), selected ">" marker, f
 
 | Key | Filename | Size | Frames | Owner |
 |---|---|---|---|---|
-| fx.spark | assets/fx/spark-placeholder.svg | 64x64 | 1 (final: 4-frame burst) | ART |
+| fx.spark | generated in code (ArenaScene._ensureSparkTexture) | 48x48 | 1 (final: 4-frame burst) | ART |
 
 Hit flash, screenshake and hit-stop need no art; see `design/art/hit-feedback-spec.md`.
 

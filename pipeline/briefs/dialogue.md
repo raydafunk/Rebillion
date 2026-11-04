@@ -1,5 +1,5 @@
 # Content brief: dialogue
-_Generated 2026-11-03T15:17:49.215Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
+_Generated 2026-11-04T16:43:34.887Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
 
 **Writer agent:** dialogue-agent  |  **Output dir:** `content/dialogue/`  |  **Produces:** Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.
 
@@ -934,4 +934,4 @@ Enemy Agent Control the A.I This will control the Enemies Enemies in the game Ga
 Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 860 chunks across 90 documents.

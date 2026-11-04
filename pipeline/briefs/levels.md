@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-11-03T15:17:49.082Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-11-04T16:43:34.725Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -458,15 +458,15 @@ Tell the player they won **and why**. The GDD win condition is: "Fight your way 
 ### [canon#4] derived - design/lore/canon.md - World (from Theme)
 Lived-in, human, culturally rich. Corner shops, murals celebrating local heroes, open windows with music, basketball courts, food stalls, community gardens. Casual fits, expressive colours.
 
-### [asset-manifest#8] derived - design/art/asset-manifest.md - Arena background
-| Key | Filename | Size | Format | Frames | Owner |
-|---|---|---|---|---|---|
-| bg.arena.01 | assets/backgrounds/arena-01-placeholder.svg | 1920x720 | SVG now, PNG final | 1 | ART |
-1920 wide gives 640px of camera scroll over a 1280 viewport. Play lane y 440 to 680. Final should be split into far and near parallax layers (open question). Theme: corner shop, mural, basketball hoop, food stall, planters.
-
 ### [level-01-brick-red-alley#9] derived - design/levels/level-01-brick-red-alley.md - Open questions
 - The theme mentions a mustard corner shop, mural panels and a music window; this direction does not. Add a shop or mural later as a separate sparse landmark?
 - Window-wall may need a tile-seam check in game, since the shadow wedge is tied to edges.
+
+### [asset-manifest#8] derived - design/art/asset-manifest.md - Arena background
+| Key | Filename | Size | Format | Frames | Owner |
+|---|---|---|---|---|---|
+| bg.arena.01 | RETIRED: each level uses its own assets/levels/<id>/background.svg | 1920x720 | SVG now, PNG final | 1 | ART |
+1920 wide gives 640px of camera scroll over a 1280 viewport. Play lane y 440 to 680. Final should be split into far and near parallax layers (open question). Theme: corner shop, mural, basketball hoop, food stall, planters.
 
 ### [hud#5] derived - design/ux/hud.md - Layout table
 Health bar sits left because the player character commonly starts left and reads left-to-right. Timer sits right so that the two critical survival numbers frame the wave info in the middle. HUD is anchored to the viewport, not the world, and does not move with the camera.
@@ -546,4 +546,4 @@ Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, g
 - **Severity:** MAJOR
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 860 chunks across 90 documents.

@@ -128,7 +128,7 @@
     "behaviour": "Stays at range, strafing along the far side of the arena and following Zed with its visor. Fires a single slow taser bolt along the lane when it holds an attacker slot, then relocates. If Zed closes in it backs off, and only swings the baton when cornered. A hunter built to harass rebels at range and chase them down. GDD move list. Taser Shot: a quick electric bolt, light damage, brief stun on hit, used constantly to harass and to encourage Zed to close distance. Baton Strike: a fast electrified-baton hit with very quick startup that interrupts combos, used when Zed gets too close. Lore: trained to track rebels through alleyways and rooftops; the visor scans heat signatures, so hiding barely works.",
     "telegraph": "650 ms wind-up for the taser: rifle raised, a cyan scan line draws along the floor toward Zed, and the red telegraph icon pops above the head. The bolt is slow enough to sidestep. The baton swing uses a 350 ms wind-up with the standard cues.",
     "weakness": "Low health. Sidestep out of the lane to dodge, then close the gap; juggle routes that carry Zed across the arena reach it fast. Blocking the bolt is also possible but eats a chip of damage.",
-    "spriteKey": "rust.watcher",
+    "spriteKey": "rust.ranger",
     "stats": {
       "maxHp": 28,
       "moveSpeed": 110,

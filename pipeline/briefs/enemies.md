@@ -1,5 +1,5 @@
 # Content brief: enemies
-_Generated 2026-11-03T15:17:48.969Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
+_Generated 2026-11-04T16:43:34.568Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs enemies`; do not hand-edit._
 
 **Writer agent:** enemy-designer-agent  |  **Output dir:** `content/enemies/`  |  **Produces:** Rust enemy roster beyond the Tier 0 grunt: role, behaviour, telegraph, stat block.
 
@@ -196,7 +196,7 @@ export const ATTACKER_CAP = 2;
 #### assets/asset-keys.json
 ```
 {
-  "_note": "Owner: art-direction-agent. PLACEHOLDER paths; keep keys stable, swap files for final art. Resolution 1280x720. Paths relative to project root.",
+  "_note": "Owner: art-direction-agent. Sprite paths point at the real PNG art (east-facing rotation); null = no art delivered yet. Keep keys stable. Resolution 1280x720. Paths relative to project root.",
   "version": 1,
   "ui": {
     "ui.bar.health.frame": "assets/ui/bar-frame-health.svg",
@@ -209,23 +209,24 @@ export const ATTACKER_CAP = 2;
     "ui.panel": "assets/ui/panel.svg",
     "ui.icon.heart": "assets/ui/icon-heart.svg",
     "ui.icon.clock": "assets/ui/icon-clock.svg",
-    "ui.card.victory": "assets/ui/victory-card-frame.svg"
+    "ui.card.victory": "assets/ui/victory-card-frame.svg",
+    "ui.card.rage-intro": "assets/ui/rage-intro-card-frame.svg"
   },
   "sprites": {
-    "zed": "assets/sprites/zed-placeholder.svg",
-    "rust.grunt": "assets/sprites/rust-grunt-placeholder.svg",
-    "rust.iron-line-cordon": "assets/sprites/rust-iron-line-cordon-placeholder.svg",
-    "rust.breaker": "assets/sprites/rust-breaker-placeholder.svg",
-    "rust.watcher": "assets/sprites/rust-watcher-placeholder.svg",
-    "rust.copper-fang": "assets/sprites/rust-copper-fang-placeholder.svg",
-    "rust.halden-varr": "assets/sprites/rust-halden-varr-placeholder.svg",
-    "rust.overseer-voss": "assets/sprites/rust-overseer-voss-placeholder.svg",
-    "rust.overseer-calder": "assets/sprites/rust-overseer-calder-placeholder.svg",
-    "rust.overseer-wren": "assets/sprites/rust-overseer-wren-placeholder.svg",
-    "rust.drone": "assets/sprites/rust-drone-placeholder.svg",
-    "rust.megadrone": "assets/sprites/rust-megadrone-placeholder.svg",
-    "rust.hologram": "assets/sprites/rust-hologram-placeholder.svg",
-    "rust.elite-drone": "assets/sprites/rust-elite-drone-placeholder.svg"
+    "zed": "assets/sprites/zed/Idle/rotations/east.png",
+    "rust.grunt": "assets/sprites/Rust Bruisers walking/rotations/east.png",
+    "rust.iron-line-cordon": null,
+    "rust.breaker": "assets/sprites/Rust Bruisers walking/rotations/east.png",
+    "rust.ranger": "assets/sprites/Rust Rangers — “The Watchers/Idle/rotations/east.png",
+    "rust.copper-fang": "assets/sprites/Rust Specialists — “The Copper Fangs/Idle/rotations/east.png",
+    "rust.halden-varr": null,
+    "rust.overseer-voss": null,
+    "rust.overseer-calder": null,
+    "rust.overseer-wren": null,
+    "rust.drone": null,
+    "rust.megadrone": null,
+    "rust.hologram": null,
+    "rust.elite-drone": null
   },
   "animations": {
     "zed": [
@@ -271,15 +272,15 @@ export const ATTACKER_CAP = 2;
       "rust.breaker.telegraph.body-check",
       "rust.breaker.attack.body-check"
     ],
-    "rust.watcher": [
-      "rust.watcher.idle",
-      "rust.watcher.walk",
-      "rust.watcher.telegraph.taser-shot",
-      "rust.watcher.attack.taser-shot",
-      "rust.watcher.hit",
-      "rust.watcher.ko",
-      "rust.watcher.telegraph.baton-strike",
-      "rust.watcher.attack.baton-strike"
+    "rust.ranger": [
+      "rust.ranger.idle",
+      "rust.ranger.walk",
+      "rust.ranger.telegraph.taser-shot",
+      "rust.ranger.attack.taser-shot",
+      "rust.ranger.hit",
+      "rust.ranger.ko",
+      "rust.ranger.telegraph.shield-strike",
+      "rust.ranger.attack.shield-strike"
     ],
     "rust.copper-fang": [
       "rust.copper-fang.idle",
@@ -486,11 +487,8 @@ export const ATTACKER_CAP = 2;
       "rust.elite-drone.spawn"
     ]
   },
-  "backgrounds": {
-    "bg.arena.01": "assets/backgrounds/arena-01-placeholder.svg"
-  },
   "fx": {
-    "fx.spark": "assets/fx/spark-placeholder.svg",
+    "fx.spark": "generated in code (ArenaScene._ensureSparkTexture)",
     "fx.rage.entry.lines.spec": "design/art/rage-entry-flash.md"
   },
   "hitFeedbackSpec": "design/art/hit-feedback-spec.md",
@@ -932,4 +930,4 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game State Agent Win check, lose Clear the arena to state, time-out win; fail and retry result, retry have rules Wave Spawner Win check, lose Difficulty comes state, time-out from how waves result, retry arrive Asset & Animation Sprite source, Punchy hits" and Lead animation list, hit readable telegraphs stop and feedback Health & Hitbox Owns health, Hits land, damage Agent damage values, and registers, the player hitbox/hurt box data can die Camera & Bounds Arena camera lock, Prevents the off- Agent (new) world bounds, screen soft lock unreachable-enemy failsafe Menu & UI Agent Builds and owns The player can every screen and on- start a game, read screen element the the state of the player sees outside fight, and see why the arena action they won or lost Technical Strategy
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 841 chunks across 86 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 860 chunks across 90 documents.

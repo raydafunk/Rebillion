@@ -1,14 +1,12 @@
 // Single place for asset keys + paths used by src/ui. Mirrors assets/asset-keys.json
 // (owned by art-direction-agent). Swap art by editing paths here or replacing files.
 export const ASSET_KEYS = {
-  BG_ARENA: 'bg.arena.01',
   BTN_DEFAULT: 'ui.button.default',
   BTN_HOVER: 'ui.button.hover',
   BTN_PRESSED: 'ui.button.pressed',
 };
 
 export const ASSET_PATHS = {
-  [ASSET_KEYS.BG_ARENA]: 'assets/backgrounds/arena-01-placeholder.svg',
   [ASSET_KEYS.BTN_DEFAULT]: 'assets/ui/button-default.svg',
   [ASSET_KEYS.BTN_HOVER]: 'assets/ui/button-hover.svg',
   [ASSET_KEYS.BTN_PRESSED]: 'assets/ui/button-pressed.svg',

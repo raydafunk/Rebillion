@@ -1,5 +1,5 @@
 {
-  "_note": "Owner: art-direction-agent. PLACEHOLDER paths; keep keys stable, swap files for final art. Resolution 1280x720. Paths relative to project root.",
+  "_note": "Owner: art-direction-agent. Sprite paths point at the real PNG art (east-facing rotation); null = no art delivered yet. Keep keys stable. Resolution 1280x720. Paths relative to project root.",
   "version": 1,
   "ui": {
     "ui.bar.health.frame": "assets/ui/bar-frame-health.svg",
@@ -16,20 +16,20 @@
     "ui.card.rage-intro": "assets/ui/rage-intro-card-frame.svg"
   },
   "sprites": {
-    "zed": "assets/sprites/zed-placeholder.svg",
-    "rust.grunt": "assets/sprites/rust-grunt-placeholder.svg",
-    "rust.iron-line-cordon": "assets/sprites/rust-iron-line-cordon-placeholder.svg",
-    "rust.breaker": "assets/sprites/rust-breaker-placeholder.svg",
-    "rust.watcher": "assets/sprites/rust-watcher-placeholder.svg",
-    "rust.copper-fang": "assets/sprites/rust-copper-fang-placeholder.svg",
-    "rust.halden-varr": "assets/sprites/rust-halden-varr-placeholder.svg",
-    "rust.overseer-voss": "assets/sprites/rust-overseer-voss-placeholder.svg",
-    "rust.overseer-calder": "assets/sprites/rust-overseer-calder-placeholder.svg",
-    "rust.overseer-wren": "assets/sprites/rust-overseer-wren-placeholder.svg",
-    "rust.drone": "assets/sprites/rust-drone-placeholder.svg",
-    "rust.megadrone": "assets/sprites/rust-megadrone-placeholder.svg",
-    "rust.hologram": "assets/sprites/rust-hologram-placeholder.svg",
-    "rust.elite-drone": "assets/sprites/rust-elite-drone-placeholder.svg"
+    "zed": "assets/sprites/zed/Idle/rotations/east.png",
+    "rust.grunt": "assets/sprites/Rust Bruisers walking/rotations/east.png",
+    "rust.iron-line-cordon": null,
+    "rust.breaker": "assets/sprites/Rust Bruisers walking/rotations/east.png",
+    "rust.ranger": "assets/sprites/Rust Rangers — “The Watchers/Idle/rotations/east.png",
+    "rust.copper-fang": "assets/sprites/Rust Specialists — “The Copper Fangs/Idle/rotations/east.png",
+    "rust.halden-varr": null,
+    "rust.overseer-voss": null,
+    "rust.overseer-calder": null,
+    "rust.overseer-wren": null,
+    "rust.drone": null,
+    "rust.megadrone": null,
+    "rust.hologram": null,
+    "rust.elite-drone": null
   },
   "animations": {
     "zed": [
@@ -75,15 +75,15 @@
       "rust.breaker.telegraph.body-check",
       "rust.breaker.attack.body-check"
     ],
-    "rust.watcher": [
-      "rust.watcher.idle",
-      "rust.watcher.walk",
-      "rust.watcher.telegraph.taser-shot",
-      "rust.watcher.attack.taser-shot",
-      "rust.watcher.hit",
-      "rust.watcher.ko",
-      "rust.watcher.telegraph.baton-strike",
-      "rust.watcher.attack.baton-strike"
+    "rust.ranger": [
+      "rust.ranger.idle",
+      "rust.ranger.walk",
+      "rust.ranger.telegraph.taser-shot",
+      "rust.ranger.attack.taser-shot",
+      "rust.ranger.hit",
+      "rust.ranger.ko",
+      "rust.ranger.telegraph.shield-strike",
+      "rust.ranger.attack.shield-strike"
     ],
     "rust.copper-fang": [
       "rust.copper-fang.idle",
@@ -290,11 +290,8 @@
       "rust.elite-drone.spawn"
     ]
   },
-  "backgrounds": {
-    "bg.arena.01": "assets/backgrounds/arena-01-placeholder.svg"
-  },
   "fx": {
-    "fx.spark": "assets/fx/spark-placeholder.svg",
+    "fx.spark": "generated in code (ArenaScene._ensureSparkTexture)",
     "fx.rage.entry.lines.spec": "design/art/rage-entry-flash.md"
   },
   "hitFeedbackSpec": "design/art/hit-feedback-spec.md",

@@ -1,8 +1,8 @@
 # Content pipeline report
-_2026-11-03_
+_2026-11-04_
 
 ## Sources read
-86 of 86 documents ingested.
+90 of 90 documents ingested.
 
 - read `GameDesignDocument/Rebellion menu desgin.docx` (primary), 4 chunks
 - read `GameDesignDocument/The Rebellion.docx` (primary), 17 chunks
@@ -25,6 +25,7 @@ _2026-11-03_
 - read `design/art/hit-feedback-spec.md` (derived), 31 chunks
 - read `design/art/mute-button.md` (derived), 7 chunks
 - read `design/art/rage-entry-flash.md` (derived), 14 chunks
+- read `design/art/rage-intro-card.md` (derived), 9 chunks
 - read `design/art/style-guide.md` (derived), 22 chunks
 - read `design/art/victory-card.md` (derived), 8 chunks
 - read `design/art/zed-pixellab-prompt.md` (derived), 8 chunks
@@ -43,6 +44,7 @@ _2026-11-03_
 - read `design/lore/critic-log.md` (derived), 17 chunks
 - read `design/lore/menu-copy.md` (derived), 4 chunks
 - read `design/lore/refiner-log.md` (derived), 1 chunks
+- read `design/qa/bugs.md` (derived), 1 chunks
 - read `design/team/agent-diagrams.md` (derived), 7 chunks
 - read `design/team/agent-team-setups.md` (derived), 13 chunks
 - read `design/team/contracts.md` (derived), 8 chunks
@@ -86,10 +88,12 @@ _2026-11-03_
 - read `qa/playtest-agents/runs/2026-11-02-wall-run-fix/REPORT.md` (reference), 4 chunks
 - read `qa/playtest-agents/runs/2026-11-02T12-01-59/REPORT.md` (reference), 7 chunks
 - read `qa/playtest-agents/runs/2026-11-02T15-52-01/REPORT.md` (reference), 3 chunks
+- read `qa/playtest-agents/runs/2026-11-03-level2-rage-intro/REPORT.md` (reference), 5 chunks
 - read `qa/playtest-agents/runs/2026-11-03T10-28-18/REPORT.md` (reference), 3 chunks
 - read `qa/playtest-agents/runs/2026-11-03T11-37-51/REPORT.md` (reference), 3 chunks
 - read `qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md` (reference), 4 chunks
 - read `qa/playtest-agents/runs/2026-11-03T12-44-13/REPORT.md` (reference), 4 chunks
+- read `qa/playtest-agents/runs/2026-11-03T16-50-58/REPORT.md` (reference), 4 chunks
 
 ## Content
 | Type | Items | Proposed (needs owner approval) | Errors |

@@ -272,7 +272,7 @@
       "#A8402E",
       "#F4E6C8"
     ],
-    "timeLimitSec": 150,
+    "timeLimitSec": 210,
     "intro": "Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.",
     "outro": "Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.",
     "waves": [
@@ -295,12 +295,17 @@
       {
         "enemy": "grunt",
         "count": 5,
-        "maxAlive": 1,
-        "spawnIntervalMs": 1500,
-        "startDelayMs": 1000,
+        "maxAlive": 3,
+        "spawnIntervalMs": 700,
+        "startDelayMs": 800,
         "spawnPattern": "surge",
         "attackerCap": 2,
-        "hpMult": 3,
+        "hpMult": 1.5,
+        "speedMult": 1.2,
+        "mix": [
+          "rust-ranger",
+          "grunt"
+        ],
         "restPickup": {
           "heal": 30
         }

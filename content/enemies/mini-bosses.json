@@ -62,7 +62,7 @@
     "telegraph": "Hammer Slam 850 ms: hammer lifted overhead with a red ground circle. Hook Chain Grab 700 ms: chain whirls above his head and the hook flashes, red icon. Furnace Kick 600 ms: leg pulls back, steam hisses from the knee. Steam Vent Burst 900 ms: suit shakes and steam builds on the shoulders, red cone on the ground. Crushing Uppercut 750 ms: hammer swung low behind him, red strip in front.",
     "weakness": "Dodge out of the red circle and strike during the long Hammer Slam recovery. Break line of sight on the Hook Chain, stay out of steam patches. Back away from the uppercut and punish. Trains the player to wait for big telegraphs before Overseer Calder.",
     "spriteKey": "rust.crusher-kane",
-    "stats": { "maxHp": 220, "moveSpeed": 50, "attackRange": 105, "telegraphMs": 850, "attackMs": 340, "recoverMs": 1400, "damage": 20, "knockback": 420, "hitstun": 300 },
+    "stats": { "maxHp": 220, "moveSpeed": 55, "attackRange": 105, "telegraphMs": 850, "attackMs": 340, "recoverMs": 1400, "damage": 20, "knockback": 420, "hitstun": 300 },
     "moves": [
       { "name": "Hammer Slam", "canon": true, "source": "the-rebellion#15" },
       { "name": "Hook Chain Grab", "canon": true, "source": "the-rebellion#15" },
