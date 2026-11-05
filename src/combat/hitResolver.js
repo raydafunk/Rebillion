@@ -30,6 +30,10 @@ export function createHitResolver(events, now = () => Date.now()) {
     if (reg.id === PLAYER_ID) emitPlayerHp(health);
   };
   const onUnregister = ({ id }) => { entities.delete(id); };
+  const onBossRestored = ({ id, share = 1 }) => { // a boss rebuilt itself: refill (never revives the dead)
+    const e = entities.get(id);
+    if (e && !e.health.dead) e.health.hp = Math.max(e.health.hp, Math.min(e.health.maxHp, Math.ceil(e.health.maxHp * share)));
+  };
 
   const onHit = (req) => {
     if (locked) return;
@@ -44,7 +48,20 @@ export function createHitResolver(events, now = () => Date.now()) {
       if (req.lane != null && st.lane != null && Math.abs(req.lane - st.lane) > COMBAT_DEFAULTS.DEPTH_TOLERANCE) continue; // not on the same floor line
       if (!rectsOverlap(box, worldRect(e.reg.hurtbox, st, st.facing))) continue;
       const dir = st.x >= req.origin.x ? 1 : -1;
-      const guard = st.guard ?? null;
+      if (st.invuln) continue; // a boss mid-transformation (Varr, phase change) cannot be hurt
+      let guard = st.guard ?? null;
+      if (guard === 'shield') { // Varr's Command Shield: negates every blow from the front, flank him to hurt him
+        const inFront = (req.origin.x >= st.x ? 1 : -1) === st.facing;
+        if (inFront) {
+          seen.add(key);
+          events.emit(EVENTS.DAMAGE_APPLIED, {
+            targetId: id, attackerId: req.attackerId, attackId: req.attackId, amount: 0,
+            hpAfter: e.health.hp, knockback: 0, hitstun: 0, landed: false, shield: true, shieldDmg: req.damage,
+          });
+          continue;
+        }
+        guard = null;
+      }
       if (guard === 'parry' && !req.unparryable) { // unparryable (Mega Stomp wave): a parry does nothing, the answer is to jump
         // Negated: no hp change, no invulnerability spent, but Zed still gets told.
         if (req.pierceInvuln ? e.health.dead : isInvulnerable(e.health, t)) continue; // piercing hits can be parried even inside the invuln window
@@ -62,9 +79,11 @@ export function createHitResolver(events, now = () => Date.now()) {
       // Special / neverKills vs a boss: capped at bossDamageCap and never below 1 hp.
       // If nothing is left to deal (boss already at 1 hp) the blow still lands (hitstun, knockback, event).
       let r;
-      if ((e.reg.boss && (req.special || req.neverKills)) || req.nonLethal) {
+      const hpFloor = st.hpFloor ?? null; // phase-gated boss: damage stops at this hp until its next phase opens
+      if ((e.reg.boss && (req.special || req.neverKills)) || req.nonLethal || hpFloor !== null) {
         let cap = dmg;
         if (Number.isFinite(req.bossDamageCap)) cap = Math.min(cap, req.bossDamageCap);
+        if (hpFloor !== null) cap = Math.min(cap, Math.max(0, e.health.hp - hpFloor));
         if (req.neverKills || req.nonLethal) cap = Math.min(cap, e.health.hp - 1); // nonLethal: hurts but always leaves 1 hp (Dugan's slam)
         r = cap > 0 ? applyDamage(e.health, cap, t, stun) : applyGlancingHit(e.health, t, stun);
       } else {
@@ -92,6 +111,7 @@ export function createHitResolver(events, now = () => Date.now()) {
 
   events.on(EVENTS.ENTITY_REGISTERED, onRegister);
   events.on(EVENTS.ENTITY_UNREGISTERED, onUnregister);
+  events.on(EVENTS.BOSS_HP_RESTORED, onBossRestored);
   events.on(EVENTS.HIT_REQUEST, onHit);
   events.on(EVENTS.ROUND_WON, onEnd);
   events.on(EVENTS.ROUND_LOST, onEnd);
@@ -110,6 +130,7 @@ export function createHitResolver(events, now = () => Date.now()) {
     destroy() {
       events.off(EVENTS.ENTITY_REGISTERED, onRegister);
       events.off(EVENTS.ENTITY_UNREGISTERED, onUnregister);
+      events.off(EVENTS.BOSS_HP_RESTORED, onBossRestored);
       events.off(EVENTS.HIT_REQUEST, onHit);
       events.off(EVENTS.ROUND_WON, onEnd);
       events.off(EVENTS.ROUND_LOST, onEnd);

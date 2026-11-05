@@ -9,6 +9,10 @@ import { RoyceBoss } from './RoyceBoss.js';
 import { ROYCE, ROYCE_ID } from './royceData.js';
 import { KaneBoss } from './KaneBoss.js';
 import { KANE, KANE_ID } from './kaneData.js';
+import { GlitchBoss } from './GlitchBoss.js';
+import { GLITCH, GLITCH_ID } from './glitchData.js';
+import { VarrBoss } from './VarrBoss.js';
+import { VARR, VARR_ID } from './varrData.js';
 import { AttackSlots } from './AttackSlots.js';
 import { GRUNT, ATTACKER_CAP, pickAttackVariant } from './gruntData.js';
 import { KINDS } from './enemyKinds.js';
@@ -27,7 +31,7 @@ export class EnemyManager {
     this.onRemoved = onRemoved; // (id) => void, lets the view destroy its sprite
     this._onDamage = (p) => {
       const e = this.enemies.get(p.targetId);
-      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback, hpAfter: p.hpAfter });
+      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback, hpAfter: p.hpAfter, ...(p.shield ? { shield: true, shieldDmg: p.shieldDmg } : {}) });
       const a = this.enemies.get(p.attackerId);
       if (a && a.grunt.onHitLanded && p.landed !== false && p.amount > 0) a.grunt.onHitLanded(); // a charge ends on contact
     };
@@ -66,6 +70,8 @@ export class EnemyManager {
     if (enemy === DUGAN_ID) return this._spawnDugan({ id, x, y, hpMult });
     if (enemy === ROYCE_ID) return this._spawnRoyce({ id, x, y, hpMult, speedMult });
     if (enemy === KANE_ID) return this._spawnKane({ id, x, y, hpMult, speedMult });
+    if (enemy === GLITCH_ID) return this._spawnGlitch({ id, x, y, hpMult, speedMult });
+    if (enemy === VARR_ID) return this._spawnVarr({ id, x, y, hpMult, speedMult });
     const tint = KINDS[skin]?.tint;
     const ranged = KINDS[skin]?.ranged;
     const data = speedMult === 1 && !tint && !ranged ? this.data
@@ -113,6 +119,55 @@ export class EnemyManager {
       id, team: KANE.team, boss: true, bossProfile: KANE_ID, maxHp: boss.maxHp,
       hurtbox: { ...KANE.hurtbox },
       getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
+    });
+    return boss;
+  }
+
+  /** Level 4 mini-boss "Glitch": GlitchBoss (five canon moves, overclock at half health), registered as a boss so the health bar and victory card pick him up. */
+  _spawnGlitch({ id, x, y, hpMult, speedMult = 1 }) {
+    const data = speedMult === 1 ? GLITCH : { ...GLITCH, moveSpeed: Math.round(GLITCH.moveSpeed * speedMult), circleSpeed: Math.round(GLITCH.circleSpeed * speedMult) };
+    const boss = new GlitchBoss({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(GLITCH.maxHp * hpMult), getXRange: this.getXRange, rng: this.rng,
+      hooks: {
+        onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req),
+        onProjectileRequest: (spec) => this.bolts.push(new TaserBolt(spec)),   // disks and drones fly like Taser bolts, with his own spec
+      },
+    });
+    this.enemies.set(id, { grunt: boss, deathTimer: 0 });
+    this.events.emit(EVENTS.ENTITY_REGISTERED, {
+      id, team: GLITCH.team, boss: true, bossProfile: GLITCH_ID, maxHp: boss.maxHp,
+      hurtbox: { ...GLITCH.hurtbox },
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
+    });
+    return boss;
+  }
+
+  /** Level 8 final boss Overseer Halden Varr: VarrBoss (two phases; HP restored when phase 2 opens; Command Override calls crew). */
+  _spawnVarr({ id, x, y, hpMult, speedMult = 1 }) {
+    const data = speedMult === 1 ? VARR : { ...VARR, moveSpeed: Math.round(VARR.moveSpeed * speedMult), circleSpeed: Math.round(VARR.circleSpeed * speedMult) };
+    let crewN = 0;
+    const boss = new VarrBoss({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(VARR.maxHp * hpMult), getXRange: this.getXRange, rng: this.rng,
+      hooks: {
+        onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req),
+        onProjectileRequest: (spec) => this.bolts.push(new TaserBolt(spec)),
+        onRestoreHp: (share) => this.events.emit(EVENTS.BOSS_HP_RESTORED, { id, share }),
+        onSummon: ({ kind }) => {
+          const cid = `${id}:crew:${++crewN}`, side = crewN % 2 ? 1 : -1;
+          const g = this.spawn({ id: cid, x: boss.x + side * 160, y: boss.y, skin: kind, hpMult: 1 });
+          boss.crewAdded(cid);
+          const onGone = ({ id: gone }) => { if (gone === cid) { boss.crewGone(cid); this.events.off(EVENTS.ENTITY_DIED, onGone); } };
+          this.events.on(EVENTS.ENTITY_DIED, onGone);
+          return g;
+        },
+        onDeath: () => { for (const cid of [...boss.summoned]) this.events.emit(EVENTS.ENTITY_DIED, { id: cid, team: 'rust' }); }, // his crew falls with him
+      },
+    });
+    this.enemies.set(id, { grunt: boss, deathTimer: 0 });
+    this.events.emit(EVENTS.ENTITY_REGISTERED, {
+      id, team: VARR.team, boss: true, bossProfile: VARR_ID, maxHp: boss.maxHp,
+      hurtbox: { ...VARR.hurtbox },
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing, guard: boss.shieldUp ? 'shield' : null, invuln: boss.invulnerable, hpFloor: boss.hpFloor }),
     });
     return boss;
   }

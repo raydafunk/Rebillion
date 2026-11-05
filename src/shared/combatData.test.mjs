@@ -23,5 +23,11 @@ test('every player move and grunt attack defines damage, knockback, hitstun, hit
   const fb = MOVE_FEEDBACK.airkick;
   assert.ok(hitStopMs(fb.hitStop) > hitStopMs('heavy') && hitStopMs(fb.hitStop) <= HIT_STOP_MS.max);
   assert.ok(fb.shake.intensity > 0.004 && fb.shake.ms > 140);
+  // heavy combo: every hit out-shakes the finisher (140ms/0.004) and airkick; heavy3 is the biggest and longest
+  const { heavy1, heavy2, heavy3, heavy4 } = MOVE_FEEDBACK;
+  for (const h of [heavy1, heavy2, heavy3, heavy4]) assert.ok(h.shake.intensity > fb.shake.intensity && h.shake.ms > fb.shake.ms);
+  assert.ok(heavy1.shake.intensity <= heavy2.shake.intensity && heavy2.shake.intensity <= heavy3.shake.intensity && heavy3.shake.intensity < heavy4.shake.intensity);
+  assert.ok(hitStopMs(heavy4.hitStop) > hitStopMs(fb.hitStop) && hitStopMs(heavy4.hitStop) <= HIT_STOP_MS.max);
+  assert.ok(heavy4.shake.ms > heavy3.shake.ms);
   assert.deepEqual([shakeScale('Off'), shakeScale('Light'), shakeScale('Full'), shakeScale(undefined)], [0, 0.5, 1, 1]);
 }

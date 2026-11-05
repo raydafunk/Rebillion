@@ -7,9 +7,17 @@ const SWING = 'zed-swing-whoosh'; // swing whoosh key (see heavyHit.js)
 
 // damage/knockback/hitstun are inputs for the hit-request (combat resolves them).
 import { PLAYER_MOVE_COMBAT as C } from '../shared/combatData.js';
-import { SPECIAL_MOVE } from './rageConfig.js';
+import { SPECIAL_MOVE, RAGE_MOVES } from './rageConfig.js';
 
 // damage/knockback/hitstun/hitbox come from combatData.js (single source).
+// Heavy-chain numbers kept here (src/shared/combatData.js is owned by combat-agent and pins its key list).
+const HEAVY_EXTRA = {
+  heavy2:   { damage: 22, knockback: 460, hitstun: 30, hitbox: { x: 20, y: -30, w: 62, h: 36 } }, // hard kick, heavy1 -> heavy
+  airheavy: { damage: 14, knockback: 560, hitstun: 22, hitbox: { x: 14, y: -26, w: 56, h: 40 } }, // airborne heavy: double flying kick
+  heavy3:   { damage: 24, knockback: 520, hitstun: 32, hitbox: { x: 20, y: -30, w: 66, h: 38 } }, // third hit: kick, sets up the uppercut
+  heavy4:   { damage: 30, knockback: 900, hitstun: 44, hitbox: { x: 18, y: -44, w: 62, h: 58 } }, // combo finisher: heavy uppercut, BIG knockback
+};
+
 export const MOVES = {
   light1: {
     startup: 4, active: 3, recovery: 14, cancelFrom: 7, swingSound: SWING,
@@ -34,19 +42,52 @@ export const MOVES = {
     chain: {},
   },
   heavy1: {
-    startup: 12, active: 4, recovery: 20, cancelFrom: 999, heavy: true, swingSound: SWING,
+    startup: 12, active: 4, recovery: 20, cancelFrom: 14, heavy: true, swingSound: SWING,
     ...C.heavy1, hitbox: { ...C.heavy1.hitbox },
+    chain: { heavy: 'heavy2' },
+    autoChain: 'heavy2', // when this hit LANDS, flow into the next hit without another press
+  },
+  // Heavy chain step 2: hard high kick. Auto-continues into heavy3 when it lands.
+  heavy2: {
+    startup: 8, active: 4, recovery: 22, cancelFrom: 12, heavy: true, swingSound: SWING,
+    ...HEAVY_EXTRA.heavy2, hitbox: { ...HEAVY_EXTRA.heavy2.hitbox },
+    chain: { heavy: 'heavy3' },
+    autoChain: 'heavy3',
+  },
+  // Heavy chain step 3: kick. Auto-continues into the uppercut when it lands.
+  heavy3: {
+    startup: 8, active: 4, recovery: 22, cancelFrom: 12, heavy: true, swingSound: SWING,
+    ...HEAVY_EXTRA.heavy3, hitbox: { ...HEAVY_EXTRA.heavy3.hitbox },
+    chain: { heavy: 'heavy4' },
+    autoChain: 'heavy4',
+  },
+  // Heavy chain step 4: heavy uppercut finisher, big knockback. Final hit, cannot chain.
+  heavy4: {
+    startup: 9, active: 4, recovery: 28, cancelFrom: 999, heavy: true, swingSound: SWING,
+    ...HEAVY_EXTRA.heavy4, hitbox: { ...HEAVY_EXTRA.heavy4.hitbox },
+    chain: {},
+  },
+  // Airborne heavy press, once per jump (shared with airkick). Active until landing.
+  airheavy: {
+    startup: 5, active: 40, recovery: 6, cancelFrom: 999, airOnly: true, heavy: true, swingSound: SWING,
+    ...HEAVY_EXTRA.airheavy, hitbox: { ...HEAVY_EXTRA.airheavy.hitbox },
     chain: {},
   },
   // Rage special: only reachable while Rage is ACTIVE (RAGE_OPENERS). Tuning in rageConfig.js.
-  special: { ...SPECIAL_MOVE, swingSound: SWING, hitbox: { ...SPECIAL_MOVE.hitbox }, chain: {} },
+  special: { ...SPECIAL_MOVE, rage: true, swingSound: SWING, hitbox: { ...SPECIAL_MOVE.hitbox }, chain: {} },
+  // Rage attack set: light -> kick, heavy -> uppercut, airborne press -> air kick.
+  rageKick: { ...RAGE_MOVES.rageKick, hitSound: 'zed-kick-hit', swingSound: SWING, hitbox: { ...RAGE_MOVES.rageKick.hitbox } },
+  rageUppercut: { ...RAGE_MOVES.rageUppercut, swingSound: SWING, hitbox: { ...RAGE_MOVES.rageUppercut.hitbox } },
+  rageAirKick: { ...RAGE_MOVES.rageAirKick, hitSound: 'zed-kick-hit', swingSound: SWING, hitbox: { ...RAGE_MOVES.rageAirKick.hitbox } },
 };
 
 // Which move each button starts from neutral.
 export const OPENERS = { light: 'light1', heavy: 'heavy1' };
 
-// During Rage every attack button (and L) starts the single Special instead of the normal set.
-export const RAGE_OPENERS = { light: 'special', heavy: 'special' };
+// During Rage the light button (and L) throws the Special Kick, heavy throws the Special Uppercut. The 'special' move
+// itself is only the Rage activation strike (beginRage).
+export const RAGE_OPENERS = { light: 'rageKick', heavy: 'rageUppercut' };
+export const RAGE_AIR_MOVES = { light: 'rageAirKick', heavy: 'rageAirKick' };
 
 export const PLAYER_TIMING = {
   attackBufferFrames: 8,   // how long a pressed attack waits for a cancel window

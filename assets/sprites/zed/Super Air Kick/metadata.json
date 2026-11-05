@@ -1,0 +1,57 @@
+{
+  "group_id": "54fa2f20-f904-4874-8e28-b592aa230a3e",
+  "states": [
+    {
+      "character": {
+        "id": "b71bb87f-a2be-4661-96b7-29c4ad3c8000",
+        "name": "Super special move kick",
+        "prompt": "Face\nAge: Late teens to early 20s.\n\nExpression: Determined but kind; expressive eyebrows.\n\nFeatures:\n\nSlight cheek scar or paint streak (symbolic, not edgy).\n\nWarm skin tone reflecting the city\u2019s cultural richness.\n\nHair\nStyle: Short, textured, slightly messy.\n\nMovement: Should animate well during combos.\n\nColour: Dark brown or black with subtle warm highlights.Bottom \u2014 Brick\u2011Red Joggers\nColour: Brick red (ties to the alley where he grew up).\n\nFit: Slim but flexible, allowing big kicks and acrobatics.\n\nDetails:\n\nKnee patches or reinforced stitching.\n\nSubtle paint splatter marks (from helping his father paint murals).\n\nFootwear \u2014 Forest\u2011Green Street Sneakers\nColour: Forest green (third palette pillar).\n\nStyle: High\u2011top sneakers with thick soles for impact.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-05T22:22:31.388712+00:00"
+      },
+      "folder": "Super_special_move_kick",
+      "frames": {
+        "rotations": {
+          "south": "Super_special_move_kick/rotations/south.png",
+          "south-east": "Super_special_move_kick/rotations/south-east.png",
+          "east": "Super_special_move_kick/rotations/east.png",
+          "north-east": "Super_special_move_kick/rotations/north-east.png",
+          "north": "Super_special_move_kick/rotations/north.png",
+          "north-west": "Super_special_move_kick/rotations/north-west.png",
+          "west": "Super_special_move_kick/rotations/west.png",
+          "south-west": "Super_special_move_kick/rotations/south-west.png"
+        },
+        "animations": {
+          "Hurricane_Kick": {
+            "west": [
+              "Super_special_move_kick/animations/Hurricane_Kick/west/frame_000.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/west/frame_001.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/west/frame_002.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/west/frame_003.png"
+            ],
+            "east": [
+              "Super_special_move_kick/animations/Hurricane_Kick/east/frame_000.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/east/frame_001.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/east/frame_002.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/east/frame_003.png"
+            ],
+            "south": [
+              "Super_special_move_kick/animations/Hurricane_Kick/south/frame_000.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/south/frame_001.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/south/frame_002.png",
+              "Super_special_move_kick/animations/Hurricane_Kick/south/frame_003.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-05T22:25:42.809834"
+}

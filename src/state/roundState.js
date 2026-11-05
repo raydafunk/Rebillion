@@ -47,6 +47,12 @@ export function createRoundState(events, { seconds = ROUND_TIME_SECONDS, maxRetr
       }
       if (msLeft === 0) finish(RoundStatus.LOST, END_REASONS.TIMEOUT);
     },
+    // Boss battle: put the full clock back (HUD gets a fresh tick). No effect once the round is over.
+    restart() {
+      if (status !== RoundStatus.RUNNING) return;
+      msLeft = seconds * 1000; lastWholeSec = seconds;
+      events.emit(EVENTS.TIMER_TICK, { secondsLeft: seconds });
+    },
     // Emit initial tick so UI shows full time.
     start() { events.emit(EVENTS.TIMER_TICK, { secondsLeft: seconds }); },
     destroy() {

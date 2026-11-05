@@ -73,6 +73,16 @@ export default class BossBarHud {
     }
   }
 
+  /** The boss rebuilt itself (Varr, phase 2): the bar refills to `share`. */
+  onRestore(id, share) {
+    const s = this.s; if (!s || s.id !== id || s.deathSince != null) return;
+    const t = this.t - s.t0;
+    s.frac = clamp01(share); s.hp = Math.round(s.maxHp * s.frac); s.dFrom = s.frac; s.dSince = -1e9; s.lethal = false;
+    s.band = fillBand(s.frac, s.profile.rageThreshold); s.prevBand = s.band; s.bandSince = t; s.rageSince = null;
+    this._edge(COL.hazard, RAGE.edgePulse.peakAlpha, RAGE.edgePulse.inMs, RAGE.edgePulse.outMs);
+    this._shake(RAGE.cameraShake.ms * 2, RAGE.cameraShake.intensity);
+  }
+
   /** The boss died: drain, shatter, fade. */
   die(id) {
     const s = this.s; if (!s || s.id !== id || s.deathSince != null) return;

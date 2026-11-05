@@ -70,6 +70,7 @@ export default class HudScene extends Phaser.Scene {
     });
     on(EVENTS.ENTITY_REGISTERED, (p) => { if (p.boss && this.bossBar.show(p)) this.banner.y = BOSS_BAR.bannerYWhileShown; });
     on(EVENTS.DAMAGE_APPLIED, (d) => this.bossBar.onDamage(d.targetId, d.hpAfter, d.amount));
+    on(EVENTS.BOSS_HP_RESTORED, ({ id, share }) => this.bossBar.onRestore(id, share));
     on(EVENTS.ENTITY_DIED, ({ id, team }) => { this.bossBar.die(id); if (team === 'rust') { this.killed++; this._left(); } });
     on(EVENTS.RETRY, () => { this.bossBar.reset(); this.banner.y = BOSS_BAR.bannerYDefault; this.killed = 0; this.shownScore = 0; this.scoreTarget = 0; this.scoreText.setText('SCORE 0'); goOff(); });
   }

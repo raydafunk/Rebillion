@@ -305,13 +305,19 @@ test('pickup: clip registered (5 frames, non-looping); locks attacks for its dur
   assert.equal(h.state, 'hitstun');
 });
 
-test('heavy pressed during heavy1 does not replay it after recovery', () => {
+test('heavy pressed during the final heavy does not replay it after recovery', () => {
   const m = new PlayerStateMachine();
   m.step(press('heavy'));
+  for (let i = 0; i < 16; i++) m.step(i === 14 ? press('heavy') : NONE); // chain heavy1 -> heavy2
+  assert.equal(m.moveId, 'heavy2');
+  for (let i = 0; i < 14; i++) m.step(i === 12 ? press('heavy') : NONE); // chain heavy2 -> heavy3
+  assert.equal(m.moveId, 'heavy3');
+  for (let i = 0; i < 14; i++) m.step(i === 12 ? press('heavy') : NONE); // chain heavy3 -> heavy4 (the final heavy, uppercut)
+  assert.equal(m.moveId, 'heavy4');
   const swing = m.swing;
-  for (let i = 0; i < 20; i++) m.step(i === 15 ? press('heavy') : NONE); // second press late in the move
+  for (let i = 0; i < 20; i++) m.step(i === 15 ? press('heavy') : NONE); // press late in the move
   for (let i = 0; i < 40; i++) m.step(NONE);
-  assert.equal(m.swing, swing, 'no second heavy1 started');
+  assert.equal(m.swing, swing, 'no second heavy started');
   assert.equal(m.state, 'idle');
   m.step(press('heavy'));
   assert.equal(m.moveId, 'heavy1', 'a fresh press after the move still works');
@@ -346,7 +352,7 @@ test('moves.js combat numbers equal combatData.js (single source)', async () => 
 
 test('heavy-hit sound: only Zed heavy move, only confirmed damage on an enemy', async () => {
   const { isHeavyHit } = await import('../heavyHit.js');
-  assert.deepEqual(Object.keys(MOVES).filter((k) => MOVES[k].heavy), ['heavy1']);
+  assert.deepEqual(Object.keys(MOVES).filter((k) => MOVES[k].heavy), ['heavy1', 'heavy2', 'heavy3', 'heavy4', 'airheavy', 'rageUppercut']);
   const d = { attackerId: 'zed', targetId: 'g1', amount: 18 };
   assert.equal(isHeavyHit(true, d, 'zed'), true);
   assert.equal(isHeavyHit(false, d, 'zed'), false, 'light attacks / no swing in flight');
@@ -357,7 +363,7 @@ test('heavy-hit sound: only Zed heavy move, only confirmed damage on an enemy', 
 test('light-hit sound: every non-heavy move uses the light key, heavy only the heavy key', async () => {
   const { hitSoundKey, isHeavyHit, LIGHT_HIT_SOUND_KEY, HEAVY_HIT_SOUND_KEY } = await import('../heavyHit.js');
   for (const id of Object.keys(MOVES)) {
-    if (id === 'light3') continue;
+    if (id === 'light3' || MOVES[id].hitSound) continue; // moves with their own hitSound (kicks) are checked below
     assert.equal(hitSoundKey(MOVES[id]), MOVES[id].heavy ? HEAVY_HIT_SOUND_KEY : LIGHT_HIT_SOUND_KEY, id);
   }
   assert.equal(hitSoundKey(MOVES.light1), LIGHT_HIT_SOUND_KEY);
@@ -582,4 +588,39 @@ test('uppercut selects zed.launched, normal hit keeps zed.hitstun, other states 
   assert.equal(keys('launch')[0], 'zed.launched.west');
   assert.ok(keys('launch').includes('zed.hitstun.west')); // fallback if the launch clip is not loaded
   assert.equal(keys(null)[0], 'zed.hitstun.west');
+});
+
+test('heavy chain heavy1 -> heavy2, airborne heavy once per jump, clips exist', () => {
+  const m = new PlayerStateMachine();
+  m.step(press('heavy'));
+  for (let i = 0; i < 20; i++) m.step(i === 10 ? press('heavy') : NONE);
+  assert.equal(m.moveId, 'heavy2');
+  const a = new PlayerStateMachine();
+  const air = { grounded: false };
+  a.step(NONE, air); a.step(press('heavy'), air);
+  assert.equal(a.moveId, 'airheavy');
+  a.step(NONE, { grounded: true });
+  assert.equal(a.state, 'idle');
+  for (const id of ['heavy1', 'heavy2', 'heavy3', 'heavy4', 'airheavy']) {
+    const k = ZED_ANIMS.find((c) => c.state === id);
+    assert.ok(k, id);
+    for (const d of ['east', 'west']) for (let i = 0; i < k.frames; i++) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(k, d, i)}`, import.meta.url)), `${id} ${d} ${i}`);
+  }
+});
+
+test('heavy combo auto-chains heavy1 -> heavy2 -> heavy3 -> heavy4 only when each hit lands', () => {
+  const run = (confirm) => {
+    const m = new PlayerStateMachine();
+    m.step(press('heavy'));
+    const seen = [m.moveId];
+    for (let i = 0; i < 70; i++) {
+      if (confirm && m.state === 'attack' && m.frame > m.moves[m.moveId].startup) m.hitConfirmed = true;
+      m.step(NONE);
+      if (m.moveId && m.moveId !== seen[seen.length - 1]) seen.push(m.moveId);
+    }
+    return seen;
+  };
+  assert.deepEqual(run(true), ['heavy1', 'heavy2', 'heavy3', 'heavy4']);
+  assert.deepEqual(run(false), ['heavy1']); // whiffed: no free follow-up
+  assert.ok(MOVES.heavy4.knockback > MOVES.heavy3.knockback && MOVES.heavy4.knockback > MOVES.heavy2.knockback);
 });

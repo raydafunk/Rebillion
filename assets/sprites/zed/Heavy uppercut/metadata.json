@@ -1,0 +1,69 @@
+{
+  "group_id": "54fa2f20-f904-4874-8e28-b592aa230a3e",
+  "states": [
+    {
+      "character": {
+        "id": "fedf4cd7-56b8-4625-bee4-54eb7261fe1f",
+        "name": "fighting pose hard attracts one uppercut",
+        "prompt": "Face\nAge: Late teens to early 20s.\n\nExpression: Determined but kind; expressive eyebrows.\n\nFeatures:\n\nSlight cheek scar or paint streak (symbolic, not edgy).\n\nWarm skin tone reflecting the city\u2019s cultural richness.\n\nHair\nStyle: Short, textured, slightly messy.\n\nMovement: Should animate well during combos.\n\nColour: Dark brown or black with subtle warm highlights.Bottom \u2014 Brick\u2011Red Joggers\nColour: Brick red (ties to the alley where he grew up).\n\nFit: Slim but flexible, allowing big kicks and acrobatics.\n\nDetails:\n\nKnee patches or reinforced stitching.\n\nSubtle paint splatter marks (from helping his father paint murals).\n\nFootwear \u2014 Forest\u2011Green Street Sneakers\nColour: Forest green (third palette pillar).\n\nStyle: High\u2011top sneakers with thick soles for impact.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-05T21:23:31.012259+00:00"
+      },
+      "folder": "fighting_pose_hard_attracts_one_uppercut",
+      "frames": {
+        "rotations": {
+          "south": "fighting_pose_hard_attracts_one_uppercut/rotations/south.png",
+          "south-east": "fighting_pose_hard_attracts_one_uppercut/rotations/south-east.png",
+          "east": "fighting_pose_hard_attracts_one_uppercut/rotations/east.png",
+          "north-east": "fighting_pose_hard_attracts_one_uppercut/rotations/north-east.png",
+          "north": "fighting_pose_hard_attracts_one_uppercut/rotations/north.png",
+          "north-west": "fighting_pose_hard_attracts_one_uppercut/rotations/north-west.png",
+          "west": "fighting_pose_hard_attracts_one_uppercut/rotations/west.png",
+          "south-west": "fighting_pose_hard_attracts_one_uppercut/rotations/south-west.png"
+        },
+        "animations": {
+          "uppercut": {
+            "north": [
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_000.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_001.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_002.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_003.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_004.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_005.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_006.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/north/frame_007.png"
+            ],
+            "west": [
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_000.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_001.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_002.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_003.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_004.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_005.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_006.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/west/frame_007.png"
+            ],
+            "east": [
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_000.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_001.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_002.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_003.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_004.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_005.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_006.png",
+              "fighting_pose_hard_attracts_one_uppercut/animations/uppercut/east/frame_007.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-05T22:33:03.428298"
+}

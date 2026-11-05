@@ -21,6 +21,7 @@
       "#2F6B3F"
     ],
     "timeLimitSec": 210,
+    "restartTimerOnBoss": true,
     "intro": "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.",
     "outro": "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.",
     "waves": [
@@ -131,6 +132,7 @@
       "#6B4423"
     ],
     "timeLimitSec": 210,
+    "restartTimerOnBoss": true,
     "intro": "Shutters chained, signs faded. Zed's neighbours are watching from behind the glass. Clear the row and open a shop.",
     "outro": "Chains drop, shutters roll up, and the first hand-lettered sign goes back in the window. Mustard Row is open for business.",
     "waves": [
@@ -273,6 +275,7 @@
       "#F4E6C8"
     ],
     "timeLimitSec": 210,
+    "restartTimerOnBoss": true,
     "intro": "Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.",
     "outro": "Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.",
     "waves": [
@@ -376,7 +379,7 @@
   {
     "id": "level-04-stewpot-gardens",
     "status": "proposed",
-    "gddGap": "No level structure in the GDD. Level 4 fields the GDD's Rust Specialists, \"The Copper Fangs\" (rust-specialist) and the Rust Rangers (rust-ranger) in alternating waves, then a mixed Ranger and grunt surge, and closes on the mini-boss Glitch (rust-glitch) as a single-enemy wave, so the player must use lane movement against ranged pressure before a deception fight. Wave 5 is a boss-role wave: the engine plays Glitch as a stand-in grunt on a 1.5x health wave until his fight is built, and the pipeline lets a boss-role wave be smaller than the one before it. No restPickup on the last wave (the exit follows it). 180 s limit assumed.",
+    "gddGap": "No level structure in the GDD. Level 4 fields the GDD's Rust Specialists, \"The Copper Fangs\" (rust-specialist) and the Rust Rangers (rust-ranger) in alternating waves, then a mixed Ranger and grunt surge, and closes on the mini-boss Glitch (rust-glitch) as a single-enemy wave, so the player must use lane movement against ranged pressure before a deception fight. Wave 5 is the mini-boss beat: Glitch (GlitchBoss, 340 HP, overclocks at half health) walks in from the far side and four Rust Rangers join after his first move; the validator lets a leader wave be smaller than the one before it. No restPickup on the last wave (the exit follows it). 180 s limit assumed.",
     "sources": [
       "the-rebellion#13",
       "the-rebellion#15",
@@ -395,6 +398,7 @@
       "#F2D9A0"
     ],
     "timeLimitSec": 180,
+    "restartTimerOnBoss": true,
     "intro": "Zed's mother's stall stood just past the fence. Keep moving, sidestep those darts, and bring dinner back.",
     "outro": "The fence comes down, the planters get watered, and a pot of stew goes on. Everyone gets a bowl.",
     "waves": [
@@ -462,14 +466,22 @@
         }
       },
       {
-        "enemy": "rust-glitch",
-        "count": 1,
-        "maxAlive": 1,
-        "spawnIntervalMs": 1200,
+        "enemy": "rust-ranger",
+        "count": 4,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1500,
         "startDelayMs": 1000,
         "spawnPattern": "flank",
         "attackerCap": 3,
-        "hpMult": 1.5
+        "leader": {
+          "enemy": "rust-glitch",
+          "entrance": "far-side",
+          "spawnFirst": true,
+          "gate": false,
+          "crewAfter": "first-move",
+          "crewDelayMs": 2500,
+          "crewMaxWaitMs": 9000
+        }
       }
     ],
     "miniBoss": "rust-glitch",
@@ -523,11 +535,9 @@
         "spawnPattern": "alternate",
         "attackerCap": 2,
         "mix": [
-          "grunt",
-          "grunt",
-          "rust-watcher"
+          "rust-breaker"
         ],
-        "speedMult": 1.15,
+        "speedMult": 1.1,
         "restPickup": {
           "heal": 35
         }
@@ -542,14 +552,11 @@
         "attackerCap": 3,
         "mix": [
           "grunt",
-          "rust-watcher",
-          "grunt"
+          "rust-breaker",
+          "grunt",
+          "rust-breaker"
         ],
         "speedMult": 1.2,
-        "elites": 2,
-        "eliteHpMult": 3,
-        "eliteSkin": "rust-breaker-2",
-        "mixElites": true,
         "restPickup": {
           "heal": 40
         }
@@ -563,15 +570,12 @@
         "spawnPattern": "ambush",
         "attackerCap": 3,
         "mix": [
-          "rust-watcher",
-          "grunt",
-          "rust-watcher"
+          "rust-ranger",
+          "rust-breaker-2",
+          "rust-ranger",
+          "rust-breaker-2"
         ],
         "speedMult": 1.25,
-        "elites": 2,
-        "eliteHpMult": 3,
-        "eliteSkin": "rust-breaker-2",
-        "mixElites": true,
         "restPickup": {
           "heal": 50
         }
@@ -585,32 +589,31 @@
         "spawnPattern": "surge",
         "attackerCap": 3,
         "mix": [
+          "rust-ranger",
+          "rust-breaker",
           "grunt",
+          "rust-breaker-2",
           "rust-watcher",
+          "rust-breaker",
+          "rust-ranger",
           "grunt",
-          "rust-watcher"
+          "rust-breaker-2"
         ],
         "speedMult": 1.3,
-        "elites": 3,
-        "eliteHpMult": 3,
-        "eliteSkin": "rust-breaker-2",
-        "mixElites": true,
         "restPickup": {
           "heal": 55
-        }
+        },
+        "hpMult": 1.5
       },
       {
-        "enemy": "rust-watcher",
-        "count": 8,
-        "maxAlive": 4,
+        "enemy": "grunt",
+        "count": 3,
+        "maxAlive": 3,
         "spawnIntervalMs": 800,
         "startDelayMs": 1000,
         "spawnPattern": "flank",
         "attackerCap": 3,
         "mix": [
-          "rust-watcher",
-          "grunt",
-          "rust-watcher",
           "grunt"
         ],
         "speedMult": 1.3,
@@ -637,6 +640,7 @@
         "after": "waves",
         "phases": "per GDD"
       }
-    }
+    },
+    "restartTimerOnBoss": true
   }
 ]

@@ -16,10 +16,12 @@ import { HEAVY_HIT_SOUND_KEY, isHeavyHit, hitSoundKey, swingSoundKey, RUN_SOUND_
 
 // Phaser KeyboardEvent.code values we care about; we feed raw codes into InputState.
 const WATCHED = ['ArrowLeft', 'KeyA', 'ArrowRight', 'KeyD', 'ArrowUp', 'ArrowDown', 'KeyW', 'KeyS', 'Space',
-  'KeyJ', 'KeyZ', 'KeyK', 'KeyX', 'KeyL', 'KeyC', 'KeyI', 'KeyV', 'KeyT', 'KeyM'];
+  'KeyJ', 'KeyZ', 'KeyK', 'KeyX', 'KeyL', 'KeyC', 'KeyI', 'KeyV', 'KeyT', 'KeyM', 'KeyU', 'KeyN'];
 
 /** Emitted on game.events when `zed.carrying` changes: { carrying:boolean }. */
 export const PLAYER_CARRYING_CHANGED = 'player-carrying-changed';
+/** Emitted on game.events when Zed throws his carried weapon: { x, y, lane, facing }. */
+export const PLAYER_THROW = 'player-throw';
 
 export class Zed {
   constructor(scene, x, y, cfg = ZED_CONFIG) {
@@ -192,6 +194,7 @@ export class Zed {
       knockback: m.knockback,
       hitstun: m.hitstun * (1000 / 60),
       // Rage Special only: combat may cap damage vs bosses (extra optional fields, absent on normal moves).
+      ...(m.rage ? { rage: true, moveId: this.machine.moveId } : {}), // Rage moves: arena fires the mega shake / kill dust
       ...(m.special ? { special: true, bossDamageCap: m.bossDamageCap, neverKills: !!m.neverKills } : {}),
     });
   }
@@ -238,6 +241,8 @@ export class Zed {
   }
 
   _handleDamage(d) {
+    // Hit-confirm: the current move connected, so autoChain moves (heavy combo) may continue.
+    if (d.attackerId === PLAYER_ID && d.targetId !== PLAYER_ID && d.amount > 0 && this.machine.state === 'attack') this.machine.hitConfirmed = true;
     if (isHeavyHit(this._hitSoundArmed, d, PLAYER_ID)) {
       const key = this._hitSoundArmed;
       this._hitSoundArmed = null; // once per swing, even if it connects with several enemies
@@ -376,6 +381,7 @@ export class Zed {
   respawn(x, y) {
     this.grab.reset(); this._grabAnchor = null; this.machine.locked = false; this.sprite.body.setAllowGravity(true);
     this.dead = false;
+    this.carrying = false; // retry: empty-handed
     this.sprite.setPosition(x, y).setVelocity(0, 0).clearTint();
     this.laneY = this.floorY;
     this.machine.endRage(); this.rage.reset(this.rage.level); // retry: meter back to 0, nothing carries over
@@ -455,6 +461,15 @@ export class Zed {
     if (inp.released.jump && body.velocity.y < 0) body.setVelocityY(body.velocity.y * cfg.jumpCutMultiplier);
 
     // L: start Rage now if READY and free, else buffer until Zed can (lands). Latched edge so a short tap counts.
+    // U / N: hurl the carried weapon (the scene spawns the projectile); empty-handed it does nothing.
+    if (this._pending.throw) {
+      this._pending.throw = false;
+      if (this._carrying && !locked && !this.machine.locked) {
+        this.carrying = false;
+        this.events.emit(PLAYER_THROW, { x: this.sprite.x, y: this.sprite.y + this.depthOffset, lane: this.laneY, facing: this.facing });
+      }
+    }
+
     if (this._pending.special) {
       this._pending.special = false;
       if (this.rage.pressSpecial(this._canStartSpecial()) === 'started') this._startRage();

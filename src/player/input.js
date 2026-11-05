@@ -1,5 +1,5 @@
 // Pure input mapping: key codes -> abstract actions. No Phaser dependency.
-export const ACTIONS = ['left', 'right', 'up', 'down', 'jump', 'light', 'heavy', 'block', 'parry', 'special'];
+export const ACTIONS = ['left', 'right', 'up', 'down', 'jump', 'light', 'heavy', 'block', 'parry', 'special', 'throw'];
 
 // Keys are KeyboardEvent.code-style names; Zed.js converts Phaser keys to these.
 export const KEY_MAP = {
@@ -12,7 +12,8 @@ export const KEY_MAP = {
   heavy: ['KeyK', 'KeyX'],
   block: ['KeyI', 'KeyV'],
   parry: ['KeyT', 'KeyM'],
-  special: ['KeyL'],         // Rage special; gamepad binding to be designed (add to PAD_MAP/padToKeys, no machine change)
+  throw: ['KeyU', 'KeyN'],   // hurl a carried weapon (does nothing empty-handed)
+  special: ['KeyL'],       // Rage special; gamepad binding to be designed (add to PAD_MAP/padToKeys, no machine change)
 };
 
 const emptyActions = () => Object.fromEntries(ACTIONS.map((a) => [a, false]));

@@ -19,6 +19,23 @@ export function pickupDrop(wave, nextWave, groundY) {
   return { x, y: groundY, heal: wave.restPickup.heal };
 }
 
+/**
+ * Level-end loot: the last wave's `finishDrop` ({ heals: [n, ...], weapons: n }) scatters health items and throwable weapons across the
+ * cleared fight screen. Items are spread evenly around its centre so Zed can walk through them all before the exit.
+ * Health items are { kind:'health', heal }, weapons { kind:'weapon' }; all have x, y.
+ */
+export function finishDrops(wave, groundY) {
+  const fd = wave && wave.finishDrop;
+  if (!fd) return [];
+  const heals = (fd.heals || []).map((heal) => ({ kind: 'health', heal }));
+  const weapons = Array.from({ length: fd.weapons || 0 }, () => ({ kind: 'weapon' }));
+  // Alternate health and weapons along the row so neither is bunched at one end.
+  const items = [];
+  for (let i = 0; i < Math.max(heals.length, weapons.length); i++) { if (heals[i]) items.push(heals[i]); if (weapons[i]) items.push(weapons[i]); }
+  const centre = wave.lockX + VIEW_W / 2, gap = Math.min(150, 900 / Math.max(1, items.length));
+  return items.map((it, i) => ({ ...it, x: Math.round(centre + (i - (items.length - 1) / 2) * gap), y: groundY - (i % 2 ? 24 : 0) })); // two depth lines, not one file
+}
+
 export function canCollect(pickup, zedX, airborne = 0) {
   return Math.abs(pickup.x - zedX) <= PICKUP.collectRadius && airborne <= PICKUP.maxAirborne;
 }

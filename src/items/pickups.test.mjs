@@ -110,3 +110,24 @@ console.log('pickups + elites ok');
   t = 5000; ev.emit(EVENTS.HIT_REQUEST, req('b', 500));
   assert.equal(dmg.at(-1).hpAfter, 1, 'a huge slam still leaves 1 hp');
 }
+
+// level-end loot + throwable weapons
+{
+  const { finishDrops } = await import('./pickups.js');
+  const { ThrownWeapon, WEAPON, isThrowHit } = await import('./thrownWeapon.js');
+  const last = { lockX: 4000, finishDrop: { heals: [100, 100, 100], weapons: 5 } };
+  const drops = finishDrops(last, 640);
+  assert.equal(drops.filter((d) => d.kind === 'health').length, 3);
+  assert.equal(drops.filter((d) => d.kind === 'weapon').length, 5);
+  assert.ok(drops.every((d) => d.x > 4000 && d.x < 5280), 'all loot lands on the cleared fight screen');
+  assert.equal(new Set(drops.map((d) => d.x)).size, drops.length, 'no two items stacked');
+  assert.deepEqual(finishDrops({ lockX: 0 }, 640), [], 'no finishDrop, no loot');
+  const w = new ThrownWeapon({ x: 100, y: 600, lane: 600, facing: -1 });
+  const r = w.update(100);
+  assert.equal(r.team, 'player'); assert.equal(r.facing, -1); assert.ok(w.x < 100, 'flies the way Zed faces');
+  assert.ok(isThrowHit(w, { attackId: w.id, amount: 30 }) && !isThrowHit(w, { attackId: 'x', amount: 30 }));
+  for (let i = 0; i < 40; i++) w.update(50);
+  assert.equal(w.alive, false, 'spent after max range'); assert.equal(w.update(16), null);
+  assert.ok(WEAPON.damage > 18, 'a throw out-hits a heavy punch');
+  console.log('finish loot + thrown weapon ok');
+}

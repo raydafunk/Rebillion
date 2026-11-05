@@ -5,6 +5,8 @@
 import { DUGAN_ID } from '../enemies/duganData.js';
 import { ROYCE_ID } from '../enemies/royceData.js';
 import { KANE_ID } from '../enemies/kaneData.js';
+import { GLITCH_ID } from '../enemies/glitchData.js';
+import { VARR_ID } from '../enemies/varrData.js';
 
 export const VICTORY = {
   header: 'VICTORY',
@@ -24,6 +26,10 @@ export const VICTORY_LINES = {
   [ROYCE_ID]: { lines: ['"Railgun" Royce has fallen.', 'Mustard Row is open.'] },
   // PLACEHOLDER lines for Level 3: the owner supplies Kane's real lines.
   [KANE_ID]: { lines: ['"Crusher" Kane has fallen.', 'The courts are open.'] },
+  // PLACEHOLDER lines for Level 4: the owner supplies Glitch's real lines.
+  [GLITCH_ID]: { lines: ['"Glitch" has fallen.', 'The gardens are open.'] },
+  // PLACEHOLDER lines for Level 8: the owner supplies Varr's real lines.
+  [VARR_ID]: { lines: ['Halden Varr has fallen.', 'Let the music back in.'] },
   // 'rust-copper-fang': { lines: ['...', '...'] },
 };
 

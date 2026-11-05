@@ -36,6 +36,17 @@ export const ZED_ANIMS = [
   // Jumping flying kick (airborne light press): zed.airkick.<dir>, stretched over the move, holds the last frame until landing.
   // 80x80 canvas; foot row not measured, assumed to match the standing kick (64/80).
   { state: 'airkick', folder: 'flying_Jumping_Kick', anim: 'Flying_Kick', frames: 6, fps: 24, originY: 64 / 80, repeat: 0 },
+  // Heavy attack clips. heavy1 uses the generic zed.attack punch unless its own clip exists, so register one each.
+  // heavy1: two-punch hard combo (16 frames, 68x68; foot row unmeasured, assumed 58/68). Stretched over the move.
+  { state: 'heavy1', folder: 'fighting_pose_hard_attracts_one_hard_combo_2', anim: 'two_punch_combo', frames: 16, fps: 24, originY: 58 / 68, repeat: 0 },
+  // heavy2: hard high kick (8 frames, 68x68, assumed 58/68).
+  { state: 'heavy2', folder: 'fighting_pose_hard kick', anim: 'high_kick', frames: 8, fps: 24, originY: 58 / 68, repeat: 0 },
+  // heavy3: combo finisher, reuses the hard high kick art (own state key so it can get a unique clip later).
+  { state: 'heavy3', folder: 'fighting_pose_hard kick', anim: 'high_kick', frames: 8, fps: 24, originY: 58 / 68, repeat: 0 },
+  // heavy4: heavy uppercut finisher (8 frames, 68x68, lowest opaque row 54-55 -> 58/68). Folder is nested under "Heavy uppercut".
+  { state: 'heavy4', folder: 'Heavy uppercut/fighting_pose_hard_attracts_one_uppercut', anim: 'uppercut', frames: 8, fps: 24, originY: 58 / 68, repeat: 0 },
+  // airheavy: powerful jumping double kick (9 frames, 68x68, assumed 58/68). Nested export folder; east/west only (a south clip also exists).
+  { state: 'airheavy', folder: 'Flying Kick Hard/flying_Jumping_Kick_heavy', anim: 'The_character_initiates_a_powerful_jumping_double', frames: 9, fps: 24, originY: 58 / 68, repeat: 0 },
   // Parry reaction (T or M): 9 frames, 68x68 canvas (foot row unmeasured, assumed 58/68). Stretched over PARRY.duration.
   { state: 'parry', folder: 'Zed_parry_reaction_a', anim: 'Zed_parry_reaction_animation_triggered_when_hit._Q', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
   // Hit reaction (Taking_Punch): 6 frames, 64x64 canvas like Running (lowest opaque row 53 -> 56.5/64). Played once across the hitstun (stretched in update()).
@@ -49,6 +60,10 @@ export const ZED_ANIMS = [
   { state: 'pickup', folder: 'pick_up', anim: 'Picking_Up', frames: 5, fps: 12, originY: 56.5 / 64, repeat: 0 },
   // Rage Special (zed.special.<dir>): 9 frames, 68x68 canvas (foot row unmeasured, assumed 58/68). Stretched over the move.
   { state: 'special', folder: 'Super_special_move', anim: 'The_character_pivots_sharply_right_hand_drawing_to', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
+  // Rage attack set (east/west; foot rows unmeasured, assumed like the other 68px/80px clips). Stretched over the move.
+  { state: 'rageKick', folder: 'Special Kick/Super_special_move_ideal_copy', anim: 'High_Kick', frames: 8, fps: 24, originY: 58 / 68, repeat: 0 },
+  { state: 'rageUppercut', folder: 'Special Uppercut/Super_special_move_move_2', anim: 'uppercut', frames: 8, fps: 24, originY: 58 / 68, repeat: 0 },
+  { state: 'rageAirKick', folder: 'Super Air Kick/Super_special_move_kick', anim: 'Hurricane_Kick', frames: 4, fps: 24, originY: 64 / 80, repeat: 0 },
   // Death (Falling_Back_Death): 7 frames, 80x80 canvas, plays once and holds the last frame (lowest opaque row 62 -> (62 + 1 + 2px gap)/80).
   // 7 frames / 12 fps = 583 ms, inside ArenaScene's END_DELAY_MS (700) so the lose screen waits for the fall.
   // dirOriginY (back/front views): feet sit on the shadow centre, not 2px above it. = (mean lowest opaque row + 1 + gap)/64 with
@@ -292,7 +307,7 @@ export class ZedVisual {
     if (!animKey) {
       img.setScale(this.base.sx * p.sx, this.base.sy * p.sy);
       img.setPosition(feetX + p.ox, feetY + p.oy).setAngle(p.angle);
-    } else if (m.state === 'attack' && m.moveId !== 'airkick') img.x = feetX + punchLunge(m, facing); // weight shift: lean back, step into the hit
+    } else if (m.state === 'attack' && m.moveId !== 'airkick' && m.moveId !== 'airheavy' && m.moveId !== 'rageAirKick') img.x = feetX + punchLunge(m, facing); // weight shift: lean back, step into the hit
     img.setAlpha(animKey && (zed.dead || m.state === 'slammed') ? 1 : p.alpha); // the death clip is drawn at full alpha
     if (animKey && (m.state === 'hitstun' || m.state === 'slammed')) img.clearTint(); // the clip shows the hit; no solid-white flash over it
     else if (animKey && m.state === 'attack' && p.tintFill == null) img.clearTint();

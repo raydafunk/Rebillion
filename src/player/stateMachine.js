@@ -1,6 +1,6 @@
 // Pure, frame-stepped combat state machine. No Phaser, no events.
 // States: idle, run, jump, attack, hitstun, block.
-import { MOVES, OPENERS, RAGE_OPENERS, PLAYER_TIMING, GUARD, PARRY, PICKUP_POSE } from './moves.js';
+import { MOVES, OPENERS, RAGE_OPENERS, RAGE_AIR_MOVES, PLAYER_TIMING, GUARD, PARRY, PICKUP_POSE } from './moves.js';
 
 export class PlayerStateMachine {
   constructor({ moves = MOVES, openers = OPENERS, timing = PLAYER_TIMING, onActiveStart, onActive, onStateChange, onMoveStart, guard = GUARD, parry = PARRY, pickup = PICKUP_POSE } = {}) {
@@ -61,6 +61,7 @@ export class PlayerStateMachine {
     this.moveId = id;
     this.swing++;
     this.frame = 0;
+    this.hitConfirmed = false; // set by Zed when this move's hit lands (drives autoChain)
     this.buffered = null;
     this.bufferLeft = 0;
     this._set('attack');
@@ -149,6 +150,8 @@ export class PlayerStateMachine {
         this._set('idle');
       } else if (next && this.frame >= m.cancelFrom) {
         this._startMove(next);
+      } else if (m.autoChain && this.hitConfirmed && this.frame >= m.cancelFrom) {
+        this._startMove(m.autoChain); // hit landed: flow into the combo with no extra press
       } else if (this.frame >= m.startup + m.active + m.recovery - 1) {
         this.moveId = null;
         this._set('idle');
@@ -174,9 +177,11 @@ export class PlayerStateMachine {
     if (ctx.grounded) this.airKickUsed = false;
     if (this.state !== 'attack') {
       if (!ctx.grounded) {
-        if (this.buffered === 'light' && !this.airKickUsed && this.moves.airkick && !this.rage) {
+        const airMove = this.rage ? RAGE_AIR_MOVES[this.buffered] ?? null
+          : this.buffered === 'light' ? 'airkick' : this.buffered === 'heavy' ? 'airheavy' : null;
+        if (airMove && !this.airKickUsed && this.moves[airMove]) {
           this.airKickUsed = true;
-          this._startMove('airkick');
+          this._startMove(airMove);
         } else this._set('jump');
       } else if (this.buffered && this.openers[this.buffered]) {
         this._startMove(this.openers[this.buffered]);

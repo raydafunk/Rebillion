@@ -111,7 +111,7 @@ test('special is bound to L', () => {
   assert.equal(mapKeys(['KeyL']).special, true);
 });
 
-test('state machine: Rage swaps attacks for the Special; move/jump/block ok; no air kick', () => {
+test('state machine: Rage: light = Special Kick, heavy = Special Uppercut, air press = Special Air Kick; move/block ok', () => {
   const m = new PlayerStateMachine();
   assert.equal(m.canStartSpecial(false), false); assert.equal(m.canStartSpecial(true), true);
   m.beginRage();
@@ -119,16 +119,15 @@ test('state machine: Rage swaps attacks for the Special; move/jump/block ok; no 
   assert.equal(MOVES.special.special, true); assert.equal(MOVES.special.bossDamageCap, SPECIAL_MOVE.bossDamageCap);
   for (let i = 0; i < 80; i++) m.step(NONE);
   assert.equal(m.state, 'idle');
-  m.step({ pressed: { light: true }, held: {}, moveX: 0 }); assert.equal(m.moveId, 'special');
+  m.step({ pressed: { light: true }, held: {}, moveX: 0 }); assert.equal(m.moveId, 'rageKick');
   for (let i = 0; i < 80; i++) m.step(NONE);
-  m.step({ pressed: { heavy: true }, held: {}, moveX: 0 }); assert.equal(m.moveId, 'special');
+  m.step({ pressed: { heavy: true }, held: {}, moveX: 0 }); assert.equal(m.moveId, 'rageUppercut'); assert.equal(MOVES.rageUppercut.rage, true);
   for (let i = 0; i < 80; i++) m.step(NONE);
-  m.step({ pressed: { special: true }, held: {}, moveX: 0 }); assert.equal(m.moveId, 'special');
+  m.step({ pressed: { special: true }, held: {}, moveX: 0 }); assert.equal(m.moveId, 'rageKick');
   for (let i = 0; i < 80; i++) m.step(NONE);
   m.step({ pressed: {}, held: { block: true }, moveX: 0 }); assert.equal(m.state, 'block');
   m.step({ pressed: {}, held: {}, moveX: 1 }); assert.equal(m.state, 'run');
-  m.step({ pressed: { light: true }, held: {}, moveX: 0 }, { grounded: false }); assert.equal(m.state, 'jump');
-  assert.notEqual(m.moveId, 'airkick');
+  m.step({ pressed: { light: true }, held: {}, moveX: 0 }, { grounded: false }); assert.equal(m.state, 'attack'); assert.equal(m.moveId, 'rageAirKick');
   m.endRage();
   const n = new PlayerStateMachine(); n.beginRage(); n.endRage();
   for (let i = 0; i < 80; i++) n.step(NONE);

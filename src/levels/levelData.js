@@ -59,7 +59,10 @@ export function buildWave(raw, i) {
     ...(raw.mix ? { mix: [...raw.mix] } : {}),
     ...(raw.speedMult ? { speedMult: raw.speedMult } : {}),
     ...(raw.mixElites ? { mixElites: true } : {}),
+    ...(raw.mixRandom ? { mixRandom: true } : {}), // mixRandom: pick each spawn's kind from `mix` at random instead of cycling
     ...(raw.restPickup ? { restPickup: { heal: raw.restPickup.heal } } : {}),
+    // finishDrop (last wave only): level-end loot, { heals: [heal, ...], weapons: n } health items and throwable weapons scattered over the cleared screen.
+    ...(raw.finishDrop ? { finishDrop: { heals: [...(raw.finishDrop.heals || [])], weapons: raw.finishDrop.weapons || 0 } } : {}),
     // hint: one line of coaching shown under the wave banner (the HUD reads it from wave-started).
     ...(raw.hint ? { hint: String(raw.hint) } : {}),
     // leader: a mini-boss that walks in first and fights alongside the wave's grunts (does not count against maxAlive, or toward `count`).
@@ -92,7 +95,8 @@ export function levelErrors(raw) {
     if (w.leader && w.leader.crewAfter !== undefined && !CREW_AFTER.includes(w.leader.crewAfter)) errs.push(`wave ${i + 1}: leader.crewAfter must be one of ${CREW_AFTER.join('|')}`);
     if (w.leader && w.leader.crewMaxWaitMs !== undefined && !(w.leader.crewMaxWaitMs > 0 && w.leader.crewMaxWaitMs <= 20000)) errs.push(`wave ${i + 1}: leader.crewMaxWaitMs must be 1-20000`);
     if (w.hint !== undefined && !(typeof w.hint === 'string' && w.hint.length > 0 && w.hint.length <= 80)) errs.push(`wave ${i + 1}: hint must be 1-80 characters`);
-    if (w.restPickup !== undefined && !(w.restPickup && w.restPickup.heal > 0 && w.restPickup.heal <= 100)) errs.push(`wave ${i + 1}: restPickup.heal must be 1-100`);
+    if (w.finishDrop !== undefined && !(w.finishDrop && (w.finishDrop.heals === undefined || (Array.isArray(w.finishDrop.heals) && w.finishDrop.heals.every((h) => h > 0 && h <= 100))) && (w.finishDrop.weapons === undefined || (Number.isInteger(w.finishDrop.weapons) && w.finishDrop.weapons >= 0 && w.finishDrop.weapons <= 8)))) errs.push(`wave ${i + 1}: finishDrop needs heals (each 1-100) and weapons (0-8)`);
+    if (w.restPickup !== undefined &&!(w.restPickup && w.restPickup.heal > 0 && w.restPickup.heal <= 100)) errs.push(`wave ${i + 1}: restPickup.heal must be 1-100`);
   });
   return errs;
 }
@@ -107,6 +111,7 @@ export function buildLevel(raw, style) {
     theme: raw.theme || '',
     palette: raw.palette || [],
     timeLimitSec: raw.timeLimitSec,
+    restartTimerOnBoss: !!raw.restartTimerOnBoss, // the clock resets to full when a leader (boss) wave starts
     intro: raw.intro || '',
     outro: raw.outro || '',
     waves,

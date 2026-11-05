@@ -281,3 +281,21 @@ rageFx: {
   introMs: 300
 }
 ```
+
+## 9. Heavy combo (heavy1 -> heavy2 -> heavy3) hit feedback
+
+Values live in `src/shared/hitFeedback.js` (`MOVE_FEEDBACK`, `HIT_STOP_MS`). Starting values, need playtest. Screen Shake Off/Light/Full scaling is applied in `ArenaScene._shake`.
+
+| Move | Hit-stop | Shake (ms / intensity) |
+|---|---|---|
+| heavy1 | heavy, 100 ms | 260 / 0.012 |
+| heavy2 | heavy, 100 ms | 300 / 0.015 |
+| heavy3 (finisher) | heavyFinisher, 180 ms | 450 / 0.024 |
+
+Reference: old finisher 140 ms / 0.004, airkick 220 ms / 0.008.
+
+Rationale:
+- Every hit is clearly above the old ceiling (3x airkick intensity on heavy1) so the chain reads as a barrage, not three taps.
+- Shake ramps 0.012 -> 0.015 -> 0.024 so the third hit is unmistakable as the payoff. Hits 1 and 2 keep the normal 100 ms heavy freeze so the auto-chain keeps its rhythm; only the finisher gets the long freeze.
+- heavy3 hit-stop 180 ms is the longest in the game; `HIT_STOP_MS.max` was raised 150 -> 180 for it (no other entry exceeds 150, so nothing else changes). Hit-stops still never stack.
+- Finisher dramatic extras (visual, to be wired by whoever owns the scene): large radial spark burst, 2-frame white flash on the target at alpha <= 0.6 (once, under 4 Hz), and a dust ring at the target's feet as it launches. 0.024 exceeds even the Mega Stomp peak (0.018), so the finisher is the strongest shake in the game; Light (half) keeps it comfortable.

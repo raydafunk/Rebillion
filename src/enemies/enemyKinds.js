@@ -7,6 +7,8 @@ export const KINDS = Object.freeze({
   'rust-watcher': Object.freeze({ skin: 'rust-watcher', hpMult: 1.5, speedMult: 1.1, tint: 0xffd9a0 }), // tougher and quicker, amber wash
   'rust-specialist': Object.freeze({ skin: 'rust-specialist', hpMult: 1.3, speedMult: 1.05, tint: 0xd9a066, ranged: SPECIALIST_RANGED }), // Copper Fang rank and file: a bit tougher, copper wash; also fires Taser volleys then follows with the baton (specialistRanged.js)
   'rust-ranger': Object.freeze({ skin: 'rust-ranger', hpMult: 1.5, speedMult: 1.25, tint: 0xa0e0f0 }), // quickest, 1.5x health to match the Level 4 Ranger waves, cool cyan wash
+  'rust-breaker': Object.freeze({ skin: 'rust-breaker', hpMult: 3, speedMult: 0.9, tint: null }), // Rust Bruiser: the Breakers' big guys, heavy and a touch slower
+  'rust-breaker-2': Object.freeze({ skin: 'rust-breaker-2', hpMult: 3, speedMult: 0.9, tint: null }), // Breaker Type 2 as a mix kind
 });
 export const kindFor = (id) => KINDS[id] || KINDS.grunt;
 export const SPEED_MULT_RANGE = Object.freeze([0.5, 2]);

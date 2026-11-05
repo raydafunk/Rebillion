@@ -113,12 +113,12 @@ export class WaveSpawner {
     // of a wave, so it opens on grunts and ends on the heavy; with mixElites they are scattered through the back of the wave.
     // A wave with `mix` cycles those kinds (grunt, rust-watcher, ...) for the other spawns; speedMult makes the whole wave move faster.
     const elite = elitePositions(w.count, w.elites || 0, !!w.mixElites).has(idx);
-    const kind = w.mix && w.mix.length ? kindFor(w.mix[idx % w.mix.length]) : null;
+    const kind = w.mix && w.mix.length ? kindFor(w.mix[w.mixRandom ? Math.floor(this.rng() * w.mix.length) % w.mix.length : idx % w.mix.length]) : null;
     const wave = w.speedMult || 1;
     this.spawnFn({
       id, enemy: w.enemy, x: pt.x, y: pt.y, waveIndex: this.waveIndex,
       skin: elite ? (w.eliteSkin || 'rust-breaker') : kind ? kind.skin : w.sourceEnemy,
-      hpMult: elite ? (w.eliteHpMult || 3) : kind ? kind.hpMult : (w.hpMult || 1),
+      hpMult: elite ? (w.eliteHpMult || 3) : kind ? kind.hpMult * (w.hpMult || 1) : (w.hpMult || 1),
       speedMult: elite ? wave * 0.9 : kind ? wave * kind.speedMult : wave, // heavies are a touch slower than the crowd
     });
   }

@@ -32,6 +32,8 @@ export const EVENTS = Object.freeze({
   // Registration of entities so combat can resolve hits (see contract).
   ENTITY_REGISTERED: 'entity-registered',
   ENTITY_UNREGISTERED: 'entity-unregistered',
+  // A boss rebuilt itself (Varr, phase 2): combat refills its hp, the boss bar refills. { id, share } share = fraction of max hp now.
+  BOSS_HP_RESTORED: 'boss-hp-restored',
 });
 
 export const END_REASONS = Object.freeze({

@@ -35,6 +35,14 @@ export const RAGE_EVENTS = Object.freeze({
 // The single Special move (placeholders to balance; see spec section 10).
 // `special` + `bossDamageCap` are forwarded on the hit-request so combat can cap damage vs bosses:
 //   bossDamageCap = max damage one Special hit may deal to a boss; neverKills = it must leave the boss at >= 1 hp.
+// Rage attack set (placeholders to balance). light = rageKick, heavy = rageUppercut, airborne light/heavy = rageAirKick.
+// All carry `rage: true` on the hit-request so the arena can fire the mega impact shake and kill dust.
+export const RAGE_MOVES = {
+  rageKick:     { startup: 5, active: 4, recovery: 14, cancelFrom: 999, damage: 16, knockback: 520, hitstun: 24, hitbox: { x: 20, y: -30, w: 64, h: 36 }, rage: true, chain: {} },
+  rageUppercut: { startup: 8, active: 5, recovery: 22, cancelFrom: 999, damage: 24, knockback: 300, hitstun: 40, hitbox: { x: 18, y: -46, w: 52, h: 62 }, rage: true, heavy: true, chain: {} },
+  rageAirKick:  { startup: 3, active: 40, recovery: 6, cancelFrom: 999, damage: 18, knockback: 620, hitstun: 24, hitbox: { x: 14, y: -26, w: 60, h: 44 }, rage: true, airOnly: true, chain: {} },
+};
+
 export const SPECIAL_MOVE = {
   startup: 8, active: 8, recovery: 24, cancelFrom: 999,
   damage: 22, knockback: 650, hitstun: 36,
