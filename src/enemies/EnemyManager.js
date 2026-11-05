@@ -2,6 +2,7 @@
 // Rendering reads `manager.enemies` (id, x, y, facing, state, telegraphing...) each frame.
 import { EVENTS } from '../shared/events.js';
 import { RustGrunt } from './RustGrunt.js';
+import { TaserBolt } from './specialistRanged.js';
 import { BrickDugan } from './BrickDugan.js';
 import { DUGAN, DUGAN_ID } from './duganData.js';
 import { RoyceBoss } from './RoyceBoss.js';
@@ -22,12 +23,18 @@ export class EnemyManager {
     this.pickVariant = mixUp && data.variants ? (g) => pickAttackVariant(rng, g.lastVariantId, data.variants) : null;
     this.slots = new AttackSlots(attackerCap);
     this.enemies = new Map(); // id -> { grunt, deathTimer }
+    this.bolts = [];          // Specialist Taser bolts in flight (specialistRanged.js); the view reads this to draw them
     this.onRemoved = onRemoved; // (id) => void, lets the view destroy its sprite
     this._onDamage = (p) => {
       const e = this.enemies.get(p.targetId);
       if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback, hpAfter: p.hpAfter });
       const a = this.enemies.get(p.attackerId);
       if (a && a.grunt.onHitLanded && p.landed !== false && p.amount > 0) a.grunt.onHitLanded(); // a charge ends on contact
+    };
+    this._onBoltDamage = (p) => { // a bolt is spent the moment it lands or is parried (the resolver reports its attackId either way)
+      if (!p || !p.attackId) return;
+      const b = this.bolts.find((x) => x.id === p.attackId);
+      if (b) b.kill();
     };
     this._onParryStun = ({ attackerId, hitstun }) => {
       const e = this.enemies.get(attackerId);
@@ -44,6 +51,7 @@ export class EnemyManager {
     };
     this._onRetry = () => this.destroyAll();
     events.on(EVENTS.DAMAGE_APPLIED, this._onDamage);
+    events.on(EVENTS.DAMAGE_APPLIED, this._onBoltDamage);
     events.on(EVENTS.PARRY_STUN, this._onParryStun);
     events.on(EVENTS.ENTITY_DIED, this._onDied);
     this._onGrabBroken = ({ attackerId }) => { const e = this.enemies.get(attackerId); if (e && e.grunt.grabBroken) e.grunt.grabBroken(); };
@@ -59,11 +67,12 @@ export class EnemyManager {
     if (enemy === ROYCE_ID) return this._spawnRoyce({ id, x, y, hpMult, speedMult });
     if (enemy === KANE_ID) return this._spawnKane({ id, x, y, hpMult, speedMult });
     const tint = KINDS[skin]?.tint;
-    const data = speedMult === 1 && !tint ? this.data
-      : { ...this.data, moveSpeed: Math.round(this.data.moveSpeed * speedMult), circleSpeed: Math.round(this.data.circleSpeed * speedMult), ...(tint ? { tint } : {}) }; // wave speed boost / kind tint
+    const ranged = KINDS[skin]?.ranged;
+    const data = speedMult === 1 && !tint && !ranged ? this.data
+      : { ...this.data, moveSpeed: Math.round(this.data.moveSpeed * speedMult), circleSpeed: Math.round(this.data.circleSpeed * speedMult), ...(tint ? { tint } : {}), ...(ranged ? { ranged } : {}) }; // wave speed boost / kind tint / Specialist Taser volley
     const grunt = new RustGrunt({
       id, x, y, slots: this.slots, data, maxHp: Math.round(this.data.maxHp * hpMult),
-      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req), onProjectileRequest: (spec) => this.bolts.push(new TaserBolt({ ...spec, spec: ranged?.bolt })) },
       pickVariant: this.pickVariant,
     });
     grunt.skin = skin; // visual variant (e.g. 'rust-breaker'); gameplay is still the grunt's
@@ -152,10 +161,12 @@ export class EnemyManager {
     if (this.onRemoved) this.onRemoved(id);
   }
 
-  destroyAll() { for (const id of [...this.enemies.keys()]) this.destroy(id); }
+  destroyAll() { this.bolts = []; for (const id of [...this.enemies.keys()]) this.destroy(id); }
 
   /** target: {x,y} of the player (or null). frozen: optional Set of enemy ids skipped this frame (hit-stop). */
   update(dtMs, target, frozen = null) {
+    for (const b of this.bolts) { const req = b.update(dtMs); if (req) this.events.emit(EVENTS.HIT_REQUEST, req); } // a hit may kill the bolt mid-loop
+    this.bolts = this.bolts.filter((b) => b.alive);
     for (const [id, e] of [...this.enemies]) {
       if (frozen && frozen.has(id)) continue;
       e.grunt.update(dtMs, target);
@@ -168,6 +179,7 @@ export class EnemyManager {
 
   dispose() {
     this.events.off(EVENTS.DAMAGE_APPLIED, this._onDamage);
+    this.events.off(EVENTS.DAMAGE_APPLIED, this._onBoltDamage);
     this.events.off(EVENTS.PARRY_STUN, this._onParryStun);
     this.events.off(EVENTS.ENTITY_DIED, this._onDied);
     this.events.off(EVENTS.GRAB_BROKEN, this._onGrabBroken);

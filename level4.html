@@ -20,6 +20,8 @@
     import ResultScene from './src/scenes/ResultScene.js';
     import { loadLevelContent } from './src/levels/levelData.js';
     const LEVEL_INDEX = 3; // level 4
+    // ArenaScene reads ?level=N, so set it before the game boots. (Restarting the scene after 'ready' made it preload every asset twice and log 'Texture key already in use'.)
+    { const q = new URLSearchParams(location.search); q.set('level', String(LEVEL_INDEX + 1)); history.replaceState(null, '', location.pathname + '?' + q.toString()); }
     const fetchJson = (p) => fetch(p, { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error(p); return r.json(); });
     const levels = await loadLevelContent(fetchJson);
     const game = new Phaser.Game({
@@ -36,8 +38,6 @@
         preBoot: (g) => g.registry.set('levels', levels),
       },
     });
-    // ArenaScene reads data.levelIndex or ?level=; the first scene gets neither, so force it.
-    game.events.once('ready', () => game.scene.getScene('ArenaScene').scene.restart({ levelIndex: LEVEL_INDEX }));
     window.__game = game;
   </script>
 </body>

@@ -50,7 +50,7 @@ export function createHitResolver(events, now = () => Date.now()) {
         if (req.pierceInvuln ? e.health.dead : isInvulnerable(e.health, t)) continue; // piercing hits can be parried even inside the invuln window
         seen.add(key);
         events.emit(EVENTS.DAMAGE_APPLIED, {
-          targetId: id, attackerId: req.attackerId, amount: 0,
+          targetId: id, attackerId: req.attackerId, attackId: req.attackId, amount: 0,
           hpAfter: e.health.hp, knockback: 0, hitstun: 0, landed: false,
         });
         continue;
@@ -73,7 +73,7 @@ export function createHitResolver(events, now = () => Date.now()) {
       if (!r.applied) continue;
       seen.add(key);
       events.emit(EVENTS.DAMAGE_APPLIED, {
-        targetId: id, attackerId: req.attackerId, amount: r.amount,
+        targetId: id, attackerId: req.attackerId, attackId: req.attackId, amount: r.amount,
         hpAfter: r.hpAfter, knockback: dir * kb, hitstun: stun, landed: true,
       });
       if (id === PLAYER_ID) emitPlayerHp(e.health);

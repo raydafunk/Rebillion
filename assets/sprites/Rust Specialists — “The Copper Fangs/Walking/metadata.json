@@ -1,0 +1,79 @@
+{
+  "group_id": "2facaf3b-4bf6-43b1-af4e-2b400b2f17d6",
+  "states": [
+    {
+      "character": {
+        "id": "205e5742-2a98-4c36-b655-9eee0c8aa11e",
+        "name": "Walking",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T13:28:01.326597+00:00"
+      },
+      "folder": "Walking",
+      "frames": {
+        "rotations": {
+          "south": "Walking/rotations/south.png",
+          "south-east": "Walking/rotations/south-east.png",
+          "east": "Walking/rotations/east.png",
+          "north-east": "Walking/rotations/north-east.png",
+          "north": "Walking/rotations/north.png",
+          "north-west": "Walking/rotations/north-west.png",
+          "west": "Walking/rotations/west.png",
+          "south-west": "Walking/rotations/south-west.png"
+        },
+        "animations": {
+          "Walking": {
+            "east": [
+              "Walking/animations/Walking/east/frame_000.png",
+              "Walking/animations/Walking/east/frame_001.png",
+              "Walking/animations/Walking/east/frame_002.png",
+              "Walking/animations/Walking/east/frame_003.png",
+              "Walking/animations/Walking/east/frame_004.png",
+              "Walking/animations/Walking/east/frame_005.png",
+              "Walking/animations/Walking/east/frame_006.png",
+              "Walking/animations/Walking/east/frame_007.png"
+            ],
+            "west": [
+              "Walking/animations/Walking/west/frame_000.png",
+              "Walking/animations/Walking/west/frame_001.png",
+              "Walking/animations/Walking/west/frame_002.png",
+              "Walking/animations/Walking/west/frame_003.png",
+              "Walking/animations/Walking/west/frame_004.png",
+              "Walking/animations/Walking/west/frame_005.png",
+              "Walking/animations/Walking/west/frame_006.png",
+              "Walking/animations/Walking/west/frame_007.png"
+            ],
+            "south": [
+              "Walking/animations/Walking/south/frame_000.png",
+              "Walking/animations/Walking/south/frame_001.png",
+              "Walking/animations/Walking/south/frame_002.png",
+              "Walking/animations/Walking/south/frame_003.png",
+              "Walking/animations/Walking/south/frame_004.png",
+              "Walking/animations/Walking/south/frame_005.png",
+              "Walking/animations/Walking/south/frame_006.png",
+              "Walking/animations/Walking/south/frame_007.png"
+            ],
+            "north": [
+              "Walking/animations/Walking/north/frame_000.png",
+              "Walking/animations/Walking/north/frame_001.png",
+              "Walking/animations/Walking/north/frame_002.png",
+              "Walking/animations/Walking/north/frame_003.png",
+              "Walking/animations/Walking/north/frame_004.png",
+              "Walking/animations/Walking/north/frame_005.png",
+              "Walking/animations/Walking/north/frame_006.png",
+              "Walking/animations/Walking/north/frame_007.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-05T07:09:46.413051"
+}

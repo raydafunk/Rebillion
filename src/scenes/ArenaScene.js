@@ -33,9 +33,12 @@ import { GRUNT_SPRITE_KEY, GRUNT } from '../enemies/gruntData.js';
 import { EnemyHitFx } from '../enemies/EnemyHitFx.js';
 import { MegaStompFx } from '../enemies/MegaStompFx.js';
 import { RoyceFx } from '../enemies/RoyceFx.js';
+import { SpecialistBoltFx } from '../enemies/SpecialistBoltFx.js';
 import { KaneFx } from '../enemies/KaneFx.js';
+import { ZedShockFx } from '../player/ZedShockFx.js';
 import { WallSlamFx } from '../enemies/WallSlamFx.js';
 import { GrabBreakCueFx } from '../enemies/GrabBreakCueFx.js';
+import { specialistStep } from '../enemies/specialistSound.js';
 import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH, GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH, GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH, pickStepper } from '../enemies/gruntSound.js';
 import { DUGAN_ID } from '../enemies/duganData.js';
 import { ROYCE_ID } from '../enemies/royceData.js';
@@ -69,6 +72,16 @@ import {
   rangerAttackFrameKey, rangerAttackAnimKey, rangerAttackFramePath, rangerHitFrameKey, rangerHitAnimKey, rangerHitFramePath,
   rangerDeathFrameKey, rangerDeathAnimKey, rangerDeathFramePath, rangerFallState, RANGER_FRAME_PX,
 } from '../enemies/rangerData.js';
+import {
+  SPECIALIST_DIRS, SPECIALIST_HIT_DIRS, SPECIALIST_HIT_FRAMES, SPECIALIST_DEATH_FRAMES, SPECIALIST_DEATH_DEFAULT_FPS, SPECIALIST_SKIN,
+  isSpecialist, specialistPose, specialistIdleKey, specialistIdlePath, SPECIALIST_WALK_DIRS, SPECIALIST_WALK_FRAMES, SPECIALIST_WALK_FPS, specialistWalkFrameKey, specialistWalkAnimKey, specialistWalkFramePath,
+  specialistStrikeKey, specialistStrikePath, specialistWindupKey, specialistWindupPath, specialistHitFrameKey, specialistHitAnimKey, specialistHitFramePath,
+  specialistDeathFrameKey, specialistDeathAnimKey, specialistDeathFramePath,
+  SPECIALIST_BATON_DIRS, SPECIALIST_BATON_FRAMES, SPECIALIST_BATON_FPS, specialistBatonFrameKey, specialistBatonAnimKey, specialistBatonFramePath,
+  SPECIALIST_TASER_DIRS, SPECIALIST_TASER_FRAMES, SPECIALIST_TASER_FPS, specialistTaserFrameKey, specialistTaserAnimKey, specialistTaserFramePath,
+  SPECIALIST_RANGED_DIRS, SPECIALIST_RANGED_FRAMES, SPECIALIST_RANGED_FIRE_ORDER, SPECIALIST_RANGED_AIM_FRAMES, specialistRangedAimKey, SPECIALIST_RANGED_FPS, specialistRangedFrameKey, specialistRangedAnimKey, specialistRangedFramePath,
+  SPECIALIST_BOLT_DIRS, SPECIALIST_BOLT_FRAMES, specialistBoltFrameKey, specialistBoltFramePath,
+} from '../enemies/specialistData.js';
 
 const GROUND_Y = LANE.maxY - 40;      // Zed's feet line (physics floor)
 const END_DELAY_MS = 700;             // let the KO / final hit play before the result screen
@@ -146,6 +159,21 @@ export default class ArenaScene extends Phaser.Scene {
       for (const d of RANGER_WALK_DIRS) for (let i = 0; i < RANGER_WALK_FRAMES; i++) this.load.image(rangerWalkFrameKey(d, i), rangerWalkFramePath(d, i));
       for (const d of ['east', 'west']) for (let i = 0; i < RANGER_HIT_FRAMES; i++) this.load.image(rangerHitFrameKey(d, i), rangerHitFramePath(d, i));
     }
+    // Rust Specialist art ('Rust Specialists — The Copper Fangs' folder), only for levels whose waves send Specialists (Level 4).
+    if (this._hasSpecialist()) {
+      for (const d of SPECIALIST_DIRS) {
+        this.load.image(specialistIdleKey(d), specialistIdlePath(d));
+        this.load.image(specialistStrikeKey(d), specialistStrikePath(d));
+        this.load.image(specialistWindupKey(d), specialistWindupPath(d));
+        for (let i = 0; i < SPECIALIST_DEATH_FRAMES; i++) this.load.image(specialistDeathFrameKey(d, i), specialistDeathFramePath(d, i));
+      }
+      for (const d of SPECIALIST_WALK_DIRS) for (let i = 0; i < SPECIALIST_WALK_FRAMES; i++) this.load.image(specialistWalkFrameKey(d, i), specialistWalkFramePath(d, i));
+      for (const d of SPECIALIST_HIT_DIRS) for (let i = 0; i < SPECIALIST_HIT_FRAMES; i++) this.load.image(specialistHitFrameKey(d, i), specialistHitFramePath(d, i));
+      for (const d of SPECIALIST_BATON_DIRS) for (let i = 0; i < SPECIALIST_BATON_FRAMES; i++) this.load.image(specialistBatonFrameKey(d, i), specialistBatonFramePath(d, i));
+      for (const d of SPECIALIST_TASER_DIRS) for (let i = 0; i < SPECIALIST_TASER_FRAMES; i++) this.load.image(specialistTaserFrameKey(d, i), specialistTaserFramePath(d, i));
+      for (const d of SPECIALIST_RANGED_DIRS) for (let i = 0; i < SPECIALIST_RANGED_FRAMES; i++) this.load.image(specialistRangedFrameKey(d, i), specialistRangedFramePath(d, i));
+      for (const d of SPECIALIST_BOLT_DIRS) for (let i = 0; i < SPECIALIST_BOLT_FRAMES; i++) this.load.image(specialistBoltFrameKey(d, i), specialistBoltFramePath(d, i));
+    }
     // Breaker Type 2 art (Rust-BreakerType2 folder), only for levels whose waves send it in (Level 2 elites).
     if (this._hasBreaker2()) {
       for (const d of BREAKER2_DIRS) {
@@ -210,6 +238,7 @@ export default class ArenaScene extends Phaser.Scene {
     this._registerBreakerDeathAnims();
     this._registerBreaker2Anims();
     this._registerRangerAnims();
+    this._registerSpecialistAnims();
     this._registerDuganAnims();
     this._registerRoyceAnims();
     this._registerKaneAnims();
@@ -277,6 +306,8 @@ export default class ArenaScene extends Phaser.Scene {
     this.wallSlamFx = new WallSlamFx(this, { events: ev, getZed: () => ({ x: this.zed.x, feetY: this.zed.laneY, vx: this.zed.sprite.body.velocity.x }), getXRange: () => this.arena.bounds.xRange, reduceFlash: () => this._reduceFlash() });
     this.grabCue = new GrabBreakCueFx(this, { events: ev, getZed: () => this.zed, getHeadTop: () => this.zedVisual.image.getBounds().top, reduceFlash: () => this._reduceFlash() });
 
+    this.boltFx = new SpecialistBoltFx(this, { getBolts: () => this.arena.enemies.bolts, reduceFlash: () => this._reduceFlash(), scale: 2 }); // Copper Fang Taser volley: muzzle flash, dart, trail, impact
+    this.zedShockFx = new ZedShockFx(this, { events: ev, getAttackerSkin: (id) => this.arena.enemies.get(id)?.skin ?? null, getImage: () => this.zedVisual.image, reduceFlash: () => this._reduceFlash() }); // Zed's electrified body after a Copper Fang taser hit
     this._listen(EVENTS.DAMAGE_APPLIED, (d) => this._onDamage(d));
     this._listen(EVENTS.ENTITY_REGISTERED, (p) => { if (p.boss && p.bossProfile) (this.bossProfiles ||= new Map()).set(p.id, p.bossProfile); });
     this._listen(EVENTS.ENTITY_DIED, (d) => {
@@ -301,7 +332,7 @@ export default class ArenaScene extends Phaser.Scene {
     this._listen(EVENTS.WAVE_STARTED, () => { this.rageWaveHold = false; });
     this._listen(EVENTS.ROUND_WON, (p) => this._endRound('win', p.reason));
     this._listen(EVENTS.ROUND_LOST, (p) => this._endRound('lose', p.reason));
-    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this.rageWaveHold = false; this._hideExit(); this.stats = this._freshStats(); this.rageFx.cancel(); this._clearHitStop(); this.megaStompFx.reset(); this.royceFx.reset(); this.kaneFx.reset(); this.wallSlamFx.reset(); this.grabCue.reset(); this._destroyDying(); this._clearPickups(); this._lowDrop = createLowHealthDrop(); this.score.reset(); this._resetVictory(); });
+    this._listen(EVENTS.RETRY, () => { this.ended = false; this.levelDone = false; this.rageWaveHold = false; this._hideExit(); this.stats = this._freshStats(); this.rageFx.cancel(); this._clearHitStop(); this.megaStompFx.reset(); this.royceFx.reset(); this.boltFx.reset(); this.kaneFx.reset(); this.wallSlamFx.reset(); this.grabCue.reset(); this.zedShockFx.reset(); this._destroyDying(); this._clearPickups(); this._lowDrop = createLowHealthDrop(); this.score.reset(); this._resetVictory(); });
 
     // Start the round only once the HUD exists, or it misses the first wave-started / timer-tick.
     this.scene.launch('HudScene', { level: this.level, number: this.levelIndex + 1, total: this.levels.length });
@@ -446,6 +477,25 @@ export default class ArenaScene extends Phaser.Scene {
     for (const d of ['east', 'west']) mk(rangerHitAnimKey(d), RANGER_HIT_FRAMES, (i) => rangerHitFrameKey(d, i), { repeat: 0, frameRate: 30 });
   }
 
+  _hasSpecialist() { return this.level.waves.some((w) => w.enemy === SPECIALIST_SKIN || (w.mix || []).includes(SPECIALIST_SKIN)); }
+
+  _registerSpecialistAnims() {
+    if (!this.textures.exists(specialistIdleKey('east'))) return;
+    const mk = (key, n, frameKey, cfg) => {
+      if (this.anims.exists(key) || !this.textures.exists(frameKey(0))) return;
+      this.anims.create({ key, ...cfg, frames: Array.from({ length: n }, (_, i) => ({ key: frameKey(i) })) });
+    };
+    for (const d of SPECIALIST_DIRS) mk(specialistDeathAnimKey(d), SPECIALIST_DEATH_FRAMES, (i) => specialistDeathFrameKey(d, i), { repeat: 0, frameRate: SPECIALIST_DEATH_DEFAULT_FPS });
+    for (const d of SPECIALIST_WALK_DIRS) mk(specialistWalkAnimKey(d), SPECIALIST_WALK_FRAMES, (i) => specialistWalkFrameKey(d, i), { frameRate: SPECIALIST_WALK_FPS, repeat: -1 });
+    for (const d of SPECIALIST_HIT_DIRS) mk(specialistHitAnimKey(d), SPECIALIST_HIT_FRAMES, (i) => specialistHitFrameKey(d, i), { repeat: 0, frameRate: 30 });
+    for (const d of SPECIALIST_BATON_DIRS) mk(specialistBatonAnimKey(d), SPECIALIST_BATON_FRAMES, (i) => specialistBatonFrameKey(d, i), { repeat: 0, frameRate: SPECIALIST_BATON_FPS });
+    for (const d of SPECIALIST_TASER_DIRS) mk(specialistTaserAnimKey(d), SPECIALIST_TASER_FRAMES, (i) => specialistTaserFrameKey(d, i), { repeat: 0, frameRate: SPECIALIST_TASER_FPS });
+    for (const d of SPECIALIST_RANGED_DIRS) {
+      mk(specialistRangedAnimKey(d), SPECIALIST_RANGED_FIRE_ORDER.length, (i) => specialistRangedFrameKey(d, SPECIALIST_RANGED_FIRE_ORDER[i]), { repeat: 0, frameRate: SPECIALIST_RANGED_FPS });
+      mk(specialistRangedAimKey(d), SPECIALIST_RANGED_AIM_FRAMES, (i) => specialistRangedFrameKey(d, i), { repeat: 0, frameRate: SPECIALIST_RANGED_FPS });
+    }
+  }
+
   _hasBreaker2() { return this.level.waves.some((w) => w.eliteSkin === BREAKER2_SKIN); }
 
   _registerBreaker2Anims() {
@@ -555,7 +605,7 @@ export default class ArenaScene extends Phaser.Scene {
   _teardown() {
     for (const [n, f] of this._listeners || []) this.ev.off(n, f);
     this._listeners = [];
-    this.rageFx.destroy(); this.megaStompFx.destroy(); this.royceFx.destroy(); this.kaneFx.destroy(); this.wallSlamFx.destroy(); this.grabCue.destroy(); this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
+    this.rageFx.destroy(); this.megaStompFx.destroy(); this.royceFx.destroy(); this.boltFx.destroy(); this.kaneFx.destroy(); this.wallSlamFx.destroy(); this.grabCue.destroy(); this.zedShockFx.destroy(); this.hitFx.destroy(); this.state.destroy(); this.resolver.destroy(); this.arena.dispose(); this.zed.destroy();
     this.sprites.clear(); this.dying.length = 0;
     this.scene.stop('HudScene'); this.scene.stop('ResultScene');
   }
@@ -769,6 +819,7 @@ export default class ArenaScene extends Phaser.Scene {
     const feetY = z.laneY;                                  // Zed's floor line (depth)
     const airborne = Math.max(0, GROUND_Y - (z.y + 36));    // jump height comes from the physics body
     this.zedVisual.update(z, zedFrozen ? 0 : dt, z.x, z.feetY, feetY);
+    this.zedShockFx.update(zedFrozen ? 0 : dt); // after the sprite is posed, so its tint and jitter win
     this.zedShadow.setPosition(z.x, feetY).setDepth(feetY - 1).setScale(1 - Math.min(0.4, airborne / 400));
 
     const walkers = [];
@@ -780,16 +831,17 @@ export default class ArenaScene extends Phaser.Scene {
         const royceArt = !duganArt && g.skin === ROYCE_ID && this.textures.exists(royceRotationKey('east')); // Level 2 mini-boss
         const kaneArt = !duganArt && !royceArt && g.skin === KANE_ID && this.textures.exists(kaneRotationKey('east')); // Level 3 mini-boss
         const type2 = !duganArt && !royceArt && !kaneArt && isBreaker2(g.skin) && this.textures.exists(breaker2RotationKey('east')); // Level 2 elites
-        const ranger = !duganArt && !royceArt && !kaneArt && !type2 && isRanger(g.skin) && this.textures.exists(rangerRotationKey('east')); // Rust Rangers (Level 3 wave 2, Level 4)
-        const hasArt = breaker && (duganArt || royceArt || kaneArt || type2 || ranger || this.textures.exists(breakerRotationKey('east')));
+        const specialist = !duganArt && !royceArt && !kaneArt && isSpecialist(g.skin) && this.textures.exists(specialistIdleKey('east')); // Rust Specialists, the Copper Fangs (Level 4 waves 1 and 3)
+        const ranger = !specialist && !duganArt && !royceArt && !kaneArt && !type2 && isRanger(g.skin) && this.textures.exists(rangerRotationKey('east')); // Rust Rangers (Level 3 wave 2, Level 4)
+        const hasArt = breaker && (duganArt || royceArt || kaneArt || type2 || ranger || specialist || this.textures.exists(breakerRotationKey('east')));
         const body = !breaker
           ? this.add.sprite(0, 0, breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(112, 112)
           : hasArt
-            ? this.add.sprite(0, 0, duganArt ? duganRotationKey('east') : royceArt ? royceRotationKey('east') : kaneArt ? kaneRotationKey('east') : ranger ? rangerRotationKey('east') : type2 ? breaker2RotationKey('east') : breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
+            ? this.add.sprite(0, 0, duganArt ? duganRotationKey('east') : royceArt ? royceRotationKey('east') : kaneArt ? kaneRotationKey('east') : specialist ? specialistIdleKey('east') : ranger ? rangerRotationKey('east') : type2 ? breaker2RotationKey('east') : breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(BREAKER_DISPLAY_SIZE, BREAKER_DISPLAY_SIZE)
             : this.add.image(0, 0, breakerRotationKey('east')).setOrigin(0.5, 0.94).setDisplaySize(144, 144);
         v = {
           shadow: this.add.ellipse(0, 0, 54, 14, 0x000000, 0.25),
-          body, breakerArt: hasArt, duganArt, royceArt, kaneArt, type2, ranger, bornAt: this.simNow,
+          body, breakerArt: hasArt, duganArt, royceArt, kaneArt, type2, ranger, specialist, bornAt: this.simNow,
           ring: this.add.ellipse(0, 0, 10, 10).setStrokeStyle(TELEGRAPH_CUE.ringStrokePx, 0xffa41c).setVisible(false).setDepth(3999), // parry cue: closes as the attack starts
           strip: (g.isBoss || g.chargeWarning !== undefined) ? this.add.rectangle(0, 0, 10, 70, 0xd23a2e, 0.28).setVisible(false).setDepth(LANE.minY) : null, // Dugan's charge lane: a red strip along the floor while he winds up
         };
@@ -797,7 +849,7 @@ export default class ArenaScene extends Phaser.Scene {
       }
       if (v.breakerArt) {
         // The art has real west-facing frames, so no flip: walk anim by movement direction, rotation pose otherwise.
-        let pose = v.duganArt ? duganPose(g) : v.royceArt ? roycePose(g) : v.kaneArt ? kanePose(g) : v.ranger ? rangerPose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
+        let pose = v.duganArt ? duganPose(g) : v.royceArt ? roycePose(g) : v.kaneArt ? kanePose(g) : v.specialist ? specialistPose(g) : v.ranger ? rangerPose(g) : v.type2 ? breaker2Pose(g) : breakerPose(g);
         if (v.type2 && g.alive) pose = breaker2FlipPose(g, this.simNow - v.bornAt) || pose; // Type 2 entrance: a front flip, then the normal walk
         if (g.alive && (pose.walk || pose.anim === (v.ranger ? rangerWalkAnimKey(pose.dir) : v.type2 ? breaker2WalkAnimKey(pose.dir) : breakerWalkAnimKey(pose.dir)))) walkers.push({ id: g.id, dist: Math.abs(g.x - z.x), lastStepMs: v.stepAt, v });
         v.body.setPosition(g.x, g.y).setDepth(g.y).setFlipX(!!pose.flipX); // real west frames exist, except Type 2's hit (east mirrored)
@@ -810,6 +862,9 @@ export default class ArenaScene extends Phaser.Scene {
             v.body.play(pose.anim);
             v.body.anims.timeScale = ((pose.frames ?? BREAKER_HIT_FRAMES) * 1000 / 30) / g.hitstunMs;
           }
+        } else if (pose.strike && this.anims.exists(pose.anim)) {
+          // Specialist baton strike: plays once from frame 0 each time the attack state is entered, the last frame holds; missing frames fall through to the rotation pose.
+          if (!v.strikeOn || v.body.anims.currentAnim?.key !== pose.anim) { v.body.anims.timeScale = 1; v.body.play(pose.anim); }
         } else if (pose.still && this.textures.exists(pose.still)) {
           v.body.anims.stop(); v.moveSeq = null; v.body.setTexture(pose.still); // grab: still frames, he has Zed in his hands
         } else if (pose.move && this.anims.exists(pose.anim)) {
@@ -823,6 +878,7 @@ export default class ArenaScene extends Phaser.Scene {
           v.body.anims.timeScale = 1;
           v.body.play(pose.anim, true); // attack plays once, restarts only when the state changes
         } else { v.body.anims.timeScale = 1; v.body.anims.stop(); v.body.setTexture(pose.rotation); }
+        v.strikeOn = !!pose.strike; // specialist baton strike: next attack restarts the clip
         // Frames come in different canvas sizes (48 rotations, 64-68 walk): fixed pixel scale + origin at the frame's real feet row.
         const key = v.body.texture.key;
         v.body.setScale((BREAKER_DISPLAY_SIZE / 48) * (v.duganArt ? 1 : g.visualScale || 1));
@@ -841,7 +897,7 @@ export default class ArenaScene extends Phaser.Scene {
       v.body.clearTint();
       const fl = this.hitFx.flashTint(g.id);
       if (fl) { if (fl.fill) v.body.setTintFill(fl.tint); else v.body.setTint(fl.tint); }
-      else if (g.data.tint && !v.duganArt && !v.royceArt && !v.kaneArt && !v.ranger) v.body.setTint(g.data.tint); // Breaker art standing in for Dugan: gunmetal wash so he reads as a different unit
+      else if (g.data.tint && !v.duganArt && !v.royceArt && !v.kaneArt && !v.ranger && !v.specialist) v.body.setTint(g.data.tint); // Breaker art standing in for Dugan: gunmetal wash so he reads as a different unit
       if (v.strip) this._drawChargeStrip(v, g);
       if (!g.alive && !v.breakerArt) { v.body.setAlpha(0.4).setAngle(80 * g.facing); v.shadow.setAlpha(0.1); }
     }
@@ -853,11 +909,16 @@ export default class ArenaScene extends Phaser.Scene {
 
     // Footsteps: one shared step voice for the whole scene (see pickStepper), so crowds don't stack into a glitchy rattle.
     const step = this.cache.audio.exists(GRUNT_STEP_SOUND_KEY) ? pickStepper(walkers, this.simNow, this.lastStepMs) : null;
-    if (step) { this.sound.play(GRUNT_STEP_SOUND_KEY, { volume: step.volume, rate: step.rate }); this.lastStepMs = this.simNow; walkers.find((w) => w.id === step.id).v.stepAt = this.simNow; }
+    if (step) {
+      const walker = walkers.find((w) => w.id === step.id);
+      const tone = walker.v.specialist ? specialistStep(step) : step; // Copper Fangs: heavier boots, same shared step voice
+      this.sound.play(GRUNT_STEP_SOUND_KEY, { volume: tone.volume, rate: tone.rate }); this.lastStepMs = this.simNow; walker.v.stepAt = this.simNow;
+    }
 
     this.hitFx.update(dt, this.sprites);
     this.megaStompFx.update(dt);
     this.royceFx.update(dt);
+    this.boltFx.update(dt);
     this.kaneFx.update(dt);
     this.wallSlamFx.update(dt);
     this.grabCue.update(dt);

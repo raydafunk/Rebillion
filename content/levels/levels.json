@@ -400,10 +400,10 @@
     "waves": [
       {
         "enemy": "rust-specialist",
-        "count": 5,
-        "maxAlive": 4,
-        "spawnIntervalMs": 700,
-        "startDelayMs": 600,
+        "count": 3,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1400,
+        "startDelayMs": 1000,
         "spawnPattern": "alternate",
         "attackerCap": 3,
         "restPickup": {
@@ -415,15 +415,15 @@
       },
       {
         "enemy": "rust-ranger",
-        "count": 5,
-        "maxAlive": 1,
-        "spawnIntervalMs": 1500,
-        "startDelayMs": 1000,
+        "count": 7,
+        "maxAlive": 2,
+        "spawnIntervalMs": 1100,
+        "startDelayMs": 800,
         "spawnPattern": "flank",
         "attackerCap": 3,
         "hpMult": 1.5,
         "restPickup": {
-          "heal": 35
+          "heal": 40
         },
         "mix": [
           "rust-ranger"
@@ -431,14 +431,14 @@
       },
       {
         "enemy": "rust-specialist",
-        "count": 5,
-        "maxAlive": 1,
-        "spawnIntervalMs": 1600,
-        "startDelayMs": 1000,
+        "count": 8,
+        "maxAlive": 3,
+        "spawnIntervalMs": 950,
+        "startDelayMs": 800,
         "spawnPattern": "ambush",
         "attackerCap": 3,
         "restPickup": {
-          "heal": 40
+          "heal": 50
         },
         "mix": [
           "rust-specialist"
@@ -446,7 +446,7 @@
       },
       {
         "enemy": "rust-ranger",
-        "count": 5,
+        "count": 8,
         "maxAlive": 3,
         "spawnIntervalMs": 650,
         "startDelayMs": 1000,

@@ -550,3 +550,36 @@ test('rage clips: 4 dirs, all frame files exist with declared counts', () => {
     }
   }
 });
+
+// --- Uppercut launch clip ---
+import { isLaunchHit, LAUNCH_HIT } from '../config.js';
+import { hitStateKey } from '../zedVisual.js';
+
+test('launch clip registered: 9 frames east/west, files exist, own texture key', () => {
+  const c = ZED_ANIMS.find((a) => a.state === 'launched');
+  assert.ok(c);
+  assert.equal(c.folder, 'lunched_in_the_air_b');
+  assert.equal(c.frames, 9);
+  assert.equal(c.repeat, 0);
+  assert.equal(zedAnimKey('launched', 'west'), 'zed.launched.west');
+  for (const d of ['east', 'west']) for (let i = 0; i < 9; i++) assert.ok(existsSync(new URL(`../../../assets/sprites/zed/${zedFramePath(c, d, i)}`, import.meta.url)));
+  assert.equal(clipOriginY(c, 'east', 0), 56 / 64);
+  assert.equal(clipOriginY(c, 'west', 0), 58 / 68);
+});
+
+test('uppercut hit is a launch hit; ordinary hits are not', () => {
+  assert.ok(isLaunchHit({ hitstun: 450, knockback: 300 }));
+  assert.ok(isLaunchHit({ hitstun: 450, knockback: -300 }));
+  for (const [hs, kb] of [[300, 360], [420, -560], [350, 450], [600, 180], [450, 120], [250, 200], [0, 0]]) assert.ok(!isLaunchHit({ hitstun: hs, knockback: kb }), `${hs}/${kb}`);
+  assert.ok(LAUNCH_HIT.minHitstunMs > 350);
+});
+
+test('uppercut selects zed.launched, normal hit keeps zed.hitstun, other states unaffected', () => {
+  assert.equal(hitStateKey('hitstun', 'launch'), 'launched');
+  assert.equal(hitStateKey('hitstun', null), 'hitstun');
+  assert.equal(hitStateKey('idle', 'launch'), 'idle');
+  const keys = (hitKind) => zedClipKeys({ state: 'hitstun', stateKey: hitStateKey('hitstun', hitKind), dir: 'west', dir8: 'west', carrying: false });
+  assert.equal(keys('launch')[0], 'zed.launched.west');
+  assert.ok(keys('launch').includes('zed.hitstun.west')); // fallback if the launch clip is not loaded
+  assert.equal(keys(null)[0], 'zed.hitstun.west');
+});

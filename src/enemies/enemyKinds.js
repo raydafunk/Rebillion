@@ -1,10 +1,11 @@
 // Enemy kinds a wave can mix (wave.mix lists kind ids, cycled in spawn order). No Phaser.
 // Gameplay is still the grunt's AI; a kind changes health, speed and (for the view) a tint so the mix reads on screen.
+import { SPECIALIST_RANGED } from './specialistRanged.js';
 // Ids match content/enemies and the level files. Unknown ids fall back to the plain grunt.
 export const KINDS = Object.freeze({
   grunt: Object.freeze({ skin: 'grunt', hpMult: 1, speedMult: 1, tint: null }),
   'rust-watcher': Object.freeze({ skin: 'rust-watcher', hpMult: 1.5, speedMult: 1.1, tint: 0xffd9a0 }), // tougher and quicker, amber wash
-  'rust-specialist': Object.freeze({ skin: 'rust-specialist', hpMult: 1.3, speedMult: 1.05, tint: 0xd9a066 }), // Copper Fang rank and file: a bit tougher, copper wash
+  'rust-specialist': Object.freeze({ skin: 'rust-specialist', hpMult: 1.3, speedMult: 1.05, tint: 0xd9a066, ranged: SPECIALIST_RANGED }), // Copper Fang rank and file: a bit tougher, copper wash; also fires Taser volleys then follows with the baton (specialistRanged.js)
   'rust-ranger': Object.freeze({ skin: 'rust-ranger', hpMult: 1.5, speedMult: 1.25, tint: 0xa0e0f0 }), // quickest, 1.5x health to match the Level 4 Ranger waves, cool cyan wash
 });
 export const kindFor = (id) => KINDS[id] || KINDS.grunt;

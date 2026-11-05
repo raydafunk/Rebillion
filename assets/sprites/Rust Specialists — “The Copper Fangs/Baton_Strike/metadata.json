@@ -1,0 +1,72 @@
+{
+  "group_id": "2facaf3b-4bf6-43b1-af4e-2b400b2f17d6",
+  "states": [
+    {
+      "character": {
+        "id": "231b44a9-13d4-42df-9292-d00ba15c174f",
+        "name": "Baton Strike",
+        "prompt": "Agile units equipped with taser rifles, batons, and tracking visors.",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-10-28T13:32:16.220336+00:00"
+      },
+      "folder": "Baton_Strike",
+      "frames": {
+        "rotations": {
+          "south": "Baton_Strike/rotations/south.png",
+          "south-east": "Baton_Strike/rotations/south-east.png",
+          "east": "Baton_Strike/rotations/east.png",
+          "north-east": "Baton_Strike/rotations/north-east.png",
+          "north": "Baton_Strike/rotations/north.png",
+          "north-west": "Baton_Strike/rotations/north-west.png",
+          "west": "Baton_Strike/rotations/west.png",
+          "south-west": "Baton_Strike/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_rapid_two-hit_baton_strik": {
+            "east": [
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_000.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_001.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_002.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_003.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_004.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_005.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_006.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_007.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/east/frame_008.png"
+            ],
+            "west": [
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_000.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_001.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_002.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_003.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_004.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_005.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_006.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_007.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/west/frame_008.png"
+            ],
+            "north": [
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_000.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_001.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_002.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_003.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_004.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_005.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_006.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_007.png",
+              "Baton_Strike/animations/The_character_performs_a_rapid_two-hit_baton_strik/north/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-05T07:44:54.220601"
+}

@@ -24,6 +24,8 @@ import { isRangerEnemy, rangerSoundReady, rangerVoiceFor, RANGER_HIT_SOUND_KEY, 
   RANGER_DEATH_SOUND_KEY, RANGER_DEATH_SOUND_VOLUME, RANGER_DEATH_SOUND_RATE } from './rangerSound.js';
 import { isWatcherEnemy, watcherSoundReady, watcherVoiceFor, WATCHER_HIT_SOUND_KEY, WATCHER_HIT_SOUND_VOLUME, WATCHER_HIT_SOUND_RATE,
   WATCHER_DEATH_SOUND_KEY, WATCHER_DEATH_SOUND_VOLUME, WATCHER_DEATH_SOUND_RATE } from './watcherSound.js';
+import { isSpecialistEnemy, specialistSoundReady, specialistVoiceFor, SPECIALIST_HIT_SOUND_KEY, SPECIALIST_HIT_SOUND_VOLUME, SPECIALIST_HIT_SOUND_RATE,
+  SPECIALIST_DEATH_SOUND_KEY, SPECIALIST_DEATH_SOUND_VOLUME, SPECIALIST_DEATH_SOUND_RATE } from './specialistSound.js';
 
 export const BAR_DEPTH = 5100;       // above characters (depth = y) and the swing overlay, below sparks (6000)
 export const SHAPE_DEPTH = P.layerDepth.shapes; // 5050: flash shapes above characters, BELOW the bar so they never cover it
@@ -64,6 +66,7 @@ export class EnemyHitFx {
     if (isBreaker2Enemy(g)) return this._playBreaker2Voice(id, killed);
     if (isRangerEnemy(g)) return this._playRangerVoice(id, killed);
     if (isWatcherEnemy(g)) return this._playWatcherVoice(id, killed);
+    if (isSpecialistEnemy(g)) return this._playSpecialistVoice(id, killed);
     if (!isPlainGrunt(g)) return;
     const which = gruntVoiceFor(killed, this.diedVoiced.has(id));
     if (!which) return;
@@ -125,6 +128,22 @@ export class EnemyHitFx {
     if (!watcherSoundReady(this.voiceAt.get(id), now)) return;
     this.voiceAt.set(id, now);
     sc.sound.play(WATCHER_HIT_SOUND_KEY, { volume: WATCHER_HIT_SOUND_VOLUME, rate: WATCHER_HIT_SOUND_RATE });
+  }
+
+  _playSpecialistVoice(id, killed) {
+    const sc = this.scene;
+    const which = specialistVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (sc.cache.audio.exists(SPECIALIST_DEATH_SOUND_KEY)) sc.sound.play(SPECIALIST_DEATH_SOUND_KEY, { volume: SPECIALIST_DEATH_SOUND_VOLUME, rate: SPECIALIST_DEATH_SOUND_RATE });
+      return;
+    }
+    if (!sc.cache.audio.exists(SPECIALIST_HIT_SOUND_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!specialistSoundReady(this.voiceAt.get(id), now)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(SPECIALIST_HIT_SOUND_KEY, { volume: SPECIALIST_HIT_SOUND_VOLUME, rate: SPECIALIST_HIT_SOUND_RATE });
   }
 
   _playDuganVoice(id, killed) {

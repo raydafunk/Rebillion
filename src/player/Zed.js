@@ -1,5 +1,5 @@
 // Zed: Phaser Arcade sprite wrapper. Movement + state machine. Uses global Phaser.
-import { ZED_CONFIG } from './config.js';
+import { ZED_CONFIG, isLaunchHit } from './config.js';
 import { InputState, padToKeys } from './input.js';
 import { JumpController } from './jump.js';
 import { PlayerStateMachine } from './stateMachine.js';
@@ -38,6 +38,7 @@ export class Zed {
     this.floorY = y + cfg.bodySize.h / 2;
     this.laneY = this.floorY;
     this.facing = 1;
+    this.hitKind = null; // 'launch' while the current hitstun came from an uppercut (visual only)
     this.dir8 = 'east'; // 8-way facing from movement input (visual only; hitboxes/combat use `facing`)
     this._carrying = false;
     if (globalThis.location?.search?.includes('carry')) this._carrying = true; // manual check: index.html?sandbox&carry
@@ -258,6 +259,7 @@ export class Zed {
       return; // no hitstun while blocking
     }
     this.rage.onHitTaken(); // ends the clean streak, cancels a buffered L press (blocked/parried hits return above)
+    this.hitKind = isLaunchHit(d) ? 'launch' : null; // visual only: which clip the hitstun shows
     this.machine.hit(Math.ceil(d.hitstun / this.cfg.fixedStepMs));
     if (d.hpAfter > 0 && this.scene.cache.audio.exists(OWW_SOUND_KEY)) this.scene.sound.play(OWW_SOUND_KEY, { volume: OWW_SOUND_VOLUME });
     this.sprite.body.setVelocityX(d.knockback);

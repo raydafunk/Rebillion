@@ -2,6 +2,7 @@
 // States: idle -> approach -> telegraph -> attack -> recover -> approach; hitstun; dead.
 import { GRUNT, ATTACKER_CAP, PARRY_CUE_LEAD_MS } from './gruntData.js';
 import { AttackSlots } from './AttackSlots.js';
+import { RANGED_VARIANT } from './specialistRanged.js';
 
 export const GruntState = {
   IDLE: 'idle', APPROACH: 'approach', TELEGRAPH: 'telegraph',
@@ -38,6 +39,8 @@ export class RustGrunt {
     this.jabIndex = 0;              // next hit of the jab string to emit
     this.attackCounter = 0;
     this.circling = false;
+    this.rangedCd = data.ranged ? data.ranged.firstCooldownMs : 0; // Specialists: ms until the next Taser volley is allowed
+    this.chainMs = 0;               // after a volley: ms left in which the next attack is the baton string
     this.circleDir = (Math.abs(hashId(id)) % 2) ? 1 : -1;
   }
 
@@ -59,7 +62,9 @@ export class RustGrunt {
     return this.telegraphTotalMs + this.variant.hits[this.variant.markIndex].atMs - PARRY_CUE_LEAD_MS;
   }
   _beginTelegraph() {
-    const v = this.pickVariant ? this.pickVariant(this) : plainVariant(this.data);
+    let v;
+    if (this.chainMs > 0 && this.data.ranged) { v = plainVariant(this.data); this.chainMs = 0; } // volley done: now the baton string
+    else v = this.pickVariant ? this.pickVariant(this) : plainVariant(this.data);
     this.variant = v; this.lastVariantId = v.id;
     this.telegraphTotalMs = this.data.telegraphMs + (v.holdMs || 0);
     this.timer = this.telegraphTotalMs;
@@ -96,6 +101,8 @@ export class RustGrunt {
     const d = this.data, dt = dtMs / 1000;
     this.vx = 0; this.vy = 0;
     if (this.state === GruntState.DEAD) return;
+    if (this.rangedCd > 0) this.rangedCd -= dtMs;
+    if (this.chainMs > 0) this.chainMs -= dtMs;
 
     if (this.kx !== 0) {
       this.x += this.kx * dt;
@@ -124,7 +131,13 @@ export class RustGrunt {
         while (!this.hitFired && this.jabIndex < hits.length && elapsed >= hits[this.jabIndex].atMs) {
           const jab = hits[this.jabIndex++];
           if (this.jabIndex >= hits.length) this.hitFired = true;
-          if (this.hooks.onHitRequest) {
+          if (jab.projectile) { // Taser Shot: a travelling bolt, not a melee hitbox; the manager flies it and files the hit-requests
+            this.attackCounter++;
+            if (this.hooks.onProjectileRequest) this.hooks.onProjectileRequest({
+              ownerId: this.id, x: this.x + this.facing * d.ranged.bolt.muzzle.x, y: this.y, lane: this.y, facing: this.facing,
+              damage: jab.damage, knockback: jab.knockback, hitstun: jab.hitstun,
+            });
+          } else if (this.hooks.onHitRequest) {
             this.attackCounter++;
             this.hooks.onHitRequest({
               attackerId: this.id, attackId: `${this.id}:${this.attackCounter}`, team: d.team,
@@ -133,7 +146,12 @@ export class RustGrunt {
             });
           }
         }
-        if (this.timer <= 0) { this.timer = d.recoverMs; this._set(GruntState.RECOVER); }
+        if (this.timer <= 0) {
+          const volley = this.variant.kind === 'ranged';
+          if (volley) { this.rangedCd = d.ranged.cooldownMs; this.chainMs = d.ranged.chainWindowMs; }
+          this.timer = volley ? d.ranged.recoverMs : d.recoverMs;
+          this._set(GruntState.RECOVER);
+        }
         break;
       }
       case GruntState.RECOVER:
@@ -147,10 +165,25 @@ export class RustGrunt {
     }
   }
 
+  /** Specialist only: at mid range, off cooldown and not mid-chain, line up on Zed's lane, then take a slot and start the Taser volley. True if it acted. */
+  _tryRanged(dt, t, dx, dy, dist) {
+    const r = this.data.ranged;
+    if (!r || this.rangedCd > 0 || this.chainMs > 0 || dist < r.minDist || dist > r.maxDist) return false;
+    if (Math.abs(dy) > r.laneTol) { this.circling = false; this._move(0, Math.sign(dy), this.data.moveSpeed * 0.8, dt); return true; } // line up first: the bolt flies along this lane
+    if (!this.slots.tryAcquire(this.id)) return false;
+    this.circling = false;
+    this.variant = RANGED_VARIANT; this.lastVariantId = RANGED_VARIANT.id;
+    this.telegraphTotalMs = this.data.telegraphMs + RANGED_VARIANT.holdMs;
+    this.timer = this.telegraphTotalMs;
+    this._set(GruntState.TELEGRAPH);
+    return true;
+  }
+
   _approach(dt, t) {
     const d = this.data;
     const dx = t.x - this.x, dy = t.y - this.y;
     const dist = Math.hypot(dx, dy) || 0.0001;
+    if (this._tryRanged(dt, t, dx, dy, dist)) return;
     if (dist <= d.attackRange && Math.abs(dy) > (d.laneTolerance ?? Infinity)) {
       this.circling = false;
       this._move(0, Math.sign(dy), d.moveSpeed, dt); // in range but off-lane: line up first so the swing can connect

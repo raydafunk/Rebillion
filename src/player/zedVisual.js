@@ -40,6 +40,11 @@ export const ZED_ANIMS = [
   { state: 'parry', folder: 'Zed_parry_reaction_a', anim: 'Zed_parry_reaction_animation_triggered_when_hit._Q', frames: 9, fps: 15, originY: 58 / 68, repeat: 0 },
   // Hit reaction (Taking_Punch): 6 frames, 64x64 canvas like Running (lowest opaque row 53 -> 56.5/64). Played once across the hitstun (stretched in update()).
   { state: 'hitstun', folder: 'when_getting_hit', anim: 'Taking_Punch', frames: 6, fps: 15, originY: 56.5 / 64, repeat: 0 },
+  // Uppercut launch (lunched_in_the_air_b): 9 frames, played once across the hitstun, holds the last frame. Canvases differ per dir: east 64x64
+  // (lowest opaque row per frame 53,52,51,50,47,46,50,50,52), west 68x68 (55,55,55,55,53,52,52,54,55). The tumble lift is in the art, so one
+  // fixed origin per dir at the starting foot row (+1 +2px gap): east 56/64, west 58/68. Purely visual: getState().lift / hit logic untouched.
+  { state: 'launched', folder: 'lunched_in_the_air_b', anim: 'The_character_performs_a_mid-air_lunge_by_curling', frames: 9, fps: 20, originY: 56 / 64, repeat: 0,
+    dirOriginY: { west: 58 / 68 } },
   // Pick up an item (Picking_Up): 5 frames, 64x64 canvas like Running (foot row assumed 53 -> 56.5/64). Stretched over PICKUP_POSE.duration.
   { state: 'pickup', folder: 'pick_up', anim: 'Picking_Up', frames: 5, fps: 12, originY: 56.5 / 64, repeat: 0 },
   // Rage Special (zed.special.<dir>): 9 frames, 68x68 canvas (foot row unmeasured, assumed 58/68). Stretched over the move.
@@ -105,6 +110,11 @@ export function dir8FromInput(moveX, moveY, prev = 'east') {
   return (y < 0 ? 'north' : y > 0 ? 'south' : '') + (y && x ? '-' : '') + (x > 0 ? 'east' : x < 0 ? 'west' : '');
 }
 
+/** stateKey for a hitstun: 'launched' for an uppercut hit (falls back to zed.hitstun if the clip is missing), else the machine state. Pure. */
+export function hitStateKey(state, hitKind) {
+  return state === 'hitstun' && hitKind === 'launch' ? 'launched' : state;
+}
+
 /** Carry clip state for the machine state, or null when the normal clips should play. */
 /** Clip keys to try, best first, for a live (non-dead) Zed: carry/run use the 8-way dir, then the east/west chain. */
 export function zedClipKeys({ state, stateKey, dir, dir8, carrying, raging = false }) {
@@ -130,11 +140,14 @@ export function carryState(carrying, machineState) {
 
 /** Queue rotation PNGs per state, plus east/west animation frames (call from scene.preload). */
 export function loadZedSprites(scene, states = ['Idle']) {
+  // Skip keys that already exist (scene restart) or are already queued in this preload (a second caller), so Phaser doesn't log "Texture key already in use".
+  const queued = (key) => scene.textures.exists(key) || scene.load.list.entries.some((f) => f.key === key) || scene.load.inflight.entries.some((f) => f.key === key);
+  const queue = (key, path) => { if (!queued(key)) scene.load.image(key, path); };
   for (const s of states) {
-    for (const d of DIRS) scene.load.image(zedTextureKey(s, d), `${ZED_SPRITE.base}${s}/rotations/${d}.png`);
+    for (const d of DIRS) queue(zedTextureKey(s, d), `${ZED_SPRITE.base}${s}/rotations/${d}.png`);
   }
   for (const a of ZED_ANIMS) for (const d of clipDirs(a)) for (let i = 0; i < a.frames; i++) {
-    scene.load.image(zedFrameKey(a.state, d, i), ZED_SPRITE.base + zedFramePath(a, d, i));
+    queue(zedFrameKey(a.state, d, i), ZED_SPRITE.base + zedFramePath(a, d, i));
   }
 }
 
@@ -226,7 +239,7 @@ export class ZedVisual {
     const facing = zed.facing;
     const dir = facing < 0 ? ZED_SPRITE.dir.left : ZED_SPRITE.dir.right;
     const grounded = zed.sprite.body.blocked.down || zed.sprite.body.touching.down;
-    const stateKey = m.state === 'attack' && m.moveId ? m.moveId : m.state;
+    const stateKey = m.state === 'attack' && m.moveId ? m.moveId : hitStateKey(m.state, zed.hitKind);
     if (this._wasDead && !zed.dead) this._anim = null; // revived (retry): force the next clip to restart
     this._wasDead = !!zed.dead;
     const carry = zed.dead || zed.rage?.isActive ? null : carryState(zed.carrying, m.state); // rage hides the carry look (zed.carrying itself is untouched)
@@ -256,7 +269,7 @@ export class ZedVisual {
         img.anims.timeScale = (clip.frames / clip.fps) / (PARRY.duration / 60);
       } else if (m.state === 'pickup' && clip) { // one pass across the whole pick-up
         img.anims.timeScale = (clip.frames / clip.fps) / (PICKUP_POSE.duration / 60);
-      } else if (m.state === 'hitstun' && clip) { // one pass across the whole hitstun (length captured when the hit lands)
+      } else if (m.state === 'hitstun' && clip) { // one pass (Taking_Punch or the uppercut launch clip) across the whole hitstun (length captured when the hit lands)
         if (this._hitTotal == null || m.hitstunLeft > this._hitLeft) this._hitTotal = m.hitstunLeft;
         this._hitLeft = m.hitstunLeft;
         img.anims.timeScale = (clip.frames / clip.fps) / (Math.max(1, this._hitTotal) / 60);

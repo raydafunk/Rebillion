@@ -1,0 +1,650 @@
+{
+  "group_id": "7d9441be-16e5-43b8-9850-03178f2143ac",
+  "states": [
+    {
+      "character": {
+        "id": "a8a0d812-55e7-4e7d-8506-0b7c794e8cb5",
+        "name": "Idle",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T17:11:40.451211+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "idle_breathing": {
+            "west": [
+              "Idle/animations/idle_breathing/west/frame_000.png",
+              "Idle/animations/idle_breathing/west/frame_001.png",
+              "Idle/animations/idle_breathing/west/frame_002.png",
+              "Idle/animations/idle_breathing/west/frame_003.png",
+              "Idle/animations/idle_breathing/west/frame_004.png",
+              "Idle/animations/idle_breathing/west/frame_005.png",
+              "Idle/animations/idle_breathing/west/frame_006.png",
+              "Idle/animations/idle_breathing/west/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/idle_breathing/south/frame_000.png",
+              "Idle/animations/idle_breathing/south/frame_001.png",
+              "Idle/animations/idle_breathing/south/frame_002.png",
+              "Idle/animations/idle_breathing/south/frame_003.png",
+              "Idle/animations/idle_breathing/south/frame_004.png",
+              "Idle/animations/idle_breathing/south/frame_005.png",
+              "Idle/animations/idle_breathing/south/frame_006.png",
+              "Idle/animations/idle_breathing/south/frame_007.png"
+            ],
+            "east": [
+              "Idle/animations/idle_breathing/east/frame_000.png",
+              "Idle/animations/idle_breathing/east/frame_001.png",
+              "Idle/animations/idle_breathing/east/frame_002.png",
+              "Idle/animations/idle_breathing/east/frame_003.png",
+              "Idle/animations/idle_breathing/east/frame_004.png",
+              "Idle/animations/idle_breathing/east/frame_005.png",
+              "Idle/animations/idle_breathing/east/frame_006.png",
+              "Idle/animations/idle_breathing/east/frame_007.png"
+            ],
+            "north": [
+              "Idle/animations/idle_breathing/north/frame_000.png",
+              "Idle/animations/idle_breathing/north/frame_001.png",
+              "Idle/animations/idle_breathing/north/frame_002.png",
+              "Idle/animations/idle_breathing/north/frame_003.png",
+              "Idle/animations/idle_breathing/north/frame_004.png",
+              "Idle/animations/idle_breathing/north/frame_005.png",
+              "Idle/animations/idle_breathing/north/frame_006.png",
+              "Idle/animations/idle_breathing/north/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "8563527c-2fb0-4cb3-9d53-44ec532160e7",
+        "name": "walking",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:11:14.655891+00:00"
+      },
+      "folder": "walking",
+      "frames": {
+        "rotations": {
+          "south": "walking/rotations/south.png",
+          "south-east": "walking/rotations/south-east.png",
+          "east": "walking/rotations/east.png",
+          "north-east": "walking/rotations/north-east.png",
+          "north": "walking/rotations/north.png",
+          "north-west": "walking/rotations/north-west.png",
+          "west": "walking/rotations/west.png",
+          "south-west": "walking/rotations/south-west.png"
+        },
+        "animations": {
+          "walking": {
+            "east": [
+              "walking/animations/walking/east/frame_000.png",
+              "walking/animations/walking/east/frame_001.png",
+              "walking/animations/walking/east/frame_002.png",
+              "walking/animations/walking/east/frame_003.png",
+              "walking/animations/walking/east/frame_004.png",
+              "walking/animations/walking/east/frame_005.png",
+              "walking/animations/walking/east/frame_006.png",
+              "walking/animations/walking/east/frame_007.png"
+            ],
+            "west": [
+              "walking/animations/walking/west/frame_000.png",
+              "walking/animations/walking/west/frame_001.png",
+              "walking/animations/walking/west/frame_002.png",
+              "walking/animations/walking/west/frame_003.png",
+              "walking/animations/walking/west/frame_004.png",
+              "walking/animations/walking/west/frame_005.png",
+              "walking/animations/walking/west/frame_006.png",
+              "walking/animations/walking/west/frame_007.png"
+            ],
+            "south": [
+              "walking/animations/walking/south/frame_000.png",
+              "walking/animations/walking/south/frame_001.png",
+              "walking/animations/walking/south/frame_002.png",
+              "walking/animations/walking/south/frame_003.png",
+              "walking/animations/walking/south/frame_004.png",
+              "walking/animations/walking/south/frame_005.png",
+              "walking/animations/walking/south/frame_006.png",
+              "walking/animations/walking/south/frame_007.png"
+            ],
+            "north": [
+              "walking/animations/walking/north/frame_000.png",
+              "walking/animations/walking/north/frame_001.png",
+              "walking/animations/walking/north/frame_002.png",
+              "walking/animations/walking/north/frame_003.png",
+              "walking/animations/walking/north/frame_004.png",
+              "walking/animations/walking/north/frame_005.png",
+              "walking/animations/walking/north/frame_006.png",
+              "walking/animations/walking/north/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "0004036c-3df1-4c00-aee6-7edb00dc918c",
+        "name": "Drone Barrage",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:13:07.133797+00:00"
+      },
+      "folder": "Drone_Barrage",
+      "frames": {
+        "rotations": {
+          "south": "Drone_Barrage/rotations/south.png",
+          "south-east": "Drone_Barrage/rotations/south-east.png",
+          "east": "Drone_Barrage/rotations/east.png",
+          "north-east": "Drone_Barrage/rotations/north-east.png",
+          "north": "Drone_Barrage/rotations/north.png",
+          "north-west": "Drone_Barrage/rotations/north-west.png",
+          "west": "Drone_Barrage/rotations/west.png",
+          "south-west": "Drone_Barrage/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_their_right_hand_back_to_the_h": {
+            "north": [
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_000.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_001.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_002.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_003.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_004.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_005.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_006.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_007.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/north/frame_008.png"
+            ],
+            "east": [
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_000.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_001.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_002.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_003.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_004.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_005.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_006.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_007.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_008.png"
+            ],
+            "west": [
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_000.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_001.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_002.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_003.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_004.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_005.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_006.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_007.png",
+              "Drone_Barrage/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "a0e9a460-7d69-49ac-9b08-489c8ae872f4",
+        "name": "\u2022\tHologram Duplicate",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:13:24.597310+00:00"
+      },
+      "folder": "Hologram_Duplicate",
+      "frames": {
+        "rotations": {
+          "south": "Hologram_Duplicate/rotations/south.png",
+          "south-east": "Hologram_Duplicate/rotations/south-east.png",
+          "east": "Hologram_Duplicate/rotations/east.png",
+          "north-east": "Hologram_Duplicate/rotations/north-east.png",
+          "north": "Hologram_Duplicate/rotations/north.png",
+          "north-west": "Hologram_Duplicate/rotations/north-west.png",
+          "west": "Hologram_Duplicate/rotations/west.png",
+          "south-west": "Hologram_Duplicate/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_rapid_shimmering_pulse_cr": {
+            "east": [
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_000.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_001.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_002.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_003.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_004.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_005.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_006.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_007.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/east/frame_008.png"
+            ],
+            "west": [
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_000.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_001.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_002.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_003.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_004.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_005.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_006.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_007.png",
+              "Hologram_Duplicate/animations/The_character_performs_a_rapid_shimmering_pulse_cr/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "114db06b-e776-48d7-8bdc-2ee8a6c3e277",
+        "name": "Shock Disk Throw sta",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:13:58.490905+00:00"
+      },
+      "folder": "Shock_Disk_Throw_sta",
+      "frames": {
+        "rotations": {
+          "south": "Shock_Disk_Throw_sta/rotations/south.png",
+          "south-east": "Shock_Disk_Throw_sta/rotations/south-east.png",
+          "east": "Shock_Disk_Throw_sta/rotations/east.png",
+          "north-east": "Shock_Disk_Throw_sta/rotations/north-east.png",
+          "north": "Shock_Disk_Throw_sta/rotations/north.png",
+          "north-west": "Shock_Disk_Throw_sta/rotations/north-west.png",
+          "west": "Shock_Disk_Throw_sta/rotations/west.png",
+          "south-west": "Shock_Disk_Throw_sta/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_draws_their_right_hand_back_to_the_h": {
+            "east": [
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_000.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_001.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_002.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_003.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_004.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_005.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_006.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_007.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/east/frame_008.png"
+            ],
+            "north": [
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_000.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_001.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_002.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_003.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_004.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_005.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_006.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_007.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/north/frame_008.png"
+            ],
+            "west": [
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_000.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_001.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_002.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_003.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_004.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_005.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_006.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_007.png",
+              "Shock_Disk_Throw_sta/animations/The_character_draws_their_right_hand_back_to_the_h/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "c19baa58-8a7a-4f63-96a0-82bb3c602984",
+        "name": "Data Spike",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:15:06.268697+00:00"
+      },
+      "folder": "Data_Spike",
+      "frames": {
+        "rotations": {
+          "south": "Data_Spike/rotations/south.png",
+          "south-east": "Data_Spike/rotations/south-east.png",
+          "east": "Data_Spike/rotations/east.png",
+          "north-east": "Data_Spike/rotations/north-east.png",
+          "north": "Data_Spike/rotations/north.png",
+          "north-west": "Data_Spike/rotations/north-west.png",
+          "west": "Data_Spike/rotations/west.png",
+          "south-west": "Data_Spike/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_the_right_hand_back_to_the_hip": {
+            "north": [
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_000.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_001.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_002.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_003.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_004.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_005.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_006.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_007.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/north/frame_008.png"
+            ],
+            "west": [
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_000.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_001.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_002.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_003.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_004.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_005.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_006.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_007.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/west/frame_008.png"
+            ],
+            "east": [
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_000.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_001.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_002.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_003.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_004.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_005.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_006.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_007.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/east/frame_008.png"
+            ],
+            "south": [
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_000.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_001.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_002.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_003.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_004.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_005.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_006.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_007.png",
+              "Data_Spike/animations/The_character_pulls_the_right_hand_back_to_the_hip/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "f3144fe7-c705-4e9a-a2fa-87fea9554fa7",
+        "name": "Emergency Teleport",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:15:41.587331+00:00"
+      },
+      "folder": "Emergency_Teleport",
+      "frames": {
+        "rotations": {
+          "south": "Emergency_Teleport/rotations/south.png",
+          "south-east": "Emergency_Teleport/rotations/south-east.png",
+          "east": "Emergency_Teleport/rotations/east.png",
+          "north-east": "Emergency_Teleport/rotations/north-east.png",
+          "north": "Emergency_Teleport/rotations/north.png",
+          "north-west": "Emergency_Teleport/rotations/north-west.png",
+          "west": "Emergency_Teleport/rotations/west.png",
+          "south-west": "Emergency_Teleport/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_rapidly_dissolves_into_a_shimmering": {
+            "west": [
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_000.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_001.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_002.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_003.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_004.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_005.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_006.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_007.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/west/frame_008.png"
+            ],
+            "north": [
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_000.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_001.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_002.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_003.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_004.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_005.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_006.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_007.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/north/frame_008.png"
+            ],
+            "east": [
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_000.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_001.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_002.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_003.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_004.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_005.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_006.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_007.png",
+              "Emergency_Teleport/animations/The_character_rapidly_dissolves_into_a_shimmering/east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "736bd828-8106-433b-b278-4889ee6e9377",
+        "name": "talking a punch",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:16:14.291142+00:00"
+      },
+      "folder": "talking_a_punch",
+      "frames": {
+        "rotations": {
+          "south": "talking_a_punch/rotations/south.png",
+          "south-east": "talking_a_punch/rotations/south-east.png",
+          "east": "talking_a_punch/rotations/east.png",
+          "north-east": "talking_a_punch/rotations/north-east.png",
+          "north": "talking_a_punch/rotations/north.png",
+          "north-west": "talking_a_punch/rotations/north-west.png",
+          "west": "talking_a_punch/rotations/west.png",
+          "south-west": "talking_a_punch/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "west": [
+              "talking_a_punch/animations/Taking_Punch/west/frame_000.png",
+              "talking_a_punch/animations/Taking_Punch/west/frame_001.png",
+              "talking_a_punch/animations/Taking_Punch/west/frame_002.png",
+              "talking_a_punch/animations/Taking_Punch/west/frame_003.png",
+              "talking_a_punch/animations/Taking_Punch/west/frame_004.png",
+              "talking_a_punch/animations/Taking_Punch/west/frame_005.png"
+            ],
+            "east": [
+              "talking_a_punch/animations/Taking_Punch/east/frame_000.png",
+              "talking_a_punch/animations/Taking_Punch/east/frame_001.png",
+              "talking_a_punch/animations/Taking_Punch/east/frame_002.png",
+              "talking_a_punch/animations/Taking_Punch/east/frame_003.png",
+              "talking_a_punch/animations/Taking_Punch/east/frame_004.png",
+              "talking_a_punch/animations/Taking_Punch/east/frame_005.png"
+            ],
+            "north": [
+              "talking_a_punch/animations/Taking_Punch/north/frame_000.png",
+              "talking_a_punch/animations/Taking_Punch/north/frame_001.png",
+              "talking_a_punch/animations/Taking_Punch/north/frame_002.png",
+              "talking_a_punch/animations/Taking_Punch/north/frame_003.png",
+              "talking_a_punch/animations/Taking_Punch/north/frame_004.png",
+              "talking_a_punch/animations/Taking_Punch/north/frame_005.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "b6ea5013-05d0-46f9-946c-51dc9abbbc70",
+        "name": "death fall",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T20:46:33.276607+00:00"
+      },
+      "folder": "death_fall",
+      "frames": {
+        "rotations": {
+          "south": "death_fall/rotations/south.png",
+          "south-east": "death_fall/rotations/south-east.png",
+          "east": "death_fall/rotations/east.png",
+          "north-east": "death_fall/rotations/north-east.png",
+          "north": "death_fall/rotations/north.png",
+          "north-west": "death_fall/rotations/north-west.png",
+          "west": "death_fall/rotations/west.png",
+          "south-west": "death_fall/rotations/south-west.png"
+        },
+        "animations": {
+          "Falling_Back_Death": {
+            "north": [
+              "death_fall/animations/Falling_Back_Death/north/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/north/frame_006.png"
+            ],
+            "east": [
+              "death_fall/animations/Falling_Back_Death/east/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/east/frame_006.png"
+            ],
+            "west": [
+              "death_fall/animations/Falling_Back_Death/west/frame_000.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_001.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_002.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_003.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_004.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_005.png",
+              "death_fall/animations/Falling_Back_Death/west/frame_006.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "1409cdf1-bc09-41ce-a0d5-c584489cdeb2",
+        "name": "\u2022\tHologram Duplicate (copy)",
+        "prompt": "A sleek futuristic scout wearing a glowing, translucent holographic mask with faint digital patterns, equipped with a compact mechanical drone pack mounted on the shoulders, neutral standing pose, side profile view, dark metallic color palette with vibrant neon cyan accents, crisp black outlines.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-03T19:29:09.049161+00:00"
+      },
+      "folder": "Hologram_Duplicate_copy",
+      "frames": {
+        "rotations": {
+          "south": "Hologram_Duplicate_copy/rotations/south.png",
+          "south-east": "Hologram_Duplicate_copy/rotations/south-east.png",
+          "east": "Hologram_Duplicate_copy/rotations/east.png",
+          "north-east": "Hologram_Duplicate_copy/rotations/north-east.png",
+          "north": "Hologram_Duplicate_copy/rotations/north.png",
+          "north-west": "Hologram_Duplicate_copy/rotations/north-west.png",
+          "west": "Hologram_Duplicate_copy/rotations/west.png",
+          "south-west": "Hologram_Duplicate_copy/rotations/south-west.png"
+        },
+        "animations": {
+          "Surprise_Uppercut": {
+            "east": [
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/east/frame_000.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/east/frame_001.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/east/frame_002.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/east/frame_003.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/east/frame_004.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/east/frame_005.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/east/frame_006.png"
+            ],
+            "north": [
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/north/frame_000.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/north/frame_001.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/north/frame_002.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/north/frame_003.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/north/frame_004.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/north/frame_005.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/north/frame_006.png"
+            ],
+            "west": [
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/west/frame_000.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/west/frame_001.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/west/frame_002.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/west/frame_003.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/west/frame_004.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/west/frame_005.png",
+              "Hologram_Duplicate_copy/animations/Surprise_Uppercut/west/frame_006.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-04T21:46:56.736747"
+}

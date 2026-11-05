@@ -14,3 +14,11 @@ export const FAILSAFE = Object.freeze({
   maxTeleports: 3,        // after this many repositions, remove the enemy
   checkEveryMs: 250,
 });
+
+// Enemy-to-enemy spacing (keeps a crowd from stacking when the player stands at the end of the arena).
+export const SEPARATION = Object.freeze({
+  radiusX: 70,    // px: horizontal gap enemies keep from each other
+  radiusY: 28,    // px: depth gap (lane is shallow, so smaller)
+  strength: 0.6,  // fraction of the overlap resolved per pass
+  passes: 3,
+});

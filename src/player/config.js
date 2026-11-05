@@ -13,3 +13,12 @@ export const ZED_CONFIG = {
   blockMoveFactor: 0.0,
   fixedStepMs: 1000 / 60,
 };
+
+// A "launch" hit (Kane's Crushing Uppercut) shows the lunge-in-the-air clip instead of Taking_Punch. damage-applied carries no move id
+// (attackId is `<id>:<counter>:<ms>`), so it is recognised by its numbers: long hitstun AND real knockback. Kane's uppercut is 450 ms / 300;
+// every other enemy hit is <= 420 ms (Kane's hook pull is 420 ms / -560, so the cut is 440), or long-stun-but-weak (Royce stun 600 ms / 180, trap tick 450 ms / 120).
+export const LAUNCH_HIT = { minHitstunMs: 440, minKnockback: 250 };
+/** True when a damage-applied payload is a launch hit (the uppercut). Pure. */
+export function isLaunchHit(d, t = LAUNCH_HIT) {
+  return !!d && (d.hitstun ?? 0) >= t.minHitstunMs && Math.abs(d.knockback ?? 0) >= t.minKnockback;
+}
