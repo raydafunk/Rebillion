@@ -1,5 +1,5 @@
 # Content brief: lore
-_Generated 2026-11-04T16:43:34.485Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
+_Generated 2026-11-06T07:06:29.693Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs lore`; do not hand-edit._
 
 **Writer agent:** lore-writer-agent  |  **Output dir:** `content/lore/`  |  **Produces:** Districts, characters, factions, places and story beats.
 
@@ -755,12 +755,12 @@ A hit cancels a buffered L press.
 The meter resets on a retry as well as at level start.
 Lore wording has not yet been checked against the existing GDD and content/lore files.
 
+### [level-01-brick-red-alley#1] derived - design/levels/level-01-brick-red-alley.md - Level 1: Brick-Red Alley (style guide)
+Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style set**.
+
 ### [canon#8] derived - design/lore/canon.md - Zed — The Boy from Brick‑Red Alley
 Zed grew up in the heart of Fallen City, in a neighbourhood painted with “corner shops, murals celebrating local heroes, open windows with music drifting out”. His block was known for its mustard‑yellow storefronts, forest‑green basketball courts, and the brick‑red alley where kids learned to fight, dance, and argue like family. It wasn’t perfect, but it was alive — culturally rich, loud, hopeful, and full of people who looked out for each other.
 His mother ran a tiny food stall near the community garden, serving hot bowls of stew to anyone who needed a meal. His father, a muralist, painted the faces of local heroes across the district walls — cooks, musicians, activists, teachers — everyday people who kept Fallen City standing. Zed grew up believing that strength wasn’t about power; it was about protecting the people who gave your life meaning.
-
-### [level-01-brick-red-alley#1] derived - design/levels/level-01-brick-red-alley.md - Level 1: Brick-Red Alley (style guide)
-Owner agent: `level-style-01-brick-red-alley-agent`. Status: **2026-10-20, style set**.
 
 ### [level-01-brick-red-alley#2] derived - design/levels/level-01-brick-red-alley.md - Known from the level data (do not contradict)
 - District: `brick-red-alley`
@@ -830,9 +830,12 @@ Used only while Zed is in Rage (`zed.rage.isActive`) and the machine state is id
 | zed.ragerun.<dir> | assets/sprites/zed/Super_special_move_running/animations/Running/<dir>/frame_000..007.png | 68x68 | 8 per direction | ANIM | east/west/north/south only, loop, 13 fps; mean foot row E 54.5, W 53.9, N 54.0, S 57.9; diagonals use east/west |
 
 ### [level-01-brick-red-alley-2#1] reference - exports/level-01-brick-red-alley.pdf
-Level 1: Brick-Red Alley (style guide) Owner agent: level-style-01-brick-red-alley-agent . Status: 2026-10-20, style set.
-Known from the level data (do not contradict) District: brick-red-alley Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music. Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F Time limit: 120 s. Waves: 3. Enemies named: grunt. Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe." Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
-House rules that apply to every level Source: design/art/style-guide.md .
+Level 1: Brick-Red Alley (style guide)
+Owner agent: level-style-01-brick-red-alley-agent . Status: 2026-10-20, style set.
+Known from the level data (do not contradict)
+District: brick-red-alley Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music. Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F Time limit: 120 s. Waves: 3. Enemies named: grunt. Intro: "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe." Outro: "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row."
+House rules that apply to every level
+Source: design/art/style-guide.md .
 
 ### [player-psychologist#5] reference - gdd-review-kit-main/reviews/player-psychologist.md - Finding 5: The player's motivation and context are thin ("corrupt private security force"), and the level flow is never described
 **Problem:** The document says the player fights a corrupt security force through urban districts but gives no goal beyond clearing arenas. There is no sense of a journey across districts, no variety between levels, and no pacing (breathers, bosses, escalation). Repeated arena clearing with a timer risks monotony. This is a player-experience concern about variety and momentum, not a story critique. Also, the title and pitch text are inconsistent ("The Rebellion", "Fists of the Fallen City", "first of the Fallen city"), so players and marketing get no clear identity for the experience.
@@ -850,4 +853,4 @@ Rust/Rush: no occurrence of "Rush" in any menu text. The only instance is the GD
 Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 860 chunks across 90 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 883 chunks across 93 documents.

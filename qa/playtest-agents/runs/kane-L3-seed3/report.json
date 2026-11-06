@@ -1,0 +1,687 @@
+{
+  "stamp": "2026-11-06T07-29-45",
+  "seed": 3,
+  "base": "playtest.html",
+  "results": [
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "boss-hunter",
+        "stopOn": "wave",
+        "maxSec": 180,
+        "id": "MB-L3-kane-solo",
+        "tier": "mini-boss",
+        "boss": "\"Crusher\" Kane (solo)",
+        "level": 3,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 136,
+      "video": "videos/MB-L3-kane-solo.webm",
+      "persona": "boss-hunter",
+      "kind": "competent",
+      "level": 3,
+      "levelName": "Greenline Courts",
+      "outcome": null,
+      "done": false,
+      "elapsedMs": 111786,
+      "stats": {
+        "hitsDealt": 32,
+        "hitsTaken": 0,
+        "damageDealt": 340,
+        "damageTaken": 0,
+        "parryAttempts": 2,
+        "parries": 2,
+        "kills": 5,
+        "wavesCleared": 1,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 9,
+        "minFps": 58,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 47,
+          "wait": 60,
+          "attack": 950,
+          "parry": 2,
+          "victory": 147,
+          "exit": 317
+        },
+        "notes": {
+          "parry": 2,
+          "heavy": 2,
+          "rage-special": 9
+        },
+        "goalShare": {
+          "intro": 3,
+          "wait": 4,
+          "attack": 62,
+          "parry": 0,
+          "victory": 10,
+          "exit": 21
+        }
+      },
+      "bosses": [
+        {
+          "id": "crusher-kane-1",
+          "seenT": 88025,
+          "diedT": 97037,
+          "maxHp": 220,
+          "moves": {
+            "hammer": {
+              "seen": 2,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 2,
+              "parried": 2
+            }
+          },
+          "minHp": 0,
+          "seq": [
+            "hammer",
+            "hammer"
+          ],
+          "stuns": 2,
+          "patchesLaid": 0,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 0,
+          "secLeftDied": 200
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 86196,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 87007,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 87028,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 88025,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91071,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 91071,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "crusher-kane-1",
+          "clock": 800,
+          "mark": 890
+        },
+        {
+          "t": 91086,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 91255,
+          "type": "parry-success"
+        },
+        {
+          "t": 91273,
+          "type": "boss-stunned",
+          "id": "crusher-kane-1",
+          "move": "hammer"
+        },
+        {
+          "t": 94703,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 94703,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "crusher-kane-1",
+          "clock": 783,
+          "mark": 890
+        },
+        {
+          "t": 94720,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 94904,
+          "type": "parry-success"
+        },
+        {
+          "t": 94921,
+          "type": "boss-stunned",
+          "id": "crusher-kane-1",
+          "move": "hammer"
+        },
+        {
+          "t": 97037,
+          "type": "boss-down",
+          "id": "crusher-kane-1"
+        },
+        {
+          "t": 98484,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 100973,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 106487,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 106513,
+          "type": "goal",
+          "id": "exit"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "parry-master",
+        "stopOn": "wave",
+        "maxSec": 180,
+        "id": "MB-L3-kane-parry",
+        "tier": "mini-boss",
+        "boss": "Kane vs Parry Master",
+        "level": 3,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 42,
+      "video": "videos/MB-L3-kane-parry.webm",
+      "persona": "parry-master",
+      "kind": "competent",
+      "level": 3,
+      "levelName": "Greenline Courts",
+      "outcome": null,
+      "done": false,
+      "elapsedMs": 40358,
+      "stats": {
+        "hitsDealt": 31,
+        "hitsTaken": 1,
+        "damageDealt": 340,
+        "damageTaken": 20,
+        "parryAttempts": 2,
+        "parries": 2,
+        "kills": 5,
+        "wavesCleared": 1,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 2,
+        "minFps": 56,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 33,
+          "wait": 60,
+          "attack": 790,
+          "parry": 2,
+          "evade-kane": 101,
+          "victory": 151,
+          "reposition": 80,
+          "exit": 335
+        },
+        "notes": {
+          "parry": 2,
+          "heavy": 2,
+          "kane-backstep": 62,
+          "kane-jump": 39,
+          "reposition": 80,
+          "rage-special": 2
+        },
+        "repositions": 1,
+        "goalShare": {
+          "intro": 2,
+          "wait": 4,
+          "attack": 51,
+          "parry": 0,
+          "evade-kane": 7,
+          "victory": 10,
+          "reposition": 5,
+          "exit": 22
+        }
+      },
+      "bosses": [
+        {
+          "id": "crusher-kane-1",
+          "seenT": 16030,
+          "diedT": 24024,
+          "maxHp": 220,
+          "moves": {
+            "hammer": {
+              "seen": 2,
+              "hitZed": 1,
+              "damage": 20,
+              "evaded": 1,
+              "parried": 1
+            }
+          },
+          "minHp": 0,
+          "seq": [
+            "hammer",
+            "hammer"
+          ],
+          "stuns": 1,
+          "patchesLaid": 0,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 0,
+          "secLeftDied": 201
+        }
+      ],
+      "findings": [
+        {
+          "id": "exit-blocked",
+          "severity": "S1",
+          "title": "Level finished but Zed cannot reach the exit",
+          "detail": "x=4314 exit=5070",
+          "firstT": 39790,
+          "lastT": 40357.70000000298,
+          "count": 35
+        }
+      ],
+      "timeline": [
+        {
+          "t": 14414,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 15008,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 15028,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 16030,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 19058,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 19058,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "crusher-kane-1",
+          "clock": 783,
+          "mark": 890
+        },
+        {
+          "t": 19079,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 19258,
+          "type": "parry-success"
+        },
+        {
+          "t": 19275,
+          "type": "boss-stunned",
+          "id": "crusher-kane-1",
+          "move": "hammer"
+        },
+        {
+          "t": 21741,
+          "type": "goal",
+          "id": "evade-kane"
+        },
+        {
+          "t": 23124,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 20,
+          "move": "hammer"
+        },
+        {
+          "t": 23424,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 24024,
+          "type": "boss-down",
+          "id": "crusher-kane-1"
+        },
+        {
+          "t": 25473,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 27974,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 28207,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 28207,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-4",
+          "clock": 233,
+          "mark": 350
+        },
+        {
+          "t": 28223,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 28407,
+          "type": "parry-success"
+        },
+        {
+          "t": 30890,
+          "type": "reposition",
+          "left": 1,
+          "right": 1,
+          "to": "left"
+        },
+        {
+          "t": 30890,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 32224,
+          "type": "reposition-done"
+        },
+        {
+          "t": 32224,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 34757,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 34779,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 39790,
+          "type": "finding",
+          "id": "exit-blocked",
+          "severity": "S1",
+          "title": "Level finished but Zed cannot reach the exit"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "trader",
+        "stopOn": "wave",
+        "maxSec": 180,
+        "id": "MB-L3-kane-trader",
+        "tier": "mini-boss",
+        "boss": "Kane vs Trader (no parry, no dodge)",
+        "level": 3,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 45,
+      "video": "videos/MB-L3-kane-trader.webm",
+      "persona": "trader",
+      "kind": "competent",
+      "level": 3,
+      "levelName": "Greenline Courts",
+      "outcome": null,
+      "done": false,
+      "elapsedMs": 43560,
+      "stats": {
+        "hitsDealt": 34,
+        "hitsTaken": 9,
+        "damageDealt": 340,
+        "damageTaken": 78,
+        "parryAttempts": 0,
+        "parries": 0,
+        "kills": 5,
+        "wavesCleared": 1,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 2,
+        "minFps": 57,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 24,
+          "wait": 60,
+          "attack": 1169,
+          "victory": 151,
+          "exit": 330
+        },
+        "notes": {
+          "heavy": 6,
+          "rage-special": 2
+        },
+        "goalShare": {
+          "intro": 1,
+          "wait": 3,
+          "attack": 67,
+          "victory": 9,
+          "exit": 19
+        }
+      },
+      "bosses": [
+        {
+          "id": "crusher-kane-1",
+          "seenT": 16030,
+          "diedT": 28427,
+          "maxHp": 220,
+          "moves": {
+            "hammer": {
+              "seen": 2,
+              "hitZed": 2,
+              "damage": 40,
+              "evaded": 0
+            },
+            "vent": {
+              "seen": 1,
+              "hitZed": 1,
+              "damage": 10,
+              "evaded": 0
+            },
+            "steam-patch": {
+              "seen": 1,
+              "hitZed": 5,
+              "damage": 20,
+              "evaded": 0
+            }
+          },
+          "minHp": 0,
+          "seq": [
+            "hammer",
+            "vent",
+            "hammer"
+          ],
+          "stuns": 0,
+          "patchesLaid": 1,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 0,
+          "patchHits": {
+            "1": {
+              "ticks": 5,
+              "damage": 20
+            }
+          },
+          "secLeftDied": 197
+        }
+      ],
+      "findings": [
+        {
+          "id": "exit-blocked",
+          "severity": "S1",
+          "title": "Level finished but Zed cannot reach the exit",
+          "detail": "x=4779 exit=5070",
+          "firstT": 43092,
+          "lastT": 43560,
+          "count": 29
+        }
+      ],
+      "timeline": [
+        {
+          "t": 14573,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 15011,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 15036,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 16030,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 19393,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 20,
+          "move": "hammer"
+        },
+        {
+          "t": 23694,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 10,
+          "move": "vent"
+        },
+        {
+          "t": 24160,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 24743,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 25309,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 25893,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 26527,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 4,
+          "move": "hammer"
+        },
+        {
+          "t": 27776,
+          "type": "hurt",
+          "by": "crusher-kane-1",
+          "amount": 20,
+          "move": "hammer"
+        },
+        {
+          "t": 28427,
+          "type": "boss-down",
+          "id": "crusher-kane-1"
+        },
+        {
+          "t": 28776,
+          "type": "hurt",
+          "by": "grunt-2",
+          "amount": 8
+        },
+        {
+          "t": 29868,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 32376,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 38059,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 38081,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 43092,
+          "type": "finding",
+          "id": "exit-blocked",
+          "severity": "S1",
+          "title": "Level finished but Zed cannot reach the exit"
+        }
+      ]
+    }
+  ]
+}

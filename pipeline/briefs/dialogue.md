@@ -1,5 +1,5 @@
 # Content brief: dialogue
-_Generated 2026-11-04T16:43:34.887Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
+_Generated 2026-11-06T07:06:29.966Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs dialogue`; do not hand-edit._
 
 **Writer agent:** dialogue-agent  |  **Output dir:** `content/dialogue/`  |  **Produces:** Zed barks, Rust notices/taunts, win/lose/retry lines, poster copy.
 
@@ -127,6 +127,7 @@ Example:
 - `rust-halden-varr-telegraph` taunt (content/dialogue/rust-gdd.json)
 - `rust-halden-varr-pushed-back` wave_clear (content/dialogue/rust-gdd.json)
 - `zed-answers-halden-varr` combo (content/dialogue/rust-gdd.json)
+- `zed-level-won-crusher-kane` level_won (content/dialogue/rust-gdd.json)
 - `title-banner` menu (content/dialogue/title-screen.json)
 - `title-tagline` menu (content/dialogue/title-screen.json)
 - `title-press-prompt` menu (content/dialogue/title-screen.json)
@@ -152,7 +153,6 @@ The GDD names these but no `dialogue` item mentions them yet. Each needs an item
 - The Copper Fangs (unit nickname, see [the-rebellion#13])
 - Brick Dugan (mini-boss, see [the-rebellion#14])
 - Railgun Royce (mini-boss, see [the-rebellion#15])
-- Crusher Kane (mini-boss, see [the-rebellion#15])
 - Glitch (mini-boss, see [the-rebellion#15])
 - Raptor (mini-boss, see [the-rebellion#15])
 - Industrial Zone (level, see [the-rebellion#15])
@@ -928,10 +928,10 @@ Source: `design/art/style-guide.md`.
 - No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over.
 
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
-Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game State Agent Win check, lose Clear the arena to state, time-out win; fail and retry result, retry have rules Wave Spawner Win check, lose Difficulty comes state, time-out from how waves result, retry arrive Asset & Animation Sprite source, Punchy hits" and Lead animation list, hit readable telegraphs stop and feedback Health & Hitbox Owns health, Hits land, damage Agent damage values, and registers, the player hitbox/hurt box data can die Camera & Bounds Arena camera lock, Prevents the off- Agent (new) world bounds, screen soft lock unreachable-enemy failsafe Menu & UI Agent Builds and owns The player can every screen and on- start a game, read screen element the the state of the player sees outside fight, and see why the arena action they won or lost Technical Strategy
+Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ### [pipeline-readme#10] reference - PIPELINE-README.md - Gameplay systems (all covered by `npm test`, 163 passing)
 Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 860 chunks across 90 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 883 chunks across 93 documents.

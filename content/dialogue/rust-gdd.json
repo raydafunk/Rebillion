@@ -511,5 +511,22 @@
       "No more speeches. Windows open."
     ],
     "enemy": "rust-halden-varr"
+  },
+  {
+    "id": "zed-level-won-crusher-kane",
+    "status": "proposed",
+    "gddGap": "The GDD names Crusher Kane as the Level 3 mini-boss but gives no spoken lines; this line was supplied by the owner and is awaiting approval.",
+    "sources": [
+      "the-rebellion#15",
+      "the-rebellion#10"
+    ],
+    "speaker": "zed",
+    "trigger": "level_won",
+    "lines": [
+      "The streets are safer, the fight is won, and you're finally out of excuses.",
+      "Kane's down. Hammer's quiet. The court is ours.",
+      "Steam's gone. Hear that? Neighbours, back on the block."
+    ],
+    "enemy": "rust-crusher-kane"
   }
 ]

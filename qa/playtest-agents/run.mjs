@@ -118,8 +118,10 @@ for (const [title, agent] of [['Levels (playtest-level-agent)', 'playtest-level-
 }
 const bossRuns = results.filter((r) => r.bosses?.length);
 if (bossRuns.length) {
-  md.push('## Boss move read-out (bespoke boss AI)', '', '| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Damage to Zed |', '|---|---|---|---|---|---|---|---|');
-  for (const r of bossRuns) for (const b of r.bosses) for (const [m, v] of Object.entries(b.moves)) md.push(`| ${r.scenario.id} | ${b.id} | ${b.diedT ? ms(b.diedT - b.seenT) : `alive (${Math.round(b.hpEnd)}/${b.maxHp})`} | ${m} | ${v.seen} | ${v.hitZed} | ${v.evaded} | ${v.damage} |`);
+  md.push('## Boss move read-out (bespoke boss AI)', '', '| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Parried (boss stunned) | Damage to Zed |', '|---|---|---|---|---|---|---|---|---|');
+  for (const r of bossRuns) for (const b of r.bosses) for (const [m, v] of Object.entries(b.moves)) md.push(`| ${r.scenario.id} | ${b.id} | ${b.diedT ? ms(b.diedT - b.seenT) : `alive (${Math.round(b.hpEnd)}/${b.maxHp})`} | ${m} | ${v.seen} | ${v.hitZed} | ${v.evaded} | ${v.parried || 0} | ${v.damage} |`);
+  md.push('', '### Boss fight extras', '');
+  for (const r of bossRuns) for (const b of r.bosses) md.push(`- ${r.scenario.id} / ${b.id}: stuns ${b.stuns ?? 0}, steam patches laid ${b.patchesLaid ?? 0}, vent started with Zed airborne ${b.ventAirborne ?? 0}x, clock ${b.secLeftSeen ?? '?'}s left at first sight, ${b.secLeftDied ?? '?'}s at KO, move order: ${(b.seq || []).join(' > ')}`);
   md.push('');
 }
 const all = results.flatMap((r) => r.findings.map((f) => ({ ...f, run: r.scenario.id })));

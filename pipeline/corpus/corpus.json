@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-11-04T16:43:34.155Z",
+ "builtAt": "2026-11-06T07:06:29.112Z",
  "chunks": [
   {
    "id": "rebellion-menu-desgin#1",
@@ -367,7 +367,7 @@
    "file": "PDf/The Rebellion -Frist Draft.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "The Rebellion Fists of the Fallen City A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections\nThe Pitch\nThe Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.\nGame Mechanics -what the players does • Impactful Combat – punchy hits Players moves into a Areas were light and heavy pick-up objects • Combos and Juggle routes • Defensive tools(block dodge, parry) Enemies spawn to fight\n• Defeat Wave / Clear Arena to win the level in time frame\nAI Architecture Team"
+   "text": "The Rebellion\nFists of the Fallen City\nA Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections\nThe Pitch The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-`me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.\nGame Mechanics -what the players does\n� Impactful Combat � punchy hits Players moves into a Areas were light and heavy pick-up objects\n� Combos and Juggle routes � Defensive tools(block dodge, parry) Enemies spawn to fight � Defeat Wave / Clear Arena to win the level in time frame\nAI Architecture Team"
   },
   {
    "id": "the-rebellion-frist-draft#2",
@@ -375,7 +375,7 @@
    "file": "PDf/The Rebellion -Frist Draft.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Agent Development role Gameplay Effect Player Mechanics Controls player Make the player agent movements move jump Player combos Agent Control the player Take care of the combos and hits players combos with the game Timer Agent Keeps the time of Keep trick of the the level time the player has to beat the level Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game Loop Agent Control the levels Control the level and win condition\nTechnical Strategy\nAgent Technical constraint Budget Player Mechanics Getting the Token coast to make animations together at least 1 character to move 200 tokens Player combos Same as the player Token Cost to make Agent mechanics the combos work 200 tokens Phaser Creating a playable How many tokens to prototype of the make the game yet game Unknown"
+   "text": "Agent Development role Gameplay Effect Player Mechanics Controls player Make the player agent movements move jump Player combos Agent Control the player Take care of the combos and hits players combos with the game Timer Agent Keeps the time of Keep trick of the the level time the player has to beat the level Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game Loop Agent Control the levels Control the level and win condition\nTechnical Strategy\nAgent Technical constraint Budget Player Mechanics Getting the Token coast to make animations together at least 1 character to Player combos move 200 tokens Agent Same as the player Token Cost to make Phaser mechanics the combos work 200 tokens Creating a playable How many tokens to prototype of the make the game yet game Unknown"
   },
   {
    "id": "the-rebellion-final-gdd#1",
@@ -383,7 +383,7 @@
    "file": "PDf/The Rebellion- Final Gdd.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "The Rebellion Fists of the Fallen City A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executives Sections\nThe Pitch The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours. Take control of Zed and fight your way through Fallen to get it back.\nThe 3 Pillars of Game Play Impactful, Fast-paced Skill depth through Wave-clearing under combat combos and Defence pressure Punchy hits\" with light and Combos and Juggle routes\" Enemies spawn in waves, and heavy attacks and pick-up on offense, plus block, the player must \"Defeat Wave objects, in a fast 2D side- dodge, and parry on / Clear Arena to win the level scrolling brawl. defence. in time frame\", tracked by the Timer Agent.\nThe Win and Lose conditions."
+   "text": "The Rebellion\nFists of the Fallen City\nA Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executives Sections\nThe Pitch\nThe Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-`me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours. Take control of Zed and fight your way through Fallen to get it back.\nThe 3 Pillars of Game Play\nImpactful, Fast-paced Skill depth through Wave-clearing under combat combos and Defence pressure\nPunchy hits\" with light and Combos and Juggle routes\" Enemies spawn in waves, and heavy attacks and pick-up on offense, plus block, the player must \"Defeat Wave objects, in a fast 2D side- dodge, and parry on / Clear Arena to win the level scrolling brawl. defence. in time frame\", tracked by the Timer Agent.\nThe Win and Lose conditions."
   },
   {
    "id": "the-rebellion-final-gdd#2",
@@ -391,7 +391,7 @@
    "file": "PDf/The Rebellion- Final Gdd.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Win conditions Lose conditions Fight you way to the end of the Get knocked out by health bar level while beating Rust or if time runs out Enemies Core Loop of the game.\nEnter City Level Enemies Fight Wave Cleared begins Spawn Combat tools\nLevel Won Lose State Reach the end.\nNext Level begins\nGame a loop.\ngame Game Mechanics -what the players does. • Impactful Combat – punchy hits Players moves into an Areas were light and heavy pick-up objects. • Combos and Juggle routes • Defensive tools(block dodge, parry)\nEnemies spawn to fight.\n• Defeat Wave / Clear Arena to win the level in time. AI Architecture Team\nAgent Development role Gameplay Effect Player Mechanics Movement, jump, The player moves agent input handling and feels responsive Player combos Agent One state machine Light and heavy for attacks, combos, attacks chain into cancel windows, hit combos stun"
+   "text": "Win conditions Lose conditions Fight you way to the end of the Get knocked out by health bar level while beating Rust or if time runs out Enemies Core Loop of the game.\nEnter City Level Enemies Fight Wave Cleared begins Spawn Combat tools\nLose State Level Won Reach the end. Next Level begins Game a loop. game Game Mechanics -what the players does.\n� Impactful Combat � punchy hits Players moves into an Areas were light and heavy pick-up objects.\n� Combos and Juggle routes � Defensive tools(block dodge, parry)\nEnemies spawn to fight.\n� Defeat Wave / Clear Arena to win the level in time. AI Architecture Team\nAgent Development role Gameplay Effect Player Mechanics Movement, jump, The player moves agent input handling and feels responsive Player combos Agent One state machine Light and heavy for attacks, combos, attacks chain into cancel windows, hit combos stun"
   },
   {
    "id": "the-rebellion-final-gdd#3",
@@ -399,7 +399,7 @@
    "file": "PDf/The Rebellion- Final Gdd.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game State Agent Win check, lose Clear the arena to state, time-out win; fail and retry result, retry have rules Wave Spawner Win check, lose Difficulty comes state, time-out from how waves result, retry arrive Asset & Animation Sprite source, Punchy hits\" and Lead animation list, hit readable telegraphs stop and feedback Health & Hitbox Owns health, Hits land, damage Agent damage values, and registers, the player hitbox/hurt box data can die Camera & Bounds Arena camera lock, Prevents the off- Agent (new) world bounds, screen soft lock unreachable-enemy failsafe Menu & UI Agent Builds and owns The player can every screen and on- start a game, read screen element the the state of the player sees outside fight, and see why the arena action they won or lost Technical Strategy"
+   "text": "Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits\" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy"
   },
   {
    "id": "the-rebellion-final-gdd#4",
@@ -407,7 +407,7 @@
    "file": "PDf/The Rebellion- Final Gdd.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that every agent reads Enemy Agent Chase and Health & It is large as it attack Hitbox, will run the behaviour, Asset & enemy note attacker cap, Animation one enemy type Asset & first Animation Game State Win check, lose Health & Medium cost of Agent state, time-out Hitbox token result, retry Agent Wave Spawner Spawn triggers, Enemy rate, cap, and Agent positions Asset & Sprite source, None Large as it runs Animation Lead animation list, the Animation hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- enemy failsafe Menu & UI HUD (health, Game State, Medium Token Agent timer), win/lose Health & use as well screens, menus Hitbox"
+   "text": "Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that Health & Enemy Agent every agent Hitbox, It is large as it reads Asset & will run the Game State Chase and Animation enemy note Agent attack Asset & Wave Spawner behaviour, Animation Medium cost of Asset & attacker cap, Health & token Animation Lead one enemy type Hitbox first Agent Large as it runs Win check, lose Enemy the Animation state, time-out Agent result, retry Spawn triggers, None rate, cap, and positions Sprite source, animation list, hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- Game State, Medium Token Menu & UI enemy failsafe Agent HUD (health, Health & use as well timer), win/lose screens, menus Hitbox"
   },
   {
    "id": "the-rebellion-final-gdd#5",
@@ -415,7 +415,7 @@
    "file": "PDf/The Rebellion- Final Gdd.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Game Engine\nPhaser\nWhy Phaser is use for the game building for now.\n• 2D side-scrolling: Phaser is built for 2D and has Arcade physics, sprite animation, and input handling.\n• Prototype goal: the GDD says Phaser is for \"creating a playable prototype\". It runs in the browser with no install, so playtesting and sharing a build are easy.\n• AI-assisted build: the Technical Strategy budgets in tokens, which suggests AI agents write the code. Phaser uses JavaScript or TypeScript, which AI agents oversee well, and it has plenty of documentation and examples.\n• Small scope: Tier 0 is one character, one enemy type, waves,\nand a timer. Phaser manages that without much setup."
+   "text": "Game Engine\nPhaser\nWhy Phaser is use for the game building for now.\n� 2D side-scrolling: Phaser is built for 2D and has Arcade physics, sprite animation, and input handling.\n� Prototype goal: the GDD says Phaser is for \"creating a playable prototype\". It runs in the browser with no install, so playtesting and sharing a build are easy.\n� AI-assisted build: the Technical Strategy budgets in tokens, which suggests AI agents write the code. Phaser uses JavaScript or TypeScript, which AI agents oversee well, and it has plenty of documentation and examples.\n� Small scope: Tier 0 is one character, one enemy type, waves,\nand a timer. Phaser manages that without much setup."
   },
   {
    "id": "pipeline-readme#1",
@@ -687,7 +687,7 @@
    "file": "blackboard/log.md",
    "authority": "reference",
    "heading": "Blackboard log",
-   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying\n2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps\n2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner\n2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass\n2026-10-19T14:18:35.865Z | director | G5-generate-code | reopened | Owner request: build GAP-026 (rank 2 todo, menu parallax, menu-ui-agent, src/ui/ only). Use placeholder scroll factors increasing back to front (sky<buildings<wall) in a data table; flag in notes as needing playtest. GAP-004 already implemented.\n2026-10-19T14:19:04.386Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T14:20:16.132Z | code-generator-agent | G5-generate-code | done | GAP-026 implemented\n2026-10-19T14:20:32.542Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T14:21:09.473Z | reviewer-agent | G6-review | done | pass\n2026-10-19T16:10:41.106Z | director | G5-generate-code | reopened | Owner approved GAP-027 story intro card; GAP-026 implemented. Build GAP-027 only.\n2026-10-19T16:10:52.373Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T16:12:22.917Z | code-generator-agent | G5-generate-code | done | GAP-027 implemented\n2026-10-19T16:12:40.294Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T16:13:41.654Z | reviewer-agent | G6-review | done | pass\n2026-11-03T10:22:43.360Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 1\n2026-11-03T10:24:49.172Z | playtest-level-agent | G7-playtest-levels | blocked | L2 playtest not run: local VM has no Chromium and cdn.playwright.dev is blocked by network allowlist (403)\n2026-11-03T12:39:31.093Z | playtest-boss-agent | G8-playtest-bosses | claimed | attempt 1\n2026-11-03T12:46:10.619Z | playtest-boss-agent | G8-playtest-bosses | done | L2 Royce: 3 runs recorded (1 clear, 1 mutual KO with crew, 1 loss with Royce at 19/160); S1:0 S2:0 S3:2 (Royce dies in 10-14s; dash/trap/taser never fired because the hunter stays in melee)\n2026-11-03T16:32:31.369Z | director | G7-playtest-levels | reopened | User asked to run playtest for levels 2-8; chromium available in cloud container\n2026-11-03T16:32:31.434Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 2\n2026-11-03T17:10:42.040Z | playtest-level-agent | G7-playtest-levels | done | 5/7 won (L2,L4,L6,L7,L8), L3 and L5 lost to KO; S1:0 S2:0; levels 2-8 Brawler only, cloud canvas render"
+   "text": "Append-only. One line per event: `ISO time | agent | goal | event | note`\n2026-10-13T13:16:53.634Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-13T13:16:54.032Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-13T13:18:00.157Z | gdd-reader-agent | G1-read-gdd | done | 58 requirements, 12 ambiguities\n2026-10-13T13:19:14.092Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 17/0\n2026-10-13T13:19:39.581Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-13T13:20:23.674Z | gap-analyst-agent | G3-find-gaps | done | 17 gaps\n2026-10-13T13:20:38.506Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-13T13:21:07.811Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Move damage/hitbox values into one shared combat data source\n2026-10-13T13:21:21.721Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-13T13:22:17.588Z | code-generator-agent | G5-generate-code | blocked | GAP-009: shared data added; moves.js and gruntData.js are outside allowedFiles, scope widening requested\n2026-10-13T15:51:47.222Z | director | G1-read-gdd | reopened | re-read all GameDesignDocument files\n2026-10-13T15:52:05.291Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 2\n2026-10-13T15:53:14.738Z | gdd-reader-agent | G1-read-gdd | done | 70 requirements\n2026-10-13T15:54:06.871Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-13T15:55:27.808Z | gap-analyst-agent | G3-find-gaps | done | 38 gaps (6 missing, 3 contradicted, 29 partial)\n2026-10-13T15:55:46.948Z | prioritiser-agent | G4-prioritise | claimed | attempt 2\n2026-10-13T15:57:25.072Z | prioritiser-agent | G4-prioritise | done | 10 queued (1 partial carry-over needsOwner), top: hit-stop config\n2026-10-13T15:57:40.925Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-13T15:58:20.189Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-13T15:58:36.323Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-13T15:59:04.566Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:14:35.555Z | director | - | reset | \n2026-10-19T09:14:45.583Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:14:45.631Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:16:08.889Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:16:32.179Z | code-scanner-agent | G2-scan-code | done | 24 features, tests 28/0\n2026-10-19T09:16:56.984Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:17:44.435Z | gap-analyst-agent | G3-find-gaps | done | 23 gaps\n2026-10-19T09:18:01.352Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:19:06.163Z | prioritiser-agent | G4-prioritise | done | 6 queued, top: Rebind parry to T/M (dodge/block already correct)\n2026-10-19T09:19:25.628Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T09:20:08.081Z | code-generator-agent | G5-generate-code | done | GAP-002 implemented\n2026-10-19T09:20:23.369Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T09:21:00.886Z | reviewer-agent | G6-review | done | pass\n2026-10-19T09:55:45.446Z | director | - | reset | \n2026-10-19T09:55:55.744Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T09:55:55.804Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T09:56:52.139Z | gdd-reader-agent | G1-read-gdd | done | 87 requirements\n2026-10-19T09:57:35.149Z | code-scanner-agent | G2-scan-code | done | 22 features, tests 29/0\n2026-10-19T09:57:50.291Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T09:58:58.265Z | gap-analyst-agent | G3-find-gaps | done | 22 gaps\n2026-10-19T09:59:14.427Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T09:59:48.175Z | prioritiser-agent | G4-prioritise | done | 7 queued (3 approved steps, 4 needsOwner), top: Add combatData.test.mjs to npm test\n2026-10-19T10:00:08.258Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T10:00:41.576Z | code-generator-agent | G5-generate-code | done | GAP-004 step 1 implemented\n2026-10-19T10:00:51.680Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T10:01:19.309Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:07:55.806Z | director | G5-generate-code | reopened | Next round: GAP-004 step 2 (rank 2, moves.js imports combatData.js), owner approved\n2026-10-19T11:08:08.037Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T11:09:14.783Z | code-generator-agent | G5-generate-code | done | GAP-004 step 2 implemented\n2026-10-19T11:09:38.211Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T11:11:09.234Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:11:23.053Z | director | G5-generate-code | reopened | Next round: GAP-004 step 3 (rank 3, gruntData.js imports combatData.js), owner approved\n2026-10-19T11:11:28.545Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T11:12:53.406Z | code-generator-agent | G5-generate-code | done | GAP-004 step 3 implemented\n2026-10-19T11:13:13.652Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T11:13:50.127Z | reviewer-agent | G6-review | done | pass\n2026-10-19T11:35:08.541Z | director | - | reset | \n2026-10-19T11:35:18.106Z | code-scanner-agent | G2-scan-code | claimed | attempt 1\n2026-10-19T11:35:18.504Z | gdd-reader-agent | G1-read-gdd | claimed | attempt 1\n2026-10-19T11:36:29.737Z | gdd-reader-agent | G1-read-gdd | done | 80 requirements\n2026-10-19T11:37:49.537Z | code-scanner-agent | G2-scan-code | done | 19 features, tests 31/0\n2026-10-19T11:38:13.927Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 1\n2026-10-19T12:58:00.832Z | director | G3-find-gaps | reopened | stale claim, no gaps.json refresh since claim; retrying\n2026-10-19T12:58:09.348Z | gap-analyst-agent | G3-find-gaps | claimed | attempt 2\n2026-10-19T12:58:59.093Z | gap-analyst-agent | G3-find-gaps | done | 27 gaps\n2026-10-19T13:20:49.599Z | prioritiser-agent | G4-prioritise | claimed | attempt 1\n2026-10-19T13:22:25.989Z | prioritiser-agent | G4-prioritise | done | 27 queue items (26 gaps) + 2 deferred; top: Grunt Jab Combo; 4 actionable now, rest needsOwner\n2026-10-19T13:22:52.350Z | code-generator-agent | G5-generate-code | claimed | attempt 1\n2026-10-19T13:24:05.694Z | code-generator-agent | G5-generate-code | done | GAP-004 implemented\n2026-10-19T13:24:17.694Z | reviewer-agent | G6-review | claimed | attempt 1\n2026-10-19T13:24:47.253Z | reviewer-agent | G6-review | done | pass\n2026-10-19T14:18:35.865Z | director | G5-generate-code | reopened | Owner request: build GAP-026 (rank 2 todo, menu parallax, menu-ui-agent, src/ui/ only). Use placeholder scroll factors increasing back to front (sky<buildings<wall) in a data table; flag in notes as needing playtest. GAP-004 already implemented.\n2026-10-19T14:19:04.386Z | code-generator-agent | G5-generate-code | claimed | attempt 2\n2026-10-19T14:20:16.132Z | code-generator-agent | G5-generate-code | done | GAP-026 implemented\n2026-10-19T14:20:32.542Z | reviewer-agent | G6-review | claimed | attempt 2\n2026-10-19T14:21:09.473Z | reviewer-agent | G6-review | done | pass\n2026-10-19T16:10:41.106Z | director | G5-generate-code | reopened | Owner approved GAP-027 story intro card; GAP-026 implemented. Build GAP-027 only.\n2026-10-19T16:10:52.373Z | code-generator-agent | G5-generate-code | claimed | attempt 3\n2026-10-19T16:12:22.917Z | code-generator-agent | G5-generate-code | done | GAP-027 implemented\n2026-10-19T16:12:40.294Z | reviewer-agent | G6-review | claimed | attempt 3\n2026-10-19T16:13:41.654Z | reviewer-agent | G6-review | done | pass\n2026-11-03T10:22:43.360Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 1\n2026-11-03T10:24:49.172Z | playtest-level-agent | G7-playtest-levels | blocked | L2 playtest not run: local VM has no Chromium and cdn.playwright.dev is blocked by network allowlist (403)\n2026-11-03T12:39:31.093Z | playtest-boss-agent | G8-playtest-bosses | claimed | attempt 1\n2026-11-03T12:46:10.619Z | playtest-boss-agent | G8-playtest-bosses | done | L2 Royce: 3 runs recorded (1 clear, 1 mutual KO with crew, 1 loss with Royce at 19/160); S1:0 S2:0 S3:2 (Royce dies in 10-14s; dash/trap/taser never fired because the hunter stays in melee)\n2026-11-03T16:32:31.369Z | director | G7-playtest-levels | reopened | User asked to run playtest for levels 2-8; chromium available in cloud container\n2026-11-03T16:32:31.434Z | playtest-level-agent | G7-playtest-levels | claimed | attempt 2\n2026-11-03T17:10:42.040Z | playtest-level-agent | G7-playtest-levels | done | 5/7 won (L2,L4,L6,L7,L8), L3 and L5 lost to KO; S1:0 S2:0; levels 2-8 Brawler only, cloud canvas render\n2026-11-06T06:55:50.168Z | director | G8-playtest-bosses | reopened | Level 3 Crusher Kane playtest requested\n2026-11-06T06:55:51.440Z | playtest-boss-agent | G8-playtest-bosses | claimed | attempt 2"
   },
   {
    "id": "asset-manifest#1",
@@ -2138,6 +2138,22 @@
    "text": "```js\nrageFx: {\n pulseHz: { buildMin: 0.8, buildMax: 3.0, ready: 2.5, active: 2.0, activeLast3s: 4.0 },\n gainPopMs: 200, gainPopCleanScale: 1.3, maxGainPops: 3, fillEaseMs: 120,\n activate: { hitStopMs: 100, flashFrames: 2, flashAlphaMax: 0.6, shakePx: 6, shakeMs: 250, impactMs: 300 },\n end: { glowFadeMs: 300, ashFrames: 6, dipMs: 150 },\n introMs: 300\n}\n```"
   },
   {
+   "id": "hit-feedback-spec#32",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "9. Heavy combo (heavy1 -> heavy2 -> heavy3) hit feedback",
+   "text": "Values live in `src/shared/hitFeedback.js` (`MOVE_FEEDBACK`, `HIT_STOP_MS`). Starting values, need playtest. Screen Shake Off/Light/Full scaling is applied in `ArenaScene._shake`.\n| Move | Hit-stop | Shake (ms / intensity) |\n|---|---|---|\n| heavy1 | heavy, 100 ms | 260 / 0.012 |\n| heavy2 | heavy, 100 ms | 300 / 0.015 |\n| heavy3 (finisher) | heavyFinisher, 180 ms | 450 / 0.024 |\nReference: old finisher 140 ms / 0.004, airkick 220 ms / 0.008."
+  },
+  {
+   "id": "hit-feedback-spec#33",
+   "doc": "hit-feedback-spec",
+   "file": "design/art/hit-feedback-spec.md",
+   "authority": "derived",
+   "heading": "9. Heavy combo (heavy1 -> heavy2 -> heavy3) hit feedback",
+   "text": "Rationale:\n- Every hit is clearly above the old ceiling (3x airkick intensity on heavy1) so the chain reads as a barrage, not three taps.\n- Shake ramps 0.012 -> 0.015 -> 0.024 so the third hit is unmistakable as the payoff. Hits 1 and 2 keep the normal 100 ms heavy freeze so the auto-chain keeps its rhythm; only the finisher gets the long freeze.\n- heavy3 hit-stop 180 ms is the longest in the game; `HIT_STOP_MS.max` was raised 150 -> 180 for it (no other entry exceeds 150, so nothing else changes). Hit-stops still never stack.\n- Finisher dramatic extras (visual, to be wired by whoever owns the scene): large radial spark burst, 2-frame white flash on the target at alpha <= 0.6 (once, under 4 Hz), and a dust ring at the target's feet as it launches. 0.024 exceeds even the Mega Stomp peak (0.018), so the finisher is the strongest shake in the game; Light (half) keeps it comfortable."
+  },
+  {
    "id": "mute-button#1",
    "doc": "mute-button",
    "file": "design/art/mute-button.md",
@@ -2304,6 +2320,86 @@
    "authority": "derived",
    "heading": "12. Open questions",
    "text": "1. Final line style: radial burst (placeholder) or diagonal manga speed lines? Hand-drawn vector or generated in code? Owner approval needed.\n2. Anchor point: screen centre or Zed's screen position (better framing, needs camera to world conversion)?\n3. Remove the existing `cameras.main.flash(180, 255,120,40)` and HUD `flash` in `RageMeterHud` ACTIVATED handler to avoid double flash? (Code owner call.)\n4. Should the round timer pause during the freeze (proposed yes) or keep running like hit-stop?\n5. Freeze length: 450 ms proposed; playtest range 350 to 550. A shorter one on repeat activations?\n6. Show \"RAGE\" title or \"ZED RAGE\"? Needs copy owner (`rageHudCopy.js`), and a localisation decision.\n7. Gamepad rumble during the freeze (not in GDD)?\n8. Does the old design value (100 ms hit-stop, 2 frames) get formally retired in `hit-feedback-spec.md` 8.7? (Not edited by this agent: file left as is.)\n9. Audio sting: unowned."
+  },
+  {
+   "id": "rage-impact-fx#1",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "Rage Impact FX: Mega Shake and Kill Dust (design spec)",
+   "text": "Owner: art-direction-agent. Status: PROPOSED, code-drawn, no asset files. Data: `src/shared/rageImpactFxData.js` (`RAGE_IMPACT_FX`). Companion to `rage-entry-flash.md` and `hit-feedback-spec.md`. Palette from `RAGE_ENTRY_FX.colors`."
+  },
+  {
+   "id": "rage-impact-fx#2",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "1. Trigger",
+   "text": "Only when the hit request carries `rage:true` (rageKick, rageUppercut, rageAirKick). Normal hits and the Special keep their existing feedback. Never fires outside Rage ACTIVE.\n- MEGA SHAKE: every Rage impact that connects (hit or block-break on any enemy).\n- KILL DUST: only when that hit reduces the enemy to 0 hp (the kill). It plays in addition to the mega shake."
+  },
+  {
+   "id": "rage-impact-fx#3",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "2. Mega shake (per move)",
+   "text": "| Move | shake durationMs | intensity | hitStopMs | flash alpha | flash in/out ms | impact burst radius |\n|---|---|---|---|---|---|---|\n| rageKick | 150 | 0.009 | 70 | 0.35 | 20 / 110 | 70 px |\n| rageUppercut | 240 | 0.016 | 120 | 0.50 | 25 / 170 | 110 px |\n| rageAirKick | 170 | 0.011 | 80 | 0.40 | 20 / 120 | 80 px |"
+  },
+  {
+   "id": "rage-impact-fx#4",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "2. Mega shake (per move)",
+   "text": "- Ordering: uppercut >= airKick >= kick on every column (the uppercut is the finisher).\n- Intensity is Phaser camera shake fraction (0.005 is about 6 px at 1280): kick about 11 px, air kick about 14 px, uppercut about 20 px, decaying.\n- Hit-stop freezes only attacker and target (see hit-feedback-spec), real time. Replaces, not adds to, the normal hit-stop (use the larger).\n- Flash: one rect with scrollFactor 0, colour `flash.color` (red-white #FFE3D6 for kick and air kick, pure white #FFFFFF peak for uppercut) over a #D62A1E tint, monotone rise then fall, never above 0.55.\n- Impact burst: radial spark at the contact point, white centre fading to #D62A1E edge, radius per table, lasts `impactBurst.durationMs`, scale 0.6 to 1.0 then alpha to 0.\n- Rapid hits: restart rather than stack. Camera shake keeps the stronger of current and new. Flash never overlaps itself (max about 3 flashes per second in aggregate rule: if a flash fired under 300 ms ago, use 60 percent alpha).\n- Does not overlap the 450 ms rage entry freeze (world is frozen then; no hits land)."
+  },
+  {
+   "id": "rage-impact-fx#5",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "3. Kill dust",
+   "text": "Drawn in code (Graphics circles and ellipses, pooled), at the enemy's feet (sprite bottom centre, world px), depth just below actors so the corpse and Zed stay readable.\n| Param | Value |\n|---|---|\n| Puff count | 40 (pool cap 120 active) |\n| Start radius | 8 to 26 px, grows to 1.8x |\n| Speed | 110 to 360 px/s outward, fan 160 degrees about the ground plane, plus rise 30 to 140 px/s |\n| Drift | horizontal drag 0.9 per second, gravity -60 px/s2 (keeps rising slowly) |\n| Lifetime | 450 to 900 ms |\n| Fade | alpha 0.85 to 0, quad ease-out |\n| Spawn jitter | 24 px x, 6 px y |\n| Colours (weight) | Dark Brown #2E1F16 (3), Rage Ember #7A2E1A (3), Brick #A8402E (1), dust tan #B08A5A (3), pale tan #D9B27A (3), Rage Red-White #FFE3D6 (1) |\nGround ring puff: flat ellipse (y squash 0.35) at the feet, radius 12 to 150 px over 380 ms, stroke 10 px #FFE3D6 alpha 0.8 to 0, fill #7A2E1A alpha 0.25 to 0. Second thinner ring after 70 ms: radius to 105 px, 6 px #D62A1E, 320 ms."
+  },
+  {
+   "id": "rage-impact-fx#6",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "3. Kill dust",
+   "text": "Palette note: dust tones are warm browns (level styles share the street and brick palette); there is no Rust steel grey so it never reads as an enemy telegraph. Level-specific tan tints are an open question (Q2)."
+  },
+  {
+   "id": "rage-impact-fx#7",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "4. Reduced motion (hitFlash 'Low' or reducedMotion, same test as `ArenaScene._reduceFlash()`)",
+   "text": "| Item | Reduced |\n|---|---|\n| Camera shake | none |\n| Hit-stop | half of normal (scale 0.5) |\n| Flash | alpha max 0.2, #D62A1E only, no pure white; no impact burst |\n| Kill dust | half the puffs (20), speed x0.6, main ring kept, second ring off |"
+  },
+  {
+   "id": "rage-impact-fx#8",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "5. Accessibility",
+   "text": "Single monotone flash per hit, alpha cap 0.55 (0.2 reduced). Meaning not by colour alone: freeze, shake and the dust burst carry the kill. Dust is low contrast to the telegraph red (telegraph red is never used here except the thin ring #D62A1E, which is Rage Red, not Telegraph Red)."
+  },
+  {
+   "id": "rage-impact-fx#9",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "6. Config sketch",
+   "text": "```js\nRAGE_IMPACT_FX = {\n  shake: { rageKick:{durationMs,intensity,hitStopMs,flash,impactBurst}, rageUppercut:{...}, rageAirKick:{...} },\n  killDust: { count, radiusMin, radiusMax, growTo, speedMin, speedMax, spreadDeg, riseSpeedMin, riseSpeedMax, gravity, drag,\n              lifetimeMinMs, lifetimeMaxMs, alphaStart, alphaEnd, fade, spawnYJitter, spawnXJitter, colors, colorWeights,\n              ring, secondaryRing, maxActiveParticles },\n  reduced: { shake, shakeScale, hitStopScale, flashAlphaMax, flashColor, noPureWhite, impactBurst,\n             killDustCountScale, killDustSpeedScale, killDustRing, killDustSecondaryRing },\n}\n```"
+  },
+  {
+   "id": "rage-impact-fx#10",
+   "doc": "rage-impact-fx",
+   "file": "design/art/rage-impact-fx.md",
+   "authority": "derived",
+   "heading": "7. Open questions",
+   "text": "1. Are 20 px peak shakes too strong in tight arenas? Playtest range: 0.7x to 1.3x.\n2. Tint dust per level style (e.g. court grey, garden green)?\n3. Should the killing blow's hit-stop be longer than the non-kill uppercut (e.g. +30 ms)?\n4. Audio for the heavy impact and the kill: unowned.\n5. Final art style for the impact burst (placeholder radial) needs owner approval."
   },
   {
    "id": "rage-intro-card#1",
@@ -2680,6 +2776,46 @@
    "authority": "derived",
    "heading": "5. Check before accepting",
    "text": "- Same face, outfit and colours in all 36 frames.\r\n- Feet land on the same baseline in `idle`, `walk`, `light`, `heavy` and `hit`.\r\n- Idle and walk loop with no pop between the last and first frame.\r\n- The strike frames read clearly (light 2, heavy 3).\r\n- No Rust or combat-signal colours leaked in."
+  },
+  {
+   "id": "zed-shock#1",
+   "doc": "zed-shock",
+   "file": "design/art/zed-shock.md",
+   "authority": "derived",
+   "heading": "Zed shock (Copper Fang taser hit)",
+   "text": "Owner agent: `art-direction-agent`. Status: **placeholder, drawn in code (Phaser Graphics + tint), no image assets.**"
+  },
+  {
+   "id": "zed-shock#2",
+   "doc": "zed-shock",
+   "file": "design/art/zed-shock.md",
+   "authority": "derived",
+   "heading": "When",
+   "text": "A Rust Specialist's strike (Taser_Shot pose) damages Zed. Not on a parry, and not on a block (no damage lands). Other enemies never trigger it."
+  },
+  {
+   "id": "zed-shock#3",
+   "doc": "zed-shock",
+   "file": "design/art/zed-shock.md",
+   "authority": "derived",
+   "heading": "Look",
+   "text": "- Body: Zed flickers between a solid cool white and cyan (#5FE8FF) at about 14 Hz, then settles to a steady cyan wash as it fades out. A 2 px sideways jitter reads as a body spasm.\n- Lightning: 5 jagged arcs (4 to 6 segments each) hug Zed's silhouette from feet to head; they are redrawn every 55 ms so they crackle. Two thin white-hot cores over a wider cyan glow stroke.\n- Length: 450 ms, or the hit-stun if longer. Arc count and brightness fade over the last 40%.\n- Palette: cyan #5FE8FF and white only. The Rust read cold; the cyan matches Royce's taser bolt, so the family is consistent."
+  },
+  {
+   "id": "zed-shock#4",
+   "doc": "zed-shock",
+   "file": "design/art/zed-shock.md",
+   "authority": "derived",
+   "heading": "Readability and safety",
+   "text": "- Reduce-flash setting: no flicker and no jitter. Steady cyan wash, 2 slow arcs, same length.\n- Never covers the health bar or HUD; arcs sit at world depth 5000 like the other combat effects.\n- Zed's own hit-reaction clip keeps playing underneath; the effect only adds colour and lightning."
+  },
+  {
+   "id": "zed-shock#5",
+   "doc": "zed-shock",
+   "file": "design/art/zed-shock.md",
+   "authority": "derived",
+   "heading": "Open questions",
+   "text": "- Should the shock also stun for longer than the normal hit-stun? Currently visual only; gameplay numbers are unchanged.\n- Placeholder: swap for painted electric frames when art exists."
   },
   {
    "id": "credits#1",
@@ -4847,7 +4983,7 @@
    "file": "exports/level-01-brick-red-alley.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Level 1: Brick-Red Alley (style guide) Owner agent: level-style-01-brick-red-alley-agent . Status: 2026-10-20, style set.\nKnown from the level data (do not contradict) District: brick-red-alley Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music. Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F Time limit: 120 s. Waves: 3. Enemies named: grunt. Intro: \"Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.\" Outro: \"The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.\"\nHouse rules that apply to every level Source: design/art/style-guide.md ."
+   "text": "Level 1: Brick-Red Alley (style guide)\nOwner agent: level-style-01-brick-red-alley-agent . Status: 2026-10-20, style set.\nKnown from the level data (do not contradict)\nDistrict: brick-red-alley Theme: Zed's home alley: brick walls, a mustard corner shop, mural panels and an open window with music. Palette (GDD family): #A8402E, #E3A92B, #6B4423, #2F6B3F Time limit: 120 s. Waves: 3. Enemies named: grunt. Intro: \"Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.\" Outro: \"The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.\"\nHouse rules that apply to every level\nSource: design/art/style-guide.md ."
   },
   {
    "id": "level-01-brick-red-alley-2#2",
@@ -4855,7 +4991,7 @@
    "file": "exports/level-01-brick-red-alley.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear). Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop. Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded. No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over.\nOwner style direction 2. Window-Light Dusk\nScene: Low sun comes down the alley, with long warm-brown shadows. Mustard light spills from a few windows, and a plain-brick back wall sits behind them.\nPalette: Deep brown and brick base, mustard glow, a muted green door as the one cool note.\nMood: Hopeful, with a quiet \"someone is still home\" warmth. Using a mustard overlay at alpha 0.12-0.15 would unify it."
+   "text": "World is 1920x720, camera view 1280x720. The walkable lane is y 460 to 680 (the style guide says 440 to 680; keep 460 to 680 clear). Background is warm and busy in the mid-ground, calmer in the play lane. Lower saturation and contrast than characters so fighters always pop. Rust enemies read cold, straight and uniform; Zed and the neighbourhood read warm and rounded. No gore, no killing. Hopeful tone; the Rust are being pushed back, never gloated over.\nOwner style direction\n2. Window-Light Dusk\nScene: Low sun comes down the alley, with long warm-brown shadows. Mustard light spills from a few windows, and a plain-brick back wall sits behind them.\nPalette: Deep brown and brick base, mustard glow, a muted green door as the one cool note.\nMood: Hopeful, with a quiet \"someone is still home\" warmth. Using a mustard overlay at alpha 0.12-0.15 would unify it."
   },
   {
    "id": "level-01-brick-red-alley-2#3",
@@ -4863,7 +4999,7 @@
    "file": "exports/level-01-brick-red-alley.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Approved concept: plain brick-red back wall; 3-4 windows (two or three glowing mustard, one dark); a single muted forest-green door near the centre; diagonal long warm-brown shadow wedges from the left and right across the wall; faint mustard light spill below the lit windows; a calm warm-brown lane (y 460-680) with only very faint light patches; a few low crates/bins at the edges; darkest brown band at the bottom.\nLook Palette with hex roles: Wall: #8F4033 (muted brick red, a step below #A8402E), mortar #7A3328 Ledge / sills / crate dark: #5A3A20 Lane: #6B4423 warm brown Bottom band, outlines, shadow wedges: #2E1F16 (wedges at 32 percent opacity) Window glow: #E3A92B (one #D9A02A), dark window #3A2A1E Light spill: #E3A92B at 14 percent (wall), 7 percent (lane) Door (only cool note): #2F6B3F, panel #275A35 Overlay: #E3A92B at alpha 0.13 Time of day and lighting: low dusk sun from the sides; long shadow wedges from both left and right, window light spilling down the wall. Mood: Hopeful, with a quiet \"someone is still home\" warmth."
+   "text": "Approved concept: plain brick-red back wall; 3-4 windows (two or three glowing mustard, one dark); a single muted forest-green door near the centre; diagonal long warm-brown shadow wedges from the left and right across the wall; faint mustard light spill below the lit windows; a calm warm-brown lane (y 460-680) with only very faint light patches; a few low crates/bins at the edges; darkest brown band at the bottom.\nLook\nPalette with hex roles: Wall: #8F4033 (muted brick red, a step below #A8402E), mortar #7A3328 Ledge / sills / crate dark: #5A3A20 Lane: #6B4423 warm brown Bottom band, outlines, shadow wedges: #2E1F16 (wedges at 32 percent opacity) Window glow: #E3A92B (one #D9A02A), dark window #3A2A1E Light spill: #E3A92B at 14 percent (wall), 7 percent (lane) Door (only cool note): #2F6B3F, panel #275A35 Overlay: #E3A92B at alpha 0.13\nTime of day and lighting: low dusk sun from the sides; long shadow wedges from both left and right, window light spilling down the wall. Mood: Hopeful, with a quiet \"someone is still home\" warmth."
   },
   {
    "id": "level-01-brick-red-alley-2#4",
@@ -4871,7 +5007,7 @@
    "file": "exports/level-01-brick-red-alley.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Background layers (world 1920x720) Layer Content Depth Scroll Notes\nfar Plain brick wall with faint mortar lines back with single image, no world parallax\nmid 4 windows (3 lit, 1 dark), green door at x 900-1020, spill wall with only landmarks, sparse polygons, ledge y 436-460 world\nlane Warm brown y 460-680, two very faint light patches, soft ground with calm, no high-contrast edge shadow wedges world detail\nfront Bottom band y 680-720, dark brown foreground with world\nTiling: shadow wedges touch the top and lane edges with the same profile on both sides, no object crosses x 0 or 3840, so left and right edges match. The image is two screens wide with different window, crate and drainpipe placement in each half; the green door appears once per 3840."
+   "text": "Background layers (world 1920x720) Depth Scroll Notes single image, no Layer Content back with parallax far Plain brick wall with faint mortar lines only landmarks, sparse world mid 4 windows (3 lit, 1 dark), green door at x 900-1020, spill calm, no high-contrast polygons, ledge y 436-460 wall with detail\nlane Warm brown y 460-680, two very faint light patches, soft world edge shadow wedges ground with front Bottom band y 680-720, dark brown world\nforeground with world\nTiling: shadow wedges touch the top and lane edges with the same profile on both sides, no object crosses x 0 or 3840, so left and right edges match. The image is two screens wide with different window, crate and drainpipe placement in each half; the green door appears once per 3840.\nProps and landmarks"
   },
   {
    "id": "level-01-brick-red-alley-2#5",
@@ -4879,7 +5015,7 @@
    "file": "exports/level-01-brick-red-alley.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Props and landmarks Windows at x 350, 670 (dark), 1200, 1520; each 140x170. Green door at tile centre (x 960). Low crates and a grey-brown bin at the wall foot (y 346-436), above the lane, at x 150, 1100, 1740. Landmarks are sparse so repeats along the 3500-4500 px level are not obvious; the shop, mural and music window from the theme are not drawn (open question).\nAsset list Path convention: assets/levels/level-01-brick-red-alley/ (SVG or PNG). The arena loads background.path from content/levels/styles/level-01-brick-red-alley.json .\nassets/levels/level-01-brick-red-alley/background.svg (3840x720, final flat vector, two different screens so landmarks repeat only every 3840 px)\nOpen questions The theme mentions a mustard corner shop, mural panels and a music window; this direction does not. Add a shop or mural later as a separate sparse landmark? Window-wall may need a tile-seam check in game, since the shadow wedge is tied to edges.\nBackground preview Agent brief: level-style-01-brick-red-alley-agent How the agent that owns this level's style works."
+   "text": "Windows at x 350, 670 (dark), 1200, 1520; each 140x170. Green door at tile centre (x 960). Low crates and a grey-brown bin at the wall foot (y 346-436), above the lane, at x 150, 1100, 1740. Landmarks are sparse so repeats along the 3500-4500 px level are not obvious; the shop, mural and music window from the theme are not drawn (open question).\nAsset list\nPath convention: assets/levels/level-01-brick-red-alley/ (SVG or PNG). The arena loads background.path from content/levels/styles/level-01-brick-red-alley.json .\nassets/levels/level-01-brick-red-alley/background.svg (3840x720, final flat vector, two different screens so landmarks repeat only every 3840 px)\nOpen questions\nThe theme mentions a mustard corner shop, mural panels and a music window; this direction does not. Add a shop or mural later as a separate sparse landmark? Window-wall may need a tile-seam check in game, since the shadow wedge is tied to edges.\nBackground preview Agent brief: level-style-01-brick-red-alley-agent"
   },
   {
    "id": "level-01-brick-red-alley-2#6",
@@ -4887,7 +5023,7 @@
    "file": "exports/level-01-brick-red-alley.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "You are the style guide agent for Level 1: Brick-Red Alley in *The Rebellion: Fists of the Fallen City*. The owner gives you the look of this one level; you turn it into a guide the game can use.\nYour files (write only these)\ndesign/levels/level-01-brick-red-alley.md : the style guide. Start from the template already there. content/levels/styles/level-01-brick-red-alley.json : the machine-readable style the arena loads. assets/levels/level-01-brick-red-alley/ : background art or placeholders for this level.\nNever edit another level's files, src/ , content/levels/levels.json or content/levels/rust-gdd- levels.json . If the owner's direction needs a change to wave counts, timer or intro/outro text, say so in your report instead of editing.\nBefore you write\n1. Read design/levels/level-01-brick-red-alley.md (known facts and house rules), design/art/style- guide.md (palette hex values, lane rules, saturation rules) and design/lore/canon.md (tone, canon).\n2. Read this level's entry in content/levels/ (id level-01-brick-red-alley ) for theme, palette, intro and outro."
+   "text": "How the agent that owns this level's style works. You are the style guide agent for Level 1: Brick-Red Alley in *The Rebellion: Fists of the Fallen City*. The owner gives you the look of this one level; you turn it into a guide the game can use.\nYour files (write only these)\ndesign/levels/level-01-brick-red-alley.md : the style guide. Start from the template already there. content/levels/styles/level-01-brick-red-alley.json : the machine-readable style the arena loads. assets/levels/level-01-brick-red-alley/ : background art or placeholders for this level.\nNever edit another level's files, src/ , content/levels/levels.json or content/levels/rust-gdd- levels.json . If the owner's direction needs a change to wave counts, timer or intro/outro text, say so in your report instead of editing.\nBefore you write\n1. Read design/levels/level-01-brick-red-alley.md (known facts and house rules), design/art/style- guide.md (palette hex values, lane rules, saturation rules) and design/lore/canon.md (tone, canon)."
   },
   {
    "id": "level-01-brick-red-alley-2#7",
@@ -4895,7 +5031,7 @@
    "file": "exports/level-01-brick-red-alley.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "3. If the owner has not given direction yet, ask for it and stop. Do not invent a style. Offer two or three short options if they want suggestions.\nWhat to produce\n1. Guide in design/levels/level-01-brick-red-alley.md : paste the owner's direction verbatim under \"Owner style direction\", then fill every section: palette with hex roles, lighting, mood, background layers, props and landmarks, asset list. Change Status to the date and \"style set\".\n2. Style file content/levels/styles/level-01-brick-red-alley.json , same shape as the existing one:\n```json\n{ \"id\": \"level-01-brick-red-alley\", \"status\": \"styled\",\n\"background\": { \"path\": \"assets/levels/level-01-brick-red-alley/background.svg\", \"overlay\": { \"color\": \"#RRGGBB\", \"alpha\": 0.15 } },\n\"notes\": \"one line\" } ```\nbackground.path is a 1920x720 SVG or PNG. Use null to keep the shared placeholder. overlay is an optional colour wash over the background (alpha 0 to 1, omit or null for none)."
+   "text": "2. Read this level's entry in content/levels/ (id level-01-brick-red-alley ) for theme, palette, intro and outro. 3. If the owner has not given direction yet, ask for it and stop. Do not invent a style. Offer two or three short options if they want suggestions.\nWhat to produce\n1. Guide in design/levels/level-01-brick-red-alley.md : paste the owner's direction verbatim under \"Owner style direction\", then fill every section: palette with hex roles, lighting, mood, background layers, props and landmarks, asset list. Change Status to the date and \"style set\".\n2. Style file content/levels/styles/level-01-brick-red-alley.json , same shape as the existing one:\n```json { \"id\": \"level-01-brick-red-alley\", \"status\": \"styled\",\n\"background\": { \"path\": \"assets/levels/level-01-brick-red-alley/background.svg\", \"overlay\": { \"color\": \"#RRGGBB\", \"alpha\": 0.15 } },\n\"notes\": \"one line\" } ```\nbackground.path is a 1920x720 SVG or PNG. Use null to keep the shared placeholder. overlay is an optional colour wash over the background (alpha 0 to 1, omit or null for none)."
   },
   {
    "id": "level-01-brick-red-alley-2#8",
@@ -4919,7 +5055,7 @@
    "file": "exports/pipeline-connection.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Pipeline Connection The Rebellion: Fists of the Fallen City. How the GDD flows through agents, checks and the game.\n1. The whole flow\nGDD + docs 1 Ingest 2 Brief 3 Writers 4 Validate 5 Critic docx / pdf / md corpus + manifest retrieved passages lore, enemies, levels... schema + canon rules wording fixes\nEvaluator and Refiner repeat until score 8+ (max 3 rounds)\n6 Evaluator 7 Refiner SCORE + REASON fixes REASON\nBundle + REPORT Owner approval Build agents Arena content.json, REPORT.md proposed items adopt into src/ level styles load\n2. Stages and files Stage Run by Reads Writes\n1 Ingest pipeline/ingest.mjs every .docx/.pdf/.md/.txt in pipeline/corpus/corpus.json , the repo manifest.json\n2 Brief pipeline/brief.mjs corpus, schemas, house rules pipeline/briefs/<type>.md\n3 Writers lore-writer, enemy-designer (first); their brief content/<type>/*.json level-designer, dialogue (after)\n4 pipeline/validate.mjs content/ errors back to the writer; Validate content/build/content.json with -- bundle\n5 Critic critic-agent content, wording edits, design/lore/critic- design/lore/canon.md log.md"
+   "text": "Pipeline Connection\nThe Rebellion: Fists of the Fallen City. How the GDD flows through agents, checks and the game.\n1. The whole flow\nGDD + docs 1 Ingest 2 Brief 3 Writers 4 Validate 5 Critic docx / pdf / md corpus + manifest retrieved passages lore, enemies, levels... schema + canon rules wording fixes\n6 Evaluator Evaluator and Refiner repeat until score 8+ (max 3 rounds) SCORE + REASON 7 Refiner fixes REASON\nBundle + REPORT Owner approval Build agents Arena content.json, REPORT.md proposed items adopt into src/ level styles load\n2. Stages and files"
   },
   {
    "id": "pipeline-connection#2",
@@ -4927,7 +5063,7 @@
    "file": "exports/pipeline-connection.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "6 evaluator-agent (read-only) target, design/art/style- SCORE + REASON; pipeline/evals/ via Evaluator guide.md , canon pipeline/refine.mjs\n7 Refiner refiner-agent target + the REASON fixed target, design/lore/refiner- log.md\n3. The evaluate and refine loop 1. The evaluator scores the target 0 to 10 against the style guide and canon. Blockers cost 3, major 2, minor 1. 2. pipeline/refine.mjs record stores the score. status exits 0 (pass, score 8 or more), 1 (refine again) or 2 (cap of 3 rounds reached). 3. On 1, the refiner applies each REASON line, blockers first, changing nothing else, then the evaluator scores again. 4. On 2, the target goes to the owner. The director never fixes violations itself.\nLast run: lore 8, enemies 10, levels 7 then 9, dialogue 9. Nothing capped. 4. Level style connection Each level has its own style agent. Its outputs are what the arena reads, so this is where the pipeline meets the game.\nLink Detail\nOwner Given to level-style-01-brick-red-alley-agent ; pasted verbatim into design/levels/level-01- direction brick-red-alley.md ."
+   "text": "Stage Run by Reads Writes 1 Ingest pipeline/ingest.mjs every .docx/.pdf/.md/.txt in pipeline/corpus/corpus.json , the repo manifest.json 2 Brief pipeline/brief.mjs corpus, schemas, house rules pipeline/briefs/<type>.md their brief content/<type>/*.json 3 Writers lore-writer, enemy-designer (first); level-designer, dialogue (after) content/ errors back to the writer; content/build/content.json with -- 4 pipeline/validate.mjs content, bundle Validate design/lore/canon.md wording edits, design/lore/critic- target, design/art/style- log.md 5 Critic critic-agent guide.md , canon SCORE + REASON; pipeline/evals/ via target + the REASON pipeline/refine.mjs 6 evaluator-agent (read-only) fixed target, design/lore/refiner- log.md Evaluator\n7 Refiner refiner-agent\n3. The evaluate and refine loop\n1. The evaluator scores the target 0 to 10 against the style guide and canon. Blockers cost 3, major 2, minor 1. 2. pipeline/refine.mjs record stores the score. status exits 0 (pass, score 8 or more), 1 (refine again) or 2 (cap of 3 rounds reached)."
   },
   {
    "id": "pipeline-connection#3",
@@ -4935,7 +5071,7 @@
    "file": "exports/pipeline-connection.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Rules it reads design/art/style-guide.md (palette, lane, saturation), design/lore/canon.md , this level's entry in content/levels/ .\nMachine- content/levels/styles/level-01-brick-red-alley.json : background path, colour overlay, ambient readable light settings. style\nArt assets/levels/level-01-brick-red-alley/background.svg (3840x720, tileable).\nGame loading src/levels/levelData.js sets STYLE_DIR = content/levels/styles/ ; src/scenes/ArenaScene.js loads the per-level background and falls back to the shared placeholder if no style file exists. src/levels/ambientData.js reads the optional ambient block.\nOff limits Waves, timer and intro/outro text stay in content/levels/levels.json and rust-gdd-levels.json ; the style agent reports needed changes instead of editing them.\n5. How to run it Goal Command\nIngest, briefs, validate, report (no model calls) npm run content\nSame, plus the four writers headlessly npm run content:generate\nValidate and bundle node pipeline/validate.mjs --bundle\nScore loop status for one target node pipeline/refine.mjs status \"content/levels\""
+   "text": "3. On 1, the refiner applies each REASON line, blockers first, changing nothing else, then the evaluator scores again. 4. On 2, the target goes to the owner. The director never fixes violations itself.\nLast run: lore 8, enemies 10, levels 7 then 9, dialogue 9. Nothing capped. 4. Level style connection\nEach level has its own style agent. Its outputs are what the arena reads, so this is where the pipeline meets the game.\nLink Detail\nOwner Given to level-style-01-brick-red-alley-agent ; pasted verbatim into design/levels/level-01- direction brick-red-alley.md .\nRules it reads design/art/style-guide.md (palette, lane, saturation), design/lore/canon.md , this level's entry in content/levels/ .\nMachine- content/levels/styles/level-01-brick-red-alley.json : background path, colour overlay, ambient readable light settings. style\nArt assets/levels/level-01-brick-red-alley/background.svg (3840x720, tileable)."
   },
   {
    "id": "pipeline-connection#4",
@@ -4943,7 +5079,15 @@
    "file": "exports/pipeline-connection.pdf",
    "authority": "reference",
    "heading": null,
-   "text": "Whole pipeline with all agents Ask Claude Code: \"use content-director-agent to generate content from the GDD\"\n6. Rules that hold across the pipeline Primary source is GameDesignDocument/ ; design/ is derived; everything else is reference. Every item is canon (in the GDD) or proposed (with a gddGap note). Proposals need owner approval. The validator bans \"Rush\", \"Fallen\" alone, Rust as a place, gore, killing words and gloating copy. Generated content is data only. Adopting it into src/ is a separate, owner-approved step."
+   "text": "Game loading src/levels/levelData.js sets STYLE_DIR = content/levels/styles/ ; src/scenes/ArenaScene.js loads the per-level background and falls back to the shared placeholder if no style file exists. src/levels/ambientData.js reads the optional ambient block.\nOff limits Waves, timer and intro/outro text stay in content/levels/levels.json and rust-gdd-levels.json ; the style agent reports needed changes instead of editing them.\n5. How to run it\nGoal Command\nIngest, briefs, validate, report (no model calls) npm run content\nSame, plus the four writers headlessly npm run content:generate\nValidate and bundle node pipeline/validate.mjs --bundle\nScore loop status for one target node pipeline/refine.mjs status \"content/levels\"\nWhole pipeline with all agents Ask Claude Code: \"use content-director-agent to generate content from the GDD\"\n6. Rules that hold across the pipeline"
+  },
+  {
+   "id": "pipeline-connection#5",
+   "doc": "pipeline-connection",
+   "file": "exports/pipeline-connection.pdf",
+   "authority": "reference",
+   "heading": null,
+   "text": "Primary source is GameDesignDocument/ ; design/ is derived; everything else is reference. Every item is canon (in the GDD) or proposed (with a gddGap note). Proposals need owner approval. The validator bans \"Rush\", \"Fallen\" alone, Rust as a place, gore, killing words and gloating copy. Generated content is data only. Adopting it into src/ is a separate, owner-approved step."
   },
   {
    "id": "claude#1",
@@ -6880,6 +7024,46 @@
    "authority": "reference",
    "heading": "Findings",
    "text": "None. Every invariant held in every run."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#1",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/kane-L3-hunter/REPORT.md",
+   "authority": "reference",
+   "heading": "Playtest agents report (2026-11-06T06-58-52)",
+   "text": "Seed 1. Each run is a goal-oriented agent pressing real keys; the monitor checks invariants every frame. Videos are in `videos/`."
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#2",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/kane-L3-hunter/REPORT.md",
+   "authority": "reference",
+   "heading": "Bosses (playtest-boss-agent)",
+   "text": "| Run | Persona | Level/Wave | Result | Time | HP left | Hits dealt/taken | Parries | Findings | Video |\n|---|---|---|---|---|---|---|---|---|---|\n| MB-L3-kane-solo<br>\"Crusher\" Kane (solo) | boss-hunter | L3 W5 | BOSS WAVE CLEARED | 64.4s | - | 31/4 | 2/3 | S1 | [MB-L3-kane-solo](videos/MB-L3-kane-solo.webm) |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#3",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/kane-L3-hunter/REPORT.md",
+   "authority": "reference",
+   "heading": "Boss move read-out (bespoke boss AI)",
+   "text": "| Run | Boss | Time to KO | Move | Seen | Hit Zed | Evaded | Parried (boss stunned) | Damage to Zed |\n|---|---|---|---|---|---|---|---|---|\n| MB-L3-kane-solo | crusher-kane-1 | 8.5s | hammer | 2 | 0 | 2 | 2 | 0 |"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#4",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/kane-L3-hunter/REPORT.md",
+   "authority": "reference",
+   "heading": "Boss fight extras",
+   "text": "- MB-L3-kane-solo / crusher-kane-1: stuns 2, steam patches laid 0, vent started with Zed airborne 0x, clock 209s left at first sight, 201s at KO, move order: hammer > hammer"
+  },
+  {
+   "id": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2#5",
+   "doc": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+   "file": "qa/playtest-agents/runs/kane-L3-hunter/REPORT.md",
+   "authority": "reference",
+   "heading": "Findings",
+   "text": "| Sev | Finding | Run | First at | Count | Detail |\n|---|---|---|---|---|---|\n| S1 | Level finished but Zed cannot reach the exit | MB-L3-kane-solo | 64.4s | 1 | x=4701 exit=5070 |"
   }
  ]
 }

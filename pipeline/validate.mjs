@@ -10,6 +10,8 @@ import { SCHEMAS, LORE_RULES, STATUS } from './schemas.mjs';
 import { loadCorpus } from './search.mjs';
 import { SPAWN_PATTERNS, LEADER_ENTRANCES } from '../src/waves/spawnPatterns.js';
 
+// Skin-only mix kinds defined in src/enemies/enemyKinds.js (a Breaker with its own look), not separate enemies in content/enemies.
+const MIX_SKINS = ['rust-breaker-2'];
 const isStr = (v) => typeof v === 'string' && v.trim().length > 0;
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const kebab = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -89,7 +91,7 @@ const VALIDATORS = {
       if (!SPAWN_PATTERNS.includes(w.spawnPattern)) e(`spawnPattern must be one of ${SPAWN_PATTERNS.join(' | ')}`);
       if (w.attackerCap !== undefined && !(Number.isInteger(w.attackerCap) && w.attackerCap >= 1)) e('attackerCap must be an integer >= 1');
       if (w.hpMult !== undefined && !(isNum(w.hpMult) && w.hpMult >= 1 && w.hpMult <= 10)) e('hpMult must be 1-10');
-      if (w.mix !== undefined && !(Array.isArray(w.mix) && w.mix.length && w.mix.every((k) => k === 'grunt' || ctx.enemies.has(k)))) e('mix must be a non-empty list of "grunt" or ids in content/enemies');
+      if (w.mix !== undefined && !(Array.isArray(w.mix) && w.mix.length && w.mix.every((k) => k === 'grunt' || MIX_SKINS.includes(k) || ctx.enemies.has(k)))) e('mix must be a non-empty list of "grunt" or ids in content/enemies');
       if (w.speedMult !== undefined && !(isNum(w.speedMult) && w.speedMult >= 0.5 && w.speedMult <= 2)) e('speedMult must be 0.5-2');
       if (w.elites !== undefined) {
         if (w.enemy !== 'grunt') e('elites only apply to grunt waves (other waves use hpMult)');

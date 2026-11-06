@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-04T16:43:34.275Z",
+  "builtAt": "2026-11-06T07:06:29.125Z",
   "files": [
     {
       "file": "GameDesignDocument/Rebellion menu desgin.docx",
@@ -131,12 +131,12 @@
     {
       "file": "blackboard/log.md",
       "authority": "reference",
-      "bytes": 8830,
-      "sha1": "222553f8f953",
+      "bytes": 9030,
+      "sha1": "f672602c55b0",
       "status": "ingested",
       "docId": "log",
       "chunks": 1,
-      "chars": 8811,
+      "chars": 9011,
       "warnings": []
     },
     {
@@ -208,12 +208,12 @@
     {
       "file": "design/art/hit-feedback-spec.md",
       "authority": "derived",
-      "bytes": 26164,
-      "sha1": "1fb1d573c169",
+      "bytes": 27567,
+      "sha1": "076f93c82ea8",
       "status": "ingested",
       "docId": "hit-feedback-spec",
-      "chunks": 31,
-      "chars": 24160,
+      "chunks": 33,
+      "chars": 25496,
       "warnings": []
     },
     {
@@ -236,6 +236,17 @@
       "docId": "rage-entry-flash",
       "chunks": 14,
       "chars": 8034,
+      "warnings": []
+    },
+    {
+      "file": "design/art/rage-impact-fx.md",
+      "authority": "derived",
+      "bytes": 4998,
+      "sha1": "c913456991cf",
+      "status": "ingested",
+      "docId": "rage-impact-fx",
+      "chunks": 10,
+      "chars": 4703,
       "warnings": []
     },
     {
@@ -280,6 +291,17 @@
       "docId": "zed-pixellab-prompt",
       "chunks": 8,
       "chars": 5670,
+      "warnings": []
+    },
+    {
+      "file": "design/art/zed-shock.md",
+      "authority": "derived",
+      "bytes": 1433,
+      "sha1": "80435ec3f453",
+      "status": "ingested",
+      "docId": "zed-shock",
+      "chunks": 5,
+      "chars": 1327,
       "warnings": []
     },
     {
@@ -608,8 +630,8 @@
       "sha1": "954cdab2fd70",
       "status": "ingested",
       "docId": "pipeline-connection",
-      "chunks": 4,
-      "chars": 3767,
+      "chunks": 5,
+      "chars": 3766,
       "warnings": []
     },
     {
@@ -995,6 +1017,17 @@
       "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
       "chunks": 4,
       "chars": 1386,
+      "warnings": []
+    },
+    {
+      "file": "qa/playtest-agents/runs/kane-L3-hunter/REPORT.md",
+      "authority": "reference",
+      "bytes": 1173,
+      "sha1": "f80887e40dd1",
+      "status": "ingested",
+      "docId": "report-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2",
+      "chunks": 5,
+      "chars": 1006,
       "warnings": []
     }
   ]

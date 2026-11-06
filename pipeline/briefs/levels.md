@@ -1,5 +1,5 @@
 # Content brief: levels
-_Generated 2026-11-04T16:43:34.725Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
+_Generated 2026-11-06T07:06:29.798Z by pipeline/brief.mjs. Regenerate with `node pipeline/brief.mjs levels`; do not hand-edit._
 
 **Writer agent:** level-designer-agent  |  **Output dir:** `content/levels/`  |  **Produces:** District levels: arena theme, wave plans, time limits, intro/outro beats.
 
@@ -233,6 +233,14 @@ export const FAILSAFE = Object.freeze({
   stuckMinMove: 12,       // px moved within the stuck window counts as "moving"
   maxTeleports: 3,        // after this many repositions, remove the enemy
   checkEveryMs: 250,
+});
+
+// Enemy-to-enemy spacing (keeps a crowd from stacking when the player stands at the end of the arena).
+export const SEPARATION = Object.freeze({
+  radiusX: 70,    // px: horizontal gap enemies keep from each other
+  radiusY: 28,    // px: depth gap (lane is shallow, so smaller)
+  strength: 0.6,  // fraction of the overlap resolved per pass
+  passes: 3,
 });
 ```
 
@@ -491,11 +499,13 @@ The HUD must not overlap the action zone. The arena camera and floor (Camera & B
 **Severity:** MINOR
 
 ### [the-rebellion-frist-draft#1] reference - PDf/The Rebellion -Frist Draft.pdf
-The Rebellion Fists of the Fallen City A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections
-The Pitch
-The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-‘me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.
-Game Mechanics -what the players does • Impactful Combat – punchy hits Players moves into a Areas were light and heavy pick-up objects • Combos and Juggle routes • Defensive tools(block dodge, parry) Enemies spawn to fight
-• Defeat Wave / Clear Arena to win the level in time frame
+The Rebellion
+Fists of the Fallen City
+A Face Paced 2d Side Scrolling Brawler that lets you fight back against Corrupt private security force. Executive Sections
+The Pitch The Rebellion first of the Fallen city is a Fast-paced 2D side-scrolling brawler where players fight through urban districts overtaken Rush a corrupt private Security Force. The game blends classic beat-`me-up mechanics with modem combo systems character progression, and dynamic enemy behaviours.
+Game Mechanics -what the players does
+� Impactful Combat � punchy hits Players moves into a Areas were light and heavy pick-up objects
+� Combos and Juggle routes � Defensive tools(block dodge, parry) Enemies spawn to fight � Defeat Wave / Clear Arena to win the level in time frame
 AI Architecture Team
 
 ### [adversarial-qa#2] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 2: Enemy spawning has no rules, so the wave system can be broken or become unwinnable (MAJOR)
@@ -504,7 +514,7 @@ AI Architecture Team
 **Exploits and edge cases:** Juggle routes are advertised ("Combos and Juggle routes"). There are no rules on infinite combos, enemy hit-stun decay, or boss and heavy-enemy immunity. This is the classic brawler exploit and the document does not address it.
 
 ### [the-rebellion-final-gdd#4] reference - PDf/The Rebellion- Final Gdd.pdf
-Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that every agent reads Enemy Agent Chase and Health & It is large as it attack Hitbox, will run the behaviour, Asset & enemy note attacker cap, Animation one enemy type Asset & first Animation Game State Win check, lose Health & Medium cost of Agent state, time-out Hitbox token result, retry Agent Wave Spawner Spawn triggers, Enemy rate, cap, and Agent positions Asset & Sprite source, None Large as it runs Animation Lead animation list, the Animation hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- enemy failsafe Menu & UI HUD (health, Game State, Medium Token Agent timer), win/lose Health & use as well screens, menus Hitbox
+Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast to Mechanics animations for Animation make at least idle, walk, jump; Lead one character to input handling move two hundred tokens Player combos One state Player Token Cost to Agent machine for Mechanics make the attacks combos work 200 tokens Health & Shared damage, None Size is medium Hitbox Agent health, and so medium hitbox data that Health & Enemy Agent every agent Hitbox, It is large as it reads Asset & will run the Game State Chase and Animation enemy note Agent attack Asset & Wave Spawner behaviour, Animation Medium cost of Asset & attacker cap, Health & token Animation Lead one enemy type Hitbox first Agent Large as it runs Win check, lose Enemy the Animation state, time-out Agent result, retry Spawn triggers, None rate, cap, and positions Sprite source, animation list, hit stop, and feedback Camera & Arena camera Wave Bounds Agent lock, world Spawner (new) bounds, unreachable- Game State, Medium Token Menu & UI enemy failsafe Agent HUD (health, Health & use as well timer), win/lose screens, menus Hitbox
 
 ### [systems-designer#8] reference - gdd-review-kit-main/reviews/systems-designer.md - 2. CONNECTIONS
 **QA F2 (spawn rules) + my F4 (no numbers) = the difficulty curve has no control variable.** QA shows that time-driven versus clear-driven spawning produces opposite failure modes (unbounded accumulation versus edge exploits). I flagged missing spawn rate and caps. Combined, the point is that spawn logic is the only lever this design has for difficulty, because there are no enemy types and no progression. Since the Enemy Agent owns behavior and the Game Loop Agent owns the win condition, and neither is budgeted (QA F5), the one lever that sets difficulty has no owner and no cost. Neither of us saw that alone.
@@ -516,12 +526,11 @@ Agent Technical Desponds Budget constraint On Player Sprite Asset & Token coast 
 ### [the-rebellion-final-gdd#2] reference - PDf/The Rebellion- Final Gdd.pdf
 Win conditions Lose conditions Fight you way to the end of the Get knocked out by health bar level while beating Rust or if time runs out Enemies Core Loop of the game.
 Enter City Level Enemies Fight Wave Cleared begins Spawn Combat tools
-Level Won Lose State Reach the end.
-Next Level begins
-Game a loop.
-game Game Mechanics -what the players does. • Impactful Combat – punchy hits Players moves into an Areas were light and heavy pick-up objects. • Combos and Juggle routes • Defensive tools(block dodge, parry)
+Lose State Level Won Reach the end. Next Level begins Game a loop. game Game Mechanics -what the players does.
+� Impactful Combat � punchy hits Players moves into an Areas were light and heavy pick-up objects.
+� Combos and Juggle routes � Defensive tools(block dodge, parry)
 Enemies spawn to fight.
-• Defeat Wave / Clear Arena to win the level in time. AI Architecture Team
+� Defeat Wave / Clear Arena to win the level in time. AI Architecture Team
 Agent Development role Gameplay Effect Player Mechanics Movement, jump, The player moves agent input handling and feels responsive Player combos Agent One state machine Light and heavy for attacks, combos, attacks chain into cancel windows, hit combos stun
 
 ### [adversarial-qa#1] reference - gdd-review-kit-main/reviews/adversarial-qa.md - Finding 1: Win condition and fail state are contradictory or undefined (BLOCKING)
@@ -530,7 +539,7 @@ Agent Development role Gameplay Effect Player Mechanics Movement, jump, The play
 **Exploits and edge cases:** Does killing the last enemy at 0:00 count as a win? Can a player stall a wave so it never completes? What if an enemy is knocked off-screen or stuck (side-scroller with a "juggle" system) and cannot be reached? The arena can then never be "cleared" and the level soft-locks until the timer runs out.
 
 ### [the-rebellion-final-gdd#3] reference - PDf/The Rebellion- Final Gdd.pdf
-Enemy Agent Control the A.I This will control the Enemies Enemies in the game Game State Agent Win check, lose Clear the arena to state, time-out win; fail and retry result, retry have rules Wave Spawner Win check, lose Difficulty comes state, time-out from how waves result, retry arrive Asset & Animation Sprite source, Punchy hits" and Lead animation list, hit readable telegraphs stop and feedback Health & Hitbox Owns health, Hits land, damage Agent damage values, and registers, the player hitbox/hurt box data can die Camera & Bounds Arena camera lock, Prevents the off- Agent (new) world bounds, screen soft lock unreachable-enemy failsafe Menu & UI Agent Builds and owns The player can every screen and on- start a game, read screen element the the state of the player sees outside fight, and see why the arena action they won or lost Technical Strategy
+Enemy Agent Control the A.I This will control the Game State Agent Enemies Enemies in the game Win check, lose Clear the arena to Wave Spawner state, time-out win; fail and retry result, retry have rules Asset & Animation Win check, lose Difficulty comes Lead state, time-out from how waves Health & Hitbox result, retry arrive Agent Sprite source, Punchy hits" and Camera & Bounds animation list, hit readable telegraphs Agent (new) stop and feedback Owns health, Hits land, damage Menu & UI Agent damage values, and registers, the player hitbox/hurt box data can die Arena camera lock, Prevents the off- world bounds, screen soft lock unreachable-enemy failsafe The player can Builds and owns start a game, read every screen and on- the state of the screen element the fight, and see why player sees outside they won or lost the arena action Technical Strategy
 
 ### [pipeline-readme#10] reference - PIPELINE-README.md - Gameplay systems (all covered by `npm test`, 163 passing)
 Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, grab/throw, weapon pickups (bat, pipe), Zed's Rage system with HUD and entry flash, wave spawner with `ambush` / `pincer` / `surge` patterns, crew-waits-for-leader logic, boss health bar, bespoke boss AI for Brick Dugan (charge, grab, mega stomp, wall slam, rage punch, block) and Railgun Royce, title screen, main menu with parallax, options panel, pause, mute, victory card, loading screen, story card.
@@ -546,4 +555,4 @@ Light/heavy/finisher combat, parry with indicator, dodge/block, jump and kick, g
 - **Severity:** MAJOR
 
 ## Need more?
-`node pipeline/search.mjs "<query>" -k 8 --full` searches all 860 chunks across 90 documents.
+`node pipeline/search.mjs "<query>" -k 8 --full` searches all 883 chunks across 93 documents.

@@ -1,0 +1,528 @@
+{
+  "stamp": "2026-11-06T07-33-47",
+  "seed": 1,
+  "base": "playtest.html",
+  "results": [
+    {
+      "scenario": {
+        "id": "L3-brawler",
+        "agent": "playtest-level-agent",
+        "level": 3,
+        "persona": "brawler",
+        "stopOn": "round",
+        "maxSec": 330
+      },
+      "wallSec": 425,
+      "video": "videos/L3-brawler.webm",
+      "persona": "brawler",
+      "kind": "competent",
+      "level": 3,
+      "levelName": "Greenline Courts",
+      "outcome": {
+        "mode": "win",
+        "reason": "cleared",
+        "t": 175799,
+        "hp": 100,
+        "secondsLeft": 182,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 180564,
+      "stats": {
+        "hitsDealt": 175,
+        "hitsTaken": 10,
+        "damageDealt": 1528,
+        "damageTaken": 92,
+        "parryAttempts": 6,
+        "parries": 4,
+        "kills": 27,
+        "wavesCleared": 5,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 13,
+        "minFps": 55,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 23,
+          "wait": 259,
+          "attack": 5545,
+          "advance": 1027,
+          "parry": 6,
+          "reposition": 17,
+          "victory": 133,
+          "heal": 38,
+          "exit": 380,
+          "done": 42
+        },
+        "notes": {
+          "rage-special": 13,
+          "heavy": 4,
+          "parry": 6,
+          "reposition": 17
+        },
+        "repositions": 1,
+        "goalShare": {
+          "intro": 0,
+          "wait": 3,
+          "attack": 74,
+          "advance": 14,
+          "parry": 0,
+          "reposition": 0,
+          "victory": 2,
+          "heal": 1,
+          "exit": 5,
+          "done": 1
+        }
+      },
+      "bosses": [
+        {
+          "id": "crusher-kane-23",
+          "seenT": 145769,
+          "diedT": 160053,
+          "maxHp": 220,
+          "moves": {
+            "hammer": {
+              "seen": 2,
+              "hitZed": 1,
+              "damage": 20,
+              "evaded": 1
+            },
+            "vent": {
+              "seen": 1,
+              "hitZed": 1,
+              "damage": 10,
+              "evaded": 0
+            },
+            "steam-patch": {
+              "seen": 1,
+              "hitZed": 5,
+              "damage": 20,
+              "evaded": 0
+            },
+            "uppercut": {
+              "seen": 1,
+              "hitZed": 1,
+              "damage": 18,
+              "evaded": 0
+            }
+          },
+          "minHp": 0,
+          "seq": [
+            "hammer",
+            "vent",
+            "uppercut",
+            "hammer"
+          ],
+          "stuns": 0,
+          "patchesLaid": 1,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 0,
+          "patchHits": {
+            "1": {
+              "ticks": 5,
+              "damage": 20
+            }
+          },
+          "secLeftDied": 195
+        }
+      ],
+      "findings": [
+        {
+          "id": "exit-blocked",
+          "severity": "S1",
+          "title": "Level finished but Zed cannot reach the exit",
+          "detail": "x=4931 exit=5070",
+          "firstT": 175244,
+          "lastT": 175727.80000000447,
+          "count": 26
+        }
+      ],
+      "timeline": [
+        {
+          "t": 47579,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 48000,
+          "type": "wave-started",
+          "index": 0
+        },
+        {
+          "t": 48018,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 48615,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 60499,
+          "type": "wave-cleared",
+          "index": 0
+        },
+        {
+          "t": 60535,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 64182,
+          "type": "wave-started",
+          "index": 1
+        },
+        {
+          "t": 64199,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 65016,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 70331,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 70331,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-6",
+          "clock": 383,
+          "mark": 610
+        },
+        {
+          "t": 70348,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 70648,
+          "type": "parry-success"
+        },
+        {
+          "t": 70898,
+          "type": "hurt",
+          "by": "grunt-8",
+          "amount": 8
+        },
+        {
+          "t": 71099,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 71099,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-8",
+          "clock": 560,
+          "mark": 520
+        },
+        {
+          "t": 71115,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 71131,
+          "type": "hurt",
+          "by": "grunt-8",
+          "amount": 16
+        },
+        {
+          "t": 79898,
+          "type": "wave-cleared",
+          "index": 1
+        },
+        {
+          "t": 79915,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 83931,
+          "type": "wave-started",
+          "index": 2
+        },
+        {
+          "t": 83948,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 84964,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 94041,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 94041,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-13",
+          "clock": 588,
+          "mark": 610
+        },
+        {
+          "t": 94059,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 94134,
+          "type": "parry-success"
+        },
+        {
+          "t": 94168,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 94168,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-12",
+          "clock": 467,
+          "mark": 780
+        },
+        {
+          "t": 94185,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 100698,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 100698,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-14",
+          "clock": 327,
+          "mark": 350
+        },
+        {
+          "t": 100713,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 100797,
+          "type": "parry-success"
+        },
+        {
+          "t": 105314,
+          "type": "wave-cleared",
+          "index": 2
+        },
+        {
+          "t": 105331,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 109271,
+          "type": "wave-started",
+          "index": 3
+        },
+        {
+          "t": 109293,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 110282,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 113871,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 113871,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-18",
+          "clock": 267,
+          "mark": 350
+        },
+        {
+          "t": 113890,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 114041,
+          "type": "parry-success"
+        },
+        {
+          "t": 138915,
+          "type": "wave-cleared",
+          "index": 3
+        },
+        {
+          "t": 138938,
+          "type": "goal",
+          "id": "advance"
+        },
+        {
+          "t": 144729,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 144745,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 145769,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 148881,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 20,
+          "move": "hammer"
+        },
+        {
+          "t": 152901,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 10,
+          "move": "vent"
+        },
+        {
+          "t": 153379,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 153962,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 154633,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 155245,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 4,
+          "move": "vent"
+        },
+        {
+          "t": 155879,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 4,
+          "move": "uppercut"
+        },
+        {
+          "t": 156229,
+          "type": "reposition",
+          "left": 1,
+          "right": 1,
+          "to": "right"
+        },
+        {
+          "t": 156229,
+          "type": "goal",
+          "id": "reposition"
+        },
+        {
+          "t": 156514,
+          "type": "reposition-done"
+        },
+        {
+          "t": 156514,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 156945,
+          "type": "hurt",
+          "by": "crusher-kane-23",
+          "amount": 18,
+          "move": "uppercut"
+        },
+        {
+          "t": 160053,
+          "type": "boss-down",
+          "id": "crusher-kane-23"
+        },
+        {
+          "t": 161527,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 163996,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 168694,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 168728,
+          "type": "goal",
+          "id": "heal"
+        },
+        {
+          "t": 169362,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 175244,
+          "type": "finding",
+          "id": "exit-blocked",
+          "severity": "S1",
+          "title": "Level finished but Zed cannot reach the exit"
+        },
+        {
+          "t": 175799,
+          "type": "round-win",
+          "reason": "cleared"
+        },
+        {
+          "t": 175813,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    }
+  ]
+}

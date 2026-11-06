@@ -102,10 +102,9 @@
       "owner": "playtest-boss-agent",
       "needs": [],
       "produces": "facts/playtest-bosses.json",
-      "status": "done",
-      "attempts": 1,
-      "maxAttempts": 2,
-      "note": "L2 Royce: 3 runs recorded (1 clear, 1 mutual KO with crew, 1 loss with Royce at 19/160); S1:0 S2:0 S3:2 (Royce dies in 10-14s; dash/trap/taser never fired because the hunter stays in melee)"
+      "status": "claimed",
+      "attempts": 2,
+      "maxAttempts": 2
     }
   ]
 }

@@ -100,6 +100,12 @@ class Monitor {
   }
 }
 
+// Crusher Kane (Level 3): reach of each move in front of him (px, from kaneData.js hitboxes) and the ones a parry can stun.
+const KANE_REACH = { hammer: 175, kick: 145, uppercut: 100, vent: 285, hook: 425 };
+const KANE_PARRY = ['hammer', 'kick', 'uppercut'];
+const kaneThreat = (a, b) => b.enemies.find((e) => e.alive && e.hasPatches && KANE_REACH[e.moveId] && (e.state === 'telegraph' || (e.state === 'attack' && e.cueClockMs !== null))
+  && (b.zed.x - e.x) * e.facing > -40 && Math.abs(b.zed.x - e.x) < KANE_REACH[e.moveId] && Math.abs(b.zed.laneY - e.y) < (e.moveId === 'hook' ? 48 : 40));
+
 // ---------- goals: relevance(beliefs) -> 0..100, act(beliefs) -> presses keys ----------
 function makeGoals(a) {
   const P = a.persona, W = P.weights;
@@ -154,6 +160,33 @@ function makeGoals(a) {
       act: (b) => {
         const t = b.traps.find((tr) => tr.state === 'live' && Math.abs(b.zed.x - tr.x) < tr.w / 2 + 12);
         a.keys.hold([b.zed.x < t.x ? K.left : K.right]); a.note('trap-step-off');
+      } },
+
+    // Crusher Kane (Level 3): back out of melee reach early, sidestep the hook in depth, then time a jump over the hit (ground attacks pass under a jumping Zed).
+    { id: 'evade-kane', label: 'Evade Kane (back-step / sidestep / jump)', score: (b) => {
+        const P = a.persona; if (!P.kaneStyle || P.kaneStyle === 'none') return 0;
+        const e = kaneThreat(a, b); if (!e) return 0;
+        if (P.kaneStyle === 'parry' && KANE_PARRY.includes(e.moveId) && a.rollFor(`${e.id}:m${e.moveSeq}`, e).go) return 0;   // this one is for the parry goal
+        return W.evadeKane ?? 91;
+      },
+      act: (b) => {
+        const e = kaneThreat(a, b), z = b.zed, rem = e.state === 'attack' ? 0 : e.tMs - e.cueClockMs;
+        if (rem <= 230) { a.keys.hold([]); if (!z.airborne) { a.keys.tap(K.jump, 4); a.note('kane-jump'); } return; }
+        if (e.moveId === 'hook') { a.keys.hold([e.y > (LANE.minY + LANE.maxY) / 2 ? K.up : K.down]); a.note('kane-hook-sidestep'); return; }
+        const r = b.lockRange || { min: b.cam.x + 40, max: b.cam.x + VIEW.w - 40 };
+        const away = z.x < e.x ? -1 : 1, cornered = (away < 0 && z.x - r.min < 40) || (away > 0 && r.max - z.x < 40);
+        if (cornered) { a.keys.hold([]); a.note('kane-cornered'); return; }
+        a.keys.hold([away < 0 ? K.left : K.right]); a.note('kane-backstep');
+      } },
+
+    { id: 'leave-steam', label: 'Get out of the steam patch', score: (b) => {
+        if (!a.persona.steamAware || b.zed.airborne) return 0;
+        const e = b.enemies.find((q) => q.alive && q.patches?.some((p) => p.state === 'live' && Math.abs(b.zed.x - p.x) < p.w / 2 + 8 && Math.abs(b.zed.laneY - p.y) < 55));
+        return e ? (W.leaveSteam ?? 95) : 0;
+      },
+      act: (b) => {
+        const p = b.enemies.flatMap((q) => q.patches || []).find((q) => q.state === 'live' && Math.abs(b.zed.x - q.x) < q.w / 2 + 8);
+        a.keys.hold([b.zed.x < p.x ? K.left : K.right]); a.note('steam-step-off');
       } },
 
     { id: 'avoid-grab', label: 'Back-step the grab reach', score: (b) => {
@@ -219,7 +252,10 @@ export class PlaytestAgent {
       if (d.targetId === PLAYER_ID) {
         S.hitsTaken++; S.damageTaken += d.amount;
         const bs = this.boss[d.attackerId];
-        if (bs && bs.curMove) { const m = bs.moves[bs.curMove]; m.hitZed++; m.damage += d.amount; bs.hitThisMove = true; }
+        if (bs && String(d.attackId).includes(':patch')) {            // Kane's steam patch: floor hazard, counted apart from his moves
+          const pid = String(d.attackId).split(':patch')[1].split(':')[0];
+          const ph = (bs.patchHits ||= {})[pid] ||= { ticks: 0, damage: 0 }; ph.ticks++; ph.damage += d.amount;
+        } else if (bs && bs.curMove) { const m = bs.moves[bs.curMove]; m.hitZed++; m.damage += d.amount; bs.hitThisMove = true; }
         this.log('hurt', { by: d.attackerId, amount: d.amount, move: bs?.curMove });
       }
     });
@@ -250,7 +286,7 @@ export class PlaytestAgent {
       id: g.id, x: g.x, y: g.y, alive: g.alive, hp: g.hp, maxHp: g.maxHp, isBoss: !!(g.isBoss || g.miniBoss), state: g.state, facing: g.facing,
       cueClockMs: g.alive ? g.cueClockMs : null, parryMarkMs: g.alive && g.cueClockMs !== null ? g.parryMarkMs : null,
       kind: g.variant?.kind, moveId: g.move?.id ?? null, moveSeq: g.moveSeq ?? 0, attackCounter: g.attackCounter ?? 0,
-      chargeWarning: !!g.chargeWarning, wave: g.wave ? { ox: g.wave.ox, r: g.wave.r } : null, guard: g.guard ?? null,
+      tMs: g.telegraphTotalMs ?? null, hasPatches: Array.isArray(g.patches), patches: (g.patches || []).map((p) => ({ id: p.id, x: p.x, y: p.y, w: p.w, state: p.state })), patchSeq: g.patchSeq ?? 0, chargeWarning: !!g.chargeWarning, wave: g.wave ? { ox: g.wave.ox, r: g.wave.r } : null, guard: g.guard ?? null,
     }));
     const hp = s.resolver?.getHealth(PLAYER_ID);
     const lift = Math.max(0, GROUND_Y - (z.y + 36));
@@ -269,17 +305,22 @@ export class PlaytestAgent {
   _waveIdxFromLog() { const w = this.timeline.filter((e) => e.type === 'wave-started'); return w.length ? (w[w.length - 1].index ?? w.length - 1) : 0; }
 
   // ---------- decisions ----------
+  rollFor(key, e) {
+    if (!this.parryRolls.has(key)) this.parryRolls.set(key, { go: this.rand() < this.persona.parrySkill, at: e.parryMarkMs - 150 + this.rand() * this.persona.reactionMs });
+    return this.parryRolls.get(key);
+  }
+
   parryCandidate(b) {
     const P = this.persona;
     for (const e of b.enemies) {
       if (!e.alive || e.cueClockMs === null || e.parryMarkMs === null) continue;
-      if (e.moveId && !['punch', 'rage', 'combo'].includes(e.moveId)) continue;             // charge/dash/grab/slam/taser/trap: sidestepped or jumped, not parried (Royce's Baton Combo finisher is)
+      if (e.moveId && !['punch', 'rage', 'combo'].includes(e.moveId) && !(P.kaneStyle === 'parry' && KANE_PARRY.includes(e.moveId))) continue;             // charge/dash/grab/slam/taser/trap: sidestepped or jumped, not parried (Royce's Baton Combo finisher is)
       if (Math.abs(e.x - b.zed.x) > 150 || Math.abs(e.y - b.zed.laneY) > 40) continue;
       const w = (this._windups ||= new Map()), prev = w.get(e.id) || { st: null, n: 0 };
       if (e.state === 'telegraph' && prev.st !== 'telegraph') prev.n++;              // one key per wind-up (the hit counter moves mid-string)
       prev.st = e.state; w.set(e.id, prev);
       const key = `${e.id}:${e.isBoss ? 'm' + e.moveSeq : 'w' + prev.n}`;
-      if (!this.parryRolls.has(key)) this.parryRolls.set(key, { go: this.rand() < P.parrySkill, at: e.parryMarkMs - 150 + this.rand() * P.reactionMs });
+      this.rollFor(key, e);
       const r = this.parryRolls.get(key);
       r.live = this._tickNo; r.dueIn = r.at - e.cueClockMs;                          // this wind-up is on screen now; ms until we press
       if (r.go && !r.pressed && e.cueClockMs >= r.at && e.cueClockMs <= e.parryMarkMs + 90) { this._parryRoll = r; this._parryTarget = e; return e; }
@@ -316,7 +357,8 @@ export class PlaytestAgent {
     const alive = b.enemies.filter((e) => e.alive);
     // Boss first when the persona hunts bosses; otherwise the closest threat.
     const score = (e) => Math.abs(e.x - z.x) + 2 * Math.abs(e.y - z.laneY) - (P.punishRecovery && e.isBoss ? 300 : 0);
-    const tgt = alive.sort((p, q) => score(p) - score(q))[0];
+    const pool = P.passive ? alive.filter((e) => !e.isBoss) : alive;                      // measurement personas spare the boss and clear his crew
+    const tgt = (pool.length ? pool : alive).sort((p, q) => score(p) - score(q))[0];
     if (!tgt) return;
     // Edge exploiter: fight from a corner of the locked screen and let enemies come.
     if (P.edgeHug) {
@@ -332,6 +374,8 @@ export class PlaytestAgent {
     if (P.waitForCue && tgt.cueClockMs === null && Math.abs(tgt.x - z.x) < 100 && this.rand() < 0.6 && !tgt.isBoss) { this.keys.hold([]); this.action = 'wait-for-ring'; return; }
     const side = z.x < tgt.x ? -1 : 1;                       // stand on our current side of the target
     const wantX = tgt.x + side * REACH.ideal, dx = wantX - z.x, dy = tgt.y - z.laneY;
+    // Steam-aware players do not walk back into a live patch to trade blows: they wait it out at its edge (3 s).
+    if (P.steamAware && b.enemies.some((q) => q.patches?.some((p) => p.state === 'live' && Math.abs(wantX - p.x) < p.w / 2 + 6 && Math.abs(tgt.y - p.y) < 55))) { this.keys.hold([]); this.action = 'wait-out-steam'; return; }
     const inX = Math.abs(tgt.x - z.x) >= REACH.min && Math.abs(tgt.x - z.x) <= REACH.max;
     const facing = Math.sign(tgt.x - z.x) === Math.sign(z.facing || 1);
     if (!inX || Math.abs(dy) > LANE_OK || !facing) {
@@ -342,6 +386,7 @@ export class PlaytestAgent {
       this.keys.hold(keys); this.action = 'close-in'; return;
     }
     this.keys.hold([]);
+    if (P.passive && tgt.isBoss) { this.action = 'passive (measuring)'; return; }   // never swings: keeps the boss alive so a long sample of his moves can be read
     // A parry is planned on a wind-up that is already running: stop swinging so Zed is free when the ring closes (a parry press mid-combo is ignored).
     if ([...this.parryRolls.values()].some((r) => r.go && !r.pressed && r.live === this._tickNo && r.dueIn <= 380)) { this.action = 'hold for parry'; return; }
     // Heavy breaks Dugan's block and punishes a recovering boss; otherwise a 3-hit light string (taps ~180 ms apart).
@@ -404,11 +449,19 @@ export class PlaytestAgent {
   _trackBosses(b) {
     for (const e of b.enemies) {
       if (!e.isBoss) continue;
-      const bs = this.boss[e.id] ||= { id: e.id, seenT: Math.round(this.t), diedT: null, maxHp: e.maxHp, moves: {}, curMove: null, lastSeq: -1, minHp: e.hp };
+      const bs = this.boss[e.id] ||= { id: e.id, seenT: Math.round(this.t), diedT: null, maxHp: e.maxHp, moves: {}, curMove: null, lastSeq: -1, minHp: e.hp, seq: [], stuns: 0, patchesLaid: 0, lastPatchSeq: 0, lastState: null, secLeftSeen: b.secondsLeft ?? null, ventAirborne: 0 };
       bs.minHp = Math.min(bs.minHp, e.hp); bs.hpEnd = e.hp;
+      if (e.state === 'hitstun' && bs.lastState !== 'hitstun') {
+        bs.stuns++; this.log('boss-stunned', { id: e.id, move: bs.curMove });
+        if (bs.curMove) bs.moves[bs.curMove].parried = (bs.moves[bs.curMove].parried || 0) + 1;
+      }
+      bs.lastState = e.state;
+      if (e.patchSeq > bs.lastPatchSeq) { bs.patchesLaid += e.patchSeq - bs.lastPatchSeq; bs.lastPatchSeq = e.patchSeq; }
+      if (!e.alive && bs.secLeftDied === undefined) bs.secLeftDied = b.secondsLeft ?? null;
       if (e.moveId && e.moveSeq !== bs.lastSeq && (e.state === 'telegraph' || e.state === 'attack')) {
         if (bs.curMove && !bs.hitThisMove) bs.moves[bs.curMove].evaded++;
-        bs.lastSeq = e.moveSeq; bs.curMove = e.moveId; bs.hitThisMove = false;
+        bs.lastSeq = e.moveSeq; bs.curMove = e.moveId; bs.hitThisMove = false; bs.seq.push(e.moveId);
+        if (e.moveId === 'vent' && b.zed.airborne) bs.ventAirborne++;
         (bs.moves[e.moveId] ||= { seen: 0, hitZed: 0, damage: 0, evaded: 0 }).seen++;
       }
       if (!e.alive && bs.curMove) { if (!bs.hitThisMove) bs.moves[bs.curMove].evaded++; bs.curMove = null; }
@@ -444,7 +497,13 @@ export class PlaytestAgent {
       persona: this.personaName, kind: this.persona.kind, level: this.levelIndex + 1, levelName: this.beliefs?.levelName,
       outcome: this.outcome, done: this.done, elapsedMs: Math.round(this.t),
       stats: { ...S, goalShare: Object.fromEntries(Object.entries(S.goalTime).map(([k, v]) => [k, Math.round((v / total) * 100)])) },
-      bosses: Object.values(this.boss).map(({ hitThisMove, curMove, lastSeq, ...r }) => r),
+      bosses: Object.values(this.boss).map(({ hitThisMove, curMove, lastSeq, lastPatchSeq, lastState, ...r }) => {
+        if (r.patchesLaid) {
+          const ph = Object.values(r.patchHits || {});
+          r.moves['steam-patch'] = { seen: r.patchesLaid, hitZed: ph.reduce((n, p) => n + p.ticks, 0), damage: ph.reduce((n, p) => n + p.damage, 0), evaded: r.patchesLaid - ph.length };
+        }
+        return r;
+      }),
       findings: [...this.monitor.findings.values()],
       timeline: this.timeline,
     };

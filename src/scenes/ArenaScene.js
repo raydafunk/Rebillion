@@ -93,6 +93,124 @@ const END_DELAY_MS = 700;             // let the KO / final hit play before the 
 const FINISHER_DAMAGE = 12;           // damage at/above which a hit gets screen shake
 const HIT_FX_FINISHER_DAMAGE = 18;    // damage at/above which a hit gets the finisher particle tier (Zed's heavy1)
 
+const levelHasRanger = (level) => level.waves.some((w) => RANGER_ART_SKINS.includes(w.enemy) || (w.mix || []).some((k) => RANGER_ART_SKINS.includes(k)));
+const levelHasSpecialist = (level) => level.waves.some((w) => w.enemy === SPECIALIST_SKIN || (w.mix || []).includes(SPECIALIST_SKIN));
+const levelHasBreaker2 = (level) => level.waves.some((w) => w.eliteSkin === BREAKER2_SKIN || (w.mix || []).includes(BREAKER2_SKIN));
+const levelHasDugan = (level) => level.waves.some((w) => w.leader && w.leader.enemy === DUGAN_ID);
+const levelHasRoyce = (level) => level.waves.some((w) => w.leader && w.leader.enemy === ROYCE_ID);
+const levelHasKane = (level) => level.waves.some((w) => w.leader && w.leader.enemy === KANE_ID);
+const levelHasGlitch = (level) => level.waves.some((w) => w.leader && w.leader.enemy === GLITCH_ID);
+
+const swallowLoadError = () => {};
+
+/** Queue every asset the level's first load needs on `scene.load` (any scene's loader works: the caches are game-wide).
+ *  MenuScene calls this while the story card is up so the arena opens with nothing left to load. Returns the background key (or null). */
+export function queueArenaAssets(scene, level, startWave = 0) {
+  // One shared no-op, removed first: the scene loader outlives restarts (retry, next level, back to menu), so a fresh closure each call would pile up listeners.
+  scene.load.off('loaderror', swallowLoadError);
+  scene.load.on('loaderror', swallowLoadError);
+  let bgKey = null;
+    // Per-level background from content/levels/styles/<id>.json.
+    const bgPath = level.style.background.path;
+    if (bgPath) {
+      bgKey = `bg.${level.id}`;
+      if (/.svg$/i.test(bgPath)) scene.load.svg(bgKey, bgPath, { scale: 1 }); // intrinsic size: art may be 1920x720 or a wider multiple
+      else scene.load.image(bgKey, bgPath);
+    }
+    loadZedSprites(scene, ['Idle', 'Jumping']);
+    scene.load.audio(HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH);
+    scene.load.audio(LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH);
+    scene.load.audio(KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH);
+    scene.load.audio(SWING_SOUND_KEY, SWING_SOUND_PATH);
+    scene.load.audio(RUN_SOUND_KEY, RUN_SOUND_PATH);
+    scene.load.audio(OWW_SOUND_KEY, OWW_SOUND_PATH);
+    scene.load.audio(DEATH_SOUND_KEY, DEATH_SOUND_PATH);
+    scene.load.audio(GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH);
+    scene.load.audio(GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH);
+    scene.load.audio(GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH);
+    if (levelHasDugan(level)) {
+      scene.load.audio(DUGAN_HIT_VOICE_KEY, DUGAN_HIT_VOICE_PATH);
+      scene.load.audio(DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_PATH);
+      scene.load.audio(DUGAN_IMPACT_SOUND_KEY, DUGAN_IMPACT_SOUND_PATH);
+    }
+    scene.load.svg(RAGE_INTRO_ASSET.key, RAGE_INTRO_ASSET.path, { width: RAGE_INTRO_ASSET.w, height: RAGE_INTRO_ASSET.h }); // Level 2 Rage explainer card frame (text is live)
+    scene.load.svg(VICTORY.frameKey, 'assets/ui/victory-card-frame.svg', { width: VICTORY.frameW, height: VICTORY.frameH }); // boss victory card frame (text is live)
+    const lm = levelMusicFor(level.id);
+    const bm = bossMusicFor(level.id);
+    // Boss + results music are not needed until late in the round: ArenaScene.create() streams them in afterwards (loadDeferredArenaAudio).
+  // A ?wave=N test start on the boss wave begins on the boss track, so that one stays in the first load.
+  if (isBossWave(startWave, level.waves.length)) scene.load.audio(bm.key, bm.path);
+    if (lm) scene.load.audio(lm.key, lm.path); // level BGM; a missing file just means no music (loaderror is swallowed above)
+        // Rust Bruisers PNGs (8 directions) are the art for every grunt/breaker.
+    for (const d of BREAKER_DIRS) {
+      scene.load.image(breakerRotationKey(d), breakerRotationPath(d));
+      for (let i = 0; i < BREAKER_FRAMES; i++) scene.load.image(breakerFrameKey(d, i), breakerFramePath(d, i));
+      for (let i = 0; i < BREAKER_ATTACK_FRAMES; i++) scene.load.image(breakerAttackFrameKey(d, i), breakerAttackFramePath(d, i));
+    }
+    for (const d of Object.keys(BREAKER_HIT_DIRS)) {
+      for (let i = 0; i < BREAKER_HIT_FRAMES; i++) scene.load.image(breakerHitFrameKey(d, i), breakerHitFramePath(d, i));
+    }
+    for (const d of Object.keys(BREAKER_DEATH_DIRS)) {
+      for (let i = 0; i < BREAKER_DEATH_FRAMES; i++) scene.load.image(breakerDeathFrameKey(d, i), breakerDeathFramePath(d, i));
+    }
+    // Rust Ranger art ('Rust Rangers — The Watchers' folder), only for levels whose waves send Rangers.
+    if (levelHasRanger(level)) {
+      for (const d of RANGER_DIRS) {
+        scene.load.image(rangerRotationKey(d), rangerRotationPath(d));
+        for (let i = 0; i < RANGER_ATTACK_FRAMES; i++) scene.load.image(rangerAttackFrameKey(d, i), rangerAttackFramePath(d, i));
+        for (let i = 0; i < RANGER_DEATH_FRAMES; i++) scene.load.image(rangerDeathFrameKey(d, i), rangerDeathFramePath(d, i));
+      }
+      for (const d of RANGER_WALK_DIRS) for (let i = 0; i < RANGER_WALK_FRAMES; i++) scene.load.image(rangerWalkFrameKey(d, i), rangerWalkFramePath(d, i));
+      for (const d of ['east', 'west']) for (let i = 0; i < RANGER_HIT_FRAMES; i++) scene.load.image(rangerHitFrameKey(d, i), rangerHitFramePath(d, i));
+    }
+    // Rust Specialist art ('Rust Specialists — The Copper Fangs' folder), only for levels whose waves send Specialists (Level 4).
+    if (levelHasSpecialist(level)) {
+      for (const d of SPECIALIST_DIRS) {
+        scene.load.image(specialistIdleKey(d), specialistIdlePath(d));
+        scene.load.image(specialistStrikeKey(d), specialistStrikePath(d));
+        scene.load.image(specialistWindupKey(d), specialistWindupPath(d));
+        for (let i = 0; i < SPECIALIST_DEATH_FRAMES; i++) scene.load.image(specialistDeathFrameKey(d, i), specialistDeathFramePath(d, i));
+      }
+      for (const d of SPECIALIST_WALK_DIRS) for (let i = 0; i < SPECIALIST_WALK_FRAMES; i++) scene.load.image(specialistWalkFrameKey(d, i), specialistWalkFramePath(d, i));
+      for (const d of SPECIALIST_HIT_DIRS) for (let i = 0; i < SPECIALIST_HIT_FRAMES; i++) scene.load.image(specialistHitFrameKey(d, i), specialistHitFramePath(d, i));
+      for (const d of SPECIALIST_BATON_DIRS) for (let i = 0; i < SPECIALIST_BATON_FRAMES; i++) scene.load.image(specialistBatonFrameKey(d, i), specialistBatonFramePath(d, i));
+      for (const d of SPECIALIST_TASER_DIRS) for (let i = 0; i < SPECIALIST_TASER_FRAMES; i++) scene.load.image(specialistTaserFrameKey(d, i), specialistTaserFramePath(d, i));
+      for (const d of SPECIALIST_RANGED_DIRS) for (let i = 0; i < SPECIALIST_RANGED_FRAMES; i++) scene.load.image(specialistRangedFrameKey(d, i), specialistRangedFramePath(d, i));
+      for (const d of SPECIALIST_BOLT_DIRS) for (let i = 0; i < SPECIALIST_BOLT_FRAMES; i++) scene.load.image(specialistBoltFrameKey(d, i), specialistBoltFramePath(d, i));
+    }
+    // Breaker Type 2 art (Rust-BreakerType2 folder), only for levels whose waves send it in (Level 2 elites).
+    if (levelHasBreaker2(level)) {
+      for (const d of BREAKER2_DIRS) {
+        scene.load.image(breaker2RotationKey(d), breaker2RotationPath(d));
+        for (let i = 0; i < BREAKER2_WALK_FRAMES; i++) scene.load.image(breaker2WalkFrameKey(d, i), breaker2WalkFramePath(d, i));
+        for (let i = 0; i < BREAKER2_ATTACK_FRAMES; i++) scene.load.image(breaker2AttackFrameKey(d, i), breaker2AttackFramePath(d, i));
+        for (let i = 0; i < BREAKER2_DEATH_FRAMES; i++) scene.load.image(breaker2DeathFrameKey(d, i), breaker2DeathFramePath(d, i));
+        for (let i = 0; i < BREAKER2_FLIP_FRAMES; i++) scene.load.image(breaker2FlipFrameKey(d, i), breaker2FlipFramePath(d, i));
+      }
+      for (const d of BREAKER2_HIT_DIRS) for (let i = 0; i < BREAKER2_HIT_FRAMES; i++) scene.load.image(breaker2HitFrameKey(d, i), breaker2HitFramePath(d, i));
+    }
+    // Dugan's own art (BrickDugan folder), only for levels that send him in.
+    if (levelHasDugan(level)) for (const a of duganAssets()) scene.load.image(a.key, a.path);
+    // Railgun Royce's own art (Railgun Royce folder), only for levels whose waves send him in (Level 2 wave 5).
+    if (levelHasRoyce(level)) for (const a of royceAssets()) scene.load.image(a.key, a.path);
+    // Crusher Kane's own art (Crusher Kane folder), only for levels whose waves send him in (Level 3 wave 5).
+    if (levelHasKane(level)) for (const a of kaneAssets()) scene.load.image(a.key, a.path);
+    // Glitch's own art (Glitch folder), only for levels whose waves send him in (Level 4 wave 5).
+    if (levelHasGlitch(level)) for (const a of glitchAssets()) scene.load.image(a.key, a.path);
+    scene.load.image(PICKUP.spriteKey, PICKUP.spritePath);
+    scene.load.image(WEAPON.spriteKey, WEAPON.spritePath);
+  return bgKey;
+}
+
+/** Boss + results music: streamed in after the fight has started (they are needed minutes later). Safe to call twice. */
+export function loadDeferredArenaAudio(scene, level) {
+  const bm = bossMusicFor(level.id);
+  if (!scene.cache.audio.exists(bm.key)) scene.load.audio(bm.key, bm.path);
+  if (!scene.cache.audio.exists('result.sting')) scene.load.audio('result.sting', 'assets/sound/level-complete-sting.mp3'); // "Level Complete Splash" by GreyFrogGames, CC0
+  if (!scene.cache.audio.exists('result.music')) scene.load.audio('result.music', 'assets/sound/results-funky-house.mp3'); // "Funky House" by Of Far Different Nature, CC0
+  if (scene.load.list.size > 0 && !scene.load.isLoading()) scene.load.start();
+}
+
 export default class ArenaScene extends Phaser.Scene {
   constructor() { super('ArenaScene'); }
 
@@ -110,96 +228,7 @@ export default class ArenaScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.on('loaderror', () => {});
-    // Per-level background from content/levels/styles/<id>.json.
-    const bgPath = this.level.style.background.path;
-    if (bgPath) {
-      this.bgKey = `bg.${this.level.id}`;
-      if (/.svg$/i.test(bgPath)) this.load.svg(this.bgKey, bgPath, { scale: 1 }); // intrinsic size: art may be 1920x720 or a wider multiple
-      else this.load.image(this.bgKey, bgPath);
-    }
-    loadZedSprites(this, ['Idle', 'Jumping']);
-    this.load.audio(HEAVY_HIT_SOUND_KEY, HEAVY_HIT_SOUND_PATH);
-    this.load.audio(LIGHT_HIT_SOUND_KEY, LIGHT_HIT_SOUND_PATH);
-    this.load.audio(KICK_HIT_SOUND_KEY, KICK_HIT_SOUND_PATH);
-    this.load.audio(SWING_SOUND_KEY, SWING_SOUND_PATH);
-    this.load.audio(RUN_SOUND_KEY, RUN_SOUND_PATH);
-    this.load.audio(OWW_SOUND_KEY, OWW_SOUND_PATH);
-    this.load.audio(DEATH_SOUND_KEY, DEATH_SOUND_PATH);
-    this.load.audio(GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_PATH);
-    this.load.audio(GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_PATH);
-    this.load.audio(GRUNT_STEP_SOUND_KEY, GRUNT_STEP_SOUND_PATH);
-    if (this._hasDugan()) {
-      this.load.audio(DUGAN_HIT_VOICE_KEY, DUGAN_HIT_VOICE_PATH);
-      this.load.audio(DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_PATH);
-      this.load.audio(DUGAN_IMPACT_SOUND_KEY, DUGAN_IMPACT_SOUND_PATH);
-    }
-    this.load.svg(RAGE_INTRO_ASSET.key, RAGE_INTRO_ASSET.path, { width: RAGE_INTRO_ASSET.w, height: RAGE_INTRO_ASSET.h }); // Level 2 Rage explainer card frame (text is live)
-    this.load.svg(VICTORY.frameKey, 'assets/ui/victory-card-frame.svg', { width: VICTORY.frameW, height: VICTORY.frameH }); // boss victory card frame (text is live)
-    const lm = levelMusicFor(this.level.id);
-    const bm = bossMusicFor(this.level.id);
-    this.load.audio(bm.key, bm.path); // end boss music (last wave)
-    if (lm) this.load.audio(lm.key, lm.path); // level BGM; a missing file just means no music (loaderror is swallowed above)
-    this.load.audio('result.sting', 'assets/sound/level-complete-sting.mp3'); // "Level Complete Splash" by GreyFrogGames, CC0
-    this.load.audio('result.music', 'assets/sound/results-funky-house.mp3'); // "Funky House" by Of Far Different Nature, CC0
-    // Rust Bruisers PNGs (8 directions) are the art for every grunt/breaker.
-    for (const d of BREAKER_DIRS) {
-      this.load.image(breakerRotationKey(d), breakerRotationPath(d));
-      for (let i = 0; i < BREAKER_FRAMES; i++) this.load.image(breakerFrameKey(d, i), breakerFramePath(d, i));
-      for (let i = 0; i < BREAKER_ATTACK_FRAMES; i++) this.load.image(breakerAttackFrameKey(d, i), breakerAttackFramePath(d, i));
-    }
-    for (const d of Object.keys(BREAKER_HIT_DIRS)) {
-      for (let i = 0; i < BREAKER_HIT_FRAMES; i++) this.load.image(breakerHitFrameKey(d, i), breakerHitFramePath(d, i));
-    }
-    for (const d of Object.keys(BREAKER_DEATH_DIRS)) {
-      for (let i = 0; i < BREAKER_DEATH_FRAMES; i++) this.load.image(breakerDeathFrameKey(d, i), breakerDeathFramePath(d, i));
-    }
-    // Rust Ranger art ('Rust Rangers — The Watchers' folder), only for levels whose waves send Rangers.
-    if (this._hasRanger()) {
-      for (const d of RANGER_DIRS) {
-        this.load.image(rangerRotationKey(d), rangerRotationPath(d));
-        for (let i = 0; i < RANGER_ATTACK_FRAMES; i++) this.load.image(rangerAttackFrameKey(d, i), rangerAttackFramePath(d, i));
-        for (let i = 0; i < RANGER_DEATH_FRAMES; i++) this.load.image(rangerDeathFrameKey(d, i), rangerDeathFramePath(d, i));
-      }
-      for (const d of RANGER_WALK_DIRS) for (let i = 0; i < RANGER_WALK_FRAMES; i++) this.load.image(rangerWalkFrameKey(d, i), rangerWalkFramePath(d, i));
-      for (const d of ['east', 'west']) for (let i = 0; i < RANGER_HIT_FRAMES; i++) this.load.image(rangerHitFrameKey(d, i), rangerHitFramePath(d, i));
-    }
-    // Rust Specialist art ('Rust Specialists — The Copper Fangs' folder), only for levels whose waves send Specialists (Level 4).
-    if (this._hasSpecialist()) {
-      for (const d of SPECIALIST_DIRS) {
-        this.load.image(specialistIdleKey(d), specialistIdlePath(d));
-        this.load.image(specialistStrikeKey(d), specialistStrikePath(d));
-        this.load.image(specialistWindupKey(d), specialistWindupPath(d));
-        for (let i = 0; i < SPECIALIST_DEATH_FRAMES; i++) this.load.image(specialistDeathFrameKey(d, i), specialistDeathFramePath(d, i));
-      }
-      for (const d of SPECIALIST_WALK_DIRS) for (let i = 0; i < SPECIALIST_WALK_FRAMES; i++) this.load.image(specialistWalkFrameKey(d, i), specialistWalkFramePath(d, i));
-      for (const d of SPECIALIST_HIT_DIRS) for (let i = 0; i < SPECIALIST_HIT_FRAMES; i++) this.load.image(specialistHitFrameKey(d, i), specialistHitFramePath(d, i));
-      for (const d of SPECIALIST_BATON_DIRS) for (let i = 0; i < SPECIALIST_BATON_FRAMES; i++) this.load.image(specialistBatonFrameKey(d, i), specialistBatonFramePath(d, i));
-      for (const d of SPECIALIST_TASER_DIRS) for (let i = 0; i < SPECIALIST_TASER_FRAMES; i++) this.load.image(specialistTaserFrameKey(d, i), specialistTaserFramePath(d, i));
-      for (const d of SPECIALIST_RANGED_DIRS) for (let i = 0; i < SPECIALIST_RANGED_FRAMES; i++) this.load.image(specialistRangedFrameKey(d, i), specialistRangedFramePath(d, i));
-      for (const d of SPECIALIST_BOLT_DIRS) for (let i = 0; i < SPECIALIST_BOLT_FRAMES; i++) this.load.image(specialistBoltFrameKey(d, i), specialistBoltFramePath(d, i));
-    }
-    // Breaker Type 2 art (Rust-BreakerType2 folder), only for levels whose waves send it in (Level 2 elites).
-    if (this._hasBreaker2()) {
-      for (const d of BREAKER2_DIRS) {
-        this.load.image(breaker2RotationKey(d), breaker2RotationPath(d));
-        for (let i = 0; i < BREAKER2_WALK_FRAMES; i++) this.load.image(breaker2WalkFrameKey(d, i), breaker2WalkFramePath(d, i));
-        for (let i = 0; i < BREAKER2_ATTACK_FRAMES; i++) this.load.image(breaker2AttackFrameKey(d, i), breaker2AttackFramePath(d, i));
-        for (let i = 0; i < BREAKER2_DEATH_FRAMES; i++) this.load.image(breaker2DeathFrameKey(d, i), breaker2DeathFramePath(d, i));
-        for (let i = 0; i < BREAKER2_FLIP_FRAMES; i++) this.load.image(breaker2FlipFrameKey(d, i), breaker2FlipFramePath(d, i));
-      }
-      for (const d of BREAKER2_HIT_DIRS) for (let i = 0; i < BREAKER2_HIT_FRAMES; i++) this.load.image(breaker2HitFrameKey(d, i), breaker2HitFramePath(d, i));
-    }
-    // Dugan's own art (BrickDugan folder), only for levels that send him in.
-    if (this._hasDugan()) for (const a of duganAssets()) this.load.image(a.key, a.path);
-    // Railgun Royce's own art (Railgun Royce folder), only for levels whose waves send him in (Level 2 wave 5).
-    if (this._hasRoyce()) for (const a of royceAssets()) this.load.image(a.key, a.path);
-    // Crusher Kane's own art (Crusher Kane folder), only for levels whose waves send him in (Level 3 wave 5).
-    if (this._hasKane()) for (const a of kaneAssets()) this.load.image(a.key, a.path);
-    // Glitch's own art (Glitch folder), only for levels whose waves send him in (Level 4 wave 5).
-    if (this._hasGlitch()) for (const a of glitchAssets()) this.load.image(a.key, a.path);
-    this.load.image(PICKUP.spriteKey, PICKUP.spritePath);
-    this.load.image(WEAPON.spriteKey, WEAPON.spritePath);
+    this.bgKey = queueArenaAssets(this, this.level, this.startWave);
     this._showLoadingScreen();
   }
 
@@ -375,6 +404,7 @@ export default class ArenaScene extends Phaser.Scene {
     this.game.events.on('blur', this._onBlur);
     this.padStartPrev = false;
     this._startLevelMusic();
+    loadDeferredArenaAudio(this, this.level); // boss + results music stream in while the fight is already running
     this.events.once('shutdown', () => { this.game.events.off('blur', this._onBlur); this._teardown(); });
   }
 
@@ -476,7 +506,7 @@ export default class ArenaScene extends Phaser.Scene {
     }
   }
 
-  _hasRanger() { return this.level.waves.some((w) => RANGER_ART_SKINS.includes(w.enemy) || (w.mix || []).some((k) => RANGER_ART_SKINS.includes(k))); }
+  _hasRanger() { return levelHasRanger(this.level); }
 
   _registerRangerAnims() {
     if (!this.textures.exists(rangerRotationKey('east'))) return;
@@ -492,7 +522,7 @@ export default class ArenaScene extends Phaser.Scene {
     for (const d of ['east', 'west']) mk(rangerHitAnimKey(d), RANGER_HIT_FRAMES, (i) => rangerHitFrameKey(d, i), { repeat: 0, frameRate: 30 });
   }
 
-  _hasSpecialist() { return this.level.waves.some((w) => w.enemy === SPECIALIST_SKIN || (w.mix || []).includes(SPECIALIST_SKIN)); }
+  _hasSpecialist() { return levelHasSpecialist(this.level); }
 
   _registerSpecialistAnims() {
     if (!this.textures.exists(specialistIdleKey('east'))) return;
@@ -511,7 +541,7 @@ export default class ArenaScene extends Phaser.Scene {
     }
   }
 
-  _hasBreaker2() { return this.level.waves.some((w) => w.eliteSkin === BREAKER2_SKIN || (w.mix || []).includes(BREAKER2_SKIN)); }
+  _hasBreaker2() { return levelHasBreaker2(this.level); }
 
   _registerBreaker2Anims() {
     if (!this.textures.exists(breaker2RotationKey('east'))) return;
@@ -529,13 +559,13 @@ export default class ArenaScene extends Phaser.Scene {
     mk(breaker2HitAnimKey('east'), BREAKER2_HIT_FRAMES, (i) => breaker2HitFrameKey('east', i), { repeat: 0, frameRate: 30 });
   }
 
-  _hasDugan() { return this.level.waves.some((w) => w.leader && w.leader.enemy === DUGAN_ID); }
+  _hasDugan() { return levelHasDugan(this.level); }
 
-  _hasRoyce() { return this.level.waves.some((w) => w.leader && w.leader.enemy === ROYCE_ID); }
+  _hasRoyce() { return levelHasRoyce(this.level); }
 
-  _hasKane() { return this.level.waves.some((w) => w.leader && w.leader.enemy === KANE_ID); }
+  _hasKane() { return levelHasKane(this.level); }
 
-  _hasGlitch() { return this.level.waves.some((w) => w.leader && w.leader.enemy === GLITCH_ID); }
+  _hasGlitch() { return levelHasGlitch(this.level); }
 
   _registerGlitchAnims() {
     if (!this.textures.exists(glitchRotationKey('east'))) return;

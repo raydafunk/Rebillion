@@ -24,6 +24,17 @@ export const BOSS_SCENARIOS = [
   // Level 2: "Railgun" Royce, bespoke AI since the Royce build (RoyceBoss.js): Baton Combo, Charging Dash, Shockwave Slam, Rail Trap, Taser Burst, block.
   boss({ id: 'MB-L2-royce-solo', tier: 'mini-boss', boss: '"Railgun" Royce (solo)', level: 2, wave: 5, solo: true, bespoke: true }),
   boss({ id: 'EB-L2-royce-crew', tier: 'end-boss', boss: '"Railgun" Royce + crew (Level 2 finale)', level: 2, wave: 5, bespoke: true, stopOn: 'round' }),
+  // Level 3: "Crusher" Kane (KaneBoss.js): Hammer Slam, Hook Chain Grab, Furnace Kick, Steam Vent Burst (+ steam patches), Crushing Uppercut. Parry is the only stun.
+  boss({ id: 'MB-L3-kane-solo', tier: 'mini-boss', boss: '"Crusher" Kane (solo)', level: 3, wave: 5, solo: true, bespoke: true }),
+  boss({ id: 'MB-L3-kane-crew', tier: 'mini-boss', boss: '"Crusher" Kane + Breaker crew (Level 3 wave 5)', level: 3, wave: 5, bespoke: true }),
+  boss({ id: 'MB-L3-kane-parry', tier: 'mini-boss', boss: 'Kane vs Parry Master', level: 3, wave: 5, solo: true, bespoke: true, persona: 'parry-master' }),
+  boss({ id: 'MB-L3-kane-dodger', tier: 'mini-boss', boss: 'Kane vs Dodger (no parry)', level: 3, wave: 5, solo: true, bespoke: true, persona: 'dodger' }),
+  boss({ id: 'MB-L3-kane-trader', tier: 'mini-boss', boss: 'Kane vs Trader (no parry, no dodge)', level: 3, wave: 5, solo: true, bespoke: true, persona: 'trader' }),
+  boss({ id: 'MB-L3-kane-rookie', tier: 'mini-boss', boss: 'Kane vs Rookie', level: 3, wave: 5, solo: true, bespoke: true, persona: 'rookie' }),
+  boss({ id: 'MB-L3-kane-kite-dodge', tier: 'mini-boss', boss: 'Kane long sample: dodge only, never attacks', level: 3, wave: 5, solo: true, bespoke: true, persona: 'kiter-dodge', maxSec: 100, stopOn: 'round' }),
+  boss({ id: 'MB-L3-kane-kite-parry', tier: 'mini-boss', boss: 'Kane long sample: parry + dodge, never attacks', level: 3, wave: 5, solo: true, bespoke: true, persona: 'kiter-parry', maxSec: 100, stopOn: 'round' }),
+  boss({ id: 'ADV-kane-edge', tier: 'mini-boss', boss: 'Kane vs Edge Exploiter', level: 3, wave: 5, solo: true, bespoke: true, persona: 'edge-exploiter', maxSec: 150 }),
+  boss({ id: 'ADV-kane-masher', tier: 'mini-boss', boss: 'Kane vs Button Masher', level: 3, wave: 5, solo: true, bespoke: true, persona: 'button-masher', maxSec: 150 }),
   boss({ id: 'MB-L4-holt', tier: 'mini-boss', boss: 'Overseer Dr. Maren Holt wave', level: 4, wave: 2 }),
   boss({ id: 'MB-L5-copper-fang', tier: 'mini-boss', boss: 'Rust Copper Fang wave', level: 5, wave: 2 }),
   boss({ id: 'MB-L5-wren', tier: 'mini-boss', boss: 'Overseer Silas Wren wave', level: 5, wave: 5 }),

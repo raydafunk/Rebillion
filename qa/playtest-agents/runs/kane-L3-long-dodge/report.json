@@ -1,0 +1,151 @@
+{
+  "stamp": "2026-11-06T07-18-53",
+  "seed": 1,
+  "base": "playtest.html",
+  "results": [
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "kiter-dodge",
+        "stopOn": "round",
+        "maxSec": 100,
+        "id": "MB-L3-kane-kite-dodge",
+        "tier": "mini-boss",
+        "boss": "Kane long sample: dodge only, never attacks",
+        "level": 3,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 159,
+      "video": "videos/MB-L3-kane-kite-dodge.webm",
+      "persona": "kiter-dodge",
+      "kind": "competent",
+      "level": 3,
+      "levelName": "Greenline Courts",
+      "outcome": null,
+      "done": false,
+      "elapsedMs": 97334,
+      "stats": {
+        "hitsDealt": 2,
+        "hitsTaken": 0,
+        "damageDealt": 13,
+        "damageTaken": 0,
+        "parryAttempts": 0,
+        "parries": 0,
+        "kills": 0,
+        "wavesCleared": 0,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 0,
+        "minFps": 51,
+        "hitches": 1,
+        "goalTime": {
+          "intro": 4,
+          "wait": 51,
+          "attack": 314,
+          "evade-kane": 55
+        },
+        "notes": {
+          "kane-backstep": 24,
+          "kane-jump": 4
+        },
+        "goalShare": {
+          "intro": 1,
+          "wait": 12,
+          "attack": 74,
+          "evade-kane": 13
+        }
+      },
+      "bosses": [
+        {
+          "id": "crusher-kane-1",
+          "seenT": 90053,
+          "diedT": null,
+          "maxHp": 220,
+          "moves": {
+            "hammer": {
+              "seen": 1,
+              "hitZed": 0,
+              "damage": 0,
+              "evaded": 0
+            }
+          },
+          "minHp": 220,
+          "seq": [
+            "hammer"
+          ],
+          "stuns": 0,
+          "patchesLaid": 0,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 220
+        }
+      ],
+      "findings": [
+        {
+          "id": "scenario-timeout",
+          "severity": "S3",
+          "title": "Scenario hit its 100s cap before the round ended",
+          "detail": "goal at cap: attack",
+          "count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "t": 88859,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 89013,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 89047,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 90053,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92087,
+          "type": "goal",
+          "id": "evade-kane"
+        },
+        {
+          "t": 92502,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92564,
+          "type": "goal",
+          "id": "evade-kane"
+        },
+        {
+          "t": 92621,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 92677,
+          "type": "goal",
+          "id": "evade-kane"
+        },
+        {
+          "t": 93277,
+          "type": "goal",
+          "id": "attack"
+        }
+      ]
+    }
+  ]
+}

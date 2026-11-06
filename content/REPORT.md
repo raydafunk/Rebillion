@@ -1,8 +1,8 @@
 # Content pipeline report
-_2026-11-04_
+_2026-11-06_
 
 ## Sources read
-90 of 90 documents ingested.
+93 of 93 documents ingested.
 
 - read `GameDesignDocument/Rebellion menu desgin.docx` (primary), 4 chunks
 - read `GameDesignDocument/The Rebellion.docx` (primary), 17 chunks
@@ -22,13 +22,15 @@ _2026-11-04_
 - read `design/art/dugan-mega-stomp.md` (derived), 10 chunks
 - read `design/art/dugan-wall-slam.md` (derived), 16 chunks
 - read `design/art/enemy-sprite-specs.md` (derived), 40 chunks
-- read `design/art/hit-feedback-spec.md` (derived), 31 chunks
+- read `design/art/hit-feedback-spec.md` (derived), 33 chunks
 - read `design/art/mute-button.md` (derived), 7 chunks
 - read `design/art/rage-entry-flash.md` (derived), 14 chunks
+- read `design/art/rage-impact-fx.md` (derived), 10 chunks
 - read `design/art/rage-intro-card.md` (derived), 9 chunks
 - read `design/art/style-guide.md` (derived), 22 chunks
 - read `design/art/victory-card.md` (derived), 8 chunks
 - read `design/art/zed-pixellab-prompt.md` (derived), 8 chunks
+- read `design/art/zed-shock.md` (derived), 5 chunks
 - read `design/audio/CREDITS.md` (derived), 4 chunks
 - read `design/audio/audio-manifest.md` (derived), 15 chunks
 - read `design/levels/README.md` (derived), 4 chunks
@@ -58,7 +60,7 @@ _2026-11-04_
 - read `design/ux/win.md` (derived), 10 chunks
 - read `exports/critic-log.docx` (reference), 17 chunks
 - read `exports/level-01-brick-red-alley.pdf` (reference), 9 chunks
-- read `exports/pipeline-connection.pdf` (reference), 4 chunks
+- read `exports/pipeline-connection.pdf` (reference), 5 chunks
 - read `gdd-review-kit-main/CLAUDE.md` (reference), 11 chunks
 - read `gdd-review-kit-main/README.md` (reference), 8 chunks
 - read `gdd-review-kit-main/gdd.txt` (reference), 2 chunks
@@ -94,6 +96,7 @@ _2026-11-04_
 - read `qa/playtest-agents/runs/2026-11-03T12-43-19/REPORT.md` (reference), 4 chunks
 - read `qa/playtest-agents/runs/2026-11-03T12-44-13/REPORT.md` (reference), 4 chunks
 - read `qa/playtest-agents/runs/2026-11-03T16-50-58/REPORT.md` (reference), 4 chunks
+- read `qa/playtest-agents/runs/kane-L3-hunter/REPORT.md` (reference), 5 chunks
 
 ## Content
 | Type | Items | Proposed (needs owner approval) | Errors |
@@ -101,9 +104,9 @@ _2026-11-04_
 | lore | 67 | 17 | 0 |
 | enemies | 23 | 3 | 0 |
 | levels | 8 | 8 | 0 |
-| dialogue | 99 | 87 | 0 |
+| dialogue | 100 | 88 | 0 |
 
-## Proposed items awaiting owner approval (115)
+## Proposed items awaiting owner approval (116)
 - **lore/rust-grunt**: The GDD says only 'Rust Enemies'. 'Rust grunt' is the working Tier 0 enemy name from the asset manifest and canon open question 6; the owner has not confirmed it as the player-facing term.
 - **lore/iron-line-push**: The GDD's campaign table names the Level 6 district 'Iron-line-push' and the Level 6 mini-boss (Subject 88), but never describes the district. The look and story here are derived from the Level 6 style guide.
 - **lore/copper-fang-courts**: The GDD's campaign table names the Level 7 district 'Copper-fang-courts' and its mini-boss, Commander Atlas, but gives no description. The main boss, 'Elite Rust Gauntlet', is named only; the owner will define it later, so nothing about it is invented here.
@@ -127,11 +130,11 @@ _2026-11-04_
 - **levels/level-01-brick-red-alley**: The GDD says "urban districts" and "Defeat Wave / Clear Arena ... in time" but sets no level count, order, wave counts or time limit. Level 1 is paced as a tutorial arc (warm-up, pressure, first Breaker, escalation, finale) with health pickups in the breathers; wave numbers and the 210 s limit are design assumptions, not GDD-confirmed.
 - **levels/level-02-mustard-row**: No level structure in the GDD. Introduces the Rust Watcher (rust-watcher) as the first new threat, mixed with grunts, Type 2 Breakers from wave 3, and "Railgun" Royce as the wave 5 mini-boss; wave sizes are assumed; the 210 s limit and the 5-wave arc copy Level 1.
 - **levels/level-03-greenline-courts**: No level structure in the GDD. Introduces the Rust Breaker (rust-breaker) bruiser alongside the Rust Watcher and grunts; waves vary arrival pattern (slow heavy waves, then a quick burst) rather than only raising counts.
-- **levels/level-04-stewpot-gardens**: No level structure in the GDD. Level 4 fields the GDD's Rust Specialists, "The Copper Fangs" (rust-specialist) and the Rust Rangers (rust-ranger) in alternating waves, then a mixed Ranger and grunt surge, and closes on the mini-boss Glitch (rust-glitch) as a single-enemy wave, so the player must use lane movement against ranged pressure before a deception fight. Wave 5 is a boss-role wave: the engine plays Glitch as a stand-in grunt on a 1.5x health wave until his fight is built, and the pipeline lets a boss-role wave be smaller than the one before it. No restPickup on the last wave (the exit follows it). 180 s limit assumed.
+- **levels/level-04-stewpot-gardens**: No level structure in the GDD. Level 4 fields the GDD's Rust Specialists, "The Copper Fangs" (rust-specialist) and the Rust Rangers (rust-ranger) in alternating waves, then a mixed Ranger and grunt surge, and closes on the mini-boss Glitch (rust-glitch) as a single-enemy wave, so the player must use lane movement against ranged pressure before a deception fight. Wave 5 is the mini-boss beat: Glitch (GlitchBoss, 340 HP, overclocks at half health) walks in from the far side and four Rust Rangers join after his first move; the validator lets a leader wave be smaller than the one before it. No restPickup on the last wave (the exit follows it). 180 s limit assumed.
 - **levels/level-05-songwindow-heights**: No level structure or final-level beat in the GDD (narrative review notes the premise has no ending). Waves 1-4 interleave grunts, Rust Watchers and Type 2 Breaker elites (wave.mix, mixElites); wave 5 is the Raptor mini-boss beat and the last wave. Owner decision 2026-11-03: Copper Fang, Wren and the 3-wave Breaker/Copper Fang tail were cut. Wave sizes and the 210 s limit are assumed; five levels is an assumption.
 - **levels/level-06-iron-line-push**: The GDD sets no level count, tiers or level list. This is an extra proposed level (order 6, after the five in levels.json) that introduces the GDD-named Rust units in escalation: Iron Line cordon, then Watchers, then Breakers. Wave numbers and the 150 s limit are placeholders in the Tier 0 shape. Uses the proposed expansion enemies from rust-gdd-units.json, so it depends on owner approval of those.
 - **levels/level-07-copper-fang-courts**: Owner request (2026-11-03): Level 7 grows from 3 solo waves to 5 mixed waves with no boss. Waves 1-4 mix Grunts, Watchers, Breakers and Copper Fangs, with a big health pickup after every wave; wave 5 is a surge of all four types (12 enemies, maxAlive 6, no boss). Commander Atlas (canon Level 7 mini-boss) is deliberately not placed in this level by owner decision; his data in mini-bosses.json is unchanged. The GDD gives no wave list. Only one restPickup per wave is supported, and none after the last wave, so the finale relies on the heal from wave 4.
-- **levels/level-08-overseer-tower**: The GDD gives Overseer Halden Varr, "The Architect of Rust" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet. Owner decision (2026-11-03): two waves added, so the level now has 6 waves. Wave 4 is a randomised mixed wave (cordon, watcher, breaker, grunt, at most 2 alive). Wave 5 is the four-Overseer wave: Voss, Calder, Wren and Holt each appear once among random cordon, watcher, breaker and grunt fillers, at most 3 alive. Wave 6 is the final: Halden Varr's two-phase fight (phase 2 at 30 percent HP, per the GDD) with random crew joining after his first move. Time limit raised from 180 s to 420 s.
+- **levels/level-08-overseer-tower**: The GDD gives Overseer Halden Varr, "The Architect of Rust" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet. Owner decision (2026-11-05): all six waves removed; the level is the Varr final fight alone, one wave with 3 random crew.
 - **dialogue/zed-fight-start-brick-red-alley**: Level-specific barks are not in the GDD; built on Brick-Red Alley, where Zed's kids learned to fight, dance and argue like family.
 - **dialogue/zed-fight-start-mustard-row**: Mustard Row is a proposed district; lines lean on the GDD's mustard-yellow storefronts and corner shops.
 - **dialogue/zed-fight-start-greenline-courts**: Greenline Courts is a proposed district; lines follow the GDD's forest-green basketball courts and Zed's wish for kids to play again.
@@ -209,6 +212,7 @@ _2026-11-04_
 - **dialogue/rust-halden-varr-telegraph**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
 - **dialogue/rust-halden-varr-pushed-back**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
 - **dialogue/zed-answers-halden-varr**: The GDD gives the Rust doctrine, serial numbers and unit types but no spoken lines; these are voice flavour in that register, answered by the community, for the owner to approve.
+- **dialogue/zed-level-won-crusher-kane**: The GDD names Crusher Kane as the Level 3 mini-boss but gives no spoken lines; this line was supplied by the owner and is awaiting approval.
 - **dialogue/zed-fight-start**: GDD gives Zed's tone (expressive, stubborn, jokes mid-fight) but no scripted barks; these lines extend that voice.
 - **dialogue/zed-combo**: No combo barks in the GDD; written from his rhythm-and-dance fighting style and joking nature.
 - **dialogue/zed-heavy-hit**: No heavy-hit barks in the GDD; extends the scrappy-but-sharp brawler tone.

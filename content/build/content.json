@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-04T16:43:35.428Z",
+  "builtAt": "2026-11-06T07:06:30.499Z",
   "lore": [
     {
       "id": "open-windows-music",
@@ -1416,7 +1416,7 @@
       "spriteKey": "rust.crusher-kane",
       "stats": {
         "maxHp": 220,
-        "moveSpeed": 50,
+        "moveSpeed": 55,
         "attackRange": 105,
         "telegraphMs": 850,
         "attackMs": 340,
@@ -2682,6 +2682,7 @@
         "#2F6B3F"
       ],
       "timeLimitSec": 210,
+      "restartTimerOnBoss": true,
       "intro": "Home. The alley where Zed learned to fight, dance and argue like family. Push the Rust back and let the block breathe.",
       "outro": "The alley is ours again. A window cracks open and a record starts to play. Zed grins. Next stop, Mustard Row.",
       "waves": [
@@ -2792,6 +2793,7 @@
         "#6B4423"
       ],
       "timeLimitSec": 210,
+      "restartTimerOnBoss": true,
       "intro": "Shutters chained, signs faded. Zed's neighbours are watching from behind the glass. Clear the row and open a shop.",
       "outro": "Chains drop, shutters roll up, and the first hand-lettered sign goes back in the window. Mustard Row is open for business.",
       "waves": [
@@ -2934,6 +2936,7 @@
         "#F4E6C8"
       ],
       "timeLimitSec": 210,
+      "restartTimerOnBoss": true,
       "intro": "Faded lines, empty hoops. Zed fights so kids can play here again. Clear the court.",
       "outro": "Somebody finds a ball. Bounce, bounce, swish. The courts are full of kids again.",
       "waves": [
@@ -3037,7 +3040,7 @@
     {
       "id": "level-04-stewpot-gardens",
       "status": "proposed",
-      "gddGap": "No level structure in the GDD. Level 4 fields the GDD's Rust Specialists, \"The Copper Fangs\" (rust-specialist) and the Rust Rangers (rust-ranger) in alternating waves, then a mixed Ranger and grunt surge, and closes on the mini-boss Glitch (rust-glitch) as a single-enemy wave, so the player must use lane movement against ranged pressure before a deception fight. Wave 5 is a boss-role wave: the engine plays Glitch as a stand-in grunt on a 1.5x health wave until his fight is built, and the pipeline lets a boss-role wave be smaller than the one before it. No restPickup on the last wave (the exit follows it). 180 s limit assumed.",
+      "gddGap": "No level structure in the GDD. Level 4 fields the GDD's Rust Specialists, \"The Copper Fangs\" (rust-specialist) and the Rust Rangers (rust-ranger) in alternating waves, then a mixed Ranger and grunt surge, and closes on the mini-boss Glitch (rust-glitch) as a single-enemy wave, so the player must use lane movement against ranged pressure before a deception fight. Wave 5 is the mini-boss beat: Glitch (GlitchBoss, 340 HP, overclocks at half health) walks in from the far side and four Rust Rangers join after his first move; the validator lets a leader wave be smaller than the one before it. No restPickup on the last wave (the exit follows it). 180 s limit assumed.",
       "sources": [
         "the-rebellion#13",
         "the-rebellion#15",
@@ -3056,15 +3059,16 @@
         "#F2D9A0"
       ],
       "timeLimitSec": 180,
+      "restartTimerOnBoss": true,
       "intro": "Zed's mother's stall stood just past the fence. Keep moving, sidestep those darts, and bring dinner back.",
       "outro": "The fence comes down, the planters get watered, and a pot of stew goes on. Everyone gets a bowl.",
       "waves": [
         {
           "enemy": "rust-specialist",
-          "count": 5,
-          "maxAlive": 4,
-          "spawnIntervalMs": 700,
-          "startDelayMs": 600,
+          "count": 3,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1400,
+          "startDelayMs": 1000,
           "spawnPattern": "alternate",
           "attackerCap": 3,
           "restPickup": {
@@ -3076,15 +3080,15 @@
         },
         {
           "enemy": "rust-ranger",
-          "count": 5,
-          "maxAlive": 1,
-          "spawnIntervalMs": 1500,
-          "startDelayMs": 1000,
+          "count": 7,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1100,
+          "startDelayMs": 800,
           "spawnPattern": "flank",
           "attackerCap": 3,
           "hpMult": 1.5,
           "restPickup": {
-            "heal": 35
+            "heal": 40
           },
           "mix": [
             "rust-ranger"
@@ -3092,14 +3096,14 @@
         },
         {
           "enemy": "rust-specialist",
-          "count": 5,
-          "maxAlive": 1,
-          "spawnIntervalMs": 1600,
-          "startDelayMs": 1000,
+          "count": 8,
+          "maxAlive": 3,
+          "spawnIntervalMs": 950,
+          "startDelayMs": 800,
           "spawnPattern": "ambush",
           "attackerCap": 3,
           "restPickup": {
-            "heal": 40
+            "heal": 50
           },
           "mix": [
             "rust-specialist"
@@ -3107,7 +3111,7 @@
         },
         {
           "enemy": "rust-ranger",
-          "count": 5,
+          "count": 8,
           "maxAlive": 3,
           "spawnIntervalMs": 650,
           "startDelayMs": 1000,
@@ -3123,14 +3127,22 @@
           }
         },
         {
-          "enemy": "rust-glitch",
-          "count": 1,
-          "maxAlive": 1,
-          "spawnIntervalMs": 1200,
+          "enemy": "rust-ranger",
+          "count": 4,
+          "maxAlive": 2,
+          "spawnIntervalMs": 1500,
           "startDelayMs": 1000,
           "spawnPattern": "flank",
           "attackerCap": 3,
-          "hpMult": 1.5
+          "leader": {
+            "enemy": "rust-glitch",
+            "entrance": "far-side",
+            "spawnFirst": true,
+            "gate": false,
+            "crewAfter": "first-move",
+            "crewDelayMs": 2500,
+            "crewMaxWaitMs": 9000
+          }
         }
       ],
       "miniBoss": "rust-glitch",
@@ -3184,11 +3196,9 @@
           "spawnPattern": "alternate",
           "attackerCap": 2,
           "mix": [
-            "grunt",
-            "grunt",
-            "rust-watcher"
+            "rust-breaker"
           ],
-          "speedMult": 1.15,
+          "speedMult": 1.1,
           "restPickup": {
             "heal": 35
           }
@@ -3203,14 +3213,11 @@
           "attackerCap": 3,
           "mix": [
             "grunt",
-            "rust-watcher",
-            "grunt"
+            "rust-breaker",
+            "grunt",
+            "rust-breaker"
           ],
           "speedMult": 1.2,
-          "elites": 2,
-          "eliteHpMult": 3,
-          "eliteSkin": "rust-breaker-2",
-          "mixElites": true,
           "restPickup": {
             "heal": 40
           }
@@ -3224,15 +3231,12 @@
           "spawnPattern": "ambush",
           "attackerCap": 3,
           "mix": [
-            "rust-watcher",
-            "grunt",
-            "rust-watcher"
+            "rust-ranger",
+            "rust-breaker-2",
+            "rust-ranger",
+            "rust-breaker-2"
           ],
           "speedMult": 1.25,
-          "elites": 2,
-          "eliteHpMult": 3,
-          "eliteSkin": "rust-breaker-2",
-          "mixElites": true,
           "restPickup": {
             "heal": 50
           }
@@ -3246,32 +3250,31 @@
           "spawnPattern": "surge",
           "attackerCap": 3,
           "mix": [
+            "rust-ranger",
+            "rust-breaker",
             "grunt",
+            "rust-breaker-2",
             "rust-watcher",
+            "rust-breaker",
+            "rust-ranger",
             "grunt",
-            "rust-watcher"
+            "rust-breaker-2"
           ],
           "speedMult": 1.3,
-          "elites": 3,
-          "eliteHpMult": 3,
-          "eliteSkin": "rust-breaker-2",
-          "mixElites": true,
           "restPickup": {
             "heal": 55
-          }
+          },
+          "hpMult": 1.5
         },
         {
-          "enemy": "rust-watcher",
-          "count": 8,
-          "maxAlive": 4,
+          "enemy": "grunt",
+          "count": 3,
+          "maxAlive": 3,
           "spawnIntervalMs": 800,
           "startDelayMs": 1000,
           "spawnPattern": "flank",
           "attackerCap": 3,
           "mix": [
-            "rust-watcher",
-            "grunt",
-            "rust-watcher",
             "grunt"
           ],
           "speedMult": 1.3,
@@ -3298,7 +3301,8 @@
           "after": "waves",
           "phases": "per GDD"
         }
-      }
+      },
+      "restartTimerOnBoss": true
     },
     {
       "id": "level-06-iron-line-push",
@@ -3323,6 +3327,7 @@
         "#6B4423"
       ],
       "timeLimitSec": 210,
+      "restartTimerOnBoss": true,
       "intro": "The Iron Line is holding the garden gate. Faceless helmets, cheap plating. Zed's neighbours are watching from the stalls. Push the line back, then the Watchers and Breakers behind it.",
       "outro": "The line gives way and the stew pots are steaming again. A neighbour waves a ladle from the stall. The garden is the neighbourhood's once more.",
       "waves": [
@@ -3380,26 +3385,6 @@
         },
         {
           "enemy": "rust-iron-line-cordon",
-          "count": 10,
-          "maxAlive": 4,
-          "spawnIntervalMs": 750,
-          "startDelayMs": 1000,
-          "spawnPattern": "flank",
-          "attackerCap": 3,
-          "mix": [
-            "rust-iron-line-cordon",
-            "rust-watcher",
-            "rust-breaker",
-            "grunt"
-          ],
-          "mixElites": true,
-          "speedMult": 1.1,
-          "restPickup": {
-            "heal": 55
-          }
-        },
-        {
-          "enemy": "rust-watcher",
           "count": 6,
           "maxAlive": 3,
           "spawnIntervalMs": 900,
@@ -3410,6 +3395,7 @@
             "rust-iron-line-cordon",
             "rust-watcher"
           ],
+          "mixRandom": true,
           "leader": {
             "enemy": "rust-holts-experiment-subject-88",
             "entrance": "far-side",
@@ -3421,7 +3407,7 @@
         }
       ],
       "miniBoss": "rust-holts-experiment-subject-88",
-      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Main boss cut: Overseer Dr. Maren Holt was removed from the game (2026-11-03), so this level has no main boss. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD). Owner decision (2026-11-03): two waves added. Wave 5 is a mixed wave of four different enemy types (Iron Line Cordon, Watcher, Breaker, grunt) with elites scattered. Wave 6 is the mini-boss beat: Subject 88 walks in first and a crew of two different enemies (Iron Line Cordon and Watcher) joins after his first move. It is smaller than wave 5 by design (validator exempts leader waves). Holt keeps her separate phase after the waves.",
+      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Main boss cut: Overseer Dr. Maren Holt was removed from the game (2026-11-03), so this level has no main boss. Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD). Owner decision (2026-11-03): two waves added. Wave 5 is a mixed wave of four different enemy types (Iron Line Cordon, Watcher, Breaker, grunt) with elites scattered. Owner decision (2026-11-05): the level is 5 waves and wave 5 is the boss wave: Dr. Holt's Experiment, Subject 88, leads a crew of 6 (Iron Line Cordon and Watcher in random order, mixRandom). The old 10-enemy mixed wave 5 and the old wave 6 are gone. restartTimerOnBoss resets the clock when the boss wave starts (set on every level with a boss). Subject 88 art is a placeholder for the owner's test. Holt keeps her separate phase after the waves.",
       "bossStructure": {
         "miniBoss": {
           "style": "mini-wave",
@@ -3452,13 +3438,13 @@
         "#A8402E",
         "#6B4423"
       ],
-      "timeLimitSec": 180,
+      "timeLimitSec": 240,
       "intro": "Varr's favourite is guarding centre court: a Copper Fang with a shield and a hook. Block, dodge, parry. Give the kids their court back.",
       "outro": "The shield cracks and the Fang is pushed back off the court. Somewhere a ball bounces, then another. Zed breathes out. Game on.",
       "waves": [
         {
-          "enemy": "rust-watcher",
-          "count": 4,
+          "enemy": "grunt",
+          "count": 5,
           "maxAlive": 2,
           "spawnIntervalMs": 900,
           "startDelayMs": 600,
@@ -3466,11 +3452,16 @@
           "attackerCap": 3,
           "mix": [
             "grunt",
-            "rust-watcher"
+            "rust-watcher",
+            "rust-specialist",
+            "rust-ranger",
+            "rust-breaker",
+            "rust-breaker-2"
           ],
           "restPickup": {
             "heal": 50
-          }
+          },
+          "mixRandom": true
         },
         {
           "enemy": "rust-watcher",
@@ -3483,11 +3474,15 @@
           "mix": [
             "grunt",
             "rust-watcher",
-            "rust-breaker"
+            "rust-specialist",
+            "rust-ranger",
+            "rust-breaker",
+            "rust-breaker-2"
           ],
           "restPickup": {
             "heal": 60
-          }
+          },
+          "mixRandom": true
         },
         {
           "enemy": "rust-breaker",
@@ -3498,31 +3493,38 @@
           "spawnPattern": "ambush",
           "attackerCap": 3,
           "mix": [
-            "rust-breaker",
+            "grunt",
             "rust-watcher",
-            "grunt"
+            "rust-specialist",
+            "rust-ranger",
+            "rust-breaker",
+            "rust-breaker-2"
           ],
           "restPickup": {
             "heal": 70
-          }
+          },
+          "mixRandom": true
         },
         {
           "enemy": "rust-copper-fang",
-          "count": 8,
-          "maxAlive": 3,
+          "count": 12,
+          "maxAlive": 4,
           "spawnIntervalMs": 750,
           "startDelayMs": 1000,
           "spawnPattern": "pincer",
           "attackerCap": 3,
           "mix": [
-            "rust-copper-fang",
             "grunt",
             "rust-watcher",
-            "rust-breaker"
+            "rust-specialist",
+            "rust-ranger",
+            "rust-breaker",
+            "rust-breaker-2"
           ],
           "restPickup": {
             "heal": 80
-          }
+          },
+          "mixRandom": true
         },
         {
           "enemy": "rust-watcher",
@@ -3535,15 +3537,26 @@
           "mix": [
             "grunt",
             "rust-watcher",
+            "rust-specialist",
+            "rust-ranger",
             "rust-breaker",
-            "rust-copper-fang"
+            "rust-breaker-2"
           ],
-          "speedMult": 1.1
+          "speedMult": 1.1,
+          "mixRandom": true,
+          "finishDrop": {
+            "heals": [
+              100,
+              100,
+              100
+            ],
+            "weapons": 5
+          }
         }
       ],
       "miniBoss": null,
       "mainBoss": null,
-      "notes": "Owner request 2026-11-03: 5 waves, mixed enemies, final wave is a surge of 4 types (grunt, rust-watcher, rust-breaker, rust-copper-fang), no boss, large health drops (50/60/70/80). Atlas is not placed here by owner decision. Open for src owner: enemyKinds.js only knows grunt and rust-watcher, so breaker and copper-fang mix entries fall back to plain grunt stats/skin until KINDS is extended.",
+      "notes": "Owner request 2026-11-03: 5 waves, mixed enemies, final wave is a surge of 4 types (grunt, rust-watcher, rust-breaker, rust-copper-fang), no boss, large health drops (50/60/70/80). Atlas is not placed here by owner decision. Open for src owner: enemyKinds.js only knows grunt and rust-watcher, so breaker and copper-fang mix entries fall back to plain grunt stats/skin until KINDS is extended. Finale (2026-11-05): after wave 5 the screen drops 3 full-health items and 5 throwable bats (U/N/pad B to throw).",
       "bossStructure": {
         "miniBoss": null,
         "mainBoss": null
@@ -3552,7 +3565,7 @@
     {
       "id": "level-08-overseer-tower",
       "status": "proposed",
-      "gddGap": "The GDD gives Overseer Halden Varr, \"The Architect of Rust\" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet. Owner decision (2026-11-03): two waves added, so the level now has 6 waves. Wave 4 is a randomised mixed wave (cordon, watcher, breaker, grunt, at most 2 alive). Wave 5 is the four-Overseer wave: Voss, Calder, Wren and Holt each appear once among random cordon, watcher, breaker and grunt fillers, at most 3 alive. Wave 6 is the final: Halden Varr's two-phase fight (phase 2 at 30 percent HP, per the GDD) with random crew joining after his first move. Time limit raised from 180 s to 420 s.",
+      "gddGap": "The GDD gives Overseer Halden Varr, \"The Architect of Rust\" (GDD wording, owner-confirmed) the Main Boss slot in the Corporate Tower command chamber, but defines no level list or tiers. This proposes the end-level boss encounter (order 8) as the last level of the Rust push, against Varr. Varr's own summons (Command Override, Drone Command) are behaviour in rust-gdd-units.json, not wave data, so waves here are a single-unit ladder (counts cannot shrink; one enemy type per wave). The district id is the closest existing lore district (Songwindow Heights, surveillance tower and screens); the Corporate Tower arena itself is not yet a district, a GDD gap. The named Overseers Kade Voss (Neon Market) and Rhea Calder (Factory floor) have no level yet. Owner decision (2026-11-05): all six waves removed; the level is the Varr final fight alone, one wave with 3 random crew.",
       "sources": [
         "the-rebellion#11",
         "the-rebellion#16",
@@ -3570,95 +3583,15 @@
         "#6B4423",
         "#2F6B3F"
       ],
-      "timeLimitSec": 420,
+      "timeLimitSec": 240,
+      "restartTimerOnBoss": true,
       "intro": "Varr runs the whole city from this tower, with squads, drones and shields at his call. Fight through, reach the command chamber and break the order. Let the music back in.",
       "outro": "The screens flicker out and Varr gives up the tower. A window opens, then another, and music drifts down over the Heights. The first mural stroke goes back up.",
       "waves": [
         {
           "enemy": "rust-iron-line-cordon",
-          "count": 1,
-          "maxAlive": 1,
-          "spawnIntervalMs": 900,
-          "startDelayMs": 600,
-          "spawnPattern": "alternate",
-          "attackerCap": 3,
-          "hpMult": 2,
-          "restPickup": {
-            "heal": 50
-          }
-        },
-        {
-          "enemy": "rust-watcher",
-          "count": 1,
-          "maxAlive": 1,
-          "spawnIntervalMs": 900,
-          "startDelayMs": 1000,
-          "spawnPattern": "flank",
-          "attackerCap": 3,
-          "hpMult": 1.5,
-          "restPickup": {
-            "heal": 50
-          }
-        },
-        {
-          "enemy": "rust-breaker",
-          "count": 1,
-          "maxAlive": 1,
-          "spawnIntervalMs": 900,
-          "startDelayMs": 1000,
-          "spawnPattern": "ambush",
-          "attackerCap": 3,
-          "hpMult": 3,
-          "restPickup": {
-            "heal": 50
-          }
-        },
-        {
-          "enemy": "rust-iron-line-cordon",
-          "count": 6,
-          "maxAlive": 2,
-          "spawnIntervalMs": 900,
-          "startDelayMs": 1000,
-          "spawnPattern": "flank",
-          "attackerCap": 3,
-          "mix": [
-            "rust-iron-line-cordon",
-            "rust-watcher",
-            "rust-breaker",
-            "grunt"
-          ],
-          "mixElites": true,
-          "speedMult": 1.1,
-          "restPickup": {
-            "heal": 50
-          }
-        },
-        {
-          "enemy": "rust-overseer-voss",
-          "count": 8,
+          "count": 3,
           "maxAlive": 3,
-          "spawnIntervalMs": 1500,
-          "startDelayMs": 1000,
-          "spawnPattern": "ambush",
-          "attackerCap": 3,
-          "hpMult": 1.5,
-          "mix": [
-            "rust-overseer-voss",
-            "rust-iron-line-cordon",
-            "rust-overseer-calder",
-            "rust-watcher",
-            "rust-overseer-wren",
-            "rust-breaker",
-            "grunt"
-          ],
-          "restPickup": {
-            "heal": 60
-          }
-        },
-        {
-          "enemy": "rust-iron-line-cordon",
-          "count": 8,
-          "maxAlive": 2,
           "spawnIntervalMs": 1200,
           "startDelayMs": 1000,
           "spawnPattern": "surge",
@@ -3667,9 +3600,9 @@
             "rust-iron-line-cordon",
             "rust-watcher",
             "rust-breaker",
-            "grunt",
-            "rust-elite-drone"
+            "grunt"
           ],
+          "mixRandom": true,
           "leader": {
             "enemy": "rust-halden-varr",
             "entrance": "far-side",
@@ -3694,31 +3627,18 @@
           }
         }
       ],
-      "miniBoss": "rust-sentinel-x9",
+      "miniBoss": null,
       "mainBoss": "rust-halden-varr",
-      "notes": "Bosses per the-story-campaign#1 (miniBoss/mainBoss are enemy ids, not wave entries). Varr arena flavour: command chamber (old \"Corporate Tower\", flavour only). Owner decision: the mini-boss arrives as a mini wave, a beatable pressure wave led by the mini-boss, deliberately not too hard and not a hard gate. Owner decision: the main boss gets its own separate fight phase after the waves (own arena phase, phases per the GDD). Owner decision (2026-11-03): waves 4 and 5 added, Varr moved to the final wave 6 and is now a leader (hpMult 8, same 2560 effective HP as before) instead of a solo wave. His two phases are in leader.phases (data only: Authority above 30 percent HP, Rust Protocol below; src/ does not read this yet). Mix lists are cycled in spawn order by the spawner, not shuffled; true random order needs a src change (not done: pipeline never edits src/). Mini-boss Sentinel-X9 is still not in the waves.",
+      "notes": "Owner decision (2026-11-05): Level 8 is the final boss fight only. One wave: Halden Varr as leader (hpMult 8, gate) with 3 random crew (mixRandom) after his first move. Two phases: Authority (100-30% HP) and Rust Protocol (below 30%, with additional moves and a different state). Varr has no boss class in src/ yet (VarrBoss pending). Earlier 6-wave ladder removed.",
       "bossStructure": {
-        "miniBoss": {
-          "style": "mini-wave",
-          "gate": false,
-          "note": "beatable pressure wave led by the mini-boss"
-        },
+        "miniBoss": null,
         "mainBoss": {
           "style": "final-wave-two-phase",
           "after": "waves",
           "gate": true,
           "phases": 2,
           "phase2At": 0.3,
-          "note": "Halden Varr leads the final wave with random crew; phase 2 Rust Protocol at 30 percent HP"
-        },
-        "overseerWave": {
-          "wave": 5,
-          "bosses": [
-            "rust-overseer-voss",
-            "rust-overseer-calder",
-            "rust-overseer-wren"
-          ],
-          "fillers": "random"
+          "note": "Halden Varr leads the only wave with 3 random crew; phase 2 Rust Protocol at 30 percent HP with extra moves"
         }
       }
     }
@@ -5285,6 +5205,23 @@
         "No more speeches. Windows open."
       ],
       "enemy": "rust-halden-varr"
+    },
+    {
+      "id": "zed-level-won-crusher-kane",
+      "status": "proposed",
+      "gddGap": "The GDD names Crusher Kane as the Level 3 mini-boss but gives no spoken lines; this line was supplied by the owner and is awaiting approval.",
+      "sources": [
+        "the-rebellion#15",
+        "the-rebellion#10"
+      ],
+      "speaker": "zed",
+      "trigger": "level_won",
+      "lines": [
+        "The streets are safer, the fight is won, and you're finally out of excuses.",
+        "Kane's down. Hammer's quiet. The court is ours.",
+        "Steam's gone. Hear that? Neighbours, back on the block."
+      ],
+      "enemy": "rust-crusher-kane"
     },
     {
       "id": "title-banner",

@@ -6,7 +6,9 @@ import OptionsPanel from './OptionsPanel.js';
 import showStoryCard from './StoryCard.js';
 import { NOTICE_MS, loadSettings } from './optionsData.js';
 import { scrollOffset } from './parallaxData.js';
-import { loadLevelContent } from '../levels/levelData.js';
+import { loadLevelContent, legacyLevel } from '../levels/levelData.js';
+import { queueArenaAssets } from '../scenes/ArenaScene.js';
+import { loadingLine } from './loadingData.js';
 import { installAudio, musicLevel } from './audioSettings.js';
 import { installDisplay } from './displaySettings.js';
 import { createMuteButton } from './muteButton.js';
@@ -411,7 +413,37 @@ export default class MenuScene extends Phaser.Scene {
       { onSkip: (id, errs) => console.warn('[levels] skipped', id, errs) })
       .then((levels) => this.game.registry.set('levels', levels))
       .catch((e) => console.warn('[levels] using Tier 0 round', e));
+    // Start pulling the first level's sprites/sounds now, while the player reads the story card.
+    this.assetsReady = this.levelsReady.then(() => this.preloadArena());
     showStoryCard(this, () => this.launchArena());
+  }
+
+  // Queues level 1's assets on this scene's loader (caches are game-wide, so ArenaScene finds them already loaded
+  // and skips its own loading screen). Never rejects: on any failure ArenaScene just loads what is missing itself.
+  preloadArena() {
+    return new Promise((resolve) => {
+      try {
+        const level = (this.game.registry.get('levels') || [legacyLevel()])[0];
+        queueArenaAssets(this, level, 0);
+        if (this.load.list.size === 0) return resolve();
+        this.load.once('complete', resolve);
+        this.load.start();
+      } catch (e) { console.warn('[arena preload] skipped', e); resolve(); }
+    });
+  }
+
+  // Same look as the arena's own loading screen, driven by this scene's loader while level 1's assets finish.
+  showLoadingOverlay() {
+    const D = 9000;
+    this.cameras.main.resetFX(); // drop the fade-to-black so the overlay is visible
+    const levelName = (this.game.registry.get('levels') || [legacyLevel()])[0]?.name;
+    const txt = (y, s, size, family, color) => this.add.text(640, y, s, { fontFamily: family, fontSize: `${size}px`, color, stroke: CSS.darkBrown, strokeThickness: size > 30 ? 6 : 3 }).setOrigin(0.5).setDepth(D + 1);
+    const status = txt(352, loadingLine(this.load.progress || 0), 22, FONTS.body, CSS.cream);
+    const bar = this.add.rectangle(400, 400, 480, 8, COLORS.mustard).setOrigin(0, 0.5).setScale(this.load.progress || 0, 1).setDepth(D + 2);
+    this.add.rectangle(640, 360, 1280, 720, COLORS.darkBrown).setDepth(D);
+    txt(290, `LEVEL 1: ${(levelName || 'The Arena').toUpperCase()}`, 44, FONTS.button, CSS.mustard);
+    this.add.rectangle(640, 400, 480, 8, 0x3a2418).setDepth(D + 1);
+    this.load.on('progress', (v) => { bar.setScale(v, 1); status.setText(loadingLine(v)); });
   }
 
   launchArena() {
@@ -420,8 +452,14 @@ export default class MenuScene extends Phaser.Scene {
     if (this.music) this.tweens.add({ targets: this.music, volume: 0, duration: 300 });
     // Level files load while the story card is up; the arena falls back to the Tier 0 round if they fail.
     const levelsReady = this.levelsReady || Promise.resolve();
+    const assetsReady = this.assetsReady || levelsReady;
+    let done = false;
+    assetsReady.then(() => { done = true; });
     this.cameras.main.once('camerafadeoutcomplete', async () => {
       await levelsReady;
+      // Normally already done during the story card. If not (card skipped fast), show progress instead of a blank black screen.
+      if (!done) this.showLoadingOverlay();
+      await assetsReady;
       this.tweens.killAll();
       this.scene.start('ArenaScene', { levelIndex: 0 });
     });
