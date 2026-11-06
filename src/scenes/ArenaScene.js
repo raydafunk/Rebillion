@@ -24,6 +24,8 @@ import { PICKUP, pickupDrop, finishDrops, canCollect, createLowHealthDrop, lowHe
 import { WEAPON, ThrownWeapon, isThrowHit } from '../items/thrownWeapon.js';
 import showLevelCard from '../ui/LevelCard.js';
 import showRageIntroCard from '../ui/RageIntroCard.js';
+import showBossIntroCard from '../ui/BossIntroCard.js';
+import { bossIntroFor, introPortraitAssets, introTriggered } from '../ui/bossIntroData.js';
 import { RAGE_INTRO_ASSET, shouldShowRageIntro } from '../ui/rageIntroData.js';
 import showVictoryCard from '../ui/VictoryCard.js';
 import { VICTORY, victoryFor } from '../ui/victoryData.js';
@@ -135,6 +137,7 @@ export function queueArenaAssets(scene, level, startWave = 0) {
     }
     scene.load.svg(RAGE_INTRO_ASSET.key, RAGE_INTRO_ASSET.path, { width: RAGE_INTRO_ASSET.w, height: RAGE_INTRO_ASSET.h }); // Level 2 Rage explainer card frame (text is live)
     scene.load.svg(VICTORY.frameKey, 'assets/ui/victory-card-frame.svg', { width: VICTORY.frameW, height: VICTORY.frameH }); // boss victory card frame (text is live)
+    for (const a of introPortraitAssets(level.waves.filter((w) => w.leader).map((w) => w.leader.enemy))) scene.load.svg(a.key, a.path, { width: 420, height: 560 }); // boss intro story card portraits (placeholders)
     const lm = levelMusicFor(level.id);
     const bm = bossMusicFor(level.id);
     // Boss + results music are not needed until late in the round: ArenaScene.create() streams them in afterwards (loadDeferredArenaAudio).
@@ -341,7 +344,7 @@ export default class ArenaScene extends Phaser.Scene {
       onThaw: () => { this.anims.resumeAll(); this.physics.world.resume(); },
     });
     this.royceFx = new RoyceFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.miniBoss && g.traps), onSlam: () => this._shake(220, 0.006), reduceFlash: () => this._reduceFlash() }); // Royce: slam circle, rail-trap strips, taser bolt
-    this.kaneFx = new KaneFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.miniBoss && g.patches), onHammer: () => this._shake(240, 0.007), reduceFlash: () => this._reduceFlash() }); // Kane: hammer circle, hook chain, steam cone and patches
+    this.kaneFx = new KaneFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.miniBoss && g.patches), onHammer: () => this._shake(420, this._reduceFlash() ? 0.009 : 0.016), reduceFlash: () => this._reduceFlash() }); // Kane: hammer circle, hook chain, steam cone and patches
     this.glitchFx = new GlitchFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.miniBoss && g.decoys), getScale: (g) => (BREAKER_DISPLAY_SIZE / 48) * (g.visualScale || 1), getFeetFrac: (k) => this._feetFrac(k), reduceFlash: () => this._reduceFlash() }); // Glitch: disk line, drone lanes, hologram decoys, data-spike line, teleport flash
     this.megaStompFx = new MegaStompFx(this, { getBosses: () => this.arena.enemies.list().filter((g) => g.isBoss), onSlam: (g) => this._startHitStop('megaStomp', [g.id]), reduceFlash: () => this._reduceFlash() });
     this.wallSlamFx = new WallSlamFx(this, { events: ev, getZed: () => ({ x: this.zed.x, feetY: this.zed.laneY, vx: this.zed.sprite.body.velocity.x }), getXRange: () => this.arena.bounds.xRange, reduceFlash: () => this._reduceFlash() });
@@ -351,6 +354,9 @@ export default class ArenaScene extends Phaser.Scene {
     this.zedShockFx = new ZedShockFx(this, { events: ev, getAttackerSkin: (id) => this.arena.enemies.get(id)?.skin ?? null, getImage: () => this.zedVisual.image, reduceFlash: () => this._reduceFlash() }); // Zed's electrified body after a Copper Fang taser hit
     this._listen(EVENTS.DAMAGE_APPLIED, (d) => this._onDamage(d));
     this._listen(EVENTS.ENTITY_REGISTERED, (p) => { if (p.boss && p.bossProfile) (this.bossProfiles ||= new Map()).set(p.id, p.bossProfile); });
+    // Boss intro story card: the boss walks in, stops in idle, the card plays, then the fight goes on (see _updateBossIntro). Shown once per round start, not on retry.
+    this._introSeen = new Set(); this._introPending = null; this._introCard = null;
+    this._listen(EVENTS.ENTITY_REGISTERED, (p) => { if (p.boss && bossIntroFor(p.bossProfile) && !this._introSeen.has(p.bossProfile)) this._introPending = { id: p.id, profile: p.bossProfile }; });
     this._listen(EVENTS.ENTITY_DIED, (d) => {
       if (d.team !== 'rust') return;
       this._onBossDied(d.id);
@@ -692,6 +698,7 @@ export default class ArenaScene extends Phaser.Scene {
     if (!this.ended && !this.sandbox && this.roundStarted && !this.victoryHold && !simFrozen) {
       this.arena.update(dt, this.hitStopIds);
       this.state.tick(dt);
+      this._updateBossIntro();
     }
     if (this.scrolling && this.roundStarted && !this.ended && !this.victoryHold && !simFrozen) this._scrollProgress();
     if (this.roundStarted && !this.ended && !this.victoryHold && !simFrozen) { this._collectPickups(); this._updateThrown(dt); } // pickups work on non-scrolling levels too
@@ -888,6 +895,25 @@ export default class ArenaScene extends Phaser.Scene {
     });
   }
 
+  // ---- boss intro story card (copy and art slots in ui/bossIntroData.js) ----
+  /** Once the pending boss has walked far enough in, freeze play (same hold as the victory card), stand him in idle and open the card. */
+  _updateBossIntro() {
+    const p = this._introPending;
+    if (!p || this._introCard) return;
+    const boss = this.arena.enemies.get(p.id);
+    if (!boss || !boss.alive) { this._introPending = null; return; }
+    const v = this.cameras.main.worldView;
+    if (!introTriggered({ bossX: boss.x, zedX: this.zed.x, viewLeft: v.x, viewRight: v.right })) return;
+    this._introPending = null; this._introSeen.add(p.profile);
+    this.victoryHold = true; this._clearHitStop();
+    boss.holdIdle?.();
+    this.scene.setVisible(false, 'HudScene'); // the HUD sits above this scene: hide it so the card is clean
+    this._introCard = showBossIntroCard(this, bossIntroFor(p.profile), () => {
+      this._introCard = null; this.victoryHold = false; this.scene.setVisible(true, 'HudScene');
+      boss.releaseIdle?.();
+    }, { reduceMotion: this._reduceFlash() });
+  }
+
   _victoryDone() {
     this.victoryHold = false; this._victoryPending = false;
     const fn = this._afterVictoryFn; this._afterVictoryFn = null;
@@ -900,6 +926,8 @@ export default class ArenaScene extends Phaser.Scene {
   }
 
   _resetVictory() {
+    if (this._introCard) { this._introCard.cancel(); this._introCard = null; this.scene.setVisible(true, 'HudScene'); }
+    this._introPending = null;
     if (this._victoryTimer) { this._victoryTimer.remove(false); this._victoryTimer = null; }
     if (this._victoryCard) { this._victoryCard.cancel(); this._victoryCard = null; }
     this.victoryHold = false; this._victoryPending = false; this._afterVictoryFn = null; this.endMode = null;

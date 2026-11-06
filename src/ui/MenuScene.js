@@ -461,7 +461,7 @@ export default class MenuScene extends Phaser.Scene {
       if (!done) this.showLoadingOverlay();
       await assetsReady;
       this.tweens.killAll();
-      this.scene.start('ArenaScene', { levelIndex: 0 });
+      this.scene.start('ArenaScene', {}); // no levelIndex: ArenaScene.init picks level 1, or ?level=N for testing
     });
   }
 }

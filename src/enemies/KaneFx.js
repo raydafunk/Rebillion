@@ -2,10 +2,13 @@
 // lock-on line and chain, Furnace Kick's steam hiss at the knee, Steam Vent Burst's red cone and lingering steam patches, Crushing Uppercut's red
 // strip. Reads the boss' public state each frame (move, telegraphProgress, patches, hammerSeq, hookSeq, ventSeq), so the picture follows real timing.
 import { KANE_MOVES } from './kaneData.js';
+import { EVENTS } from '../shared/events.js';
+import { PLAYER_ID } from '../shared/combatData.js';
 
 const LANE_TOP = 440;
 const RED = 0xd23a2e, WHITE = 0xffffff, STEAM = 0xdfe9ea, ORANGE = 0xe3a92b;
-const RING_MS = 350, CHAIN_MS = 260, PUFF_MS = 450;
+const DUST = 0xb89f7a, DEBRIS = 0x6b5a4a, SPARK = 0xffd25a, YELLOW = 0xffd25a;
+const RING_MS = 650, CHAIN_MS = 260, PUFF_MS = 450, MAX_PARTS = 70;
 
 export class KaneFx {
   /** @param {Phaser.Scene} scene @param {{getBosses: () => object[], onHammer?: (boss) => void, reduceFlash?: () => boolean}} o */
@@ -15,16 +18,52 @@ export class KaneFx {
     this.top = scene.add.graphics().setDepth(5000);
     this.seen = new Map();   // boss id -> { hammerSeq, hammerAt, hookSeq, hookAt, ventSeq, ventAt }
     this.t = 0;
+    this.parts = [];          // impact particles: { x, y, vx, vy, g, life, max, r, color, kind }
+    this.hits = [];           // Kane hits on Zed (damage-applied), turned into bursts on the next update
+    this._ev = scene.game && scene.game.events;
+    this._onDmg = (d) => { if (d && d.targetId === PLAYER_ID && d.amount > 0 && this.hits.length < 4) this.hits.push(d); };
+    if (this._ev) this._ev.on(EVENTS.DAMAGE_APPLIED, this._onDmg);
   }
 
-  reset() { this.seen.clear(); this.floor.clear(); this.top.clear(); }
-  destroy() { this.floor.destroy(); this.top.destroy(); this.seen.clear(); }
+  reset() { this.seen.clear(); this.floor.clear(); this.top.clear(); this.parts.length = 0; this.hits.length = 0; }
+  destroy() { if (this._ev) this._ev.off(EVENTS.DAMAGE_APPLIED, this._onDmg); this.floor.destroy(); this.top.destroy(); this.seen.clear(); this.parts.length = 0; }
+
+  _spawn(n, make) { for (let i = 0; i < n && this.parts.length < MAX_PARTS; i++) this.parts.push(make(i)); }   // capped: stays light
+
+  _closeHit(b, flash) {                                                  // Furnace Kick / Crushing Uppercut landed: sparks, steam, debris and a ring at the contact
+    const mv = b.move && b.move.id;
+    if (mv !== 'kick' && mv !== 'uppercut') return;
+    const h = KANE_MOVES[mv].hitbox, dir = b.facing >= 0 ? 1 : -1, up = mv === 'uppercut';
+    const x = b.x + dir * (h.x + h.w * 0.85), y = b.y + h.y + h.h * (up ? 0.35 : 0.5), k = flash ? 1 : 0.5;
+    const base = up ? -Math.PI / 2 : (dir > 0 ? 0 : Math.PI);
+    this._spawn(Math.round(10 * k), () => { const a = base + (Math.random() - 0.5) * 2.2, v = 180 + Math.random() * 260;
+      return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, g: 500, life: 260 + Math.random() * 160, max: 420, r: 2, color: SPARK, kind: 'spark' }; });
+    this._spawn(Math.round(5 * k), () => ({ x, y, vx: dir * (30 + Math.random() * 70) + (Math.random() - 0.5) * 60, vy: -40 - Math.random() * 80, g: -60, life: 420 + Math.random() * 200, max: 620, r: 6 + Math.random() * 5, color: STEAM, kind: 'puff' }));
+    this._spawn(Math.round(5 * k), () => ({ x, y: y + 10, vx: (Math.random() - 0.5) * 220, vy: -120 - Math.random() * 160, g: 800, life: 380 + Math.random() * 150, max: 530, r: 2 + Math.random() * 2, color: DEBRIS, kind: 'chip' }));
+    this._spawn(1, () => ({ x, y, vx: 0, vy: 0, g: 0, life: 220, max: 220, r: 10, color: flash ? WHITE : STEAM, kind: 'ring' }));
+  }
+
+  _stepParts(dtMs) {
+    const dt = dtMs / 1000, g = this.top;
+    for (let i = this.parts.length - 1; i >= 0; i--) {
+      const p = this.parts[i]; p.life -= dtMs;
+      if (p.life <= 0) { this.parts.splice(i, 1); continue; }
+      const k = p.life / p.max; p.vy += p.g * dt; p.x += p.vx * dt; p.y += p.vy * dt;
+      if (p.kind === 'spark') g.lineStyle(2, p.color, Math.min(1, k * 1.6)).lineBetween(p.x, p.y, p.x - p.vx * 0.04, p.y - p.vy * 0.04);
+      else if (p.kind === 'puff') g.fillStyle(p.color, 0.55 * k).fillCircle(p.x, p.y, p.r + (1 - k) * 10);
+      else if (p.kind === 'dust') g.fillStyle(p.color, 0.5 * k).fillCircle(p.x, p.y, p.r + (1 - k) * 14);
+      else if (p.kind === 'chip') g.fillStyle(p.color, Math.min(1, k * 2)).fillRect(p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
+      else if (p.kind === 'ring') g.lineStyle(3 * k + 1, p.color, 0.9 * k).strokeCircle(p.x, p.y, p.r + (1 - k) * 34);
+    }
+  }
 
   update(dtMs) {
     this.t += dtMs;
     this.floor.clear(); this.top.clear();
     const flash = !this.reduceFlash();
-    for (const b of this.getBosses()) {
+    const bosses = this.getBosses();
+    if (this.hits.length) for (const d of this.hits.splice(0)) { const hb = bosses.find((x) => x.id === d.attackerId); if (hb) this._closeHit(hb, flash); }
+    for (const b of bosses) {
       if (!b.patches) continue;
       let s = this.seen.get(b.id);
       if (!s) { s = { hammerSeq: b.hammerSeq, hammerAt: -1e9, hookSeq: b.hookSeq, hookAt: -1e9, ventSeq: b.ventSeq, ventAt: -1e9, ventX: b.x, ventDir: b.facing }; this.seen.set(b.id, s); }
@@ -37,22 +76,52 @@ export class KaneFx {
       if (mv && mv.id === 'vent') this._vent(b, s);
       if (mv && mv.id === 'uppercut') this._uppercut(b);
     }
+    this._stepParts(dtMs);
   }
 
   _hammer(b, s) {
-    const c = KANE_MOVES.hammer.circle, dir = b.facing >= 0 ? 1 : -1, cx = b.x + dir * c.cx, r = c.rx;
-    if (b.hammerSeq !== s.hammerSeq) { s.hammerSeq = b.hammerSeq; s.hammerAt = this.t; if (this.onHammer) this.onHammer(b); }
-    if (b.state === 'telegraph') {                                       // red circle fills in as the wind-up runs
-      const p = b.telegraphProgress;
-      this.floor.fillStyle(RED, 0.10 + 0.22 * p).fillEllipse(cx, b.y, r * 2, r * 0.7);
-      this.floor.lineStyle(3, RED, 0.5 + 0.4 * p).strokeEllipse(cx, b.y, r * 2, r * 0.7);
+    const c = KANE_MOVES.hammer.circle, dir = b.facing >= 0 ? 1 : -1, cx = b.x + dir * c.cx, r = c.rx, w = r * 2, h = r * 0.7;
+    const flash = !this.reduceFlash();
+    if (b.hammerSeq !== s.hammerSeq) { s.hammerSeq = b.hammerSeq; s.hammerAt = this.t; this._slamBurst(b, s, cx, r, flash); if (this.onHammer) this.onHammer(b); }
+    if (b.state === 'telegraph') {                                       // red shockwave circle centred on Kane fills in; 'jump now' chevrons pulse above him
+      const p = b.telegraphProgress, pulse = p > 0.5 ? 0.6 + 0.4 * Math.abs(Math.sin(this.t / 90)) : 1;
+      this.floor.fillStyle(RED, 0.12 + 0.26 * p).fillEllipse(cx, b.y, w, h);
+      this.floor.lineStyle(3 + 3 * p, RED, (0.5 + 0.4 * p) * pulse).strokeEllipse(cx, b.y, w, h);
+      this.floor.lineStyle(2, RED, 0.35 * p).strokeEllipse(cx, b.y, w * 0.5, h * 0.5);
+      for (let i = 0; i < 2; i++) {
+        const yy = b.y - 150 - i * 16, a = (0.35 + 0.55 * p) * (i ? 0.6 : 1);
+        this.top.lineStyle(4, YELLOW, a).lineBetween(cx - 16, yy + 8, cx, yy - 6).lineBetween(cx, yy - 6, cx + 16, yy + 8);
+      }
     }
-    const age = this.t - s.hammerAt;                                     // impact: a ring that spreads out and fades
+    const age = this.t - s.hammerAt;
     if (age >= 0 && age < RING_MS) {
       const k = age / RING_MS;
-      this.floor.lineStyle(5 * (1 - k) + 1, WHITE, 0.8 * (1 - k)).strokeEllipse(cx, b.y, r * 2 * (0.7 + 0.5 * k), r * 0.7 * (0.7 + 0.5 * k));
-      this.floor.fillStyle(ORANGE, 0.25 * (1 - k)).fillEllipse(cx, b.y, r * 2, r * 0.7);
+      for (let i = 0; i < 2; i++) {                                      // double shockwave: a second ring lags the first
+        const kk = Math.max(0, Math.min(1, (age - i * 110) / (RING_MS - 110)));
+        if (kk <= 0) continue;
+        const sc = 0.25 + 0.95 * (1 - (1 - kk) * (1 - kk));
+        this.floor.lineStyle((i ? 4 : 8) * (1 - kk) + 1, i ? ORANGE : WHITE, 0.9 * (1 - kk)).strokeEllipse(cx, b.y, w * sc, h * sc);
+      }
+      this.floor.fillStyle(ORANGE, (flash ? 0.35 : 0.18) * (1 - k)).fillEllipse(cx, b.y, w * (0.5 + 0.5 * k), h * (0.5 + 0.5 * k));
+      if (s.cracks) {                                                    // cracks radiate from the hammer head, grow, then fade
+        const len = Math.min(1, age / 160), fade = 1 - Math.max(0, (age - 300) / (RING_MS - 300));
+        for (const cr of s.cracks) {
+          const x0 = s.slamX, y0 = s.slamY, x1 = x0 + Math.cos(cr.a) * cr.l * len, y1 = y0 + Math.sin(cr.a) * cr.l * len * 0.4;
+          const xm = (x0 + x1) / 2 + cr.j, ym = (y0 + y1) / 2 + cr.j * 0.3;
+          this.floor.lineStyle(3, 0x1c1410, 0.85 * fade).lineBetween(x0, y0, xm, ym).lineBetween(xm, ym, x1, y1);
+        }
+      }
+      if (flash && age < 90) this.top.fillStyle(WHITE, 0.45 * (1 - age / 90)).fillEllipse(cx, b.y - 10, w * 0.7, h * 1.4);   // bright flash (skipped under Reduced Flash)
     }
+  }
+
+  _slamBurst(b, s, cx, r, flash) {                                       // dust along the shockwave + debris thrown up from the hammer head
+    const dir = b.facing >= 0 ? 1 : -1, n = flash ? 9 : 5, k = flash ? 1 : 0.5;
+    s.slamX = b.x + dir * 70; s.slamY = b.y;
+    s.cracks = Array.from({ length: n }, (_, i) => ({ a: (i / n) * Math.PI * 2 + Math.random() * 0.4, l: 90 + Math.random() * 110, j: (Math.random() - 0.5) * 18 }));
+    this._spawn(Math.round(16 * k), (i) => { const side = i % 2 ? 1 : -1;
+      return { x: cx + side * (20 + Math.random() * (r - 30)), y: b.y + (Math.random() - 0.5) * 20, vx: side * (30 + Math.random() * 90), vy: -30 - Math.random() * 50, g: -20, life: 500 + Math.random() * 300, max: 800, r: 8 + Math.random() * 8, color: DUST, kind: 'dust' }; });
+    this._spawn(Math.round(14 * k), () => ({ x: s.slamX, y: s.slamY, vx: (Math.random() - 0.5) * 460, vy: -200 - Math.random() * 300, g: 900, life: 500 + Math.random() * 250, max: 750, r: 2 + Math.random() * 3, color: DEBRIS, kind: 'chip' }));
   }
 
   _hook(b, s) {

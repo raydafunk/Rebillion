@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="560" viewBox="0 0 420 560">
+  <!-- PLACEHOLDER portrait for Zed. Replace with real art, same file name, about 420x560, transparent background. -->
+  <rect x="3" y="3" width="414" height="554" fill="#8a6f55" stroke="#2e1f16" stroke-width="6"/>
+  <circle cx="210" cy="170" r="80" fill="#c9a27c" stroke="#2e1f16" stroke-width="6"/>
+  <path d="M70 540 Q70 300 210 280 Q350 300 350 540 Z" fill="#b5442e" stroke="#2e1f16" stroke-width="6"/>
+  <text x="210" y="60" font-family="sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#f4e6c8">ZED</text>
+  <text x="210" y="520" font-family="sans-serif" font-size="22" text-anchor="middle" fill="#f4e6c8">PORTRAIT PLACEHOLDER</text>
+</svg>

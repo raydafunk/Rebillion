@@ -11,8 +11,8 @@ const rdy = (o = {}) => ({ hook: true, kick: true, vent: true, uppercut: true, .
 const ctx = (o) => ({ dist: 300, dy: 0, lift: 0, meleeMs: 0, ready: rdy(), lastId: null, ...o });
 
 // --- data
-assert.equal(KANE.moveSpeed, 55, 'owner change: moveSpeed 55');
-assert.equal(KANE.maxHp, 220);
+assert.equal(KANE.moveSpeed, 75, 'owner change: moveSpeed 75');
+assert.equal(KANE.maxHp, 400);
 assert.deepEqual(Object.values(KANE_MOVES).map((m) => m.telegraphMs), [850, 700, 600, 900, 750], 'telegraphs match mini-bosses.json');
 assert.deepEqual(Object.values(KANE_MOVES).map((m) => m.name), ['Hammer Slam', 'Hook Chain Grab', 'Furnace Kick', 'Steam Vent Burst', 'Crushing Uppercut']);
 assert.equal(KANE_MOVES.hammer.hits[0].damage, 20);
@@ -102,11 +102,11 @@ for (const id of Object.keys(KANE_MOVES)) {
   b.takeHit({ hitstun: 100, parry: true });
   assert.equal(b.state, 'hitstun'); assert.ok(b.hitstunMs >= KANE.parryStunMs);
 }
-{ // he walks at 55 px/s
+{ // he walks at 75 px/s
   const b = new KaneBoss({ id: 'k', x: 600, y: 500, rng: () => 0.99 });
   b.state = 'approach'; b.cooldownMs = 9999;
   b.update(1000, { x: 0, y: 500 });
-  assert.equal(Math.round(600 - b.x), 55);
+  assert.equal(Math.round(600 - b.x), 75);
 }
 { // death
   const b = new KaneBoss({ id: 'k', x: 100, y: 500 });
@@ -122,11 +122,11 @@ for (const id of Object.keys(KANE_MOVES)) {
   const reg = regs.find((p) => p.id === 'crusher-kane-1');
   assert.ok(reg.boss && reg.bossProfile === KANE_ID && reg.team === 'rust');
   assert.equal(k.constructor.name, 'KaneBoss', 'his own AI, not the grunt');
-  assert.equal(k.maxHp, 220); assert.ok(k.miniBoss && !k.isBoss);
-  assert.equal(k.data.moveSpeed, 55);
-  assert.equal(m.spawn({ id: 'crusher-kane-2', x: 0, y: 500, enemy: KANE_ID, hpMult: 2 }).maxHp, 440, 'hpMult scales him');
-  assert.equal(m.spawn({ id: 'crusher-kane-3', x: 0, y: 500, enemy: KANE_ID, speedMult: 1.2 }).data.moveSpeed, Math.round(55 * 1.2));
-  assert.ok(BOSS_PROFILES[KANE_ID] && BOSS_PROFILES[KANE_ID].maxHpFallback === 220);
+  assert.equal(k.maxHp, 400); assert.ok(k.miniBoss && !k.isBoss);
+  assert.equal(k.data.moveSpeed, 75);
+  assert.equal(m.spawn({ id: 'crusher-kane-2', x: 0, y: 500, enemy: KANE_ID, hpMult: 2 }).maxHp, 800, 'hpMult scales him');
+  assert.equal(m.spawn({ id: 'crusher-kane-3', x: 0, y: 500, enemy: KANE_ID, speedMult: 1.2 }).data.moveSpeed, Math.round(75 * 1.2));
+  assert.ok(BOSS_PROFILES[KANE_ID] && BOSS_PROFILES[KANE_ID].maxHpFallback === 400);
   assert.ok(victoryFor(KANE_ID));
   assert.deepEqual(victoryProblems(), []);
   // a landed hook tells him via damage-applied

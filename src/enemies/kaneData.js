@@ -9,7 +9,7 @@ import { COMBAT_DEFAULTS } from '../shared/combatData.js';
 
 export const KANE_ID = 'rust-crusher-kane';
 export const KANE_SKIN = KANE_ID;   // his own art (kaneSprites.js)
-export const KANE_MAX_HP = 220;
+export const KANE_MAX_HP = 400;
 
 const hit = (atMs, damage, knockback, hitstun, pierceInvuln = false) => Object.freeze({ atMs, damage, knockback, hitstun, pierceInvuln });
 const move = (o) => Object.freeze({ ...o, hits: Object.freeze(o.hits) });
@@ -19,8 +19,8 @@ export const KANE_MOVES = Object.freeze({
     id: 'hammer', name: 'Hammer Slam', kind: 'finisher',
     telegraphMs: 850, attackMs: 340, recoverMs: 1400,
     hits: [hit(120, 20, 420, 300)], markIndex: 0,
-    hitbox: Object.freeze({ x: -15, y: -60, w: 170, h: 60 }),
-    circle: Object.freeze({ cx: 70, rx: 85 }),                      // the red circle: centre 70 px in front of him, 85 px each way
+    hitbox: Object.freeze({ x: -190, y: -60, w: 380, h: 60 }),   // both sides of him
+    circle: Object.freeze({ cx: 0, rx: 190 }),                       // ground shockwave centred on him, 190 px each way: JUMP to avoid it (airborne = ground melee misses)
   }),
   hook: move({            // 700 ms: chain whirls overhead, the hook flashes. A straight ranged pull: knockback is NEGATIVE (towards him).
     id: 'hook', name: 'Hook Chain Grab', kind: 'strike',
@@ -58,8 +58,8 @@ export const KANE = Object.freeze({
   spriteKey: 'rust.crusher-kane',
   skin: KANE_SKIN,
   maxHp: KANE_MAX_HP,
-  moveSpeed: 55,          // owner change: 50 -> 55
-  circleSpeed: 44,        // keeps the old 4:5 ratio to moveSpeed
+  moveSpeed: 75,          // owner change: 50 -> 55 -> 75 (faster Kane)
+  circleSpeed: 60,        // keeps the old 4:5 ratio to moveSpeed
   attackRange: 105,       // distance at which a close move may start
   laneTolerance: 24,      // depth offset allowed for a swing to connect; otherwise he lines up first
   hookLaneTolerance: 26,
