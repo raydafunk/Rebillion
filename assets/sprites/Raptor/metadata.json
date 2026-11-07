@@ -1,0 +1,83 @@
+{
+  "group_id": "3c8ba944-22ac-4b79-8ad4-c6718f51c194",
+  "states": [
+    {
+      "character": {
+        "id": "8ba9444a-2732-4f52-bcf7-be39ee88b5df",
+        "name": "\u2022\tFalcon Drop",
+        "prompt": "A scout equipped with a sleek, lightweight tactical suit and a mechanical grapple launcher mounted on the forearm, standing in a ready combat stance, low top-down perspective.",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-02T21:01:36.233507+00:00"
+      },
+      "folder": "Falcon_Drop",
+      "frames": {
+        "rotations": {
+          "south": "Falcon_Drop/rotations/south.png",
+          "south-east": "Falcon_Drop/rotations/south-east.png",
+          "east": "Falcon_Drop/rotations/east.png",
+          "north-east": "Falcon_Drop/rotations/north-east.png",
+          "north": "Falcon_Drop/rotations/north.png",
+          "north-west": "Falcon_Drop/rotations/north-west.png",
+          "west": "Falcon_Drop/rotations/west.png",
+          "south-west": "Falcon_Drop/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_initiates_a_falcon_drop_by_hunching": {
+            "west": [
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_000.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_001.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_002.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_003.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_004.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_005.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_006.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_007.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/west/frame_008.png"
+            ],
+            "east": [
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_000.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_001.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_002.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_003.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_004.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_005.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_006.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_007.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/east/frame_008.png"
+            ],
+            "north": [
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_000.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_001.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_002.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_003.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_004.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_005.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_006.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_007.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/north/frame_008.png"
+            ],
+            "south": [
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_000.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_001.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_002.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_003.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_004.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_005.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_006.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_007.png",
+              "Falcon_Drop/animations/The_character_initiates_a_falcon_drop_by_hunching/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-06T13:08:21.365251"
+}

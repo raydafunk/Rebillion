@@ -45,7 +45,7 @@
     "kind": "character",
     "name": "\"Raptor\"",
     "summary": "Level 5 mini-boss in the Skyline District: Silas Wren's personal hunter, who trains players for vertical combat.",
-    "body": "Raptor is the mini-boss of Level 5, the Skyline District, and the GDD calls him Silas Wren's personal hunter. He fights with a grapple launcher and lightweight armour.\n\nHis moves are a Dive Kick, a Wall Bounce Strike, a Grapple Pull, an Aerial Barrage and a Falcon Drop. His role is to train players for vertical combat.",
+    "body": "Raptor is the mini-boss of Level 5, the Skyline District, and the GDD calls him Silas Wren's personal hunter. He fights with a grapple launcher and lightweight armour.\n\nIn the game he uses the three moves his art supports: a Dive Kick, a 4-Hit Punch and a Falcon Drop. His role is to train players for vertical combat.",
     "tags": ["mini-boss", "level-5", "skyline-district", "rust", "wren"],
     "sources": ["the-rebellion#15", "the-rebellion#16"]
   },

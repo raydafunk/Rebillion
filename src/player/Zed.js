@@ -234,7 +234,7 @@ export class Zed {
   }
 
   _onParrySuccess(attackerId) {
-    this.events.emit(EVENTS.PARRY_STUN, { attackerId, hitstun: PARRY.stunMs });
+    this.events.emit(EVENTS.PARRY_STUN, { attackerId, hitstun: PARRY.stunMs, riposte: PARRY.riposteDamage });
     this.machine.parrySucceeded(); // opens the counter-attack cancel
     this._parryFlash();
     this._parrySound();

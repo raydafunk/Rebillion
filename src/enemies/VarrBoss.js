@@ -62,12 +62,13 @@ export class VarrBoss {
     this.shieldHp = 0;              // > 0 while the Command Shield is up
     this.shieldSeq = 0; this.shieldBreakSeq = 0; this.collapseSeq = 0; this.transformSeq = 0; this.summonSeq = 0; this.droneSeq = 0; this.tasersSeq = 0;
     this.summoned = new Set();      // ids of crew he called (EnemyManager reports them gone via crewGone)
-    this.stance = null; this.stanceLeftMs = 0;
+    this.stance = null; this.stanceLeftMs = 0; this.stanceSeq = 0;   // stanceSeq bumps when a new stance is taken (renderer plays the Adaptive Counter clip)
     this._cw = { jumps: [], rushes: [], hits: [] };   // Adaptive Counter evidence: timestamps (ms of boss time)
     this._clock = 0; this._lastLift = 0; this._lastDist = null;
     this._transformT = 0; this._restored = false;
     this._wallZapMs = 0;
     this._laid = false;
+    this.droneLanes = [];            // lanes of the beat that fired last (renderer flashes them)
     this.target = null;
     this.circling = false;
   }
@@ -243,7 +244,7 @@ export class VarrBoss {
     this._lastDist = dist;
     for (const k of ['jumps', 'rushes', 'hits']) this._cw[k] = this._cw[k].filter((t) => now - t <= c.windowMs);
     const s = counterStance({ jumps: this._cw.jumps.length, rushes: this._cw.rushes.length, comboHits: this._chain() });
-    if (s && s !== this.stance) { this.stance = s; this.stanceLeftMs = c.stanceMs; this._cw = { jumps: [], rushes: [], hits: [] }; this._rushing = false; }
+    if (s && s !== this.stance) { this.stance = s; this.stanceLeftMs = c.stanceMs; this.stanceSeq++; this._cw = { jumps: [], rushes: [], hits: [] }; this._rushing = false; }
   }
   /** Longest run of Zed's hits on him where each came within comboGapMs of the last. */
   _chain() {
@@ -293,14 +294,27 @@ export class VarrBoss {
     if (h.shot === 'taser') { this.tasersSeq++; this._shoot(m.shot, this.y); return; }
     if (h.shot === 'drone') {
       this.droneSeq++;
-      const t = this.target || { y: this.y };
-      for (const o of m.patterns[h.n % m.patterns.length]) this._shoot(m.shot, Math.min(700, Math.max(440, t.y + o)), this.x);
+      this.droneLanes = this._droneLanes(h.n);
+      for (const ly of this.droneLanes) this._shoot(m.shot, ly, this.x);
       return;
     }
     if (h.aoe) { this._emitHit(h, m.hitbox, this, this.facing, { aoe: true }); return; }
     if (m.kind === 'guard') return;
     const reach = m.id === 'strike' && this.stance === 'anti-air' ? this.data.stanceStrikeReachMult : 1;   // anti-air stance: longer reach
     this._emitHit(h, { ...m.hitbox, w: m.hitbox.w * reach }, this, this.facing);
+  }
+
+  /** Lane depths (y) the drone beat `n` fires along: the pattern's offsets around Zed's depth, kept inside the arena floor. */
+  _droneLanes(n) {
+    const m = VARR_MOVES.drones, t = this.target || { y: this.y };
+    return m.patterns[n % m.patterns.length].map((o) => Math.min(700, Math.max(440, t.y + o)));
+  }
+  /** While Drone Command winds up / fires: the beat about to fire and its lanes (for the renderer's laser warning lines). null otherwise. */
+  get droneTelegraph() {
+    if (!this.alive || this.move?.id !== 'drones') return null;
+    if (this.state === VarrState.TELEGRAPH) return { beat: 0, lanes: this._droneLanes(0) };
+    if (this.state === VarrState.ATTACK && this.hitIndex < this.move.hits.length) return { beat: this.hitIndex, lanes: this._droneLanes(this.hitIndex) };
+    return null;
   }
 
   /** Command Override: call one crew member; capped at the move's maxAlive. */
@@ -412,6 +426,19 @@ export class VarrBoss {
     if (this.wallsLive) { this.wallsLive = false; if (this.hooks.onWalls) this.hooks.onWalls(false); }
     this._set(VarrState.DEAD);
     if (this.hooks.onDeath) this.hooks.onDeath();
+  }
+
+  /** Story-card intro: stop where he is and stand in his idle pose until releaseIdle(). */
+  holdIdle() {
+    if (!this.alive) return;
+    this.vx = 0; this.vy = 0; this.kx = 0;
+    this.timer = Infinity;
+    this._set(VarrState.IDLE);
+  }
+
+  /** End the intro hold: he starts his approach on the next update. */
+  releaseIdle() {
+    if (this.state === VarrState.IDLE && this.timer === Infinity) this.timer = 0;
   }
 
   teleport(x, y) { this.x = x; this.y = y; this.kx = 0; }

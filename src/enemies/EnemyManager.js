@@ -1,6 +1,7 @@
 // Owns all live grunts and wires each one to the event contract. No Phaser.
 // Rendering reads `manager.enemies` (id, x, y, facing, state, telegraphing...) each frame.
 import { EVENTS } from '../shared/events.js';
+import { PLAYER_ID, TEAMS } from '../shared/combatData.js';
 import { RustGrunt } from './RustGrunt.js';
 import { TaserBolt } from './specialistRanged.js';
 import { BrickDugan } from './BrickDugan.js';
@@ -11,6 +12,10 @@ import { KaneBoss } from './KaneBoss.js';
 import { KANE, KANE_ID } from './kaneData.js';
 import { GlitchBoss } from './GlitchBoss.js';
 import { GLITCH, GLITCH_ID } from './glitchData.js';
+import { RaptorBoss } from './RaptorBoss.js';
+import { RAPTOR, RAPTOR_ID } from './raptorData.js';
+import { Subject88Boss } from './Subject88Boss.js';
+import { SUBJECT88, SUBJECT88_ID } from './subject88Data.js';
 import { VarrBoss } from './VarrBoss.js';
 import { VARR, VARR_ID } from './varrData.js';
 import { AttackSlots } from './AttackSlots.js';
@@ -31,7 +36,7 @@ export class EnemyManager {
     this.onRemoved = onRemoved; // (id) => void, lets the view destroy its sprite
     this._onDamage = (p) => {
       const e = this.enemies.get(p.targetId);
-      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback, hpAfter: p.hpAfter, ...(p.shield ? { shield: true, shieldDmg: p.shieldDmg } : {}) });
+      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun: p.hitstun, knockback: p.knockback, hpAfter: p.hpAfter, ...(p.blocked ? { blocked: true } : {}), ...(p.shield ? { shield: true, shieldDmg: p.shieldDmg } : {}) });
       const a = this.enemies.get(p.attackerId);
       if (a && a.grunt.onHitLanded && p.landed !== false && p.amount > 0) a.grunt.onHitLanded(); // a charge ends on contact
     };
@@ -40,9 +45,20 @@ export class EnemyManager {
       const b = this.bolts.find((x) => x.id === p.attackId);
       if (b) b.kill();
     };
-    this._onParryStun = ({ attackerId, hitstun }) => {
+    this._riposteSeq = 0;
+    this._onParryStun = ({ attackerId, hitstun, riposte = 0 }) => {
       const e = this.enemies.get(attackerId);
-      if (e && e.grunt.alive) e.grunt.takeHit({ hitstun, knockback: 0, parry: true });
+      if (!e || !e.grunt.alive) return;
+      e.grunt.takeHit({ hitstun, knockback: 0, parry: true });
+      // Parry is a weapon: the parried attacker takes a riposte hit from Zed (combat applies it like any player hit; no knockback, no extra stun).
+      if (riposte > 0 && e.grunt.alive) {
+        const g = e.grunt;
+        this.events.emit(EVENTS.HIT_REQUEST, {
+          attackerId: PLAYER_ID, attackId: `${PLAYER_ID}:riposte:${++this._riposteSeq}`, team: TEAMS.PLAYER,
+          hitbox: { x: -40, y: -140, w: 80, h: 150 }, origin: { x: g.x, y: g.y }, lane: g.y, facing: 1,
+          damage: riposte, knockback: 0, hitstun: 0, riposte: true,
+        });
+      }
     };
     this._onDied = (p) => {
       if (!p || p.team !== 'rust') return;
@@ -65,12 +81,14 @@ export class EnemyManager {
   }
 
   /** spawn spec from WaveSpawner: {id, x, y, enemy?, skin?, hpMult?}. enemy 'rust-brick-dugan' spawns the Level 1 mini-boss. */
-  spawn({ id, x, y, enemy = null, skin = null, hpMult = 1, speedMult = 1 }) {
+  spawn({ id, x, y, enemy = null, skin = null, hpMult = 1, speedMult = 1, leader = false }) {
     if (this.enemies.has(id)) return this.enemies.get(id).grunt;
     if (enemy === DUGAN_ID) return this._spawnDugan({ id, x, y, hpMult });
     if (enemy === ROYCE_ID) return this._spawnRoyce({ id, x, y, hpMult, speedMult });
     if (enemy === KANE_ID) return this._spawnKane({ id, x, y, hpMult, speedMult });
     if (enemy === GLITCH_ID) return this._spawnGlitch({ id, x, y, hpMult, speedMult });
+    if (enemy === RAPTOR_ID) return this._spawnRaptor({ id, x, y, hpMult, speedMult });
+    if (enemy === SUBJECT88_ID) return this._spawnSubject88({ id, x, y, hpMult, speedMult });
     if (enemy === VARR_ID) return this._spawnVarr({ id, x, y, hpMult, speedMult });
     const tint = KINDS[skin]?.tint;
     const ranged = KINDS[skin]?.ranged;
@@ -84,7 +102,7 @@ export class EnemyManager {
     grunt.skin = skin; // visual variant (e.g. 'rust-breaker'); gameplay is still the grunt's
     this.enemies.set(id, { grunt, deathTimer: 0 });
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
-      id, team: this.data.team, maxHp: grunt.maxHp,
+      id, team: this.data.team, maxHp: grunt.maxHp, ...(leader ? { leader: true, enemy } : {}), // a wave leader with no boss class of its own still gets its intro card
       hurtbox: { ...this.data.hurtbox },
       getState: () => ({ x: grunt.x, y: grunt.y, lane: grunt.y, facing: grunt.facing }),
     });
@@ -137,6 +155,38 @@ export class EnemyManager {
     this.events.emit(EVENTS.ENTITY_REGISTERED, {
       id, team: GLITCH.team, boss: true, bossProfile: GLITCH_ID, maxHp: boss.maxHp,
       hurtbox: { ...GLITCH.hurtbox },
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
+    });
+    return boss;
+  }
+
+  /** Level 5 mini-boss "Raptor": RaptorBoss (five canon moves, frenzy at half health). Often airborne: getState reports `lift` so ground hits pass under him, and `airHittable` lets Zed's own airborne attacks still catch him. */
+  _spawnRaptor({ id, x, y, hpMult, speedMult = 1 }) {
+    const data = speedMult === 1 ? RAPTOR : { ...RAPTOR, moveSpeed: Math.round(RAPTOR.moveSpeed * speedMult), circleSpeed: Math.round(RAPTOR.circleSpeed * speedMult) };
+    const boss = new RaptorBoss({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(RAPTOR.maxHp * hpMult), getXRange: this.getXRange, rng: this.rng,
+      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+    });
+    this.enemies.set(id, { grunt: boss, deathTimer: 0 });
+    this.events.emit(EVENTS.ENTITY_REGISTERED, {
+      id, team: RAPTOR.team, boss: true, bossProfile: RAPTOR_ID, maxHp: boss.maxHp,
+      hurtbox: { ...RAPTOR.hurtbox },
+      getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing, lift: boss.lift, airHittable: true, guard: boss.guard }),
+    });
+    return boss;
+  }
+
+  /** Level 6 mini-boss "Subject 88": Subject88Boss (gas, spit, charge, explosions), registered as a boss so the health bar and victory card pick him up. */
+  _spawnSubject88({ id, x, y, hpMult, speedMult = 1 }) {
+    const data = speedMult === 1 ? SUBJECT88 : { ...SUBJECT88, moveSpeed: Math.round(SUBJECT88.moveSpeed * speedMult), circleSpeed: Math.round(SUBJECT88.circleSpeed * speedMult) };
+    const boss = new Subject88Boss({
+      id, x, y, slots: this.slots, data, maxHp: Math.round(SUBJECT88.maxHp * hpMult), getXRange: this.getXRange, rng: this.rng,
+      hooks: { onHitRequest: (req) => this.events.emit(EVENTS.HIT_REQUEST, req) },
+    });
+    this.enemies.set(id, { grunt: boss, deathTimer: 0 });
+    this.events.emit(EVENTS.ENTITY_REGISTERED, {
+      id, team: SUBJECT88.team, boss: true, bossProfile: SUBJECT88_ID, maxHp: boss.maxHp,
+      hurtbox: { ...SUBJECT88.hurtbox },
       getState: () => ({ x: boss.x, y: boss.y, lane: boss.y, facing: boss.facing }),
     });
     return boss;

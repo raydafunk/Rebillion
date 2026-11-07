@@ -13,7 +13,7 @@ export const KEY_MAP = {
   block: ['KeyI', 'KeyV'],
   parry: ['KeyT', 'KeyM'],
   throw: ['KeyU', 'KeyN'],   // hurl a carried weapon (does nothing empty-handed)
-  special: ['KeyL'],       // Rage special; gamepad binding to be designed (add to PAD_MAP/padToKeys, no machine change)
+  special: ['KeyL'],       // Rage special (pad: RT)
 };
 
 const emptyActions = () => Object.fromEntries(ACTIONS.map((a) => [a, false]));
@@ -49,14 +49,19 @@ export class InputState {
 }
 
 // Standard-mapping gamepad -> the same key codes, so InputState needs no second path.
-// A=jump, X=light, Y=heavy, LB/LT/RT=block, d-pad / left stick = move.
-export const PAD_MAP = { jump: [0], light: [2], heavy: [3], block: [4, 6, 7], up: [12], down: [13], left: [14], right: [15] };
+// A=jump, X=light, Y=heavy, B=throw, LB/LT=block, RB=parry, RT=Rage special, d-pad / left stick = move, Start = pause.
+export const PAD_MAP = { jump: [0], throw: [1], light: [2], heavy: [3], block: [4, 6], parry: [5], special: [7], up: [12], down: [13], left: [14], right: [15] };
+// Face-button wording for the Controls screen: Xbox name / PS5 name (standard mapping, same button indices).
+export const PAD_LABELS = {
+  move: 'L-Stick / D-Pad', jump: 'A / Cross', light: 'X / Square', heavy: 'Y / Triangle', special: 'RT / R2',
+  parry: 'RB / R1', block: 'LB,LT / L1,L2', throw: 'B / Circle', pause: 'Start / Options',
+};
 export function padToKeys(pad, deadzone = 0.35) {
   const out = [];
   if (!pad || !pad.buttons) return out;
   const on = (i) => !!(pad.buttons[i] && pad.buttons[i].pressed);
   const ax = pad.axes && pad.axes.length ? pad.axes[0] : 0;
-  const rep = { jump: 'Space', light: 'KeyJ', heavy: 'KeyK', block: 'KeyI' };
+  const rep = { jump: 'Space', light: 'KeyJ', heavy: 'KeyK', block: 'KeyI', parry: 'KeyT', throw: 'KeyU', special: 'KeyL' };
   for (const [a, btns] of Object.entries(PAD_MAP)) {
     if (a === 'left' || a === 'right' || a === 'up' || a === 'down') continue;
     if (btns.some(on)) out.push(rep[a]);

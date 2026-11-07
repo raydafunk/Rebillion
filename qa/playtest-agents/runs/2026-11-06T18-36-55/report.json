@@ -1,0 +1,1680 @@
+{
+  "stamp": "2026-11-06T18-36-55",
+  "seed": 1,
+  "base": "playtest.html",
+  "results": [
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "boss-hunter",
+        "stopOn": "wave",
+        "maxSec": 180,
+        "id": "MB-L5-raptor-solo",
+        "tier": "mini-boss",
+        "boss": "Raptor (Level 5 boss, solo)",
+        "level": 5,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 58,
+      "video": "videos/MB-L5-raptor-solo.webm",
+      "persona": "boss-hunter",
+      "kind": "competent",
+      "level": 5,
+      "levelName": "Songwindow Heights",
+      "outcome": {
+        "mode": "lose",
+        "reason": "ko",
+        "t": 48948,
+        "hp": 0,
+        "secondsLeft": 191,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 53498,
+      "stats": {
+        "hitsDealt": 0,
+        "hitsTaken": 12,
+        "damageDealt": 0,
+        "damageTaken": 100,
+        "parryAttempts": 11,
+        "parries": 2,
+        "kills": 0,
+        "wavesCleared": 0,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 0,
+        "minFps": 55,
+        "hitches": 1,
+        "goalTime": {
+          "intro": 37,
+          "wait": 60,
+          "attack": 1109,
+          "victory": 603,
+          "parry": 11,
+          "done": 44
+        },
+        "notes": {
+          "parry": 11
+        },
+        "goalShare": {
+          "intro": 2,
+          "wait": 3,
+          "attack": 59,
+          "victory": 32,
+          "parry": 1,
+          "done": 2
+        }
+      },
+      "bosses": [
+        {
+          "id": "raptor-1",
+          "seenT": 20021,
+          "diedT": null,
+          "maxHp": 320,
+          "moves": {
+            "barrage": {
+              "seen": 1,
+              "hitZed": 2,
+              "damage": 10,
+              "evaded": 0
+            }
+          },
+          "minHp": 320,
+          "seq": [
+            "barrage"
+          ],
+          "stuns": 0,
+          "patchesLaid": 0,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 320
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 18336,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 19000,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 19021,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 20021,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 20428,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 30467,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 32617,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 33084,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 38957,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 38957,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 233,
+          "mark": 350
+        },
+        {
+          "t": 38972,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 39150,
+          "type": "parry-success"
+        },
+        {
+          "t": 40816,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 40832,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 40832,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-3",
+          "clock": 443,
+          "mark": 520
+        },
+        {
+          "t": 40849,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 41049,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 41198,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 41365,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 41399,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 41399,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-2",
+          "clock": 670,
+          "mark": 780
+        },
+        {
+          "t": 41416,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 42299,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 42299,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-3",
+          "clock": 267,
+          "mark": 350
+        },
+        {
+          "t": 42315,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 42415,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 42415,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-2",
+          "clock": 267,
+          "mark": 350
+        },
+        {
+          "t": 42432,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 42465,
+          "type": "parry-success"
+        },
+        {
+          "t": 43632,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 43632,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 500,
+          "mark": 610
+        },
+        {
+          "t": 43649,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 44882,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 44882,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 460,
+          "mark": 520
+        },
+        {
+          "t": 44899,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 46019,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 46132,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 46132,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-2",
+          "clock": 550,
+          "mark": 610
+        },
+        {
+          "t": 46149,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 46249,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 46399,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 46565,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 47282,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 47282,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 427,
+          "mark": 520
+        },
+        {
+          "t": 47299,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 48232,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 48232,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 217,
+          "mark": 350
+        },
+        {
+          "t": 48250,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 48698,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 48698,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-3",
+          "clock": 670,
+          "mark": 780
+        },
+        {
+          "t": 48715,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 48715,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 48948,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 10
+        },
+        {
+          "t": 48948,
+          "type": "zed-ko"
+        },
+        {
+          "t": 48948,
+          "type": "round-lose",
+          "reason": "ko"
+        },
+        {
+          "t": 48967,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "boss-hunter",
+        "stopOn": "round",
+        "maxSec": 180,
+        "id": "EB-L5-raptor-crew",
+        "tier": "end-boss",
+        "boss": "Raptor + crew (Level 5 final wave)",
+        "level": 5,
+        "wave": 5,
+        "bespoke": true
+      },
+      "wallSec": 74,
+      "video": "videos/EB-L5-raptor-crew.webm",
+      "persona": "boss-hunter",
+      "kind": "competent",
+      "level": 5,
+      "levelName": "Songwindow Heights",
+      "outcome": {
+        "mode": "lose",
+        "reason": "ko",
+        "t": 67515,
+        "hp": 0,
+        "secondsLeft": 180,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 72032,
+      "stats": {
+        "hitsDealt": 0,
+        "hitsTaken": 12,
+        "damageDealt": 0,
+        "damageTaken": 100,
+        "parryAttempts": 21,
+        "parries": 6,
+        "kills": 0,
+        "wavesCleared": 0,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 0,
+        "minFps": 58,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 17,
+          "wait": 60,
+          "attack": 1743,
+          "victory": 603,
+          "parry": 21,
+          "done": 44
+        },
+        "notes": {
+          "parry": 21
+        },
+        "goalShare": {
+          "intro": 1,
+          "wait": 2,
+          "attack": 70,
+          "victory": 24,
+          "parry": 1,
+          "done": 2
+        }
+      },
+      "bosses": [
+        {
+          "id": "raptor-1",
+          "seenT": 28033,
+          "diedT": null,
+          "maxHp": 320,
+          "moves": {
+            "barrage": {
+              "seen": 1,
+              "hitZed": 2,
+              "damage": 10,
+              "evaded": 0
+            }
+          },
+          "minHp": 320,
+          "seq": [
+            "barrage"
+          ],
+          "stuns": 0,
+          "patchesLaid": 0,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 320
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 26696,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 27017,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 27034,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 28033,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 28442,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 38483,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 40634,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 41099,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 46967,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 46967,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 410,
+          "mark": 520
+        },
+        {
+          "t": 46984,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 46984,
+          "type": "parry-success"
+        },
+        {
+          "t": 48065,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 48065,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-3",
+          "clock": 267,
+          "mark": 350
+        },
+        {
+          "t": 48082,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 48233,
+          "type": "parry-success"
+        },
+        {
+          "t": 48499,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 48499,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-2",
+          "clock": 233,
+          "mark": 350
+        },
+        {
+          "t": 48516,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 49950,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 49950,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 687,
+          "mark": 780
+        },
+        {
+          "t": 49966,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 51066,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 51066,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-3",
+          "clock": 533,
+          "mark": 610
+        },
+        {
+          "t": 51083,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 51116,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 51116,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-2",
+          "clock": 410,
+          "mark": 520
+        },
+        {
+          "t": 51132,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 51232,
+          "type": "parry-success"
+        },
+        {
+          "t": 52166,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 52166,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 283,
+          "mark": 350
+        },
+        {
+          "t": 52182,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 53433,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 53433,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 550,
+          "mark": 610
+        },
+        {
+          "t": 53449,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 54383,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 54383,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 250,
+          "mark": 350
+        },
+        {
+          "t": 54383,
+          "type": "parry-success"
+        },
+        {
+          "t": 54399,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 55532,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 55532,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 393,
+          "mark": 520
+        },
+        {
+          "t": 55548,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 56548,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 56548,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 233,
+          "mark": 350
+        },
+        {
+          "t": 56566,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 57382,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 57382,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-3",
+          "clock": 267,
+          "mark": 350
+        },
+        {
+          "t": 57398,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 57552,
+          "type": "parry-success"
+        },
+        {
+          "t": 57732,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 57732,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-2",
+          "clock": 410,
+          "mark": 520
+        },
+        {
+          "t": 57749,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 59016,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 59016,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 533,
+          "mark": 610
+        },
+        {
+          "t": 59033,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 61416,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 61516,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 61516,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-3",
+          "clock": 460,
+          "mark": 520
+        },
+        {
+          "t": 61535,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 61648,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 61683,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 61683,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-2",
+          "clock": 517,
+          "mark": 610
+        },
+        {
+          "t": 61699,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 61798,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 61965,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 62898,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 62898,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 460,
+          "mark": 520
+        },
+        {
+          "t": 62915,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 64116,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 64349,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 64500,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 64665,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 65282,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 65282,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 670,
+          "mark": 780
+        },
+        {
+          "t": 65298,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 65382,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 65382,
+          "type": "parry-press",
+          "zed": "parry",
+          "by": "grunt-3",
+          "clock": 217,
+          "mark": 350
+        },
+        {
+          "t": 65398,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 65598,
+          "type": "parry-success"
+        },
+        {
+          "t": 66531,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 66531,
+          "type": "parry-press",
+          "zed": "idle",
+          "by": "grunt-2",
+          "clock": 483,
+          "mark": 610
+        },
+        {
+          "t": 66548,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 67281,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 8
+        },
+        {
+          "t": 67382,
+          "type": "goal",
+          "id": "parry"
+        },
+        {
+          "t": 67382,
+          "type": "parry-press",
+          "zed": "hitstun",
+          "by": "grunt-3",
+          "clock": 460,
+          "mark": 520
+        },
+        {
+          "t": 67399,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 67515,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 10
+        },
+        {
+          "t": 67515,
+          "type": "zed-ko"
+        },
+        {
+          "t": 67515,
+          "type": "round-lose",
+          "reason": "ko"
+        },
+        {
+          "t": 67532,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "edge-exploiter",
+        "stopOn": "wave",
+        "maxSec": 150,
+        "id": "ADV-raptor-edge",
+        "tier": "mini-boss",
+        "boss": "Raptor vs Edge Exploiter",
+        "level": 5,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 56,
+      "video": "videos/ADV-raptor-edge.webm",
+      "persona": "edge-exploiter",
+      "kind": "adversarial",
+      "level": 5,
+      "levelName": "Songwindow Heights",
+      "outcome": {
+        "mode": "win",
+        "reason": "cleared",
+        "t": 49932,
+        "hp": 90,
+        "secondsLeft": 190,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 54533,
+      "stats": {
+        "hitsDealt": 40,
+        "hitsTaken": 2,
+        "damageDealt": 410,
+        "damageTaken": 10,
+        "parryAttempts": 0,
+        "parries": 0,
+        "kills": 4,
+        "wavesCleared": 1,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 2,
+        "minFps": 57,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 41,
+          "wait": 51,
+          "fuzz": 37,
+          "attack": 1103,
+          "victory": 753,
+          "exit": 84,
+          "done": 44
+        },
+        "notes": {
+          "fuzz": 2,
+          "jump-spam": 20,
+          "rage-special": 2
+        },
+        "goalShare": {
+          "intro": 2,
+          "wait": 2,
+          "fuzz": 2,
+          "attack": 52,
+          "victory": 36,
+          "exit": 4,
+          "done": 2
+        }
+      },
+      "bosses": [
+        {
+          "id": "raptor-1",
+          "seenT": 17018,
+          "diedT": 45999,
+          "maxHp": 320,
+          "moves": {
+            "barrage": {
+              "seen": 1,
+              "hitZed": 2,
+              "damage": 10,
+              "evaded": 0
+            }
+          },
+          "minHp": 0,
+          "seq": [
+            "barrage"
+          ],
+          "stuns": 0,
+          "patchesLaid": 0,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 0,
+          "secLeftDied": 191
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 15275,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 16009,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 16026,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 16867,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 17018,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 17425,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 27450,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 27632,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 28099,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 30167,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 30633,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 45999,
+          "type": "boss-down",
+          "id": "raptor-1"
+        },
+        {
+          "t": 45999,
+          "type": "wave-cleared",
+          "index": 4
+        },
+        {
+          "t": 46039,
+          "type": "goal",
+          "id": "exit"
+        },
+        {
+          "t": 47437,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 49932,
+          "type": "round-win",
+          "reason": "cleared"
+        },
+        {
+          "t": 49949,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "agent": "playtest-boss-agent",
+        "persona": "button-masher",
+        "stopOn": "wave",
+        "maxSec": 150,
+        "id": "ADV-raptor-masher",
+        "tier": "mini-boss",
+        "boss": "Raptor vs Button Masher",
+        "level": 5,
+        "wave": 5,
+        "solo": true,
+        "bespoke": true
+      },
+      "wallSec": 51,
+      "video": "videos/ADV-raptor-masher.webm",
+      "persona": "button-masher",
+      "kind": "adversarial",
+      "level": 5,
+      "levelName": "Songwindow Heights",
+      "outcome": {
+        "mode": "lose",
+        "reason": "ko",
+        "t": 44951,
+        "hp": 0,
+        "secondsLeft": 192,
+        "wave": 5
+      },
+      "done": true,
+      "elapsedMs": 49635,
+      "stats": {
+        "hitsDealt": 8,
+        "hitsTaken": 12,
+        "damageDealt": 58,
+        "damageTaken": 100,
+        "parryAttempts": 0,
+        "parries": 1,
+        "kills": 0,
+        "wavesCleared": 0,
+        "grabs": 0,
+        "grabsBroken": 0,
+        "grabMashes": 0,
+        "slams": 0,
+        "pickups": 0,
+        "rageUses": 0,
+        "minFps": 58,
+        "hitches": 0,
+        "goalTime": {
+          "intro": 63,
+          "wait": 16,
+          "fuzz": 512,
+          "attack": 604,
+          "victory": 604,
+          "done": 44
+        },
+        "notes": {
+          "fuzz": 24,
+          "jump-spam": 4
+        },
+        "goalShare": {
+          "intro": 3,
+          "wait": 1,
+          "fuzz": 28,
+          "attack": 33,
+          "victory": 33,
+          "done": 2
+        }
+      },
+      "bosses": [
+        {
+          "id": "raptor-1",
+          "seenT": 17022,
+          "diedT": null,
+          "maxHp": 320,
+          "moves": {
+            "dive": {
+              "seen": 2,
+              "hitZed": 1,
+              "damage": 14,
+              "evaded": 1
+            },
+            "barrage": {
+              "seen": 1,
+              "hitZed": 2,
+              "damage": 10,
+              "evaded": 0
+            }
+          },
+          "minHp": 270,
+          "seq": [
+            "dive",
+            "barrage",
+            "dive"
+          ],
+          "stuns": 0,
+          "patchesLaid": 0,
+          "secLeftSeen": 209,
+          "ventAirborne": 0,
+          "hpEnd": 270
+        }
+      ],
+      "findings": [],
+      "timeline": [
+        {
+          "t": 14929,
+          "type": "goal",
+          "id": "intro"
+        },
+        {
+          "t": 16017,
+          "type": "wave-started",
+          "index": 4
+        },
+        {
+          "t": 16034,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 16086,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 16369,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 16553,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 17003,
+          "type": "goal",
+          "id": "wait"
+        },
+        {
+          "t": 17022,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 17171,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 17336,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 17421,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 17720,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 18077,
+          "type": "goal",
+          "id": "victory"
+        },
+        {
+          "t": 28136,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 28219,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 28690,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 29836,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 30268,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 31002,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 31385,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 31419,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 31885,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 5,
+          "move": "barrage"
+        },
+        {
+          "t": 32519,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 32936,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 33119,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 33770,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 35602,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 35602,
+          "type": "hurt",
+          "by": "grunt-2",
+          "amount": 8
+        },
+        {
+          "t": 35852,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 36202,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 36552,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 36652,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 36685,
+          "type": "hurt",
+          "by": "grunt-2",
+          "amount": 8
+        },
+        {
+          "t": 36918,
+          "type": "hurt",
+          "by": "grunt-2",
+          "amount": 16
+        },
+        {
+          "t": 37053,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 37086,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 37269,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 16
+        },
+        {
+          "t": 37419,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 37536,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 37587,
+          "type": "hurt",
+          "by": "grunt-3",
+          "amount": 6
+        },
+        {
+          "t": 38420,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 38503,
+          "type": "parry-success"
+        },
+        {
+          "t": 38777,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 38869,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 39069,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 39937,
+          "type": "hurt",
+          "by": "grunt-4",
+          "amount": 8
+        },
+        {
+          "t": 41419,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 42014,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 42119,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 42502,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 42569,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 42769,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 42902,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 43388,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 43457,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 43886,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 43935,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 44002,
+          "type": "hurt",
+          "by": "raptor-1",
+          "amount": 14,
+          "move": "dive"
+        },
+        {
+          "t": 44419,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 44435,
+          "type": "goal",
+          "id": "fuzz"
+        },
+        {
+          "t": 44786,
+          "type": "hurt",
+          "by": "grunt-4",
+          "amount": 2
+        },
+        {
+          "t": 44868,
+          "type": "goal",
+          "id": "attack"
+        },
+        {
+          "t": 44951,
+          "type": "hurt",
+          "by": "grunt-4",
+          "amount": 6
+        },
+        {
+          "t": 44951,
+          "type": "zed-ko"
+        },
+        {
+          "t": 44951,
+          "type": "round-lose",
+          "reason": "ko"
+        },
+        {
+          "t": 44969,
+          "type": "goal",
+          "id": "done"
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,8 @@ import { DUGAN_ID } from '../enemies/duganData.js';
 import { ROYCE_ID } from '../enemies/royceData.js';
 import { KANE_ID } from '../enemies/kaneData.js';
 import { GLITCH_ID } from '../enemies/glitchData.js';
+import { RAPTOR_ID } from '../enemies/raptorData.js';
+import { SUBJECT88_ID } from '../enemies/subject88Data.js';
 import { VARR_ID } from '../enemies/varrData.js';
 
 export const VICTORY = {
@@ -28,6 +30,10 @@ export const VICTORY_LINES = {
   [KANE_ID]: { lines: ['"Crusher" Kane has fallen.', 'The courts are open.'] },
   // PLACEHOLDER lines for Level 4: the owner supplies Glitch's real lines.
   [GLITCH_ID]: { lines: ['"Glitch" has fallen.', 'The gardens are open.'] },
+  // PLACEHOLDER lines for Level 5: the owner supplies Raptor's real lines.
+  [RAPTOR_ID]: { lines: ['Raptor has fallen.', 'The heights are open.'] },
+  // PLACEHOLDER lines for Level 6: the owner supplies Subject 88's real lines. He is a person in distress, so the tone is gentle.
+  [SUBJECT88_ID]: { lines: ['Subject 88 is at rest.', 'The Iron Line is open.'] },
   // PLACEHOLDER lines for Level 8: the owner supplies Varr's real lines.
   [VARR_ID]: { lines: ['Halden Varr has fallen.', 'Let the music back in.'] },
   // 'rust-copper-fang': { lines: ['...', '...'] },

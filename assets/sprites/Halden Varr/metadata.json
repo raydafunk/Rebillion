@@ -1,0 +1,72 @@
+{
+  "group_id": "aa53345f-28ed-4443-adb4-e8b9aacf9abd",
+  "states": [
+    {
+      "character": {
+        "id": "8be6906e-a1d9-41d5-b4ce-f7d1debb7e97",
+        "name": "Adaptive Counter",
+        "prompt": "A commanding Evil Owner  in a hybrid set of heavy plate and agile leather armor, standing in a wide, grounded stance, one hand resting on the hilt of a sheathed blade, eyes narrowed with a cold, authoritative expression, sharp silhouette with a crisp black outline.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-05T21:09:10.856672+00:00"
+      },
+      "folder": "Adaptive_Counter",
+      "frames": {
+        "rotations": {
+          "south": "Adaptive_Counter/rotations/south.png",
+          "south-east": "Adaptive_Counter/rotations/south-east.png",
+          "east": "Adaptive_Counter/rotations/east.png",
+          "north-east": "Adaptive_Counter/rotations/north-east.png",
+          "north": "Adaptive_Counter/rotations/north.png",
+          "north-west": "Adaptive_Counter/rotations/north-west.png",
+          "west": "Adaptive_Counter/rotations/west.png",
+          "south-west": "Adaptive_Counter/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_pulls_their_right_hand_back_to_the_h": {
+            "west": [
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_000.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_001.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_002.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_003.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_004.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_005.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_006.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_007.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/west/frame_008.png"
+            ],
+            "east": [
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_000.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_001.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_002.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_003.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_004.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_005.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_006.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_007.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/east/frame_008.png"
+            ],
+            "south": [
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_000.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_001.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_002.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_003.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_004.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_005.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_006.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_007.png",
+              "Adaptive_Counter/animations/The_character_pulls_their_right_hand_back_to_the_h/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-06T16:23:25.615791"
+}

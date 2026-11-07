@@ -15,7 +15,7 @@ const rdy = (o = {}) => ({ disk: true, drones: true, decoy: true, spike: true, t
 const ctx = (o) => ({ dist: 400, dy: 0, lift: 0, ready: rdy({ teleport: false }), lastId: null, forceTeleport: false, ...o });
 
 // --- data: tougher than every other mini-boss, canon telegraphs
-assert.ok(GLITCH.maxHp > KANE.maxHp && GLITCH.maxHp > ROYCE.maxHp && GLITCH.maxHp >= 300, 'Glitch has the most health of the mini-bosses');
+assert.ok(GLITCH.maxHp > ROYCE.maxHp && GLITCH.maxHp >= 300, 'Glitch is tougher than Royce (Kane was later raised to 400)');
 assert.ok(GLITCH.moveSpeed > ROYCE.moveSpeed, 'faster than the other mini-bosses');
 const order = ['drones', 'decoy', 'disk', 'spike', 'teleport'];
 assert.deepEqual(order.map((k) => GLITCH_MOVES[k].telegraphMs), [700, 500, 550, 600, 400], 'telegraphs match mini-bosses.json');

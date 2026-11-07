@@ -339,5 +339,18 @@ export class GlitchBoss {
     if (this.hooks.onDeath) this.hooks.onDeath();
   }
 
+  /** Story-card intro: stop where he is and stand in his idle pose until releaseIdle(). */
+  holdIdle() {
+    if (!this.alive) return;
+    this.vx = 0; this.vy = 0; this.kx = 0;
+    this.timer = Infinity;
+    this._set(GlitchState.IDLE);
+  }
+
+  /** End the intro hold: he starts his approach on the next update. */
+  releaseIdle() {
+    if (this.state === GlitchState.IDLE && this.timer === Infinity) this.timer = 0;
+  }
+
   teleport(x, y) { this.x = x; this.y = y; this.kx = 0; }
 }

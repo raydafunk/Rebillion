@@ -92,3 +92,4 @@ Append-only. One line per event: `ISO time | agent | goal | event | note`
 2026-11-03T17:10:42.040Z | playtest-level-agent | G7-playtest-levels | done | 5/7 won (L2,L4,L6,L7,L8), L3 and L5 lost to KO; S1:0 S2:0; levels 2-8 Brawler only, cloud canvas render
 2026-11-06T06:55:50.168Z | director | G8-playtest-bosses | reopened | Level 3 Crusher Kane playtest requested
 2026-11-06T06:55:51.440Z | playtest-boss-agent | G8-playtest-bosses | claimed | attempt 2
+2026-11-06T18:46:43.658Z | playtest-boss-agent | G8-playtest-bosses | done | 0/6 L5 Raptor fights cleared by competent personas (1 adversarial win), S1:0 (1 suspected) S2:1

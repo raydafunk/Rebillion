@@ -1,99 +1,99 @@
 {
   "agent": "playtest-boss-agent",
-  "run": "2026-11-02T12-01-59",
-  "reportDir": "qa/playtest-agents/runs/2026-11-02T12-01-59",
+  "run": "2026-11-06 L5 Raptor",
+  "reportDir": "qa/playtest-agents/runs/2026-11-06T18-36-55",
+  "reportDir2": "qa/playtest-agents/runs/2026-11-06T18-43-18",
+  "boss": "Raptor (rust-raptor), Level 5 Songwindow Heights wave 5 mini-boss, bespoke RaptorBoss.js, 320 HP",
   "runs": [
     {
-      "id": "MB-dugan-solo",
-      "persona": "boss-hunter",
-      "level": 1,
-      "wave": 5,
-      "result": "WIN (cleared)",
-      "video": "videos/MB-dugan-solo.mp4",
-      "findings": []
-    },
-    {
-      "id": "MB-L4-holt",
-      "persona": "boss-hunter",
-      "level": 4,
-      "wave": 2,
-      "result": "BOSS WAVE CLEARED",
-      "video": "videos/MB-L4-holt.mp4",
-      "findings": []
-    },
-    {
-      "id": "MB-L5-copper-fang",
-      "persona": "boss-hunter",
-      "level": 5,
-      "wave": 2,
-      "result": "BOSS WAVE CLEARED",
-      "video": "videos/MB-L5-copper-fang.mp4",
-      "findings": []
-    },
-    {
-      "id": "MB-L5-wren",
+      "id": "MB-L5-raptor-solo",
       "persona": "boss-hunter",
       "level": 5,
       "wave": 5,
-      "result": "BOSS WAVE CLEARED",
-      "video": "videos/MB-L5-wren.mp4",
-      "findings": []
+      "result": "LOSE (ko) 48.9s, 0 hits dealt",
+      "video": "qa/playtest-agents/runs/2026-11-06T18-36-55/videos/MB-L5-raptor-solo.webm"
     },
     {
-      "id": "EB-L1-dugan-crew",
-      "persona": "boss-hunter",
-      "level": 1,
-      "wave": 5,
-      "result": "LOSE (ko)",
-      "video": "videos/EB-L1-dugan-crew.mp4",
-      "findings": []
-    },
-    {
-      "id": "EB-L5-copper-fang",
+      "id": "EB-L5-raptor-crew",
       "persona": "boss-hunter",
       "level": 5,
-      "wave": 7,
-      "result": "WIN (cleared)",
-      "video": "videos/EB-L5-copper-fang.mp4",
-      "findings": []
+      "wave": 5,
+      "result": "LOSE (ko) 67.5s, 0 hits dealt",
+      "video": "qa/playtest-agents/runs/2026-11-06T18-36-55/videos/EB-L5-raptor-crew.webm"
     },
     {
-      "id": "EB-L7-copper-fang",
-      "persona": "boss-hunter",
-      "level": 7,
-      "wave": 3,
-      "result": "WIN (cleared)",
-      "video": "videos/EB-L7-copper-fang.mp4",
-      "findings": []
-    },
-    {
-      "id": "EB-L8-halden-varr",
-      "persona": "boss-hunter",
-      "level": 8,
-      "wave": 4,
-      "result": "WIN (cleared)",
-      "video": "videos/EB-L8-halden-varr.mp4",
-      "findings": []
-    },
-    {
-      "id": "ADV-dugan-edge",
+      "id": "ADV-raptor-edge",
       "persona": "edge-exploiter",
-      "level": 1,
+      "level": 5,
       "wave": 5,
-      "result": "LOSE (ko)",
-      "video": "videos/ADV-dugan-edge.mp4",
-      "findings": []
+      "result": "WIN, Raptor dead at 29s after first sight",
+      "video": "qa/playtest-agents/runs/2026-11-06T18-36-55/videos/ADV-raptor-edge.webm"
     },
     {
-      "id": "ADV-dugan-masher",
+      "id": "ADV-raptor-masher",
       "persona": "button-masher",
-      "level": 1,
+      "level": 5,
       "wave": 5,
-      "result": "BOSS WAVE CLEARED",
-      "video": "videos/ADV-dugan-masher.mp4",
-      "findings": []
+      "result": "LOSE (ko) 45s",
+      "video": "qa/playtest-agents/runs/2026-11-06T18-36-55/videos/ADV-raptor-masher.webm"
+    },
+    {
+      "id": "MB-L5-raptor-kite",
+      "persona": "kiter-dodge",
+      "level": 5,
+      "wave": 5,
+      "result": "NO RESULT at 100s cap",
+      "video": "qa/playtest-agents/runs/2026-11-06T18-43-18/videos/MB-L5-raptor-kite.webm"
+    },
+    {
+      "id": "MB-L5-raptor-parry",
+      "persona": "parry-master",
+      "level": 5,
+      "wave": 5,
+      "result": "LOSE (ko) 72s, 12/39 parries (all on grunts)",
+      "video": "qa/playtest-agents/runs/2026-11-06T18-43-18/videos/MB-L5-raptor-parry.webm"
     }
   ],
-  "findings": [],
-  "requests": []
+  "moveStats": {
+    "barrage": "seen 1 per run, hit Zed 2/2 hits every time (first move, ~12s after wave start, 0 evaded in 5 runs)",
+    "dive": "seen 3 total, hit 2, evaded 1",
+    "bounce_grapple_falcon": "never seen in any run (not exercised)"
+  },
+  "findings": [
+    {
+      "sev": "S2",
+      "title": "Raptor stalls in approach and stops attacking when Zed stays within 120 px",
+      "detail": "pickRaptorMove (src/enemies/raptorData.js:103-112): barrage is the only move with minRange 0 and is blocked by s.lastId!==id after use; dive/bounce/grapple/falcon need dist>=120/180/250/150. Raptor stays in approach at x4420 vs Zed x4440 from t=24s to 49s with no move. Seed 1, run MB-L5-raptor-solo, probe sampled each second; also visible in MB-L5-raptor-kite (3 moves in 100s). Lets a player stand in his face to neutralise the fight, and makes 4 of 5 canon moves untestable by the hunter."
+    },
+    {
+      "sev": "S3",
+      "title": "Boss-hunter lost 0 hits dealt vs Raptor (killed by crew grunts) in 2/2 runs; no Raptor-specific evasion in persona, so evade stats are a lower bound",
+      "detail": "MB-L5-raptor-solo 20-49s, EB-L5-raptor-crew. Zed died to grunt-2/3 hits while parrying them."
+    },
+    {
+      "sev": "S3",
+      "title": "?solo does not remove the crew on Level 5 wave 5 (grunt-2..4 still spawn)",
+      "detail": "MB-L5-raptor-solo probe t=22s. boss5.html strips crew; ArenaScene ?solo does not for this level."
+    },
+    {
+      "sev": "S3",
+      "title": "Boss intro card holds play ~10 s (agent goal victory) before Raptor fight; Raptor opens with barrage that hits twice",
+      "detail": "timeline 20.4-30.5s in MB-L5-raptor-solo; verify on video whether the card is skippable."
+    },
+    {
+      "sev": "S1?",
+      "title": "kiter-dodge no-progress 25s flag (suspected persona artifact of passive run, likely the same Raptor stall)",
+      "detail": "MB-L5-raptor-kite 66.4s"
+    }
+  ],
+  "gaps": [
+    "Persona has no Raptor-specific logic (dive marker sidestep, falcon drop, grapple cable); bounce/grapple/falcon/frenzy never measured",
+    "No FFmpeg: videos are .webm not .mp4",
+    "canvas renderer used"
+  ],
+  "requests": [
+    "Fix Raptor stall when Zed within minRange of all moves (add a retreat/back-hop or allow non-repeat barrage)",
+    "Add Raptor evade logic to boss-hunter in agent.js then rerun",
+    "Make ?solo drop the crew on L5 W5"
+  ]
 }

@@ -44,7 +44,11 @@ export function createHitResolver(events, now = () => Date.now()) {
       const key = `${req.attackId}|${id}`;
       if (seen.has(key)) continue;
       const st = e.reg.getState();
-      if ((st.lift ?? 0) >= COMBAT_DEFAULTS.AIR_DODGE_LIFT) continue; // airborne: ground melee passes underneath
+      if ((st.lift ?? 0) >= COMBAT_DEFAULTS.AIR_DODGE_LIFT) { // airborne: ground melee passes underneath
+        // ...except a target that opts in (st.airHittable: Raptor) can be caught in the air by an attacker who is airborne too (Zed's jump attacks).
+        const aLift = st.airHittable ? (entities.get(req.attackerId)?.reg.getState().lift ?? 0) : 0;
+        if (aLift < COMBAT_DEFAULTS.AIR_DODGE_LIFT) continue;
+      }
       if (req.lane != null && st.lane != null && Math.abs(req.lane - st.lane) > COMBAT_DEFAULTS.DEPTH_TOLERANCE) continue; // not on the same floor line
       if (!rectsOverlap(box, worldRect(e.reg.hurtbox, st, st.facing))) continue;
       const dir = st.x >= req.origin.x ? 1 : -1;
@@ -57,6 +61,17 @@ export function createHitResolver(events, now = () => Date.now()) {
           events.emit(EVENTS.DAMAGE_APPLIED, {
             targetId: id, attackerId: req.attackerId, attackId: req.attackId, amount: 0,
             hpAfter: e.health.hp, knockback: 0, hitstun: 0, landed: false, shield: true, shieldDmg: req.damage,
+          });
+          continue;
+        }
+        guard = null;
+      }
+      if (guard === 'negate') { // Raptor's BLOCK: a full negate (no chip damage, no knockback, no hitstun, no guard break). Rage moves (req.rage) pierce it.
+        if (!req.rage) {
+          seen.add(key);
+          events.emit(EVENTS.DAMAGE_APPLIED, {
+            targetId: id, attackerId: req.attackerId, attackId: req.attackId, amount: 0,
+            hpAfter: e.health.hp, knockback: 0, hitstun: 0, landed: false, blocked: true,
           });
           continue;
         }

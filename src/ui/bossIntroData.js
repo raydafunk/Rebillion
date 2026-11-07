@@ -5,7 +5,15 @@
 // PLACEHOLDER: every line below is a stand-in for the owner to replace. Edit `beats` freely (1-6 beats).
 // ART SLOTS: portraits are tall cut-outs (about 420x560, transparent PNG or SVG). The files in assets/ui/story/ are
 // grey-box placeholders; overwrite them (same file names) or change `path` here. See design/art/boss-intro-card.md.
+import { DUGAN_ID } from '../enemies/duganData.js';
+import { ROYCE_ID } from '../enemies/royceData.js';
 import { KANE_ID } from '../enemies/kaneData.js';
+import { GLITCH_ID } from '../enemies/glitchData.js';
+import { VARR_ID } from '../enemies/varrData.js';
+
+// Wave leaders with no boss class yet (they fight as grunts with their own skin): ids match content/levels.
+export const RAPTOR_ID = 'rust-raptor';
+export const SUBJECT88_ID = 'rust-holts-experiment-subject-88';
 
 export const BOSS_INTRO = {
   prompt: 'Enter / click to continue',
@@ -17,21 +25,24 @@ export const BOSS_INTRO = {
   portrait: { w: 420, h: 560, y: 40, leftX: 60, rightX: 800 },
 };
 
+const ZED = { key: 'story.portrait.zed', path: 'assets/ui/story/zed-portrait.svg' };
+const portraits = (slug) => ({ zed: ZED, boss: { key: `story.portrait.${slug}`, path: `assets/ui/story/${slug}-portrait.svg` } });
+// PLACEHOLDER lines for every boss: the owner replaces the text. side: 'zed' (left) or 'boss' (right).
+const placeholderBeats = (name) => [
+  { side: 'boss', name, text: `[PLACEHOLDER] ${name} line 1: the boss sizes Zed up.` },
+  { side: 'zed',  name: 'Zed', text: '[PLACEHOLDER] Zed line 1: Zed answers back.' },
+  { side: 'boss', name, text: `[PLACEHOLDER] ${name} line 2: the threat.` },
+  { side: 'zed',  name: 'Zed', text: '[PLACEHOLDER] Zed line 2: Zed stands his ground.' },
+];
+
 export const BOSS_INTROS = {
-  [KANE_ID]: {
-    title: 'GREENLINE COURTS', // PLACEHOLDER
-    portraits: {
-      zed:  { key: 'story.portrait.zed',  path: 'assets/ui/story/zed-portrait.svg' },
-      boss: { key: 'story.portrait.kane', path: 'assets/ui/story/kane-portrait.svg' },
-    },
-    // side: 'zed' (left) or 'boss' (right). PLACEHOLDER lines.
-    beats: [
-      { side: 'boss', name: '"Crusher" Kane', text: '[PLACEHOLDER] Kane line 1: the boss sizes Zed up.' },
-      { side: 'zed',  name: 'Zed',            text: '[PLACEHOLDER] Zed line 1: Zed answers back.' },
-      { side: 'boss', name: '"Crusher" Kane', text: '[PLACEHOLDER] Kane line 2: the threat.' },
-      { side: 'zed',  name: 'Zed',            text: '[PLACEHOLDER] Zed line 2: the courts are not yours.' },
-    ],
-  },
+  [DUGAN_ID]:  { title: 'BRICK-RED ALLEY',    portraits: portraits('dugan'),  beats: placeholderBeats('Brick Dugan') },
+  [ROYCE_ID]:  { title: 'MUSTARD ROW',        portraits: portraits('royce'),  beats: placeholderBeats('"Railgun" Royce') },
+  [KANE_ID]:   { title: 'GREENLINE COURTS',   portraits: portraits('kane'),   beats: placeholderBeats('"Crusher" Kane') },
+  [RAPTOR_ID]: { title: 'SONGWINDOW HEIGHTS', portraits: portraits('raptor'), beats: placeholderBeats('Raptor') },
+  [SUBJECT88_ID]: { title: 'THE IRON LINE PUSH', portraits: portraits('subject88'), beats: placeholderBeats('Subject 88') },
+  [GLITCH_ID]: { title: 'STEWPOT GARDENS',    portraits: portraits('glitch'), beats: placeholderBeats('"Glitch"') },
+  [VARR_ID]:   { title: "THE OVERSEER'S TOWER", portraits: portraits('varr'), beats: placeholderBeats('Halden Varr') },
 };
 
 /** The intro entry for a boss, or null when it has none (or no valid beats). */

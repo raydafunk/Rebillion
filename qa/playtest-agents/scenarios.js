@@ -36,6 +36,13 @@ export const BOSS_SCENARIOS = [
   boss({ id: 'ADV-kane-edge', tier: 'mini-boss', boss: 'Kane vs Edge Exploiter', level: 3, wave: 5, solo: true, bespoke: true, persona: 'edge-exploiter', maxSec: 150 }),
   boss({ id: 'ADV-kane-masher', tier: 'mini-boss', boss: 'Kane vs Button Masher', level: 3, wave: 5, solo: true, bespoke: true, persona: 'button-masher', maxSec: 150 }),
   boss({ id: 'MB-L4-holt', tier: 'mini-boss', boss: 'Overseer Dr. Maren Holt wave', level: 4, wave: 2 }),
+  // Level 5 (Songwindow Heights): "Raptor" (RaptorBoss.js), bespoke AI, wave 5 is the last wave. Dive Kick, 4-Hit Punch, Falcon Drop.
+  boss({ id: 'MB-L5-raptor-solo', tier: 'mini-boss', boss: 'Raptor (Level 5 boss, solo)', level: 5, wave: 5, solo: true, bespoke: true }),
+  boss({ id: 'EB-L5-raptor-crew', tier: 'end-boss', boss: 'Raptor + crew (Level 5 final wave)', level: 5, wave: 5, bespoke: true, stopOn: 'round' }),
+  boss({ id: 'ADV-raptor-edge', tier: 'mini-boss', boss: 'Raptor vs Edge Exploiter', level: 5, wave: 5, solo: true, bespoke: true, persona: 'edge-exploiter', maxSec: 150 }),
+  boss({ id: 'ADV-raptor-masher', tier: 'mini-boss', boss: 'Raptor vs Button Masher', level: 5, wave: 5, solo: true, bespoke: true, persona: 'button-masher', maxSec: 150 }),
+  boss({ id: 'MB-L5-raptor-kite', tier: 'mini-boss', boss: 'Raptor long sample: passive, keeps range (move coverage)', level: 5, wave: 5, solo: true, bespoke: true, persona: 'kiter-dodge', maxSec: 100, stopOn: 'round' }),
+  boss({ id: 'MB-L5-raptor-parry', tier: 'mini-boss', boss: 'Raptor vs Parry Master', level: 5, wave: 5, solo: true, bespoke: true, persona: 'parry-master', maxSec: 150 }),
   boss({ id: 'MB-L5-copper-fang', tier: 'mini-boss', boss: 'Rust Copper Fang wave', level: 5, wave: 2 }),
   boss({ id: 'MB-L5-wren', tier: 'mini-boss', boss: 'Overseer Silas Wren wave', level: 5, wave: 5 }),
   boss({ id: 'EB-L1-dugan-crew', tier: 'end-boss', boss: '"Brick" Dugan + crew (Level 1 finale)', level: 1, wave: 5, bespoke: true, stopOn: 'round' }),

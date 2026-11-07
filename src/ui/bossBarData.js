@@ -18,6 +18,9 @@ export const BOSS_PROFILES = {
   // Level 4 mini-boss: overclocks (enrages) at half health.
   // Level 8 final boss. Two phases: HP is restored when Rust Protocol opens (BossBarHud.onRestore), so no enrage band.
   'rust-halden-varr': { name: 'HALDEN VARR', epithet: 'THE ARCHITECT OF RUST', maxHpFallback: 2560, rageThreshold: 0, readout: 'hp' },
+  // Level 5 mini-boss: frenzies at half health (RAPTOR_PHASE2_AT). Level 6 mini-boss: flares at 60 percent (SUBJECT88_FLARE_AT).
+  'rust-raptor': { name: 'RAPTOR', epithet: "SILAS WREN'S HUNTER", maxHpFallback: 320, rageThreshold: 0.50, readout: 'hp' },
+  'rust-holts-experiment-subject-88': { name: 'SUBJECT 88', epithet: "DR. HOLT'S EXPERIMENT", maxHpFallback: 380, rageThreshold: 0.60, readout: 'hp' },
   'rust-glitch': { name: '"GLITCH"', epithet: 'THE HOLLOW-MASK HACKER', maxHpFallback: 340, rageThreshold: 0.50, readout: 'hp' },
 };
 

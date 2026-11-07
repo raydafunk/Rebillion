@@ -17,7 +17,17 @@ import { GRUNT_HIT_SOUND_KEY, GRUNT_HIT_SOUND_VOLUME, isPlainGrunt, gruntSoundRe
   GRUNT_DEATH_SOUND_KEY, GRUNT_DEATH_SOUND_VOLUME, gruntVoiceFor } from './gruntSound.js';
 import { isDugan, duganSoundReady, duganVoiceFor, DUGAN_HIT_VOICE_KEY, DUGAN_HIT_VOICE_VOLUME, DUGAN_HIT_VOICE_RATE, DUGAN_HIT_VOICE_COOLDOWN_MS,
   DUGAN_DEATH_SOUND_KEY, DUGAN_DEATH_SOUND_VOLUME, DUGAN_DEATH_SOUND_RATE } from './duganSound.js';
-
+import { isGlitchEnemy, glitchSoundReady, glitchVoiceFor, GLITCH_HIT_VOICE_KEY, GLITCH_HIT_VOICE_VOLUME, GLITCH_HIT_VOICE_RATE, GLITCH_HIT_VOICE_COOLDOWN_MS,
+  GLITCH_HIT_THUD_KEY, GLITCH_HIT_THUD_VOLUME, GLITCH_HIT_THUD_RATE, GLITCH_DEATH_SOUND_KEY, GLITCH_DEATH_SOUND_VOLUME, GLITCH_DEATH_SOUND_RATE,
+  GLITCH_DEATH_BOOM_RATE, GLITCH_DEATH_BOOM_VOLUME } from './glitchSound.js';
+import { isRaptorEnemy, raptorSoundReady, raptorVoiceFor, RAPTOR_HIT_VOICE_KEY, RAPTOR_HIT_VOICE_VOLUME, RAPTOR_HIT_VOICE_RATE, RAPTOR_HIT_VOICE_COOLDOWN_MS,
+  RAPTOR_HIT_THUD_KEY, RAPTOR_HIT_THUD_VOLUME, RAPTOR_HIT_THUD_RATE, RAPTOR_DEATH_SOUND_KEY, RAPTOR_DEATH_SOUND_VOLUME, RAPTOR_DEATH_SOUND_RATE } from './raptorSound.js';
+import { isSubject88Enemy, subject88SoundReady, subject88VoiceFor, SUBJECT88_HIT_VOICE_KEY, SUBJECT88_HIT_VOICE_VOLUME, SUBJECT88_HIT_VOICE_RATE, SUBJECT88_HIT_VOICE_COOLDOWN_MS,
+  SUBJECT88_HIT_THUD_KEY, SUBJECT88_HIT_THUD_VOLUME, SUBJECT88_HIT_THUD_RATE, SUBJECT88_DEATH_SOUND_KEY, SUBJECT88_DEATH_SOUND_VOLUME, SUBJECT88_DEATH_SOUND_RATE,
+  SUBJECT88_DEATH_BOOM_RATE, SUBJECT88_DEATH_BOOM_VOLUME } from './subject88Sound.js';
+import { isVarrEnemy, varrSoundReady, varrVoiceFor, varrHitVoiceRate, VARR_HIT_VOICE_KEY, VARR_HIT_VOICE_VOLUME, VARR_HIT_VOICE_COOLDOWN_MS,
+  VARR_HIT_THUD_KEY, VARR_HIT_THUD_VOLUME, VARR_HIT_THUD_RATE, VARR_DEATH_SOUND_KEY, VARR_DEATH_SOUND_VOLUME, VARR_DEATH_SOUND_RATE,
+  VARR_DEATH_BOOM_RATE, VARR_DEATH_BOOM_VOLUME } from './varrSound.js';
 import { isBreaker2Enemy, breaker2SoundReady, breaker2VoiceFor, BREAKER2_HIT_SOUND_KEY, BREAKER2_HIT_SOUND_VOLUME, BREAKER2_HIT_SOUND_RATE,
   BREAKER2_DEATH_SOUND_KEY, BREAKER2_DEATH_SOUND_VOLUME, BREAKER2_DEATH_SOUND_RATE } from './breaker2Sound.js';
 import { isRangerEnemy, rangerSoundReady, rangerVoiceFor, RANGER_HIT_SOUND_KEY, RANGER_HIT_SOUND_VOLUME, RANGER_HIT_SOUND_RATE,
@@ -63,6 +73,10 @@ export class EnemyHitFx {
   _playVoice(id, g, killed) {
     const sc = this.scene;
     if (isDugan(g)) return this._playDuganVoice(id, killed);
+    if (isGlitchEnemy(g)) return this._playGlitchVoice(id, killed);
+    if (isRaptorEnemy(g)) return this._playRaptorVoice(id, killed);
+    if (isSubject88Enemy(g)) return this._playSubject88Voice(id, killed);
+    if (isVarrEnemy(g)) return this._playVarrVoice(id, g, killed);
     if (isBreaker2Enemy(g)) return this._playBreaker2Voice(id, killed);
     if (isRangerEnemy(g)) return this._playRangerVoice(id, killed);
     if (isWatcherEnemy(g)) return this._playWatcherVoice(id, killed);
@@ -146,6 +160,94 @@ export class EnemyHitFx {
     sc.sound.play(SPECIALIST_HIT_SOUND_KEY, { volume: SPECIALIST_HIT_SOUND_VOLUME, rate: SPECIALIST_HIT_SOUND_RATE });
   }
 
+  // Glitch: a deep thud under every hit plus a slowed grunt (rate-limited); the killing blow plays a long deep death cry and a final boom.
+  _playGlitchVoice(id, killed) {
+    const sc = this.scene;
+    const which = glitchVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    const has = (k) => sc.cache.audio.exists(k);
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (has(GLITCH_DEATH_SOUND_KEY)) sc.sound.play(GLITCH_DEATH_SOUND_KEY, { volume: GLITCH_DEATH_SOUND_VOLUME, rate: GLITCH_DEATH_SOUND_RATE });
+      if (has(GLITCH_HIT_THUD_KEY)) sc.sound.play(GLITCH_HIT_THUD_KEY, { volume: GLITCH_DEATH_BOOM_VOLUME, rate: GLITCH_DEATH_BOOM_RATE });
+      return;
+    }
+    if (has(GLITCH_HIT_THUD_KEY)) sc.sound.play(GLITCH_HIT_THUD_KEY, { volume: GLITCH_HIT_THUD_VOLUME, rate: GLITCH_HIT_THUD_RATE });
+    if (!has(GLITCH_HIT_VOICE_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!glitchSoundReady(this.voiceAt.get(id), now, GLITCH_HIT_VOICE_COOLDOWN_MS)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(GLITCH_HIT_VOICE_KEY, { volume: GLITCH_HIT_VOICE_VOLUME, rate: GLITCH_HIT_VOICE_RATE });
+  }
+
+  // Raptor: a light crack under each hit plus a sharp grunt (rate-limited); the killing blow plays a death cry. His landing slam is played by the scene (RaptorFx onSlam).
+  _raptorGuardClang(id) {
+    const g = this.getEnemy(id), sc = this.scene;
+    if (!g || !isRaptorEnemy(g) || !sc.cache.audio.exists(RAPTOR_HIT_THUD_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!raptorSoundReady(this.voiceAt.get(`${id}:guard`), now, 120)) return;
+    this.voiceAt.set(`${id}:guard`, now);
+    sc.sound.play(RAPTOR_HIT_THUD_KEY, { volume: RAPTOR_HIT_THUD_VOLUME * 0.6, rate: 1.7 });   // reuses his thud, higher and softer
+  }
+
+  _playRaptorVoice(id, killed) {
+    const sc = this.scene;
+    const which = raptorVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    const has = (k) => sc.cache.audio.exists(k);
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (has(RAPTOR_DEATH_SOUND_KEY)) sc.sound.play(RAPTOR_DEATH_SOUND_KEY, { volume: RAPTOR_DEATH_SOUND_VOLUME, rate: RAPTOR_DEATH_SOUND_RATE });
+      return;
+    }
+    if (has(RAPTOR_HIT_THUD_KEY)) sc.sound.play(RAPTOR_HIT_THUD_KEY, { volume: RAPTOR_HIT_THUD_VOLUME, rate: RAPTOR_HIT_THUD_RATE });
+    if (!has(RAPTOR_HIT_VOICE_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!raptorSoundReady(this.voiceAt.get(id), now, RAPTOR_HIT_VOICE_COOLDOWN_MS)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(RAPTOR_HIT_VOICE_KEY, { volume: RAPTOR_HIT_VOICE_VOLUME, rate: RAPTOR_HIT_VOICE_RATE });
+  }
+
+  // Subject 88: a low thud under each hit plus a strained, slowed grunt; the killing blow is a long weary cry and a soft collapse boom.
+  _playSubject88Voice(id, killed) {
+    const sc = this.scene;
+    const which = subject88VoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    const has = (k) => sc.cache.audio.exists(k);
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (has(SUBJECT88_DEATH_SOUND_KEY)) sc.sound.play(SUBJECT88_DEATH_SOUND_KEY, { volume: SUBJECT88_DEATH_SOUND_VOLUME, rate: SUBJECT88_DEATH_SOUND_RATE });
+      if (has(SUBJECT88_HIT_THUD_KEY)) sc.sound.play(SUBJECT88_HIT_THUD_KEY, { volume: SUBJECT88_DEATH_BOOM_VOLUME, rate: SUBJECT88_DEATH_BOOM_RATE });
+      return;
+    }
+    if (has(SUBJECT88_HIT_THUD_KEY)) sc.sound.play(SUBJECT88_HIT_THUD_KEY, { volume: SUBJECT88_HIT_THUD_VOLUME, rate: SUBJECT88_HIT_THUD_RATE });
+    if (!has(SUBJECT88_HIT_VOICE_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!subject88SoundReady(this.voiceAt.get(id), now, SUBJECT88_HIT_VOICE_COOLDOWN_MS)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(SUBJECT88_HIT_VOICE_KEY, { volume: SUBJECT88_HIT_VOICE_VOLUME, rate: SUBJECT88_HIT_VOICE_RATE });
+  }
+
+  // Varr: a low thud under each hit plus a cold, slowed grunt (lower in phase 2); the killing blow is a long cry and a deep boom. Shield-absorbed blows deal 0 damage and never get here.
+  _playVarrVoice(id, g, killed) {
+    const sc = this.scene;
+    const which = varrVoiceFor(killed, this.diedVoiced.has(id));
+    if (!which) return;
+    const has = (k) => sc.cache.audio.exists(k);
+    if (which === 'death') {
+      this.diedVoiced.add(id);
+      if (has(VARR_DEATH_SOUND_KEY)) sc.sound.play(VARR_DEATH_SOUND_KEY, { volume: VARR_DEATH_SOUND_VOLUME, rate: VARR_DEATH_SOUND_RATE });
+      if (has(VARR_HIT_THUD_KEY)) sc.sound.play(VARR_HIT_THUD_KEY, { volume: VARR_DEATH_BOOM_VOLUME, rate: VARR_DEATH_BOOM_RATE });
+      return;
+    }
+    if (has(VARR_HIT_THUD_KEY)) sc.sound.play(VARR_HIT_THUD_KEY, { volume: VARR_HIT_THUD_VOLUME, rate: VARR_HIT_THUD_RATE });
+    if (!has(VARR_HIT_VOICE_KEY)) return;
+    const now = sc.time ? sc.time.now : Date.now();
+    if (!varrSoundReady(this.voiceAt.get(id), now, VARR_HIT_VOICE_COOLDOWN_MS)) return;
+    this.voiceAt.set(id, now);
+    sc.sound.play(VARR_HIT_VOICE_KEY, { volume: VARR_HIT_VOICE_VOLUME, rate: varrHitVoiceRate(g.phase) });
+  }
+
   _playDuganVoice(id, killed) {
     const sc = this.scene;
     const which = duganVoiceFor(killed, this.diedVoiced.has(id));
@@ -163,6 +265,7 @@ export class EnemyHitFx {
   }
 
   onDamage(d) {
+    if (d.blocked && d.targetId !== PLAYER_ID) { this._raptorGuardClang(d.targetId); return; }   // Raptor's guard absorbed the hit: a dull clang, no flash, no bar
     if (d.targetId === PLAYER_ID || d.amount <= 0) return;
     const g = this.getEnemy(d.targetId);
     if (!g) return;

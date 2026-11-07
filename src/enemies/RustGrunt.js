@@ -235,6 +235,19 @@ export class RustGrunt {
   }
 
   /** Reposition (failsafe). */
+  /** Story-card intro (wave leaders without their own boss class): stand in idle until releaseIdle(). */
+  holdIdle() {
+    if (this.state === GruntState.DEAD) return;
+    this.vx = 0; this.vy = 0; this.kx = 0;
+    this.timer = Infinity;
+    this._set(GruntState.IDLE);
+  }
+
+  /** End the intro hold: he starts his approach on the next update. */
+  releaseIdle() {
+    if (this.state === GruntState.IDLE && this.timer === Infinity) this.timer = 0;
+  }
+
   teleport(x, y) { this.x = x; this.y = y; this.kx = 0; }
 }
 

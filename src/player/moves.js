@@ -101,7 +101,7 @@ export const PLAYER_TIMING = {
 // Tuned for forgiveness (60 fps frames): window 14 -> 20 (~333 ms, covers the 360 ms grunt telegraph's last stretch),
 // cooldown 24 -> 14 (a mistimed press is no longer a 400 ms death sentence), recovery kept short (14 frames after the window),
 // stun 900 -> 1200 ms so the counter-attack has time to land a full string.
-export const PARRY = { duration: 34, window: 20, cooldown: 14, stunMs: 1200 };
+export const PARRY = { duration: 34, window: 20, cooldown: 14, stunMs: 1200, riposteDamage: 22 };   // a parry is also a weapon: the attacker takes riposteDamage (no knockback, it is already stunned)
 // Item pick-up (crouch and grab): movement/attacks locked for `duration` frames (60 fps steps), 5-frame clip at 12 fps ~ 25.
 export const PICKUP_POSE = { duration: 25 };
 export const GUARD = {

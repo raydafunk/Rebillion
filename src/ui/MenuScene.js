@@ -3,6 +3,7 @@
 // Flat shapes only. Every asset has a drawn fallback if its file fails to load.
 import { COLORS, CSS, FONTS, MENU_ASSETS, MENU_COLORS as C, MENU_CSS as CC, MENU_FONTS as MF } from '../config/assetKeys.js';
 import OptionsPanel from './OptionsPanel.js';
+import { PAD_LABELS } from '../player/input.js';
 import showStoryCard from './StoryCard.js';
 import { NOTICE_MS, loadSettings } from './optionsData.js';
 import { scrollOffset } from './parallaxData.js';
@@ -28,11 +29,13 @@ const ITEMS = [
   { id: 'credits', label: 'CREDITS', y: 516, tilt: 2, art: 'menu.strip.b', idle: C.brown, sel: 0x95683f, text: CC.cream },
 ];
 
-// Key table from GameDesignDocument/Rebellion menu desgin.docx ("Controls Menu elements"): [action, primary, alternate].
+// Key table from GameDesignDocument/Rebellion menu desgin.docx ("Controls Menu elements"): [action, primary, alternate, gamepad].
+// Gamepad labels come from PAD_LABELS (src/player/input.js), which matches PAD_MAP.
 const BINDINGS = [
-  ['Move', 'A / D', 'Left / Right'], ['Jump', 'W / Space', 'Up'],
-  ['Light attack', 'J', 'Z'], ['Heavy attack', 'K', 'X'], ['Rage special', 'L', '-'],
-  ['Parry', 'T', 'M'], ['Block', 'I', 'V'],
+  ['Move', 'A / D', 'Left / Right', PAD_LABELS.move], ['Jump', 'W / Space', 'Up', PAD_LABELS.jump],
+  ['Light attack', 'J', 'Z', PAD_LABELS.light], ['Heavy attack', 'K', 'X', PAD_LABELS.heavy], ['Rage special', 'L', '-', PAD_LABELS.special],
+  ['Parry', 'T', 'M', PAD_LABELS.parry], ['Block', 'I', 'V', PAD_LABELS.block], ['Throw weapon', 'U', 'N', PAD_LABELS.throw],
+  ['Pause', 'Esc', 'P', PAD_LABELS.pause],
 ];
 
 // Credits screen lines: [heading, text]. Add names here as the team and asset list grows (design/audio/CREDITS.md).
@@ -260,22 +263,22 @@ export default class MenuScene extends Phaser.Scene {
     const dim = this.add.rectangle(0, 0, W, H, C.nearBlack, 0.6).setOrigin(0).setInteractive();
     dim.on('pointerdown', () => this.closePanel());
     const bg = this.has('menu.strip.a')
-      ? this.add.image(640, 360, 'menu.strip.a').setDisplaySize(720, 420).setTint(C.cream)
-      : this.add.rectangle(640, 360, 720, 420, C.cream);
-    const blocker = this.add.zone(640, 360, 720, 420).setInteractive(); // clicks inside the panel do not close it
+      ? this.add.image(640, 380, 'menu.strip.a').setDisplaySize(980, 500).setTint(C.cream)
+      : this.add.rectangle(640, 380, 980, 500, C.cream);
+    const blocker = this.add.zone(640, 380, 980, 500).setInteractive(); // clicks inside the panel do not close it
     p.add([dim, bg, blocker]);
-    p.add(this.add.text(640, 190, 'CONTROLS', { fontFamily: MF.display, fontSize: '40px', color: CC.nearBlack }).setOrigin(0.5, 0));
+    p.add(this.add.text(640, 168, 'CONTROLS', { fontFamily: MF.display, fontSize: '40px', color: CC.nearBlack }).setOrigin(0.5, 0));
     const head = { fontFamily: MF.mono, fontSize: '18px', color: CC.brown };
-    p.add(this.add.text(300, 244, 'ACTION', head));
-    p.add(this.add.text(540, 244, 'PRIMARY', head));
-    p.add(this.add.text(720, 244, 'ALTERNATE', head));
-    BINDINGS.forEach(([act, key, alt], i) => {
-      const y = 272 + i * 28;
-      p.add(this.add.text(300, y, act, { fontFamily: MF.mono, fontStyle: '700', fontSize: '22px', color: CC.nearBlack }));
-      p.add(this.add.text(540, y, key, { fontFamily: MF.mono, fontSize: '22px', color: CC.brick }));
-      p.add(this.add.text(720, y, alt, { fontFamily: MF.mono, fontSize: '22px', color: CC.brick }));
+    const COL = [190, 440, 620, 820]; // action, keyboard primary, keyboard alternate, gamepad
+    ['ACTION', 'PRIMARY', 'ALTERNATE', 'GAMEPAD'].forEach((h, c) => p.add(this.add.text(COL[c], 226, h, head)));
+    BINDINGS.forEach(([act, key, alt, pad], i) => {
+      const y = 256 + i * 31;
+      p.add(this.add.text(COL[0], y, act, { fontFamily: MF.mono, fontStyle: '700', fontSize: '22px', color: CC.nearBlack }));
+      p.add(this.add.text(COL[1], y, key, { fontFamily: MF.mono, fontSize: '22px', color: CC.brick }));
+      p.add(this.add.text(COL[2], y, alt, { fontFamily: MF.mono, fontSize: '22px', color: CC.brick }));
+      p.add(this.add.text(COL[3], y, pad, { fontFamily: MF.mono, fontStyle: '700', fontSize: '22px', color: CC.forest }));
     });
-    p.add(this.add.text(960, 244, 'Esc: close', head).setOrigin(1, 0));
+    p.add(this.add.text(1090, 226, 'Esc / B: close', head).setOrigin(1, 0));
   }
 
   openPanel() {

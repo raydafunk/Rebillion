@@ -253,10 +253,13 @@ test('controls table bindings: special L, block I/V, no Shift, no shared keys, n
   assert.ok(!all.includes('KeyC'));
   for (const k of ['KeyI', 'KeyV']) { const m = mapKeys([k]); assert.equal(m.block, true); }
   const pad = { buttons: Array.from({ length: 16 }, () => ({ pressed: false })), axes: [0, 0] };
-  pad.buttons[1].pressed = true; pad.buttons[5].pressed = true;
-  assert.deepEqual(padToKeys(pad), [], 'B/RB are unbound now');
+  pad.buttons[1].pressed = true; pad.buttons[5].pressed = true; pad.buttons[7].pressed = true;
+  assert.deepEqual(padToKeys(pad).sort(), ['KeyL', 'KeyT', 'KeyU'], 'B=throw, RB=parry, RT=special');
   const p = new InputState().poll(padToKeys(pad));
   assert.equal(p.held.block, false);
+  assert.equal(p.held.parry && p.held.throw && p.held.special, true);
+  pad.buttons[1].pressed = pad.buttons[5].pressed = pad.buttons[7].pressed = false; pad.buttons[6].pressed = true;
+  assert.equal(new InputState().poll(padToKeys(pad)).held.block, true, 'LT blocks');
 });
 
 test('parry (T or M): negates hits during window, then recovers; light combo unaffected', async () => {
