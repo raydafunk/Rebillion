@@ -1,0 +1,72 @@
+{
+  "group_id": "33b6f9bf-e1e5-46ae-b389-c148f59321d8",
+  "states": [
+    {
+      "character": {
+        "id": "826f03f7-af2b-463a-803e-c1dd98f8d6ad",
+        "name": "Walking",
+        "prompt": "Elena Vance\n\"The Heart of Fallen\"\nAppearance\nAge: 45\nHeight: 5'8\"\nLean build\nMedium brown skin\nLong dark hair usually tied into a practical braid\nKind green eyes\nGentle facial features\nClothing\nLong utility coat\nMedical satchel\nFingerless gloves\nPractical trousers and boots",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-06T17:20:48.942763+00:00"
+      },
+      "folder": "Walking",
+      "frames": {
+        "rotations": {
+          "south": "Walking/rotations/south.png",
+          "south-east": "Walking/rotations/south-east.png",
+          "east": "Walking/rotations/east.png",
+          "north-east": "Walking/rotations/north-east.png",
+          "north": "Walking/rotations/north.png",
+          "north-west": "Walking/rotations/north-west.png",
+          "west": "Walking/rotations/west.png",
+          "south-west": "Walking/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_performs_a_rhythmic_and_happy_walk_w": {
+            "west": [
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_000.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_001.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_002.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_003.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_004.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_005.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_006.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_007.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/west/frame_008.png"
+            ],
+            "south": [
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_000.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_001.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_002.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_003.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_004.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_005.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_006.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_007.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/south/frame_008.png"
+            ],
+            "east": [
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_000.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_001.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_002.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_003.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_004.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_005.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_006.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_007.png",
+              "Walking/animations/The_character_performs_a_rhythmic_and_happy_walk_w/east/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-07T07:03:04.357494"
+}

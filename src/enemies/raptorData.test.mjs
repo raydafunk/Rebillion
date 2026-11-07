@@ -24,7 +24,7 @@ test('6-Hit Charge numbers and pacing', () => {
   const r = RAPTOR_MOVES.rush;
   assert.equal(r.hits.length, 6); assert.deepEqual(r.hits.map((h) => h.damage), [3, 3, 3, 3, 3, 6]);
   for (let i = 1; i < 6; i++) assert.ok(r.hits[i].atMs - r.hits[i - 1].atMs >= 100 && r.hits[i].atMs - r.hits[i - 1].atMs <= 130);
-  assert.ok(r.runSpeed >= 320 && r.runSpeed <= 380 && r.runMaxMs <= 1600 && r.stopPx === 90);
+  assert.ok(r.runSpeed >= 320 && r.runSpeed <= 380 && r.runMaxMs <= 1600 && r.stopPx === 130);
   assert.equal(RAPTOR.rushCooldownMs, 7000); assert.equal(RAPTOR.rushFirstMs, 3000);
   assert.ok(r.minRange > RAPTOR_MOVES.punch.maxRange, 'rush is the gap-closer, punch owns close range');
 });

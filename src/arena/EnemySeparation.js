@@ -48,3 +48,26 @@ function hash(id) {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
   return Math.abs(h);
 }
+
+// Personal space around Zed: enemies that are walking, waiting or recovering never stand on top of him (a boss at point-blank makes the
+// parry cue unreadable). Swinging / airborne / charging enemies are left alone (their moves own their position).
+const GAP_STATES = new Set(['idle', 'approach', 'recover', 'block']);
+export function keepFromPlayer(grunts, player, bounds, cfg = SEPARATION) {
+  if (!player) return;
+  const range = bounds.locked ? bounds.xRange : { min: 0, max: bounds.world.w };
+  for (const g of grunts) {
+    if (!g.alive || !GAP_STATES.has(g.state) || g.running || (g.lift || 0) > 0) continue;
+    const gx = g.miniBoss || g.isBoss ? cfg.playerGapBossX : cfg.playerGapX;
+    let dx = g.x - player.x; const dy = g.y - player.y;
+    if (Math.hypot(dx / gx, dy / cfg.playerGapY) >= 1) continue;
+    let sx = Math.sign(dx) || (hash(g.id) % 2 ? 1 : -1);
+    const need = Math.abs(gx * Math.sqrt(Math.max(0, 1 - (dy / cfg.playerGapY) ** 2))) ;
+    let nx = player.x + sx * need;
+    if (nx < range.min + 1 || nx > range.max - 1) {           // Zed's back is to the wall: go around him in depth instead of through him
+      nx = Math.min(range.max, Math.max(range.min, nx));
+      const sy = Math.sign(dy) || (hash(g.id) % 2 ? 1 : -1);
+      g.y = Math.min(bounds.lane.maxY, Math.max(bounds.lane.minY, player.y + sy * cfg.playerGapY));
+    }
+    g.x = nx;
+  }
+}

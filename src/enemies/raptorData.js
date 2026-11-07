@@ -33,7 +33,7 @@ export const RAPTOR_MOVES = Object.freeze({
     hits: [hit(120, 5, 180, 160), hit(270, 5, 180, 160), hit(420, 5, 180, 160), hit(585, 9, 320, 260)], markIndex: 3,
     hitsP2: Object.freeze([hit(120, 5, 180, 160), hit(240, 5, 180, 160), hit(360, 5, 180, 160), hit(480, 5, 180, 160), hit(630, 9, 320, 260)]),
     hitbox: Object.freeze({ x: 10, y: -115, w: 125, h: 105 }),
-    minRange: 0, maxRange: 200, maxDy: 50,   // he stands still while punching, so he only starts it when Zed is already inside his punch reach and lane
+    minRange: 95, maxRange: 200, maxDy: 50,   // he stands still while punching, so he only starts it when Zed is already inside his punch reach and lane
   }),
   falcon: move({          // 800 ms: leaps off-screen, a shadow grows on the marked spot, then a heavy slam. The big punish window after.
     id: 'falcon', name: 'Falcon Drop', kind: 'finisher',
@@ -46,12 +46,12 @@ export const RAPTOR_MOVES = Object.freeze({
     minRange: 150, maxRange: 620,
   }),
   rush: move({            // 6-Hit Charge: the long/mid-range gap closer. 350 ms stand-and-crouch with red chevrons, then he RUNS at Zed (only ever as the lead-in), stops
-    // ~90 px away and stands still for six fast punches. The parry ring closes 80 ms before punch 1 (the run is part of the telegraph), so a parry stops the rest.
+    // ~130 px away and stands still for six fast punches. The parry ring closes 80 ms before punch 1 (the run is part of the telegraph), so a parry stops the rest.
     id: 'rush', name: '6-Hit Charge', kind: 'finisher',
     telegraphMs: 350, attackMs: 850, recoverMs: 800,   // attackMs counts the punches only (the run is extra, capped by runMaxMs); first punch lands >= 470 ms after the move starts
     hits: [hit(120, 3, 150, 140), hit(230, 3, 150, 140), hit(340, 3, 150, 140), hit(450, 3, 150, 140), hit(560, 3, 150, 140), hit(690, 6, 300, 240)], markIndex: 0,   // 21 total, the 4-hit punch is 24
     hitbox: Object.freeze({ x: 10, y: -115, w: 125, h: 105 }),
-    runSpeed: 360, runMaxMs: 1600, stopPx: 90, trackUntil: 0.5,   // run px/s (x1.25 in frenzy), hard cap on the run, stop distance from Zed, share of the run in which the stop point still follows Zed
+    runSpeed: 360, runMaxMs: 1600, stopPx: 130, trackUntil: 0.5,   // run px/s (x1.25 in frenzy), hard cap on the run, stop distance from Zed, share of the run in which the stop point still follows Zed
     cueRunMs: 400,         // the parry ring's clock spends this long on the run (it is stretched over the real run), so the ring closes 80 ms before punch 1
     minRange: 260, maxRange: 650, maxDy: 400,
   }),
@@ -83,8 +83,8 @@ export const RAPTOR = Object.freeze({
   nearPx: 330,            // closes in when Zed is farther than this
   strafeLaneMin: 440, strafeLaneMax: 700,
   strafeBandPx: 70,       // (unused now: he lines up with Zed's lane and stands)
-  punchClosePx: 175,    // while the 4-hit flurry is ready he walks in to this range, so it starts when Zed is close and the ring cue can be parried
-  backOffPx: 200,         // closer than this (in x) with no move ready: he steps back so a move fits (Dive Kick min range 120)
+  punchClosePx: 160,    // while the 4-hit flurry is ready he walks in to this range, so it starts when Zed is close and the ring cue can be parried
+  backOffPx: 200, minGapPx: 95,         // closer than this (in x) with no move ready: he steps back so a move fits (Dive Kick min range 120)
   spawnIdleMs: 400,
   hitstunMinMs: 0,
   parryStunMs: 850,       // a parried move stuns him; ordinary hits never do (boss hitstun immunity, no juggle loops)
@@ -112,10 +112,11 @@ export const RAPTOR = Object.freeze({
 export function pickRaptorMove(s, rng = Math.random, d = RAPTOR) {
   const M = RAPTOR_MOVES;
   if ((s.lift || 0) >= RAPTOR_AIR_LIFT) return null;       // every one of his hits is ground level: wait for Zed to come down
-  const ok = (m) => s.ready[m.id] && s.dist >= m.minRange && s.dist <= m.maxRange && s.lastId !== m.id && (!m.maxDy || Math.abs(s.dy || 0) <= m.maxDy);
+  // cornered (no room to step back): the point-blank combo is allowed so he never stands on Zed doing nothing
+  const ok = (m) => s.ready[m.id] && (s.dist >= m.minRange || (s.cornered && m.id === 'punch')) && s.dist <= m.maxRange && s.lastId !== m.id && (!m.maxDy || Math.abs(s.dy || 0) <= m.maxDy);
   if (ok(M.punch)) return M.punch;                          // Zed in his face (punch only fits inside ~200 px / 50 px lane): combo
   const pool = ['dive', 'falcon', 'rush'].map((id) => M[id]).filter(ok);
-  if (!pool.length) return s.ready.punch && s.dist <= M.punch.maxRange && Math.abs(s.dy || 0) <= M.punch.maxDy ? M.punch : null;   // nothing else fits: repeat the combo rather than stall
+  if (!pool.length) return s.ready.punch && s.dist <= M.punch.maxRange && (s.dist >= M.punch.minRange || s.cornered) && Math.abs(s.dy || 0) <= M.punch.maxDy ? M.punch : null;   // nothing else fits: repeat the combo rather than stall
   const w = (m) => (d.weights && d.weights[m.id]) || 1;
   let r = rng() * pool.reduce((n, m) => n + w(m), 0);
   for (const m of pool) { r -= w(m); if (r < 0) return m; }

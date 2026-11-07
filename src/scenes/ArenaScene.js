@@ -520,7 +520,7 @@ export default class ArenaScene extends Phaser.Scene {
     if (this._feet.has(key)) return this._feet.get(key);
     // Glitch clips: some frames carry sparks / disks / drones below the boots, so a per-frame lowest pixel makes him hop off the floor.
     // Use the median foot line of the whole clip instead (death falls keep per-frame feet: he really drops).
-    // Raptor: every clip is drawn on the same 80px canvas with the idle floor line at row 67. Dive Kick / Falcon Drop frames are airborne art (feet at row 59),
+    // Raptor: every clip is drawn on the same 80px canvas with the floor line at row 67 (measured: the Fight_Pose_with_Boot idle, walk, punch, six, run, block frames all end on row 67; landing 68). Dive Kick / Falcon Drop frames are airborne art (feet at row 59),
     // so per-frame feet (or a clip median) shoved the body up and down and sank the crouch frames under the floor. One fixed floor line for all clips.
     if (/^rust\.raptor\.(?!death|rot)/.test(key) && this.textures.exists('rust.raptor.idle.east.0')) {
       const f = this._rawFeetFrac('rust.raptor.idle.east.0'); this._feet.set(key, f); return f;

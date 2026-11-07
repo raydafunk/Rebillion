@@ -1,0 +1,61 @@
+{
+  "group_id": "524e81dc-3b95-4f0e-8da8-6237cd68de1a",
+  "states": [
+    {
+      "character": {
+        "id": "d98fcf0a-ab33-4cc3-a4be-dcc3e068667c",
+        "name": "looking surprise sta",
+        "prompt": "Zed's Father\nMarcus Vance\n\"The Protector of Fallen\"\nAppearance\nAge: 48 (before Rust's takeover)\nHeight: 6'2\"\nBroad, athletic build from years of manual labour\nTanned skin\nShort black hair with streaks of grey\nThick stubble beard\nWarm brown eyes\nClothing\nDark work jacket with rolled sleeves\nUtility gloves hanging from belt\nReinforced cargo trousers\nWorn work boots\nOld leather wristband given by Zed's mother",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-06T17:23:24.127392+00:00"
+      },
+      "folder": "looking_surprise_sta",
+      "frames": {
+        "rotations": {
+          "south": "looking_surprise_sta/rotations/south.png",
+          "south-east": "looking_surprise_sta/rotations/south-east.png",
+          "east": "looking_surprise_sta/rotations/east.png",
+          "north-east": "looking_surprise_sta/rotations/north-east.png",
+          "north": "looking_surprise_sta/rotations/north.png",
+          "north-west": "looking_surprise_sta/rotations/north-west.png",
+          "west": "looking_surprise_sta/rotations/west.png",
+          "south-west": "looking_surprise_sta/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_jolts_into_a_sudden_state_of_surpris": {
+            "east": [
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_000.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_001.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_002.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_003.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_004.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_005.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_006.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_007.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/east/frame_008.png"
+            ],
+            "west": [
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_000.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_001.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_002.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_003.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_004.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_005.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_006.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_007.png",
+              "looking_surprise_sta/animations/The_character_jolts_into_a_sudden_state_of_surpris/west/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-07T07:03:40.097172"
+}

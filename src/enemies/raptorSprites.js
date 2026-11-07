@@ -19,7 +19,9 @@ const SIDES = Object.freeze(['east', 'west']);
 const FOUR = Object.freeze(['east', 'north', 'south', 'west']);
 
 export const RAPTOR_ANIMS = Object.freeze({
-  idle:   { folder: 'Idle', anim: 'idle_breathing', frames: 8, fps: 6, loop: true, dirs: SIDES, load: true },
+  // Fight stance with boots (PixelLab "shifts weight into a firm stance"). The clip is a one-way transition (frame 0 narrow guard -> frame 8 fist forward), so a plain loop would pop 8 -> 0:
+  // it ping-pongs 0..8..1 instead (16-step cycle, no repeated end frames). All frames keep the feet on row 67 like every other Raptor clip.
+  idle:   { folder: 'Fight_Pose_with_Boot', anim: 'The_character_shifts_weight_into_a_firm_stance_rig', frames: 9, fps: 8, loop: true, pingPong: true, dirs: SIDES, load: true },
   walk:   { folder: 'walking', anim: 'walking', frames: 8, fps: 12, loop: true, dirs: FOUR, load: true },
   punch:  { folder: '4_hit_punch', anim: 'The_character_executes_a_rapid_four-hit_punch_comb', frames: 9, dirs: SIDES, load: true },
   six:    { folder: '6_hit_punch', anim: 'The_character_performs_a_rapid_six-hit_combo_of_al', frames: 9, dirs: FOUR, load: true },   // the 6-Hit Charge punches (east/west used; north/south exist on disk)
@@ -39,7 +41,7 @@ export const isRaptor = (skin) => skin === RAPTOR_ID;
 
 const frameName = (i) => `frame_${String(i).padStart(3, '0')}.png`;
 export const raptorRotationKey = (dir) => `${RAPTOR_TEX}.rot.${dir}`;
-export const raptorRotationPath = (dir) => `${RAPTOR_DIR}/Idle/rotations/${dir}.png`;
+export const raptorRotationPath = (dir) => `${RAPTOR_DIR}/Fight_Pose_with_Boot/rotations/${dir}.png`;
 export const raptorFrameKey = (name, dir, i) => `${RAPTOR_TEX}.${name}.${dir}.${i}`;
 export const raptorAnimKey = (name, dir) => `${RAPTOR_TEX}.${name}.${dir}`;
 export const raptorFramePath = (name, dir, i) => {
@@ -57,6 +59,12 @@ export function raptorAssets() {
   return out;
 }
 
+/** Frame indices in play order: 0..n-1, plus n-2..1 back down when the clip ping-pongs (so the loop point repeats no frame). */
+export const raptorFrameOrder = (a) => {
+  const up = Array.from({ length: a.frames }, (_, i) => i);
+  return a.pingPong ? up.concat(up.slice(1, -1).reverse()) : up;
+};
+
 /** Every animation to register: [{ key, frames: [textureKey], frameRate, repeat }]. */
 export function raptorAnimDefs() {
   const out = [];
@@ -65,7 +73,7 @@ export function raptorAnimDefs() {
     for (const d of a.dirs) {
       out.push({
         key: raptorAnimKey(name, d), repeat: a.loop ? -1 : 0, frameRate: a.loop ? a.fps : RAPTOR_ACTION_FPS,
-        frames: Array.from({ length: a.frames }, (_, i) => raptorFrameKey(name, d, i)),
+        frames: raptorFrameOrder(a).map((i) => raptorFrameKey(name, d, i)),
       });
     }
   }

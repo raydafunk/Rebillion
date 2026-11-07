@@ -362,7 +362,9 @@ export class RaptorBoss {
     const dist = Math.hypot(dx, dy) || 0.0001;
     this.circling = false; this.lift = 0;
     if (this.cooldownMs <= 0) {
-      const mv = pickRaptorMove({ dist, dy, lift: t.lift || 0, ready: this._ready(), lastId: this.lastMoveId }, this.rng, d);
+      const r0 = this._range(), away0 = dx > 0 ? -1 : 1;
+      const cornered = (away0 < 0 ? this.x - (r0.min + 60) : (r0.max - 60) - this.x) <= 10;
+      const mv = pickRaptorMove({ dist, dy, lift: t.lift || 0, ready: this._ready(), lastId: this.lastMoveId, cornered }, this.rng, d);
       if (mv) {
         if (this.slots.tryAcquire(this.id)) { this._beginTelegraph(mv); return; }
         this.circling = true;            // no slot free: hold his ground (flagged so the failsafe does not read it as stuck)

@@ -67,3 +67,18 @@ test('block clip: registered east/west, 9 frames, once, fitted to the raise, the
   assert.equal(raptorPose({ ...base, state: 'block', blockSeq: 4 }).seq, 'blk4', 'each block restarts the clip');
   assert.equal(raptorAssets().filter((a) => a.key.includes('.block.')).length, 18);
 });
+
+test('idle is the Fight_Pose_with_Boot clip: east/west, 9 art frames ping-ponged 0..8..1, rotations from the same folder, no old Idle art', () => {
+  for (const d of ['east', 'west']) {
+    const def = raptorAnimDefs().find((x) => x.key === raptorAnimKey('idle', d));
+    assert.equal(def.repeat, -1);
+    assert.deepEqual(def.frames.map((f) => Number(f.split('.').pop())), [0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1]);
+  }
+  const idleAssets = raptorAssets().filter((a) => a.key.includes('.idle.'));
+  assert.equal(idleAssets.length, 18);
+  assert.ok(idleAssets.every((a) => a.path.includes('/Fight_Pose_with_Boot/')));
+  const rots = raptorAssets().filter((a) => a.key.includes('.rot.'));
+  assert.equal(rots.length, 8);
+  assert.ok(rots.every((a) => a.path.includes('/Fight_Pose_with_Boot/rotations/')));
+  assert.ok(!raptorAssets().some((a) => a.path.includes('/Raptor/Idle/')));
+});

@@ -46,7 +46,7 @@ assert.deepEqual(Object.keys(RAPTOR_MOVES), ['dive', 'punch', 'falcon', 'rush'])
   }
   assert.ok(runStatesOk && runTicks > 0 && runMs <= 1600, 'run phase only inside attack, capped');
   assert.ok(maxSpeed >= 340 && maxSpeed <= 380, 'run speed ' + maxSpeed);
-  assert.ok(minDx >= 85 && minDx <= 95, 'stops about 90 px from Zed: ' + minDx);
+  assert.ok(minDx >= 125 && minDx <= 135, 'stops about 130 px from Zed: ' + minDx);
   assert.equal(hits.length, 6, 'six hits'); assert.equal(firstHitRun, false, 'no hit while running');
   assert.deepEqual(hits.map((h) => h.damage), [3, 3, 3, 3, 3, 6]);
   assert.equal(new Set(hits.map((h) => h.attackId)).size, 6, 'distinct attackIds');

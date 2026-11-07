@@ -1,0 +1,50 @@
+{
+  "group_id": "33b6f9bf-e1e5-46ae-b389-c148f59321d8",
+  "states": [
+    {
+      "character": {
+        "id": "cf71e0ba-caa2-4ba1-8569-0c3e32da6a44",
+        "name": "Sad State",
+        "prompt": "Elena Vance\n\"The Heart of Fallen\"\nAppearance\nAge: 45\nHeight: 5'8\"\nLean build\nMedium brown skin\nLong dark hair usually tied into a practical braid\nKind green eyes\nGentle facial features\nClothing\nLong utility coat\nMedical satchel\nFingerless gloves\nPractical trousers and boots",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-11-07T06:40:29.763911+00:00"
+      },
+      "folder": "Sad_State",
+      "frames": {
+        "rotations": {
+          "south": "Sad_State/rotations/south.png",
+          "south-east": "Sad_State/rotations/south-east.png",
+          "east": "Sad_State/rotations/east.png",
+          "north-east": "Sad_State/rotations/north-east.png",
+          "north": "Sad_State/rotations/north.png",
+          "north-west": "Sad_State/rotations/north-west.png",
+          "west": "Sad_State/rotations/west.png",
+          "south-west": "Sad_State/rotations/south-west.png"
+        },
+        "animations": {
+          "The_character_slowly_slumps_their_shoulders_forwar": {
+            "south": [
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_000.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_001.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_002.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_003.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_004.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_005.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_006.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_007.png",
+              "Sad_State/animations/The_character_slowly_slumps_their_shoulders_forwar/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-07T07:02:58.847792"
+}

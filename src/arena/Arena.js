@@ -17,7 +17,7 @@ import { WAVES } from '../waves/waveData.js';
 import { EVENTS } from '../shared/events.js';
 import { ATTACKER_CAP } from '../enemies/gruntData.js';
 import { WORLD } from './arenaData.js';
-import { separateEnemies } from './EnemySeparation.js';
+import { separateEnemies, keepFromPlayer } from './EnemySeparation.js';
 
 export class Arena {
   constructor({ events, getTarget, getScrollX = () => 0, getPlayer = null, waves = WAVES, world = WORLD, hold = false, onFailsafe = null }) {
@@ -45,6 +45,7 @@ export class Arena {
     this.spawner.update(dtMs);
     this.enemies.update(dtMs, target, frozen);
     separateEnemies(this.enemies.list(), this.bounds); // no stacking at the arena end
+    keepFromPlayer(this.enemies.list(), target, this.bounds);
     this.failsafe.update(dtMs, target);
   }
 

@@ -21,4 +21,7 @@ export const SEPARATION = Object.freeze({
   radiusY: 28,    // px: depth gap (lane is shallow, so smaller)
   strength: 0.6,  // fraction of the overlap resolved per pass
   passes: 3,
+  playerGapX: 60,       // px: grunts keep this far from Zed horizontally (when not swinging)
+  playerGapBossX: 105,  // px: mini-bosses keep a wider gap so the parry cue and his tells read
+  playerGapY: 26,
 });

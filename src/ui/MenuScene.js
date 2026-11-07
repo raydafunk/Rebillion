@@ -4,7 +4,7 @@
 import { COLORS, CSS, FONTS, MENU_ASSETS, MENU_COLORS as C, MENU_CSS as CC, MENU_FONTS as MF } from '../config/assetKeys.js';
 import OptionsPanel from './OptionsPanel.js';
 import { PAD_LABELS } from '../player/input.js';
-import showStoryCard from './StoryCard.js';
+import showStoryCard, { preloadStoryArt } from './StoryCard.js';
 import { NOTICE_MS, loadSettings } from './optionsData.js';
 import { scrollOffset } from './parallaxData.js';
 import { loadLevelContent, legacyLevel } from '../levels/levelData.js';
@@ -416,8 +416,10 @@ export default class MenuScene extends Phaser.Scene {
       { onSkip: (id, errs) => console.warn('[levels] skipped', id, errs) })
       .then((levels) => this.game.registry.set('levels', levels))
       .catch((e) => console.warn('[levels] using Tier 0 round', e));
-    // Start pulling the first level's sprites/sounds now, while the player reads the story card.
-    this.assetsReady = this.levelsReady.then(() => this.preloadArena());
+    // The story sprites (a few tiny PNGs) go first so the cards fill in at once; the first level's sprites/sounds
+    // follow while the player reads. The cards themselves are drawn in code and never wait for any of this.
+    const storyArtReady = preloadStoryArt(this);
+    this.assetsReady = Promise.all([this.levelsReady, storyArtReady]).then(() => this.preloadArena());
     showStoryCard(this, () => this.launchArena());
   }
 
